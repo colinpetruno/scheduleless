@@ -11,7 +11,6 @@ gem "pg"
 gem "puma", "~> 3.0"
 gem "sass-rails", "~> 5.0"
 gem "simple_form"
-gem "sqlite3"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
 
@@ -26,6 +25,10 @@ source "https://rails-assets.org" do
   # gem "rails-assets-open-iconic"
 end
 
+group :production do
+  gem "rails_12factor"
+end
+
 group :development, :test do
   gem "byebug", platform: :mri
   gem "pry-rails"
@@ -37,3 +40,5 @@ group :development do
   gem "spring-watcher-listen", "~> 2.0.0"
   gem "web-console", ">= 3.3.0"
 end
+
+ruby "2.3.1"
