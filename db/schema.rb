@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170301034819) do
+ActiveRecord::Schema.define(version: 20170302042138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,17 @@ ActiveRecord::Schema.define(version: 20170301034819) do
     t.string   "additional_details"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+  end
+
+  create_table "preferred_hours", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "day"
+    t.time    "start"
+    t.time    "end"
+    t.boolean "open"
+    t.boolean "close"
+    t.index ["user_id", "day"], name: "index_preferred_hours_on_user_id_and_day", unique: true, using: :btree
+    t.index ["user_id"], name: "index_preferred_hours_on_user_id", using: :btree
   end
 
   create_table "user_locations", force: :cascade do |t|

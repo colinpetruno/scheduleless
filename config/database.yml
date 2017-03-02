@@ -25,5 +25,5 @@ test:
   password: rails
 
 production:
-  url: <%= ENV.fetch("DATABASE_URL") %>
+  url: <%= ENV.fetch("DATABASE_URL", "") %>
   pool: 15
