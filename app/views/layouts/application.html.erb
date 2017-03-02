@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Scheduler</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class='flexbox'>
+
+      <div class='top-nav'>
+        <div class='flex-child' style="color: #fff">
+          <span class="oi oi-magnifying-glass"></span>
+        </div>
+
+        <input type="text" placeholder="Search" />
+        <ul class="top-nav-list">
+          <li class="seperator"></li>
+          <li class="active"><a href="#">Calendar</a></li>
+          <li><a href="#">Employees</a></li>
+          <li><a href="#">Settings</a></li>
+        </ul>
+      </div>
+
+
+
+      <div class='site-content'>
+        <div class='flex-child'>
+          <ul class="side-menu">
+            <li> <span class="oi oi-home"></span> </li>
+            <li class="active"> <span class="oi oi-calendar"></span> </li>
+            <li> <span class="oi oi-map-marker"></span> </li>
+            <li class="seperator"></li>
+            <li> <span class="oi oi-people"></span> </li>
+            <li> <span class="oi oi-cog"></span> </li>
+          </ul>
+        </div>
+
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+</html>

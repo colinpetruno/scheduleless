@@ -1,0 +1,103 @@
+.side-content {
+  padding-top: 50px;
+}
+
+.content-nav {
+  @extend .list-unstyled;
+  padding-left: 25px;
+  margin-bottom: 75px;
+
+  li {
+    color: #737a86;
+    display: block;
+    margin-bottom: 20px;
+
+    &:first-child {
+      color: #41454b;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
+}
+
+.calendar-frame {
+  box-shadow: 0 0 20px darken(#e3eaf5, 3%); // #cdd5e1; //
+  margin-left: 35px;
+
+  header > div {
+    color: #a0acb9;
+    padding: 0 40px;
+    text-transform: uppercase;
+
+    &:first-child {
+      background-color: #41454b;
+      border-bottom: 1px solid #2c2e33;
+      min-height: 50px;
+      line-height: 50px;
+    }
+
+    &:last-child {
+      background-color: #474b52;
+      border-top: 1px solid #535860;
+      min-height: 50px;
+      line-height: 50px;
+    }
+  }
+
+  section {
+    background-color: $white;
+  }
+}
+
+.day-display {
+  background-color: $white;
+  box-shadow: 0 0 20px darken(#e3eaf5, 3%);
+  margin-top: 50px;
+  margin-right: 15px;
+  min-height: 750px;
+
+  header {
+    color: #737a86;
+    font-size: 150px;
+    text-align: center;
+    font-weight: 100;
+  }
+
+  label {
+    color: #a0acb9;
+    display: block;
+    line-height: 50px;
+    min-height: 60px;
+    margin-bottom: 0;
+    text-align: right;
+  }
+
+  .timeline {
+    width: 100%;
+    margin-top: 25px;
+    min-height: 780px;
+
+    background: linear-gradient(
+      to bottom,
+      lighten(#a0acb9, 10%),
+      lighten(#a0acb9, 10%) 1px,
+      #ffffff 1px,
+      #ffffff
+    );
+    /* The rectangle in which to repeat.
+       It can be fully wide in this case */
+    background-size: 100% 60px;
+    vertical-align: top;
+
+    .bar {
+      vertical-align: top;
+      background-color: #5bd1b1;
+      border-radius: 5px;
+      display: inline-block;
+      min-width: 10px;
+      width: 10px;
+      margin: 0 10px;
+      min-height: 50px;
+    }
+  }
+}

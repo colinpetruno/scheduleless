@@ -1,0 +1,49 @@
+.months {
+  div {
+    text-align: center;
+  }
+
+  .selected {
+    color: $white;
+    background-color: #5f97ff;
+  }
+}
+
+table.calendar {
+  thead th {
+    text-align: center;
+  }
+  tbody tr {
+    min-height: 40px;
+    border-top: none;
+    border-bottom: none;
+  }
+
+  tbody td {
+    border-top: none;
+    border-bottom: none;
+    font-size: 18px;
+  }
+
+  td.inactive {
+    color: #737a86;
+  }
+
+  td > div{
+    line-height: 40px;
+    min-height: 40px;
+    padding: 20px 12px;
+    text-align: center;
+  }
+
+  td .selected {
+    background-color: #5bd1b1;
+    color: $white;
+    margin: auto;
+    line-height: 40px;
+    height: 40px;
+    max-height: 40px;
+    max-width: 40px;
+    width: 40px;
+  }
+}

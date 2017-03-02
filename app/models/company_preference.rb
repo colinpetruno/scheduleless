@@ -1,0 +1,3 @@
+class CompanyPreference < ApplicationRecord
+
+end

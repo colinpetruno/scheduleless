@@ -1,0 +1,7 @@
+<div class="row months">
+  <% Date::ABBR_MONTHNAMES.compact.map do |month| %>
+    <div class="col-1 <%= "selected" if month.downcase == "feb" %>">
+      <%= month %>
+    </div>
+  <% end %>
+</div>

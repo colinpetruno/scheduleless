@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row">
+    <div class="col-10 offset-sm-1">
+      <div class="onboarding-content">
+        Add Some Users
+        <%= simple_form_for [:onboarding, @location, @user] do |f| %>
+          <%= f.input :given_name %>
+          <%= f.input :family_name %>
+          <%= f.input :preferred_name %>
+
+          <%= f.input :email %>
+          <%= f.input :mobile_phone %>
+
+          <%= f.submit %>
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

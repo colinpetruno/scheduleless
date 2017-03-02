@@ -1,0 +1,39 @@
+source "https://rubygems.org"
+
+gem "rails", "~> 5.0.1"
+gem "bcrypt", "~> 3.1.7"
+gem "bootstrap", "~> 4.0.0.alpha6"
+gem "bourbon"
+gem "devise"
+gem "devise_invitable"
+gem "jquery-rails"
+gem "pg"
+gem "puma", "~> 3.0"
+gem "sass-rails", "~> 5.0"
+gem "simple_form"
+gem "sqlite3"
+gem "turbolinks", "~> 5"
+gem "uglifier", ">= 1.3.0"
+
+
+# Use Redis adapter to run Action Cable in production
+# gem "redis", "~> 3.0"
+# Use ActiveModel has_secure_password
+
+# Use Capistrano for deployment
+# gem "capistrano-rails", group: :development
+source "https://rails-assets.org" do
+  # gem "rails-assets-open-iconic"
+end
+
+group :development, :test do
+  gem "byebug", platform: :mri
+  gem "pry-rails"
+end
+
+group :development do
+  gem "listen", "~> 3.0.5"
+  gem "spring"
+  gem "spring-watcher-listen", "~> 2.0.0"
+  gem "web-console", ">= 3.3.0"
+end

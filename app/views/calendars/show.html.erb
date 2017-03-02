@@ -1,0 +1,38 @@
+<div class="container-fluid" style="width: 100%; overflow-y: auto; padding-bottom: 50px;">
+  <div class="row">
+    <div class="col-9 side-content">
+      <div class="calendar-frame">
+        <header>
+          <div><%= Date::MONTHNAMES[Date.today.month] %></div>
+          <div><%= render partial: "month_headers" %></div>
+        </header>
+
+        <section>
+          <%= render partial: "calendar" %>
+        </section>
+      </div>
+    </div>
+
+    <div class="col-3">
+      <div class="day-display">
+        <header>11</header>
+        <section>
+          <div class="row">
+            <div class="col-3">
+              <% %w(9AM 10AM 11AM 12PM 1PM 2PM 3PM 4PM 5PM 6PM 7PM 8PM 9PM).map do |hour| %>
+                <label><%= hour %></label>
+              <% end %>
+            </div>
+            <div class="col-9">
+              <div class="timeline">
+                <div class="bar" style="margin-top: 0px; min-height: 240px"></div>
+                <div class="bar" style="background-color: #e78b79; margin-top: 240px; min-height: 360px"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+  </div>
+</div>
