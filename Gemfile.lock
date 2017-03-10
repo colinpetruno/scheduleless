@@ -53,6 +53,7 @@ GEM
     byebug (9.0.6)
     coderay (1.1.1)
     concurrent-ruby (1.0.4)
+    database_cleaner (1.5.1)
     debug_inspector (0.0.2)
     devise (4.2.0)
       bcrypt (~> 3.0)
@@ -187,6 +188,7 @@ DEPENDENCIES
   bootstrap (~> 4.0.0.alpha6)
   bourbon
   byebug
+  database_cleaner
   devise
   devise_invitable
   jquery-rails

@@ -2,16 +2,14 @@ class Onboarding::SchedulesController < AuthenticatedController
   layout "onboarding"
 
   def new
-    @location = Location.find(params[:location_id])
-    @schedule = Schedule.for(@location)
+    @schedule = Schedule.for(current_company)
   end
 
   def create
-    @location = Location.find(params[:location_id])
-    @schedule = Schedule.for(@location)
+    @schedule = Schedule.for(current_company)
 
     if @schedule.generate
-
+      redirect_to calendar_path
     end
   end
 end

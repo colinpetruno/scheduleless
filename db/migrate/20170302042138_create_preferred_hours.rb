@@ -6,8 +6,8 @@ class CreatePreferredHours < ActiveRecord::Migration[5.0]
       t.integer :day
       t.time :start
       t.time :end
-      t.boolean :open
-      t.boolean :close
+      t.boolean :open, default: true
+      t.boolean :close, default: true
     end
 
     add_index :preferred_hours, [:user_id, :day], :unique => true

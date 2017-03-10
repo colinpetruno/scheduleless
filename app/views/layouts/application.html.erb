@@ -10,7 +10,6 @@
 
   <body>
     <div class='flexbox'>
-
       <div class='top-nav'>
         <div class='flex-child' style="color: #fff">
           <span class="oi oi-magnifying-glass"></span>
@@ -25,14 +24,20 @@
         </ul>
       </div>
 
-
-
       <div class='site-content'>
         <div class='flex-child'>
           <ul class="side-menu">
             <li> <span class="oi oi-home"></span> </li>
-            <li class="active"> <span class="oi oi-calendar"></span> </li>
-            <li> <span class="oi oi-map-marker"></span> </li>
+            <li class="active">
+              <%= link_to calendar_path do %>
+                <span class="oi oi-calendar"></span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to locations_path do %>
+                <span class="oi oi-map-marker"></span>
+              <% end %>
+            </li>
             <li class="seperator"></li>
             <li> <span class="oi oi-people"></span> </li>
             <li> <span class="oi oi-cog"></span> </li>

@@ -1,8 +1,10 @@
 class Schedule
   include ActiveModel::Model
 
-  def self.for(location)
-    new(location: location)
+  attr_accessor :company
+
+  def self.for(company)
+    new(company: company)
   end
 
   def generate
@@ -14,6 +16,7 @@ class Schedule
     # what times are available to be scheduled for an employee
     #
     # take employees where this is their 'preferred location first'
+    true
   end
 
 end

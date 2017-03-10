@@ -31,6 +31,7 @@ end
 
 group :development, :test do
   gem "byebug", platform: :mri
+  gem "database_cleaner"
   gem "pry-rails"
 end
 
