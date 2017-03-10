@@ -18,6 +18,7 @@ class Onboarding::LocationsController < AuthenticatedController
     params.
       require(:location).
       permit(:additional_details, :city, :county_province,
-             :line_1, :line_2, :line_3, :postalcode)
+             :line_1, :line_2, :line_3, :postalcode).
+      merge(company: current_company)
   end
 end
