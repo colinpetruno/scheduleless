@@ -1,5 +1,7 @@
 @import "application/variables";
+@import "application/mixins/**/*";
 @import "bootstrap_custom";
+
 
 @import "application/base/**/*";
 @import "application/views/**/*";

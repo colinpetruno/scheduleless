@@ -12,34 +12,6 @@
   display: flex;
 }
 
-.top-nav {
-  background-color: #fff;
-  max-height: 85px;
-
-  .search-icon {
-    background-color: #5f97ff;
-    font-size: 30px;
-    font-weight: 200px;
-    text-align: center;
-    line-height: 85px;
-  }
-
-  input {
-    height: 45px;
-    margin: 20px;
-    margin-left: 35px;
-    margin-right: 45px;
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-}
-
-.flex-child{
-  background: #41454b;
-  width:85px;
-  display:block;
-}
-
 .static{
   background:green;
   width:100%;

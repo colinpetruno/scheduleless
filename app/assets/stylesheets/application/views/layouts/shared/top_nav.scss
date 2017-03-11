@@ -1,25 +1,71 @@
-ul.top-nav-list {
-  @extend .list-unstyled;
-  margin: 0;
+.top-nav {
+  background-color: #fff;
+  max-height: 85px;
 
-  li {
-    float: left;
+  .search-icon {
+    background-color: #5f97ff;
+    font-size: 30px;
+    font-weight: 200px;
+    text-align: center;
     line-height: 85px;
-    margin: 0 50px;
+  }
 
-    a {
-      color: #41454b;
-    }
+  input {
+    height: 45px;
+    margin: 20px;
+    margin-left: 35px;
+    margin-right: 45px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 
-    &.active a {
-      color: #5f97ff;
-    }
+  ul.top-nav-list {
+    margin: 0;
 
-    &.seperator {
-      border-left: 2px solid darken($white, 10%);
-      min-width: 2px;
-      height: 65px;
-      margin: 10px 50px 10px 0;
+    li {
+      float: left;
+      line-height: 85px;
+      margin: 0 50px;
+
+      a {
+        color: #41454b;
+      }
+
+      &.active a {
+        color: #5f97ff;
+      }
+
+      &.seperator {
+        border-left: 2px solid darken($white, 10%);
+        min-width: 2px;
+        height: 65px;
+        margin: 10px 50px 10px 0;
+      }
     }
+  }
+
+  button {
+    background-color: $white;
+    border: none;
+    outline: none;
+  }
+}
+
+#mobile-menu {
+  background-color: #41454b;
+
+  ul > li {
+    @include hoverable;
+  }
+
+  ul li a{
+    color: #a0acb9;
+  }
+}
+
+
+@media (max-width: map-get($grid-breakpoints, lg)) {
+  .top-nav-list {
+    display: none;
   }
 }

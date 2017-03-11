@@ -1,0 +1,8 @@
+@mixin hoverable($hover-bg: #5f97ff, $hover-font: #ffffff) {
+  &:hover {
+    background-color: $hover-bg;
+    a {
+      color: $hover-font;
+    }
+  }
+}

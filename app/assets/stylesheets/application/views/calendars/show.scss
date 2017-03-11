@@ -2,24 +2,6 @@
   padding-top: 50px;
 }
 
-.content-nav {
-  @extend .list-unstyled;
-  padding-left: 25px;
-  margin-bottom: 75px;
-
-  li {
-    color: #737a86;
-    display: block;
-    margin-bottom: 20px;
-
-    &:first-child {
-      color: #41454b;
-      font-weight: bold;
-      text-transform: uppercase;
-    }
-  }
-}
-
 .calendar-frame {
   box-shadow: 0 0 20px darken(#e3eaf5, 3%); // #cdd5e1; //
   margin-left: 35px;
