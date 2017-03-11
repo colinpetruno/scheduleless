@@ -1,0 +1,26 @@
+ul.side-menu {
+  @extend .list-unstyled;
+  li {
+    color: #a0acb9;
+    display: block;
+    width: 85px;
+    margin: 15px 0;
+    height: 50px;
+    line-height: 55px;
+    text-align: center;
+
+    &.seperator {
+      height: 0;
+      border-top: 1px solid #2c2e33;
+      border-bottom: 1px solid #535860;
+      margin: 0 10px;
+      width: 65px;
+    }
+
+    &.active {
+      border-left: 4px solid #5f97ff;
+      color: $white;
+      width: 81px;
+    }
+  }
+}

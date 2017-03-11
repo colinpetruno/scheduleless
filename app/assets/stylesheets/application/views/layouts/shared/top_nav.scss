@@ -1,0 +1,25 @@
+ul.top-nav-list {
+  @extend .list-unstyled;
+  margin: 0;
+
+  li {
+    float: left;
+    line-height: 85px;
+    margin: 0 50px;
+
+    a {
+      color: #41454b;
+    }
+
+    &.active a {
+      color: #5f97ff;
+    }
+
+    &.seperator {
+      border-left: 2px solid darken($white, 10%);
+      min-width: 2px;
+      height: 65px;
+      margin: 10px 50px 10px 0;
+    }
+  }
+}
