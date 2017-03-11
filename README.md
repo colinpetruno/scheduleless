@@ -1,24 +1,21 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+## Postgres Installation
 
-* Ruby version
+Install Postgres. Postgres can be tricky to set up. After installation try
+`psql`. If you cannot log in you may need to manage this through the psql user
+on the system.
 
-* System dependencies
+psql -d mydb -U myuser
 
-* Configuration
+Once logged in you can run these commands to set up the user in postgres.
+`CREATE USER rails WITH PASSWORD 'rails';`
+`ALTER USER rails WITH SUPERUSER;`
 
-* Database creation
+You can then try running `rails db:create` If this fails you may need to edit 
+the pg_hba.conf to allow connections on all users from localhost.
+[How to Edit pg_hba.conf](https://www.postgresql.org/docs/9.1/static/auth-pg-hba-conf.html)
 
-* Database initialization
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
