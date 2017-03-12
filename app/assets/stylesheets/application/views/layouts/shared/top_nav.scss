@@ -28,7 +28,7 @@
       margin: 0 50px;
 
       a {
-        color: #41454b;
+        color: $font-dark;
       }
 
       &.active a {
@@ -53,7 +53,7 @@
 }
 
 #mobile-menu {
-  background-color: #41454b;
+  background-color: $primary-dark-bg;
   // padding: 30px;
   ul {
     margin: 30px;
@@ -66,7 +66,7 @@
   }
 
   ul li a{
-    color: #a0acb9;
+    color: $font-light;
   }
 }
 

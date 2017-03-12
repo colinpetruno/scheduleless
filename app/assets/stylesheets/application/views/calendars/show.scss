@@ -1,34 +1,6 @@
-.side-content {
-  padding-top: 50px;
-}
-
 .calendar-frame {
-  box-shadow: 0 0 20px darken(#e3eaf5, 3%); // #cdd5e1; //
+   // #cdd5e1; //
   margin-left: 35px;
-
-  header > div {
-    color: #a0acb9;
-    padding: 0 40px;
-    text-transform: uppercase;
-
-    &:first-child {
-      background-color: #41454b;
-      border-bottom: 1px solid #2c2e33;
-      min-height: 50px;
-      line-height: 50px;
-    }
-
-    &:last-child {
-      background-color: #474b52;
-      border-top: 1px solid #535860;
-      min-height: 50px;
-      line-height: 50px;
-    }
-  }
-
-  section {
-    background-color: $white;
-  }
 }
 
 .day-display {
@@ -46,7 +18,7 @@
   }
 
   label {
-    color: #a0acb9;
+    color: $font-light;
     display: block;
     line-height: 50px;
     min-height: 60px;
@@ -61,10 +33,10 @@
 
     background: linear-gradient(
       to bottom,
-      lighten(#a0acb9, 10%),
-      lighten(#a0acb9, 10%) 1px,
-      #ffffff 1px,
-      #ffffff
+      lighten($font-light, 10%),
+      lighten($font-light, 10%) 1px,
+      $white 1px,
+      $white
     );
     /* The rectangle in which to repeat.
        It can be fully wide in this case */

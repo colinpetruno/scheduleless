@@ -13,7 +13,9 @@
       <%= render partial: "layouts/shared/top_nav" %>
       <div class="site-content">
         <%= render partial: "layouts/shared/side_menu" %>
-        <%= yield %>
+        <div class="view-content">
+          <%= yield %>
+        </div>
       </div>
     </div>
   </body>

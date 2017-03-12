@@ -1,0 +1,20 @@
+.rail {
+  @include make-container();
+  width: 100%;
+
+  & > section {
+    @include make-row();
+    & > article,aside {
+      @include make-col-ready();
+    }
+
+    & > article {
+      @include make-col(9);
+    }
+
+    & > aside {
+      @include make-col(3);
+    }
+  }
+}
+

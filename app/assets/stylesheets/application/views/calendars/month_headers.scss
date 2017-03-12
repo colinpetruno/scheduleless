@@ -1,0 +1,15 @@
+.month-headers {
+  @include make-row();
+
+  div {
+    @include make-col-ready();
+    @include make-col(1);
+
+    text-align: center;
+
+    &.selected {
+      background-color: $blue;
+      color: $white;
+    }
+  }
+}

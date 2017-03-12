@@ -1,11 +1,11 @@
 .side-menu {
-  background: #41454b;
-  width:85px;
-  display:block;
+  background: $primary-dark-bg;
+  width: 85px;
+  display: block;
 
   ul {
     li {
-      color: #a0acb9;
+      color: $font-light;
       display: block;
       width: 85px;
       margin: 15px 0;
@@ -15,8 +15,8 @@
 
       &.seperator {
         height: 0;
-        border-top: 1px solid #2c2e33;
-        border-bottom: 1px solid #535860;
+        border-top: 1px solid $dark-seperator;
+        border-bottom: 1px solid $light-seperator;
         margin: 0 10px;
         width: 65px;
       }

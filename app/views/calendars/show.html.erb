@@ -1,7 +1,8 @@
-<div class="container-fluid" style="width: 100%; overflow-y: auto; padding-bottom: 50px;">
-  <div class="row">
-    <div class="col-9 side-content">
-      <div class="calendar-frame">
+<div class="rail">
+  <section>
+    <article>
+
+      <div class="frame">
         <header>
           <div><%= Date::MONTHNAMES[Date.today.month] %></div>
           <div><%= render partial: "month_headers" %></div>
@@ -11,9 +12,10 @@
           <%= render partial: "calendar" %>
         </section>
       </div>
-    </div>
 
-    <div class="col-3">
+    </article>
+
+    <aside>
       <div class="day-display">
         <header>11</header>
         <section>
@@ -32,7 +34,6 @@
           </div>
         </section>
       </div>
-    </div>
-
-  </div>
+    </aside>
+  </section>
 </div>
