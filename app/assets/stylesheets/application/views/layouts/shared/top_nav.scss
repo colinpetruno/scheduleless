@@ -47,15 +47,22 @@
   button {
     background-color: $white;
     border: none;
+    display: none;
     outline: none;
   }
 }
 
 #mobile-menu {
   background-color: #41454b;
+  // padding: 30px;
+  ul {
+    margin: 30px;
+  }
 
   ul > li {
     @include hoverable;
+    padding: 15px;
+    text-align: right;
   }
 
   ul li a{
@@ -63,9 +70,26 @@
   }
 }
 
+// ensure mobile menu is hidden when screen is large
+@media (min-width: map-get($grid-breakpoints, lg)) {
+  #mobile-menu {
+    display: none;
+  }
+}
 
 @media (max-width: map-get($grid-breakpoints, lg)) {
-  .top-nav-list {
-    display: none;
+  // hide top nav list on small screens
+  .top-nav {
+    .top-nav-list {
+      display: none;
+    }
+
+    // show mobile nav toggle buttons on small screens
+    button {
+      display: block;
+    }
+  }
+
+  #mobile-menu {
   }
 }
