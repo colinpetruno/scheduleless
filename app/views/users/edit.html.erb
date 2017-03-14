@@ -1,6 +1,6 @@
 <div>
   <h1><%= t(".update_profile_heading") %></h1>
-  <%= simple_form_for current_user do |f| %>
+  <%= simple_form_for @user, url: user_path do |f| %>
     <%= f.input :family_name %>
     <%= f.input :given_name %>
     <%= f.input :mobile_phone %>

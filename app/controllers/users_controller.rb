@@ -1,11 +1,11 @@
 class UsersController < AuthenticatedController
-
   def edit
+    @user = current_user
   end
 
   def update
-    current_user.update_attributes(user_params)
-    redirect_to calendar_path
+    current_user.update(user_params)
+    redirect_to edit_user_path
   end
 
   private

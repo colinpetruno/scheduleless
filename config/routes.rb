@@ -14,5 +14,5 @@ Rails.application.routes.draw do
     resource :schedule, only: [:new, :create]
   end
 
-  resources :users, only: [:edit, :update]
+  resource :user, only: [:edit, :update]
 end
