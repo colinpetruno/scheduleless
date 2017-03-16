@@ -1,0 +1,58 @@
+.time-range-input {
+  max-width: 392px;
+  margin: 0 20px;
+
+  header {
+    @include make-row();
+
+    div {
+      @include make-col-ready();
+      @include make-col(6);
+
+      &:last-child {
+        text-align: right;
+      }
+    }
+  }
+
+  section {
+    > div {
+      background-color: #ebf0f8;
+      position: relative;
+      height: 10px;
+      width: 100%;
+
+      .left-grip, .right-grip {
+        background-color: #f3f3f3;
+        border-radius: 50%;
+        cursor: grab;
+        min-width: 16px;
+        min-height: 14px;
+        position: absolute;
+        top: -3px;
+        border: 1px solid $font-light;
+
+        &:focus,&:active {
+          cursor: grabbing;
+        }
+      }
+
+      .left-grip {
+        left: 00%;
+      }
+
+      .right-grip {
+        left: 100%;
+      }
+
+      .slide-bar {
+        position: absolute;
+        left: 10%;
+        right: 20%;
+        min-height: 10px;
+        background-color: #75ac40;
+        border-radius: 5px;
+      }
+    }
+  }
+}

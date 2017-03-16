@@ -22,7 +22,7 @@ gem "uglifier", ">= 1.3.0"
 # Use Capistrano for deployment
 # gem "capistrano-rails", group: :development
 source "https://rails-assets.org" do
-  # gem "rails-assets-open-iconic"
+  gem "rails-assets-tether"
 end
 
 group :production do
@@ -33,6 +33,7 @@ group :development, :test do
   gem "byebug", platform: :mri
   gem "database_cleaner"
   gem "pry-rails"
+  gem "pry-stack_explorer"
 end
 
 group :development do

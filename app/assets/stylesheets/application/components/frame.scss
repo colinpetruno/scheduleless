@@ -1,7 +1,7 @@
 .frame {
   box-shadow: 0 0 20px darken(#e3eaf5, 3%);
 
-  header {
+  > header {
     > div {
       color: $font-light;
       padding: 0 40px;
