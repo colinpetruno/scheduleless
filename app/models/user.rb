@@ -10,7 +10,7 @@ class User < ApplicationRecord
 
   validates :email, presence: true
 
-  accepts_nested_attributes_for :company
+  accepts_nested_attributes_for :company, :preferred_hours
 
   before_create :build_availabilities
 

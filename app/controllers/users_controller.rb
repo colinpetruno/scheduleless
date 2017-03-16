@@ -13,6 +13,12 @@ class UsersController < AuthenticatedController
   def user_params
     params.
       require(:user).
-      permit(:email, :family_name, :given_name, :mobile_phone, :preferred_name)
+      permit(:email,
+             :family_name,
+             :given_name,
+             :mobile_phone,
+             :preferred_name,
+             preferred_hours_attributes: [:id, :start, :end]
+            )
   end
 end
