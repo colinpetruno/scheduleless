@@ -12,6 +12,11 @@
     <li class="active"><a href="#">Calendar</a></li>
     <li><a href="#">Employees</a></li>
     <li><a href="#">Settings</a></li>
+    <li>
+      <%= link_to edit_user_path(current_user) do %>
+        <%= image_tag 'user_profile.png', class: "user_profile_pic" %>
+      <% end %>
+    </li>
   </ul>
 
   <button type="button" data-toggle="collapse" data-target="#mobile-menu" aria-expanded="false">
