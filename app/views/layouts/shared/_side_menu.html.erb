@@ -8,12 +8,16 @@
     <% end %>
 
     <%= content_tag(:li, class: active?(locations_path)) do %>
-      <%= active_link_to locations_path do %>
+      <%= link_to locations_path do %>
         <span class="oi oi-map-marker"></span>
       <% end %>
     <% end %>
     <li class="seperator"></li>
-    <li> <span class="oi oi-people"></span> </li>
+    <%= content_tag(:li, class: active?(business_users_path)) do %>
+      <%= link_to business_users_path do %>
+        <span class="oi oi-people"></span>
+      <% end %>
+    <% end %>
     <li> <span class="oi oi-cog"></span> </li>
   </ul>
 </div>

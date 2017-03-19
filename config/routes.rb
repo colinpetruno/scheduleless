@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "marketing/welcome#index"
   resource :calendar
+
+  namespace :business, path: "company" do
+    resources :users, only: [:index], path: "employees"
+  end
+
   resources :locations, only: [:index, :show, :new, :create, :edit]
 
   namespace :onboarding do
@@ -15,4 +19,6 @@ Rails.application.routes.draw do
   end
 
   resource :user, only: [:edit, :update]
+
+  devise_for :users
 end

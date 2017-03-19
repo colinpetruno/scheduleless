@@ -13,5 +13,6 @@ module Scheduler
     # -- all .rb files in that directory are automatically loaded.
 
     config.autoload_paths << "#{Rails.root}/app/inputs"
+    config.i18n.load_path = Dir[Rails.root.join('config', 'locales', '**', '*.yml')]
   end
 end
