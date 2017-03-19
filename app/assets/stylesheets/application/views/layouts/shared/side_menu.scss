@@ -25,6 +25,18 @@
         border-left: 4px solid #5f97ff;
         color: $white;
         width: 81px;
+
+        a {
+          color: $white;
+        }
+      }
+
+      a {
+        color: $font-light;
+
+        &:hover {
+          color: $white;
+        }
       }
     }
   }
