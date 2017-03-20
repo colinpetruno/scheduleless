@@ -1,0 +1,29 @@
+<div class="frame">
+  <header>
+    <div>Employees</div>
+  </header>
+  <section>
+
+    <table class="striped">
+      <thead>
+        <tr>
+          <th>Email</th>
+      </thead>
+
+      <tbody>
+        <% @users.map do |user| %>
+          <tr>
+            <td>
+              <%= user.email %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </section>
+</div>
+
+
+
+
