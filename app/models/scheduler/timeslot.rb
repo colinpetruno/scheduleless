@@ -3,26 +3,26 @@ module Scheduler
 
     attr_reader :x
     attr_reader :y
-    attr_reader :players
-
+    attr_reader :employees
 
     def initialize(x, y, slots_available)
       @x = x
       @y = y
       @slots_available = slots_available
-      @players = []
+      @employees = []
     end
 
     def full
-      @players.length == @slots_available
+      @employees.length == @slots_available
     end
 
-    def add_player(player)
-      @players.push(player)
+    def add_employee(employee)
+      @employees.push(employee)
     end
 
     def print
-      printf "[ %{slots_available} %{players} ]" % {slots_available: @slots_available, players: @players}
+      printf "[ %{slots_available} %{employees} ]" % {slots_available: @slots_available,
+                                                      employees: @employees.map { |e| e[:given_name]} }
     end
   end
 end

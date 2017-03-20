@@ -2,13 +2,17 @@ class Onboarding::SchedulesController < AuthenticatedController
   layout "onboarding"
 
   def new
-    @schedule = Schedule.for(current_company)
+    employees = User.where(company_id: current_company.id)
+    @schedule = Scheduler::Schedule.for(current_company, employees)
   end
 
   def create
-    @schedule = Schedule.for(current_company)
-
-    if @schedule.generate
+    employees = User.where(company_id: current_company.id)
+    @schedule = Scheduler::Schedule.for(current_company, employees)
+    @schedule.generate_schedule_layout(true, 3)
+    
+    if @schedule.generate_schedule
+      @schedule.print
       redirect_to calendar_path
     end
   end

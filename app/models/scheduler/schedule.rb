@@ -1,13 +1,30 @@
 module Scheduler
   class Schedule
+    include ActiveModel::Model
 
     attr_reader :x_max
     attr_reader :y_max
+    attr_accessor :company
 
-    def initialize(x_max, y_max)
+    def initialize(company, employees, x_max, y_max)
       @layout = []
+
       @x_max = x_max
       @y_max = y_max
+      @company = company
+
+      @manager = ScheduleManager.new({:x_max => @y_max,
+                                      :y_max => @x_max,
+                                      :find_shift_alternative => false,
+                                      :none_eligible_strategy => "IGNORE",
+                                      :random_block_start_req => 20,
+                                      :start_priority => 0 })
+      @manager.schedule = self
+      @manager.employees = employees
+    end
+
+    def self.for(company, employees)
+      new(company, employees, 4, 4)
     end
 
     # what is x and what is y? perhaps some more descriptive variable names
@@ -21,7 +38,7 @@ module Scheduler
 
     def generate_schedule_layout(allow_zero_shift, shift_range)
       (0..@x_max).each do |x|
-        column = [];
+        column = []
         (0..@y_max).each do |y|
 
           if allow_zero_shift
@@ -44,6 +61,13 @@ module Scheduler
         end
         printf "\n"
       end
+    end
+
+    def generate_schedule
+      @manager.prepare_initial_schedule
+      @manager.auto_manage_schedule(50)
+
+      # TODO: Turn into shifts
     end
   end
 end

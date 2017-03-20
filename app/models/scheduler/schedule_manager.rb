@@ -1,17 +1,17 @@
 module Scheduler
   class ScheduleManager
     def initialize(options)
-      @players = []
+      @employees = []
 
       # Note: Updated over time - redundant as player records are stored in timeslots
       #     Makes code access easier while making management harder
       #     TODO: Keep or destroy
-      @player_timeslots = {} # predetermined inputs?
+      @employee_timeslots = {} # predetermined inputs?
       @options = options
     end
 
-    def players=(players)
-      @players = players
+    def employees=(employees)
+      @employees = employees
     end
 
     def schedule=(schedule)
@@ -19,8 +19,8 @@ module Scheduler
     end
 
     def print_scores
-      @players.each do |player|
-        puts "%{player} : %{score} slots" % {player: player, score: @player_timeslots[player].length}
+      @employees.each do |player|
+        puts "%{employees} : %{score} slots" % {employee: employee[:given_name], score: @employee_timeslots[employee].length}
       end
     end
 
@@ -35,8 +35,8 @@ module Scheduler
     end
 
     def prepare_initial_schedule
-      @players.each do |player|
-        @player_timeslots[player] = []
+      @employees.each do |employee|
+        @employee_timeslots[employee] = []
       end
 
       (0..@options[:x_max]).each do |x|
@@ -53,14 +53,15 @@ module Scheduler
         end
 
         if !slot.full
-          player = @players[x % @players.length]
-          slot.add_player(player)
-          @player_timeslots[player].push([x, y])
+          employee = @employees[x % @employees.length]
+          puts employee
+          slot.add_employee(employee)
+          @employee_timeslots[employee].push([x, y])
         end
       end
     end
 
-    def eligible_players(slot)
+    def eligible_employees(slot)
       # TODO: what about making slot a class? the class can have references to
       # the surrounding classes. slot.up, slot.left, slot.right
       up_slot = @schedule.timeslot(slot.x, slot.y - 1)
@@ -69,41 +70,41 @@ module Scheduler
       left_slot = @schedule.timeslot(slot.x - 1, slot.y)
 
       # TODO: Can Adjacent Players be a class as well?
-      adjacent_players = []
-      adjacent_players.push(up_slot.players) if up_slot
-      adjacent_players.push(right_slot.players) if right_slot
-      adjacent_players.push(down_slot.players) if down_slot
-      adjacent_players.push(left_slot.players) if left_slot
+      adjacent_employees = []
+      adjacent_employees.push(up_slot.employees) if up_slot
+      adjacent_employees.push(right_slot.employees) if right_slot
+      adjacent_employees.push(down_slot.employees) if down_slot
+      adjacent_employees.push(left_slot.employees) if left_slot
 
-      adjacent_players.flatten!.uniq!
+      adjacent_employees.flatten!.uniq!
 
-      slot.players.each do |player|
-        adjacent_players.delete(player)
+      slot.employees.each do |employee|
+        adjacent_employees.delete(employee)
       end
 
-      adjacent_players
+      adjacent_employees
     end
 
-    def priority_player(eligible_players)
+    def priority_employee(eligible_employees)
       lowest_score = Float::INFINITY
-      lowest_player = nil;
+      lowest_employee = nil;
 
-      eligible_players.each do |player|
-        if @player_timeslots[player].length < lowest_score
-          lowest_player = player
-          lowest_score = @player_timeslots[player].length
+      eligible_employees.each do |employee|
+        if @employee_timeslots[employee].length < lowest_score
+          lowest_employee = employee
+          lowest_score = @employee_timeslots[employee].length
         end
       end
 
-      lowest_player
+      lowest_employee
     end
 
     def assign_timeslot(slot)
-      elg_players = eligible_players(slot)
-      if elg_players.length > 0
-        assigned_player = priority_player(elg_players)
-        slot.add_player(assigned_player)
-        @player_timeslots[assigned_player].push([slot.x, slot.y])
+      elg_employees = eligible_employees(slot)
+      if elg_employees.length > 0
+        assigned_employee = priority_employee(elg_employees)
+        slot.add_employee(assigned_employee)
+        @employee_timeslots[assigned_employee].push([slot.x, slot.y])
 
       else
         # TODO handle Ignore or Random case
@@ -125,6 +126,11 @@ module Scheduler
         assign_iteration
         @round = @round + 1
       end
+    end
+
+    def generate
+      self.prepare_initial_schedule
+      self.auto_manage_schedule(50)
     end
   end
 end
