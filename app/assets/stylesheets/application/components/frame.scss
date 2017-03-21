@@ -7,6 +7,16 @@
       padding: 0 40px;
       text-transform: uppercase;
 
+      aside {
+        text-align: right;
+      }
+
+      a {
+        @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
+        @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+        @include transition($btn-transition);
+      }
+
       &:first-child {
         background-color: $primary-dark-bg;
         border-bottom: 1px solid $dark-seperator;
@@ -23,7 +33,7 @@
     }
   }
 
-  section {
+  > section {
     background-color: $white;
   }
 }

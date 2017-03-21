@@ -18,6 +18,10 @@
         <span class="oi oi-people"></span>
       <% end %>
     <% end %>
-    <li> <span class="oi oi-cog"></span> </li>
+    <%= content_tag(:li, class: active?(settings_path)) do %>
+      <%= link_to settings_path do %>
+        <span class="oi oi-cog"></span>
+      <% end %>
+    <% end %>
   </ul>
 </div>

@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     resource :schedule, only: [:new, :create]
   end
 
+  resources :settings, only: [:index] do
+  end
+
   resource :user, only: [:edit, :update]
 
   devise_for :users

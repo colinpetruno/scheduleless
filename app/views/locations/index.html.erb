@@ -1,16 +1,31 @@
-<div class="container-fluid" style="width: 100%; overflow-y: auto; margin-top: 50px padding-bottom: 50px;">
-  <div class="row">
-    <div class="col-12">
-      <div class="calendar-frame">
-        <header>
-          <div>Locations</div>
-          <div></div>
-        </header>
-
+<div class="frame">
+  <header>
+    <div>
+      <div class="rail">
         <section>
-          kajfkajslfj ajf klasj a<br>skjflkajsfkljskla f<br>
+          <article>Locations</article>
+          <aside>
+            <%= link_to "New Location", new_location_path %>
+          </aside>
         </section>
-      </div>
+      </article>
     </div>
-  </div>
+  </header>
+
+  <section>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th></th>
+          <tr></th>
+        </tr>
+    <% @locations.each do |location| %>
+      <tr>
+        <td><%= location.line_1 %></td>
+        <td><%= location.city %></td>
+        <td><%= location.county_province %></td>
+      </tr>
+    <% end %>
+  </section>
 </div>
