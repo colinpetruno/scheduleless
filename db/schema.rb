@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170321231817) do
+ActiveRecord::Schema.define(version: 20170322023516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 20170321231817) do
     t.integer "company_id"
     t.integer "shift_overlap", default: 15, null: false
     t.index ["company_id"], name: "index_company_preferences_on_company_id", using: :btree
+  end
+
+  create_table "employee_positions", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "position_id"
+    t.index ["position_id"], name: "index_employee_positions_on_position_id", using: :btree
+    t.index ["user_id"], name: "index_employee_positions_on_user_id", using: :btree
   end
 
   create_table "locations", force: :cascade do |t|
