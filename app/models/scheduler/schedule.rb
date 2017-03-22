@@ -6,7 +6,7 @@ module Scheduler
     attr_reader :y_max
     attr_accessor :company
 
-    def initialize(company, employees, x_max, y_max)
+    def initialize(company, x_max, y_max)
       @layout = []
 
       @x_max = x_max
@@ -20,11 +20,11 @@ module Scheduler
                                       :random_block_start_req => 20,
                                       :start_priority => 0 })
       @manager.schedule = self
-      @manager.employees = employees
+      @manager.employees = company.users
     end
 
-    def self.for(company, employees)
-      new(company, employees, 4, 4)
+    def self.for(company)
+      new(company, 4, 4)
     end
 
     # what is x and what is y? perhaps some more descriptive variable names
@@ -36,7 +36,7 @@ module Scheduler
       end
     end
 
-    def generate_schedule_layout(allow_zero_shift, shift_range)
+    def generate_schedule_layout(allow_zero_shift=true, shift_range=3)
       (0..@x_max).each do |x|
         column = []
         (0..@y_max).each do |y|

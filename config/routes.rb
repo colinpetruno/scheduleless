@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "marketing/welcome#index"
   resource :calendar
+  resource :schedules_management
+
 
   namespace :business, path: "company" do
     resources :users, only: [:index, :edit, :update], path: "employees"
