@@ -20,7 +20,11 @@
         <%= t(".employees") %>
       <% end %>
     <% end %>
-    <li><a href="#"><%= t(".settings") %></a></li>
+    <%= content_tag(:li, class: active?(settings_path)) do %>
+      <%= link_to settings_path do %>
+        <%= t(".settings") %>
+      <% end %>
+    <% end %>
   </ul>
 
   <button type="button" data-toggle="collapse" data-target="#mobile-menu" aria-expanded="false">
