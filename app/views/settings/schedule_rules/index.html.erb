@@ -1,0 +1,15 @@
+<div class="frame">
+  <section>
+    <div>This sets up some default rules for your locations schedule. It can
+      always be customized on a per location basis.</div>
+
+      <% @schedule_rules.each do |schedule_rule| %>
+        <%= render schedule_rule %>
+      <% end %>
+
+      <br><br>
+      <%= render partial: "form", locals: { schedule_rule: @schedule_rule } %>
+
+    </div>
+  </section>
+</div>

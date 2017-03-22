@@ -1,0 +1,26 @@
+<% if @positions %>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @positions.map do |position| %>
+        <tr>
+          <td><%= position.name %></td>
+          <td>Edit</td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div>
+    No positions! Create some now
+  </div>
+<% end %>
+
+
+<br>
+<%= link_to "New Position", new_settings_position_path %>

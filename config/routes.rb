@@ -10,15 +10,19 @@ Rails.application.routes.draw do
   resources :locations, only: [:index, :show, :new, :create, :edit]
 
   namespace :onboarding do
-    resource :company_preferences, only: [:new, :create]
-    resources :locations, only: [:new, :create] do
-      resources :users, path: :employees, only: [:new, :create]
+    resource :company_preferences, only: [:create, :new]
+    resources :locations, only: [:create, :new] do
+      resources :users, path: :employees, only: [:create, :new]
     end
-    resources :registrations, only: [:new, :create]
-    resource :schedule, only: [:new, :create]
+    resources :registrations, only: [:create, :new]
+    resource :schedule, only: [:create, :new]
   end
 
-  resources :settings, only: [:index] do
+  resources :settings, only: [:index]
+
+  namespace :settings do
+    resources :positions, only: [:create, :index, :new,]
+    resources :schedule_rules, only: [:create, :index]
   end
 
   resource :user, only: [:edit, :update]

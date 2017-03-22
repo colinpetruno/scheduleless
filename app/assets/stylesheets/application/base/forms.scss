@@ -1,7 +1,21 @@
-div.input {
+.input {
   margin-bottom: 16px;
   &.hidden {
     margin-bottom: 0;
+  }
+
+  input, select {
+    @include box-shadow($input-box-shadow);
+    @include transition($input-transition);
+
+    background-clip: padding-box;
+    background-image: none;
+    background-color: $input-bg;
+    border: $input-btn-border-width solid $input-border-color;
+    color: $input-color;
+    font-size: $font-size-base;
+    line-height: $input-line-height;
+    padding: $input-padding-y $input-padding-x;
   }
 
   input {
@@ -12,5 +26,23 @@ div.input {
     padding: 8px 12px;
     text-shadow: none;
     width: 100%;
+  }
+
+  select {
+    &::-ms-expand {
+      background-color: transparent;
+      border: 0;
+    }
+
+
+    &:not([size]):not([multiple]) {
+      $select-border-width: ($border-width * 2);
+      height: calc(#{$input-height} + #{$select-border-width});
+    }
+
+    &:focus::-ms-value {
+      color: $input-color;
+      background-color: $input-bg;
+    }
   }
 }

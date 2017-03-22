@@ -5,4 +5,8 @@ class LocationsController < AuthenticatedController
 
   def new
   end
+
+  def show
+    @location = current_company.locations.find(params[:id])
+  end
 end

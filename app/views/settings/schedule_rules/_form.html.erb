@@ -1,0 +1,17 @@
+<div class="schedule-rules-form">
+  <%= simple_form_for [:settings, @schedule_rule] do |f| %>
+    <div>
+      I need
+      <%= f.input :number_of_employees, label: false %>
+      <%= f.association :position, label: false %>(s)
+
+      during
+      <%= f.input :period, collection: ScheduleRule.periods.keys.to_a, label: false %>
+    </div>
+
+    <br>
+    <div>
+      <%= f.submit %>
+    </div>
+  <% end %>
+</div>

@@ -18,10 +18,12 @@
         <tr>
           <th></th>
           <th></th>
+          <th></th>
           <tr></th>
         </tr>
     <% @locations.each do |location| %>
       <tr>
+        <td><%= link_to "Edit", location_path(location) %></td>
         <td><%= location.line_1 %></td>
         <td><%= location.city %></td>
         <td><%= location.county_province %></td>
