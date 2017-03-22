@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resource :calendar
 
   namespace :business, path: "company" do
-    resources :users, only: [:index], path: "employees"
+    resources :users, only: [:index, :edit, :update], path: "employees"
   end
 
   resources :locations, only: [:index, :show, :new, :create, :edit]

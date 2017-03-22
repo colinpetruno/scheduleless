@@ -14,7 +14,7 @@
         <% @users.map do |user| %>
           <tr>
             <td>
-              <%= user.email %>
+              <%= link_to user.email, edit_business_user_path(user) %>
             </td>
           </tr>
         <% end %>
