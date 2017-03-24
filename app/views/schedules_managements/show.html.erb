@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-10 offset-sm-1">
+      <div class="onboarding-content">
+        You don't have a schedule yet! Let's plan one.
+        <div>
+          <%= simple_form_for [@schedule], url: schedules_management_path do |f| %>
+              <%= f.submit %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
