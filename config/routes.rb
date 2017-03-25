@@ -2,8 +2,9 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "marketing/welcome#index"
   resource :calendar
-  resource :schedules_management
+  resource :schedules_management do
 
+  end
 
   namespace :business, path: "company" do
     resources :users, only: [:index, :edit, :update], path: "employees"
@@ -18,6 +19,11 @@ Rails.application.routes.draw do
     end
     resources :registrations, only: [:create, :new]
     resource :schedule, only: [:create, :new]
+  end
+
+  namespace :scheduler do
+    resource :schedule, only: [:create, :show]
+    resource :schedule_preview, only: [:create, :show]
   end
 
   resource :search, only: [:show]

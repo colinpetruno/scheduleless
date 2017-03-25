@@ -1,0 +1,19 @@
+<div class="frame">
+  <header>
+    <div>
+      <%= t(".title") %>
+    </div>
+  </header>
+  <section>
+    <article>
+      <%= t(".description") %>
+      <div>
+        <%= simple_form_for @schedule, url: scheduler_schedule_preview_path do |f| %>
+          <%= f.submit %>
+        <% end %>
+      </div>
+    </article>
+
+  </section>
+
+</div>
