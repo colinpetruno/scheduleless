@@ -10,9 +10,15 @@ class SchedulesManagementsController < AuthenticatedController
 
     if @schedule.generate_schedule
       @schedule.print
+      @schedule.shifts
+
+      respond_to do |format|
+        format.html
+        format.js
+      end
 
       # TODO get and set shifts
-      redirect_to calendar_path
+      # redirect_to calendar_path
     end
   end
 
