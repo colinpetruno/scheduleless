@@ -14,6 +14,10 @@ module Scheduler
       @employees = employees
     end
 
+    def employee(employee_id)
+      @employees.detect{|e| e.id == employee_id}
+    end
+
     def schedule=(schedule)
       @schedule = schedule
     end
