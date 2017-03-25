@@ -1,0 +1,26 @@
+module Settings
+  class CompanyPreferencesController < AuthenticatedController
+    def edit
+      @company_preference = company_preference
+    end
+
+    def update
+      if company_preference.update(company_preference_params)
+      else
+        # TODO: handle error
+      end
+    end
+
+    private
+
+    def company_preference
+      current_company.company_preference || current_company.build_company_preference
+    end
+
+    def company_preference_params
+      params.
+        require(:company_preference).
+        permit(:shift_overlap)
+    end
+  end
+end

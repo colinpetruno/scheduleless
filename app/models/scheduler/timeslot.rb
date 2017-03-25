@@ -24,5 +24,9 @@ module Scheduler
       printf "[ %{slots_available} %{employees} ]" % {slots_available: @slots_available,
                                                       employees: @employees.map { |e| e[:given_name]} }
     end
+
+    def has_employee?(employee_id)
+      @employees.any? {|e| e[:id] == employee_id}
+    end
   end
 end

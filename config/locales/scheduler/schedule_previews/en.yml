@@ -1,0 +1,9 @@
+en:
+  scheduler:
+    schedule_previews:
+      show:
+        title: New Schedule
+        description: >
+          You don't have a schedule right now. Let's add one!
+      create:
+        title: Preview of your Schedule

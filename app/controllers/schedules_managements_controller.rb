@@ -5,14 +5,13 @@ class SchedulesManagementsController < AuthenticatedController
   end
 
   def create
-    @schedule = Scheduler::Schedule.for(current_company)
-    @schedule.generate_schedule_layout
+    schedule = Scheduler::Schedule.for(current_company)
+    schedule.generate_schedule_layout
 
-    if @schedule.generate_schedule
-      @schedule.print
+    if schedule.generate_schedule
+      schedule.print
 
-      # TODO get and set shifts
-      redirect_to calendar_path
+      @shifts = schedule.shifts
     end
   end
 
