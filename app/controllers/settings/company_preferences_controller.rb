@@ -6,6 +6,7 @@ module Settings
 
     def update
       if company_preference.update(company_preference_params)
+        redirect_to settings_path
       else
         # TODO: handle error
       end
@@ -14,7 +15,7 @@ module Settings
     private
 
     def company_preference
-      current_company.company_preference || current_company.build_company_preference
+      current_company.company_preference
     end
 
     def company_preference_params

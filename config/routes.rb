@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   resources :settings, only: [:index]
 
   namespace :settings do
-    resource :company_preferences, only: [:edit, :update]
+    resource :company_preference, only: [:edit, :update]
     resources :positions, only: [:create, :index, :new,]
     resources :schedule_rules, only: [:create, :index]
   end
