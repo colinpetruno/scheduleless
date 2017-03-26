@@ -2,17 +2,35 @@
   background-color: #fff;
   max-height: 85px;
 
-  .search-icon {
+  .search-icon button {
     background-color: #5f97ff;
+    cursor: pointer;
     font-size: 30px;
     font-weight: 200px;
+    min-width: 85px;
+    line-height: 75px;
     text-align: center;
-    line-height: 85px;
+    width: 85px;
+  }
+
+  #search-form {
+    &.collapsing {
+      width: 0;
+      @include transition($transition-collapse-horizontal);
+    }
+
+    > div {
+      border-right: 2px solid darken($white, 10%);
+      min-height: 65px;
+      margin: 10px 0;
+      line-height: 65px;
+      vertical-align: center;
+    }
   }
 
   input {
     height: 45px;
-    margin: 20px;
+    margin: 0;
     margin-left: 35px;
     margin-right: 45px;
     padding-left: 15px;
@@ -44,11 +62,13 @@
     }
   }
 
-  button {
+  > button {
     background-color: $white;
+    color: $font-dark;
     border: none;
     display: none;
     outline: none;
+    margin-left: auto;
   }
 }
 

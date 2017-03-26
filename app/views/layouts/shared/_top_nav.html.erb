@@ -1,14 +1,17 @@
 <div class="top-nav">
   <div class="search-icon" style="color: #fff">
-    <span class="oi oi-magnifying-glass"></span>
+    <button data-toggle="collapse" data-target="#search-form" aria-expanded="true" aria-controls="search-form">
+      <span class="oi oi-magnifying-glass"></span>
+    </button>
   </div>
 
-  <form>
-    <input type="text" placeholder="Search" />
+  <form id="search-form" class="collapse show width" aria-expanded="true" aria-controls="search-form">
+    <div>
+      <input type="text" placeholder="Search" />
+    </div>
   </form>
 
   <ul class="top-nav-list">
-    <li class="seperator"></li>
     <%= content_tag(:li, class: active?(calendar_path)) do %>
       <%= link_to calendar_path do %>
         <%= t(".calendar") %>
