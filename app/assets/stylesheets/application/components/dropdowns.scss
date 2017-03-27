@@ -50,6 +50,11 @@
     @include border-radius($border-radius);
     @include box-shadow($dropdown-box-shadow);
 
+    &.right {
+      right: 0;
+      left: auto;
+    }
+
     button, a {
       display: block;
       width: 100%; // For `<button>`s

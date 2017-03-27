@@ -13,6 +13,40 @@
     width: 85px;
   }
 
+  #profile-button {
+    background-color: $white;
+    border: 1px solid #d3d3d3;
+    border-radius: 50%;
+    cursor: pointer;
+    line-height: 90px;
+    margin: 9px 0;
+    margin-right: 15px;
+    margin-left: auto;
+
+    text-align: center;
+    width: 67px;
+
+    > section {
+      background-color: #f3f3f3;
+      border-radius: 50%;
+      height: 57px;
+      margin: 4px;
+      overflow: hidden;
+      width: 57px;
+
+      span {
+        color: $blue;
+        color: #5bd1b1;
+        font-size: 45px;
+        margin-top: 17px;
+      }
+    }
+
+    > div {
+      line-height: 20px;
+    }
+  }
+
   #new_employee_and_location_search {
     &.collapsing {
       width: 0;
@@ -20,7 +54,7 @@
     }
 
     > div {
-      border-right: 2px solid darken($white, 10%);
+      border-right: 1px solid $font-light;
       min-height: 65px;
       margin: 10px 0;
       line-height: 65px;
@@ -43,10 +77,14 @@
     li {
       float: left;
       line-height: 85px;
-      margin: 0 50px;
+      margin-right: 100px;
 
       a {
         color: $font-dark;
+      }
+
+      &:first-child {
+        margin-left: 45px;
       }
 
       &.active a {
@@ -58,6 +96,10 @@
         min-width: 2px;
         height: 65px;
         margin: 10px 50px 10px 0;
+      }
+
+      &:last-child {
+        margin-right: 5px;
       }
     }
   }
@@ -107,6 +149,10 @@
     // show mobile nav toggle buttons on small screens
     button {
       display: block;
+    }
+
+    #profile-button {
+      display: none;
     }
   }
 }

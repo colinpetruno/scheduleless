@@ -3,7 +3,9 @@ en:
     shared:
       top_nav:
         calendar: "Calendar"
+        create_schedule: "Generate Schedule"
         employees: "Employees"
         locations: "Locations"
         logout: "Logout"
+        profile: "My Profile"
         settings: "Settings"

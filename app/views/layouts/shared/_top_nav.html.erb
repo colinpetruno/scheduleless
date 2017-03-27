@@ -41,13 +41,18 @@
         <% end %>
       <% end %>
     <% end %>
-
-    <%= content_tag(:li) do %>
-      <%= link_to destroy_user_session_path, method: :delete do %>
-        <%= t(".logout") %>
-      <% end %>
-    <% end %>
   </ul>
+
+  <div id="profile-button" class="dropdown">
+    <section data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <span class="oi oi-person"></span>
+    </section>
+
+    <div class="right">
+      <%= link_to t(".profile"), edit_user_path %>
+      <%= link_to t(".logout"), destroy_user_session_path, method: :delete %>
+    </div>
+  </div>
 
   <button type="button" data-toggle="collapse" data-target="#mobile-menu" aria-expanded="false">
     <span class="oi oi-menu"></span>
@@ -56,7 +61,36 @@
 
 <div class="collapse navbar-collapse" id="mobile-menu">
   <ul>
-    <li><a href="#">Link</a></li>
-    <li><a href="#">Link</a></li>
+    <li>
+      <%= link_to t(".calendar"), after_sign_in_path_for(current_user) %>
+    </li>
+
+    <li>
+      <%= link_to t(".locations"), locations_path %>
+    </li>
+
+    <li>
+      <%= link_to t(".employees"), business_users_path %>
+    </li>
+
+    <% if policy(:schedule_preview).show? %>
+      <li>
+        <%= link_to t(".create_schedule"), scheduler_schedule_preview_path %>
+      </li>
+    <% end %>
+
+    <% if policy(:settings).show? %>
+      <li>
+        <%= link_to t(".settings"), settings_path %>
+      </li>
+    <% end %>
+
+    <li>
+      <%= link_to t(".profile"), edit_user_path %>
+    </li>
+
+    <li>
+      <%= link_to t(".logout"), destroy_user_session_path, method: :delete %>
+    </li>
   </ul>
 </div>
