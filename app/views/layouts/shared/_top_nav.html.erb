@@ -1,15 +1,15 @@
 <div class="top-nav">
   <div class="search-icon" style="color: #fff">
-    <button data-toggle="collapse" data-target="#search-form" aria-expanded="true" aria-controls="search-form">
+    <button data-toggle="collapse" data-target="#new_search" aria-expanded="true" aria-controls="search-form">
       <span class="oi oi-magnifying-glass"></span>
     </button>
   </div>
 
-  <form id="search-form" class="collapse show width" aria-expanded="true" aria-controls="search-form">
+  <%= form_for Search.new(search_params), method: :get, url: search_path, html: { class: "collapse show width" } do |f| %>
     <div>
-      <input type="text" placeholder="Search" />
+      <%= f.text_field :query, label: false%>
     </div>
-  </form>
+  <% end %>
 
   <ul class="top-nav-list">
     <%= content_tag(:li, class: active?(calendar_path)) do %>
