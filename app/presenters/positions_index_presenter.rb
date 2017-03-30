@@ -4,7 +4,7 @@ class PositionsIndexPresenter
   end
 
   def partial_name
-    if !positions.present?
+    if positions.present?
       "positions"
     else
       "no_positions"
