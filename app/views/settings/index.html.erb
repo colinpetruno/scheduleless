@@ -1,13 +1,35 @@
-<div class="frame">
+<div class="frame settings-index">
   <header>
-    <div>Settings</div>
+    <div><%= t(".title") %></div>
   </header>
   <section>
-    this will contain blocks with fancy icons to each section<br>
-    # titles<br><br>
+    <article class="tiles">
+      <div>
+        <%= link_to settings_positions_path do %>
+          <div>
+            <span class="oi oi-pulse"></span>
+            <%= t(".positions") %>
+          </div>
+        <% end %>
+      </div>
 
-    <%= link_to "Positions", settings_positions_path %><br>
-    <%= link_to "Schedule Rules", settings_schedule_rules_path %><br>
-    <%= link_to "Company Preferences", edit_settings_company_preference_path %><br>
+      <div>
+        <%= link_to settings_schedule_rules_path do %>
+          <div>
+            <span class="oi oi-project"></span>
+            <%= t(".schedule_rules") %>
+          </div>
+        <% end %>
+      </div>
+
+      <div>
+        <%= link_to edit_settings_company_preference_path do %>
+          <div>
+            <span class="oi oi-wrench"></span>
+            <%= t(".company_preferences") %>
+          </div>
+        <% end %>
+      </div>
+    </article>
   </section>
 </div>
