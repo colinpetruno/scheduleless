@@ -1,26 +1,34 @@
-<% if @positions %>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @positions.map do |position| %>
-        <tr>
-          <td><%= position.name %></td>
-          <td>Edit</td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-<% else %>
-  <div>
-    No positions! Create some now
-  </div>
-<% end %>
+<div class="frame">
+  <header>
+    <div>
+      <div class="rail">
+        <section>
+          <article>
+            <%= t(".title") %>
+          </article>
+          <aside>
+            <%= link_to t(".new"), new_settings_position_path, class: "button" %>
+          </aside>
+        </section>
+      </div>
+    </div>
+  </header>
+  <section>
+    <div class="rail">
+      <section>
+        <article>
+          <%= render partial: @positions_presenter.partial_name, locals: {
+            positions: @positions_presenter.positions
+          } %>
+        </article>
+        <aside>
+          <div class="instructions">
+            <%= t(".instructions") %>
+          </div>
+        </aside>
+      </section>
+    </div>
+  </section>
+</div>
 
 
-<br>
-<%= link_to "New Position", new_settings_position_path %>

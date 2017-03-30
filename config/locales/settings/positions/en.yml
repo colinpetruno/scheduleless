@@ -1,0 +1,11 @@
+en:
+  settings:
+    positions:
+      index:
+        instructions: > 
+          You can configure scheduling rules using your employees positions.
+        new: "New Position"
+        title: "Positions"
+      no_positions:
+        message: "You haven't made any positions yet!"
+        new: "Create a Position"

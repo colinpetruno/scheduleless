@@ -1,0 +1,16 @@
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% positions.map do |position| %>
+      <tr>
+        <td><%= position.name %></td>
+        <td>Edit</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

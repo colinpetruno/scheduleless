@@ -1,7 +1,7 @@
 module Settings
   class PositionsController < AuthenticatedController
     def index
-      @positions = current_company.positions
+      @positions_presenter = PositionsIndexPresenter.new(current_company)
     end
 
     def new

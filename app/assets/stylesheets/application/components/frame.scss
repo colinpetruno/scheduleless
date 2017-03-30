@@ -4,8 +4,13 @@
   > header {
     > div {
       color: $font-light;
-      padding: 0 40px;
+      padding: 0 15px;
       text-transform: uppercase;
+
+      aside, article, div.rail, section {
+        margin: 0;
+        padding: 0;
+      }
 
       aside {
         text-align: right;
@@ -35,5 +40,9 @@
 
   > section {
     background-color: $white;
+
+    > article {
+      padding: 15px;
+    }
   }
 }
