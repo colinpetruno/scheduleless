@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root to: "marketing/welcome#index"
   resource :calendar
   resource :schedules_management do
-    
+
   end
 
   namespace :business, path: "company" do
