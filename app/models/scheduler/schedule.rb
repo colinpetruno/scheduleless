@@ -15,6 +15,7 @@ module Scheduler
       @x_max = day_range  # number of days to schedule for (default 7 = 1 week)
       @y_max = time_range # number of time units in a day (default 96 = 60min*24hr/15min)
       @company = company
+      @location = company.locations.first
 
       @manager = ScheduleManager.new({:x_max => @y_max,
                                       :y_max => @x_max,
@@ -102,7 +103,14 @@ module Scheduler
         day_advance = shift["day"].to_i
         date = @schedule_start + day_advance.days
         date_integer = date.strftime('%Y%m%d').to_i
-        @shifts.push(Shift.new(user: @manager.employee(shift["employee_id"]),
+
+        employee = @manager.employee(shift["employee_id"])
+
+        user_location = @location.user_locations.find_by! user_id: employee.id
+
+
+
+        @shifts.push(@company.shifts.build(user_location: user_location,
                                company: @company,
                                date: date_integer,
                                minute_start: shift["time_start"],

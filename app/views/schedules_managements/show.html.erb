@@ -4,10 +4,11 @@
       <div class="onboarding-content">
         You don't have a schedule yet! Let's plan one.
         <div>
-          <%= simple_form_for [@schedule], url: schedules_management_path do |f| %>
+          <%= simple_form_for [@schedule], url: schedules_management_path, remote: true do |f| %>
               <%= f.submit %>
           <% end %>
         </div>
+        <div id="shift-list"></div>
       </div>
     </div>
   </div>
