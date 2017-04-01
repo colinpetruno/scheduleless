@@ -1,0 +1,13 @@
+<div class="frame">
+  <section>
+    <%= simple_form_for [:settings, @company_preference], url: settings_company_preference_path do |f| %>
+
+      <%= f.input :minimum_shift_length %>
+      <%= f.input :maximum_shift_length %>
+      <%= f.input :break_length %>
+      <%= f.input :shift_overlap %>
+
+      <%= f.submit %>
+    <% end %>
+  </section>
+</div>

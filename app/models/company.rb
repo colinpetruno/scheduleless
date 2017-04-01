@@ -8,4 +8,8 @@ class Company < ApplicationRecord
   validates :name, presence: true
 
   accepts_nested_attributes_for :users
+
+  def company_preference
+    super || create_company_preference
+  end
 end

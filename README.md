@@ -17,5 +17,10 @@ You can then try running `rails db:create` If this fails you may need to edit
 the pg_hba.conf to allow connections on all users from localhost.
 [How to Edit pg_hba.conf](https://www.postgresql.org/docs/9.1/static/auth-pg-hba-conf.html)
 
+## Elasticsearch
 
+`brew install elasticsearch`
+
+If you have existing data run `rake chewy:reset` to ensure that all the data is
+loaded into elasticsearch.
 

@@ -23,7 +23,10 @@ ActiveRecord::Schema.define(version: 20170324115545) do
 
   create_table "company_preferences", force: :cascade do |t|
     t.integer "company_id"
-    t.integer "shift_overlap", default: 15, null: false
+    t.integer "shift_overlap",        default: 15,  null: false
+    t.integer "minimum_shift_length", default: 240, null: false
+    t.integer "maximum_shift_length", default: 480, null: false
+    t.integer "break_length",         default: 60,  null: false
     t.index ["company_id"], name: "index_company_preferences_on_company_id", using: :btree
   end
 

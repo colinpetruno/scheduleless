@@ -4,6 +4,8 @@ gem "rails", "~> 5.0.1"
 gem "bcrypt", "~> 3.1.7"
 gem "bootstrap", "~> 4.0.0.alpha6"
 gem "bourbon"
+gem "chewy"
+gem "country_select"
 gem "devise"
 gem "devise_invitable"
 gem "jquery-rails"
@@ -38,8 +40,6 @@ end
 
 group :development do
   gem "listen", "~> 3.0.5"
-  gem "spring"
-  gem "spring-watcher-listen", "~> 2.0.0"
   gem "web-console", ">= 3.3.0"
 end
 

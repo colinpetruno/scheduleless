@@ -53,8 +53,19 @@ GEM
       thor (~> 0.19)
     builder (3.2.3)
     byebug (9.0.6)
+    chewy (0.9.0)
+      activesupport (>= 3.2)
+      elasticsearch (>= 1.0.0)
     coderay (1.1.1)
     concurrent-ruby (1.0.4)
+    countries (2.0.8)
+      i18n_data (~> 0.7.0)
+      money (~> 6.7)
+      sixarm_ruby_unaccent (~> 1.1)
+      unicode_utils (~> 1.4)
+    country_select (3.0.0)
+      countries (~> 2.0)
+      sort_alphabetical (~> 1.0)
     database_cleaner (1.5.1)
     debug_inspector (0.0.2)
     devise (4.2.0)
@@ -66,12 +77,23 @@ GEM
     devise_invitable (1.7.1)
       actionmailer (>= 4.1.0)
       devise (>= 4.0.0)
+    elasticsearch (5.0.3)
+      elasticsearch-api (= 5.0.3)
+      elasticsearch-transport (= 5.0.3)
+    elasticsearch-api (5.0.3)
+      multi_json
+    elasticsearch-transport (5.0.3)
+      faraday
+      multi_json
     erubis (2.7.0)
     execjs (2.7.0)
+    faraday (0.11.0)
+      multipart-post (>= 1.2, < 3)
     ffi (1.9.17)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     i18n (0.8.0)
+    i18n_data (0.7.0)
     jquery-rails (4.2.2)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -89,6 +111,11 @@ GEM
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
     minitest (5.10.1)
+    money (6.8.2)
+      i18n (>= 0.6.4, < 0.9)
+      sixarm_ruby_unaccent (>= 1.1.1, < 2)
+    multi_json (1.12.1)
+    multipart-post (2.0.0)
     nio4r (1.2.1)
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
@@ -152,12 +179,10 @@ GEM
     simple_form (3.4.0)
       actionpack (> 4, < 5.1)
       activemodel (> 4, < 5.1)
+    sixarm_ruby_unaccent (1.1.1)
     slop (3.6.0)
-    spring (2.0.1)
-      activesupport (>= 4.2)
-    spring-watcher-listen (2.0.1)
-      listen (>= 2.7, < 4.0)
-      spring (>= 1.2, < 3.0)
+    sort_alphabetical (1.1.0)
+      unicode_utils (>= 1.2.2)
     sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -175,6 +200,7 @@ GEM
       thread_safe (~> 0.1)
     uglifier (3.0.4)
       execjs (>= 0.3.0, < 3)
+    unicode_utils (1.4.0)
     warden (1.2.7)
       rack (>= 1.0)
     web-console (3.4.0)
@@ -194,6 +220,8 @@ DEPENDENCIES
   bootstrap (~> 4.0.0.alpha6)
   bourbon
   byebug
+  chewy
+  country_select
   database_cleaner
   devise
   devise_invitable
@@ -208,8 +236,6 @@ DEPENDENCIES
   rails_12factor
   sass-rails (~> 5.0)
   simple_form
-  spring
-  spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)

@@ -16,6 +16,8 @@ class User < ApplicationRecord
 
   before_create :build_availabilities
 
+  update_index "site_search#user", :self
+
   private
 
   def build_availabilities

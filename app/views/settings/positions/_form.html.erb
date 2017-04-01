@@ -1,4 +1,4 @@
 <%= simple_form_for [:settings, position] do |f| %>
   <%= f.input :name %>
-  <%= f.submit %>
+  <%= f.submit %> <%= link_to "Back", settings_positions_path %>
 <% end %>

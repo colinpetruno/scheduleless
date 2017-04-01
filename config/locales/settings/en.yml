@@ -1,0 +1,7 @@
+en:
+  settings:
+    index:
+      company_preferences: "Company Preferences"
+      positions: "Positions"
+      schedule_rules: "Schedule Rules"
+      title: "Settings"
