@@ -28,7 +28,9 @@ module Scheduler
     end
 
     def self.for(company, schedule_start=Date.today, day_range=4, time_range=4)
-      new(company, schedule_start, day_range, time_range)
+      schedule = new(company, schedule_start, day_range, time_range)
+      schedule.generate_schedule_layout
+      schedule
     end
 
     # what is x and what is y? perhaps some more descriptive variable names
@@ -105,10 +107,7 @@ module Scheduler
         date_integer = date.strftime('%Y%m%d').to_i
 
         employee = @manager.employee(shift["employee_id"])
-
         user_location = @location.user_locations.find_by! user_id: employee.id
-
-
 
         @shifts.push(@company.shifts.build(user_location: user_location,
                                company: @company,
