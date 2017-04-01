@@ -57,8 +57,6 @@ module Scheduler
     end
 
     def generate_shifts
-      completed_shifts = []
-
       @shifts = []
       (0..@x_max).each do |x|
         running_shifts = {}
@@ -120,6 +118,10 @@ module Scheduler
         end
         printf "\n"
       end
+    end
+
+    def completed_shifts
+      @_completed_shifts ||= []
     end
 
     def generate_schedule
