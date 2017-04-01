@@ -3,6 +3,7 @@ class Company < ApplicationRecord
   has_many :positions
   has_many :schedule_rules
   has_many :users
+  has_many :shifts
   has_one :company_preference
 
   validates :name, presence: true
