@@ -21,6 +21,11 @@ Rails.application.routes.draw do
     resource :schedule, only: [:create, :new]
   end
 
+  namespace :scheduler do
+    resource :schedule, only: [:create, :show]
+    resource :schedule_preview, only: [:create, :show]
+  end
+
   resource :search, only: [:show]
 
   resources :settings, only: [:index]
