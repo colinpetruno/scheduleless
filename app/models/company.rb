@@ -8,13 +8,9 @@ class Company < ApplicationRecord
 
   validates :name, presence: true
 
-<<<<<<< HEAD
-  accepts_nested_attributes_for :users
-=======
   accepts_nested_attributes_for :shifts, :users
 
   def company_preference
     super || create_company_preference
   end
->>>>>>> 9c43b37... shift saving
 end
