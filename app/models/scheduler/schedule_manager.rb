@@ -28,13 +28,13 @@ module Scheduler
     end
 
     def print_scores
-      @employees.each do |player|
+      employees.each do |player|
         puts "%{employees} : %{score} slots" % {employee: employee[:given_name], score: @employee_timeslots[employee].length}
       end
     end
 
     def prepare_initial_schedule
-      @employees.each do |employee|
+      employees.each do |employee|
         @employee_timeslots[employee] = []
       end
 
@@ -52,7 +52,7 @@ module Scheduler
         end
 
         if !slot.full
-          employee = @employees[x % @employees.length]
+          employee = employees[x % employees.length]
           puts employee
           slot.add_employee(employee)
           @employee_timeslots[employee].push([x, y])
