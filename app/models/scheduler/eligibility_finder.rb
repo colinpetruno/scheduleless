@@ -1,8 +1,7 @@
 module Scheduler
   class EligibilityFinder
-    def initialize(layout:, schedule:, timeslot:)
+    def initialize(layout:, timeslot:)
       @layout = layout
-      @schedule = schedule
       @timeslot = timeslot
     end
 
@@ -23,7 +22,7 @@ module Scheduler
 
     private
 
-    attr_reader :layout, :schedule, :timeslot
+    attr_reader :layout, :timeslot
 
     def get_timeslot(x, y)
       layout.get_timeslot(x, y)

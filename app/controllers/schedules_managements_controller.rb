@@ -7,7 +7,7 @@ class SchedulesManagementsController < AuthenticatedController
   def create
     schedule = Scheduler::Schedule.for(current_company)
 
-    if schedule.generate_schedule
+    if schedule.generate
       schedule.print
 
       @shifts = schedule.shifts

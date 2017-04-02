@@ -23,6 +23,6 @@ class Schedule
   end
 
   def generate_schedule
-    schedule.generate_schedule
+    schedule.generate
   end
 end
