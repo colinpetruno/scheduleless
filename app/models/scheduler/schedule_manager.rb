@@ -95,10 +95,5 @@ module Scheduler
         assign_iteration
       end
     end
-
-    def generate
-      prepare_initial_schedule
-      auto_manage_schedule(50)
-    end
   end
 end
