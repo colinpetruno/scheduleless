@@ -4,8 +4,6 @@ module Scheduler
     include ActiveModel::Model
     include ActiveSupport
 
-    attr_reader :x_max
-    attr_reader :y_max
     attr_accessor :company
 
     def self.for(company, schedule_start=Date.today, day_range=4, time_range=4)
@@ -14,20 +12,30 @@ module Scheduler
     end
 
     def initialize(company, schedule_start, day_range, time_range)
-      @schedule_start = schedule_start
-      @x_max = day_range  # number of days to schedule for (default 7 = 1 week)
-      @y_max = time_range # number of time units in a day (default 96 = 60min*24hr/15min)
+      # time_range needs looked into and removed / updated to interval minutes
+      @options = Options.new(start_date: schedule_start, options: { days_to_schedule: day_range })
       @company = company
-      @location = company.locations.first
 
       @manager = ScheduleManager.
         new(company: company,
             options: {
-              :x_max => @y_max,
-              :y_max => @x_max
+              x_max: options.days_to_schedule,
+              y_max: options.number_of_intervals
             })
 
       @manager.schedule = self
+    end
+
+    def manager
+      @manager
+    end
+
+    def company
+      @company
+    end
+
+    def location
+      @company.locations.first
     end
 
     def layout
@@ -36,83 +44,21 @@ module Scheduler
 
     # what is x and what is y? perhaps some more descriptive variable names
     def timeslot(x=0,y=0)
-      if x < 0 || x > @x_max || y < 0 || y > @y_max
+      if x < 0 || x > options.days_to_schedule || y < 0 || y > options.number_of_intervals
         nil
       else
         layout.get_timeslot(x, y)
       end
     end
 
-    def generate_shifts
-      @shifts = []
-      (0..@x_max).each do |x|
-        running_shifts = {}
-        (0..@y_max).each do |y|
-          timeslot = timeslot(x,y);
-
-          # Record all employees in this timeslot
-          timeslot.employees.each do |employee|
-            if running_shifts[employee.id].nil?
-              running_shifts[employee.id] = {
-                  "employee_id" => employee.id,
-                  "day" => x,
-                  "time_start" => y*15
-              }
-            end
-          end
-
-          # then for each employee in the running shift ..
-          running_shifts.each do |id, shift|
-            if !shift.nil?
-              if !timeslot.has_employee?(id)
-                # end this employees shift at the time y
-                shift["time_end"] = y*15
-                completed_shifts.push(shift)
-                running_shifts[id] = nil
-              end
-            end
-
-          end
-
-        end
-
-        # close out the remaining shifts
-        running_shifts.each do |id, shift|
-          if !shift.nil?
-            shift["time_end"] = (@y_max+1) * 15
-            completed_shifts.push(shift)
-          end
-        end
-      end
-
-      completed_shifts.each do |shift|
-        day_advance = shift["day"].to_i
-        date = @schedule_start + day_advance.days
-        date_integer = date.strftime('%Y%m%d').to_i
-
-        employee = @manager.employees.find(shift["employee_id"])
-        user_location = @location.user_locations.find_by! user_id: employee.id
-
-        @shifts.push(@company.shifts.build(user_location: user_location,
-                               company: @company,
-                               date: date_integer,
-                               minute_start: shift["time_start"],
-                               minute_end: shift["time_end"]))
-      end
-    end
-
     def print
-      (0..@y_max).each do |y|
-        (0..@x_max).each do |x|
-          timeslot = @layout.get_timeslot(x, y)
+      (0..options.number_of_intervals).each do |y|
+        (0..options.days_to_schedule).each do |x|
+          timeslot = layout.get_timeslot(x, y)
           timeslot.print
         end
         printf "\n"
       end
-    end
-
-    def completed_shifts
-      @_completed_shifts ||= []
     end
 
     def generate_schedule
@@ -122,7 +68,15 @@ module Scheduler
     end
 
     def shifts
-      @shifts
+      @shifts ||= generate_shifts
+    end
+
+    private
+
+    attr_reader :options
+
+    def generate_shifts
+      ShiftGenerator.for(self, options).generate
     end
   end
 end
