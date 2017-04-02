@@ -33,16 +33,6 @@ module Scheduler
       end
     end
 
-    def schedule_full
-      (0..@options[:x_max]).each do |x|
-        (0..@options[:y_max]).each do |y|
-          slot = @schedule.timeslot(x,y)
-          return false if !slot.full
-        end
-      end
-      true
-    end
-
     def prepare_initial_schedule
       @employees.each do |employee|
         @employee_timeslots[employee] = []

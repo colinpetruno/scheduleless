@@ -39,7 +39,5 @@ end
 #
 #  schedule.print
 #  manager.print_scores
-#
-#  puts "Schedule Full : %{full}" % {full: manager.schedule_full}
 
 #end
