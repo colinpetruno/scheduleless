@@ -15,12 +15,15 @@ module Scheduler
       # Note: Updated over time - redundant as player records are stored in timeslots
       #     Makes code access easier while making management harder
       #     TODO: Keep or destroy
-      @employee_timeslots = {} # predetermined inputs?
       @options = DEFAULTS.merge(options)
     end
 
     def employees
       @company.users
+    end
+
+    def timeslots
+      @_employee_timeslots ||= EmployeeTimeslots.new
     end
 
     def schedule=(schedule)
@@ -29,16 +32,11 @@ module Scheduler
 
     def print_scores
       employees.each do |player|
-        puts "%{employees} : %{score} slots" % {employee: employee[:given_name], score: @employee_timeslots[employee.id].length}
+        puts "%{employees} : %{score} slots" % {employee: employee[:given_name], score: timeslots.count_for(employee)}
       end
     end
 
     def prepare_initial_schedule
-      employees.each do |employee|
-        # using full object as hash key... odd
-        @employee_timeslots[employee.id] = []
-      end
-
       (0..@options[:x_max]).each do |x| # for each day of the week
         y = rand(@options[:y_max]) # choose a timeslot randomly
 
@@ -48,33 +46,13 @@ module Scheduler
           # this is probably a bit odd?
           employee = employees[x % employees.length]
           slot.add_employee(employee)
-          @employee_timeslots[employee.id].push([x, y])
+          timeslots.add_for(employee: employee, day: x, slot_number: y)
         end
       end
     end
 
     def eligible_employees(slot)
-      # TODO: what about making slot a class? the class can have references to
-      # the surrounding classes. slot.up, slot.left, slot.right
-      up_slot = @schedule.timeslot(slot.x, slot.y - 1)
-      right_slot = @schedule.timeslot(slot.x + 1, slot.y)
-      down_slot = @schedule.timeslot(slot.x, slot.y + 1)
-      left_slot = @schedule.timeslot(slot.x - 1, slot.y)
-
-      # TODO: Can Adjacent Players be a class as well?
-      adjacent_employees = []
-      adjacent_employees.push(up_slot.employees) if up_slot
-      adjacent_employees.push(right_slot.employees) if right_slot
-      adjacent_employees.push(down_slot.employees) if down_slot
-      adjacent_employees.push(left_slot.employees) if left_slot
-
-      adjacent_employees.flatten!.uniq!
-
-      slot.employees.each do |employee|
-        adjacent_employees.delete(employee)
-      end
-
-      adjacent_employees
+      EligibilityFinder.for(slot, @schedule).find
     end
 
     def priority_employee(eligible_employees)
@@ -82,9 +60,9 @@ module Scheduler
       lowest_employee = nil;
 
       eligible_employees.each do |employee|
-        if @employee_timeslots[employee.id].length < lowest_score
+        if timeslots.count_for(employee) < lowest_score
           lowest_employee = employee
-          lowest_score = @employee_timeslots[employee.id].length
+          lowest_score = timeslots.count_for(employee)
         end
       end
 
@@ -93,11 +71,11 @@ module Scheduler
 
     def assign_timeslot(slot)
       elg_employees = eligible_employees(slot)
+
       if elg_employees.length > 0
         assigned_employee = priority_employee(elg_employees)
         slot.add_employee(assigned_employee)
-        @employee_timeslots[assigned_employee.id].push([slot.x, slot.y])
-
+        timeslots.add_for(employee: assigned_employee, day: slot.x, slot_number: slot.y)
       else
         # TODO handle Ignore or Random case
       end
