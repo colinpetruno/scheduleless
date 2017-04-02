@@ -24,11 +24,7 @@ module Scheduler
     end
 
     def timeslot(x=0,y=0)
-      if x < 0 || x > options.days_to_schedule || y < 0 || y > options.number_of_intervals
-        nil
-      else
-        layout.get_timeslot(x, y)
-      end
+      layout.get_timeslot(x, y)
     end
 
     # called from shift generator
@@ -60,7 +56,7 @@ module Scheduler
     end
 
     def layout
-      @_layout ||= LayoutGenerator.for(self)
+      @_layout ||= LayoutGenerator.for(self, options)
     end
 
     # what is x and what is y? perhaps some more descriptive variable names
