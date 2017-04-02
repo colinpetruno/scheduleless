@@ -23,25 +23,6 @@ module Scheduler
       generate_shifts
     end
 
-    def timeslot(x=0,y=0)
-      layout.get_timeslot(x, y)
-    end
-
-    # called from shift generator
-    def employees
-      company.users
-    end
-
-    # called from shift generator
-    def location
-      company.locations.first
-    end
-
-    # called from shift generator
-    def company
-      @company
-    end
-
     # called from view
     def shifts
       @shifts ||= generate_shifts
@@ -51,16 +32,19 @@ module Scheduler
 
     attr_reader :options
 
+    def employees
+      company.users
+    end
+
     def generate_shifts
-      ShiftGenerator.for(self, options).generate
+      ShiftGenerator.
+        new(company: company, layout: layout, options: options).
+        generate
     end
 
     def layout
       @_layout ||= LayoutGenerator.for(self, options)
     end
-
-    # what is x and what is y? perhaps some more descriptive variable names
-
 
     def print
       (0..options.number_of_intervals).each do |y|
@@ -86,7 +70,7 @@ module Scheduler
       (0..options.days_to_schedule).each do |x| # for each day of the week
         y = rand(options.number_of_intervals) # choose a timeslot randomly
 
-        slot = timeslot(x, y) # get the timeslot
+        slot = layout.get_timeslot(x, y) # get the timeslot
 
         if slot.not_full?
           # this is probably a bit odd?
@@ -98,7 +82,9 @@ module Scheduler
     end
 
     def eligible_employees(slot)
-      EligibilityFinder.for(slot, self).find
+      EligibilityFinder.
+        new(layout: layout, timeslot: slot, schedule: self).
+        find
     end
 
     def priority_employee(eligible_employees)
@@ -130,7 +116,7 @@ module Scheduler
     def assign_iteration
       (0..options.days_to_schedule).each do |x|
         (0..options.number_of_intervals).each do |y|
-          slot = timeslot(x,y)
+          slot = layout.get_timeslot(x,y)
           if slot.not_full? then assign_timeslot(slot) end
         end
       end
@@ -141,7 +127,5 @@ module Scheduler
         assign_iteration
       end
     end
-
-
   end
 end

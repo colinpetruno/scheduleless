@@ -1,11 +1,8 @@
 module Scheduler
   class ShiftGenerator
-    def self.for(schedule, options)
-      new(schedule: schedule, options: options)
-    end
-
-    def initialize(schedule:, options:)
-      @schedule = schedule
+    def initialize(company:, layout:, options:)
+      @company = company
+      @layout = layout
       @options = options
     end
 
@@ -14,7 +11,7 @@ module Scheduler
         running_shifts = {}
 
         (0..options.number_of_intervals).each do |y|
-          timeslot = schedule.timeslot(x,y);
+          timeslot = layout.get_timeslot(x,y);
 
           # Record all employees in this timeslot
           timeslot.employees.each do |employee|
@@ -54,10 +51,10 @@ module Scheduler
         date = options.start_date + day_advance.days
         date_integer = date.strftime('%Y%m%d').to_i
 
-        employee = schedule.employees.find(shift["employee_id"])
-        user_location = schedule.location.user_locations.find_by! user_id: employee.id
+        employee = employees.find(shift["employee_id"])
+        user_location = location.user_locations.find_by! user_id: employee.id
 
-        shifts.push(schedule.company.shifts.build(user_location: user_location,
+        shifts.push(company.shifts.build(user_location: user_location,
                                company: @company,
                                date: date_integer,
                                minute_start: shift["time_start"],
@@ -69,7 +66,19 @@ module Scheduler
 
     private
 
-    attr_reader :options, :schedule
+    attr_reader :company, :layout, :options
+
+    def timeslot(x=0, y=0)
+      layout.get_timeslot(x, y)
+    end
+
+    def location
+      company.locations.first
+    end
+
+    def employees
+      company.users
+    end
 
     def completed_shifts
       @_completed_shifts ||= []

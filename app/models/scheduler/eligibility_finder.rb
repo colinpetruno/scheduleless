@@ -1,10 +1,7 @@
 module Scheduler
   class EligibilityFinder
-    def self.for(timeslot, schedule)
-      new(schedule: schedule, timeslot: timeslot)
-    end
-
-    def initialize(schedule:, timeslot:)
+    def initialize(layout:, schedule:, timeslot:)
+      @layout = layout
       @schedule = schedule
       @timeslot = timeslot
     end
@@ -26,26 +23,30 @@ module Scheduler
 
     private
 
-    attr_reader :schedule, :timeslot
+    attr_reader :layout, :schedule, :timeslot
+
+    def get_timeslot(x, y)
+      layout.get_timeslot(x, y)
+    end
 
     def adjacent_employees
       @_adjacent_employees ||= []
     end
 
     def up_slot
-      schedule.timeslot(timeslot.x, timeslot.y - 1)
+      get_timeslot(timeslot.x, timeslot.y - 1)
     end
 
     def down_slot
-      schedule.timeslot(timeslot.x, timeslot.y + 1)
+      get_timeslot(timeslot.x, timeslot.y + 1)
     end
 
     def right_slot
-      schedule.timeslot(timeslot.x + 1, timeslot.y)
+      get_timeslot(timeslot.x + 1, timeslot.y)
     end
 
     def left_slot
-      schedule.timeslot(timeslot.x - 1, timeslot.y)
+      get_timeslot(timeslot.x - 1, timeslot.y)
     end
   end
 end
