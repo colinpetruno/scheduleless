@@ -15,19 +15,6 @@ module Scheduler
       # time_range needs looked into and removed / updated to interval minutes
       @options = Options.new(start_date: schedule_start, options: { days_to_schedule: day_range })
       @company = company
-
-      @manager = ScheduleManager.
-        new(company: company,
-            options: {
-              x_max: options.days_to_schedule,
-              y_max: options.number_of_intervals
-            })
-
-      @manager.schedule = self
-    end
-
-    def manager
-      @manager
     end
 
     def company
@@ -35,7 +22,7 @@ module Scheduler
     end
 
     def location
-      @company.locations.first
+      company.locations.first
     end
 
     def layout
@@ -62,13 +49,88 @@ module Scheduler
     end
 
     def generate_schedule
-      @manager.prepare_initial_schedule
-      @manager.auto_manage_schedule(50)
+      prepare_initial_schedule
+      auto_manage_schedule(50)
       generate_shifts
     end
 
     def shifts
       @shifts ||= generate_shifts
+    end
+
+    ## THIS IS THE OLD SCHEDULE MANAGER
+    def employees
+      company.users
+    end
+
+    def timeslots
+      @_employee_timeslots ||= EmployeeTimeslots.new
+    end
+
+    def print_scores
+      employees.each do |player|
+        puts "%{employees} : %{score} slots" % {employee: employee[:given_name], score: timeslots.count_for(employee)}
+      end
+    end
+
+    def prepare_initial_schedule
+      (0..options.days_to_schedule).each do |x| # for each day of the week
+        y = rand(options.number_of_intervals) # choose a timeslot randomly
+
+        slot = timeslot(x, y) # get the timeslot
+
+        if slot.not_full?
+          # this is probably a bit odd?
+          employee = employees[x % employees.length]
+          slot.add_employee(employee)
+          timeslots.add_for(employee: employee, day: x, slot_number: y)
+        end
+      end
+    end
+
+    def eligible_employees(slot)
+      EligibilityFinder.for(slot, self).find
+    end
+
+    def priority_employee(eligible_employees)
+      lowest_score = Float::INFINITY
+      lowest_employee = nil;
+
+      eligible_employees.each do |employee|
+        if timeslots.count_for(employee) < lowest_score
+          lowest_employee = employee
+          lowest_score = timeslots.count_for(employee)
+        end
+      end
+
+      lowest_employee
+    end
+
+    def assign_timeslot(slot)
+      elg_employees = eligible_employees(slot)
+
+      if elg_employees.length > 0
+        assigned_employee = priority_employee(elg_employees)
+        slot.add_employee(assigned_employee)
+        timeslots.add_for(employee: assigned_employee, day: slot.x, slot_number: slot.y)
+      else
+        # TODO handle Ignore or Random case
+      end
+    end
+
+    def assign_iteration
+      (0..options.days_to_schedule).each do |x|
+        (0..options.number_of_intervals).each do |y|
+          slot = timeslot(x,y)
+          if slot.not_full? then assign_timeslot(slot) end
+        end
+      end
+    end
+
+    def auto_manage_schedule(max_rounds)
+      (0..max_rounds).each do
+        assign_iteration
+      end
     end
 
     private

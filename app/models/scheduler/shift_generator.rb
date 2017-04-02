@@ -54,7 +54,7 @@ module Scheduler
         date = options.start_date + day_advance.days
         date_integer = date.strftime('%Y%m%d').to_i
 
-        employee = schedule.manager.employees.find(shift["employee_id"])
+        employee = schedule.employees.find(shift["employee_id"])
         user_location = schedule.location.user_locations.find_by! user_id: employee.id
 
         shifts.push(schedule.company.shifts.build(user_location: user_location,
