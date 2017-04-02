@@ -17,19 +17,12 @@ module Scheduler
       @company = company
     end
 
-    def company
-      @company
+    def generate_schedule
+      prepare_initial_schedule
+      auto_manage_schedule(50)
+      generate_shifts
     end
 
-    def location
-      company.locations.first
-    end
-
-    def layout
-      @_layout ||= LayoutGenerator.for(self)
-    end
-
-    # what is x and what is y? perhaps some more descriptive variable names
     def timeslot(x=0,y=0)
       if x < 0 || x > options.days_to_schedule || y < 0 || y > options.number_of_intervals
         nil
@@ -37,6 +30,41 @@ module Scheduler
         layout.get_timeslot(x, y)
       end
     end
+
+    # called from shift generator
+    def employees
+      company.users
+    end
+
+    # called from shift generator
+    def location
+      company.locations.first
+    end
+
+    # called from shift generator
+    def company
+      @company
+    end
+
+    # called from view
+    def shifts
+      @shifts ||= generate_shifts
+    end
+
+    private
+
+    attr_reader :options
+
+    def generate_shifts
+      ShiftGenerator.for(self, options).generate
+    end
+
+    def layout
+      @_layout ||= LayoutGenerator.for(self)
+    end
+
+    # what is x and what is y? perhaps some more descriptive variable names
+
 
     def print
       (0..options.number_of_intervals).each do |y|
@@ -46,21 +74,6 @@ module Scheduler
         end
         printf "\n"
       end
-    end
-
-    def generate_schedule
-      prepare_initial_schedule
-      auto_manage_schedule(50)
-      generate_shifts
-    end
-
-    def shifts
-      @shifts ||= generate_shifts
-    end
-
-    ## THIS IS THE OLD SCHEDULE MANAGER
-    def employees
-      company.users
     end
 
     def timeslots
@@ -133,12 +146,6 @@ module Scheduler
       end
     end
 
-    private
 
-    attr_reader :options
-
-    def generate_shifts
-      ShiftGenerator.for(self, options).generate
-    end
   end
 end
