@@ -9,9 +9,8 @@ class Onboarding::SchedulesController < AuthenticatedController
   def create
     employees = User.where(company_id: current_company.id)
     @schedule = Scheduler::Schedule.for(current_company, employees)
-    @schedule.generate_schedule_layout(true, 3)
-    
-    if @schedule.generate_schedule
+
+    if @schedule.generate
       @schedule.print
       redirect_to calendar_path
     end

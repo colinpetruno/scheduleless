@@ -19,7 +19,6 @@ end
 
 # def execute
 #  schedule = Schedule.new(MAX_X_DIMENSION, MAX_X_DIMENSION)
-#  schedule.generate_schedule_layout(ALLOW_ZERO_SHIFT, PLAYERS.length) # if schedule needs to be generated
 #
 #  manager = ScheduleManager.new({
 #      :x_max => MAX_X_DIMENSION,
@@ -39,7 +38,5 @@ end
 #
 #  schedule.print
 #  manager.print_scores
-#
-#  puts "Schedule Full : %{full}" % {full: manager.schedule_full}
 
 #end
