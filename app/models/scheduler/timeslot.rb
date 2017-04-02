@@ -16,6 +16,10 @@ module Scheduler
       @employees.length == @slots_available
     end
 
+    def not_full
+      !full
+    end
+
     def add_employee(employee)
       @employees.push(employee)
     end

@@ -35,25 +35,17 @@ module Scheduler
 
     def prepare_initial_schedule
       employees.each do |employee|
+        # using full object as hash key... odd
         @employee_timeslots[employee] = []
       end
 
-      (0..@options[:x_max]).each do |x|
-        y = rand(@options[:y_max])
-        slot = @schedule.timeslot(x, y)
+      (0..@options[:x_max]).each do |x| # for each day of the week
+        y = rand(@options[:y_max]) # choose a timeslot randomly
 
-        fails = 0
-        fails_limit = 5
+        slot = @schedule.timeslot(x, y) # get the timeslot
 
-        while slot.full && fails < fails_limit
-          y = rand(@options[:y_max])
-          slot = @schedule.timeslot(x, y)
-          fails = fails + 1
-        end
-
-        if !slot.full
+        if slot.not_full
           employee = employees[x % employees.length]
-          puts employee
           slot.add_employee(employee)
           @employee_timeslots[employee].push([x, y])
         end
