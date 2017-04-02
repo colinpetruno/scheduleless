@@ -8,6 +8,12 @@ module Scheduler
     attr_reader :y_max
     attr_accessor :company
 
+    def self.for(company, schedule_start=Date.today, day_range=4, time_range=4)
+      schedule = new(company, schedule_start, day_range, time_range)
+      schedule.generate_schedule_layout
+      schedule
+    end
+
     def initialize(company, schedule_start, day_range, time_range)
       @layout = []
 
@@ -25,12 +31,6 @@ module Scheduler
             })
 
       @manager.schedule = self
-    end
-
-    def self.for(company, schedule_start=Date.today, day_range=4, time_range=4)
-      schedule = new(company, schedule_start, day_range, time_range)
-      schedule.generate_schedule_layout
-      schedule
     end
 
     # what is x and what is y? perhaps some more descriptive variable names
