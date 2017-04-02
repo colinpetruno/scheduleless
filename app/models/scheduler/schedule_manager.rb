@@ -1,21 +1,26 @@
 module Scheduler
   class ScheduleManager
-    def initialize(options)
-      @employees = []
+    DEFAULTS = {
+      x_max: 7,
+      y_max: 96,
+      find_shift_alternative: false,
+      none_eligible_strategy: "IGNORE",
+      random_block_start_req: 20,
+      start_priority: 0
+    }
+
+    def initialize(company:, options: {})
+      @company = company
 
       # Note: Updated over time - redundant as player records are stored in timeslots
       #     Makes code access easier while making management harder
       #     TODO: Keep or destroy
       @employee_timeslots = {} # predetermined inputs?
-      @options = options
+      @options = DEFAULTS.merge(options)
     end
 
-    def employees=(employees)
-      @employees = employees
-    end
-
-    def employee(employee_id)
-      @employees.detect{|e| e.id == employee_id}
+    def employees
+      @company.users
     end
 
     def schedule=(schedule)

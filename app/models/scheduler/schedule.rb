@@ -17,14 +17,14 @@ module Scheduler
       @company = company
       @location = company.locations.first
 
-      @manager = ScheduleManager.new({:x_max => @y_max,
-                                      :y_max => @x_max,
-                                      :find_shift_alternative => false,
-                                      :none_eligible_strategy => "IGNORE",
-                                      :random_block_start_req => 20,
-                                      :start_priority => 0 })
+      @manager = ScheduleManager.
+        new(company: company,
+            options: {
+              :x_max => @y_max,
+              :y_max => @x_max
+            })
+
       @manager.schedule = self
-      @manager.employees = company.users
     end
 
     def self.for(company, schedule_start=Date.today, day_range=4, time_range=4)
