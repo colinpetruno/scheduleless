@@ -16,7 +16,7 @@ module Scheduler
       @employees.length == @slots_available
     end
 
-    def not_full
+    def not_full?
       !full
     end
 

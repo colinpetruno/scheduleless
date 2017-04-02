@@ -44,7 +44,7 @@ module Scheduler
 
         slot = @schedule.timeslot(x, y) # get the timeslot
 
-        if slot.not_full
+        if slot.not_full?
           employee = employees[x % employees.length]
           slot.add_employee(employee)
           @employee_timeslots[employee].push([x, y])
@@ -106,7 +106,7 @@ module Scheduler
       (0..@options[:x_max]).each do |x|
         (0..@options[:y_max]).each do |y|
           slot = @schedule.timeslot(x,y)
-          if !slot.full then assign_timeslot(slot) end
+          if slot.not_full? then assign_timeslot(slot) end
         end
       end
     end
