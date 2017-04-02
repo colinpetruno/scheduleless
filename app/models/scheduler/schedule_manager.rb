@@ -120,16 +120,14 @@ module Scheduler
     end
 
     def auto_manage_schedule(max_rounds)
-      @round = 0
       (0..max_rounds).each do
         assign_iteration
-        @round = @round + 1
       end
     end
 
     def generate
-      self.prepare_initial_schedule
-      self.auto_manage_schedule(50)
+      prepare_initial_schedule
+      auto_manage_schedule(50)
     end
   end
 end
