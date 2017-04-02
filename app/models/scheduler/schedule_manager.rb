@@ -29,14 +29,14 @@ module Scheduler
 
     def print_scores
       employees.each do |player|
-        puts "%{employees} : %{score} slots" % {employee: employee[:given_name], score: @employee_timeslots[employee].length}
+        puts "%{employees} : %{score} slots" % {employee: employee[:given_name], score: @employee_timeslots[employee.id].length}
       end
     end
 
     def prepare_initial_schedule
       employees.each do |employee|
         # using full object as hash key... odd
-        @employee_timeslots[employee] = []
+        @employee_timeslots[employee.id] = []
       end
 
       (0..@options[:x_max]).each do |x| # for each day of the week
@@ -45,9 +45,10 @@ module Scheduler
         slot = @schedule.timeslot(x, y) # get the timeslot
 
         if slot.not_full?
+          # this is probably a bit odd?
           employee = employees[x % employees.length]
           slot.add_employee(employee)
-          @employee_timeslots[employee].push([x, y])
+          @employee_timeslots[employee.id].push([x, y])
         end
       end
     end
@@ -81,9 +82,9 @@ module Scheduler
       lowest_employee = nil;
 
       eligible_employees.each do |employee|
-        if @employee_timeslots[employee].length < lowest_score
+        if @employee_timeslots[employee.id].length < lowest_score
           lowest_employee = employee
-          lowest_score = @employee_timeslots[employee].length
+          lowest_score = @employee_timeslots[employee.id].length
         end
       end
 
@@ -95,7 +96,7 @@ module Scheduler
       if elg_employees.length > 0
         assigned_employee = priority_employee(elg_employees)
         slot.add_employee(assigned_employee)
-        @employee_timeslots[assigned_employee].push([slot.x, slot.y])
+        @employee_timeslots[assigned_employee.id].push([slot.x, slot.y])
 
       else
         # TODO handle Ignore or Random case
