@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: "marketing/welcome#index"
   resource :calendar
   resource :schedules_management do
@@ -7,10 +6,10 @@ Rails.application.routes.draw do
   end
 
   namespace :business, path: "company" do
-    resources :users, only: [:index, :edit, :update], path: "employees"
+    resources :users, only: [:edit, :index, :show, :update], path: "employees"
   end
 
-  resources :locations, only: [:index, :show, :new, :create, :edit]
+  resources :locations, only: [:create, :edit, :index, :new, :show]
 
   namespace :onboarding do
     resource :company_preferences, only: [:create, :new]

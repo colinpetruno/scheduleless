@@ -131,6 +131,8 @@ GEM
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
     puma (3.7.0)
+    pundit (1.1.0)
+      activesupport (>= 3.0.0)
     rack (2.0.1)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -231,6 +233,7 @@ DEPENDENCIES
   pry-rails
   pry-stack_explorer
   puma (~> 3.0)
+  pundit
   rails (~> 5.0.1)
   rails-assets-tether!
   rails_12factor

@@ -14,16 +14,13 @@
         <% @users.map do |user| %>
           <tr>
             <td>
-              <%= link_to user.email, edit_business_user_path(user) %>
+              <%= link_to_if policy(user).edit?, user.email, edit_business_user_path(user) do %>
+                <%= link_to user.email, business_user_path(user) %>
+              <% end %>
             </td>
           </tr>
         <% end %>
       </tbody>
     </table>
-
   </section>
 </div>
-
-
-
-
