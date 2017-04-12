@@ -50,4 +50,10 @@ class ApplicationPolicy
       scope
     end
   end
+
+  private
+
+  def same_company?
+    user.company_id == record.company_id
+  end
 end

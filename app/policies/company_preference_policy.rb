@@ -1,9 +1,9 @@
-class ScheduleRulePolicy < ApplicationPolicy
-  def create?
+class CompanyPreferencePolicy < ApplicationPolicy
+  def edit?
     user.company_admin? && same_company?
   end
 
-  def index?
+  def update?
     user.company_admin? && same_company?
   end
 end
