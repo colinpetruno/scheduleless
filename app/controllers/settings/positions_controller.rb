@@ -1,14 +1,20 @@
 module Settings
   class PositionsController < AuthenticatedController
     def index
+      authorize Position
+
       @positions_presenter = PositionsIndexPresenter.new(current_company)
     end
 
     def new
+      authorize Position
+
       @position = current_company.positions.build
     end
 
     def create
+      authorize Position
+
       @position = current_company.positions.build(position_params)
 
       if @position.save
