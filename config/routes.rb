@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   resource :search, only: [:show]
 
-  resources :settings, only: [:index]
+  resource :settings, only: [:show]
 
   namespace :settings do
     resource :company_preference, only: [:edit, :update]

@@ -2,6 +2,8 @@ class LocationsController < AuthenticatedController
   def create
     @location = current_company.locations.build(location_params)
 
+    authorize @location
+
     if @location.save
       redirect_to locations_path
     else
@@ -10,19 +12,22 @@ class LocationsController < AuthenticatedController
   end
 
   def edit
-    @locations = current_company.locations.find(params[:id])
+    @location = current_company.locations.find(params[:id])
+    authorize @location
   end
 
   def index
-    @locations = current_company.locations
+    @locations = policy_scope(Location)
   end
 
   def new
     @location = current_company.locations.build
+    authorize @location
   end
 
   def show
     @location = current_company.locations.find(params[:id])
+    authorize @location
   end
 
   private

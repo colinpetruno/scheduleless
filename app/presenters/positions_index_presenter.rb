@@ -1,6 +1,9 @@
 class PositionsIndexPresenter
-  def initialize(company)
+  attr_reader :positions
+
+  def initialize(company, positions)
     @company = company
+    @positions = positions
   end
 
   def partial_name
@@ -9,10 +12,6 @@ class PositionsIndexPresenter
     else
       "no_positions"
     end
-  end
-
-  def positions
-    company.positions.order(:name)
   end
 
   private

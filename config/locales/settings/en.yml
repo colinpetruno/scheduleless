@@ -1,6 +1,6 @@
 en:
   settings:
-    index:
+    show:
       company_preferences: "Company Preferences"
       positions: "Positions"
       schedule_rules: "Schedule Rules"

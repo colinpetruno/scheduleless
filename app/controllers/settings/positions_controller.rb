@@ -2,8 +2,10 @@ module Settings
   class PositionsController < AuthenticatedController
     def index
       authorize Position
+      positions = policy_scope(Position).order(:name)
 
-      @positions_presenter = PositionsIndexPresenter.new(current_company)
+      @positions_presenter = PositionsIndexPresenter.
+        new(current_company, positions)
     end
 
     def new

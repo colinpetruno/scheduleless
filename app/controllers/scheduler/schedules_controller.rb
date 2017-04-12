@@ -1,6 +1,8 @@
 module Scheduler
   class SchedulesController < AuthenticatedController
     def create
+      authorize :schedule, :create?
+
       current_company.update(company_params)
       redirect_to calendar_path
     end

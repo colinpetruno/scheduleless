@@ -1,4 +1,10 @@
 class PositionPolicy < ApplicationPolicy
+  class Scope < Scope
+    def resolve
+      scope.where(company_id: user.company_id)
+    end
+  end
+
   def create?
     user.company_admin?
   end

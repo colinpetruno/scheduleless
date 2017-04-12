@@ -1,4 +1,5 @@
 class SettingsController < AuthenticatedController
-  def index
+  def show
+    authorize :settings, :show?
   end
 end
