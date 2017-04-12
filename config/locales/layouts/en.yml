@@ -2,6 +2,7 @@ en:
   layouts:
     shared:
       top_nav:
-        employees: "Employees"
         calendar: "Calendar"
+        employees: "Employees"
+        locations: "Locations"
         settings: "Settings"

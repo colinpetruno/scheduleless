@@ -5,7 +5,9 @@
         <section>
           <article>Locations</article>
           <aside>
-            <%= link_to "New Location", new_location_path %>
+            <%= link_to_if policy(:location).new?, "New Location", new_location_path do %>
+              &nbsp;
+            <% end %>
           </aside>
         </section>
       </article>
@@ -23,7 +25,11 @@
         </tr>
     <% @locations.each do |location| %>
       <tr>
-        <td><%= link_to "Edit", location_path(location) %></td>
+        <td>
+          <%= link_to_if policy(location).edit?, "Edit", edit_location_path(location) do %>
+            <%= link_to "show", location_path(location) %>
+          <% end %>
+        </td>
         <td><%= location.line_1 %></td>
         <td><%= location.city %></td>
         <td><%= location.county_province %></td>
