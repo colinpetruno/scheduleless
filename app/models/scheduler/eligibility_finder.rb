@@ -1,8 +1,9 @@
 module Scheduler
   class EligibilityFinder
-    def initialize(layout:, timeslot:)
+    def initialize(layout:, timeslot:, existing_shifts:)
       @layout = layout
       @timeslot = timeslot
+      @existing_shifts = existing_shifts
     end
 
     def find
@@ -17,15 +18,31 @@ module Scheduler
         adjacent_employees.delete(employee)
       end
 
-      adjacent_employees
+      adjacent_employees.each do |employee|
+        if @existing_shifts.user_scheduled_at(employee.id, timeslot.x, timeslot.y)
+          adjacent_employees.delete(employee);
+        end
+      end
+
+      remove_conflicts(adjacent_employees)
     end
 
     private
 
-    attr_reader :layout, :timeslot
+    attr_reader :layout, :timeslot, :existing_shifts
 
     def get_timeslot(x, y)
       layout.get_timeslot(x, y)
+    end
+
+    def remove_conflicts (employees)
+      employees.each do |employee|
+        if existing_shifts.user_scheduled_at(employee.id, timeslot.x, timeslot.y)
+          employees.delete(employee);
+        end
+      end
+
+      employees
     end
 
     def adjacent_employees

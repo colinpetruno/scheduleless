@@ -5,16 +5,19 @@ module Scheduler
     include ActiveSupport
 
     attr_accessor :company
+    attr_accessor :location
 
-    def self.for(company, schedule_start=Date.today, day_range=4, time_range=4)
-      schedule = new(company, schedule_start, day_range, time_range)
+    def self.for(company, location={}, schedule_start=Date.today, day_range=4, time_range=4)
+      schedule = new(company, location, schedule_start, day_range, time_range)
       schedule
     end
 
-    def initialize(company, schedule_start, day_range, time_range)
+    def initialize(company, location, schedule_start, day_range, time_range)
       # time_range needs looked into and removed / updated to interval minutes
       @options = Options.new(start_date: schedule_start, options: { days_to_schedule: day_range })
       @company = company
+      @location = location
+      @schedule_start = schedule_start
     end
 
     def generate
@@ -43,7 +46,7 @@ module Scheduler
 
     def employee_assigner
       @_employee_assigner ||= EmployeeAssigner.
-        new(company: company, layout: layout, options: options)
+        new(company: company, location: location, layout: layout,  date_start: @schedule_start, options: options)
     end
 
     def employees
@@ -52,7 +55,7 @@ module Scheduler
 
     def generate_shifts
       ShiftGenerator.
-        new(company: company, layout: layout, options: options).
+        new(company: company, location: location, layout: layout, options: options).
         generate
     end
 

@@ -1,7 +1,8 @@
 module Scheduler
   class ShiftGenerator
-    def initialize(company:, layout:, options:)
+    def initialize(company:, location:, layout:, options:)
       @company = company
+      @location = location
       @layout = layout
       @options = options
     end
@@ -52,8 +53,7 @@ module Scheduler
         date_integer = date.strftime('%Y%m%d').to_i
 
         employee = employees.find(shift["employee_id"])
-        user_location = location.user_locations.find_by! user_id: employee.id
-
+        user_location = @location.user_locations.find_by! user_id: employee.id, location: @location
         shifts.push(company.shifts.build(user_location: user_location,
                                company: @company,
                                date: date_integer,
@@ -70,10 +70,6 @@ module Scheduler
 
     def timeslot(x=0, y=0)
       layout.get_timeslot(x, y)
-    end
-
-    def location
-      company.locations.first
     end
 
     def employees
