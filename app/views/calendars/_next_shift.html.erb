@@ -1,0 +1,17 @@
+<div class="next-shift">
+  <header>
+    <div class="date">
+      <%= presenter.next_shift_date %>
+    </div>
+
+    <div class="time">
+      <%= presenter.next_shift_time %>
+    </div>
+  </header>
+
+  <section>
+    <%= presenter.next_shift_location.name %><br>
+    <%= safe_join(presenter.next_shift_address_line, "<br />".html_safe) %><br>
+    <%= presenter.next_shift_city_line %>
+  </section>
+</div>

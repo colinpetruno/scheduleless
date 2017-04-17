@@ -1,0 +1,24 @@
+.next-shift {
+  header {
+      background-color: darken($green, 10%); //$brand-primary;
+      color: $white;
+      padding-bottom: 40px;
+      padding-top: 40px;
+
+    .date {
+      font-size: 2em;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    .time {
+      font-size: 1.5em;
+      text-align: center;
+    }
+  }
+
+  section {
+    color: $font-dark;
+    padding: 15px;
+  }
+}
