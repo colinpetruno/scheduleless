@@ -1,18 +1,24 @@
 class ShiftFinder
-  def self.for(user)
-    new(user:user)
+  def self.for(object)
+    new(object: object)
   end
 
-  def initialize(user:)
-    @user = user
+  def initialize(object:)
+    @object = object
   end
 
   def next
     future.first
   end
 
+  def on(date=Date.today)
+    all.where(date: date.strftime('%Y%m%d').to_i)
+  end
+
   def future
-    all.where(date: (current_day..Float::INFINITY), minute_start: (current_minute..1440))
+    all.
+      where(date: (current_day+1..Float::INFINITY)).
+      or(all.where(date: current_day, minute_start: (current_minute..1440)))
   end
 
   def all
@@ -23,7 +29,7 @@ class ShiftFinder
 
   private
 
-  attr_reader :user
+  attr_reader :object
 
   def current_day
     Date.today.to_s(:number).to_i
@@ -34,6 +40,6 @@ class ShiftFinder
   end
 
   def user_location_ids
-    user.user_locations.pluck(:id)
+    object.user_locations.pluck(:id)
   end
 end

@@ -1,0 +1,63 @@
+<div class="frame">
+  <header>
+    <div>Daily Schedule</div>
+  </header>
+
+  <section>
+    <div class="day-schedule">
+      <div>
+        <div class="labels">
+          <div>12</div>
+          <div>1</div>
+          <div>2</div>
+          <div>3</div>
+          <div>4</div>
+          <div>5</div>
+          <div>6</div>
+          <div>7</div>
+          <div>8</div>
+          <div>9</div>
+          <div>10</div>
+          <div>11</div>
+          <div>12</div>
+          <div>1</div>
+          <div>2</div>
+          <div>3</div>
+          <div>4</div>
+          <div>5</div>
+          <div>6</div>
+          <div>7</div>
+          <div>8</div>
+          <div>9</div>
+          <div>10</div>
+          <div>11</div>
+          <div>12</div>
+        </div>
+
+        <div class="ruler">
+          <% (0..24).each do |hour| %>
+            <div></div>
+          <% end %>
+        </div>
+
+        <% presenter.location_schedule.scheduled_users.each do |user| %>
+          <div class="employee">
+            <div class="email">
+              <%= user.email %>
+            </div>
+            <div class="shifts">
+              <% presenter.location_schedule.shifts_for(user).each do |shift| %>
+                <div style="<%= presenter.shift_style(shift) %>"
+                     data-toggle="tooltip"
+                     data-placement="top"
+                     title="<%= presenter.formatted_minutes_for(shift) %>">
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+
+      </div>
+    </div>
+  </section>
+</div>
