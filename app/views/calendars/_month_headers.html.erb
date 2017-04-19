@@ -1,6 +1,6 @@
 <div class="month-headers"> <!-- row -->
   <% Date::ABBR_MONTHNAMES.compact.map do |month| %>
-    <div class="<%= "selected" if month.downcase == "feb" %>">
+    <div class="<%= "selected" if month.downcase == Date.today.strftime("%b").downcase %>">
       <%= month %>
     </div>
   <% end %>
