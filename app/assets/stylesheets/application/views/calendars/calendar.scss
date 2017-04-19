@@ -12,6 +12,7 @@
 table.calendar {
   thead th {
     text-align: center;
+    width: 14.2857143%
   }
   tbody tr {
     min-height: 40px;
@@ -26,7 +27,14 @@ table.calendar {
   }
 
   td.inactive {
-    color: #737a86;
+    a {
+      color: lighten(#737a86, 10%);
+
+      &:hover, &:focus {
+        color: lighten(#737a86, 10%);
+        text-decoration: none;
+      }
+    }
   }
 
   td > div{
@@ -34,9 +42,18 @@ table.calendar {
     min-height: 40px;
     padding: 20px 12px;
     text-align: center;
+
+    a {
+      color: $font-dark;
+
+      &:hover, &:focus {
+        color: $font-dark;
+        text-decoration: none;
+      }
+    }
   }
 
-  td .selected {
+  td .today {
     background-color: #5bd1b1;
     color: $white;
     margin: auto;
@@ -45,5 +62,23 @@ table.calendar {
     max-height: 40px;
     max-width: 40px;
     width: 40px;
+
+    a {
+      color: $white;
+
+      &:hover, &:focus {
+        color: $white;
+        text-decoration: none;
+      }
+    }
   }
+
+  td .selected-day {
+    border: 4px solid $blue;
+    margin: auto;
+    line-height: 32px;
+    height: 40px;
+    max-height: 40px;
+    max-width: 40px;
+    width: 40px;  }
 }

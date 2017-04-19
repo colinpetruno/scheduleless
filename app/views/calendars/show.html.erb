@@ -31,7 +31,17 @@
 <div class="row">
   <section>
     <article>
-      <%= render partial: "day_schedule", locals: { presenter: @presenter } %>
+      <div class="frame">
+        <header>
+          <div>Daily Schedule</div>
+        </header>
+
+        <section id="daily-schedule">
+          <%= render partial: "day_schedule", locals: {
+            presenter: @presenter
+          } %>
+        </section>
+      </div>
     </article>
   </section>
 </div>

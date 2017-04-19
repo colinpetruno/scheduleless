@@ -3,8 +3,9 @@ class LocationSchedule
     new(location: location)
   end
 
-  def initialize(location:)
+  def initialize(location:, date: Date.today)
     @location = location
+    @date = date
   end
 
   def scheduled_users
@@ -17,15 +18,19 @@ class LocationSchedule
     shifts.where(user_location_id: user_location.id)
   end
 
+  def shifts?
+    shifts.present?
+  end
+
   private
 
-  attr_reader :location
+  attr_reader :date, :location
 
   def shifts
     @_shifts || find_shifts
   end
 
   def find_shifts
-    ShiftFinder.for(location).on(Date.today)
+    ShiftFinder.for(location).on(date)
   end
 end

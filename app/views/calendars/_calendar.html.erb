@@ -17,9 +17,23 @@
           <td class="<%= classname %>">
             <div>
               <% if day.day == Date.today.day %>
-                <div class="selected"><%= day.day %></div>
+                <div class="today <%= day.to_s %>">
+                  <%= link_to day.day,
+                    location_daily_schedule_path(
+                      Location.first,
+                      date: day.to_s,
+                      format: :js
+                    ), remote: true  %>
+                </div>
               <% else %>
-                <%= day.day %>
+                <div  class="<%= day.to_s %>">
+                  <%= link_to day.day,
+                    location_daily_schedule_path(
+                      Location.first,
+                      date: day.to_s,
+                      format: :js
+                    ), remote: true  %>
+                </div>
               <% end %>
             </div>
           </td>

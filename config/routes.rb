@@ -9,7 +9,9 @@ Rails.application.routes.draw do
     resources :users, only: [:edit, :index, :show, :update], path: "employees"
   end
 
-  resources :locations, only: [:create, :edit, :index, :new, :show]
+  resources :locations, only: [:create, :edit, :index, :new, :show] do
+    resource :daily_schedule, only: [:show]
+  end
 
   namespace :onboarding do
     resource :company_preferences, only: [:create, :new]
