@@ -16,6 +16,8 @@ module Settings
       if @schedule_rule.save
         redirect_to settings_schedule_rules_path
       else
+        @schedule_rules = policy_scope ScheduleRule
+        render :index
         # TODO: Handle Error
       end
     end

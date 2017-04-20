@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170411230328) do
+ActiveRecord::Schema.define(version: 20170420030258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 20170411230328) do
     t.integer "period",              default: 2, null: false
     t.integer "number_of_employees", default: 1, null: false
     t.index ["company_id"], name: "index_schedule_rules_on_company_id", using: :btree
+    t.index ["position_id", "period"], name: "index_schedule_rules_on_position_id_and_period", unique: true, using: :btree
     t.index ["position_id"], name: "index_schedule_rules_on_position_id", using: :btree
   end
 

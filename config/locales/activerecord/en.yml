@@ -1,0 +1,11 @@
+en:
+  errors:
+    format: "%{message}"
+  activerecord:
+    errors:
+      models:
+        schedule_rule:
+          attributes:
+            period:
+              taken: "A schedule rule already exists for this position and
+                constraint"

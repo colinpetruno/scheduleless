@@ -4,7 +4,13 @@
       I need
       <%= f.input :number_of_employees, label: false %>
       <%= f.association :position, label: false %>(s)
-      <%= f.input :period, collection: ScheduleRule.collection_labels, label: false %>
+      <%= f.input :period, collection: ScheduleRule.collection_labels, label: false, error: false %>
+    </div>
+
+    <div class="errors">
+      <% @schedule_rule.errors.full_messages.each do |error| %>
+        <%= error %><br>
+      <% end %>
     </div>
 
     <br>
