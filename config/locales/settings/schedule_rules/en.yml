@@ -1,0 +1,7 @@
+en:
+  settings:
+    schedule_rules:
+      schedule_rule:
+        requirement:
+          one: "%{position} is needed %{period}"
+          other: "%{position} are needed %{period}"

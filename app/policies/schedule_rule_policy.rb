@@ -6,7 +6,7 @@ class ScheduleRulePolicy < ApplicationPolicy
   end
 
   def create?
-    user.company_admin? && same_company?
+    user.company_admin?
   end
 
   def index?

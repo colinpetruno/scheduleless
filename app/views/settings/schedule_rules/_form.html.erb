@@ -4,9 +4,7 @@
       I need
       <%= f.input :number_of_employees, label: false %>
       <%= f.association :position, label: false %>(s)
-
-      during
-      <%= f.input :period, collection: ScheduleRule.periods.keys.to_a, label: false %>
+      <%= f.input :period, collection: ScheduleRule.collection_labels, label: false %>
     </div>
 
     <br>

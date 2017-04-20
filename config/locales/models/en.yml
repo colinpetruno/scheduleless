@@ -1,0 +1,10 @@
+en:
+  models:
+    schedule_rule:
+      open: "at open"
+      close: "at close"
+      all_day: "all day"
+      lull: "during low traffic"
+      normal: "during normal traffic"
+      busy: "during busy traffic"
+      peak: "during peak traffic"
