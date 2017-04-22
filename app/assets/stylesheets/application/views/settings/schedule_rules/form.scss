@@ -1,7 +1,24 @@
 .schedule-rules-form {
+  section {
+    margin-bottom: 16px;
+  }
+
   div.input {
     display: inline-block;
     margin: 0 15px;
     width: 150px;
+  }
+
+  div.errors {
+    padding: $alert-padding-y $alert-padding-x;
+    margin-bottom: $alert-margin-bottom;
+    border: $alert-border-width solid transparent;
+    @include border-radius($alert-border-radius);
+
+    @include alert-variant($alert-danger-bg, $alert-danger-border, $alert-danger-text);
+
+    ul {
+      margin-bottom: 0;
+    }
   }
 }

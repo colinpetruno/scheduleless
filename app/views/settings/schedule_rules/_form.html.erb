@@ -1,19 +1,22 @@
 <div class="schedule-rules-form">
   <%= simple_form_for [:settings, @schedule_rule] do |f| %>
-    <div>
+    <section>
       I need
-      <%= f.input :number_of_employees, label: false %>
-      <%= f.association :position, label: false %>(s)
-      <%= f.input :period, collection: ScheduleRule.collection_labels, label: false, error: false %>
-    </div>
+      <%= f.input :number_of_employees, error: false, label: false %>
+      <%= f.association :position, error: false, label: false %>(s)
+      <%= f.input :period, collection: ScheduleRule.collection_labels, error: false, label: false %>
+    </section>
 
-    <div class="errors">
-      <% @schedule_rule.errors.full_messages.each do |error| %>
-        <%= error %><br>
-      <% end %>
-    </div>
+    <% if @schedule_rule.errors.present? %>
+      <div class="errors">
+        <ul>
+          <% @schedule_rule.errors.full_messages.each do |error| %>
+            <li><%= error %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-    <br>
     <div>
       <%= f.submit %>
     </div>

@@ -6,6 +6,9 @@ en:
       models:
         schedule_rule:
           attributes:
+            position:
+              required: "A position must be selected"
             period:
+              blank: "A period must be selected"
               taken: "A schedule rule already exists for this position and
                 constraint"
