@@ -1,28 +1,36 @@
 module Scheduler
   class EmployeeAssigner
-    SOME_MAGIC_NUMBER = 50 # what does this mean?
+    ROTATION_COUNT = 50 # number of assignment rounds to execute for
 
-    def initialize(company:, layout:, options: Options.new)
+    def initialize(company:, location:, layout:, date_start:, options: Options.new)
       @company = company
+      @location = location
       @layout = layout
+      @date_start = date_start;
       @options = options
+
+      existing_shifts
     end
 
     def assign
       prepare_initial_schedule
-      auto_manage_schedule(SOME_MAGIC_NUMBER)
+      auto_manage_schedule(ROTATION_COUNT)
     end
 
     private
 
-    attr_reader :company, :layout, :options
+    attr_reader :company, :location, :layout, :date_start, :options
 
     def timeslots
       @_employee_timeslots ||= EmployeeTimeslots.new
     end
 
     def employees
-      company.users
+      location.users
+    end
+
+    def existing_shifts
+      @_existing_shifts ||= ExistingShifts.new(company, date_start)
     end
 
     def assign_iteration # looks good
@@ -49,8 +57,11 @@ module Scheduler
         if slot.not_full?
           # this is probably a bit odd?
           employee = employees[x % employees.length]
-          slot.add_employee(employee)
-          timeslots.add_for(employee: employee, day: x, slot_number: y)
+
+          if not existing_shifts.user_scheduled_at(employee.id, x, y)
+            slot.add_employee(employee)
+            timeslots.add_for(employee: employee, day: x, slot_number: y)
+          end
         end
       end
     end
@@ -83,7 +94,7 @@ module Scheduler
 
     def eligible_employees(slot)
       EligibilityFinder.
-        new(layout: layout, timeslot: slot).
+        new(layout: layout, timeslot: slot, existing_shifts: existing_shifts).
         find
     end
   end

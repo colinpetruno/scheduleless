@@ -8,9 +8,22 @@
     <article>
       <%= t(".description") %>
       <div>
-        <%= simple_form_for @schedule, url: scheduler_schedule_preview_path do |f| %>
-          <%= f.submit %>
-        <% end %>
+        <table>
+          <tbody>
+          <% @locations.each_with_index do |location, index| %>
+            <%= simple_form_for @schedule, url: scheduler_schedule_preview_path do |f| %>
+              <%= hidden_field_tag(:location_id, location.id) %>
+              <tr>
+                <td><%= location.name %></td>
+                <td><%= location.line_1 %></td>
+                <td><%= location.city %></td>
+                <td><%= location.county_province %></td>
+                <td><%= f.submit %></td>
+              </tr>
+            <% end %>
+          <% end %>
+          </tbody>
+        </table>
       </div>
     </article>
 

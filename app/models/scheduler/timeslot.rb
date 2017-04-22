@@ -25,7 +25,7 @@ module Scheduler
     end
 
     def print
-      printf "[ %{slots_available} %{employees} ]" % {slots_available: @slots_available,
+      printf "[(#{@x},#{@y}) %{slots_available} %{employees} ]" % {slots_available: @slots_available,
                                                       employees: @employees.map { |e| e[:given_name]} }
     end
 

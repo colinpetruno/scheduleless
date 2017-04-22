@@ -2,6 +2,7 @@ class Schedule
   include ActiveModel::Model
 
   attr_accessor :company
+  attr_accessor :location
 
   def schedule
     @_schedule ||= create_schedule
@@ -19,7 +20,7 @@ class Schedule
   private
 
   def create_schedule
-    Scheduler::Schedule.for(company)
+    Scheduler::Schedule.for(company, location)
   end
 
   def generate_schedule

@@ -1,7 +1,7 @@
 module Scheduler
   class Options
     DEFAULTS = {
-      allow_zero_shifts: true,
+      allow_zero_shifts: false,
       days_to_schedule: 7,
       time_interval_minutes: 15,
       find_shift_alternative: false,
