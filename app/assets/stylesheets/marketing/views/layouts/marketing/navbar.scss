@@ -1,0 +1,53 @@
+.navbar {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap; // allow us to do the line break for collapsing content
+  align-items: center;
+  justify-content: space-between; // space out brand from logo
+  padding: $navbar-padding-y 0;
+  position: relative;
+
+  a {
+    color: $white;
+    display: block;
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    margin-right: auto !important;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+  }
+
+
+  &.navbar-collapse {
+    flex-basis: 100%;
+  }
+
+  ul {
+    display: block;
+    list-style: none;
+    margin-left: auto;
+    padding: $navbar-padding-y 0;
+
+    li {
+      display: inline-block;
+      margin-left: 2em;
+    }
+
+    li > a {
+      font-size: 1em;
+      line-height: 20px;
+      vertical-align: middle;
+    }
+  }
+
+  @media (min-width: map-get($grid-breakpoints, lg)) {
+    div.navbar-collapse {
+      display: flex!important;
+      width: 100%;
+    }
+  }
+}
+
+

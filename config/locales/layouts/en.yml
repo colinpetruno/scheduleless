@@ -5,4 +5,5 @@ en:
         calendar: "Calendar"
         employees: "Employees"
         locations: "Locations"
+        logout: "Logout"
         settings: "Settings"

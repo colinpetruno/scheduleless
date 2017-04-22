@@ -37,6 +37,12 @@
         <% end %>
       <% end %>
     <% end %>
+
+    <%= content_tag(:li) do %>
+      <%= link_to destroy_user_session_path, method: :delete do %>
+        <%= t(".logout") %>
+      <% end %>
+    <% end %>
   </ul>
 
   <button type="button" data-toggle="collapse" data-target="#mobile-menu" aria-expanded="false">
