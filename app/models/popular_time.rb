@@ -1,0 +1,2 @@
+class PopularTime < ApplicationRecord
+end

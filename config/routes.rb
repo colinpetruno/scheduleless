@@ -33,6 +33,7 @@ Rails.application.routes.draw do
 
   namespace :settings do
     resource :company_preference, only: [:edit, :update]
+    resources :popular_times, only: [:create, :index, :new]
     resources :positions, only: [:create, :index, :new,]
     resources :schedule_rules, only: [:create, :index]
   end

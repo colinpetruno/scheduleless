@@ -2,6 +2,7 @@ en:
   settings:
     show:
       company_preferences: "Company Preferences"
+      popular_times: "Popular Times"
       positions: "Positions"
       schedule_rules: "Schedule Rules"
       title: "Settings"
