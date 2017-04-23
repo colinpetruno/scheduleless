@@ -10,7 +10,7 @@
       <th>Saturday</th>
   </thead>
   <tbody>
-    <% (Date.today.beginning_of_month.beginning_of_week - 1..Date.today.end_of_month.end_of_week - 1).to_a.in_groups_of(7) do |group| %>
+    <% (Date.today.beginning_of_month.beginning_of_week(:sunday)..Date.today.end_of_month.end_of_week(:sunday)).to_a.in_groups_of(7) do |group| %>
         <tr>
         <% group.map do |day| %>
           <% classname = day.month == Date.today.month ? "" : "inactive" %>
