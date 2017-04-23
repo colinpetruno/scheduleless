@@ -1,0 +1,4 @@
+$(".locations-edit-users").html("<%=
+  j(render partial: "locations/users",
+         locals: { users: @location.users }
+  ) %>");

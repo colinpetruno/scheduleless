@@ -5,3 +5,33 @@
     </article>
   </section>
 </div>
+
+<div class="frame">
+  <header>
+    <div>Employees</div>
+  </header>
+  <section>
+    <article>
+
+      <div class="rail">
+        <section>
+          <article class="locations-edit-users">
+            <%= render partial: "users", locals: { users: @location.users } %>
+          </article>
+          <aside>
+            <input id="location-available-employees"
+                   data-url="<%= location_available_employees_path(@location, format: :json, query: "QUERY") %>"/>
+
+            <%= simple_form_for [@location, UserLocation.new], remote: true, format: :js  do |f| %>
+              <%= f.input :user_id, as: :hidden %>
+              <%= f.input :home %>
+              <%= f.input :admin %>
+
+              <%= f.submit %>
+            <% end %>
+          </aside>
+        </section>
+      </div>
+    </article>
+  </section>
+</div>

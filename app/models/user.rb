@@ -18,6 +18,10 @@ class User < ApplicationRecord
 
   update_index "site_search#user", :self
 
+  def as_json(_options={})
+    super(only: [:email, :id, :given_name, :family_name, :preferred_name])
+  end
+
   private
 
   def build_availabilities

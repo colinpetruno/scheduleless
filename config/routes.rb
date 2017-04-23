@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   end
 
   resources :locations, only: [:create, :edit, :index, :new, :show, :update] do
+    resources :available_employees, only: [:index]
     resource :calendar, only: [:show]
     resource :daily_schedule, only: [:show]
+    resources :user_locations, only: [:create]
   end
 
   namespace :onboarding do

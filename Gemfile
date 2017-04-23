@@ -26,6 +26,7 @@ gem "uglifier", ">= 1.3.0"
 # gem "capistrano-rails", group: :development
 source "https://rails-assets.org" do
   gem "rails-assets-tether"
+  gem "rails-assets-typeahead.js"
 end
 
 group :production do
