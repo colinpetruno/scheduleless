@@ -1,7 +1,7 @@
 <div class="side-menu">
   <ul>
-    <%= content_tag(:li, class: active?(calendar_path)) do %>
-      <%= link_to calendar_path do %>
+    <%= content_tag(:li, class: active?(after_sign_in_path_for(current_user))) do %>
+      <%= link_to after_sign_in_path_for(current_user) do %>
         <span class="oi oi-calendar"></span>
       <% end %>
     <% end %>
