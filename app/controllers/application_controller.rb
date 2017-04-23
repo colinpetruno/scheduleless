@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   include Pundit
+  protect_from_forgery with: :exception
+  helper_method :after_sign_in_path_for
 
   def after_sign_in_path_for(resource)
     location = Location.default_for(resource)
@@ -10,6 +12,4 @@ class ApplicationController < ActionController::Base
       # TODO: HMMM where to go
     end
   end
-
-  protect_from_forgery with: :exception
 end
