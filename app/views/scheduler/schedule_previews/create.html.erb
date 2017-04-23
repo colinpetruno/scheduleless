@@ -14,6 +14,7 @@
             <th>Employee</th>
             <th>Minute Start</th>
             <th>Minute End</th>
+            <th>Shift Length (minutes)</th>
             <th>Minute Date</th>
           </tr>
         </thead>
@@ -33,6 +34,7 @@
             <td><%= shift.user_location.user.given_name %></td>
             <td><%= shift.minute_start %></td>
             <td><%= shift.minute_end %></td>
+            <td><%= shift.minute_end - shift.minute_start %></td>
             <td><%= shift.date %></td>
           <% end %>
 
