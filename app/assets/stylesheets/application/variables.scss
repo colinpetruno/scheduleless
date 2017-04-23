@@ -1,28 +1,64 @@
-$enable-rounded: false;
+$enable-rounded:                 false;
 
-$white: #ffffff;
-$blue: #5f97ff;
-$green: #5bd1b1;
+$black:                          #000000;
+$blue:                           #5f97ff;
+$gray-light:                     #a0acb9;
+$gray-dark:                      #41454b;
+$green:                          #5bd1b1;
+$white:                          #ffffff;
 
-$brand-primary: $blue;
-$body-bg: #ebf0f8;
+$brand-primary:                  $blue;
+$body-bg:                        #ebf0f8;
 
-$primary-dark-bg: #41454b;
-$alternate-dark-bg: #474b52;
+$primary-dark-bg:                $gray-dark;
+$alternate-dark-bg:              #474b52;
 
-$font-light: #a0acb9;
-$font-dark: #41454b;
+$font-light:                     $gray-light;
+$font-dark:                      $gray-dark;
 
-$dark-seperator: #2c2e33;
-$light-seperator: #535860;
+$dark-seperator:                 #2c2e33;
+$light-seperator:                #535860;
 
 
-$font-family-serif: "Montserrat", serif;
-$font-family-sans-serif: "Roboto", sans-serif;
+$font-family-serif:              "Montserrat", serif;
+$font-family-sans-serif:         "Roboto", sans-serif;
 
-$headings-font-weight: 200;
+$headings-font-weight:           200;
 
 $transition-collapse-horizontal: width .35s ease;
+
+// Dropdowns
+$dropdown-bg:                    $white;
+$dropdown-border-color:          rgba(#000000,.15);
+$dropdown-border-width:          1px;
+$dropdown-box-shadow:            0 .5rem 1rem rgba(#000000,.175);
+$dropdown-divider-bg:            $font-light;
+$dropdown-header-color:          $gray-light;
+$dropdown-min-width:             10rem;
+$dropdown-padding-y:             .5rem;
+$dropdown-margin-top:            .125rem;
+
+$dropdown-item-padding-x:        1.5rem;
+$dropdown-item-padding-y:        .25rem;
+
+$dropdown-link-active-bg:        darken($blue, 15%);
+$dropdown-link-active-color:     $white;
+$dropdown-link-color:            $gray-dark;
+$dropdown-link-disabled-color:   $gray-light;
+$dropdown-link-hover-color:      $white;
+$dropdown-link-hover-bg:         $blue;
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Override Bootstrap variables here (defaults from bootstrap v4.0.0-alpha.6):
 
@@ -562,31 +598,7 @@ $btn-primary-border:             $blue;
 // $form-icon-danger: str-replace(url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='#{$form-icon-danger-color}' viewBox='-2 -2 7 7'%3E%3Cpath stroke='%23d9534f' d='M0 0l3 3m0-3L0 3'/%3E%3Ccircle r='.5'/%3E%3Ccircle cx='3' r='.5'/%3E%3Ccircle cy='3' r='.5'/%3E%3Ccircle cx='3' cy='3' r='.5'/%3E%3C/svg%3E"), "#", "%23");
 
 
-// Dropdowns
-//
-// Dropdown menu container and contents.
 
-// $dropdown-min-width:             10rem;
-// $dropdown-padding-y:             .5rem;
-// $dropdown-margin-top:            .125rem;
-// $dropdown-bg:                    $white;
-// $dropdown-border-color:          rgba($black,.15);
-// $dropdown-border-width:          $border-width;
-// $dropdown-divider-bg:            $gray-lighter;
-// $dropdown-box-shadow:            0 .5rem 1rem rgba($black,.175);
-
-// $dropdown-link-color:            $gray-dark;
-// $dropdown-link-hover-color:      darken($gray-dark, 5%);
-// $dropdown-link-hover-bg:         $gray-lightest;
-
-// $dropdown-link-active-color:     $component-active-color;
-// $dropdown-link-active-bg:        $component-active-bg;
-
-// $dropdown-link-disabled-color:   $gray-light;
-
-// $dropdown-item-padding-x:        1.5rem;
-
-// $dropdown-header-color:          $gray-light;
 
 
 // Z-index master list

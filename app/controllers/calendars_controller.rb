@@ -2,7 +2,10 @@ class CalendarsController < AuthenticatedController
   def show
     authorize :calendar, :show?
 
-    @presenter = CalendarShowPresenter.new(user: current_user, date: date)
+    location = current_company.locations.find(params[:location_id])
+
+    @presenter = CalendarShowPresenter.
+      new(date: date, current_location: location, user: current_user)
   end
 
   private

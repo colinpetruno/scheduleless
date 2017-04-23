@@ -1,9 +1,18 @@
 class CalendarShowPresenter
-  attr_reader :date
+  attr_reader :date, :current_location
 
-  def initialize(user:, date: Date.today)
-    @user = user
+  def initialize(user:, current_location: nil, date: Date.today)
     @date = date
+    @current_location = current_location || Location.default_for(user)
+    @user = user
+  end
+
+  def location_label(location)
+    location.name || location.line_1
+  end
+
+  def location_list
+    user.locations.where.not(id: current_location.id)
   end
 
   def next_shift
@@ -44,7 +53,7 @@ class CalendarShowPresenter
 
   def location_schedule
     @_location_schedule ||= LocationSchedule.
-      new(location: user.locations.first, date: date)
+      new(location: current_location, date: date)
   end
 
   def shift_style(shift)
