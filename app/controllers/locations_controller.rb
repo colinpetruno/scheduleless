@@ -30,6 +30,17 @@ class LocationsController < AuthenticatedController
     authorize @location
   end
 
+  def update
+    @location = current_company.locations.find(params[:id])
+    authorize @location
+
+    if @location.update(location_params)
+      redirect_to locations_path
+    else
+      render :edit
+    end
+  end
+
   private
 
   def location_params

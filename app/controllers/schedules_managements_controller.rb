@@ -1,5 +1,4 @@
 class SchedulesManagementsController < AuthenticatedController
-
   def show
     @schedule = Scheduler::Schedule.for(current_company)
   end
