@@ -1,26 +1,40 @@
 module Scheduler
   class EligibilityFinder
-    def initialize(layout:, timeslot:, existing_shifts:)
+    def initialize(layout:, timeslot:, existing_shifts:, company:, options:)
       @layout = layout
       @timeslot = timeslot
       @existing_shifts = existing_shifts
+      @company = company
+      @options = options
     end
 
-    def find
-      adjacent_employees.push(up_slot.employees) if up_slot
-      adjacent_employees.push(right_slot.employees) if right_slot
-      adjacent_employees.push(down_slot.employees) if down_slot
-      adjacent_employees.push(left_slot.employees) if left_slot
+    def find(position)
+      adjacent_employees.push(up_slot.position_employees[position]) if up_slot
+      adjacent_employees.push(right_slot.position_employees[position]) if right_slot
+      adjacent_employees.push(down_slot.position_employees[position]) if down_slot
+      adjacent_employees.push(left_slot.position_employees[position]) if left_slot
 
       adjacent_employees.flatten!.uniq!
+      adjacent_employees.compact!
 
       timeslot.employees.each do |employee|
         adjacent_employees.delete(employee)
       end
 
       adjacent_employees.each do |employee|
+        # check if there is space for this employee
+
+        # TODO
+        # timeslot.position_available?(employee)
+
+        # Would employee exceed any minmax shift preference
+        if minmax_not_eligible(employee)
+          adjacent_employees.delete(employee)
+        end
+
+        # check for existing schedules
         if @existing_shifts.user_scheduled_at(employee.id, timeslot.x, timeslot.y)
-          adjacent_employees.delete(employee);
+          adjacent_employees.delete(employee)
         end
       end
 
@@ -29,7 +43,7 @@ module Scheduler
 
     private
 
-    attr_reader :layout, :timeslot, :existing_shifts
+    attr_reader :layout, :timeslot, :existing_shifts, :company, :options
 
     def get_timeslot(x, y)
       layout.get_timeslot(x, y)
@@ -63,6 +77,10 @@ module Scheduler
 
     def left_slot
       get_timeslot(timeslot.x - 1, timeslot.y)
+    end
+
+    def minmax_not_eligible(employee)
+      MinmaxShiftHelper.new(timeslot: timeslot, employee: employee, layout: layout, company: company, options: options).is_not_eligible
     end
   end
 end

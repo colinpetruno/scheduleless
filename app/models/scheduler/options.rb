@@ -8,7 +8,37 @@ module Scheduler
       none_eligible_strategy: "IGNORE",
       random_block_start_req: 20,
       start_priority: 0,
-      shift_range: 3 # what is this?
+      shift_range: 3, # what is this?
+      period_timeframes: {
+        "open" => {
+          start: 9*60,
+          end: 12*60
+        },
+        "close" => {
+          start: 13*60,
+          end: 18*60
+        },
+        "all_day" => {
+          start: 9*60,
+          end: 18*60
+        },
+        "lull" => {
+          start: 9*60,
+          end: 18*60
+        },
+        "normal" => {
+          start: 9*60,
+          end: 18*60
+        },
+        "busy" => {
+          start: 9*60,
+          end: 18*60
+        },
+        "peak" => {
+          start: 9*60,
+          end: 18*60
+        }
+      }
     }
 
     def initialize(start_date:, options: {})
@@ -42,6 +72,10 @@ module Scheduler
 
     def shift_range
       options[:shift_range]
+    end
+
+    def period_timeframes(id)
+      options[:period_timeframes]["#{id}"]
     end
 
     private

@@ -1,6 +1,6 @@
 module Scheduler
   class EmployeeAssigner
-    ROTATION_COUNT = 50 # number of assignment rounds to execute for
+    ROTATION_COUNT = 500 # number of assignment rounds to execute for
 
     def initialize(company:, location:, layout:, date_start:, options: Options.new)
       @company = company
@@ -51,30 +51,44 @@ module Scheduler
     def prepare_initial_schedule # looks good
       (0..options.days_to_schedule).each do |x|
         y = rand(options.number_of_intervals)
+        # this is probably a bit odd?
+        employee = employees[x % employees.length]
+        position = employee.positions.sample
 
-        slot = layout.get_timeslot(x, y)
+        not_scheduled = true
+        iterations = 0
 
-        if slot.not_full?
-          # this is probably a bit odd?
-          employee = employees[x % employees.length]
-
-          if not existing_shifts.user_scheduled_at(employee.id, x, y)
-            slot.add_employee(employee)
+        # iterate through a day and attempt to schedule
+        while not_scheduled
+          slot = layout.get_timeslot(x, y)
+          if not existing_shifts.user_scheduled_at(employee.id, x, y) and slot.not_full? and slot.position_room_available?(position.name)
+            slot.add_employee(employee, position.name)
             timeslots.add_for(employee: employee, day: x, slot_number: y)
+            not_scheduled = false
           end
+          iterations = iterations + 1
+          position = employee.positions.sample
+          if iterations > options.number_of_intervals
+            not_scheduled = false
+          end
+          y = (y+1) % options.number_of_intervals
+
         end
       end
     end
 
     def assign_timeslot(slot) # looks okay
-      elg_employees = eligible_employees(slot)
 
-      if elg_employees.length > 0
-        assigned_employee = priority_employee(elg_employees)
-        slot.add_employee(assigned_employee)
-        timeslots.add_for(employee: assigned_employee, day: slot.x, slot_number: slot.y)
-      else
-        # TODO handle Ignore or Random case
+      slot.positions.each do |position|
+        elg_employees = eligible_employees(slot, position)
+
+        if elg_employees.length > 0 and slot.position_room_available?(position)
+          assigned_employee = priority_employee(elg_employees)
+          slot.add_employee(assigned_employee, position)
+          timeslots.add_for(employee: assigned_employee, day: slot.x, slot_number: slot.y)
+        else
+          # TODO handle Ignore or Random case
+        end
       end
     end
 
@@ -92,10 +106,10 @@ module Scheduler
       lowest_employee
     end
 
-    def eligible_employees(slot)
+    def eligible_employees(slot, position)
       EligibilityFinder.
-        new(layout: layout, timeslot: slot, existing_shifts: existing_shifts).
-        find
+        new(layout: layout, timeslot: slot, existing_shifts: existing_shifts, company: company, options: options).
+        find(position)
     end
   end
 end

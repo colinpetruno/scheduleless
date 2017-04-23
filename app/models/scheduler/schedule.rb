@@ -23,6 +23,7 @@ module Scheduler
     def generate
       employee_assigner.assign
       generate_shifts
+      print
     end
 
     # called from view
@@ -59,8 +60,12 @@ module Scheduler
         generate
     end
 
+    def schedule_rules
+      @_schedule_rules ||= company.schedule_rules
+    end
+
     def layout
-      @_layout ||= LayoutGenerator.for(self, options)
+      @_layout ||= LayoutGenerator.for(self, schedule_rules, options)
     end
   end
 end
