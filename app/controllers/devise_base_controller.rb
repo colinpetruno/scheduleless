@@ -1,3 +1,3 @@
-class DeviseBaseController < ActionController::Base
+class DeviseBaseController < ApplicationController
   layout "marketing"
 end

@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   root to: "marketing/welcome#index"
-  resource :calendar
+  resource :calendar, only: [:show]
 
   namespace :business, path: "company" do
     resources :users, only: [:edit, :index, :show, :update], path: "employees"
   end
 
   resources :locations, only: [:create, :edit, :index, :new, :show, :update] do
+    resource :calendar, only: [:show]
     resource :daily_schedule, only: [:show]
   end
 

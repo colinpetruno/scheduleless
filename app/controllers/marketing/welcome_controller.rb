@@ -10,7 +10,7 @@ class Marketing::WelcomeController < ApplicationController
 
   def check_signed_in_user
     if current_user.present?
-      redirect_to calendar_path and return
+      redirect_to after_sign_in_path_for(current_user)
     end
   end
 end
