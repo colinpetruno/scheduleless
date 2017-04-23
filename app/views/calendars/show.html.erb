@@ -14,20 +14,8 @@
     </article>
 
     <aside>
-      <div class="dropdown">
-        <button data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%= @presenter.location_label(@presenter.current_location) %>
-        </button>
-
-        <div>
-          <% @presenter.location_list.each do |location| %>
-            <%= link_to @presenter.location_label(location),
-              location_calendar_path(location) %>
-          <% end %>
-        </div>
-      </div>
-
-
+      <%= render partial: "location_select",
+        locals: { presenter: @presenter } %>
 
       <div class="frame">
         <header>

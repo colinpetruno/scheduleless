@@ -1,0 +1,21 @@
+.location-select {
+  margin-bottom: 20px;
+
+  div.dropdown  {
+    > button {
+      display: block;
+      font-size: 1.1em;
+      padding-bottom: 20px;
+      padding-top: 20px;
+      width: 100%;
+    }
+
+    > div {
+      width: 100%;
+
+      a {
+        text-align: right;
+      }
+    }
+  }
+}
