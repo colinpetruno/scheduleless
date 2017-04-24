@@ -1,7 +1,6 @@
 module Settings
   class ScheduleRulesController < AuthenticatedController
     def index
-      authorize ScheduleRule
       @schedule_rules = policy_scope ScheduleRule
       @schedule_rule = ScheduleRule.new
     end

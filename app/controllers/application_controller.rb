@@ -3,6 +3,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :after_sign_in_path_for
 
+
+  def default_calender_path_for(user)
+    after_sign_in_path_for(resource)
+  end
+
   def after_sign_in_path_for(resource)
     location = Location.default_for(resource)
 

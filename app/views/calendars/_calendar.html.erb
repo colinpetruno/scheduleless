@@ -20,7 +20,7 @@
                 <div class="today <%= day.to_s %>">
                   <%= link_to day.day,
                     location_daily_schedule_path(
-                      Location.first,
+                      presenter.current_location,
                       date: day.to_s,
                       format: :js
                     ), remote: true  %>
@@ -29,7 +29,7 @@
                 <div  class="<%= day.to_s %>">
                   <%= link_to day.day,
                     location_daily_schedule_path(
-                      Location.first,
+                      presenter.current_location,
                       date: day.to_s,
                       format: :js
                     ), remote: true  %>

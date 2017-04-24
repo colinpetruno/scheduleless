@@ -8,7 +8,7 @@
         </header>
 
         <section>
-          <%= render partial: "calendar" %>
+          <%= render partial: "calendar", locals: { presenter: @presenter } %>
         </section>
       </div>
     </article>

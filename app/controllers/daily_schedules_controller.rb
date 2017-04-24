@@ -5,7 +5,8 @@ class DailySchedulesController < AuthenticatedController
 
     authorize schedule
 
-    @presenter = CalendarShowPresenter.new(user: current_user, date: date)
+    @presenter = CalendarShowPresenter.
+      new(date: date, current_location: location, user: current_user)
   end
 
   private

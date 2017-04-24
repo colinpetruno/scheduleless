@@ -15,7 +15,6 @@ class SiteSearchIndex < Chewy::Index
     }
   }
 
-
   define_type User do
     field :email, analyzer: "fuzzy_search"
     field :given_name, analyzer: "fuzzy_search"
