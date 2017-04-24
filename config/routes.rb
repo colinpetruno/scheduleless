@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     resources :user_locations, only: [:create]
   end
 
+  use_doorkeeper # makes /oauth routes
+
   namespace :onboarding do
     resource :company_preferences, only: [:create, :new]
     resources :locations, only: [:create, :new] do

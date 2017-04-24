@@ -24,3 +24,19 @@ the pg_hba.conf to allow connections on all users from localhost.
 If you have existing data run `rake chewy:reset` to ensure that all the data is
 loaded into elasticsearch.
 
+Edit the elasticsearch.yml to run the service on port 9201
+
+
+## oAuth
+
+Get an access token:
+
+POST localhost:3000/oauth/token
+
+```json
+{
+  "grant_type"    : "password",
+  "username"      : "demo@example.com",
+  "password"      : "password"
+}
+```
