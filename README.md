@@ -29,7 +29,7 @@ Edit the elasticsearch.yml to run the service on port 9201
 
 ## oAuth
 
-Get an access token:
+#### Get an access token:
 
 POST localhost:3000/oauth/token
 
@@ -39,4 +39,15 @@ POST localhost:3000/oauth/token
   "username"      : "demo@example.com",
   "password"      : "password"
 }
+```
+
+#### Use an access token:
+
+In order to use a token use the authentication header
+
+Authentication: Bearer <TokenGoeshere>
+
+Example Curl:
+```
+curl -X GET -H "Authorization: Bearer c35042ae39fb1bcad57216eebcafdb6b7addb7ceea5cd99eadf11d2310b48b8d" -H "Cache-Control: no-cache" -H "Postman-Token: 5c9a1329-41c7-2d0a-904d-9e2024a9d61c" "http://localhost:3000/mobile_api/users/1/future_shifts"
 ```

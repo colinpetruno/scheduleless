@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   root to: "marketing/welcome#index"
 
+  namespace :mobile_api do
+    resource :future_shifts, only: [:show]
+  end
+
   namespace :business, path: "company" do
     resources :users, only: [:edit, :index, :show, :update], path: "employees"
   end
