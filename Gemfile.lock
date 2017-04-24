@@ -100,6 +100,7 @@ GEM
     ffi (1.9.17)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
+    holidays (5.4.0)
     i18n (0.8.0)
     i18n_data (0.7.0)
     jquery-rails (4.2.2)
@@ -257,6 +258,7 @@ DEPENDENCIES
   devise_invitable
   doorkeeper
   factory_girl_rails
+  holidays
   jquery-rails
   listen (~> 3.0.5)
   pg

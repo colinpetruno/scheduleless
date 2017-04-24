@@ -1,0 +1,2 @@
+class PopularHolidayTime < PopularTime
+end

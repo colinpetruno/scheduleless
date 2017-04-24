@@ -1,0 +1,8 @@
+<%= simple_form_for [:settings, period] do |f| %>
+  <%= f.input :type, as: :hidden %>
+
+  <%= f.input :time_start, as: :select, collection: TimeRange.quarter_hour_options %>
+  <%= f.input :time_end, as: :select, collection: TimeRange.quarter_hour_options %>
+
+  <%= f.submit %>
+<% end %>

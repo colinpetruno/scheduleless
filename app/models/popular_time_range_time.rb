@@ -1,0 +1,2 @@
+class PopularTimeRangeTime < PopularTime
+end

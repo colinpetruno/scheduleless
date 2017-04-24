@@ -10,6 +10,7 @@ gem "devise"
 gem "devise_invitable"
 gem "doorkeeper"
 gem "jquery-rails"
+gem "holidays"
 gem "pg"
 gem "puma", "~> 3.0"
 gem "pundit"
@@ -18,13 +19,6 @@ gem "simple_form"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
 
-
-# Use Redis adapter to run Action Cable in production
-# gem "redis", "~> 3.0"
-# Use ActiveModel has_secure_password
-
-# Use Capistrano for deployment
-# gem "capistrano-rails", group: :development
 source "https://rails-assets.org" do
   gem "rails-assets-tether"
   gem "rails-assets-typeahead.js"

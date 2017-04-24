@@ -1,0 +1,2 @@
+class PopularWeekdayTime < PopularTime
+end

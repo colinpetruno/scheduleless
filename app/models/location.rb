@@ -1,5 +1,6 @@
 class Location < ApplicationRecord
   belongs_to :company
+  has_many :popular_times, as: :popular
   has_many :user_locations
   has_many :users, through: :user_locations
 
