@@ -4,7 +4,7 @@ module Scheduler
       authorize :schedule, :create?
 
       current_company.update(company_params)
-      redirect_to default_calender_path_for(current_user)
+      redirect_to default_calendar_path_for(current_user)
     end
 
     private

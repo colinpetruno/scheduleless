@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170424131642) do
+ActiveRecord::Schema.define(version: 20170425233418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "check_ins", force: :cascade do |t|
+    t.integer  "shift_id"
+    t.bigint   "check_in_date_time"
+    t.bigint   "check_out_date_time"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.index ["shift_id"], name: "index_check_ins_on_shift_id", using: :btree
+  end
 
   create_table "companies", force: :cascade do |t|
     t.string   "name",       null: false
@@ -53,7 +62,6 @@ ActiveRecord::Schema.define(version: 20170424131642) do
     t.index ["company_id"], name: "index_locations_on_company_id", using: :btree
   end
 
-<<<<<<< HEAD
   create_table "oauth_access_grants", force: :cascade do |t|
     t.integer  "resource_owner_id", null: false
     t.integer  "application_id",    null: false
@@ -90,7 +98,8 @@ ActiveRecord::Schema.define(version: 20170424131642) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
-=======
+  end
+
   create_table "popular_times", force: :cascade do |t|
     t.integer  "day_start"
     t.integer  "day_end"
@@ -103,7 +112,6 @@ ActiveRecord::Schema.define(version: 20170424131642) do
     t.integer  "popular_id",   null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
->>>>>>> 9aa5b11... Stashing
   end
 
   create_table "positions", force: :cascade do |t|

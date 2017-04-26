@@ -27,6 +27,10 @@ class ShiftFinder
       order(:date, :minute_start)
   end
 
+  def find_by(options)
+    all.find_by(options)
+  end
+
   private
 
   attr_reader :object

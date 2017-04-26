@@ -51,6 +51,11 @@ Rails.application.routes.draw do
     resources :schedule_rules, only: [:create, :index]
   end
 
+  resources :shifts, only: [] do
+    resource :check_in, only: [:create]
+    resource :check_out, only: [:create]
+  end
+
   resource :user, only: [:edit, :update]
 
   devise_for :users
