@@ -13,7 +13,7 @@
     width: 85px;
   }
 
-  #new_search {
+  #new_employee_and_location_search {
     &.collapsing {
       width: 0;
       @include transition($transition-collapse-horizontal);
