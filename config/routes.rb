@@ -3,6 +3,10 @@ Rails.application.routes.draw do
 
   namespace :mobile_api do
     resource :future_shifts, only: [:show]
+    resources :shifts, only: [] do
+      resource :check_in, only: [:create]
+      resource :check_out, only: [:create]
+    end
   end
 
   namespace :business, path: "company" do

@@ -13,7 +13,9 @@ class CheckOut
     check_in.update(check_out_date_time: DateTime.now.strftime("%Y%m%d%H%M%S"))
   end
 
-  private
+  def errors
+    check_in.errors
+  end
 
   def check_in
     @_check_in ||= shift.check_ins.find_by(check_out_date_time: nil)
