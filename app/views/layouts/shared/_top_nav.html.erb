@@ -5,7 +5,11 @@
     </button>
   </div>
 
-  <%= form_for Search.new(search_params), method: :get, url: search_path, html: { class: "collapse show width" } do |f| %>
+  <%= form_for EmployeeAndLocationSearch.new(search_params),
+    method: :get,
+    url: search_path,
+    html: { class: "collapse show width" } do |f|
+  %>
     <div>
       <%= f.text_field :query, label: false%>
     </div>

@@ -1,15 +1,20 @@
 class SearchesController < AuthenticatedController
   def show
+    authorize :search, :show?
+
     @search_presenter = SearchPresenter.new(search)
   end
 
   private
 
   def search
-    Search.new(search_params)
+    EmployeeAndLocationSearch.new(search_params)
   end
 
   def search_params
-    params.require(:search).permit(:query)
+    params.
+      require(:employee_and_location_search).
+      permit(:query).
+      merge({ company_id: current_company.id })
   end
 end

@@ -9,7 +9,7 @@ class SiteSearchIndex < Chewy::Index
     tokenizer: {
       ngram_tokenizer: {
         type: "nGram",
-        min_gram: "2",
+        min_gram: "3",
         max_gram: "8"
       }
     }
@@ -24,11 +24,12 @@ class SiteSearchIndex < Chewy::Index
   end
 
   define_type Location do
-    field :line_1, :line_2
+    field :line_1, analyzer: "fuzzy_search"
+    field :line_2, analyzer: "fuzzy_search"
     field :city
     field :county_province
     field :postalcode
-    field :name
+    field :name, analyzer: "fuzzy_search"
     field :country
     field :company_id
   end
