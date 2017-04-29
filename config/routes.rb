@@ -54,8 +54,13 @@ Rails.application.routes.draw do
   end
 
   namespace :scheduler do
+    resources :locations, only: [] do
+      resource :schedule_preview, only: [:create]
+    end
+
+    resource :schedule_preview, only: [:show]
+
     resource :schedule, only: [:create, :show]
-    resource :schedule_preview, only: [:create, :show]
   end
 
   resource :schedules_management, only: [:create, :show]

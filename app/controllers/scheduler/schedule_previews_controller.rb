@@ -9,11 +9,15 @@ module Scheduler
 
     def create
       authorize :schedule_preview, :create?
-      location = current_company.locations.find(params[:location_id])
+
       @schedule = ::Schedule.new(company: current_company, location: location)
     end
 
     private
+
+    def location
+      @_location ||= current_company.locations.find(params[:location_id])
+    end
 
     def employees
       current_company.users
