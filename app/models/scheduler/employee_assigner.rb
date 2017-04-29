@@ -61,6 +61,7 @@ module Scheduler
         # iterate through a day and attempt to schedule
         while not_scheduled
           slot = layout.get_timeslot(x, y)
+          # TODO: user has no positions breaks this
           if not existing_shifts.user_scheduled_at(employee.id, x, y) and slot.not_full? and slot.position_room_available?(position.name)
             slot.add_employee(employee, position.name)
             timeslots.add_for(employee: employee, day: x, slot_number: y)
