@@ -16,7 +16,7 @@
           <% classname = day.month == Date.today.month ? "" : "inactive" %>
           <td class="<%= classname %>">
             <div>
-              <% if day.day == Date.today.day %>
+              <% if day.day == Date.today.day && day.month == Date.today.month %>
                 <div class="today <%= day.to_s %>">
                   <%= link_to day.day,
                     location_daily_schedule_path(
