@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     end
 
     resources :shifts, only: [] do
+      resource :cancellation, only: [:create], path: "cancel"
       resource :check_in, only: [:create]
       resource :check_out, only: [:create]
 
@@ -77,6 +78,7 @@ Rails.application.routes.draw do
   end
 
   resources :shifts, only: [:index] do
+    resource :cancellation, only: [:create], path: "cancel"
     resource :check_in, only: [:create]
     resource :check_out, only: [:create]
     resources :trades, only: [:create, :new]
