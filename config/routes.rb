@@ -17,9 +17,17 @@ Rails.application.routes.draw do
     resource :future_shifts, only: [:show]
     resources :locations, only: [:index]
 
+    resource :my_trades, only: [:show]
+
     resources :shifts, only: [] do
       resource :check_in, only: [:create]
       resource :check_out, only: [:create]
+
+      resources :trades, only: [:create]
+    end
+
+    resources :trades, only: [] do
+      resources :offers, only: [:create, :index]
     end
   end
 

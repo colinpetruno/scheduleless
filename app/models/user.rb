@@ -5,6 +5,8 @@ class User < ApplicationRecord
   has_many :locations, through: :user_locations
   has_many :positions, through: :employee_positions
   has_many :preferred_hours
+  has_many :trades
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
