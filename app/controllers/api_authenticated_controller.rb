@@ -1,4 +1,6 @@
 class ApiAuthenticatedController < ActionController::API
+  include Pundit
+
   before_action :doorkeeper_authorize!
 
   def current_user

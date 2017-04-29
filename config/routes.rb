@@ -1,14 +1,6 @@
 Rails.application.routes.draw do
   root to: "marketing/welcome#index"
 
-  namespace :mobile_api do
-    resource :future_shifts, only: [:show]
-    resources :shifts, only: [] do
-      resource :check_in, only: [:create]
-      resource :check_out, only: [:create]
-    end
-  end
-
   namespace :business, path: "company" do
     resources :users, only: [:edit, :index, :show, :update], path: "employees"
   end
@@ -19,6 +11,16 @@ Rails.application.routes.draw do
     resource :daily_schedule, only: [:show]
     resources :trades, only: [:index]
     resources :user_locations, only: [:create]
+  end
+
+  namespace :mobile_api do
+    resource :future_shifts, only: [:show]
+    resources :locations, only: [:index]
+
+    resources :shifts, only: [] do
+      resource :check_in, only: [:create]
+      resource :check_out, only: [:create]
+    end
   end
 
   use_doorkeeper # makes /oauth routes
