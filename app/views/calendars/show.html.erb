@@ -27,6 +27,8 @@
             locals: { presenter: @presenter } %>
         </section>
       </div>
+
+      <%= link_to "Available Shifts", location_trades_path(@presenter.current_location) %>
     </aside>
   </section>
 </div>

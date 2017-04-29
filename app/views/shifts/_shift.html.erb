@@ -1,0 +1,8 @@
+<div>
+  <%= DateParser.new(date: shift.date).month_and_day %>,
+  <%= "#{MinutesToTime.for(shift.minute_start)} - #{MinutesToTime.for(shift.minute_end)}" %>
+  <br>
+
+  <%= link_to "Trade", new_shift_trade_path(shift) %>
+</div>
+<br>

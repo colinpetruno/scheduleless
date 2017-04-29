@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :available_employees, only: [:index]
     resource :calendar, only: [:show]
     resource :daily_schedule, only: [:show]
+    resources :trades, only: [:index]
     resources :user_locations, only: [:create]
   end
 
@@ -55,9 +56,15 @@ Rails.application.routes.draw do
     resources :schedule_rules, only: [:create, :index]
   end
 
-  resources :shifts, only: [] do
+  resources :shifts, only: [:index] do
     resource :check_in, only: [:create]
     resource :check_out, only: [:create]
+    resources :trades, only: [:create, :new]
+  end
+
+  resources :trades, only: [] do
+    resource :trade_accept, only: [:create], path: "accept"
+    resources :offers, only: [:create, :index, :new]
   end
 
   resource :user, only: [:edit, :update]

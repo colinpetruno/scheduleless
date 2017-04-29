@@ -28,6 +28,8 @@ class CalendarShowPresenter
   end
 
   def next_shift_time
+    # TODO: these shift methods could probably be in their own shift
+    # presenter
     MinutesToTime.for(next_shift.minute_start)
   end
 
@@ -36,7 +38,7 @@ class CalendarShowPresenter
   end
 
   def next_shift_date
-    Date.parse(next_shift.date.to_s).strftime("%B %-d")
+    DateParser.new(date: next_shift.date).month_and_day
   end
 
   def next_shift_location

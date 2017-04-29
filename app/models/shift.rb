@@ -4,6 +4,7 @@ class Shift < ApplicationRecord
 
   has_many :check_ins
   has_one :location, through: :user_location
+  has_one :trade
 
   accepts_nested_attributes_for :company, :user_location
 

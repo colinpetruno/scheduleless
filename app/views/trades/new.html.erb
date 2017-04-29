@@ -1,0 +1,15 @@
+<div class="frame">
+  <header>
+    <div>Trade a Shift</div>
+  </header>
+  <section>
+    <article>
+      <%= simple_form_for [@trade.shift, @trade] do |f| %>
+        <%# #TODO: add some verbage here %>
+        <%= f.input :note %>
+        <%= f.input :accept_offers, as: :boolean %>
+        <%= f.submit %>
+      <% end %>
+    </article>
+  </section>
+</div>

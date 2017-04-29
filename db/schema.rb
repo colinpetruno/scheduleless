@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170425233418) do
+ActiveRecord::Schema.define(version: 20170429021302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,6 +100,18 @@ ActiveRecord::Schema.define(version: 20170425233418) do
     t.index ["uid"], name: "index_oauth_applications_on_uid", unique: true, using: :btree
   end
 
+  create_table "offers", force: :cascade do |t|
+    t.integer  "company_id"
+    t.integer  "trade_id"
+    t.string   "note"
+    t.integer  "offered_trade_id"
+    t.boolean  "accepted"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["company_id"], name: "index_offers_on_company_id", using: :btree
+    t.index ["trade_id"], name: "index_offers_on_trade_id", using: :btree
+  end
+
   create_table "popular_times", force: :cascade do |t|
     t.integer  "day_start"
     t.integer  "day_end"
@@ -149,6 +161,19 @@ ActiveRecord::Schema.define(version: 20170425233418) do
     t.datetime "updated_at",       null: false
     t.index ["company_id"], name: "index_shifts_on_company_id", using: :btree
     t.index ["user_location_id"], name: "index_shifts_on_user_location_id", using: :btree
+  end
+
+  create_table "trades", force: :cascade do |t|
+    t.integer  "shift_id"
+    t.integer  "location_id"
+    t.string   "note",                             null: false
+    t.boolean  "accept_offers",     default: true, null: false
+    t.integer  "accepted_shift_id"
+    t.integer  "status",            default: 0,    null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.index ["location_id"], name: "index_trades_on_location_id", using: :btree
+    t.index ["shift_id"], name: "index_trades_on_shift_id", using: :btree
   end
 
   create_table "user_locations", force: :cascade do |t|

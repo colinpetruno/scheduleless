@@ -19,5 +19,9 @@
     <% else %>
       <%= button_to "Check In",  shift_check_in_path(presenter.next_shift) %>
     <% end %>
+
+    <div>
+      <%= link_to "View All", shifts_path %>
+    </div>
   </section>
 </div>
