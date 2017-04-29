@@ -23,6 +23,11 @@ Rails.application.routes.draw do
 
   use_doorkeeper # makes /oauth routes
 
+  resources :offers, only: [] do
+    resource :offer_accept, only: [:create], path: "accept"
+    resource :offer_decline, only: [:create], path: "decline"
+  end
+
   namespace :onboarding do
     resource :company_preferences, only: [:create, :new]
     resources :locations, only: [:create, :new] do

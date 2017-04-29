@@ -1,4 +1,5 @@
 class Trade < ApplicationRecord
+  belongs_to :location
   belongs_to :shift
   has_many :offers
 
