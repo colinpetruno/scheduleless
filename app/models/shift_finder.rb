@@ -16,9 +16,11 @@ class ShiftFinder
   end
 
   def future
+    # these shifts drop off 15 minutes after they over
     all.
       where(date: (current_day+1..Float::INFINITY)).
-      or(all.where(date: current_day, minute_start: (current_minute..1440)))
+      or(all.
+         where(date: current_day, minute_end: ((current_minute - 15)..1440)))
   end
 
   def all
