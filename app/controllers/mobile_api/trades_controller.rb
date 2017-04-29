@@ -12,6 +12,12 @@ module MobileApi
       end
     end
 
+    def index
+      @trades = TradeFinder.for(current_user).find
+
+      render json: { trades: @trades }, status: :ok
+    end
+
     private
 
     def shift

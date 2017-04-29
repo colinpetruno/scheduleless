@@ -19,6 +19,11 @@ Rails.application.routes.draw do
 
     resource :my_trades, only: [:show]
 
+    resources :offers, only: [] do
+      resource :offer_accept, only: [:create], path: "accept"
+      resource :offer_decline, only: [:create], path: "decline"
+    end
+
     resources :shifts, only: [] do
       resource :check_in, only: [:create]
       resource :check_out, only: [:create]
@@ -26,7 +31,7 @@ Rails.application.routes.draw do
       resources :trades, only: [:create]
     end
 
-    resources :trades, only: [] do
+    resources :trades, only: [:index] do
       resources :offers, only: [:create, :index]
     end
   end
