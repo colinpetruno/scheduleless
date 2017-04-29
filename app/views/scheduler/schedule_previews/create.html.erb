@@ -30,7 +30,7 @@
             <% end %>
 
             <td><%= shift.user_location.location.line_1 %>, <%= shift.user_location.location.city %></td>
-            <td><%= shift.company.name %></td>
+            <td><%= shift.company.try(:name) %></td>
             <td><%= shift.user_location.user.given_name %></td>
             <td><%= shift.minute_start %></td>
             <td><%= shift.minute_end %></td>

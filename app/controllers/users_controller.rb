@@ -1,6 +1,8 @@
 class UsersController < AuthenticatedController
   def edit
     @user = current_user
+
+    authorize @user
   end
 
   def update
