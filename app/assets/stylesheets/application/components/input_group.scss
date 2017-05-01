@@ -1,0 +1,32 @@
+.input-group {
+  display: flex;
+  max-width: 400px;
+  position: relative;
+  width: 100%;
+
+  > input[type=text], > .twitter-typeahead {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    display: flex !important;
+    flex-basis: auto;
+    flex-direction: column;
+    flex-grow: 1;
+    flex-shrink: 1;
+
+    input {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+      max-width: 100%;
+    }
+  }
+
+  > span:last-child {
+    flex-direction: column;
+
+    input,button {
+      border-bottom-left-radius: 0;
+      border-left: 0px;
+      border-top-left-radius: 0;
+    }
+  }
+}

@@ -32,3 +32,16 @@
   }
 }
 
+.two-columns {
+  width: 100%;
+
+  & > section {
+    @include make-row();
+
+    & > article {
+      @include make-col-ready();
+      @include make-col(6);
+    }
+  }
+}
+

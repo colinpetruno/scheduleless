@@ -1,3 +1,12 @@
-<% users.each do |user| %>
-  <%= user.email %><br>
+<% if users.present? %>
+  <table>
+    <% users.each do |user| %>
+      <tr>
+        <td><%= "#{user.given_name} #{user.family_name}" %></td>
+        <td><%= user.email %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  There are no employees at this location.
 <% end %>

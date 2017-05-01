@@ -2,3 +2,7 @@ $(".locations-edit-users").html("<%=
   j(render partial: "locations/users",
          locals: { users: @location.users }
   ) %>");
+
+$('#location-available-employees').typeahead("val", "");
+$("#user_location_home").prop("checked", true);
+$("#user_location_admin").prop("checked", false);

@@ -1,5 +1,6 @@
 .frame {
   box-shadow: 0 0 20px darken(#e3eaf5, 3%);
+  margin-bottom: 30px;
 
   > header {
     > div {
@@ -40,6 +41,7 @@
 
   > section {
     background-color: $white;
+    min-height: 150px;
 
     > article {
       padding: 15px;

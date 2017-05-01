@@ -4,6 +4,8 @@ en:
       company_preference:
         create: "Save"
         update: "Save"
+      user_location:
+        create: "Add"
   simple_form:
     "yes": 'Yes'
     "no": 'No'
@@ -15,8 +17,10 @@ en:
       # html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: "Please review the problems below:"
+
+
     # Examples
-    # labels:
+    
     #   defaults:
     #     password: 'Password'
     #   user:

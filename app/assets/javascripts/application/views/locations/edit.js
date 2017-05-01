@@ -12,12 +12,14 @@ $(document).on("turbolinks:load", function() {
     $('#location-available-employees').typeahead(null, {
       hint: true,
       name: 'employees',
-      display: 'email',
+      display: function(obj){
+        return obj.given_name + " " + obj.family_name
+      },
       limit: 10,
       source: available_employees,
       templates: {
         empty: [
-          '<div class="empty-message">',
+          '<div class="tt-empty-message">',
             'No employees found',
           '</div>'
         ].join('\n')

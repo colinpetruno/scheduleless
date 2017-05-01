@@ -1,0 +1,23 @@
+.twitter-typeahead {
+  .tt-menu.tt-open {
+    background-color: $white;
+    border: 1px solid $gray-light;
+    right: 0;
+
+    .tt-dataset {
+      .tt-empty-message {
+        padding: 5px 10px;
+      }
+
+      .tt-suggestion {
+        cursor: pointer;
+        padding: 5px 10px;
+
+        &:hover, &:focus, &:active {
+          background-color: $blue;
+          color: $white;
+        }
+      }
+    }
+  }
+}

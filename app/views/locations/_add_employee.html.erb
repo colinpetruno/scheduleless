@@ -1,0 +1,28 @@
+<div class="frame">
+  <header>
+    <div>Add An Employee</div>
+  </header>
+  <section>
+    <article>
+      <%= simple_form_for [location, UserLocation.new], remote: true, format: :js  do |f| %>
+        <div class="input input-group">
+          <input type="text"
+                 id="location-available-employees"
+                 data-url="<%= location_available_employees_path(location, format: :json, query: "QUERY") %>"/>
+
+          <span>
+            <%= f.submit %>
+          </span>
+        </div>
+
+        <%= f.input :user_id, as: :hidden %>
+
+        <%= f.input :home,
+          wrapper: :horizontal_boolean,
+          input_html: { checked: true } %>
+        <%= f.input :admin, wrapper: :horizontal_boolean %>
+
+      <% end %>
+    </article>
+  </section>
+</div>
