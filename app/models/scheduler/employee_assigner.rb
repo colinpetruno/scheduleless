@@ -14,7 +14,7 @@ module Scheduler
 
     def assign
       prepare_initial_schedule
-      auto_manage_schedule(ROTATION_COUNT)
+      auto_manage_schedule
     end
 
     private
@@ -34,17 +34,100 @@ module Scheduler
     end
 
     def assign_iteration # looks good
+
+      failed_assignments = 0
+      num_timeslots = 0
+
+      all_timeslots = []
+
       (0..options.days_to_schedule).each do |x|
+        all_timeslots.push([])
         (0..options.number_of_intervals).each do |y|
-          slot = layout.get_timeslot(x,y)
-          if slot.not_full? then assign_timeslot(slot) end
+          num_timeslots = num_timeslots + 1
+          all_timeslots[x].push({x: x, y: y})
+        end
+      end
+
+      all_timeslots.shuffle!
+
+      all_timeslots.each do |day|
+        day.shuffle!
+      end
+
+      all_timeslots.each do |day|
+        day.each do |coordinate|
+          slot = layout.get_timeslot(coordinate[:x], coordinate[:y])
+          if slot.not_full?
+            if !assign_timeslot(slot)
+              failed_assignments = failed_assignments + 1
+            end
+          else
+            failed_assignments = failed_assignments + 1
+          end
+        end
+      end
+
+      ## Did we make an assignment in this iteration
+      failed_assignments != num_timeslots
+      false
+    end
+
+    def auto_manage_schedule() # looks good
+      successful_iteration = assign_iteration
+
+      # if the iteration is successful, run another round
+      if successful_iteration
+        auto_manage_schedule()
+      else
+        # if the iteration fails attempt an injection if necessary or cancel
+        if !layout.all_slots_full?
+          if perform_employee_injection
+            auto_manage_schedule()
+          end
         end
       end
     end
 
-    def auto_manage_schedule(max_rounds) # looks good
-      (0..max_rounds).each do
-        assign_iteration
+    def perform_employee_injection
+      # find all unfilled positions
+      unfilled_timeslots = []
+      (0..options.days_to_schedule).each do |x|
+        (0..options.number_of_intervals).each do |y|
+          slot = layout.get_timeslot(x,y)
+          unfilled_timeslots.push(slot) if slot.not_full?
+        end
+      end
+
+      # shuffle the unfilled timeslots
+      unfilled_timeslots.shuffle!
+
+      # find a timeslot we can inject an employee and perform the injection
+      #   Then leave the injection
+      unfilled_timeslots.each do |slot|
+        # list employees sorted by priority
+        sorted_employees = sort_employees_by_timeslots
+
+        sorted_employees.each do |employee|
+
+          if !slot.has_employee?(employee.id) and !minmax_not_eligible(slot, employee)
+            employee.positions.each do |position|
+              if slot.position_room_available?(position.name)
+                slot.add_employee(employee, position.name)
+                return true;
+              end
+            end
+
+          end
+        end
+
+      end
+
+      false
+    end
+
+    def sort_employees_by_timeslots
+      employees.sort_by do |employee|
+        timeslots.count_for(employee)
       end
     end
 
@@ -80,6 +163,8 @@ module Scheduler
 
     def assign_timeslot(slot) # looks okay
 
+      assigned = false
+
       slot.positions.each do |position|
         elg_employees = eligible_employees(slot, position)
 
@@ -87,10 +172,11 @@ module Scheduler
           assigned_employee = priority_employee(elg_employees)
           slot.add_employee(assigned_employee, position)
           timeslots.add_for(employee: assigned_employee, day: slot.x, slot_number: slot.y)
-        else
-          # TODO handle Ignore or Random case
+          assigned = true
         end
       end
+
+      assigned
     end
 
     def priority_employee(eligible_employees) # looks good
@@ -111,6 +197,10 @@ module Scheduler
       EligibilityFinder.
         new(layout: layout, timeslot: slot, existing_shifts: existing_shifts, company: company, options: options).
         find(position)
+    end
+
+    def minmax_not_eligible(timeslot, employee)
+      MinmaxShiftHelper.new(timeslot: timeslot, employee: employee, layout: layout, company: company, options: options).is_not_eligible
     end
   end
 end

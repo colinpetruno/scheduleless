@@ -19,6 +19,17 @@ module Scheduler
       @day_shift_grid.push(day)
     end
 
+    def all_slots_full?
+      all_full = true
+      @day_shift_grid.each do |day_shifts|
+        day_shifts.each do |slot|
+          all_full = slot.full? && all_full
+        end
+      end
+
+      all_full
+    end
+
     private
 
     attr_reader :options
