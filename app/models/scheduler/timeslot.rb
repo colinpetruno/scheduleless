@@ -20,12 +20,12 @@ module Scheduler
       read_rule_slots(rules)
     end
 
-    def full
+    def full?
       @employees.length == @slots_available
     end
 
     def not_full?
-      !full
+      !full?
     end
 
     def positions
