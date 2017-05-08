@@ -12,11 +12,15 @@ module Scheduler
     def company_params
       params.
         require(:schedule).
-        permit(shifts_attributes: [:company_id,
-                                   :user_location_id,
-                                   :minute_start,
-                                   :minute_end,
-                                   :date])
+        permit(shifts_attributes: [
+          :company_id,
+          :date,
+          :location_id,
+          :minute_start,
+          :minute_end,
+          :user_id,
+          :user_location_id
+        ])
     end
   end
 end

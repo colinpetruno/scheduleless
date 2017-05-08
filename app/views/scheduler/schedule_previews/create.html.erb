@@ -21,21 +21,24 @@
         <tbody>
           <% @schedule.shifts.each_with_index do |shift, index| %>
           <tr>
-            <%= f.simple_fields_for "shifts_attributes[#{index}]", shift do |sf| %>
-              <%= sf.input :company_id, as: :hidden %>
-              <%= sf.input :minute_start, as: :hidden %>
-              <%= sf.input :minute_end, as: :hidden %>
-              <%= sf.input :date, as: :hidden %>
-              <%= sf.input :user_location_id, as: :hidden %>
-            <% end %>
-
             <td><%= shift.user_location.location.line_1 %>, <%= shift.user_location.location.city %></td>
             <td><%= shift.company.try(:name) %></td>
             <td><%= shift.user_location.user.given_name %></td>
             <td><%= shift.minute_start %></td>
             <td><%= shift.minute_end %></td>
             <td><%= shift.minute_end - shift.minute_start %></td>
-            <td><%= shift.date %></td>
+            <td>
+              <%= shift.date %>
+              <%= f.simple_fields_for "shifts_attributes[#{index}]", shift do |sf| %>
+                <%= sf.input :company_id, as: :hidden %>
+                <%= sf.input :date, as: :hidden %>
+                <%= sf.association :location, as: :hidden %>
+                <%= sf.input :minute_end, as: :hidden %>
+                <%= sf.input :minute_start, as: :hidden %>
+                <%= sf.association :user, as: :hidden %>
+                <%= sf.input :user_location_id, as: :hidden %>
+              <% end %>
+            </td>
           <% end %>
 
           </tr>

@@ -1,11 +1,11 @@
 class Shift < ApplicationRecord
-  belongs_to :user_location
   belongs_to :company
+  belongs_to :location
+  belongs_to :user
+  belongs_to :user_location
 
   has_many :check_ins
-  has_one :location, through: :user_location
   has_one :trade
-  has_one :user, through: :user_location
 
   accepts_nested_attributes_for :company, :user_location
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170429133950) do
+ActiveRecord::Schema.define(version: 20170508144148) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -159,7 +159,11 @@ ActiveRecord::Schema.define(version: 20170429133950) do
     t.integer  "date",             null: false
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.integer  "location_id",      null: false
+    t.integer  "user_id",          null: false
     t.index ["company_id"], name: "index_shifts_on_company_id", using: :btree
+    t.index ["location_id"], name: "index_shifts_on_location_id", using: :btree
+    t.index ["user_id"], name: "index_shifts_on_user_id", using: :btree
     t.index ["user_location_id"], name: "index_shifts_on_user_location_id", using: :btree
   end
 
@@ -227,4 +231,6 @@ ActiveRecord::Schema.define(version: 20170429133950) do
   add_foreign_key "oauth_access_grants", "users", column: "resource_owner_id"
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_access_tokens", "users", column: "resource_owner_id"
+  add_foreign_key "shifts", "locations"
+  add_foreign_key "shifts", "users"
 end
