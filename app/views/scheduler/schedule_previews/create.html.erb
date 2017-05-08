@@ -21,9 +21,9 @@
         <tbody>
           <% @schedule.shifts.each_with_index do |shift, index| %>
           <tr>
-            <td><%= shift.user_location.location.line_1 %>, <%= shift.user_location.location.city %></td>
+            <td><%= shift.location.line_1 %>, <%= shift.location.city %></td>
             <td><%= shift.company.try(:name) %></td>
-            <td><%= shift.user_location.user.given_name %></td>
+            <td><%= shift.user.given_name %></td>
             <td><%= shift.minute_start %></td>
             <td><%= shift.minute_end %></td>
             <td><%= shift.minute_end - shift.minute_start %></td>
@@ -36,7 +36,6 @@
                 <%= sf.input :minute_end, as: :hidden %>
                 <%= sf.input :minute_start, as: :hidden %>
                 <%= sf.association :user, as: :hidden %>
-                <%= sf.input :user_location_id, as: :hidden %>
               <% end %>
             </td>
           <% end %>

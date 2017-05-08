@@ -27,7 +27,7 @@ module Scheduler
 
         (y_start..y_end).each do |y|
           timeslot_id = "#{x},#{y}"
-          user_id = shift.user_location.user_id
+          user_id = shift.user_id
 
           if existing_timeslots.key? timeslot_id
             existing_timeslots[timeslot_id].push(user_id) unless existing_timeslots[timeslot_id].include? user_id

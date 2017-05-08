@@ -24,9 +24,7 @@ class ShiftFinder
   end
 
   def all
-    Shift.
-      where(user_location_id: user_location_ids).
-      order(:date, :minute_start)
+    object.shifts.order(:date, :minute_start)
   end
 
   def find_by(options)
@@ -43,9 +41,5 @@ class ShiftFinder
 
   def current_minute
     (Time.now.hour * 60) + Time.now.min
-  end
-
-  def user_location_ids
-    object.user_locations.pluck(:id)
   end
 end

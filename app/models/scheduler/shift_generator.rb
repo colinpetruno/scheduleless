@@ -52,17 +52,21 @@ module Scheduler
         date = options.start_date + day_advance.days
         date_integer = date.strftime('%Y%m%d').to_i
 
+        # TODO: Avoid N+1 Query?
         employee = employees.find(shift["employee_id"])
-        user_location = @location.user_locations.find_by! user_id: employee.id, location: @location
 
-        shifts.push(company.shifts.build(user_location: user_location,
-                                         company: @company,
-                                         date: date_integer,
-                                         location: @location,
-                                         minute_start: shift["time_start"],
-                                         minute_end: shift["time_end"],
-                                         user: employee
-                                        ))
+        shifts.
+          push(
+            company.
+            shifts.
+            build(
+              company: @company,
+              date: date_integer,
+              location: @location,
+              minute_start: shift["time_start"],
+              minute_end: shift["time_end"],
+              user: employee
+            ))
       end
 
       shifts

@@ -13,9 +13,7 @@ class LocationSchedule
   end
 
   def shifts_for(user)
-    # TODO n+1 query elimination
-    user_location = UserLocation.find_by(user_id: user.id, location_id: location.id)
-    shifts.where(user_location_id: user_location.id)
+    user.shifts.where(location: location)
   end
 
   def shifts?
