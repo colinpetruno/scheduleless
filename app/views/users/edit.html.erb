@@ -1,18 +1,22 @@
 <div>
   <%= simple_form_for @user, url: user_path do |f| %>
     <div class="frame">
-      <div class="rail">
-        <section>
-          <aside>
-            photo goes here
-          </aside>
-          <article>
-            <%= f.input :family_name %>
-            <%= f.input :given_name %>
-            <%= f.input :preferred_name %>
-          </article>
-        </section>
-      </div>
+      <section>
+        <article>
+          <div class="rail">
+            <section>
+              <aside>
+                photo goes here
+              </aside>
+              <article>
+                <%= f.input :family_name %>
+                <%= f.input :given_name %>
+                <%= f.input :preferred_name %>
+              </article>
+            </section>
+          </div>
+        </article>
+      </section>
     </div>
 
     <br><br>
@@ -22,7 +26,9 @@
         <div>Contact Info</div>
       </header>
       <section>
-        <%= f.input :mobile_phone %>
+        <article>
+          <%= f.input :mobile_phone %>
+        </article>
       </section>
     </div>
 
@@ -33,14 +39,14 @@
         <div>Availibility</div>
       </header>
       <section>
-        <div>
+        <article>
           <% current_user.preferred_hours.each do |preferred_hours| %>
             <%= f.simple_fields_for "preferred_hours_attributes[]", preferred_hours do |ph| %>
               <%= ph.input :id, as: :hidden %>
               <%= ph.input :testing, as: :time_range %>
             <% end %>
           <% end %>
-        </div>
+        </article>
       </section>
     </div>
 
