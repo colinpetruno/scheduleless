@@ -19,12 +19,12 @@ module Settings
     private
 
     def company_preference
-      current_company.company_preference
+      current_company.preference
     end
 
     def company_preference_params
       params.
-        require(:company_preference).
+        require(:preference).
         permit(:shift_overlap)
     end
   end

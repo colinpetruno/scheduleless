@@ -1,11 +1,37 @@
 <%= simple_form_for location do |f| %>
-  <%= f.input :name %>
-  <%= f.input :line_1 %>
-  <%= f.input :line_2 %>
-  <%= f.input :line_3 %>
-  <%= f.input :city %>
-  <%= f.input :county_province %>
-  <%= f.input :postalcode %>
-  <%= f.input :country %>
+  <div class="two-columns">
+    <section>
+      <article>
+        <%= f.input :name %>
+        <%= f.input :line_1 %>
+        <%= f.input :line_2 %>
+        <%= f.input :line_3 %>
+        <%= f.input :city %>
+        <%= f.input :county_province %>
+        <%= f.input :postalcode %>
+        <%= f.input :country %>
+      </article>
+
+      <article>
+        <%= f.simple_fields_for :preference_attributes, location.preference do |pf| %>
+          <%= pf.input :id, as: :hidden %>
+          <%= pf.input :use_company_settings,
+            as: :boolean,
+            input_html: {
+              class: "disable-toggle",
+              data: { target: "#shift-preference-fields" }
+            } %>
+
+            <div id="shift-preference-fields">
+              <%= pf.input :shift_overlap %>
+              <%= pf.input :minimum_shift_length %>
+              <%= pf.input :maximum_shift_length %>
+              <%= pf.input :break_length %>
+            </div>
+        <% end %>
+      </article>
+    </section>
+  </div>
+
   <%= f.submit %>
 <% end %>

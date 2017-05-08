@@ -5,13 +5,13 @@ class Company < ApplicationRecord
   has_many :schedule_rules
   has_many :users
   has_many :shifts
-  has_one :company_preference
+  has_one :preference, as: :preferable
 
   validates :name, presence: true
 
   accepts_nested_attributes_for :shifts, :users
 
-  def company_preference
-    super || create_company_preference
+  def preference
+    super || create_preference
   end
 end

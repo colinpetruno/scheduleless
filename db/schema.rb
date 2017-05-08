@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170508152825) do
+ActiveRecord::Schema.define(version: 20170508210754) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,15 +28,6 @@ ActiveRecord::Schema.define(version: 20170508152825) do
     t.string   "name",       null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "company_preferences", force: :cascade do |t|
-    t.integer "company_id"
-    t.integer "shift_overlap",        default: 15,  null: false
-    t.integer "minimum_shift_length", default: 240, null: false
-    t.integer "maximum_shift_length", default: 480, null: false
-    t.integer "break_length",         default: 60,  null: false
-    t.index ["company_id"], name: "index_company_preferences_on_company_id", using: :btree
   end
 
   create_table "employee_positions", force: :cascade do |t|
@@ -130,6 +121,17 @@ ActiveRecord::Schema.define(version: 20170508152825) do
     t.integer "company_id", null: false
     t.string  "name",       null: false
     t.index ["company_id"], name: "index_positions_on_company_id", using: :btree
+  end
+
+  create_table "preferences", force: :cascade do |t|
+    t.integer "preferable_id",                            null: false
+    t.integer "shift_overlap",        default: 15,        null: false
+    t.integer "minimum_shift_length", default: 240,       null: false
+    t.integer "maximum_shift_length", default: 480,       null: false
+    t.integer "break_length",         default: 60,        null: false
+    t.string  "preferable_type",      default: "Company", null: false
+    t.boolean "use_company_settings", default: true,      null: false
+    t.index ["preferable_id"], name: "index_preferences_on_preferable_id", using: :btree
   end
 
   create_table "preferred_hours", force: :cascade do |t|

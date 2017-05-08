@@ -53,7 +53,15 @@ class LocationsController < AuthenticatedController
              :line_2,
              :line_3,
              :name,
-             :postal_code
+             :postal_code,
+             preference_attributes: [
+               :break_length,
+               :id,
+               :maximum_shift_length,
+               :minimum_shift_length,
+               :shift_overlap,
+               :use_company_settings
+             ]
             )
   end
 end
