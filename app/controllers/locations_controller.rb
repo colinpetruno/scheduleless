@@ -59,6 +59,8 @@ class LocationsController < AuthenticatedController
                :id,
                :maximum_shift_length,
                :minimum_shift_length,
+               :preferable_id,
+               :preferable_type,
                :shift_overlap,
                :use_company_settings
              ]

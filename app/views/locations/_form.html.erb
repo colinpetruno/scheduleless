@@ -15,6 +15,9 @@
       <article>
         <%= f.simple_fields_for :preference_attributes, location.preference do |pf| %>
           <%= pf.input :id, as: :hidden %>
+          <%= pf.input :preferable_id, as: :hidden %>
+          <%= pf.input :preferable_type, as: :hidden %>
+
           <%= pf.input :use_company_settings,
             as: :boolean,
             input_html: {
@@ -23,10 +26,14 @@
             } %>
 
             <div id="shift-preference-fields">
-              <%= pf.input :shift_overlap %>
-              <%= pf.input :minimum_shift_length %>
-              <%= pf.input :maximum_shift_length %>
-              <%= pf.input :break_length %>
+              <%= pf.input :shift_overlap,
+                disabled: pf.object.use_company_settings? %>
+              <%= pf.input :minimum_shift_length,
+                disabled: pf.object.use_company_settings? %>
+              <%= pf.input :maximum_shift_length,
+                disabled: pf.object.use_company_settings? %>
+              <%= pf.input :break_length,
+                disabled: pf.object.use_company_settings? %>
             </div>
         <% end %>
       </article>

@@ -18,16 +18,16 @@ class Location < ApplicationRecord
   end
 
   def preference
-    super || create_preference(
+    super || build_preference(
         company.
           preference.
           attributes.
-          slice(%w(
-            break_length
-            minimum_shift_length
-            maximum_shift_length
-            shift_overlap
-          ))
+          slice(
+            "break_length",
+            "minimum_shift_length",
+            "maximum_shift_length",
+            "shift_overlap"
+          )
       )
   end
 end

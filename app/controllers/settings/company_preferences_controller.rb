@@ -25,7 +25,12 @@ module Settings
     def company_preference_params
       params.
         require(:preference).
-        permit(:shift_overlap)
+        permit(
+          :break_length,
+          :maximum_shift_length,
+          :minimum_shift_length,
+          :shift_overlap
+        )
     end
   end
 end
