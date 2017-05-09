@@ -1,0 +1,42 @@
+<div class="credit-card-form">
+  <div>
+    <%= simple_form_for StripeCreditCardMock.new,
+      url: "#",
+      html: {
+        id: "credit-card-form"
+      } do |f| %>
+
+      <%= f.input :name %>
+
+      <%= f.input :card_number,
+        input_html: {
+        autocomplete: "cc-number",
+        class: "cc-number",
+        type: "tel",
+        data: { stripe: "number" }
+      } %>
+
+
+      <section>
+        <div>
+          <%= f.input :exp_month, input_html: { data: { stripe: "exp-month" } } %>
+        </div>
+
+        <div>
+          <%= f.input :exp_year, input_html: { data: { stripe: "exp-year" } } %>
+        </div>
+
+        <div>
+          <%= f.input :cvc, input_html: { data: { stripe: "cvc" } } %>
+        </div>
+      </section>
+    <% end %>
+
+    <%= simple_form_for [:settings, @credit_card] do |f| %>
+      <%= f.input :token, as: :hidden %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>
+
+<%= render partial: "dev_helper" if Rails.env.development? %>

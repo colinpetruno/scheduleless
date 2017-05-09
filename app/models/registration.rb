@@ -3,19 +3,35 @@ class Registration
 
   attr_accessor :company_params, :user_params
 
-  def register
-    user.valid?
-  end
-
   def company
     user.company
   end
 
-  def user
-    @_company ||= User.create(user_params)
-  end
-
   def errors
     user.errors
+  end
+
+  def register
+    user.valid?
+  end
+
+  def user
+    @_user ||= User.create(user_params)
+  end
+
+  private
+
+  def create_payment_account
+    customer.
+      subscriptions.
+      create(plan: company.subscription.plan)
+
+    customer
+  end
+
+  def customer
+    @_customer ||= Stripe::Customer.create(
+      description: company.name
+    )
   end
 end

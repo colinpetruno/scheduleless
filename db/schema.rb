@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170508210754) do
+ActiveRecord::Schema.define(version: 20170509174211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,9 +25,22 @@ ActiveRecord::Schema.define(version: 20170508210754) do
   end
 
   create_table "companies", force: :cascade do |t|
-    t.string   "name",       null: false
+    t.string   "name",               null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "stripe_customer_id"
+  end
+
+  create_table "credit_cards", force: :cascade do |t|
+    t.integer  "company_id"
+    t.integer  "exp_month",  null: false
+    t.integer  "exp_year",   null: false
+    t.integer  "last_4",     null: false
+    t.string   "brand",      null: false
+    t.string   "token",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_credit_cards_on_company_id", using: :btree
   end
 
   create_table "employee_positions", force: :cascade do |t|
@@ -165,6 +178,17 @@ ActiveRecord::Schema.define(version: 20170508210754) do
     t.index ["company_id"], name: "index_shifts_on_company_id", using: :btree
     t.index ["location_id"], name: "index_shifts_on_location_id", using: :btree
     t.index ["user_id"], name: "index_shifts_on_user_id", using: :btree
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.integer  "company_id"
+    t.integer  "credit_card_id"
+    t.integer  "plan",                   default: 1, null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.string   "stripe_subscription_id"
+    t.index ["company_id"], name: "index_subscriptions_on_company_id", using: :btree
+    t.index ["credit_card_id"], name: "index_subscriptions_on_credit_card_id", using: :btree
   end
 
   create_table "trades", force: :cascade do |t|

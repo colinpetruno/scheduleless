@@ -2,7 +2,9 @@ en:
   settings:
     show:
       company_preferences: "Company Preferences"
+      credit_card: "Payment"
       popular_times: "Popular Times"
       positions: "Positions"
       schedule_rules: "Schedule Rules"
+      subscription: "Subscription Level"
       title: "Settings"

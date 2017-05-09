@@ -8,3 +8,6 @@ en:
       normal: "during normal traffic"
       busy: "during busy traffic"
       peak: "during peak traffic"
+    subscription:
+      small: "Up to 15 Employees ($10)"
+      medium: "Up to 250 Employees ($50)"

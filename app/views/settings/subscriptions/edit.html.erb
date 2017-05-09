@@ -1,0 +1,14 @@
+<div class="frame">
+  <header>
+    <div>Subscription Preferences</div>
+  </header>
+  <section>
+    <article>
+      <%= simple_form_for [:settings, @subscription] do |f| %>
+        <%= f.association :credit_card %>
+        <%= f.input :plan, as: :select, collection: Subscription.collection_labels  %>
+        <%= f.submit %>
+      <% end %>
+    </article>
+  </section>
+</div>
