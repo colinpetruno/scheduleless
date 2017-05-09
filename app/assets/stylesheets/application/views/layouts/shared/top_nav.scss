@@ -2,11 +2,16 @@
   background-color: #fff;
   max-height: 85px;
 
+  .search-icon {
+    color: $white;
+  }
+
   .search-icon button {
     background-color: #5f97ff;
     cursor: pointer;
     font-size: 30px;
     font-weight: 200px;
+    height: 85px;
     min-width: 85px;
     line-height: 75px;
     text-align: center;
