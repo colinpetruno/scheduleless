@@ -1,0 +1,13 @@
+en:
+  settings:
+    credit_cards:
+      blank:
+        add_card: "Add a Card Now"
+        message: "You haven't added any cards yet! Add one now so you can have
+          uninterrupted access."
+      index:
+        header: "Manage Credit Cards"
+        add_card: "Add a New Card"
+      new:
+        header: "Add a Credit Card"
+

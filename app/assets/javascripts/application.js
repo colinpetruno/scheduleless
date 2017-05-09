@@ -8,4 +8,5 @@
 
 //= require_tree ./application/vendor
 //= require_tree ./application/components
+//= require_tree ./application/utilities
 //= require_tree ./application/views

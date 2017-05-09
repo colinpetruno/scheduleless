@@ -1,0 +1,20 @@
+<div class="frame">
+  <header>
+    <div>
+      <%= t(".header") %>
+
+      <aside>
+        <%= link_to t(".add_card"), new_settings_credit_card_path %>
+      </aside>
+    </div>
+  </header>
+  <section>
+    <article>
+      <% if @credit_cards.present? %>
+
+      <% else %>
+        <%= render partial: "blank" %>
+      <% end %>
+    </article>
+  </section>
+</div>

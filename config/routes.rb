@@ -70,6 +70,7 @@ Rails.application.routes.draw do
 
   namespace :settings do
     resource :company_preference, only: [:edit, :update]
+    resources :credit_cards, only: [:create, :edit, :index, :new, :update]
 
     resources :popular_times, only: [:index, :new]
 
@@ -80,6 +81,7 @@ Rails.application.routes.draw do
 
     resources :positions, only: [:create, :index, :new,]
     resources :schedule_rules, only: [:create, :index]
+    resource :subscription, only: [:edit, :update]
   end
 
   resources :shifts, only: [:index] do

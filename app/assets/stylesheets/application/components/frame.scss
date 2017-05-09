@@ -5,15 +5,12 @@
   > header {
     > div {
       color: $font-light;
+      display: flex;
       padding: 0 15px;
       text-transform: uppercase;
 
-      aside, article, div.rail, section {
-        margin: 0;
-        padding: 0;
-      }
-
-      aside {
+      > aside {
+        margin-left: auto;
         text-align: right;
       }
 
