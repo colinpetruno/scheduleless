@@ -15,6 +15,15 @@ class StripeCustomer
     @customer ||= find_customer
   end
 
+  def reload
+    @customer = find_customer
+    self
+  end
+
+  def stripe_object
+    @customer ||= find_customer
+  end
+
   private
 
   attr_reader :company, :customer
