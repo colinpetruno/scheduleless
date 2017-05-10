@@ -12,9 +12,11 @@ class StripeCreditCard
     credit_card.
       assign_attributes(
         brand: stripe_credit_card.brand,
+        default: default_card?,
         exp_month: stripe_credit_card.exp_month,
         exp_year: stripe_credit_card.exp_year,
-        last_4: stripe_credit_card.last4
+        last_4: stripe_credit_card.last4,
+        token: stripe_credit_card.id
       )
 
     stripe_credit_card
@@ -32,16 +34,19 @@ class StripeCreditCard
 
   attr_reader :credit_card
 
-
   def find_credit_card
     if credit_card.persisted?
-      stripe_customer.sources.retrieve(credit_card.token)
+      stripe_customer.stripe_object.sources.retrieve(credit_card.token)
     else
-      stripe_customer.sources.create(source: credit_card.token)
+      stripe_customer.stripe_object.sources.create(source: credit_card.token)
     end
   end
 
+  def default_card?
+    stripe_customer.reload.stripe_object.default_source == stripe_credit_card.id
+  end
+
   def stripe_customer
-    @_stripe_customer ||= StripeCustomer.for(credit_card.company).retrieve
+    @_stripe_customer ||= StripeCustomer.for(credit_card.company)
   end
 end

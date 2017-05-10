@@ -1,0 +1,11 @@
+.badge {
+  cursor: default;
+  display: inline-block;
+  padding: 3px 10px;
+
+  &.green {
+    background-color: $green-notice;
+    border: 1px solid darken($green-notice, 5%);
+    color: darken($green-notice, 55%);
+  }
+}
