@@ -5,6 +5,10 @@ class CreditCardPolicy < ApplicationPolicy
     end
   end
 
+  def create?
+    user.company_admin?
+  end
+
   def new?
     user.company_admin?
   end
