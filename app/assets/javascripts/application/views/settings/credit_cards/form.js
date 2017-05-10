@@ -8,7 +8,7 @@ $(document).on("turbolinks:load", function() {
       console.log(response);
       var token = response.id;
       $("#credit_card_token").val(token);
-      // $("#new_credit_card,.edit_credit_card").off("submit").submit();
+      $("#new_credit_card,.edit_credit_card").off("submit").submit();
     }
   }
 
