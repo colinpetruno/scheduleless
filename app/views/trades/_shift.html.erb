@@ -8,11 +8,20 @@
     <%= "#{MinutesToTime.for(trade.shift.minute_start)} - #{MinutesToTime.for(trade.shift.minute_end)}" %>
   </div>
 
+  <%# TODO: Remove nested boolean and simplify this logic %>
   <% if show_actions %>
-    <div class="buttons">
-      <%= link_to "Offer a Trade", new_trade_offer_path(trade), class: "button" %>
-      <%= button_to "Take Shift", trade_trade_accept_path(trade), method: :post %>
-    </div>
+    <% if trade.offers.any? { |offer| offer.user_id == current_user.id } %>
+      <div class="buttons">
+        <%= link_to t(".make_offer"), new_trade_offer_path(trade), class: "button" %>
+        <%= button_to t(".take_shift"), trade_trade_accept_path(trade), method: :post %>
+      </div>
+    <% else %>
+      <div class="offer-present">
+        <div class="badge green">
+          <%= t(".already_offered") %>
+        </div>
+      </div>
+    <% end %>
   <% end %>
 
   <div class="location">
@@ -24,3 +33,4 @@
     <%= AddressFormatter.for(trade.shift.location).city_state_zip %>
   </div>
 </div>
+<%# TODO: Get this stuff into a presenter or something. Dementer is angry %>

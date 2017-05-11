@@ -1,0 +1,6 @@
+en:
+  trades:
+    shift:
+      make_offer: "Offer a Trade"
+      take_shift: "Take Shift"
+      already_offered: "You already made an offer!"
