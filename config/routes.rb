@@ -70,7 +70,7 @@ Rails.application.routes.draw do
 
   namespace :settings do
     resource :company_preference, only: [:edit, :update]
-    resources :credit_cards, only: [:create, :edit, :index, :new, :update]
+    resources :credit_cards, only: [:create, :destroy, :edit, :index, :new, :update]
 
     resources :popular_times, only: [:index, :new]
 

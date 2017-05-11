@@ -6,6 +6,7 @@ $gray-light:                     #a0acb9;
 $gray-dark:                      #41454b;
 $green:                          #5bd1b1;
 $green-notice:                   #dff0d8;
+$red:                            #d9534f;
 $white:                          #ffffff;
 
 $brand-primary:                  $blue;
@@ -23,6 +24,11 @@ $light-seperator:                #535860;
 
 $font-family-serif:              "Montserrat", serif;
 $font-family-sans-serif:         "Roboto", sans-serif;
+
+$font-size-base:                 1rem;
+$font-size-lg:                   1.25rem;
+$font-size-sm:                   .875rem;
+$font-size-xs:                   .75rem;
 
 $headings-font-weight:           200;
 
@@ -160,7 +166,7 @@ $dropdown-link-hover-bg:         $blue;
 // $brand-success:             $green;
 // $brand-info:                $teal;
 // $brand-warning:             $orange;
-// $brand-danger:              $red;
+$brand-danger:              $red;
 // $brand-inverse:             $gray-dark;
 
 
@@ -292,10 +298,7 @@ $dropdown-link-hover-bg:         $blue;
 // $font-family-monospace:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 // $font-family-base:       $font-family-sans-serif;
 
-// $font-size-base: 1rem; // Assumes the browser default, typically `16px`
-// $font-size-lg:   1.25rem;
-// $font-size-sm:   .875rem;
-// $font-size-xs:   .75rem;
+
 
 // $font-weight-normal: normal;
 // $font-weight-bold: bold;
@@ -414,9 +417,9 @@ $btn-primary-color:              $white;
 $btn-primary-bg:                 $blue;
 $btn-primary-border:             $blue;
 
-// $btn-secondary-color:            $gray-dark;
-// $btn-secondary-bg:               $white;
-// $btn-secondary-border:           #ccc;
+$btn-secondary-color:            $gray-dark;
+$btn-secondary-bg:               $white;
+$btn-secondary-border:           #ccc;
 
 // $btn-info-color:                 $white;
 // $btn-info-bg:                    $brand-info;
@@ -430,14 +433,14 @@ $btn-primary-border:             $blue;
 // $btn-warning-bg:                 $brand-warning;
 // $btn-warning-border:             $btn-warning-bg;
 
-// $btn-danger-color:               $white;
-// $btn-danger-bg:                  $brand-danger;
-// $btn-danger-border:              $btn-danger-bg;
+$btn-danger-color:               $white;
+$btn-danger-bg:                  $brand-danger;
+$btn-danger-border:              $btn-danger-bg;
 
 // $btn-link-disabled-color:        $gray-light;
 
-// $btn-padding-x-sm:               .5rem;
-// $btn-padding-y-sm:               .25rem;
+$btn-padding-x-sm:               .5rem;
+$btn-padding-y-sm:               .25rem;
 
 // $btn-padding-x-lg:               1.5rem;
 // $btn-padding-y-lg:               .75rem;
