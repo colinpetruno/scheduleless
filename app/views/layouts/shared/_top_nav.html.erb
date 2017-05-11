@@ -1,6 +1,6 @@
 <div class="top-nav">
   <div class="search-icon">
-    <button data-toggle="collapse" data-target="#new_employee_and_location_search" aria-expanded="true" aria-controls="search-form">
+    <button data-toggle="collapse" data-target="#new_employee_and_location_search" aria-expanded="false" aria-controls="search-form">
       <span class="oi oi-magnifying-glass"></span>
     </button>
   </div>
@@ -8,7 +8,7 @@
   <%= form_for EmployeeAndLocationSearch.new(search_params),
     method: :get,
     url: search_path,
-    html: { class: "collapse show width" } do |f|
+    html: { class: "collapse width" } do |f|
   %>
     <div>
       <%= f.text_field :query, label: false%>
