@@ -1,9 +1,30 @@
-<div>
-  <%= DateParser.new(date: shift.date).month_and_day %>,
-  <%= "#{MinutesToTime.for(shift.minute_start)} - #{MinutesToTime.for(shift.minute_end)}" %>
-  <br>
+<div class="frame">
+  <section>
+    <article>
+      <div class="shift-display">
+        <div class="date">
+          <div><%= DateParser.new(date: shift.date).month %></div>
+          <div><%= DateParser.new(date: shift.date).day %></div>
+        </div>
 
-  <%= link_to "Trade", new_shift_trade_path(shift) %><br>
-  <%= button_to "Cancel", shift_cancellation_path(shift), method: :post %>
+        <div class="time">
+          <%= "#{MinutesToTime.for(shift.minute_start)} - #{MinutesToTime.for(shift.minute_end)}" %>
+        </div>
+
+        <div class="buttons">
+          <%= link_to "Trade", new_shift_trade_path(shift), class: "button" %>
+          <%= button_to "Cancel", shift_cancellation_path(shift), method: :post %>
+        </div>
+
+        <div class="location">
+          <% if shift.location.name.present? %>
+            <strong><%= shift.location.name  %></strong><br>
+          <% end %>
+
+          <%= safe_join(AddressFormatter.for(shift.location).address, ("<br>".html_safe)) %>
+          <%= AddressFormatter.for(shift.location).city_state_zip %>
+        </div>
+      </div>
+    </article>
+  </section>
 </div>
-<br>

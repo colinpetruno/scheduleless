@@ -1,10 +1,7 @@
 <div class="frame">
   <header>
-    <div>Upcoming Shifts</div>
+    <div><%= t(".title") %></div>
   </header>
-  <section>
-    <article>
-      <%= render @shifts %>
-    </article>
-  </section>
 </div>
+
+<%= render @shifts %>
