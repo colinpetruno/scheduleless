@@ -6,6 +6,12 @@
       <% end %>
     <% end %>
 
+    <%= content_tag(:li, class: active?(shifts_path)) do %>
+      <%= link_to shifts_path do %>
+        <span class="oi oi-signpost"></span>
+      <% end %>
+    <% end %>
+
     <%= content_tag(:li, class: active?(locations_path)) do %>
       <%= link_to locations_path do %>
         <span class="oi oi-map-marker"></span>
