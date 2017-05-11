@@ -2,5 +2,13 @@
   <%= render @trades %>
 <% else %>
   <%# TODO: Update verbage %>
-  No shifts are available right now!
+  <div class="frame">
+    <section>
+      <article class="centered">
+        <br><br>
+        <%= t(".empty") %>
+        <br><br><br>
+      </article>
+    </section>
+  </div>
 <% end %>

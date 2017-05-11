@@ -41,6 +41,10 @@
 
     > article {
       padding: 15px;
+
+      &.centered {
+        text-align: center;
+      }
     }
   }
 }

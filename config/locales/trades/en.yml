@@ -1,5 +1,7 @@
 en:
   trades:
+    index:
+      empty: "No shifts are available right now! We will let you know when some become available."
     shift:
       make_offer: "Offer a Trade"
       take_shift: "Take Shift"

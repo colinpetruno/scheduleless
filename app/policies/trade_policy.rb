@@ -6,7 +6,8 @@ class TradePolicy < ApplicationPolicy
         where(
           location_id: user.locations.pluck(:id),
           status: Trade.statuses[:open]
-        )
+        ).
+        where.not(user_id: user.id)
     end
   end
 
