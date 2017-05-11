@@ -12,7 +12,7 @@ class TradesController < AuthenticatedController
   end
 
   def index
-    @trades = policy_scope Trade.where(location_id: params[:location_id])
+    @trades = policy_scope trade_scope
   end
 
   def new
@@ -35,5 +35,13 @@ class TradesController < AuthenticatedController
         location_id: shift.location.id,
         user_id: current_user.id
       })
+  end
+
+  def trade_scope
+    if params[:location_id].present?
+      Trade.where(location_id: params[:location_id])
+    else
+      Trade
+    end
   end
 end

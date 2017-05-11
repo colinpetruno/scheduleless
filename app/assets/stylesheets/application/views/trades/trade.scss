@@ -1,0 +1,53 @@
+.trades-trade {
+  article {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  form {
+    display: inline-block;
+
+    input[type=submit] {
+      @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
+      @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
+    }
+  }
+
+  .date {
+    border: 1px solid $gray-light;
+    color: $gray-light;
+    font-size: 3rem;
+    height: 110px;
+    margin-right: 15px;
+    min-width: 110px;
+    padding: 15px;
+    text-align: center;
+    width: 104px;
+
+    div:first-child {
+      font-size: $font-size-base;
+    }
+
+    div:last-child {
+      line-height: 3rem;
+    }
+  }
+
+  .buttons {
+    line-height: 110px;
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle;
+  }
+
+  .location {
+    margin-left: auto;
+  }
+
+  .time {
+    line-height: 110px;
+    margin-right: 50px;
+    vertical-align: center;
+  }
+}

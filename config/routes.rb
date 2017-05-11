@@ -91,7 +91,7 @@ Rails.application.routes.draw do
     resources :trades, only: [:create, :new]
   end
 
-  resources :trades, only: [] do
+  resources :trades, only: [:index] do
     resource :trade_accept, only: [:create], path: "accept"
     resources :offers, only: [:create, :index, :new]
   end

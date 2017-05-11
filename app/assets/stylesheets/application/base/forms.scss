@@ -61,6 +61,10 @@
   }
 }
 
+input[type=submit] {
+  cursor: pointer;
+}
+
 .form-check-inline {
   display: inline-block;
   margin-right: 12px;
@@ -74,5 +78,3 @@
     margin-right: 5px;
   }
 }
-
-
