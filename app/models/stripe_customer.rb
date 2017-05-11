@@ -39,7 +39,7 @@ class StripeCustomer
   def create_customer
     stripe_customer = Stripe::Customer.create(description: company.name)
 
-    company.update(stripe_customer_id: stripe_customer.id)
+    company.update_columns(stripe_customer_id: stripe_customer.id)
 
     stripe_customer
   end
