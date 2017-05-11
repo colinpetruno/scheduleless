@@ -22,6 +22,11 @@ class StripeCreditCard
     stripe_credit_card
   end
 
+  def delete
+    # TODO: check api call return
+    stripe_credit_card.delete
+  end
+
   def retrieve
     stripe_credit_card
   end

@@ -1,4 +1,4 @@
-<tr>
+<tr class="settings-credit-cards-credit-card">
   <td><%= credit_card.brand %></td>
   <td><%= credit_card.last_4 %></td>
   <td><%= "#{credit_card.exp_month}/#{credit_card.exp_year}" %></td>
@@ -7,6 +7,13 @@
       <div class="badge green">
         Active
       </div>
+    <% else %>
+      <%= simple_form_for [:settings, credit_card] do |f| %>
+        <%= f.input :default, as: :hidden, input_html: { value: true } %>
+        <%= f.submit "Make Default" %>
+      <% end %>
+
+      <%= button_to "Delete Card", settings_credit_card_path(credit_card), method: :delete %>
     <% end %>
   </td>
 </tr>

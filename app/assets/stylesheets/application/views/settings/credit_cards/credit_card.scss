@@ -1,0 +1,19 @@
+.settings-credit-cards-credit-card {
+  td {
+    line-height: 20px;
+    vertical-align: middle;
+
+    form {
+      display: inline-block;
+
+      input[type=submit] {
+        @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-sm, $btn-border-radius);
+        @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
+      }
+    }
+
+    .button_to input[type=submit] {
+      @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
+    }
+  }
+}

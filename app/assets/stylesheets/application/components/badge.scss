@@ -1,6 +1,7 @@
 .badge {
   cursor: default;
   display: inline-block;
+  font-size: $font-size-sm;
   padding: 3px 10px;
 
   &.green {

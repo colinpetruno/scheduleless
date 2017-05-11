@@ -4,15 +4,13 @@ $(document).on("turbolinks:load", function() {
       $form.find(".payment-errors").text(response.error.message);
       $form.find("button").prop("disabled", false);
     } else {
-      console.log("blah");
-      console.log(response);
       var token = response.id;
       $("#credit_card_token").val(token);
       $("#new_credit_card,.edit_credit_card").off("submit").submit();
     }
   }
 
-  $("#new_credit_card,.edit_credit_card").submit(function (e) {
+  $("#new_credit_card").submit(function (e) {
     e.preventDefault();
 
     var $form = $("#credit-card-form");

@@ -15,6 +15,11 @@ class StripeSubscription
     @stripe_subscription ||= find_stripe_subscription
   end
 
+  def update
+    stripe_subscription.plan = subscription.plan
+    stripe_subscription.save
+  end
+
   private
 
   attr_reader :subscription
@@ -40,5 +45,9 @@ class StripeSubscription
 
   def retrieve_stripe_subscription
     Stripe::Subscription.retrieve(subscription.stripe_subscription_id)
+  end
+
+  def stripe_subscription
+    @stripe_subscription ||= find_stripe_subscription
   end
 end
