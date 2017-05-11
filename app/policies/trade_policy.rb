@@ -1,8 +1,12 @@
 class TradePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.where(location_id: user.locations.pluck(:id),
-                  status: Trade.statuses[:open])
+      scope.
+        includes(:offers).
+        where(
+          location_id: user.locations.pluck(:id),
+          status: Trade.statuses[:open]
+        )
     end
   end
 

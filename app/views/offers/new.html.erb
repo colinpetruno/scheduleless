@@ -1,7 +1,33 @@
-<%= simple_form_for [@offer.trade, @offer] do |f| %>
-  <%= f.input :note %>
+<div class="frame">
+  <header>
+    <div><%= t(".trade_for_title") %></div>
+  </header>
 
-  <%= f.input :offered_trade_id, as: :select, collection: ShiftFinder.for(current_user).future %>
+  <section>
+    <article>
+      <%= render partial: "trades/shift", locals: { show_actions: false, trade: @offer.trade } %>
+    </article>
+  </section>
+</div>
 
-  <%= f.submit %>
-<% end %>
+
+<div class="frame">
+  <header>
+    <div><%= t(".offer_title") %></div>
+  </header>
+
+  <section>
+    <div class="rail">
+      <section>
+        <article>
+          <%= render partial: "form", locals: { offer: @offer } %>
+        </article>
+        <aside>
+          <div class="instructions">
+            <%= t(".instructions") %>
+          </div>
+        </aside>
+      </section>
+    </div>
+  </section>
+</div>

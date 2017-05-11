@@ -1,28 +1,7 @@
 <div class="frame trades-trade">
   <section>
     <article>
-      <div class="date">
-        <div><%= DateParser.new(date: trade.shift.date).month %></div>
-        <div><%= DateParser.new(date: trade.shift.date).day %></div>
-      </div>
-
-      <div class="time">
-        <%= "#{MinutesToTime.for(trade.shift.minute_start)} - #{MinutesToTime.for(trade.shift.minute_end)}" %>
-      </div>
-
-      <div class="buttons">
-        <%= link_to "Offer a Trade", new_trade_offer_path(trade), class: "button" %>
-        <%= button_to "Take Shift", trade_trade_accept_path(trade), method: :post %>
-      </div>
-
-      <div class="location">
-        <% if trade.shift.location.name.present? %>
-          <strong><%= trade.shift.location.name  %></strong><br>
-        <% end %>
-
-        <%= safe_join(AddressFormatter.for(trade.shift.location).address, ("<br>".html_safe)) %>
-        <%= AddressFormatter.for(trade.shift.location).city_state_zip %>
-      </div>
+      <%= render partial: "shift", locals: { show_actions: true, trade: trade } %>
     </article>
   </section>
 </div>

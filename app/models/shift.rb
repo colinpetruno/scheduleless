@@ -24,4 +24,8 @@ class Shift < ApplicationRecord
   def current_check_in
     check_ins.find_by(check_out_date_time: nil).present?
   end
+
+  def selection_label
+    "#{DateParser.new(date: date).month_and_day}, #{MinutesToTime.for(minute_start)} - #{MinutesToTime.for(minute_end)}"
+  end
 end

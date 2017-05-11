@@ -5,7 +5,7 @@ class OffersController < AuthenticatedController
     authorize @offer
 
     if @offer.save
-      redirect_to location_calendar_path(trade.location)
+      redirect_to trades_path
     else
       # TODO handle error
     end
