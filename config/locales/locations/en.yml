@@ -1,0 +1,7 @@
+en:
+  locations:
+    index:
+      title: "Locations"
+      new_location: "New Location"
+      edit: "Edit"
+      show: "Show"

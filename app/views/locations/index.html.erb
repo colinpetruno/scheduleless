@@ -1,16 +1,10 @@
 <div class="frame">
   <header>
     <div>
-      <div class="rail">
-        <section>
-          <article>Locations</article>
-          <aside>
-            <%= link_to_if policy(:location).new?, "New Location", new_location_path do %>
-              &nbsp;
-            <% end %>
-          </aside>
-        </section>
-      </article>
+      <%= t(".title") %>
+      <aside>
+        <%= link_to_if policy(:location).new?, t(".new_location"), new_location_path %>
+      </aside>
     </div>
   </header>
 
@@ -26,8 +20,8 @@
     <% @locations.each do |location| %>
       <tr>
         <td>
-          <%= link_to_if policy(location).edit?, "Edit", edit_location_path(location) do %>
-            <%= link_to "show", location_path(location) %>
+          <%= link_to_if policy(location).edit?, t(".edit"), edit_location_path(location) do %>
+            <%= link_to t(".show"), location_path(location) %>
           <% end %>
         </td>
         <td><%= location.line_1 %></td>
