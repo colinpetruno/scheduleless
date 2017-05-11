@@ -9,13 +9,13 @@ class CreditCardDefaulter
 
   def update
     # update this in stripe
-    stripe_customer.stripe_object.default_source = credit_card.token
+    stripe_customer.stripe_object.default_source = credit_card.stripe_card_id
     stripe_customer.stripe_object.save
 
     # get new stripe customer
     stripe_customer.reload
     # see if they match
-    if stripe_customer.stripe_object.default_source == credit_card.token
+    if stripe_customer.stripe_object.default_source == credit_card.stripe_card_id
       # update all cards to false
       company.credit_cards.find_by(default: true).update(default: false)
       # update this card to default true

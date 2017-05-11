@@ -16,7 +16,7 @@ class StripeCreditCard
         exp_month: stripe_credit_card.exp_month,
         exp_year: stripe_credit_card.exp_year,
         last_4: stripe_credit_card.last4,
-        token: stripe_credit_card.id
+        stripe_card_id: stripe_credit_card.id
       )
 
     stripe_credit_card
@@ -41,7 +41,7 @@ class StripeCreditCard
 
   def find_credit_card
     if credit_card.persisted?
-      stripe_customer.stripe_object.sources.retrieve(credit_card.token)
+      stripe_customer.stripe_object.sources.retrieve(credit_card.stripe_card_id)
     else
       stripe_customer.stripe_object.sources.create(source: credit_card.token)
     end
