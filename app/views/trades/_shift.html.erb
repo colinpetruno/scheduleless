@@ -11,15 +11,15 @@
   <%# TODO: Remove nested boolean and simplify this logic %>
   <% if show_actions %>
     <% if trade.offers.any? { |offer| offer.user_id == current_user.id } %>
-      <div class="buttons">
-        <%= link_to t(".make_offer"), new_trade_offer_path(trade), class: "button" %>
-        <%= button_to t(".take_shift"), trade_trade_accept_path(trade), method: :post %>
-      </div>
-    <% else %>
-      <div class="offer-present">
+       <div class="offer-present">
         <div class="badge green">
           <%= t(".already_offered") %>
         </div>
+      </div>
+    <% else %>
+      <div class="buttons">
+        <%= link_to t(".make_offer"), new_trade_offer_path(trade), class: "button" %>
+        <%= button_to t(".take_shift"), trade_trade_accept_path(trade), method: :post %>
       </div>
     <% end %>
   <% end %>
