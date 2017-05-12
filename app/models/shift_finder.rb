@@ -25,8 +25,8 @@ class ShiftFinder
 
   def all
     object.
-      active.
       shifts.
+      active.
       order(:date, :minute_start)
   end
 
