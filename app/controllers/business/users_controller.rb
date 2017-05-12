@@ -6,7 +6,7 @@ module Business
     end
 
     def index
-      @users = policy_scope(User)
+      @users = policy_scope(User).order(:family_name, :given_name)
     end
 
     def new

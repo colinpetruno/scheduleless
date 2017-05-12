@@ -15,15 +15,21 @@
     <table class="striped">
       <thead>
         <tr>
-          <th><%= t(".email") %></th>
+          <th><%= t(".family_name") %></th>
+          <th><%= t(".given_name") %></th>
+          <th><%= t(".preferred_name") %></th>
+          <th></th>
       </thead>
 
       <tbody>
         <% @users.map do |user| %>
           <tr>
+            <td><%= user.family_name %></td>
+            <td><%= user.given_name %></td>
+            <td><%= user.preferred_name %></td>
             <td>
-              <%= link_to_if policy(user).edit?, user.email, edit_business_user_path(user) do %>
-                <%= link_to user.email, business_user_path(user) %>
+              <%= link_to_if policy(user).edit?, t(".edit"), edit_business_user_path(user) do %>
+                <%= link_to t(".view"), business_user_path(user) %>
               <% end %>
             </td>
           </tr>
