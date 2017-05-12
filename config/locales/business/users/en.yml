@@ -1,0 +1,9 @@
+en:
+  business:
+    users:
+      index:
+        add_employee: "Add Employee"
+        email: "Email"
+        title: "Employees"
+      new:
+        title: "Add Employee"

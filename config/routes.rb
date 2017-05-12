@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: "marketing/welcome#index"
 
   namespace :business, path: "company" do
-    resources :users, only: [:edit, :index, :show, :update], path: "employees"
+    resources :users, only: [:create, :edit, :index, :new, :show, :update], path: "employees"
   end
 
   resources :locations, only: [:create, :edit, :index, :new, :show, :update] do

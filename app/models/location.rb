@@ -14,7 +14,7 @@ class Location < ApplicationRecord
   def self.default_for(user)
     locations = user.locations
 
-    locations.find_by(user_locations: { home: true }) || locations.first || new
+    locations.find_by(user_locations: { home: true }) || locations.first
   end
 
   def preference

@@ -9,6 +9,11 @@ module Business
       @users = policy_scope(User)
     end
 
+    def new
+      @user = current_company.users.build
+      authorize @user
+    end
+
     def show
       @user = current_company.users.find(params[:id])
       authorize @user

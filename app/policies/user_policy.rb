@@ -12,8 +12,12 @@ class UserPolicy < ApplicationPolicy
     end
   end
 
-  def edit?
+  def create?
     user.company_admin?
+  end
+
+  def edit?
+    user.company_admin? || own_profile?
   end
 
   def show?
@@ -21,6 +25,12 @@ class UserPolicy < ApplicationPolicy
   end
 
   def update?
-    user.company_admin?
+    user.company_admin? || own_profile?
+  end
+
+  private
+
+  def own_profile?
+    user.id == record.id
   end
 end

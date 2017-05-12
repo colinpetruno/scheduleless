@@ -1,13 +1,21 @@
 <div class="frame">
   <header>
-    <div>Employees</div>
+    <div>
+      <%= t(".title") %>
+
+      <% if policy(User).create? %>
+        <aside>
+          <%= link_to t(".add_employee"), new_business_user_path %>
+        </aside>
+      <% end %>
+    </div>
   </header>
   <section>
 
     <table class="striped">
       <thead>
         <tr>
-          <th>Email</th>
+          <th><%= t(".email") %></th>
       </thead>
 
       <tbody>

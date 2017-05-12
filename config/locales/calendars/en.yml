@@ -1,6 +1,7 @@
 en:
   calendars:
     blank_next_shift:
+      available: "Available Shifts"
       no_shifts: "You currently have no shifts scheduled!"
     show:
       next_shift_title: "Your next shift"

@@ -6,7 +6,10 @@ class UsersController < AuthenticatedController
   end
 
   def update
+    authorize current_user
+
     current_user.update(user_params)
+
     redirect_to edit_user_path
   end
 
