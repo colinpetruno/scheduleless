@@ -8,6 +8,13 @@ class Shift < ApplicationRecord
 
   accepts_nested_attributes_for :company
 
+  enum state: {
+    active: 0,
+    traded: 1,
+    taken: 2,
+    cancelled: 3
+  }
+
   def belongs_to?(possible_user)
     possible_user.id == user.id
   end
