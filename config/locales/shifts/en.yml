@@ -2,3 +2,7 @@ en:
   shifts:
     index:
       title: "Upcoming Shifts"
+    no_shifts:
+      no_shifts: "You don't have any upcoming shifts right now!"
+      title: "Upcoming Shifts"
+      trades: "Search for available shifts."

@@ -1,7 +1,11 @@
-<div class="frame">
-  <header>
-    <div><%= t(".title") %></div>
-  </header>
-</div>
+<% if @shifts.present? %>
+  <div class="frame">
+    <header>
+      <div><%= t(".title") %></div>
+    </header>
+  </div>
 
-<%= render @shifts %>
+  <%= render @shifts %>
+<% else %>
+  <%= render partial: "no_shifts" %>
+<% end %>
