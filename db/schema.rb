@@ -204,6 +204,7 @@ ActiveRecord::Schema.define(version: 20170512222001) do
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.integer  "user_id"
+    t.integer  "traded_with_id"
     t.index ["location_id"], name: "index_trades_on_location_id", using: :btree
     t.index ["shift_id"], name: "index_trades_on_shift_id", using: :btree
     t.index ["user_id"], name: "index_trades_on_user_id", using: :btree

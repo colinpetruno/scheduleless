@@ -1,16 +1,19 @@
 class TradeAccept
-  def initialize(offer: nil, trade:)
+  def initialize(offer: nil, trade:, user:)
     @offer = offer
     @trade = trade
+    @user = user
   end
 
   def accept
-    # TODO need to ensure the person who accepted this is tracked
-    # need to cancel the shift and create a new shift for the new person
-    Trade.update(status: Trade.statuses[:completed])
+    if offer.blank?
+      ShiftTaker.new(trade: @trade, user: user).take
+    else
+      ShiftTrader.new(offer: offer, trade: trade, user: user)
+    end
   end
 
   private
 
-  attr_reader :offer, :trade
+  attr_reader :offer, :trade, :user
 end

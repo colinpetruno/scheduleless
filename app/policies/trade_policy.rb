@@ -2,10 +2,10 @@ class TradePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.
+        available.
         includes(:offers).
         where(
-          location_id: user.locations.pluck(:id),
-          status: Trade.statuses[:open]
+          location_id: user.locations.pluck(:id)
         ).
         where.not(user_id: user.id)
     end
