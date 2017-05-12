@@ -1,1 +1,11 @@
-this is users show
+<div class="rail">
+  <section>
+    <article>
+      <%= render partial: "user_details", locals: { user: @user } %>
+    </article>
+
+    <aside>
+      <%= render partial: "user_locations", locals: { locations: @user.locations } %>
+    </aside>
+  </section>
+</div>

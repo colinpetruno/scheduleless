@@ -1,0 +1,17 @@
+.business-users-locations {
+  > div {
+    border-bottom: 1px solid $gray-light;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+
+    strong {
+      font-size: 1.05rem;
+    }
+
+    &:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+  }
+}

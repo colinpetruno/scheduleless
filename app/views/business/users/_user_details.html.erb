@@ -1,0 +1,38 @@
+<div class="business-users-user-details">
+  <div class="frame ">
+    <header>
+      <div><%= t(".details") %></div>
+    </header>
+
+    <section>
+      <article>
+        <div>
+          <label><%= t(".first_name") %></label> <%= user.given_name %>
+        </div>
+        <div>
+          <label><%= t(".last_name") %></label> <%= user.family_name %>
+        </div>
+        <div>
+          <label><%= t(".nickname") %></label> <%= user.preferred_name %>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <div class="frame ">
+    <header>
+      <div><%= t(".contact_information") %></div>
+    </header>
+
+    <section>
+      <article>
+        <div>
+          <label><%= t(".mobile_phone") %></label> <%= user.mobile_phone %>
+        </div>
+        <div>
+          <label><%= t(".email") %></label> <%= user.email %>
+        </div>
+      </article>
+    </section>
+  </div>
+</div>

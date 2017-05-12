@@ -1,0 +1,17 @@
+<div class="frame">
+  <header>
+    <div><%= t(".title") %></div>
+  </header>
+
+  <section>
+    <article>
+      <% if locations.present? %>
+        <%= render partial: "locations", locals: { locations: locations } %>
+      <% else %>
+        <div class="centered">
+          <%= t(".no_locations") %>
+        </div>
+      <% end %>
+    </article>
+  </section>
+</div>

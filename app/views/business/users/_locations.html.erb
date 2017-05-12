@@ -1,0 +1,12 @@
+<div class="business-users-locations">
+  <% locations.order(:name, :line_1).each do |location| %>
+    <div>
+      <% if location.name.present? %>
+        <strong><%= location.name  %></strong><br>
+      <% end %>
+
+      <%= safe_join(AddressFormatter.for(location).address, ("<br>".html_safe)) %>
+      <%= AddressFormatter.for(location).city_state_zip %>
+    </div>
+  <% end %>
+</div>
