@@ -32,7 +32,7 @@ module Scheduler
     attr_reader :options
 
     def company_preference
-      company.company_preference
+      @_preference ||= PreferenceFinder.for(company)
     end
 
     def would_exceed_max
