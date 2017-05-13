@@ -1,11 +1,12 @@
 module Scheduler
   class MinmaxShiftHelper
 
-    def initialize(timeslot:, employee:, layout:, company:, options:)
+    def initialize(timeslot:, employee:, layout:, company:, existing_shifts:, options:)
       @timeslot = timeslot
       @employee = employee
       @layout = layout
       @company = company
+      @existing_shifts = existing_shifts
       @options = options
     end
 
@@ -43,10 +44,14 @@ module Scheduler
       while assigned
         next_y = next_up_timeslot.y-1
         next_up_timeslot = layout.get_timeslot(timeslot.x, next_y)
-        if next_up_timeslot && next_up_timeslot.has_employee?(employee.id)
+        if next_up_timeslot and next_up_timeslot.has_employee?(employee.id)
           up_shift_length = up_shift_length + 1
         else
-          assigned = false;
+          if @existing_shifts.user_scheduled_at(employee.id, timeslot.x, next_y)
+            up_shift_length = up_shift_length + 1
+          else
+            assigned = false;
+          end
         end
       end
 
@@ -57,10 +62,14 @@ module Scheduler
       while assigned
         next_y = next_down_timeslot.y+1
         next_down_timeslot = layout.get_timeslot(timeslot.x, next_y)
-        if next_down_timeslot && next_down_timeslot.has_employee?(employee.id)
+        if next_down_timeslot and next_down_timeslot.has_employee?(employee.id)
           down_shift_length = down_shift_length + 1
         else
-          assigned = false;
+          if @existing_shifts.user_scheduled_at(employee.id, timeslot.x, next_y)
+            down_shift_length = down_shift_length + 1
+          else
+            assigned = false;
+          end
         end
       end
 

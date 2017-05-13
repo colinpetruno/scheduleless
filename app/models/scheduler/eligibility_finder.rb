@@ -1,8 +1,9 @@
 module Scheduler
   class EligibilityFinder
-    def initialize(layout:, timeslot:, existing_shifts:, company:, options:)
+    def initialize(layout:, timeslot:, location:, existing_shifts:, company:, options:)
       @layout = layout
       @timeslot = timeslot
+      @location = location
       @existing_shifts = existing_shifts
       @company = company
       @options = options
@@ -10,9 +11,9 @@ module Scheduler
 
     def find(position)
       adjacent_employees.push(up_slot.position_employees[position]) if up_slot
-      adjacent_employees.push(right_slot.position_employees[position]) if right_slot
       adjacent_employees.push(down_slot.position_employees[position]) if down_slot
-      adjacent_employees.push(left_slot.position_employees[position]) if left_slot
+      # adjacent_employees.push(right_slot.position_employees[position]) if right_slot
+      # adjacent_employees.push(left_slot.position_employees[position]) if left_slot
 
       adjacent_employees.flatten!.uniq!
       adjacent_employees.compact!
@@ -35,6 +36,12 @@ module Scheduler
         # check for existing schedules
         if @existing_shifts.user_scheduled_at(employee.id, timeslot.x, timeslot.y)
           adjacent_employees.delete(employee)
+        end
+
+        if @options.prevent_multi_location_schedule_daily
+          if @existing_shifts.user_scheduled_during_day(employee.id, timeslot.x, @location.id)
+            adjacent_employees.delete(employee)
+          end
         end
       end
 
@@ -80,7 +87,7 @@ module Scheduler
     end
 
     def minmax_not_eligible(employee)
-      MinmaxShiftHelper.new(timeslot: timeslot, employee: employee, layout: layout, company: company, options: options).is_not_eligible
+      MinmaxShiftHelper.new(timeslot: timeslot, employee: employee, layout: layout, company: company, existing_shifts: existing_shifts, options: options).is_not_eligible
     end
   end
 end

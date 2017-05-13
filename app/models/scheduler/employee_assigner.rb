@@ -30,7 +30,7 @@ module Scheduler
     end
 
     def existing_shifts
-      @_existing_shifts ||= ExistingShifts.new(company, date_start)
+      @_existing_shifts ||= ExistingShifts.new(company, date_start, options)
     end
 
     def assign_iteration # looks good
@@ -108,20 +108,14 @@ module Scheduler
         sorted_employees = sort_employees_by_timeslots
 
         sorted_employees.each do |employee|
-
-          if !slot.has_employee?(employee.id) and !minmax_not_eligible(slot, employee)
-            employee.positions.each do |position|
-              if slot.position_room_available?(position.name)
-                slot.add_employee(employee, position.name)
-                return true;
-              end
+          employee.positions.each do |position|
+            if can_schedule?(slot, employee, position, location)
+              slot.add_employee(employee, position.name)
+              return true;
             end
-
           end
         end
-
       end
-
       false
     end
 
@@ -145,7 +139,7 @@ module Scheduler
         while not_scheduled
           slot = layout.get_timeslot(x, y)
           # TODO: user has no positions breaks this
-          if not existing_shifts.user_scheduled_at(employee.id, x, y) and slot.not_full? and slot.position_room_available?(position.name)
+          if can_schedule?(slot, employee, position, location)
             slot.add_employee(employee, position.name)
             timeslots.add_for(employee: employee, day: x, slot_number: y)
             not_scheduled = false
@@ -193,14 +187,24 @@ module Scheduler
       lowest_employee
     end
 
+    #TODO
+    def can_schedule?(slot, employee, position=nil, location=nil)
+      !existing_shifts.user_scheduled_at(employee.id, slot.x, slot.y) and
+        !existing_shifts.user_scheduled_during_day(employee.id, slot.x, location.id) if !location.nil? and
+        !existing_shifts.user_scheduled_at(employee.id, slot.x, slot.y) and
+        slot.not_full? and
+        slot.position_room_available?(position.name) if !position.nil? and
+        !minmax_not_eligible(slot, employee)
+    end
+
     def eligible_employees(slot, position)
       EligibilityFinder.
-        new(layout: layout, timeslot: slot, existing_shifts: existing_shifts, company: company, options: options).
+        new(layout: layout, timeslot: slot, location: location, existing_shifts: existing_shifts, company: company, options: options).
         find(position)
     end
 
     def minmax_not_eligible(timeslot, employee)
-      MinmaxShiftHelper.new(timeslot: timeslot, employee: employee, layout: layout, company: company, options: options).is_not_eligible
+      MinmaxShiftHelper.new(timeslot: timeslot, employee: employee, layout: layout, company: company, existing_shifts: existing_shifts, options: options).is_not_eligible
     end
   end
 end
