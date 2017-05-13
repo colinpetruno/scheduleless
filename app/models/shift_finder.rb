@@ -5,23 +5,45 @@ class ShiftFinder
 
   def initialize(object:)
     @object = object
+    self.scope = all
+  end
+
+  def find
+    scope
+  end
+
+  def worked_by(user)
+    self.scope = scope.where(user_id: user.id)
+    self
   end
 
   def next
-    future.first
+    self.scope = future.find.first
+    self
   end
 
   def on(date=Date.today)
-    all.where(date: date.strftime('%Y%m%d').to_i)
+    self.scope = scope.where(date: date.strftime('%Y%m%d').to_i)
+    self
   end
 
   def future
     # these shifts drop off 15 minutes after they over
-    all.
+    self.scope = scope.
       where(date: (current_day+1..Float::INFINITY)).
       or(all.
          where(date: current_day, minute_end: ((current_minute - 15)..1440)))
+    self
   end
+
+  def find_by(options)
+    scope.find_by(options).find
+  end
+
+  private
+
+  attr_accessor :scope
+  attr_reader :object
 
   def all
     object.
@@ -29,14 +51,6 @@ class ShiftFinder
       active.
       order(:date, :minute_start)
   end
-
-  def find_by(options)
-    all.find_by(options)
-  end
-
-  private
-
-  attr_reader :object
 
   def current_day
     Date.today.to_s(:number).to_i
