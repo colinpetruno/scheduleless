@@ -9,7 +9,7 @@ class TradeAccept
     if offer.blank?
       ShiftTaker.new(trade: @trade, user: user).take
     else
-      ShiftTrader.new(offer: offer, trade: trade, user: user)
+      ShiftTrader.new(offer: offer, trade: trade)
     end
   end
 

@@ -1,0 +1,5 @@
+en:
+  my_trades:
+    show:
+      empty: "You haven't offered any shifts for trade yet."
+      review_shifts: "Review your shifts"

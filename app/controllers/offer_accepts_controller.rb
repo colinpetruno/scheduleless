@@ -5,7 +5,7 @@ class OfferAcceptsController < AuthenticatedController
     authorize @offer_accept
 
     if @offer_accept.accept
-      redirect_to location_calendar_path(offer.trade.location_id)
+      redirect_to my_trades_path
     else
       # TODO: fix error
     end

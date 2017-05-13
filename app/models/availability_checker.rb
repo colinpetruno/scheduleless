@@ -27,10 +27,6 @@ class AvailabilityChecker
     date.beginning_of_week(:monday).strftime("%Y%m%d").to_i
   end
 
-  def time_available?
-    work_more_today? && work_more_this_week?
-  end
-
   def end_of_week
     # TODO: Ensure this day matches company settings
     date.end_of_week(:monday).strftime("%Y%m%d").to_i
@@ -72,11 +68,15 @@ class AvailabilityChecker
     Shift.where(date: date.strftime("%Y%m%d").to_i, user_id: user.id)
   end
 
+  def time_available?
+    work_more_today? && work_more_this_week?
+  end
+
   def work_more_this_week?
-    scheduled_time_this_week <= max_weekly
+    (scheduled_time_this_week + minutes_to_add) <= max_weekly
   end
 
   def work_more_today?
-    scheduled_time_today <= max_daily
+    (scheduled_time_today + minutes_to_add) <= max_daily
   end
 end
