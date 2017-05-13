@@ -7,6 +7,9 @@ module Scheduler
       find_shift_alternative: false,
       none_eligible_strategy: "IGNORE",
       random_block_start_req: 20,
+
+      # Prevent employees from being scheduled in many locations on any single day
+      prevent_multi_location_schedule_daily: true,
       start_priority: 0,
       shift_range: 3, # what is this?
       period_timeframes: {
@@ -76,6 +79,10 @@ module Scheduler
 
     def period_timeframes(id)
       options[:period_timeframes]["#{id}"]
+    end
+
+    def prevent_multi_location_schedule_daily
+      options[:prevent_multi_location_schedule_daily]
     end
 
     private

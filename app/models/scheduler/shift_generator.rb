@@ -43,6 +43,7 @@ module Scheduler
           if !shift.nil?
             shift["time_end"] = (options.number_of_intervals+1) * 15
             completed_shifts.push(shift)
+            running_shifts[id] = nil
           end
         end
       end
