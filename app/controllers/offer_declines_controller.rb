@@ -5,7 +5,7 @@ class OfferDeclinesController < AuthenticatedController
     authorize @offer_decline
 
     if @offer_decline.decline
-      redirect_to location_calendar_path(offer.trade.location_id)
+      redirect_to trade_offers_path(offer.trade)
     else
       # TODO: fix error
     end

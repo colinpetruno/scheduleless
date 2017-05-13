@@ -4,6 +4,12 @@ class Offer < ApplicationRecord
   belongs_to :trade
   belongs_to :user
 
+  enum state: {
+    offered: 0,
+    accepted: 1,
+    declined: 2
+  }
+
   def for_shift
     trade.shift
   end

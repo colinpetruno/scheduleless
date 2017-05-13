@@ -10,7 +10,7 @@ class OfferDecline
   end
 
   def decline
-    # TODO: do stuff
-    true
+    offer.update(state: Offer.states[:declined])
+    # TODO: send notifications
   end
 end
