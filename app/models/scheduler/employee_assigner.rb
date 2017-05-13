@@ -6,7 +6,7 @@ module Scheduler
       @company = company
       @location = location
       @layout = layout
-      @date_start = date_start;
+      @date_start = date_start
       @options = options
 
       existing_shifts
