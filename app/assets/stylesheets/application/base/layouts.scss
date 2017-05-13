@@ -19,6 +19,18 @@
       @include make-col(3);
     }
   }
+
+  &.narrow {
+    & > section {
+      & > article {
+        @include make-col(10);
+      }
+
+      & > aside {
+        @include make-col(2);
+      }
+    }
+  }
 }
 
 .row {

@@ -5,16 +5,16 @@
     </aside>
 
     <article>
-      <% if @offers.present? %>
-        <%= render @offers %>
+      <% if @trades.present? %>
+        <%= render partial: "trade", collection: @trades %>
       <% else %>
+        <%# TODO: Update verbage %>
         <div class="frame">
-          <header>
-            <div>Offers for your trade</div>
-          </header>
           <section>
             <article class="centered">
-              No offers yet! We will let you know when someone volunteers!
+              <br><br>
+              <%= t(".empty") %>
+              <br><br><br>
             </article>
           </section>
         </div>
@@ -22,6 +22,3 @@
     </article>
   </section>
 </div>
-
-
-

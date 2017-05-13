@@ -1,14 +1,24 @@
-<% if @trades.present? %>
-  <%= render @trades %>
-<% else %>
-  <%# TODO: Update verbage %>
-  <div class="frame">
-    <section>
-      <article class="centered">
-        <br><br>
-        <%= t(".empty") %>
-        <br><br><br>
-      </article>
-    </section>
-  </div>
-<% end %>
+<div class="rail narrow">
+  <section>
+    <aside>
+      <%= render partial: "sidebar" %>
+    </aside>
+
+    <article>
+      <% if @trades.present? %>
+        <%= render @trades %>
+      <% else %>
+        <%# TODO: Update verbage %>
+        <div class="frame">
+          <section>
+            <article class="centered">
+              <br><br>
+              <%= t(".empty") %>
+              <br><br><br>
+            </article>
+          </section>
+        </div>
+      <% end %>
+    </article>
+  </section>
+</div>

@@ -1,7 +1,52 @@
+<div class="frame offers-offer">
+  <section>
+    <article>
+
+      <div class="offerer">
+        <div>
+          <label>Offered By:</label> <%= link_to "#{offer.user.given_name} #{offer.user.family_name}", business_user_path(offer.user) %>
+        </div>
+
+        <div>
+          <label>Memo:</label> <%= offer.note %>
+        </div>
+      </div>
+
+
+      <div class="shift-display">
+        <div class="date">
+          <div><%= DateParser.new(date: offer.offered_shift.date).month %></div>
+          <div><%= DateParser.new(date: offer.offered_shift.date).day %></div>
+        </div>
+
+        <div class="time">
+          <%= "#{MinutesToTime.for(offer.offered_shift.minute_start)} - #{MinutesToTime.for(offer.offered_shift.minute_end)}" %>
+        </div>
+
+        <div class="buttons">
+          <%= button_to "Accept", [offer, :offer_accept], method: :post %>
+          <%= button_to "Decline", [offer, :offer_decline], method: :post %>
+        </div>
+
+        <div class="location">
+          <% if offer.offered_shift.location.name.present? %>
+            <strong><%= offer.offered_shift.location.name  %></strong><br>
+          <% end %>
+
+          <%= safe_join(AddressFormatter.for(offer.offered_shift.location).address, ("<br>".html_safe)) %>
+          <%= AddressFormatter.for(offer.offered_shift.location).city_state_zip %>
+        </div>
+      </div>
+    </article>
+
+
+  </section>
+</div>
+
+
+<% if 1==2 %>
 <div>
   Offer: <%= offer.note %><br>
-  <%= button_to "Accept", [offer, :offer_accept], method: :post %>
-  <%= button_to "Decline", [offer, :offer_decline], method: :post %>
-
 </div>
 <br><br>
+<% end %>

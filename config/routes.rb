@@ -37,6 +37,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resource :my_trades, only: [:show]
+
   use_doorkeeper # makes /oauth routes
 
   resources :offers, only: [] do

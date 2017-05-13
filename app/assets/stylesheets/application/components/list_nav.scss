@@ -1,0 +1,22 @@
+.list-nav {
+  li {
+    margin-bottom: 10px;
+    padding: 8px 15px;
+
+    a {
+      color: $font-dark;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+
+    &.active {
+      background-color: $blue;
+
+      a {
+        color: $white;
+      }
+    }
+  }
+}

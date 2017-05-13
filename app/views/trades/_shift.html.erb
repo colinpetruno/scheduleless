@@ -16,6 +16,11 @@
           <%= t(".already_offered") %>
         </div>
       </div>
+    <% elsif trade.user_id == current_user.id %>
+      <div class="buttons">
+        <%= link_to t(".offers"), trade_offers_path(trade), class: "button" %>
+        <%# TODO: add a cancel trade options %>
+      </div>
     <% else %>
       <div class="buttons">
         <%= link_to t(".make_offer"), new_trade_offer_path(trade), class: "button" %>

@@ -1,7 +1,7 @@
 <%= simple_form_for [offer.trade, offer] do |f| %>
   <%= f.input :note %>
 
-  <%= f.input :offered_trade_id,
+  <%= f.input :offered_shift_id,
     as: :select,
     collection: ShiftFinder.for(current_user).future,
     label_method: :selection_label %>

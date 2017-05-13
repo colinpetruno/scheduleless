@@ -24,7 +24,7 @@ module MobileApi
     def offer_params
       params.
         require(:offer).
-        permit(:note, :offered_trade_id).
+        permit(:note, :offered_shift_id).
         merge({ company_id: current_company.id })
     end
 
