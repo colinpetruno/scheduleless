@@ -13,7 +13,7 @@ class LocationSchedule
   end
 
   def shifts_for(user)
-    user.shifts.where(location: location)
+    ShiftFinder.for(location).on(date).worked_by(user).find
   end
 
   def shifts?
@@ -29,6 +29,6 @@ class LocationSchedule
   end
 
   def find_shifts
-    ShiftFinder.for(location).on(date)
+    ShiftFinder.for(location).on(date).find
   end
 end
