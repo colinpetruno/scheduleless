@@ -5,7 +5,11 @@ module Scheduler
     end
 
     def count_for(employee)
+      # TODO: Chris, this was erroring out, im rescuing as a 0 for now, see if
+      # this works
       employees[employee.id].length
+    rescue
+      0
     end
 
     def for(employee)
