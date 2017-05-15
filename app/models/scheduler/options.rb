@@ -12,6 +12,13 @@ module Scheduler
       prevent_multi_location_schedule_daily: true,
       start_priority: 0,
       shift_range: 3, # what is this?
+      weighted_parameters: {
+        vertical_adjacency: 10,
+        diagonal_adjacency: 2,
+        horizontal_adjacency: 3,
+        less_slot_count: 15,
+        preferred_timeslot: 10
+      },
       period_timeframes: {
         "open" => {
           start: 9*60,
@@ -83,6 +90,10 @@ module Scheduler
 
     def prevent_multi_location_schedule_daily
       options[:prevent_multi_location_schedule_daily]
+    end
+
+    def weighted_parameters
+      options[:weighted_parameters]
     end
 
     private

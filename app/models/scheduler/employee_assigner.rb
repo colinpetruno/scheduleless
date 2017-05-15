@@ -163,7 +163,7 @@ module Scheduler
         elg_employees = eligible_employees(slot, position)
 
         if elg_employees.length > 0 and slot.position_room_available?(position)
-          assigned_employee = priority_employee(elg_employees)
+          assigned_employee = priority_employee(elg_employees, slot, position)
           slot.add_employee(assigned_employee, position)
           timeslots.add_for(employee: assigned_employee, day: slot.x, slot_number: slot.y)
           assigned = true
@@ -173,27 +173,17 @@ module Scheduler
       assigned
     end
 
-    def priority_employee(eligible_employees) # looks good
-      lowest_score = Float::INFINITY
-      lowest_employee = nil;
-
-      eligible_employees.each do |employee|
-        if timeslots.count_for(employee) < lowest_score
-          lowest_employee = employee
-          lowest_score = timeslots.count_for(employee)
-        end
-      end
-
-      lowest_employee
+    def priority_employee(eligible_employees, slot, position) # looks good
+      priority_finder(eligible_employees, slot, position)
     end
 
     #TODO
-    def can_schedule?(slot, employee, position=nil, location=nil)
+    def can_schedule?(slot, employee, position, location)
       !existing_shifts.user_scheduled_at(employee.id, slot.x, slot.y) and
-        !existing_shifts.user_scheduled_during_day(employee.id, slot.x, location.id) if !location.nil? and
+        !existing_shifts.user_scheduled_during_day(employee.id, slot.x, location.id) and
         !existing_shifts.user_scheduled_at(employee.id, slot.x, slot.y) and
         slot.not_full? and
-        slot.position_room_available?(position.name) if !position.nil? and
+        slot.position_room_available?(position.name) and
         !minmax_not_eligible(slot, employee)
     end
 
@@ -201,6 +191,10 @@ module Scheduler
       EligibilityFinder.
         new(layout: layout, timeslot: slot, location: location, existing_shifts: existing_shifts, company: company, options: options).
         find(position)
+    end
+
+    def priority_finder(eligible_employees, slot, position)
+      PriorityFinder.new(options: options).highest_priority_employee(eligible_employees, position, slot, layout)
     end
 
     def minmax_not_eligible(timeslot, employee)
