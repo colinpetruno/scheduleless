@@ -9,6 +9,10 @@ module Scheduler
       @options = options
     end
 
+    # TODO Eligibility should only look for employees who COULD be schedule in this slot
+    #   Removing all employees who could not (for varying reasons)
+    # Vertical Adjacency does not belong here
+    # Let the set of all employees be applicable in this situation
     def find(position)
       adjacent_employees.push(up_slot.position_employees[position]) if up_slot
       adjacent_employees.push(down_slot.position_employees[position]) if down_slot
