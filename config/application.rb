@@ -18,5 +18,20 @@ module Scheduler
     config.autoload_paths << "#{Rails.root}/app/searches"
 
     config.i18n.load_path = Dir[Rails.root.join('config', 'locales', '**', '*.yml')]
+
+    # Mailing Credentials
+    # config.action_mailer.perform_deliveries = false
+
+    config.action_mailer.default_url_options = {
+      host: Rails.application.secrets.host
+    }
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      authentication: :plain,
+      address: "smtp.mailgun.org",
+      port: 587,
+      user_name: Rails.application.secrets.mailgun_user,
+      password: Rails.application.secrets.mailgun_password
+    }
   end
 end
