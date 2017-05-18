@@ -37,7 +37,7 @@ class ShiftFinder
   end
 
   def find_by(options)
-    scope.find_by(options).find
+    scope.find_by(options)
   end
 
   private
