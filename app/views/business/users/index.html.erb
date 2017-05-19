@@ -31,6 +31,10 @@
               <%= link_to_if policy(user).edit?, t(".edit"), edit_business_user_path(user) do %>
                 <%= link_to t(".view"), business_user_path(user) %>
               <% end %>
+
+              <% if policy(user).edit? %>
+                <%= link_to t(".delete"), business_user_path(user), method: :delete %>
+              <% end %>
             </td>
           </tr>
         <% end %>

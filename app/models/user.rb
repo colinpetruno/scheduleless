@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  include NotDeletable
+
   belongs_to :company
   has_many :employee_positions
   has_many :user_locations
@@ -7,6 +9,8 @@ class User < ApplicationRecord
   has_many :preferred_hours, dependent: :destroy
   has_many :shifts
   has_many :trades
+
+  default_scope { where(deleted_at: nil) }
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

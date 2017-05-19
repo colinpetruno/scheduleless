@@ -3,6 +3,7 @@ en:
     users:
       index:
         add_employee: "Add Employee"
+        delete: "Remove"
         edit: "Edit"
         email: "Email"
         family_name: "Last Name"

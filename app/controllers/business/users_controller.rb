@@ -12,6 +12,20 @@ module Business
       end
     end
 
+    def destroy
+      @user = current_company.users.find(params[:id])
+      authorize @user
+
+      employee_remover = EmployeeRemover.for(@user)
+
+      if employee_remover.remove
+        redirect_to business_users_path
+      else
+        # TODO - need to direct to another page depending on if they have
+        # shifts or it was an error
+      end
+    end
+
     def edit
       @user = current_company.users.find(params[:id])
       authorize @user

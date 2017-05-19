@@ -16,6 +16,10 @@ class UserPolicy < ApplicationPolicy
     user.company_admin?
   end
 
+  def destroy?
+    user.company_admin?
+  end
+
   def edit?
     user.company_admin? || own_profile?
   end

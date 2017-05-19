@@ -35,6 +35,6 @@ class EmployeeAndLocationSearch
   end
 
   def fields
-    [:email, :given_name, :line_1, :line_2, :city]
+    [:email, :given_name, :family_name, :line_1, :line_2, :city]
   end
 end
