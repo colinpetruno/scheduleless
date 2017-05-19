@@ -7,6 +7,7 @@ Install Postgres. Postgres can be tricky to set up. After installation try
 `psql`. If you cannot log in you may need to manage this through the psql user
 on the system.
 
+createdb `whoami`
 psql -d mydb -U myuser
 
 Once logged in you can run these commands to set up the user in postgres.
@@ -19,12 +20,15 @@ the pg_hba.conf to allow connections on all users from localhost.
 
 ## Elasticsearch
 
-`brew install elasticsearch`
+It depends on Java so grab that
+`brew cask install java`
+
+We need version 2.4 because Chewy isn't compatible with later versions yet
+`brew install elasticsearch@2.4`
+`brew services start elasticsearch@2.4`
 
 If you have existing data run `rake chewy:reset` to ensure that all the data is
 loaded into elasticsearch.
-
-Edit the elasticsearch.yml to run the service on port 9201
 
 
 ## oAuth
