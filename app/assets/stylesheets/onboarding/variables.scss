@@ -1,27 +1,24 @@
-$enable-rounded: false;
+$enable-rounded:                 false;
 
+$dark-blue:                      #5f97ff;
+$gray-light:                     #a0acb9;
+$gray-dark:                      #41454b;
+$light-blue:                     #33a0fc;
+$white:                          #ffffff;
 
-$white: #ffffff;
+$brand-primary:                  $dark-blue;
+$body-bg:                        $dark-blue;
+$header-bg:                      $brand-primary;
 
-// $brand-primary: #ff4f4f;
-$brand-primary: #ff1c1c;
-// $brand-info: #dcf0ee;
+$footer-bg:                      #00535c;
 
-$dark-blue: #5f97ff;
-$light-blue: #ebf0f8;
+$dark-text:                      #333333;
 
-$body-bg: $dark-blue;
+$headings-font-weight:           200;
 
-$header-bg: $brand-primary;
-$footer-bg: #00535c;
+$font-light:                     $gray-light;
+$font-dark:                      $gray-dark;
 
-$dark-text: #333333;
+$font-family-serif:              "Montserrat" serif;
+$font-family-sans-serif:         "Roboto" sans-serif;
 
-//
-
-// $body-bg: #48537d; // dark blue
-
-$font-family-serif: "Montserrat" serif;
-$font-family-sans-serif: "Roboto" sans-serif;
-
-$headings-font-weight: 200;

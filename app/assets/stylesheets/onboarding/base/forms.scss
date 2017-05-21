@@ -1,0 +1,31 @@
+form.new_vertical_form {
+  .input {
+    margin-bottom: 15px;
+
+    label {
+      color: darken($font-light, 20%);
+    }
+
+    input {
+      @include transition($btn-transition);
+
+      border-top: 0;
+      border-left: 0;
+      border-right: 0;
+      color: darken($font-light, 10%);
+      display: block;
+      width: 100%;
+
+      &:focus, &.focus {
+        border-color: $dark-blue;
+        outline: 0;
+        box-shadow: none;
+      }
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0;
+    }
+  }
+}

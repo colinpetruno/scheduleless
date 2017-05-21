@@ -1,21 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col-10 offset-sm-1">
+    <div class="col-12">
       <div class="onboarding-content">
+        <div class="instructions">
+          <h2><%= t(".title") %></h2>
+          <%= t(".description") %>
+        </div>
 
-        <%= simple_form_for [:onboarding, @registration] do |f| %>
-          <%= f.simple_fields_for :user_params do |user_form| %>
-            <%= user_form.simple_fields_for :company_attributes do |company_form| %>
-              <%= company_form.input :name %>
-            <% end %>
-
-            <%= user_form.input :email %>
-            <%= user_form.input :password %>
-            <%= user_form.input :password_confirmation %>
-          <% end %>
-
-          <%= f.submit %>
-        <% end %>
+        <%= render partial: "form", locals: { registration: @registration } %>
       </div>
     </div>
   </div>

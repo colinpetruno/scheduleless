@@ -1,0 +1,9 @@
+en:
+  onboarding:
+    registrations:
+      new:
+        title: "Welcome To Scheduleless"
+        description: "Let us do your scheduling for you"
+      form:
+        company_name: "Company Name"
+        submit: "Get Started For Free"

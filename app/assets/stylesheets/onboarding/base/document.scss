@@ -1,0 +1,6 @@
+body {
+  background: $dark-blue;
+  background: linear-gradient(to bottom,  #ebf0f8 47%, $dark-blue 47%, $dark-blue 100%);
+
+  min-height: 100vh;
+}
