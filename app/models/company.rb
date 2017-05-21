@@ -14,7 +14,7 @@ class Company < ApplicationRecord
 
   accepts_nested_attributes_for :shifts, :users
 
-  before_create :setup_stripe_customer
+  after_create :setup_stripe_customer
 
   def preference
     super || create_preference

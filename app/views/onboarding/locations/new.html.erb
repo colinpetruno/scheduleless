@@ -1,15 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col-10 offset-sm-1">
+    <div class="col-12">
       <div class="onboarding-content">
-        <%= simple_form_for [:onboarding, @location] do |f| %>
-          <%= f.input :line_1 %>
-          <%= f.input :line_2 %>
-          <%= f.input :city %>
-          <%= f.input :county_province %>
-          <%= f.input :postalcode %>
-          <%= f.submit %>
-        <% end %>
+        <div class="instructions">
+          <h3><%= t(".title") %></h3>
+          <%= t(".description") %>
+        </div>
+
+        <%= render partial: "form", locals: { location: @location } %>
       </div>
     </div>
   </div>

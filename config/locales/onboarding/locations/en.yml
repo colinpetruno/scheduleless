@@ -1,0 +1,7 @@
+en:
+  onboarding:
+    locations:
+      new:
+        description: "Set up a location for your company."
+        title: "Add A Location"
+

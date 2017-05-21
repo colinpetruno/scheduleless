@@ -4,14 +4,20 @@ class DateParser
   end
 
   def day
-    Date.parse(@date.to_s).strftime("%-d")
+    parsed_date.strftime("%-d")
   end
 
   def month
-    Date.parse(@date.to_s).strftime("%B")
+    parsed_date.strftime("%B")
   end
 
   def month_and_day
-    Date.parse(@date.to_s).strftime("%B %-d")
+    parsed_date.strftime("%B %-d")
+  end
+
+  private
+
+  def parsed_date
+    Date.parse(@date.to_s)
   end
 end

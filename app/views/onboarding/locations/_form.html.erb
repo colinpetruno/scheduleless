@@ -1,0 +1,8 @@
+<%= simple_form_for [:onboarding, @location], html: { class: "vertical_form" } do |f| %>
+  <%= f.input :line_1 %>
+  <%= f.input :line_2 %>
+  <%= f.input :city %>
+  <%= f.input :county_province %>
+  <%= f.input :postalcode %>
+  <%= f.submit %>
+<% end %>
