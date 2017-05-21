@@ -6,14 +6,17 @@ form.vertical_form {
       color: darken($font-light, 20%);
     }
 
-    input {
+    input, select {
       @include transition($btn-transition);
 
-      border-top: 0;
-      border-left: 0;
-      border-right: 0;
+      background-clip: padding-box;
+      background-image: none;
+      background-color: $input-bg;
       color: darken($font-light, 10%);
       display: block;
+      font-size: $font-size-base;
+      line-height: $input-line-height;
+      padding: $input-padding-y $input-padding-x;
       width: 100%;
 
       &:focus, &.focus {
@@ -23,9 +26,33 @@ form.vertical_form {
       }
     }
 
+    input {
+      border-top: 0;
+      border-left: 0;
+      border-right: 0;
+    }
+
     label {
       display: block;
       margin-bottom: 0;
     }
+
+    select {
+      &::-ms-expand {
+        background-color: transparent;
+        border: 0;
+      }
+
+      &:not([size]):not([multiple]) {
+        $select-border-width: ($border-width * 2);
+        height: calc(#{$input-height} + #{$select-border-width});
+      }
+
+      &:focus::-ms-value {
+        color: $input-color;
+        background-color: $input-bg;
+      }
+    }
+
   }
 }

@@ -54,6 +54,7 @@ class LocationsController < AuthenticatedController
              :line_3,
              :name,
              :postal_code,
+             :time_zone,
              preference_attributes: [
                :break_length,
                :id,

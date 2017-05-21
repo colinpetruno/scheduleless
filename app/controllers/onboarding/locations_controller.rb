@@ -10,6 +10,8 @@ class Onboarding::LocationsController < AuthenticatedController
   def create
     location = current_user.locations.build(location_params)
 
+    authorize location
+
     if current_user.save
       redirect_to new_onboarding_location_user_path(location)
     end
@@ -21,7 +23,7 @@ class Onboarding::LocationsController < AuthenticatedController
     params.
       require(:location).
       permit(:additional_details, :city, :county_province,
-             :line_1, :line_2, :line_3, :postalcode).
+             :line_1, :line_2, :line_3, :postalcode, :time_zone).
       merge(company: current_company)
   end
 end

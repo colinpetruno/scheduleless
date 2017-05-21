@@ -4,10 +4,14 @@ class Onboarding::UsersController < AuthenticatedController
   def new
     @location = current_user.locations.find(params[:location_id])
     @user = User.new
+
+    authorize @user
   end
 
   def create
     @location = current_user.locations.find(params[:location_id])
+
+    authorize User
 
     User.invite!(user_params.merge(default_params)) do |user|
       user.skip_invitation = true
