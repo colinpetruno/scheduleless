@@ -1,4 +1,5 @@
 button, input[type=submit], a.button {
+  cursor: pointer;
   display: inline-block;
   font-weight: $btn-font-weight;
   line-height: $btn-line-height;
@@ -33,5 +34,13 @@ button, input[type=submit], a.button {
   &.active {
     background-image: none;
     @include box-shadow($btn-focus-box-shadow, $btn-active-box-shadow);
+  }
+
+  .oi {
+    line-height: $btn-line-height;
+  }
+
+  &.white {
+    @include button-variant($white, $orange, darken($orange, 5%));
   }
 }

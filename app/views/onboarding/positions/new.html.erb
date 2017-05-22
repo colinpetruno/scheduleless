@@ -1,0 +1,28 @@
+<div class="instructions">
+  <h3><%= t(".title") %></h3>
+  <%= t(".description") %>
+</div>
+
+<div class="row">
+  <div class="col-sm-6">
+    <%= render partial: "form", locals: { position: @position } %>
+  </div>
+  <div class="col-sm-6">
+    <% if current_company.positions.reject { |p| p.id.blank? }.present? %>
+      <%= render partial: "positions", locals: { positions: current_company.positions.reject { |p| p.id.blank? } } %>
+    <% else %>
+      <div class="center light">
+        <%= t(".no_positions") %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<footer>
+  <% if current_company.positions.reject { |p| p.id.blank? }.present? %>
+    <%= link_to t(".continue"),
+      new_onboarding_location_path,
+      class: "button white"
+    %>
+  <% end %>
+</footer>

@@ -1,4 +1,4 @@
-form.vertical_form {
+form {
   .input {
     margin-bottom: 15px;
 
@@ -54,5 +54,11 @@ form.vertical_form {
       }
     }
 
+    .checkbox {
+      label > input {
+        display: inline-block;
+        width: 25px;
+      }
+    }
   }
 }

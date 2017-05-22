@@ -17,21 +17,15 @@ module Settings
     def create
       authorize Position
 
-      @position = current_company.positions.build(position_params)
+      @position = current_company.
+        positions.
+        build(permitted_attributes(Position))
 
       if @position.save
         redirect_to settings_positions_path
       else
         # TODO: HANDLE ERRROR
       end
-    end
-
-    private
-
-    def position_params
-      params.
-        require(:position).
-        permit(:name)
     end
   end
 end

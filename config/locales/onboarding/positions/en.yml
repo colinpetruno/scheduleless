@@ -1,0 +1,8 @@
+en:
+  onboarding:
+    positions:
+      new:
+        continue: "Continue"
+        description: "Add positions that you want to schedule for"
+        title: "Add Your Companys Positions"
+        no_positions: "Add positions before continuing."

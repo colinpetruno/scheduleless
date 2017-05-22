@@ -1,14 +1,6 @@
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <div class="onboarding-content">
-        <div class="instructions">
-          <h2><%= t(".title") %></h2>
-          <%= t(".description") %>
-        </div>
-
-        <%= render partial: "form", locals: { registration: @registration } %>
-      </div>
-    </div>
-  </div>
+<div class="instructions">
+  <h2><%= t(".title") %></h2>
+  <%= t(".description") %>
 </div>
+
+<%= render partial: "form", locals: { registration: @registration } %>

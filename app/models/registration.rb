@@ -16,7 +16,7 @@ class Registration
   end
 
   def user
-    @_user ||= User.create(user_params)
+    @_user ||= User.create(user_params.merge(company_admin: true))
   end
 
   private

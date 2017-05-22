@@ -9,11 +9,19 @@ class PositionPolicy < ApplicationPolicy
     user.company_admin?
   end
 
+  def destroy?
+    user.company_admin?
+  end
+
   def index?
     user.company_admin?
   end
 
   def new?
     user.company_admin?
+  end
+
+  def permitted_attributes
+    [:company_admin, :location_admin, :name]
   end
 end

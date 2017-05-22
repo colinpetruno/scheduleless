@@ -1,0 +1,12 @@
+.onboarding-positions-positions {
+  form button[type=submit] {
+    background-color: $white;
+    border: 0;
+    padding: 2px;
+    color: $gray-dark;
+  }
+
+  table tr > td:last-child {
+    text-align: right;
+  }
+}

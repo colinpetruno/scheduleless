@@ -53,6 +53,7 @@ Rails.application.routes.draw do
     resources :locations, only: [:create, :new] do
       resources :users, path: :employees, only: [:create, :new]
     end
+    resources :positions, only: [:create, :destroy, :new]
     resources :registrations, only: [:create, :new]
     resource :schedule, only: [:create, :new]
   end

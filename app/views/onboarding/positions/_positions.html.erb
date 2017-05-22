@@ -1,0 +1,16 @@
+<div class="onboarding-positions-positions">
+  <table class="table">
+    <tbody>
+      <% positions.each do |position| %>
+        <tr>
+          <td><%= position.name %></td>
+          <td>
+            <%= button_to onboarding_position_path(position), method: :delete do %>
+              <span class="oi oi-x"></span>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

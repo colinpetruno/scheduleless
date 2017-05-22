@@ -1,0 +1,39 @@
+module Onboarding
+  class PositionsController < AuthenticatedController
+    layout "onboarding"
+
+    def create
+      @position = current_company.
+        positions.
+        build(permitted_attributes(Position))
+
+      authorize @position
+
+      if @position.save
+        redirect_to new_onboarding_position_path
+      else
+        # TODO ERROR:
+      end
+    end
+
+    def destroy
+      @position = current_company.positions.find(params[:id])
+
+      authorize @position
+
+      if @position.update_columns(deleted_at: DateTime.now)
+        redirect_to new_onboarding_position_path
+      else
+        # TODO ERROR
+      end
+    end
+
+    def new
+      @position = current_company.
+        positions.
+        build
+
+      authorize @position
+    end
+  end
+end
