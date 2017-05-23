@@ -1,0 +1,33 @@
+<div class="rail">
+  <section>
+    <article>
+      <%= render partial: "calendar_frame", locals: { presenter: @presenter } %>
+    </article>
+
+    <aside>
+      <%= render partial: "location_select",
+        locals: { presenter: @presenter } %>
+
+      <div class="frame">
+        <header>
+          <div><%= t(".next_shift_title") %></div>
+        </header>
+
+        <section>
+          <%= render partial: @presenter.next_shift_partial,
+            locals: { presenter: @presenter } %>
+        </section>
+      </div>
+    </aside>
+  </section>
+</div>
+
+<div class="row">
+  <section>
+    <article>
+      <%= render partial: "day_schedule", locals: {
+        presenter: @presenter
+      } %>
+    </article>
+  </section>
+</div>

@@ -12,7 +12,11 @@ class CalendarShowPresenter
   end
 
   def location_list
-    user.locations.where.not(id: current_location.id).order(:name, :line_1)
+    user.
+      locations.
+      where.
+      not(id: current_location.id).
+      order(:name, :line_1)
   end
 
   def next_shift

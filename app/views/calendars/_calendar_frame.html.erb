@@ -1,0 +1,10 @@
+<div class="frame">
+  <header>
+    <!-- <div><%= Date::MONTHNAMES[Date.today.month] %></div> -->
+    <div><%= render partial: "month_headers" %></div>
+  </header>
+
+  <section>
+    <%= render partial: "calendar", locals: { presenter: presenter } %>
+  </section>
+</div>

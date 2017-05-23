@@ -1,42 +1,7 @@
-<div class="rail">
-  <section>
-    <article>
-      <div class="frame">
-        <header>
-          <!-- <div><%= Date::MONTHNAMES[Date.today.month] %></div> -->
-          <div><%= render partial: "month_headers" %></div>
-        </header>
+<% if @presenter.current_location.present? %>
+  <%= render partial: "calendar_layout", locals: { presenter: @presenter } %>
+<% else %>
+  <%= render partial: "no_locations" %>
+<% end %>
 
-        <section>
-          <%= render partial: "calendar", locals: { presenter: @presenter } %>
-        </section>
-      </div>
-    </article>
 
-    <aside>
-      <%= render partial: "location_select",
-        locals: { presenter: @presenter } %>
-
-      <div class="frame">
-        <header>
-          <div><%= t(".next_shift_title") %></div>
-        </header>
-
-        <section>
-          <%= render partial: @presenter.next_shift_partial,
-            locals: { presenter: @presenter } %>
-        </section>
-      </div>
-    </aside>
-  </section>
-</div>
-
-<div class="row">
-  <section>
-    <article>
-      <%= render partial: "day_schedule", locals: {
-        presenter: @presenter
-      } %>
-    </article>
-  </section>
-</div>

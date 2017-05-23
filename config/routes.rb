@@ -7,6 +7,8 @@ Rails.application.routes.draw do
       path: "employees"
   end
 
+  resource :calendar, only: [:show]
+
   resources :locations, only: [:create, :edit, :index, :new, :show, :update] do
     resources :available_employees, only: [:index]
     resource :calendar, only: [:show]

@@ -3,7 +3,14 @@ en:
     blank_next_shift:
       available: "Available Shifts"
       no_shifts: "You currently have no shifts scheduled!"
-    show:
+    calendar_layout:
       next_shift_title: "Your next shift"
-  location_select:
-    selected_location: "Selected Location"
+    location_select:
+      selected_location: "Selected Location"
+    no_locations:
+      contact_manager: >
+        Contact your manager to ensure you get added to your proper location so 
+        you can start receiving more hours!
+      not_added: >
+        You haven't been added to any locations yet! You probably won't be able 
+        to see much.

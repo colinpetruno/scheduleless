@@ -5,18 +5,15 @@ class Onboarding::SchedulesController < AuthenticatedController
     authorize :schedule, :create?
 
     employees = User.where(company_id: current_company.id)
-    @schedule = Scheduler::Schedule.for(current_company, employees)
+    @schedule = Schedule.new(company: current_company)
   end
 
   def create
     authorize :schedule, :create?
 
     employees = User.where(company_id: current_company.id)
-    @schedule = Scheduler::Schedule.for(current_company, employees)
-
-    if @schedule.generate
-      @schedule.print
-      redirect_to calendar_path
-    end
+    @schedules = MultipleLocationsSchedule.
+      new(company: current_company)
+      #Scheduler::Schedule.for(current_company, employees)
   end
 end

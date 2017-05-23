@@ -7,9 +7,8 @@ module Scheduler
     attr_accessor :company
     attr_accessor :location
 
-    def self.for(company, location={}, schedule_start=Date.today, day_range=4, time_range=4)
-      schedule = new(company, location, schedule_start, day_range, time_range)
-      schedule
+    def self.for(company, location=nil, schedule_start=Date.today, day_range=4, time_range=4)
+      new(company, location, schedule_start, day_range, time_range)
     end
 
     def initialize(company, location, schedule_start, day_range, time_range)
@@ -55,6 +54,9 @@ module Scheduler
     end
 
     def generate_shifts
+      # don't want to schedule for users, we should surface this error handling better
+      return false if location.users.blank?
+
       ShiftGenerator.
         new(company: company, location: location, layout: layout, options: options).
         generate

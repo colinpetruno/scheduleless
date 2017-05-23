@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   include Pundit
   protect_from_forgery with: :exception
-  helper_method :after_sign_in_path_for
+  helper_method :after_sign_in_path_for, :default_calendar_path_for
 
 
   def default_calendar_path_for(user)
@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
     if location.present?
       location_calendar_path(location)
     else
-      # TODO: HMMM where to go
+      calendar_path
     end
   end
 end
