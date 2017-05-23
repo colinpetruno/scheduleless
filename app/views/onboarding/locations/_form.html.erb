@@ -5,5 +5,16 @@
   <%= f.input :county_province %>
   <%= f.input :postalcode %>
   <%= f.input :time_zone, priority: /US/ %>
-  <%= f.submit %>
+
+
+  <footer>
+    <div>
+      <%= link_to t(".back"),
+        onboarding_locations_path,
+        class: "button white" %>
+    </div>
+    <div>
+      <%= f.submit class: "button orange" %>
+    </div>
+  </footer>
 <% end %>

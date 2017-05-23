@@ -1,0 +1,53 @@
+<div class="instructions">
+  <h3><%= t(".title") %></h3>
+  <%= t(".description") %>
+</div>
+
+<% if @locations.present? %>
+  <table class="table">
+    <% @locations.each do |location| %>
+      <tr>
+        <td>
+          <%= AddressFormatter.for(location).address.join(", ") %>
+        </td>
+        <td>
+          <%= AddressFormatter.for(location).city_state_zip %>
+        </td>
+        <td>
+          <%= link_to t(".employees"), onboarding_location_users_path(location) %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <div class="light center">
+    <%= t(".no_locations") %>
+  </div>
+<% end %>
+
+<br>
+<div class="center">
+  <%= link_to t(".add_location"), new_onboarding_location_path, class: "button" %>
+</div>
+
+<footer>
+  <div>
+    <%= link_to t(".back"),
+      new_onboarding_position_path,
+      class: "button white"
+    %>
+  </div>
+
+  <div>
+    <% if @locations.present? %>
+      <%= link_to t(".start"),
+        new_onboarding_schedule_path,
+        class: "button orange"
+      %>
+    <% else %>
+      <button class="disabled button orange" disabled="disabled">
+        <%= t(".start") %>
+      </button>
+    <% end %>
+  </div>
+</footer>

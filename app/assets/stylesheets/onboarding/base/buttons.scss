@@ -40,7 +40,11 @@ button, input[type=submit], a.button {
     line-height: $btn-line-height;
   }
 
-  &.white {
+  &.orange {
     @include button-variant($white, $orange, darken($orange, 5%));
+  }
+
+  &.white {
+    @include button-variant($gray-light, $white, $gray-light);
   }
 }

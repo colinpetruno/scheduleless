@@ -1,22 +1,26 @@
-<div class="container">
-  <div class="row">
-    <div class="col-10 offset-sm-1">
-      <div class="onboarding-content">
-        Add Some Users
-        <%= simple_form_for [:onboarding, @location, @user] do |f| %>
-          <%= f.input :given_name %>
-          <%= f.input :family_name %>
-          <%= f.input :preferred_name %>
-
-          <%= f.input :email %>
-          <%= f.input :mobile_phone %>
-
-          <%= f.submit %>
-        <% end %>
-        <br><br>
-        <%= link_to "Add another location", new_onboarding_location_path %>
-        <%= link_to "Generate your schedule", new_onboarding_schedule_path %>
-      </div>
-    </div>
-  </div>
+<div class="instructions">
+  <h3><%= t(".title") %></h3>
+  <%= t(".description") %>
 </div>
+
+<%= simple_form_for [:onboarding, @location, @user] do |f| %>
+  <%= f.input :given_name %>
+  <%= f.input :family_name %>
+  <%= f.input :preferred_name %>
+
+  <%= f.input :email %>
+  <%= f.input :mobile_phone %>
+
+  <%= f.submit %>
+<% end %>
+
+<footer>
+  <div>
+    <%= link_to t(".back"), new_onboarding_location_path, class: "button white" %>
+  </div>
+
+  <div>
+    <%= link_to t(".start"), new_onboarding_schedule_path, class: "button orange" %>
+  </div>
+</footer>
+

@@ -1,6 +1,14 @@
 class Onboarding::UsersController < AuthenticatedController
   layout "onboarding"
 
+  def index
+    skip_policy_scope
+
+    @location = current_company.locations.find(params[:location_id])
+
+    @users = @location.users - [current_user]
+  end
+
   def new
     @location = current_user.locations.find(params[:location_id])
     @user = User.new

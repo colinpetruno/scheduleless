@@ -9,8 +9,21 @@
   padding: 50px;
 
   footer {
-    margin-top: 20px;
+    @include make-row();
+    border-top: 1px solid darken($white, 10%);
+    margin-top: 40px;
+    padding-top: 15px;
     text-align: right;
+
+    > div {
+      @include make-col-ready();
+      @include make-col(6);
+      text-align: left;
+
+      &:last-child {
+        text-align: right;
+      }
+    }
   }
 }
 

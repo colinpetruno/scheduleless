@@ -50,12 +50,13 @@ Rails.application.routes.draw do
 
   namespace :onboarding do
     resource :company_preferences, only: [:create, :new]
-    resources :locations, only: [:create, :new] do
-      resources :users, path: :employees, only: [:create, :new]
+    resources :locations, only: [:create, :index, :new] do
+      resources :users, path: :employees, only: [:create, :index, :new]
     end
     resources :positions, only: [:create, :destroy, :new]
     resources :registrations, only: [:create, :new]
     resource :schedule, only: [:create, :new]
+    resources :user, only: [:destroy]
   end
 
   namespace :scheduler do

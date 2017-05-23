@@ -1,4 +1,11 @@
 form {
+    button[type=submit] {
+      background-color: $white;
+      border: 0;
+      padding: 2px;
+      color: $gray-dark;
+    }
+
   .input {
     margin-bottom: 15px;
 

@@ -19,10 +19,13 @@
 </div>
 
 <footer>
-  <% if current_company.positions.reject { |p| p.id.blank? }.present? %>
-    <%= link_to t(".continue"),
-      new_onboarding_location_path,
-      class: "button white"
-    %>
-  <% end %>
+  <div></div>
+  <div>
+    <% if current_company.positions.reject { |p| p.id.blank? }.present? %>
+      <%= link_to t(".continue"),
+        onboarding_locations_path,
+        class: "button orange"
+      %>
+    <% end %>
+  </div>
 </footer>

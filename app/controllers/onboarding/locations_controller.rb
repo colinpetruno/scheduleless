@@ -1,6 +1,10 @@
 class Onboarding::LocationsController < AuthenticatedController
   layout "onboarding"
 
+  def index
+    @locations = policy_scope(Location)
+  end
+
   def new
     @location = Location.new
 

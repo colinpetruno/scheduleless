@@ -1,6 +1,16 @@
 en:
   onboarding:
     locations:
+      form:
+        back: "Back"
+      index:
+        add_location: "Add Location"
+        back: "Back"
+        description: "Manage your locations."
+        employees: "Employees"
+        no_locations: "Add Some Locations Before Continuing!" 
+        start: "Start Scheduling"
+        title: "Locations"
       new:
         description: "Set up a location for your company."
         title: "Add A Location"
