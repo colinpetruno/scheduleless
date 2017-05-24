@@ -12,12 +12,14 @@ class Onboarding::LocationsController < AuthenticatedController
   end
 
   def create
-    location = current_user.locations.build(location_params)
+    @location = current_user.locations.build(location_params)
 
-    authorize location
+    authorize @location
 
     if current_user.save
-      redirect_to new_onboarding_location_user_path(location)
+      redirect_to new_onboarding_location_user_path(@location)
+    else
+      render :new
     end
   end
 

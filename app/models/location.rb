@@ -7,6 +7,11 @@ class Location < ApplicationRecord
 
   has_one :preference, as: :preferable
 
+  validates :city, presence: true
+  validates :line_1, presence: true
+  validates :postalcode, presence: true
+  validates :time_zone, presence: true
+
   accepts_nested_attributes_for :preference
 
   update_index "site_search#location", :self

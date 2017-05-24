@@ -65,6 +65,7 @@ class LocationsController < AuthenticatedController
                :shift_overlap,
                :use_company_settings
              ]
-            )
+            ).
+      merge(company: current_company)
   end
 end
