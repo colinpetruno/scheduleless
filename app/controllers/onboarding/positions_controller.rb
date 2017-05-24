@@ -12,7 +12,7 @@ module Onboarding
       if @position.save
         redirect_to new_onboarding_position_path
       else
-        # TODO ERROR:
+        render :new
       end
     end
 

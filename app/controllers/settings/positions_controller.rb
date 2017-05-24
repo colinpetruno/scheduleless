@@ -24,7 +24,7 @@ module Settings
       if @position.save
         redirect_to settings_positions_path
       else
-        # TODO: HANDLE ERRROR
+        render :new
       end
     end
   end

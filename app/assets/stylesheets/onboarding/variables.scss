@@ -5,6 +5,7 @@ $gray-light:                     #a0acb9;
 $gray-dark:                      #484b52;
 $light-blue:                     #33a0fc;
 $orange:                         #ffbc42;
+$red:                            #d9534f;
 $white:                          #ffffff;
 
 $brand-primary:                  $dark-blue;
@@ -23,3 +24,7 @@ $font-dark:                      $gray-dark;
 $font-family-serif:              "Montserrat" serif;
 $font-family-sans-serif:         "Roboto" sans-serif;
 
+
+$state-danger-text:              #a94442 !default;
+$state-danger-bg:                #f2dede !default;
+$state-danger-border-color:      darken($state-danger-bg, 5%) !default;

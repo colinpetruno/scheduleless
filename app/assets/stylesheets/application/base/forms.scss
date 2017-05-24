@@ -12,6 +12,7 @@
     background-image: none;
     background-color: $input-bg;
     border: $input-btn-border-width solid $input-border-color;
+    border-radius: 0;
     color: $input-color;
     display: block;
     font-size: $font-size-base;
@@ -57,6 +58,21 @@
     &:focus::-ms-value {
       color: $input-color;
       background-color: $input-bg;
+    }
+  }
+
+  &.has-error {
+    input {
+      border-color: $red;
+    }
+
+    label {
+      color: $red;
+    }
+
+    .help-block {
+      color: $red;
+      font-size: .8em;
     }
   }
 }

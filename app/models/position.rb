@@ -6,5 +6,7 @@ class Position < ApplicationRecord
   has_many :schedule_rules, through: :employee_positions
   has_many :users, through: :employee_positions
 
+  validates :name, presence: true, length: { minimum: 3, maximum: 100 }
+
   default_scope { where(deleted_at: nil) }
 end
