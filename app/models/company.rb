@@ -10,7 +10,7 @@ class Company < ApplicationRecord
   has_one :preference, as: :preferable
   has_one :subscription
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { minimum: 3, maximum: 150 }
 
   accepts_nested_attributes_for :shifts, :users
 

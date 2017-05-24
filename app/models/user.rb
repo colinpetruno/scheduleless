@@ -17,7 +17,7 @@ class User < ApplicationRecord
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :email, presence: true
+  validates :email, presence: true, length: { minimum: 3, maximum: 200 }
 
   accepts_nested_attributes_for :company, :preferred_hours
 

@@ -6,13 +6,13 @@ class Onboarding::RegistrationsController < ApplicationController
   end
 
   def create
-    registration = Registration.new(registration_params)
+    @registration = Registration.new(registration_params)
 
-    if registration.register
-      sign_in(registration.user)
+    if @registration.register
+      sign_in(@registration.user)
       redirect_to new_onboarding_position_path
     else
-      redirect_to root_path
+      render :new
     end
   end
 
@@ -21,13 +21,11 @@ class Onboarding::RegistrationsController < ApplicationController
   def registration_params
     params.
       require(:registration).
-      permit(user_params: [
+      permit(
+        :company_name,
         :email,
         :password,
         :password_confirmation,
-        company_attributes: [
-          :name
-        ]
-      ])
+      )
   end
 end
