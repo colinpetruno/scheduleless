@@ -29,6 +29,14 @@ class User < ApplicationRecord
     super(only: [:email, :id, :given_name, :family_name, :preferred_name])
   end
 
+  def company_admin?
+    super || positions.where(company_admin: true).present?
+  end
+
+  def location_admin?
+    positions.where(location_admin: true).present?
+  end
+
   private
 
   def build_availabilities

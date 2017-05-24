@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resource :daily_schedule, only: [:show]
     resources :trades, only: [:index]
     resources :user_locations, only: [:create]
+    resources :users, only: [:new, :create], path: "employees"
   end
 
   namespace :mobile_api do

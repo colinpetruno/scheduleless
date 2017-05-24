@@ -1,0 +1,8 @@
+<%= simple_form_for [@location, @user] do |f| %>
+  <%= f.input :email %>
+  <%= f.input :mobile_phone %>
+  <%= f.input :given_name %>
+  <%= f.input :family_name %>
+
+  <%= f.submit %>
+<% end %>
