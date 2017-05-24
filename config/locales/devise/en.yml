@@ -29,6 +29,18 @@ en:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
     passwords:
+      edit:
+        confirm_password: "Confirm your new password"
+        hint: "%{length} characters minimum"
+        new_password: "New password"
+        sign_in: "Sign In"
+        sign_up: "Sign Up"
+        submit: "Change my password"
+        title: "Change your password"
+      new:
+        sign_in: "Sign In"
+        submit: "Send me reset password instructions"
+        title: "Reset Your Password"
       no_token: "You can't access this page without coming from a password reset email. If you do come from a password reset email, please make sure you used the full URL provided."
       send_instructions: "You will receive an email with instructions on how to reset your password in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive a password recovery link at your email address in a few minutes."
@@ -43,6 +55,11 @@ en:
       update_needs_confirmation: "You updated your account successfully, but we need to verify your new email address. Please check your email and follow the confirm link to confirm your new email address."
       updated: "Your account has been updated successfully."
     sessions:
+      new:
+        forgot: "Forgot your password?"
+        title: "Sign In"
+        sign_up: "Sign Up"
+        submit: "Sign In"
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."
       already_signed_out: "Signed out successfully."

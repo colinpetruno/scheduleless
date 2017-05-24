@@ -6,5 +6,8 @@
   <%= f.input :password %>
   <%= f.input :password_confirmation %>
 
-  <%= f.submit t(".submit") %>
+  <div>
+    <%= f.submit t(".submit"), class: "button orange" %>
+    <%= link_to t(".sign_in"), new_session_path(:user), class: "button white" %>
+  </div>
 <% end %>

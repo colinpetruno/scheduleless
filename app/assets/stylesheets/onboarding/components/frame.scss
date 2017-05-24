@@ -8,11 +8,8 @@
   min-height: 400px;
   padding: 50px;
 
-  footer {
+  footer, section {
     @include make-row();
-    border-top: 1px solid darken($white, 10%);
-    margin-top: 40px;
-    padding-top: 15px;
     text-align: right;
 
     > div {
@@ -24,6 +21,16 @@
         text-align: right;
       }
     }
+  }
+
+  footer {
+    border-top: 1px solid darken($white, 10%);
+    margin-top: 40px;
+    padding-top: 15px;
+  }
+
+  section {
+    margin-top: 30px;
   }
 }
 

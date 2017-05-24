@@ -1,3 +1,3 @@
 class DeviseBaseController < ApplicationController
-  layout "marketing"
+  layout "onboarding"
 end
