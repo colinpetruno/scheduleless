@@ -5,8 +5,7 @@
         <strong><%= location.name  %></strong><br>
       <% end %>
 
-      <%= safe_join(AddressFormatter.for(location).address, ("<br>".html_safe)) %>
-      <%= AddressFormatter.for(location).city_state_zip %>
+      <%= AddressFormatter.for(location).multiline_html %>
     </div>
   <% end %>
 </div>

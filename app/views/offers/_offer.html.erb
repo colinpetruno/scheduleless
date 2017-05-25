@@ -33,8 +33,7 @@
             <strong><%= offer.offered_shift.location.name  %></strong><br>
           <% end %>
 
-          <%= safe_join(AddressFormatter.for(offer.offered_shift.location).address, ("<br>".html_safe)) %>
-          <%= AddressFormatter.for(offer.offered_shift.location).city_state_zip %>
+          <%= AddressFormatter.for(offer.offered_shift.location).multiline_html %>
         </div>
       </div>
     </article>

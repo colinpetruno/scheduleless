@@ -21,8 +21,7 @@
             <strong><%= shift.location.name  %></strong><br>
           <% end %>
 
-          <%= safe_join(AddressFormatter.for(shift.location).address, ("<br>".html_safe)) %>
-          <%= AddressFormatter.for(shift.location).city_state_zip %>
+          <%= AddressFormatter.for(shift.location).multiline_html %>
         </div>
       </div>
     </article>

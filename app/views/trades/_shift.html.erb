@@ -34,8 +34,7 @@
       <strong><%= trade.shift.location.name  %></strong><br>
     <% end %>
 
-    <%= safe_join(AddressFormatter.for(trade.shift.location).address, ("<br>".html_safe)) %>
-    <%= AddressFormatter.for(trade.shift.location).city_state_zip %>
+    <%= AddressFormatter.for(trade.shift.location).multiline_html %>
   </div>
 </div>
 <%# TODO: Get this stuff into a presenter or something. Dementer is angry %>
