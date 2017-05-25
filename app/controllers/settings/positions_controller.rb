@@ -1,5 +1,25 @@
 module Settings
   class PositionsController < AuthenticatedController
+    def create
+      authorize Position
+
+      @position = current_company.
+        positions.
+        build(permitted_attributes(Position))
+
+      if @position.save
+        redirect_to settings_positions_path
+      else
+        render :new
+      end
+    end
+
+    def edit
+      @position = current_company.positions.find(params[:id])
+
+      authorize @position
+    end
+
     def index
       authorize Position
       positions = policy_scope(Position).order(:name)
@@ -14,17 +34,15 @@ module Settings
       @position = current_company.positions.build
     end
 
-    def create
-      authorize Position
+    def update
+      @position = current_company.positions.find(params[:id])
 
-      @position = current_company.
-        positions.
-        build(permitted_attributes(Position))
+      authorize @position
 
-      if @position.save
+      if @position.update(permitted_attributes(Position))
         redirect_to settings_positions_path
       else
-        render :new
+        render :edit
       end
     end
   end

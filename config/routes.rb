@@ -93,7 +93,7 @@ Rails.application.routes.draw do
     resources :popular_time_range_times, only: [:create]
     resources :popular_weekday_times, only: [:create]
 
-    resources :positions, only: [:create, :index, :new,]
+    resources :positions, only: [:create, :edit, :index, :new, :update]
     resources :schedule_rules, only: [:create, :index]
     resource :subscription, only: [:edit, :update]
   end

@@ -13,11 +13,19 @@ class PositionPolicy < ApplicationPolicy
     user.company_admin?
   end
 
+  def edit?
+    user.company_admin?
+  end
+
   def index?
     user.company_admin?
   end
 
   def new?
+    user.company_admin?
+  end
+
+  def update?
     user.company_admin?
   end
 

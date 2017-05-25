@@ -1,7 +1,7 @@
 <table>
   <thead>
     <tr>
-      <th>Name</th>
+      <th><%= t(".name") %></th>
       <th></th>
     </tr>
   </thead>
@@ -9,7 +9,11 @@
     <% positions.map do |position| %>
       <tr>
         <td><%= position.name %></td>
-        <td>Edit</td>
+        <td>
+          <% if policy(position).edit? %>
+            <%= link_to t(".edit"), edit_settings_position_path(position) %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
