@@ -30,6 +30,11 @@ We need version 2.4 because Chewy isn't compatible with later versions yet
 If you have existing data run `rake chewy:reset` to ensure that all the data is
 loaded into elasticsearch.
 
+## Redis
+
+`brew install redis`
+`brew services start redis`
+
 
 ## oAuth
 

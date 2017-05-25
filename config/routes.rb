@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   root to: "marketing/welcome#index"
 
@@ -61,6 +63,9 @@ Rails.application.routes.draw do
     resource :schedule, only: [:create, :new]
     resources :user, only: [:destroy]
   end
+
+  # TODO: AUTH THIS
+  mount Sidekiq::Web, at: "/queues"
 
   namespace :scheduler do
     resources :locations, only: [] do
