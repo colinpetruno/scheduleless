@@ -79,6 +79,13 @@ curl -X GET -H "Authorization: Bearer c35042ae39fb1bcad57216eebcafdb6b7addb7ceea
 - Credit Card Processing
 - Admins: Colin
 
+#### Twilio
+
+- Used for inviting users to download the app. Note: Cost is a concern here. If
+  we send more than 500-1000 of these a month per customer cost will be a 
+  factor.
+- Admins: Colin
+
 #### Zoho
 
 - Emails

@@ -19,6 +19,7 @@ gem "sass-rails", "~> 5.0"
 gem "simple_form"
 gem "stripe"
 gem "turbolinks", "~> 5"
+gem "twilio-ruby"
 gem "uglifier", ">= 1.3.0"
 
 source "https://rails-assets.org" do
