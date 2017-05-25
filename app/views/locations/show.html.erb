@@ -4,6 +4,18 @@
   </header>
 
   <section>
-    content
+    <article>
+      <%= AddressFormatter.for(@location).multiline_html %>
+    </article>
+  </section>
+</div>
+
+<div class="frame">
+  <header>
+    <div>Employees</div>
+  </header>
+
+  <section>
+    <%= render partial: "users/users", locals: { users: @location.users } %>
   </section>
 </div>

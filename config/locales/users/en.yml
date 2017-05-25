@@ -2,3 +2,11 @@ en:
   users:
     edit:
       update_profile_heading: "Update Your Profile"
+    users:
+      delete: "Remove"
+      edit: "Edit"
+      email: "Email"
+      family_name: "Last Name"
+      given_name: "First Name"
+      preferred_name: "Nickname"
+      view: "View"

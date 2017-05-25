@@ -3,14 +3,8 @@ en:
     users:
       index:
         add_employee: "Add Employee"
-        delete: "Remove"
-        edit: "Edit"
         email: "Email"
-        family_name: "Last Name"
-        given_name: "First Name"
-        preferred_name: "Nickname"
         title: "Employees"
-        view: "View"
       new:
         title: "Add Employee"
       user_details:
