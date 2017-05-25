@@ -1,0 +1,8 @@
+en:
+  settings:
+    subscriptions:
+      controller:
+        alert: >
+          We weren't able to update your subscription. We will be in touch 
+          shortly
+        notice: "Your subscription was successfully updated!"
