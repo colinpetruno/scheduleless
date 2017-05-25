@@ -52,6 +52,29 @@ module Scheduler
       remove_conflicts(adjacent_employees)
     end
 
+    def employee_eligible_for?(employee, position_name)
+
+      if !timeslot.position_room_available?(position_name)
+        return false
+      end
+
+      if minmax_not_eligible(employee)
+        return false
+      end
+
+      if @existing_shifts.user_scheduled_at(employee.id, timeslot.x, timeslot.y)
+        return false
+      end
+
+      if @options.prevent_multi_location_schedule_daily
+        if @existing_shifts.user_scheduled_during_day(employee.id, timeslot.x, @location.id)
+          return false
+        end
+      end
+
+      true
+    end
+
     private
 
     attr_reader :layout, :timeslot, :existing_shifts, :company, :options

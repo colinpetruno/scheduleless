@@ -11,6 +11,7 @@ class PreferenceFinder
     if record.is_a?(Company)
       record.preference
     else
+      prioritized_preference
     end
   end
 

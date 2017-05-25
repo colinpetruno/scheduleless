@@ -1,6 +1,9 @@
 module Scheduler
   class EmployeeAssigner
     ROTATION_COUNT = 500 # number of assignment rounds to execute for
+                         # if we meet the rotation account, then 100% shift coverage is not met
+
+    SCHEDULE_STRATEGY = "grow"
 
     def initialize(company:, location:, layout:, date_start:, options: Options.new)
       @company = company
@@ -14,19 +17,19 @@ module Scheduler
 
     def assign
       prepare_initial_schedule
-      auto_manage_schedule
+      auto_manage_schedule(0)
     end
 
     private
 
     attr_reader :company, :location, :layout, :date_start, :options
 
-    def timeslots
-      @_employee_timeslots ||= EmployeeTimeslots.new
-    end
-
     def employees
       location.users
+    end
+
+    def timeslots
+      @_employee_timeslots ||= EmployeeTimeslots.new
     end
 
     def existing_shifts
@@ -48,11 +51,14 @@ module Scheduler
         end
       end
 
-      all_timeslots.shuffle!
+      if SCHEDULE_STRATEGY == "random"
+        all_timeslots.shuffle!
 
-      all_timeslots.each do |day|
-        day.shuffle!
+        all_timeslots.each do |day|
+          day.shuffle!
+        end
       end
+
 
       all_timeslots.each do |day|
         day.each do |coordinate|
@@ -72,17 +78,22 @@ module Scheduler
       false
     end
 
-    def auto_manage_schedule() # looks good
+    def auto_manage_schedule(failures) # looks good
+      if failures > ROTATION_COUNT
+        return true
+      end
       successful_iteration = assign_iteration
 
       # if the iteration is successful, run another round
       if successful_iteration
-        auto_manage_schedule()
+        auto_manage_schedule(0)
       else
         # if the iteration fails attempt an injection if necessary or cancel
         if !layout.all_slots_full?
           if perform_employee_injection
-            auto_manage_schedule()
+            auto_manage_schedule(0)
+          else
+            auto_manage_schedule(failures+1)
           end
         end
       end
@@ -110,7 +121,10 @@ module Scheduler
         sorted_employees.each do |employee|
           employee.positions.each do |position|
             if can_schedule?(slot, employee, position, location)
-              slot.add_employee(employee, position.name)
+              successful_injection = assign_employee_timeslot(employee, position.name, slot)
+              if not successful_injection
+                return false
+              end
               return true;
             end
           end
@@ -127,7 +141,7 @@ module Scheduler
 
     def prepare_initial_schedule # looks good
       (0..options.days_to_schedule).each do |x|
-        y = rand(options.number_of_intervals)
+        y = 0 #rand(options.number_of_intervals)
         # this is probably a bit odd?
         employee = employees[x % employees.length]
         position = employee.positions.sample
@@ -140,8 +154,7 @@ module Scheduler
           slot = layout.get_timeslot(x, y)
           # TODO: user has no positions breaks this
           if can_schedule?(slot, employee, position, location)
-            slot.add_employee(employee, position.name)
-            timeslots.add_for(employee: employee, day: x, slot_number: y)
+            assign_employee_timeslot(employee, position.name, slot)
             not_scheduled = false
           end
           iterations = iterations + 1
@@ -164,8 +177,7 @@ module Scheduler
 
         if elg_employees.length > 0 and slot.position_room_available?(position)
           assigned_employee = priority_employee(elg_employees, slot, position)
-          slot.add_employee(assigned_employee, position)
-          timeslots.add_for(employee: assigned_employee, day: slot.x, slot_number: slot.y)
+          assign_employee_timeslot(assigned_employee, position, slot)
           assigned = true
         end
       end
@@ -173,11 +185,73 @@ module Scheduler
       assigned
     end
 
+    def assign_employee_timeslot(employee, position_name, slot)
+      # check if a min shift length is required
+      preferences = PreferenceFinder.for(location)
+      min_shift_length = preferences.minimum_shift_length
+
+      if min_shift_length
+
+        # run min shift counter
+        #   Add user up Y positions until = 0 then use remainder to schedule down
+        y_up_shift_height = count_min_shift_height(employee, position_name, slot, -1, 0)
+        y_down_shift_height = count_min_shift_height(employee, position_name, slot, 1, 0)
+
+        # if the total shift heigh up and down is greater than the minimum required - start scheduling
+        if (y_up_shift_height + y_down_shift_height)*options.time_interval_minutes > min_shift_length
+
+          # start by scheduling upwards
+          y_up_traveled = schedule_for_height(employee, position_name, slot, -1, [y_up_shift_height, min_shift_length/options.time_interval_minutes].min, 0)
+
+          # if scheduling upwards is less than the minimum, start scheduling down until min shift is met
+          if y_up_traveled < min_shift_length/options.time_interval_minutes
+            schedule_for_height(employee, position_name, slot, 1, [y_down_shift_height-y_up_traveled, min_shift_length/options.time_interval_minutes].min, 0)
+          end
+
+          true
+        end
+
+        false
+      else
+        # otherwise just assign
+        slot.add_employee(employee, position_name)
+        timeslots.add_for(employee: employee, day: slot.x, slot_number: slot.y)
+
+        true
+      end
+    end
+
+    def schedule_for_height(employee, position_name, slot, direction, allotment_remaining, height_traveled)
+      # if we out of height or upon scheduling would violate minimax restrictions - return
+      if allotment_remaining <= 0 or slot.nil? or minmax_not_eligible(slot, employee)
+        return height_traveled
+      end
+
+      # If the employee can be scheduled then do so
+      if !slot.has_employee?(employee.id)
+        slot.add_employee(employee, position_name)
+        timeslots.add_for(employee: employee, day: slot.x, slot_number: slot.y)
+      end
+
+      schedule_for_height(employee, position_name, layout.get_timeslot(slot.x, slot.y+direction), direction, allotment_remaining-1, height_traveled+1)
+    end
+
+    # Returns the height from a position that can be traveled until an ineligibility occurs
+    def count_min_shift_height(employee, position, slot, direction, n)
+
+      # Return if not eligible and not assigned (or doesnt exist)
+      if (!employee_eligible_for?(slot, employee, position) and !slot.has_employee?(employee.id)) or slot.nil?
+        return n
+      end
+
+      count_min_shift_height(employee, position, layout.get_timeslot(slot.x, slot.y+direction), direction, n+1)
+    end
+
     def priority_employee(eligible_employees, slot, position) # looks good
       priority_finder(eligible_employees, slot, position)
     end
 
-    #TODO
+    # Check all parameters on a slot w/r/t an employee to determine eligibility to assign
     def can_schedule?(slot, employee, position, location)
       !existing_shifts.user_scheduled_at(employee.id, slot.x, slot.y) and
         !existing_shifts.user_scheduled_during_day(employee.id, slot.x, location.id) and
@@ -191,6 +265,12 @@ module Scheduler
       EligibilityFinder.
         new(layout: layout, timeslot: slot, location: location, existing_shifts: existing_shifts, company: company, options: options).
         find(position)
+    end
+
+    def employee_eligible_for?(slot, employee, position)
+      EligibilityFinder.
+        new(layout: layout, timeslot: slot, location: location, existing_shifts: existing_shifts, company: company, options: options).
+        employee_eligible_for?(employee, position)
     end
 
     def priority_finder(eligible_employees, slot, position)
