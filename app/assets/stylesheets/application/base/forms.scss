@@ -1,7 +1,13 @@
 .input {
-  margin-bottom: 16px;
+  margin-bottom: 25px;
   &.hidden {
     margin-bottom: 0;
+  }
+
+  label {
+    font-weight: bold;
+    color: lighten($font-dark, 15%);
+    margin-bottom: 4px;
   }
 
   input, select {
@@ -19,6 +25,7 @@
     line-height: $input-line-height;
     max-width: 400px;
     padding: $input-padding-y $input-padding-x;
+    width: 100%;
 
     &:focus {
       border-color: $blue;
@@ -49,7 +56,6 @@
       border: 0;
     }
 
-
     &:not([size]):not([multiple]) {
       $select-border-width: ($border-width * 2);
       height: calc(#{$input-height} + #{$select-border-width});
@@ -59,6 +65,12 @@
       color: $input-color;
       background-color: $input-bg;
     }
+  }
+
+  small {
+    color: $blue;
+    display: block;
+    max-width: 400px;
   }
 
   &.has-error {
@@ -73,6 +85,13 @@
     .help-block {
       color: $red;
       font-size: .8em;
+    }
+  }
+
+  .checkbox {
+    label > input {
+      display: inline-block;
+      width: 25px;
     }
   }
 }

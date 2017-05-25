@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170522145008) do
+ActiveRecord::Schema.define(version: 20170525034148) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -146,13 +146,15 @@ ActiveRecord::Schema.define(version: 20170522145008) do
   end
 
   create_table "preferences", force: :cascade do |t|
-    t.integer "preferable_id",                            null: false
-    t.integer "shift_overlap",        default: 15,        null: false
-    t.integer "minimum_shift_length", default: 240,       null: false
-    t.integer "maximum_shift_length", default: 480,       null: false
-    t.integer "break_length",         default: 60,        null: false
-    t.string  "preferable_type",      default: "Company", null: false
-    t.boolean "use_company_settings", default: true,      null: false
+    t.integer "preferable_id",                               null: false
+    t.integer "shift_overlap",           default: 15,        null: false
+    t.integer "minimum_shift_length",    default: 240,       null: false
+    t.integer "maximum_shift_length",    default: 480,       null: false
+    t.integer "break_length",            default: 60,        null: false
+    t.string  "preferable_type",         default: "Company", null: false
+    t.boolean "use_company_settings",    default: true,      null: false
+    t.boolean "paid_break",              default: false,     null: false
+    t.integer "minimum_hours_for_break", default: 4,         null: false
     t.index ["preferable_id"], name: "index_preferences_on_preferable_id", using: :btree
   end
 

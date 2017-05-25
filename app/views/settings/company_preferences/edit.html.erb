@@ -1,12 +1,25 @@
 <div class="frame">
   <section>
     <article>
-      <%= simple_form_for [:settings, @company_preference], url: settings_company_preference_path do |f| %>
-
-        <%= f.input :minimum_shift_length %>
-        <%= f.input :maximum_shift_length %>
-        <%= f.input :break_length %>
-        <%= f.input :shift_overlap %>
+      <%= simple_form_for [:settings, @company_preference],
+        url: settings_company_preference_path do |f| %>
+        <%= f.input :minimum_shift_length,
+          as: :select,
+          collection: TimeRange.minimum_shift_length_options
+        %>
+        <%= f.input :maximum_shift_length,
+          as: :select,
+          collection: TimeRange.maximum_shift_length_options %>
+        <%= f.input :break_length,
+          as: :select,
+          collection: TimeRange.break_length_options %>
+        <%= f.input :paid_break, as: :boolean %>
+        <%= f.input :minimum_hours_for_break,
+          as: :select,
+          collection: TimeRange.minimum_hours_for_break_options %>
+        <%= f.input :shift_overlap,
+          as: :select,
+          collection: TimeRange.shift_overlap_options %>
 
         <%= f.submit %>
       <% end %>

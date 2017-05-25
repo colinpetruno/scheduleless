@@ -17,7 +17,27 @@ en:
       html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: "Please review the problems below:"
-
+    hints:
+      preference:
+        break_length: >
+          Amount of time given for a break. If the break is paid it is included
+          in the shift. An 8 hour shift has 1 hour paid break. If it is not
+          paid then an 8 hour shift will be scheduled for 9 hours. 
+        maximum_shift_length: >
+          Most amount of hours allowed per shift. This will ensure they do not
+          go over this amount of time in a 24 hour period.
+        minimum_hours_for_break: >
+          How many hours must an employee work before they are eligable for a
+          break?
+        minimum_shift_length: >
+          This is the smallest amount of time we will schedule an employee for.
+          They need to work long enough to make traveling worthwhile! It's 
+          recommended to keep this to over 3 hours.
+        paid_break: >
+          Do you pay your employees while they are on break?
+        shift_overlap: >
+          Allow a buffer to ensure that the next employee can get
+          there and situated before the previous worker leaves.
 
     # Examples
     
@@ -28,11 +48,8 @@ en:
     #       email: 'E-mail to sign in.'
     #     edit:
     #       email: 'E-mail.'
-    # hints:
-    #   defaults:
-    #     username: 'User name to sign in.'
-    #     password: 'No special characters, please.'
-    # include_blanks:
+    
+    #  include_blanks:
     #   defaults:
     #     age: 'Rather not say'
     # prompts:

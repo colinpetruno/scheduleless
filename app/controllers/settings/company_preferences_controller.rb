@@ -7,12 +7,15 @@ module Settings
     end
 
     def update
-      authorize company_preference
+      @company_preference = company_preference
 
-      if company_preference.update(company_preference_params)
-        redirect_to settings_path
+      authorize @company_preference
+
+      if @company_preference.update(company_preference_params)
+        redirect_to edit_settings_company_preference_path,
+          notice: I18n.t("settings.preferences.company.success")
       else
-        # TODO: handle error
+        render :edit
       end
     end
 
@@ -28,7 +31,9 @@ module Settings
         permit(
           :break_length,
           :maximum_shift_length,
+          :minimum_hours_for_break,
           :minimum_shift_length,
+          :paid_break,
           :shift_overlap
         )
     end

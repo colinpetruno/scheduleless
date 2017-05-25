@@ -1,5 +1,8 @@
 en:
   settings:
+    preferences:
+      company: 
+        success: "Company Settings Updated!"
     show:
       company_preferences: "Company Preferences"
       credit_card: "Payment"

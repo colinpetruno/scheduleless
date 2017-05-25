@@ -16,6 +16,10 @@
       <div class="site-content">
         <%= render partial: "layouts/shared/side_menu" %>
         <div class="view-content">
+          <% if notice.present? %>
+            <div class="notice"><%= notice %></div>
+          <% end %>
+
           <%= yield %>
         </div>
       </div>
