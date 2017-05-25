@@ -6,35 +6,55 @@
         id: "credit-card-form"
       } do |f| %>
 
-      <%= f.input :name %>
+      <%= f.input :name, placeholder: "A short description to remember easily" %>
 
-      <%= f.input :card_number,
-        input_html: {
-        autocomplete: "cc-number",
-        class: "cc-number",
-        type: "tel",
-        data: { stripe: "number" }
-      } %>
+      <%= f.input :card_number do %>
+        <%= f.input_field :card_number,
+          class: "cc-number",
+          autocomplete: "cc-number",
+          type: "tel",
+          data: { stripe: "number" }
+        %>
+        <span class="help-block hidden blank"><%= t(".blank") %></span>
+        <span class="help-block hidden numeric"><%= t(".number") %></span>
+
+      <% end %>
 
 
       <section>
         <div>
-          <%= f.input :exp_month, input_html: { data: { stripe: "exp-month" } } %>
+          <%= f.input :exp_month do %>
+            <%= f.input_field :exp_month,
+              as: :select,
+              collection: StripeCreditCardMock.month_select_options,
+              data: { stripe: "exp-month" }
+            %>
+            <span class="help-block hidden blank"><%= t(".blank") %></span>
+          <% end %>
+
+          <%= f.input :exp_year do  %>
+            <%= f.input_field :exp_year,
+              as: :select,
+              collection: StripeCreditCardMock.year_select_options,
+              data: { stripe: "exp-year" }
+            %>
+            <span class="help-block hidden blank"><%= t(".blank") %></span>
+          <% end %>
         </div>
 
         <div>
-          <%= f.input :exp_year, input_html: { data: { stripe: "exp-year" } } %>
-        </div>
-
-        <div>
-          <%= f.input :cvc, input_html: { data: { stripe: "cvc" } } %>
+          <%= f.input :cvc do %>
+            <%= f.input_field :cvc, data: { stripe: "cvc" } %>
+            <span class="help-block hidden blank"><%= t(".blank") %></span>
+            <span class="help-block hidden numeric"><%= t(".cvc_error") %></span>
+          <% end %>
         </div>
       </section>
     <% end %>
 
     <%= simple_form_for [:settings, @credit_card] do |f| %>
       <%= f.input :token, as: :hidden %>
-      <%= f.submit %>
+      <%= f.submit autocomplete: "off", disabled: false %>
     <% end %>
   </div>
 </div>

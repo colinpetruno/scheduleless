@@ -74,7 +74,7 @@
   }
 
   &.has-error {
-    input {
+    input, select {
       border-color: $red;
     }
 

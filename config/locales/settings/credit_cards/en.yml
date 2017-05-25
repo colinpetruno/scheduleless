@@ -5,6 +5,14 @@ en:
         add_card: "Add a Card Now"
         message: "You haven't added any cards yet! Add one now so you can have
           uninterrupted access."
+      controller:
+        error_message: >
+          We had trouble processing your card. We will reach out to you 
+          shortly.
+      form:
+        blank: "can't be blank"
+        number: "must be a number"
+        cvc_error: "must be a 3 or 4 digit number"
       index:
         header: "Manage Credit Cards"
         add_card: "Add a New Card"

@@ -6,9 +6,16 @@ module Settings
       authorize @credit_card
 
       if @credit_card.save
-        redirect_to settings_path
+        redirect_to settings_credit_cards_path
       else
-        # TODO: SHOW ERROR
+        # TODO: need really robust error reporting here so the user can correct
+        # to the best of their ability
+        Bugsnag.notify("PAYMENT NOT PROCESSED") do |notification|
+          notification.severity = "warning"
+        end
+
+        redirect_to new_settings_credit_card_path,
+          alert: I18n.t("settings.credit_cards.controller.error_message")
       end
     end
 

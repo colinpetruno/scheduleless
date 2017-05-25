@@ -1,7 +1,13 @@
-.notice {
+.alert, .notice {
   padding: $alert-padding-y $alert-padding-x;
   margin-bottom: $alert-margin-bottom;
   border: $alert-border-width solid transparent;
+}
 
+.alert {
+  @include alert-variant(#f2dede, darken(#f2dede, 15%), #a94442);
+}
+
+.notice {
   @include alert-variant($green-notice, darken($green-notice, 15%), darken($green-notice, 50%));
 }
