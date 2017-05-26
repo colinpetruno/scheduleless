@@ -13,6 +13,10 @@
           <% if policy(position).edit? %>
             <%= link_to t(".edit"), edit_settings_position_path(position) %>
           <% end %>
+
+          <% if policy(position).destroy? %>
+            <%= link_to t(".delete"), settings_position_confirm_delete_path(position) %>
+          <% end %>
         </td>
       </tr>
     <% end %>

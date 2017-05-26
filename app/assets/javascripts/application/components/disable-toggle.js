@@ -4,10 +4,10 @@ $(document).on("turbolinks:load", function() {
 
     if (this.checked) {
       $(target).find(".input").addClass("disabled");
-      $(target).find("input").addClass("disabled").prop("disabled", true);;
+      $(target).find("input,select").addClass("disabled").prop("disabled", true);;
     } else {
       $(target).find(".input, input").removeClass("disabled");
-      $(target).find("input").removeClass("disabled").prop("disabled", false);
+      $(target).find("input,select").removeClass("disabled").prop("disabled", false);
     }
   });
 });

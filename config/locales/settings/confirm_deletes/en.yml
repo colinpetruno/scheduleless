@@ -1,0 +1,16 @@
+en:
+  settings:
+    confirm_deletes:
+      controller:
+        successful: "Your position was successfully removed"
+      show:
+        alert: >
+          This position is still in use. Choose to either delete or remap the
+          employees and rules still in use for this position.
+        employee_prompt: >
+          What would you like to do with employees that currently have this 
+          position?
+        rules_prompt: >
+          What would you like to do with the scheduling rules that currently 
+          have this position?
+        title: "Delete Position: %{position_name}"

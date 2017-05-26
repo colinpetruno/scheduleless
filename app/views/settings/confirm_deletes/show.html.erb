@@ -1,0 +1,59 @@
+<div class="frame">
+  <header>
+    <div><%= t(".title", position_name: @position.name) %></div>
+  </header>
+
+  <section>
+    <article>
+      <div class="alert"><%= t(".alert") %></div>
+
+      <br />
+
+      <%= simple_form_for [:settings, @position, @delete_confirmation],
+        url: settings_position_confirm_delete_path(@position),
+        method: :delete do |f| %>
+
+        <% if @delete_confirmation.users_present? %>
+          <h4><%= t(".employee_prompt") %></h4>
+
+          <div id="new-position-select">
+            <%= f.input :new_position_id,
+              as: :select,
+              include_blank: false,
+              collection: @delete_confirmation.position_options
+            %>
+          </div>
+
+          <%= f.input :delete_positions,
+            as: :boolean,
+            input_html: {
+              class: "disable-toggle",
+              data: { target: "#new-position-select" } } %>
+        <% end %>
+
+        <% if @delete_confirmation.schedule_rules_present? %>
+          <h4><%= t(".rules_prompt") %></h4>
+
+          <div id="new-rule-select">
+            <%= f.input :new_rule_id,
+              as: :select,
+              include_blank: false,
+              collection: @delete_confirmation.position_options
+            %>
+          </div>
+
+          <%= f.input :delete_rules,
+            as: :boolean,
+            input_html: {
+              class: "disable-toggle",
+              data: { target: "#new-rule-select" }
+            }
+          %>
+        <% end %>
+
+        <%= f.submit %>
+      <% end %>
+    </article>
+  </section>
+</div>
+

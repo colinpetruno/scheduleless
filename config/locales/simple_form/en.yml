@@ -4,11 +4,19 @@ en:
       company_preference:
         create: "Save"
         update: "Save"
+      confirm_delete:
+        create: "Delete"
       user_location:
         create: "Add"
   simple_form:
     "yes": 'Yes'
     "no": 'No'
+    labels:
+      confirm_delete:
+        delete_positions: "Remove Position From Users?"
+        delete_rules: "Delete the Scheduling Rules?"
+        new_position_id: "Choose a New Position"
+        new_rule_id: "Choose a New Position"
     required:
       text: 'required'
       mark: '*'
@@ -18,6 +26,12 @@ en:
     error_notification:
       default_message: "Please review the problems below:"
     hints:
+      confirm_delete:
+        delete_positions: >
+          Employees with this position could end up having no positions and 
+          may not get scheduled.
+        delete_rules: >
+          These rules will be removed and will no longer be scheduled for.
       preference:
         break_length: >
           Amount of time given for a break. If the break is paid it is included
