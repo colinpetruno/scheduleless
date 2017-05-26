@@ -3,7 +3,10 @@
     <section>
       I need
       <%= f.input :number_of_employees, error: false, label: false %>
-      <%= f.association :position, error: false, label: false %>(s)
+      <%= f.association :position,
+        collection: current_company.positions,
+        include_blank: false,
+        error: false, label: false %>(s)
       <%= f.input :period, collection: ScheduleRule.collection_labels, error: false, label: false %>
     </section>
 
