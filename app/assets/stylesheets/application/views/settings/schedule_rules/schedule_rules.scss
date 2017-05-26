@@ -1,0 +1,17 @@
+.settings-schedule-rules-schedule-rules {
+  form {
+    display: inline;
+  }
+
+  td {
+    padding: 6px;
+
+    .button {
+      padding: 0 8px;
+    }
+  }
+
+  td:last-child {
+    text-align: right;
+  }
+}

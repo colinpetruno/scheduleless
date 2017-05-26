@@ -6,6 +6,8 @@ en:
         update: "Save"
       confirm_delete:
         create: "Delete"
+      schedule_rule:
+        create: "Add Schedule Rule"
       subscription:
         update: "Update Subscription"
       user_location:

@@ -1,12 +1,12 @@
-<div class="schedule-rules-form">
+<div class="settings-schedule-rules-form">
   <%= simple_form_for [:settings, @schedule_rule] do |f| %>
     <section>
-      I need
+      <%= t(".need") %>
       <%= f.input :number_of_employees, error: false, label: false %>
       <%= f.association :position,
         collection: current_company.positions,
         include_blank: false,
-        error: false, label: false %>(s)
+        error: false, label: false %><%= t(".plural") %>
       <%= f.input :period, collection: ScheduleRule.collection_labels, error: false, label: false %>
     </section>
 

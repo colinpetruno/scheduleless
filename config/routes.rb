@@ -96,7 +96,7 @@ Rails.application.routes.draw do
     resources :positions, only: [:create, :destroy, :edit, :index, :new, :update] do
       resource :confirm_delete, only: [:show, :destroy]
     end
-    resources :schedule_rules, only: [:create, :index]
+    resources :schedule_rules, only: [:create, :destroy, :edit, :index, :update]
     resource :subscription, only: [:edit, :update]
   end
 

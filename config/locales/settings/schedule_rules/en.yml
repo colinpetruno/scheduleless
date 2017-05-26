@@ -1,7 +1,22 @@
 en:
   settings:
     schedule_rules:
+      controller:
+        alert: "We weren't able to remove your scheduling rule"
+        notice: "Your Scheduling Rule has been succcessfully removed!"
+      form:
+        need: "I need"
+        plural: "(s)"
+      index:
+        instructions_html: >
+          Every location will start with this set of scheduling rules. 
+          Individual locations can be customized by selecting them on the
+          %{link} page.
+        locations: "locations"
       schedule_rule:
         requirement:
           one: "%{position} is needed %{period}"
           other: "%{position} are needed %{period}"
+      schedule_rules:
+        delete: "Delete"
+        edit: "Edit"

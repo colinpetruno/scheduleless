@@ -24,9 +24,17 @@ table {
     background-color: $body-bg;
   }
 
+  &.bordered {
+    border: 1px solid lighten($blue, 20%);
+
+    tr:first-child td {
+      border-top: 1px solid lighten($blue, 20%);
+    }
+  }
+
   &.striped {
     tbody tr:nth-of-type(odd) {
-      background-color: $table-bg-accent;
+      background-color: lighten($blue, 30%);
     }
   }
 }
