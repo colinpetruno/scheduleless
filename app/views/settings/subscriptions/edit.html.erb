@@ -1,11 +1,14 @@
 <div class="frame">
   <header>
-    <div>Subscription Preferences</div>
+    <div><%= t(".title") %></div>
   </header>
   <section>
     <article>
       <%= simple_form_for [:settings, @subscription] do |f| %>
-        <%= f.input :plan, as: :select, collection: Subscription.collection_labels  %>
+        <%= f.input :plan,
+          as: :select,
+          collection: Subscription.collection_labels,
+          include_blank: false %>
         <%= f.submit %>
       <% end %>
     </article>
