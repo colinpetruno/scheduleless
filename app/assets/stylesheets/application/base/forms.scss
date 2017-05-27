@@ -1,3 +1,16 @@
+form {
+  .inline {
+    label {
+      display: block;
+      font-weight: bold;
+    }
+
+    .input {
+      display: inline-block;
+    }
+  }
+}
+
 .input {
   margin-bottom: 25px;
   &.hidden {

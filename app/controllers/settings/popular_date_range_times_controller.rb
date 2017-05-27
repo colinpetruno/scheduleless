@@ -8,8 +8,19 @@ module Settings
       if @period.save
         redirect_to settings_popular_times_path
       else
-        #TODO fix this error
+        render :new
       end
+    end
+
+    def new
+      authorize PopularTime, :new?
+      @period = current_company.
+        popular_times.
+        build(type: "PopularDateRangeTime",
+              day_end_day: 10,
+              day_end_month: 6,
+              level: "busy"
+             )
     end
 
     private
@@ -18,12 +29,11 @@ module Settings
       params.
         require(:popular_date_range_time).
         permit(
-          :day_end,
-          :day_start,
-          :holiday_name,
+          :day_end_day,
+          :day_end_month,
+          :day_start_day,
+          :day_start_month,
           :level,
-          :time_end,
-          :time_start,
           :type
         )
     end
