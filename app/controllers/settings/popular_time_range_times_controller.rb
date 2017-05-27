@@ -14,6 +14,7 @@ module Settings
 
     def new
       authorize PopularTime, :new?
+
       @period = current_company.
         popular_times.
         build(type: "PopularTimeRangeTime",
