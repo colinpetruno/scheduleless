@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170525034148) do
+ActiveRecord::Schema.define(version: 20170527144130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -128,8 +128,8 @@ ActiveRecord::Schema.define(version: 20170525034148) do
     t.integer  "time_start"
     t.integer  "time_end"
     t.string   "holiday_name"
-    t.integer  "level"
-    t.string   "type"
+    t.integer  "level",        null: false
+    t.string   "type",         null: false
     t.string   "popular_type", null: false
     t.integer  "popular_id",   null: false
     t.datetime "created_at",   null: false
