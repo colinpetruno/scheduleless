@@ -1,0 +1,47 @@
+
+
+<div class="settings-popular-times-new-options">
+  <h3>Create a new time period</h3>
+
+  <article>
+    <div>
+      <%= link_to new_settings_popular_time_range_time_path do %>
+        <div><span class="oi oi-clock"></span></div>
+        Time Range
+        <small>
+          "We are busy from 11am-2pm everyday".
+        </small>
+      <% end %>
+    </div>
+
+    <div>
+      <%= link_to new_settings_popular_date_range_time_path do %>
+        <div><span class="oi oi-project"></span></div>
+        Date Range
+        <small>
+          "We have lower traffic from January 1st to March 31st"
+        </small>
+      <% end %>
+    </div>
+
+    <div>
+      <%= link_to new_settings_popular_weekday_time_path do %>
+        <div><span class="oi oi-calendar"></span></div>
+        Week Day
+        <small>
+          "We are busy on Fridays from 5pm to 11pm"
+        </small>
+      <% end %>
+    </div>
+
+    <div>
+      <%= link_to new_settings_popular_holiday_time_path do %>
+        <div><span class="oi oi-header"></span></div>
+        Holiday
+        <small>
+          "We are busiest on Valentines Day"
+        </small>
+      <% end %>
+    </div>
+  </article>
+</div>

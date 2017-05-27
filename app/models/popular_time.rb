@@ -7,4 +7,8 @@ class PopularTime < ApplicationRecord
     busy: 2,
     peak: 3
   }
+
+  def self.level_options
+    [["Lull", "lull"], ["Busy", "busy"], ["Peak", "peak"]]
+  end
 end

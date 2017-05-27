@@ -1,0 +1,46 @@
+.settings-popular-times-new-options {
+
+  margin-top: 100px;
+
+  h3 {
+    color: $blue;
+    display: block;
+  }
+
+  article {
+    @include make-row();
+    > div {
+      @include make-col-ready();
+      @include make-col(3);
+
+      a {
+        background-color: lighten($blue, 30%);
+        border: 1px solid lighten($blue, 10%);
+        display: block;
+        min-height: 165px;
+        padding: 15px 5px;
+        text-align: center;
+
+        > div {
+          margin-bottom: 10px;
+          margin-top: 10px;
+        }
+
+        small {
+          display: block;
+          margin-top: 10px;
+        }
+
+        .oi {
+          font-size: 1.5em;
+        }
+
+        &:hover {
+          background-color: lighten($blue, 28%);
+          border-color: $blue;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}

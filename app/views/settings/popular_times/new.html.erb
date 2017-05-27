@@ -24,7 +24,7 @@
     </header>
 
     <section id="time-range-form" class="collapse show" role="tabpanel">
-      <%= render partial: "time_range_form", locals: { period: PopularTimeRangeTime.new } %>
+      <%= render partial: "settings/popular_times/time_range_form", locals: { period: PopularTimeRangeTime.new } %>
     </section>
   </div>
 
@@ -36,7 +36,7 @@
     </header>
 
     <section id="date-range-time-form" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
-      <%= render partial: "date_range_time_form", locals: { period: PopularDateRangeTime.new } %>
+      <%= render partial: "settings/popular_times/date_range_time_form", locals: { period: PopularDateRangeTime.new } %>
     </section>
   </div>
 
@@ -48,7 +48,7 @@
     </header>
 
     <section id="holiday-form" class="collapse" role="tabpanel">
-      <%= render partial: "holiday_form", locals: { period: PopularHolidayTime.new } %>
+      <%= render partial: "settings/popular_times/holiday_form", locals: { period: PopularHolidayTime.new } %>
     </section>
   </div>
 
@@ -60,7 +60,7 @@
     </header>
 
     <section id="weekday-form" class="collapse" role="tabpanel">
-      <%= render partial: "weekday_form", locals: { period: PopularWeekdayTime.new } %>
+      <%= render partial: "settings/popular_times/weekday_form", locals: { period: PopularWeekdayTime.new } %>
     </section>
   </div>
 </div>

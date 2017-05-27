@@ -1,0 +1,20 @@
+<%= simple_form_for [:settings, period] do |f| %>
+  <%= f.input :type, as: :hidden %>
+
+  <%= f.input :time_start,
+    as: :select,
+    collection: TimeRange.quarter_hour_options,
+    include_blank: false %>
+  <%= f.input :time_end,
+    as: :select,
+    collection: TimeRange.quarter_hour_options,
+    include_blank: false %>
+
+  <%= f.input :level,
+    as: :select,
+    collection: PopularTime.level_options,
+    include_blank: false %>
+
+  <%= f.submit %>
+  <%= link_to "Back", settings_popular_times_path %>
+<% end %>

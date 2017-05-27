@@ -1,5 +1,19 @@
-popular times index
+<div class="frame">
+  <header>
+    <div>Popular Time Periods</div>
+  </header>
+  <section>
+    <article>
 
-<br>
+      <div class="instructions">
+        Configure Popular Times for your business. Certain holidays, days,
+        times can have increased traffic which requires increased staffing.
+        Combine these with
+        <%= link_to "schedule rules", settings_schedule_rules_path %>
+        for the most flexible scheduling.
+      </div>
 
-<%= link_to "Create New", new_settings_popular_time_path, class: "button" %>
+      <%= render partial: "new_options" %>
+    </article>
+  </section>
+</div>

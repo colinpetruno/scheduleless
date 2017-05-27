@@ -8,8 +8,18 @@ module Settings
       if @period.save
         redirect_to settings_popular_times_path
       else
-        #TODO fix this error
+        render :new
       end
+    end
+
+    def new
+      authorize PopularTime, :new?
+      @period = current_company.
+        popular_times.
+        build(type: "PopularTimeRangeTime",
+              level: "busy",
+              time_start: 600,
+              time_end: 1200)
     end
 
     private
