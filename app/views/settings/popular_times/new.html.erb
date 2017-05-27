@@ -8,70 +8,61 @@
 
 
 
-
-
-<div id="accordion" role="tablist" aria-multiselectable="true">
+<div class="accordion"
+     id="time-period-accordion"
+     role="tablist"
+     aria-multiselectable="true">
   <div class="card">
-    <div class="card-header" role="tab" id="headingOne">
-      <h5 class="mb-0">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-          Time Range
-        </a>
-      </h5>
-    </div>
+    <header role="tab">
+      <a data-toggle="collapse"
+         data-parent="#time-period-accordion"
+         href="#time-range-form"
+         aria-expanded="true"
+         aria-controls="time-range-form">
+        Time Range
+      </a>
+    </header>
 
-    <div id="collapseOne" class="collapse show" role="tabpanel" aria-labelledby="headingOne">
-      <div class="card-block">
-        <%= render partial: "time_range_form", locals: { period: PopularTimeRangeTime.new } %>
-      </div>
-    </div>
+    <section id="time-range-form" class="collapse show" role="tabpanel">
+      <%= render partial: "time_range_form", locals: { period: PopularTimeRangeTime.new } %>
+    </section>
   </div>
 
   <div class="card">
-    <div class="card-header" role="tab" id="headingTwo">
-      <h5 class="mb-0">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Date Range
-        </a>
-      </h5>
-    </div>
-    <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
-      <div class="card-block">
-        <%= render partial: "date_range_time_form", locals: { period: PopularDateRangeTime.new } %>
-      </div>
-    </div>
+    <header role="tab">
+      <a class="collapsed" data-toggle="collapse" data-parent="#time-period-accordion" href="#date-range-time-form" aria-expanded="false" aria-controls="date-range-time-form">
+        Date Range
+      </a>
+    </header>
+
+    <section id="date-range-time-form" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <%= render partial: "date_range_time_form", locals: { period: PopularDateRangeTime.new } %>
+    </section>
   </div>
 
   <div class="card">
-    <div class="card-header" role="tab" id="headingThree">
-      <h5 class="mb-0">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Holiday
-        </a>
-      </h5>
-    </div>
-    <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
-      <div class="card-block">
-        <%= render partial: "holiday_form", locals: { period: PopularHolidayTime.new } %>
-      </div>
-    </div>
+    <header role="tab">
+      <a class="collapsed" data-toggle="collapse" data-parent="#time-period-accordion" href="#holiday-form" aria-expanded="false" aria-controls="holiday-form">
+        Holiday
+      </a>
+    </header>
+
+    <section id="holiday-form" class="collapse" role="tabpanel">
+      <%= render partial: "holiday_form", locals: { period: PopularHolidayTime.new } %>
+    </section>
   </div>
 
   <div class="card">
-    <div class="card-header" role="tab" id="headingFour">
-      <h5 class="mb-0">
-        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
-          Weekday
-        </a>
-      </h5>
-    </div>
-    <div id="collapseFour" class="collapse" role="tabpanel" aria-labelledby="headingFour">
-      <div class="card-block">
-        <%= render partial: "weekday_form", locals: { period: PopularWeekdayTime.new } %>
-      </div>
-    </div>
-  </div>
+    <header role="tab">
+      <a class="collapsed" data-toggle="collapse" data-parent="#time-period-accordion" href="#weekday-form" aria-expanded="false" aria-controls="weekday-form">
+        Weekday
+      </a>
+    </header>
 
+    <section id="weekday-form" class="collapse" role="tabpanel">
+      <%= render partial: "weekday_form", locals: { period: PopularWeekdayTime.new } %>
+    </section>
+  </div>
 </div>
 
 
