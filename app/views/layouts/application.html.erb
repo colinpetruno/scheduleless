@@ -29,5 +29,14 @@
       </div>
     </div>
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    <% if Rails.env.production? %>
+      <%= render partial: "reamaze/reamaze", locals: {
+        brand_subdomain: "support",
+        user_id: current_user.id,
+        user_email: current_user.email,
+        sso_key: Rails.application.secrets.reamaze
+      } %>
+    <% end %>
+
   </body>
 </html>
