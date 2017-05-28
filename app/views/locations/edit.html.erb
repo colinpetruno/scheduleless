@@ -1,19 +1,19 @@
-<div class="frame">
+<div class="rail narrow">
   <section>
-    <article>
-      <%= render partial: "form", locals: { location: @location } %>
-    </article>
-  </section>
-</div>
+    <aside>
+      <%= render partial: "sidebar" %>
+    </aside>
 
-
-<div class="two-columns">
-  <section>
     <article>
-      <%= render partial: "employees", locals: { location: @location } %>
-    </article>
-    <article class="add-employees-form">
-      <%= render partial: "add_employee", locals: { location: @location } %>
+
+      <div class="frame">
+        <section>
+          <article>
+            <%= render partial: "form", locals: { location: @location } %>
+          </article>
+        </section>
+      </div>
+
     </article>
   </section>
 </div>

@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     resources :trades, only: [:index]
     resources :user_locations, only: [:create]
     resources :users, only: [:new, :create], path: "employees"
+
+    scope module: :locations, as: :locations do
+      resources :users, only: [:index], path: "employees"
+    end
   end
 
   namespace :mobile_api do
