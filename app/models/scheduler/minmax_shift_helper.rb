@@ -1,6 +1,9 @@
 module Scheduler
   class MinmaxShiftHelper
 
+    MAX_SHIFT_STRATEGY = 'ABSOLUTE' # ABSOLUTE: Cannot exceed maximum in any day period TODO: Make this another parameter varying on any timeframe
+                                    # DISJOINTED: Cannot exceed maximum in consecutive time period
+
     def initialize(timeslot:, employee:, layout:, company:, existing_shifts:, options:)
       @timeslot = timeslot
       @employee = employee
@@ -37,6 +40,32 @@ module Scheduler
     end
 
     def would_exceed_max
+      if MAX_SHIFT_STRATEGY == 'DISJOINTED'
+        exceeds_max_shift_disjointed
+      elsif MAX_SHIFT_STRATEGY == 'ABSOLUTE'
+        exceeds_max_shift_absolute
+      end
+
+    end
+
+    def exceeds_max_shift_absolute
+      # Count the number of timeslots the employee has today already
+      day = timeslot.y
+      time = 0
+      slot = layout.get_timeslot(day, time)
+      num_assigned = 0
+
+      while not slot.nil?
+        num_assigned = num_assigned + 1 if slot.has_employee?(employee.id)
+        time = time + 1
+        slot = layout.get_timeslot(day, time)
+      end
+
+      total_time_scheduled = num_assigned * options.time_interval_minutes
+      total_time_scheduled > max_shift_length
+    end
+
+    def exceeds_max_shift_disjointed
       # up direction
       assigned = true
       up_shift_length = 0
@@ -74,7 +103,16 @@ module Scheduler
       end
 
       sum_possible = up_shift_length + down_shift_length + 1
-      sum_possible*options.time_interval_minutes > company_preference.maximum_shift_length
+      sum_possible*options.time_interval_minutes > max_shift_length
+    end
+
+    def max_shift_length
+      max = company_preference.maximum_shift_length
+      if max and company_preference.break_length
+        max = max + company_preference.break_length
+      end
+
+      max
     end
 
   end
