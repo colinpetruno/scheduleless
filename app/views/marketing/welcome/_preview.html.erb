@@ -15,5 +15,6 @@
     _support['account'] = 'scheduleless';
     _support['ui']['widget'] = true;
   </script>
-  <script type="text/javascript" async src="https://cdn.reamaze.com/assets/reamaze.js"></script>
+  <%= render partial: "reamaze/reamaze",
+    locals: { brand_subdomain: "support" } %>
 <% end %>
