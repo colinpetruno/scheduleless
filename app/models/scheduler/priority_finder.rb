@@ -22,11 +22,18 @@ module Scheduler
       preferred_hours_weight = weighted_parameters[:preferred_timeslot]
       preferred_weight = weigh_preferred_hours(eligible_employees, timeslot, preferred_hours_weight)
 
-      puts preferred_weight
+      # Less Hours
+      less_hours_weight = weighted_parameters[:less_slot_count]
+      less_hours_weight = weigh_less_hours(eligible_employees, layout, less_hours_weight)
 
       # Merge and Add
       # Vertical + Horizontal
-      combined_weights = sum_merge_hash(sum_merge_hash(vertical_weight, horizontal_weight), preferred_weight)
+      combined_weights = sum_merge_hash(
+        sum_merge_hash(
+          sum_merge_hash(
+            vertical_weight, horizontal_weight),
+          preferred_weight),
+        less_hours_weight)
 
       highest_priority_score = -1
       highest_employee_id = eligible_employees[0]["id"]
@@ -107,6 +114,25 @@ module Scheduler
         end
       end
 
+      weights
+    end
+
+    def weigh_less_hours(eligible_employees, layout, weight)
+      weights = {}
+
+      timeslot_counts = layout.count_employee_timeslots
+
+      lowest_slots_count = Float::INFINITY
+      lowest_employee_id = nil
+
+      eligible_employees.each do |employee|
+        if timeslot_counts.key?(employee.id) and timeslot_counts[employee.id] < lowest_slots_count
+          lowest_employee_id = employee.id
+          lowest_slots_count = timeslot_counts[employee.id]
+        end
+      end
+
+      weights[lowest_employee_id] = weight
       weights
     end
 

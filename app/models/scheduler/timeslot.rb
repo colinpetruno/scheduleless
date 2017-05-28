@@ -58,6 +58,10 @@ module Scheduler
       @position_employees[position].push(employee) if not position.nil?
     end
 
+    def employees
+      @employees
+    end
+
     def read_rule_slots(rules)
       rules.each do |rule|
         if rule_within_bounds(rule.period, y)
