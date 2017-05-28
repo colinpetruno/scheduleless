@@ -19,6 +19,10 @@
       </div>
     </div>
 
+    <script type="text/javascript">
+      var _support = _support || { 'ui': {}, 'user': {} };
+      _support['account'] = 'scheduleless';
+    </script>
     <% if current_user.present? && Rails.env.production? %>
       <%= render partial: "reamaze/reamaze", locals: {
         brand_subdomain: "support",

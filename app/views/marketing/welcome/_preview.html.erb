@@ -10,6 +10,10 @@
 </section>
 
 <% if Rails.env.production? %>
+  <script type="text/javascript">
+    var _support = _support || { 'ui': {}, 'user': {} };
+    _support['account'] = 'scheduleless';
+  </script>
   <%= render partial: "reamaze/reamaze",
     locals: { brand_subdomain: "support" } %>
 <% end %>
