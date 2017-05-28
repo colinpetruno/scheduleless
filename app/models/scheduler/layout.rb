@@ -30,6 +30,23 @@ module Scheduler
       all_full
     end
 
+    def count_employee_timeslots
+      counts = {}
+
+      (0..options.days_to_schedule).each do |x|
+        (0..options.number_of_intervals).each do |y|
+          timeslot = get_timeslot(x, y)
+
+          timeslot.employees.each do |e|
+            counts[e.id] = 0 if not counts.key?(e.id)
+            counts[e.id] = counts[e.id] + 1
+          end
+        end
+      end
+
+      counts
+    end
+
     private
 
     attr_reader :options
