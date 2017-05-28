@@ -22,6 +22,7 @@
     <script type="text/javascript">
       var _support = _support || { 'ui': {}, 'user': {} };
       _support['account'] = 'scheduleless';
+      _support['ui']['widget'] = true;
     </script>
     <% if current_user.present? && Rails.env.production? %>
       <%= render partial: "reamaze/reamaze", locals: {
