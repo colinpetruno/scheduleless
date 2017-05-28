@@ -26,7 +26,7 @@
     </script>
     <% if current_user.present? && Rails.env.production? %>
       <%= render partial: "reamaze/reamaze", locals: {
-        brand_subdomain: "support",
+        brand_subdomain: "scheduleless",
         sso_key: Rails.application.secrets.reamaze,
         user_id: current_user.id,
         user_email: current_user.email,
@@ -34,7 +34,7 @@
       } %>
     <% elsif Rails.env.production? %>
         <%= render partial: "reamaze/reamaze",
-          locals: { brand_subdomain: "support" } %>
+          locals: { brand_subdomain: "scheduleless" } %>
     <% end %>
   </body>
 </html>
