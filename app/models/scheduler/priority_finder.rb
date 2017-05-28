@@ -18,9 +18,15 @@ module Scheduler
       h_weight_value = weighted_parameters[:horizontal_adjacency]
       horizontal_weight = weigh_horizontal_adjacency(eligible_employees, position, timeslot, layout, h_weight_value)
 
+      # Preferred Hours
+      preferred_hours_weight = weighted_parameters[:preferred_timeslot]
+      preferred_weight = weigh_preferred_hours(eligible_employees, timeslot, preferred_hours_weight)
+
+      puts preferred_weight
+
       # Merge and Add
       # Vertical + Horizontal
-      combined_weights = sum_merge_hash(vertical_weight, horizontal_weight)
+      combined_weights = sum_merge_hash(sum_merge_hash(vertical_weight, horizontal_weight), preferred_weight)
 
       highest_priority_score = -1
       highest_employee_id = eligible_employees[0]["id"]
@@ -32,8 +38,6 @@ module Scheduler
           highest_employee_id = key
         end
       end
-
-      # TODO Added remaining priorities
 
       eligible_employees.detect {|employee| employee["id"] == highest_employee_id }
     end
@@ -92,6 +96,20 @@ module Scheduler
       weights
     end
 
+    def weigh_preferred_hours(eligible_employees, timeslot, weight)
+      weights = {}
+
+      eligible_employees.each do |employee|
+        if timeslot_in_preferred_hours(employee, timeslot)
+          weights[employee.id] = weight
+        else
+          weights[employee.id] = 0
+        end
+      end
+
+      weights
+    end
+
     def sum_merge_hash(h1, h2)
       h1.merge(h2){|k, v1, v2| v1 + v2}
     end
@@ -106,6 +124,10 @@ module Scheduler
 
     def get_timeslot(layout, x, y)
       layout.get_timeslot(x, y)
+    end
+
+    def timeslot_in_preferred_hours(employee, timeslot)
+      PreferredHoursHelper.new(employee: employee, timeslot: timeslot, options: options).timeslot_in_preferred_hours
     end
   end
 end
