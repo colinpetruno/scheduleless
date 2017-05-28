@@ -35,6 +35,18 @@ loaded into elasticsearch.
 `brew install redis`
 `brew services start redis`
 
+## Seeding
+
+A seed script is provided that takes a prefix and sets up a company with many
+locations of different sizes.
+
+`rake database:seed_demo[prefix]`
+
+This will make the company Prefix Company and emails will look like 
+prefix.1@example.com - prefix.200@example.com. 
+
+prefix.1@example.com will be the company admin and all login passwords use
+`password` for now.
 
 ## oAuth
 
@@ -78,6 +90,11 @@ curl -X GET -H "Authorization: Bearer c35042ae39fb1bcad57216eebcafdb6b7addb7ceea
 
 - Error reporting
 - Admins: Colin
+
+#### Reamaze
+
+- Knowledge Base and Support
+- Admins: Jenny
 
 #### Stripe
 

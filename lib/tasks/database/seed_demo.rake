@@ -61,6 +61,11 @@ namespace :database do
                            company: company
                           )
 
+        if i == 1
+          user.company_admin = true
+          user.save
+        end
+
         UserLocation.create(user_id: user.id, location_id: location.id, home: true)
 
         if i <= 2 # 2 managers
