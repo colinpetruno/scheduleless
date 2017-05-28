@@ -1,0 +1,15 @@
+.marketing-welcome-coming-soon {
+  min-height: 100vh;
+  @include gradient-y($dark-blue, lighten($dark-blue, 5%));
+  position: relative;
+  width: 100%;
+ // gradient-vertical($start-color: #555, $end-color: #333, $start-percent: 0%, $end-percent: 100%) {
+
+  h3 {
+    color: $white;
+    display: block;
+    margin: auto;
+    padding-top: 150px;
+    text-align: center;
+  }
+}

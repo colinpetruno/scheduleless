@@ -11,10 +11,5 @@
 
   <body data-no-turbolink="true">
     <%= yield %>
-
-    <% if Rails.env.production? %>
-      <%= render partial: "reamaze/reamaze",
-        locals: { brand_subdomain: "support" } %>
-    <% end %>
   </body>
 </html>

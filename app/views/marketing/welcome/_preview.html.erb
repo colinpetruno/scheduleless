@@ -1,0 +1,15 @@
+<section class="hero">
+  <article class="content-section">
+    <div>
+      <section>
+        <%= render partial: "layouts/marketing/navbar" %>
+        Some content goes here
+      </section>
+    </div>
+  </article>
+</section>
+
+<% if Rails.env.production? %>
+  <%= render partial: "reamaze/reamaze",
+    locals: { brand_subdomain: "support" } %>
+<% end %>
