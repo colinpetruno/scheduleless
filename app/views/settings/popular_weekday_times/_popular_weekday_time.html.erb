@@ -1,0 +1,19 @@
+<tr>
+  <td>
+    We are <%= popular_weekday_time.level %> on
+    <%= I18n.t("date.day_names")[popular_weekday_time.day_start] %> from
+    <%= MinutesToTime.for(popular_weekday_time.time_start) %> to
+    <%= MinutesToTime.for(popular_weekday_time.time_end) %>
+  </td>
+  <td>
+    <%= link_to "Edit",
+      edit_settings_popular_weekday_time_path(popular_weekday_time),
+      class: "button link"
+    %>
+    <%= button_to "Delete",
+      settings_popular_weekday_time_path(popular_weekday_time),
+      class: "button link",
+      method: :delete
+    %>
+  </td>
+</tr>

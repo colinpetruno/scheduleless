@@ -88,10 +88,10 @@ Rails.application.routes.draw do
 
     resources :popular_times, only: [:index]
 
-    resources :popular_date_range_times, only: [:create, :edit, :new, :update]
-    resources :popular_holiday_times, only: [:create, :edit, :new, :update]
-    resources :popular_time_range_times, only: [:create, :edit, :new, :update]
-    resources :popular_weekday_times, only: [:create, :edit, :new, :update]
+    resources :popular_date_range_times, only: [:create, :destroy, :edit, :new, :update]
+    resources :popular_holiday_times, only: [:create, :destroy, :edit, :new, :update]
+    resources :popular_time_range_times, only: [:create, :destroy, :edit, :new, :update]
+    resources :popular_weekday_times, only: [:create, :destroy, :edit, :new, :update]
 
     resources :positions, only: [:create, :destroy, :edit, :index, :new, :update] do
       resource :confirm_delete, only: [:show, :destroy]

@@ -1,0 +1,19 @@
+<tr>
+  <td>
+    We are <%= popular_holiday_time.level %> on
+    <%= popular_holiday_time.holiday_name %> from
+    <%= MinutesToTime.for(popular_holiday_time.time_start) %> to
+    <%= MinutesToTime.for(popular_holiday_time.time_end) %>
+  </td>
+  <td>
+    <%= link_to "Edit",
+      edit_settings_popular_holiday_time_path(popular_holiday_time),
+      class: "button link"
+    %>
+    <%= button_to "Delete",
+      settings_popular_holiday_time_path(popular_holiday_time),
+      class: "button link",
+      method: :delete
+    %>
+  </td>
+</tr>

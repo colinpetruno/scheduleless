@@ -1,7 +1,7 @@
 module Settings
   class PopularTimesController < AuthenticatedController
     def index
-      policy_scope PopularTime
+      @popular_times = policy_scope PopularTime
     end
 
     def new

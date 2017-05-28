@@ -1,10 +1,43 @@
 class PopularDateRangeTime < PopularTime
-  attr_accessor :day_end_day, :day_end_month, :day_start_day, :day_start_month
+  attr_writer :day_end_day, :day_end_month, :day_start_day, :day_start_month
 
   before_validation :set_dates
 
   validates :day_end, presence: true
   validates :day_start, presence: true
+
+  def from_string
+    string = day_start.to_s.rjust(4, "0")
+    day = string.last(2).to_i
+    month = string.first(2).to_i
+
+    "#{I18n.t("date.month_names")[month]} #{day.ordinalize}"
+  end
+
+  def to_string
+    string = day_end.to_s.rjust(4, "0")
+    day = string.last(2).to_i
+    month = string.first(2).to_i
+
+    "#{I18n.t("date.month_names")[month]} #{day.ordinalize}"
+  end
+
+  def day_end_day
+    @day_end_day || day_end.to_s.rjust(4, "0").last(2).to_i
+  end
+
+  def day_end_month
+    @day_end_month || day_end.to_s.rjust(4, "0").first(2).to_i
+  end
+
+  def day_start_day
+    @day_start_day || day_start.to_s.rjust(4, "0").last(2).to_i
+  end
+
+  def day_start_month
+    @day_start_month || day_start.to_s.rjust(4, "0").first(2).to_i
+  end
+
 
   private
 

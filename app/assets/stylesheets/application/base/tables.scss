@@ -9,6 +9,11 @@ table {
     padding: $table-cell-padding;
     vertical-align: top;
     border-top: $table-border-width solid $table-border-color;
+
+    a.button.link, .button.link {
+      padding-bottom: 0;
+      padding-top: 0;
+    }
   }
 
   thead th {

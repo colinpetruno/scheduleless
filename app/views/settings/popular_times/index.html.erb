@@ -13,6 +13,13 @@
         for the most flexible scheduling.
       </div>
 
+      <br><br>
+      <table class="bordered striped">
+        <% @popular_times.each do |popular_time| %>
+          <%= render popular_time %>
+        <% end %>
+      </table>
+
       <%= render partial: "new_options" %>
     </article>
   </section>

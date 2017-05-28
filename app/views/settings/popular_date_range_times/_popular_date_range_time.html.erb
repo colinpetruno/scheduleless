@@ -1,0 +1,18 @@
+<tr>
+  <td>
+    We are <%= popular_date_range_time.level %> from
+    <%= popular_date_range_time.from_string %> to
+    <%= popular_date_range_time.to_string %>
+  </td>
+  <td>
+    <%= link_to "Edit",
+      edit_settings_popular_date_range_time_path(popular_date_range_time),
+      class: "button link"
+    %>
+    <%= button_to "Delete",
+      settings_popular_date_range_time_path(popular_date_range_time),
+      class: "button link",
+      method: :delete
+    %>
+  </td>
+</tr>
