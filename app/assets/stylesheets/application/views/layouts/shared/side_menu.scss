@@ -1,13 +1,13 @@
 .side-menu {
   background: $primary-dark-bg;
-  width: 85px;
+  width: 65px;
   display: block;
 
   ul {
     li {
       color: $font-light;
       display: block;
-      width: 85px;
+      width: 65px;
       margin: 15px 0;
       height: 50px;
       line-height: 55px;
@@ -18,13 +18,13 @@
         border-top: 1px solid $dark-seperator;
         border-bottom: 1px solid $light-seperator;
         margin: 0 10px;
-        width: 65px;
+        width: 50px;
       }
 
       &.active {
         border-left: 4px solid #5f97ff;
         color: $white;
-        width: 81px;
+        width: 61px;
 
         a {
           color: $white;

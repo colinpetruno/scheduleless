@@ -1,6 +1,6 @@
 .top-nav {
   background-color: #fff;
-  max-height: 85px;
+  max-height: 65px;
 
   .search-icon {
     color: $white;
@@ -11,11 +11,11 @@
     cursor: pointer;
     font-size: 30px;
     font-weight: 200px;
-    height: 85px;
-    min-width: 85px;
-    line-height: 75px;
+    height: 65px;
+    min-width: 65px;
+    line-height: 60px;
     text-align: center;
-    width: 85px;
+    width: 65px;
   }
 
   #profile-button {
@@ -23,27 +23,27 @@
     border: 1px solid #d3d3d3;
     border-radius: 50%;
     cursor: pointer;
-    line-height: 90px;
-    margin: 9px 0;
+    line-height: 60px;
+    margin: 5px 0;
     margin-right: 15px;
     margin-left: auto;
 
     text-align: center;
-    width: 67px;
+    width: 55px;
 
     > section {
       background-color: #f3f3f3;
       border-radius: 50%;
-      height: 57px;
+      height: 45px;
       margin: 4px;
       overflow: hidden;
-      width: 57px;
+      width: 45px;
 
       span {
         color: $blue;
         color: #5bd1b1;
-        font-size: 45px;
-        margin-top: 17px;
+        font-size: 40px;
+        margin-top: 7px;
       }
     }
 
@@ -60,9 +60,9 @@
 
     > div {
       border-right: 1px solid $font-light;
-      min-height: 65px;
-      margin: 10px 0;
-      line-height: 65px;
+      min-height: 55px;
+      margin: 5px 0;
+      line-height: 55px;
       vertical-align: center;
     }
   }
@@ -81,15 +81,15 @@
 
     li {
       float: left;
-      line-height: 85px;
-      margin-right: 100px;
+      line-height: 65px;
+      margin-right: 75px;
 
       a {
         color: $font-dark;
       }
 
       &:first-child {
-        margin-left: 45px;
+        margin-left: 30px;
       }
 
       &.active a {
@@ -99,7 +99,7 @@
       &.seperator {
         border-left: 2px solid darken($white, 10%);
         min-width: 2px;
-        height: 65px;
+        height: 45px;
         margin: 10px 50px 10px 0;
       }
 

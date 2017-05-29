@@ -15,7 +15,7 @@
       }
 
       a {
-        @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
+        @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-sm, $btn-border-radius);
         @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
         @include transition($btn-transition);
       }
@@ -23,15 +23,15 @@
       &:first-child {
         background-color: $primary-dark-bg;
         border-bottom: 1px solid $dark-seperator;
-        min-height: 50px;
-        line-height: 50px;
+        min-height: 40px;
+        line-height: 40px;
       }
 
       &:last-child {
         background-color: $alternate-dark-bg;
         border-top: 1px solid $light-seperator;
-        min-height: 50px;
-        line-height: 50px;
+        min-height: 40px;
+        line-height: 40px;
       }
     }
   }
