@@ -1,0 +1,11 @@
+.logo {
+  @include img-retina(
+    image-path("shared/logos/scheduleless.png"),
+    image-path("shared/logos/scheduleless-2x.png"),
+    101px, 75px
+  );
+
+  display: block;
+  width: 100px;
+  height: 75px;
+}

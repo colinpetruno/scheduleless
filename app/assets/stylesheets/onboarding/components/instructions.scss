@@ -7,3 +7,9 @@
     color: darken($dark-blue, 15%);
   }
 }
+
+@media (max-width: map-get($grid-breakpoints, lg)) {
+  .instructions {
+    text-align: center;
+  }
+}
