@@ -1,0 +1,60 @@
+section.hero {
+  @include gradient-directional(
+    $start-color: lighten($dark-blue, 8%),
+    $end-color: $dark-blue,
+    $deg: -15deg
+  );
+
+  height: 101vh;
+  min-height: 400px;
+  position: relative;
+
+  .scroll-down {
+    position: absolute;
+    bottom: 3vh;
+    text-align: center;
+    width: 100%;
+
+    .oi {
+      color: lighten($dark-blue, 20%);
+      display: block;
+      font-size: 2em;
+    }
+  }
+}
+
+.content-section {
+  @include make-container();
+  max-width: 1280px;
+
+  > div {
+    @include make-row();
+
+    > section {
+      @include make-col-ready();
+      @include make-col(12);
+
+      article {
+        color: $white;
+        font-size: 1.2em;
+        margin-top: 150px;
+        text-align: center;
+
+        h2 {
+          font-size: 1.8em;
+          font-weight: normal;
+          letter-spacing: 1px;
+        }
+      }
+    }
+  }
+
+  button {
+    margin-bottom: 5px;
+  }
+
+  small {
+    color: lighten($dark-blue, 25%);
+    font-size: .65em;
+  }
+}

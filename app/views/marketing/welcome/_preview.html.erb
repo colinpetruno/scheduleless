@@ -1,13 +1,13 @@
-<section class="hero">
-  <article class="content-section">
-    <div>
-      <section>
-        <%= render partial: "layouts/marketing/navbar" %>
-        Some content goes here
-      </section>
-    </div>
-  </article>
-</section>
+<%= render partial: "hero_section" %>
+
+<div style="background-color: #ffffff; min-height: 450px;">
+
+</div>
+
+<div style="background-color: #484b52; min-height: 450px;">
+
+</div>
+
 
 <% if Rails.env.production? %>
   <%= render partial: "layouts/shared/reamaze" %>
