@@ -1,6 +1,8 @@
 en:
   layouts:
     shared:
+      reamaze:
+        label_text: "Let us know if you have any questions!"
       top_nav:
         calendar: "Calendar"
         create_schedule: "Generate Schedule"

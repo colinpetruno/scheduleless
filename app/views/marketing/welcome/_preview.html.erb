@@ -10,6 +10,5 @@
 </section>
 
 <% if Rails.env.production? %>
-  <%= render partial: "reamaze/reamaze",
-    locals: { brand_subdomain: "scheduleless" } %>
+  <%= render partial: "layouts/shared/reamaze" %>
 <% end %>

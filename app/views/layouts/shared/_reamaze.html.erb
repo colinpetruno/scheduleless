@@ -1,0 +1,24 @@
+<%# Order matters here because #javascriptdevs %>
+
+<%= render partial: "reamaze/reamaze",
+  locals: ReamazeOptions.for(current_user) %>
+
+<script type="text/javascript">
+  var _support = _support || { 'ui': {}, 'user': {} };
+  _support['account'] = 'scheduleless';
+  _support['ui']['anonymousMode'] = 'anonymous';
+  _support['ui']['enableKb'] = 'true';
+  _support['ui']['styles'] = {
+    widgetColor: 'rgb(102, 149, 251)',
+  };
+  _support['ui']['widget'] = {
+    icon: 'chat',
+    label: {
+      text: '<%= t(".label_text") %> 😊',
+      mode: "prompt-3",
+      delay: 3,
+      duration: 20,
+    },
+    position: 'bottom-right',
+  };
+</script>
