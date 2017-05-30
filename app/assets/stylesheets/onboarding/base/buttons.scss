@@ -8,6 +8,8 @@ button, input[type=submit], a.button {
   vertical-align: middle;
   user-select: none;
   border: $input-btn-border-width solid transparent;
+  -webkit-appearance: none;
+
   @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
   @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
   @include transition($btn-transition);

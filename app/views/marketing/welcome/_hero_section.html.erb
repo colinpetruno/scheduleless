@@ -8,7 +8,10 @@
           <h2><%= t(".title") %></h2>
           <%= t(".subtitle") %>
           <br><br>
-          <button class="orange"><%= t(".call_to_action") %></button>
+          <%= link_to t(".call_to_action"),
+            new_onboarding_registration_path,
+            class: "button orange"
+          %>
           <br>
           <small><%= t(".no_cc_required") %></small>
         </article>
