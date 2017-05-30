@@ -18,6 +18,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   validates :email, presence: true, length: { minimum: 3, maximum: 200 }
+  validates :family_name, presence: true, length: { minimum: 1, maximum: 200 }
+  validates :given_name, presence: true, length: { minimum: 1, maximum: 200 }
+  validates :mobile_phone, presence: true, length: { minimum: 7, maximum: 30 }
 
   accepts_nested_attributes_for :company, :preferred_hours
 
@@ -33,8 +36,16 @@ class User < ApplicationRecord
     super || positions.where(company_admin: true).present?
   end
 
+  def deliver_invitation(options = {})
+    super # send email through devise invitable
+    # send twilio
+  end
+
   def location_admin?
     positions.where(location_admin: true).present?
+  end
+
+  def twilio_formatted_phone
   end
 
   private
