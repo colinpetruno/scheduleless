@@ -1,0 +1,9 @@
+en:
+  locations:
+    users:
+      add_employee:
+        title: "Add An Existing Employee"
+      new:
+        instructions: >
+          This employee will be invited once their first shifts are generated.
+        new_employee: "Invite a new employee to join this location"

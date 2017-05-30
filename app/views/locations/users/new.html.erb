@@ -1,0 +1,20 @@
+<article class="add-employees-form">
+  <%= render partial: "add_employee", locals: { location: @location } %>
+</article>
+
+<div class="frame">
+  <header>
+    <div><%= t(".new_employee") %></div>
+  </header>
+
+  <section>
+    <article>
+      <div class="instructions">
+        <%= t(".instructions") %>
+      </div>
+
+      <br /><br />
+      <%= render partial: "form", locals: { user: @user } %>
+    </article>
+  </section>
+</div>

@@ -3,14 +3,14 @@
     <div>
       Employees
       <aside>
-        <%= link_to "Add New Employee", new_location_user_path(location), class: "button" %>
+        <%= link_to "Add New Employee", new_locations_location_user_path(location), class: "button" %>
       </aside>
     </div>
   </header>
   <section>
     <article>
         <div class="locations-edit-users">
-          <%= render partial: "locations/users", locals: { users: location.users } %>
+          <%= render partial: "users", locals: { users: location.users } %>
         </div>
 
         <div>

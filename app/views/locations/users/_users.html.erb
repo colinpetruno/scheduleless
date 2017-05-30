@@ -1,0 +1,35 @@
+<% if users.present? %>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Position</th>
+      </tr>
+    </thead>
+
+    <% users.each do |user| %>
+      <tr>
+        <td><%= "#{user.given_name} #{user.family_name}" %></td>
+        <td><%= user.email %></td>
+        <td><%= EmployeePosition.primary_for(user).name %></td>
+        <td>
+          <% if policy(user).edit? %>
+            <%= link_to "Edit",
+              edit_business_user_path(user),
+              class: "button link" %>
+          <% end %>
+
+          <% if policy(:employee_position).destroy? %>
+            <%= button_to "Remove",
+              locations_location_user_path(@location, user),
+              class: "button link",
+              method: :delete %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  There are no employees at this location.
+<% end %>

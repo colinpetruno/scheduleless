@@ -5,16 +5,9 @@
     </aside>
 
     <article>
-      <div class="two-columns">
-        <section>
-          <article>
-            <%= render partial: "locations/employees", locals: { location: @location } %>
-          </article>
-          <article class="add-employees-form">
-            <%= render partial: "locations/add_employee", locals: { location: @location } %>
-          </article>
-        </section>
-      </div>
+
+      <%= render partial: "employees", locals: { location: @location } %>
+
     </article>
   </section>
 </div>

@@ -11,16 +11,17 @@ Rails.application.routes.draw do
 
   resource :calendar, only: [:show]
 
+  resources :employee_positions, only: [:destroy]
+
   resources :locations, only: [:create, :edit, :index, :new, :show, :update] do
     resources :available_employees, only: [:index]
     resource :calendar, only: [:show]
     resource :daily_schedule, only: [:show]
     resources :trades, only: [:index]
     resources :user_locations, only: [:create]
-    resources :users, only: [:new, :create], path: "employees"
 
     scope module: :locations, as: :locations do
-      resources :users, only: [:index], path: "employees"
+      resources :users, only: [:create, :destroy, :index, :new], path: "employees"
     end
   end
 
@@ -118,5 +119,5 @@ Rails.application.routes.draw do
 
   resource :user, only: [:edit, :update]
 
-  devise_for :users
+  devise_for :users, controllers: { invitations: "users/invitations" }
 end

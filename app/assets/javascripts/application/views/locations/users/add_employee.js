@@ -13,7 +13,11 @@ $(document).on("turbolinks:load", function() {
       hint: true,
       name: 'employees',
       display: function(obj){
-        return obj.given_name + " " + obj.family_name
+        if (obj.given_name && obj.family_name) {
+          return obj.given_name + " " + obj.family_name;
+        } else {
+          return obj.email;
+        }
       },
       limit: 10,
       source: available_employees,

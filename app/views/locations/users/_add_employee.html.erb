@@ -1,10 +1,10 @@
 <div class="frame">
   <header>
-    <div>Add An Employee</div>
+    <div><%= t(".title") %></div>
   </header>
   <section>
     <article>
-      <%= simple_form_for [location, UserLocation.new], remote: true, format: :js  do |f| %>
+      <%= simple_form_for [location, UserLocation.new] do |f| %>
         <div class="input input-group">
           <input type="text"
                  id="location-available-employees"
