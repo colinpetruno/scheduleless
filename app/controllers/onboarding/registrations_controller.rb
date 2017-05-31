@@ -10,7 +10,8 @@ class Onboarding::RegistrationsController < ApplicationController
 
     if @registration.register
       sign_in(@registration.user)
-      redirect_to new_onboarding_position_path
+      # redirect_to new_onboarding_position_path
+      redirect_to new_onboarding_lead_path
     else
       render :new
     end

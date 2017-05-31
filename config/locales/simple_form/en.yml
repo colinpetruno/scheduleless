@@ -23,6 +23,10 @@ en:
         new_rule_id: "Choose a New Position"
       subscription:
         plan: "Choose your plan"
+      user:
+        family_name: "Last Name"
+        given_name: "First Name"
+        mobile_phone: "Mobile Phone"
     required:
       text: 'required'
       mark: '*'

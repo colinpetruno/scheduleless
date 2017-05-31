@@ -1,0 +1,13 @@
+<div style="text-align: center">
+  <h4 style="color: #6695fb">
+    A new customer requires setup on ScheduleLess!!
+  </h4>
+
+  <strong>Company Name:</strong> <%= @company.name %><br>
+  <strong>Customer Name:</strong> <%= "#{@user.given_name} #{@user.family_name}" %><br>
+  <strong>Contact Method:</strong> <%= @lead.preferred_contact %><br>
+  <strong>Email:</strong> <%= @user.email %><br>
+  <strong>Phone:</strong> <%= @user.mobile_phone %><br>
+  <strong>Notes:</strong> <%= @lead.note %>
+  <br><br>
+</div>

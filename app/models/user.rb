@@ -4,6 +4,7 @@ class User < ApplicationRecord
   belongs_to :company
   has_many :employee_positions
   has_many :user_locations
+  has_many :leads
   has_many :locations, through: :user_locations
   has_many :positions, through: :employee_positions
   has_many :preferred_hours, dependent: :destroy
@@ -22,7 +23,7 @@ class User < ApplicationRecord
   validates :given_name, presence: true, length: { minimum: 1, maximum: 200 }
   validates :mobile_phone, presence: true, length: { minimum: 7, maximum: 30 }
 
-  accepts_nested_attributes_for :company, :preferred_hours
+  accepts_nested_attributes_for :company, :leads, :preferred_hours
 
   before_create :build_availabilities
 

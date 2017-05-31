@@ -1,0 +1,26 @@
+<h5><%= t(".your_company") %></h5>
+<%= simple_form_for [:onboarding, current_user], url: onboarding_leads_path, method: :post do |f| %>
+  <%= f.simple_fields_for :leads, @lead do |lf| %>
+    <%= lf.input :note, label: false, hint: t(".note_hint") %>
+
+    <%= lf.input :preferred_contact,
+      as: :select,
+      include_blank: false,
+      collection: [["Email", "email"], ["Phone", "phone"]]
+    %>
+  <% end %>
+
+  <br><br>
+  <h5><%= t(".your_details") %></h5>
+  <%= f.input :given_name %>
+  <%= f.input :family_name %>
+  <%= f.input :email, disabled: true, type: :email %>
+  <%= f.input :mobile_phone, type: :tel %>
+
+  <br>
+  <small><%= t(".hint_text") %></small>
+  <br><br>
+  <%= f.submit t(".submit"), class: "orange" %>
+<% end %>
+
+

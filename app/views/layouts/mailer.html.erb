@@ -7,7 +7,43 @@
     </style>
   </head>
 
-  <body>
-    <%= yield %>
+  <body bgcolor="#6695fb">
+    <table width=100%">
+      <tr>
+        <td align="center">
+          <table width="600" style="margin: auto">
+            <tr>
+              <td width="110" style="max-width: 110px">
+                <%= image_tag "shared/logos/scheduleless.png" %>
+              </td>
+              <td color="#ffffff" style="color: #ffffff; font-family: sans-serif; font-size: 30px">
+                ScheduleLess
+              </td>
+            </tr>
+          </table>
+
+          <br />
+
+          <table width="600" style="margin: auto; font-family: sans-serif;">
+            <tr>
+              <td bgcolor="#ffffff" style="border: 1px solid #2c76ff; box-shadow: 0 0 3px #2c76ff; padding: 10px;`">
+                <%= yield %>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+
+    <br>
+
+    <table width="600" style="margin: auto">
+      <tr>
+        <td color="#ffffff" style="color: #ffffff; font-family: sans-serif; font-size: 11px; text-align: center">
+          161 S. Huntington Ave, Boston Ma 02130, Suite 429
+        </td>
+      </tr>
+    </table>
+
   </body>
 </html>

@@ -12,8 +12,16 @@
     @include make-row();
     text-align: right;
 
-    > div {
+    > div, > article {
       @include make-col-ready();
+    }
+
+    > article {
+      @include make-col(12);
+      text-align: right;
+    }
+
+    > div {
       @include make-col(6);
       text-align: left;
 

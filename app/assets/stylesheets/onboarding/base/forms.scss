@@ -18,19 +18,20 @@ form {
       color: darken($font-light, 20%);
     }
 
-    input, select {
+    input, select, textarea {
       @include transition($btn-transition);
 
       background-clip: padding-box;
       background-image: none;
       background-color: $input-bg;
       border-radius: 0;
+      -webkit-border-radius: 0;
       color: darken($font-light, 10%);
       display: block;
       font-size: $font-size-base;
       line-height: $input-line-height;
       padding: $input-padding-y $input-padding-x;
-      -webkit-appearance: none;
+//      -webkit-appearance: none;
       width: 100%;
 
       &:focus, &.focus {

@@ -1,0 +1,28 @@
+en:
+  onboarding:
+    leads:
+      create:
+        continue: "I can help you out and enter some of it!"
+        description: >
+          We will reach out to you shortly. In order for us to make your 
+          schedules we will need a list of employees, locations, and positions. 
+          In addition, a few example past schedules will help ensure that we 
+          are making the best possible schedules for you.
+        thanks: "Thanks!"
+      form:
+        hint_text: >
+          We will need a list of your locations as well as employees and 
+          positions at each location. In addition a few past schedules will 
+          help to ensure consistancy during the transition.
+        note_hint: >
+          Tell us about your company as well as the best times to contact you. 
+        submit: "Send"
+        your_company: "About Your Company"
+        your_details: "Your Details"
+      new:
+        description: >
+          We would love to hear about your company and scheduling requirements. 
+          Let us know more about you and your preferred method of contact.
+        skip: "No thanks! I'll enter the data myself."
+        title: "Let us do your setup."
+

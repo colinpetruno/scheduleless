@@ -1,0 +1,12 @@
+<div class="instructions">
+  <h3><%= t(".title") %> </h3>
+  <%= t(".description") %>
+</div>
+
+<%= render partial: "form" %>
+
+<footer>
+  <article>
+    <%= link_to t(".skip"), new_onboarding_position_path %>
+  </article>
+</footer>

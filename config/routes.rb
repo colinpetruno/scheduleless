@@ -60,6 +60,7 @@ Rails.application.routes.draw do
 
   namespace :onboarding do
     resource :company_preferences, only: [:create, :new]
+    resources :leads, only: [:new, :create], path: "contact"
     resources :locations, only: [:create, :index, :new] do
       resources :users, path: :employees, only: [:create, :index, :new]
     end
