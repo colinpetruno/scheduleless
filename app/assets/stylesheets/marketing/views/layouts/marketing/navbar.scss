@@ -39,8 +39,9 @@
   ul {
     display: block;
     list-style: none;
+    margin-bottom: 0;
     margin-left: auto;
-    padding: $navbar-padding-y 0;
+    // padding: $navbar-padding-y 0;
 
     li {
       display: inline-block;
@@ -49,7 +50,7 @@
 
     li > a {
       font-size: 1em;
-      line-height: 20px;
+      line-height: 75px;
       vertical-align: middle;
     }
   }

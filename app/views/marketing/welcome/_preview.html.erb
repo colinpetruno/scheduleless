@@ -1,13 +1,12 @@
 <%= render partial: "hero_section" %>
 
-<div style="background-color: #ffffff; min-height: 450px;">
+<%= render partial: "explanation" %>
 
-</div>
+<%= render partial: "time_clock" %>
 
-<div style="background-color: #484b52; min-height: 450px;">
+<%= render partial: "mobile_apps" %>
 
-</div>
-
+<%= render partial: "footer" %>
 
 <% if Rails.env.production? %>
   <%= render partial: "layouts/shared/reamaze" %>

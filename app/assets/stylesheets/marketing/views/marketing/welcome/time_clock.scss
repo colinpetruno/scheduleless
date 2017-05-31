@@ -1,0 +1,4 @@
+.marketing-welcome-time-clock {
+  @include gradient-y($start-color: #f0fcff, $end-color: #effdf9);
+  min-height: 450px;
+}
