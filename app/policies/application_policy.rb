@@ -1,8 +1,8 @@
 class ApplicationPolicy
-  attr_reader :location, :user, :record
+  attr_reader :current_location, :user, :record
 
   def initialize(context, record)
-    @location = context.location
+    @current_location = context.location
     @record = record
     @user = context.user
   end
@@ -42,8 +42,9 @@ class ApplicationPolicy
   class Scope
     attr_reader :user, :scope
 
-    def initialize(user, scope)
-      @user = user
+    def initialize(context, scope)
+      @user = context.user
+      @location = context.location
       @scope = scope
     end
 
@@ -53,6 +54,20 @@ class ApplicationPolicy
   end
 
   private
+
+  def location_admin_for?(location)
+    if location.present?
+      user.manage?(location) || has_overrided_location?
+    else
+      false
+    end
+  end
+
+  def has_overrided_location?
+    EmployeeLocation.
+      where(user_id: user.id, location_id: current_location.id, admin: true).
+      present?
+  end
 
   def same_company?
     user.company_id == record.company_id

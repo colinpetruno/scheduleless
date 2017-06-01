@@ -2,7 +2,7 @@ class UserPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       if user.company_admin?
-        user.company.users
+        UserFinder.new(user: user).by_company_without_current_user
       else
         User.
           joins(:user_locations).
@@ -13,15 +13,15 @@ class UserPolicy < ApplicationPolicy
   end
 
   def create?
-    user.company_admin?
+    user.company_admin? || location_admin_for?(current_location)
   end
 
   def destroy?
-    user.company_admin?
+    user.company_admin? || location_admin_for?(current_location)
   end
 
   def edit?
-    user.company_admin? || own_profile?
+    user.company_admin? || own_profile? || location_admin_for?(current_location)
   end
 
   def show?
@@ -29,7 +29,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def update?
-    user.company_admin? || own_profile?
+    user.company_admin? || own_profile? || location_admin_for?(current_location)
   end
 
   private

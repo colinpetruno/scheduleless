@@ -16,6 +16,11 @@
   </header>
 
   <section>
-    <%= render partial: "users/users", locals: { users: @location.users } %>
+    <%= render partial: "users/users",
+      locals: {
+        users: UserFinder.
+          new(location: @location).
+          by_location_without(current_user)
+      } %>
   </section>
 </div>

@@ -33,6 +33,10 @@ class User < ApplicationRecord
     super(only: [:email, :id, :given_name, :family_name, :preferred_name])
   end
 
+  def manage?(location)
+    positions.where(location_admin: true).present? && locations.include?(location)
+  end
+
   def company_admin?
     super || positions.where(company_admin: true).present?
   end

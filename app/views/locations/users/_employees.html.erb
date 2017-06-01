@@ -10,7 +10,13 @@
   <section>
     <article>
         <div class="locations-edit-users">
-          <%= render partial: "users", locals: { users: location.users } %>
+          <%= render partial: "users",
+            locals: {
+              users: UserFinder.
+                new(location: @location).
+                by_location_without(current_user)
+            }
+          %>
         </div>
 
         <div>
