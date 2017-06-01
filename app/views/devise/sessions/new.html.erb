@@ -7,6 +7,10 @@
   <%= f.input :password, required: false %>
   <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
 
+  <% if alert.present? %>
+    <div class="alert"><%= alert %></div>
+  <% end %>
+
   <div>
     <%= f.button :submit, t(".submit"), class: "button orange" %>
     <%= link_to t(".sign_up"), new_onboarding_registration_path, class: "button white" %>
