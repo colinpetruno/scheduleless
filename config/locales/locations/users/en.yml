@@ -7,3 +7,10 @@ en:
         instructions: >
           This employee will be invited once their first shifts are generated.
         new_employee: "Invite a new employee to join this location"
+      users:
+        blank: "There are no employees at this location."
+        edit: "Edit"
+        email: "Email"
+        name: "Name"
+        position: "Position"
+        remove: "Remove"

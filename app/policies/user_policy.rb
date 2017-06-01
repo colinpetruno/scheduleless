@@ -4,10 +4,7 @@ class UserPolicy < ApplicationPolicy
       if user.company_admin?
         UserFinder.new(user: user).by_company_without_current_user
       else
-        User.
-          joins(:user_locations).
-          where(company: user.company).
-          where(user_locations: { location_id: user.locations })
+        UserFinder.new(user: user).by_associated_locations
       end
     end
   end

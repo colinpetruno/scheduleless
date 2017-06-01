@@ -2,9 +2,9 @@
   <table>
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Position</th>
+        <th><%= t(".name") %></th>
+        <th><%= t(".email") %></th>
+        <th><%= t(".position") %></th>
       </tr>
     </thead>
 
@@ -15,13 +15,13 @@
         <td><%= EmployeePosition.primary_for(user).name %></td>
         <td>
           <% if policy(user).edit? %>
-            <%= link_to "Edit",
+            <%= link_to t(".edit"),
               edit_business_user_path(user),
               class: "button link" %>
           <% end %>
 
           <% if policy(:employee_position).destroy? %>
-            <%= button_to "Remove",
+            <%= button_to t(".remove"),
               locations_location_user_path(@location, user),
               class: "button link",
               method: :delete %>
@@ -31,5 +31,5 @@
     <% end %>
   </table>
 <% else %>
-  There are no employees at this location.
+  <%= t(".blank") %>
 <% end %>

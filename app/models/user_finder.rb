@@ -4,6 +4,14 @@ class UserFinder
     @user = user
   end
 
+  def by_associated_locations
+    User.
+      joins(:user_locations).
+      where(company: user.company).
+      where(user_locations: { location_id: user.locations }).
+      where.not(user_locations: { user_id: user.id })
+  end
+
   def by_company_without_current_user
     user.company.users.where.not(id: user.id)
   end
