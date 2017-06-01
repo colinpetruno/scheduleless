@@ -18,7 +18,7 @@ class User < ApplicationRecord
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :email, presence: true, length: { minimum: 3, maximum: 200 }
+  validates :email, presence: true, length: { minimum: 3, maximum: 200 }, uniqueness: true
   validates :family_name, presence: true, length: { minimum: 1, maximum: 200 }
   validates :given_name, presence: true, length: { minimum: 1, maximum: 200 }
   validates :mobile_phone, presence: true, length: { minimum: 7, maximum: 30 }

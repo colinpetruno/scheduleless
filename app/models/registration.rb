@@ -1,6 +1,7 @@
 class Registration
   include ActiveModel::Model
 
+  validate :email_unique?
   validates :company_name, presence: true
   validates :email, presence: true, length: { minimum: 3, maximum: 200 }
   validates :password, presence: true
@@ -34,6 +35,12 @@ class Registration
     @_customer ||= Stripe::Customer.create(
       description: company.name
     )
+  end
+
+  def email_unique?
+    if User.where(email: email).present?
+      errors.add(:email, I18n.t("onboarding.registrations.model.email_taken"))
+    end
   end
 
   def user_params

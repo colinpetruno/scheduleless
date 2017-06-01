@@ -1,6 +1,8 @@
 en:
   onboarding:
     registrations:
+      model:
+        email_taken: "is already taken"
       new:
         title: "Welcome To Scheduleless"
         description: "Let us do your scheduling for you"
