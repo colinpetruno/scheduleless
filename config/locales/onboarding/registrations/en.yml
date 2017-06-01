@@ -3,6 +3,7 @@ en:
     registrations:
       model:
         email_taken: "is already taken"
+        password_confirmation: "does not match"
       new:
         title: "Welcome To Scheduleless"
         description: "Let us do your scheduling for you"
