@@ -25,7 +25,7 @@ module Scheduler
     attr_reader :company, :location, :layout, :date_start, :options
 
     def employees
-      location.users
+      location.users.select{|u| u.positions.length > 0}
     end
 
     def timeslots
