@@ -5,3 +5,7 @@ en:
       new_location: "New Location"
       edit: "Edit"
       show: "Show"
+    show:
+      edit: "Edit"
+      default_title: "Location"
+      employees: "Employees"

@@ -1,6 +1,13 @@
 <div class="frame">
   <header>
-    <div><%= @location.name || "Location" %></div>
+    <div>
+      <%= @location.name || t(".default_title") %>
+      <% if policy(@location).edit? %>
+        <aside>
+          <%= link_to t(".edit"), edit_location_path(@location) %>
+        </aside>
+      <% end %>
+    </div>
   </header>
 
   <section>
@@ -12,7 +19,7 @@
 
 <div class="frame">
   <header>
-    <div>Employees</div>
+    <div><%= t(".employees") %></div>
   </header>
 
   <section>
