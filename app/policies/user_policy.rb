@@ -14,11 +14,11 @@ class UserPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.company_admin? || location_admin_for?(current_location)
+    user.company_admin? || admin_for?(user)
   end
 
   def edit?
-    user.company_admin? || own_profile? || location_admin_for?(current_location)
+    user.company_admin? || own_profile? || admin_for?(user)
   end
 
   def show?
@@ -26,7 +26,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def update?
-    user.company_admin? || own_profile? || location_admin_for?(current_location)
+    user.company_admin? || own_profile? || admin_for?(user)
   end
 
   private

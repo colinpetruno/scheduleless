@@ -12,6 +12,8 @@ en:
         update: "Update Subscription"
       user_location:
         create: "Add"
+      user:
+        update: "Update Employee"
   simple_form:
     "yes": 'Yes'
     "no": 'No'

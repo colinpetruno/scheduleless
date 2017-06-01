@@ -14,11 +14,7 @@ class LocationPolicy < ApplicationPolicy
   end
 
   def edit?
-    user.company_admin? && same_company?
-  end
-
-  def index?
-    user.company_admin?
+    (user.company_admin? || user.location_admin?) && same_company?
   end
 
   def new?
@@ -30,6 +26,17 @@ class LocationPolicy < ApplicationPolicy
   end
 
   def update?
-    user.company_admin? && same_company?
+    user.company_admin? && location_admin_for_record? && same_company?
+  end
+
+  private
+
+  # In order to avoid N+1 Queries on list views we are only checking to make
+  # sure they are the location admin of the specific location when they try
+  # to act upon a single record. Elsewhere in the UI they will not see
+  # locations that do not belong to them so only checking if they can manage
+  # their locations is good enough.
+  def location_admin_for_record?
+    user.location_admin? && user.locations.include?(record)
   end
 end

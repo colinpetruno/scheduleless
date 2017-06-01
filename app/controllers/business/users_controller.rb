@@ -52,7 +52,7 @@ module Business
       if @user.update(user_params)
         redirect_to business_users_path
       else
-        # todo
+        render :edit
       end
     end
 

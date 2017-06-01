@@ -55,6 +55,22 @@ class ApplicationPolicy
 
   private
 
+  def admin_for?(user)
+    if user.location_admin?
+      # check to ensure their locations overlap
+      user.locations.where(id: record.locations.pluck(:id)).present?
+    else
+      # check if user is location admin anywhere
+      record.
+        locations.
+        where(id: UserLocation.
+          where(user_id: user.id, admin: true).
+          pluck(:location_id)
+        ).
+        present?
+    end
+  end
+
   def location_admin_for?(location)
     if location.present?
       user.manage?(location) || has_overrided_location?
