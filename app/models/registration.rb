@@ -19,7 +19,7 @@ class Registration
   end
 
   def user
-    @_user ||= User.create(user_params)
+    @_user ||= create_user
   end
 
   private
@@ -30,6 +30,12 @@ class Registration
       create(plan: company.subscription.plan)
 
     customer
+  end
+
+  def create_user
+    user = User.new(user_params)
+    user.save(validate: false)
+    user
   end
 
   def customer
