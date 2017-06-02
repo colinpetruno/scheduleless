@@ -1,8 +1,6 @@
 class ScheduleRule < ApplicationRecord
-  belongs_to :company
+  belongs_to :ruleable, polymorphic: true
   belongs_to :position
-
-  validates :period, presence: true, uniqueness: { scope: :position }
 
   enum period: {
     open: 0,

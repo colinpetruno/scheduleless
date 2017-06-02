@@ -2,7 +2,7 @@ class ScheduleRulePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.
-        where(company_id: user.company_id).
+        where(ruleable_id: user.company_id, ruleable_type: "Company").
         includes(:position).
         order("positions.name")
     end

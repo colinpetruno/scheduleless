@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170531133637) do
+ActiveRecord::Schema.define(version: 20170602013926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -178,13 +178,15 @@ ActiveRecord::Schema.define(version: 20170531133637) do
   end
 
   create_table "schedule_rules", force: :cascade do |t|
-    t.integer "company_id",                      null: false
-    t.integer "position_id",                     null: false
-    t.integer "period",              default: 2, null: false
-    t.integer "number_of_employees", default: 1, null: false
-    t.index ["company_id"], name: "index_schedule_rules_on_company_id", using: :btree
-    t.index ["position_id", "period"], name: "index_schedule_rules_on_position_id_and_period", unique: true, using: :btree
+    t.integer "ruleable_id",                             null: false
+    t.integer "position_id",                             null: false
+    t.integer "period",              default: 2,         null: false
+    t.integer "number_of_employees", default: 1,         null: false
+    t.string  "ruleable_type",       default: "Company", null: false
     t.index ["position_id"], name: "index_schedule_rules_on_position_id", using: :btree
+    t.index ["ruleable_id"], name: "index_schedule_rules_on_ruleable_id", using: :btree
+    t.index ["ruleable_type", "ruleable_id", "position_id", "period"], name: "unique_by_type_and_ids", unique: true, using: :btree
+    t.index ["ruleable_type", "ruleable_id"], name: "index_schedule_rules_on_ruleable_type_and_ruleable_id", using: :btree
   end
 
   create_table "shifts", force: :cascade do |t|
