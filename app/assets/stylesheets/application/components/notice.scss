@@ -1,11 +1,24 @@
-.alert, .notice {
+.alert, .info, .notice {
+  border: $alert-border-width solid transparent;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  line-height: 38px;
   padding: $alert-padding-y $alert-padding-x;
   margin-bottom: $alert-margin-bottom;
-  border: $alert-border-width solid transparent;
+  vertical-align: middle;
+
+  form {
+    margin-left: auto;
+  }
 }
 
 .alert {
   @include alert-variant(#f2dede, darken(#f2dede, 15%), #a94442);
+}
+
+.info {
+  @include alert-variant(lighten($blue, 27%), lighten($blue, 20%), $blue);
 }
 
 .notice {

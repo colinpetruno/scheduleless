@@ -17,6 +17,11 @@ Rails.application.routes.draw do
     resources :available_employees, only: [:index]
     resource :calendar, only: [:show]
     resource :daily_schedule, only: [:show]
+
+    scope module: :locations, as: :locations do
+      resources :schedule_rules, only: [:create, :destroy, :edit, :index, :update]
+    end
+
     resources :trades, only: [:index]
     resources :user_locations, only: [:create]
 

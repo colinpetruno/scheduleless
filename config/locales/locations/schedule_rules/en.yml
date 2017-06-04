@@ -1,17 +1,23 @@
 en:
-  settings:
+  locations:
     schedule_rules:
       controller:
         alert: "We weren't able to remove your scheduling rule"
         notice: "Your Scheduling Rule has been succcessfully removed!"
+      disable:
+        hint: "This location uses custom rules."
+        submit: "Use Company Defaults"
+      enable:
+        hint: "Enable Scheduling Rules for this location"
+        submit: "Enable"
       form:
         need: "I need"
         plural: "(s)"
       index:
         instructions_html: >
-          Every location will start with this set of scheduling rules. 
-          Individual locations can be customized by selecting them on the
-          %{link} page.
+          Customize the Scheduling Rules for this location. You can choose to
+          go to with the companies default or make your own that better suit
+          your location.
         locations: "locations"
       schedule_rule:
         requirement:
@@ -20,4 +26,4 @@ en:
       schedule_rules:
         delete: "Delete"
         edit: "Edit"
-# NOTE THIS IS ALMOST THE SAME AS LOCATIONS BUT NOT SHARED
+# NOTE THIS IS ALMOST THE SAME AS SETTINGS BUT NOT SHARED

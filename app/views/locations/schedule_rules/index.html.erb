@@ -1,0 +1,19 @@
+<div class="rail narrow">
+  <section>
+    <aside>
+      <%= render partial: "locations/sidebar" %>
+    </aside>
+
+    <article>
+
+      <div class="frame">
+        <section>
+          <article>
+            <%= render partial: "index", locals: { location: @location } %>
+          </article>
+        </section>
+      </div>
+
+    </article>
+  </section>
+</div>

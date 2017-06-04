@@ -1,0 +1,9 @@
+<div class="info">
+  <%= t(".hint") %>
+  <%= simple_form_for @location do |f| %>
+    <%= f.input :use_custom_scheduling_rules?,
+      as: :hidden,
+      input_html: { value: false } %>
+    <%= f.submit t(".submit") %>
+  <% end %>
+</div>

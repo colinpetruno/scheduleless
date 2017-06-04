@@ -1,0 +1,9 @@
+<%= t(".requirement",
+        position: pluralize(
+          schedule_rule.number_of_employees,
+          schedule_rule.position.name
+        ),
+        period: t("models.schedule_rule.#{schedule_rule.period}"),
+        count: schedule_rule.number_of_employees
+     ) %>
+<br>

@@ -1,0 +1,20 @@
+<div class="settings-schedule-rules-schedule-rules">
+  <table class="bordered striped">
+    <% schedule_rules.each do |schedule_rule| %>
+      <tr>
+        <td>
+          <%= render schedule_rule %>
+        </td>
+        <td>
+          <%= link_to t(".edit"),
+            edit_locations_location_schedule_rule_path(@location, schedule_rule),
+            class: "button link" %>
+          <%= button_to t(".delete"),
+            locations_location_schedule_rule_path(@location, schedule_rule),
+            class: "button link",
+            method: :delete %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

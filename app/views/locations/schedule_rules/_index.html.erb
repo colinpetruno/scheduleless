@@ -1,0 +1,20 @@
+<div class="instructions">
+  <%= t(".instructions_html",
+        link: link_to(t(".locations"), locations_path)) %>
+</div>
+<br>
+
+<% if @location.use_custom_scheduling_rules? %>
+  <%= render partial: "disable" %>
+
+  <%= render partial: "schedule_rules",
+    locals: { schedule_rules: @schedule_rules } %>
+
+  <br>
+
+  <%= render partial: "form",
+     locals: { schedule_rule: @schedule_rule } %>
+<% else %>
+  <%= render partial: "enable" %>
+<% end %>
+

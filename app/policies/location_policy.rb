@@ -26,7 +26,7 @@ class LocationPolicy < ApplicationPolicy
   end
 
   def update?
-    user.company_admin? && location_admin_for_record? && same_company?
+    (user.company_admin? || location_admin_for_record?) && same_company?
   end
 
   private

@@ -9,3 +9,7 @@ en:
       edit: "Edit"
       default_title: "Location"
       employees: "Employees"
+    sidebar:
+      details: "Details"
+      employees: "Employees"
+      schedule_rules: "Schedule Rules"

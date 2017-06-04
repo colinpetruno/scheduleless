@@ -35,7 +35,7 @@ class LocationsController < AuthenticatedController
     authorize @location
 
     if @location.update(location_params)
-      redirect_to locations_path
+      redirect_to redirect_url(@location)
     else
       render :edit
     end
@@ -55,6 +55,7 @@ class LocationsController < AuthenticatedController
              :name,
              :postal_code,
              :time_zone,
+             :use_custom_scheduling_rules,
              preference_attributes: [
                :break_length,
                :id,
@@ -67,5 +68,13 @@ class LocationsController < AuthenticatedController
              ]
             ).
       merge(company: current_company)
+  end
+
+  def redirect_url(location)
+    if request.referrer.include?("schedule_rules")
+      locations_location_schedule_rules_path(location)
+    else
+      edit_location_path(location)
+    end
   end
 end
