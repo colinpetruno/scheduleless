@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170604135828) do
+ActiveRecord::Schema.define(version: 20170604173917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -188,6 +188,16 @@ ActiveRecord::Schema.define(version: 20170604135828) do
     t.index ["ruleable_id"], name: "index_schedule_rules_on_ruleable_id", using: :btree
     t.index ["ruleable_type", "ruleable_id", "position_id", "period"], name: "unique_by_type_and_ids", unique: true, using: :btree
     t.index ["ruleable_type", "ruleable_id"], name: "index_schedule_rules_on_ruleable_type_and_ruleable_id", using: :btree
+  end
+
+  create_table "schedule_settings", force: :cascade do |t|
+    t.integer  "company_id"
+    t.integer  "schedule_duration", default: 2, null: false
+    t.integer  "day_start",         default: 1, null: false
+    t.integer  "lead_time",         default: 2, null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["company_id"], name: "index_schedule_settings_on_company_id", using: :btree
   end
 
   create_table "shifts", force: :cascade do |t|

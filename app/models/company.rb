@@ -8,6 +8,7 @@ class Company < ApplicationRecord
   has_many :shifts
 
   has_one :preference, as: :preferable
+  has_one :schedule_setting
   has_one :subscription
 
   validates :name, presence: true, length: { minimum: 3, maximum: 150 }
