@@ -68,7 +68,7 @@ module Scheduler
           if position_slots.key? rule.position.name
             position_slots[rule.position.name] = position_slots[rule.position.name] + 1
           else
-            position_slots[rule.position.name] = 1
+            position_slots[rule.position.name] = rule.number_of_employees
             position_employees[rule.position.name] = []
           end
         end
@@ -91,8 +91,3 @@ module Scheduler
     end
   end
 end
-
-
-
-
-

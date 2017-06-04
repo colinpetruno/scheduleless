@@ -17,7 +17,7 @@ module Scheduler
 
     def assign
       prepare_initial_schedule
-      auto_manage_schedule(0)
+      auto_manage_schedule
     end
 
     private
@@ -78,7 +78,7 @@ module Scheduler
       false
     end
 
-    def auto_manage_schedule(failures) # looks good
+    def auto_manage_schedule(failures=0) # looks good
       if failures > ROTATION_COUNT
         return true
       end

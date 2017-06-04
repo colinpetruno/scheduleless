@@ -1,0 +1,16 @@
+<div class="frame">
+  <header>
+    <div><%= t(".new_hours") %></div>
+  </header>
+
+  <section>
+    <article>
+      <div class="instructions">
+        <%= t(".instructions") %>
+      </div>
+
+      <br /><br />
+       <%= render partial: "form", locals: { scheduling_hour: @scheduling_hour } %>
+    </article>
+  </section>
+</div>

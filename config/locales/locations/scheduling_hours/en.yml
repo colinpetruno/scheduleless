@@ -1,0 +1,27 @@
+en:
+  locations:
+    scheduling_hours:
+      controller:
+        alert: "We weren't able to remove your scheduling hour"
+        notice: "Your Scheduling Hour has been succcessfully removed!"
+      add_new_day: "Add New Day"
+      form:
+        optional: "Optional"
+        day: "Day"
+        business_start_time: "Business Start Time"
+        business_end_time: "Business End Time"
+        scheduling_start_time: "Scheduling Start Time"
+        scheduling_end_time: "Scheduling End Time"
+      new:
+        instructions: Add your open an close times for this location.
+          Optionally, you can add when you start scheduling your employees
+          if your business hours differ from working hours.
+      hours:
+        blank: "There are no hours at this location."
+        day: "Day of the Week"
+        edit: "Edit"
+        minute_open_start: "Open Time"
+        minute_open_end: "Closing Time"
+        minute_schedulable_start: "Scheduling Start Time"
+        minute_schedulable_end: "Scheduling End Time"
+        remove: "Delete"
