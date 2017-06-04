@@ -12,4 +12,5 @@ en:
     sidebar:
       details: "Details"
       employees: "Employees"
+      hours: "Hours"
       schedule_rules: "Schedule Rules"

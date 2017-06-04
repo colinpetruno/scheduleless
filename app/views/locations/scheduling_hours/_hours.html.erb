@@ -1,0 +1,38 @@
+<% if scheduling_hours.present? %>
+  <table>
+    <thead>
+      <tr>
+        <th><%= t(".day") %></th>
+        <th><%= t(".minute_open_start") %></th>
+        <th><%= t(".minute_open_end") %></th>
+        <th><%= t(".minute_schedulable_start") %></th>
+        <th><%= t(".minute_schedulable_end") %></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% scheduling_hours.each do |hour| %>
+        <tr>
+          <td><%= hour.day %></td>
+          <td><%= MinutesToTime.for(hour.minute_open_start) %></td>
+          <td><%= MinutesToTime.for(hour.minute_open_end) %></td>
+          <td><%= MinutesToTime.for(hour.minute_schedulable_start) if hour.minute_schedulable_start %></td>
+          <td><%= MinutesToTime.for(hour.minute_schedulable_end) if hour.minute_schedulable_end %></td>
+          <td>
+            <%= link_to t(".edit"),
+              edit_locations_location_scheduling_hour_path(@location, hour),
+              class: "button link" %>
+
+            <%= button_to t(".remove"),
+              locations_location_scheduling_hour_path(@location, hour),
+              class: "button link",
+              method: :delete %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+
+  </table>
+<% else %>
+  <%= t(".blank") %>
+<% end %>

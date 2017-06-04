@@ -5,6 +5,7 @@ class Location < ApplicationRecord
   has_many :shifts
   has_many :user_locations
   has_many :users, through: :user_locations
+  has_many :scheduling_hours
 
   has_one :preference, as: :preferable
 

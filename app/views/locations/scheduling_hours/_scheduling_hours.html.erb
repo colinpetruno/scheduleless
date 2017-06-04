@@ -1,0 +1,24 @@
+<div class="frame">
+  <header>
+    <div>
+      <%= t(".hours") %>
+      <aside>
+        <%= link_to t(".add_new_day"), new_locations_location_scheduling_hour_path(location), class: "button" %>
+      </aside>
+    </div>
+  </header>
+  <section>
+    <article>
+        <div>
+          <%= render partial: "hours",
+            locals: {
+              scheduling_hours: @location.scheduling_hours
+            }
+          %>
+        </div>
+
+        <div>
+        </div>
+    </article>
+  </section>
+</div>

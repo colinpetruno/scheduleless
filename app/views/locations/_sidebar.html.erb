@@ -4,6 +4,10 @@
       <%= link_to t(".details"), edit_location_path(@location) %>
     <% end %>
 
+    <%= content_tag(:li, class: active?(locations_location_scheduling_hours_path(@location))) do %>
+      <%= link_to t(".hours"), locations_location_scheduling_hours_path(@location) %>
+    <% end %>
+
     <%= content_tag(:li, class: active?(locations_location_users_path(@location))) do %>
       <%= link_to t(".employees"), locations_location_users_path(@location) %>
     <% end %>

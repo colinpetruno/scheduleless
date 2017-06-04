@@ -27,6 +27,7 @@ Rails.application.routes.draw do
 
     scope module: :locations, as: :locations do
       resources :users, only: [:create, :destroy, :index, :new], path: "employees"
+      resources :scheduling_hours, only: [:create, :edit, :destroy, :index, :new, :update], path: "hours"
     end
   end
 
