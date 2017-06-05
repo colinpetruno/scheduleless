@@ -46,7 +46,7 @@ class SchedulePeriodOptions
 
   def next_period_start
     if current_period.present?
-      start_date = current_period.end_date + 1
+      start_date = current_period.first.end_date + 1
     else
       start_date = transition_period_end_date + 1.day
     end

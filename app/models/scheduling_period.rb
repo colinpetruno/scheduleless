@@ -16,12 +16,16 @@ class SchedulingPeriod < ApplicationRecord
   }
 
   def generate_admin_preview
+    save if id.blank?
 
+    ScheduleLocationJob.new.perform(self.id)
     self.update(status: :generated)
   end
 
   def generate_company_preview
+    save if id.blank?
 
+    ScheduleLocationJob.new.perform(self.id)
     self.update(status: :scheduless_approved)
   end
 
