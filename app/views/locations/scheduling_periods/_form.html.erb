@@ -1,0 +1,10 @@
+<%= simple_form_for [:locations, location, scheduling_period] do |f| %>
+  <%= f.input :start_date,
+    as: :select,
+    collection: SchedulePeriodOptions.for(location),
+    include_blank: false,
+    label: "Schedule Date Range"
+  %>
+
+  <%= f.submit %>
+<% end %>

@@ -21,6 +21,10 @@ class Company < ApplicationRecord
     super || create_preference
   end
 
+  def schedule_setting
+    super || create_schedule_setting
+  end
+
   def subscription
     super || create_subscription
   end

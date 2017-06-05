@@ -1,4 +1,4 @@
-require 'sidekiq/web'
+require "sidekiq/web"
 
 Rails.application.routes.draw do
   root to: "marketing/welcome#index"
@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resource :daily_schedule, only: [:show]
 
     scope module: :locations, as: :locations do
+      resources :scheduling_periods, only: [:create, :index, :new]
       resources :schedule_rules, only: [:create, :destroy, :edit, :index, :update]
     end
 

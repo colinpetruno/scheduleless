@@ -20,8 +20,9 @@
     <% @locations.each do |location| %>
       <tr>
         <td>
-          <%= link_to_if policy(location).edit?, t(".edit"), edit_location_path(location) do %>
-            <%= link_to t(".show"), location_path(location) %>
+          <%= link_to t(".show"), location_path(location) %>
+          <% if policy(location).edit? %>
+            <%= link_to t(".edit"), edit_location_path(location) %>
           <% end %>
         </td>
         <td><%= location.line_1 %></td>
