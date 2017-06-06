@@ -156,6 +156,11 @@ module Scheduler
           if can_schedule?(slot, employee, position, location)
             assign_employee_timeslot(employee, position.name, slot)
             not_scheduled = false
+          else
+            if Rails.env.development?
+              Rails.logger.info("Cannot schedule #{employee.id}")
+              debug_can_schedule?(slot, employee, position, location)
+            end
           end
           iterations = iterations + 1
           position = employee.positions.sample
@@ -251,13 +256,25 @@ module Scheduler
       priority_finder(eligible_employees, slot, position)
     end
 
+    def debug_can_schedule?(slot, employee, position, location)
+      Rails.logger.info("DEBUGGING FOR user_id: #{employee.id}, position_id: #{position.id}, location_id: #{location.id}")
+      Rails.logger.info("user_scheduled_at is #{!existing_shifts.user_scheduled_at(employee.id, slot.x, slot.y)}")
+      Rails.logger.info("user_scheduled_during_day is #{!existing_shifts.user_scheduled_during_day(employee.id, slot.x, location.id)}")
+      Rails.logger.info("user_scheduled_at is #{!existing_shifts.user_scheduled_at(employee.id, slot.x, slot.y)}")
+      Rails.logger.info("slot.not_full? is #{slot.not_full?}")
+      Rails.logger.info("slot.position_room_available? is #{slot.position_room_available?(position.name)}")
+      Rails.logger.info("minmax_not_eligible is #{!minmax_not_eligible(slot, employee)}")
+      Rails.logger.info("")
+      Rails.logger.info("")
+    end
+
     # Check all parameters on a slot w/r/t an employee to determine eligibility to assign
     def can_schedule?(slot, employee, position, location)
-      !existing_shifts.user_scheduled_at(employee.id, slot.x, slot.y) and
-        !existing_shifts.user_scheduled_during_day(employee.id, slot.x, location.id) and
-        !existing_shifts.user_scheduled_at(employee.id, slot.x, slot.y) and
-        slot.not_full? and
-        slot.position_room_available?(position.name) and
+      !existing_shifts.user_scheduled_at(employee.id, slot.x, slot.y) &&
+        !existing_shifts.user_scheduled_during_day(employee.id, slot.x, location.id) &&
+        !existing_shifts.user_scheduled_at(employee.id, slot.x, slot.y) &&
+        slot.not_full? &&
+        slot.position_room_available?(position.name) &&
         !minmax_not_eligible(slot, employee)
     end
 

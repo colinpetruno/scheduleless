@@ -12,4 +12,8 @@ class SchedulingPeriodPolicy < ApplicationPolicy
   def new?
     (user.company_admin? || user.location_admin_for?(current_location))
   end
+
+  def show?
+    (user.company_admin? || user.location_admin_for?(current_location))
+  end
 end

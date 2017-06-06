@@ -12,7 +12,7 @@ class SchedulingPeriod < ApplicationRecord
   enum status: {
     empty: 0,
     generated: 1,
-    scheduless_approved: 2,
+    scheduleless_approved: 2,
     company_approved: 3,
     published: 4
   }
@@ -29,6 +29,13 @@ class SchedulingPeriod < ApplicationRecord
 
     ScheduleLocationJob.new.perform(self.id)
     self.update(status: :scheduless_approved)
+  end
+
+  def label
+    [
+      Date.parse(start_date.to_s).to_s(:month_day_year),
+      Date.parse(end_date.to_s).to_s(:month_day_year)
+    ].join(" - ")
   end
 
   private
@@ -49,10 +56,20 @@ class SchedulingPeriod < ApplicationRecord
       if start_date_date.wday == schedule_setting.day_start
         end_date_date = start_date_date + (schedule_setting.schedule_duration * 7).days - 1.day
       else
-        end_date_date = Date.parse(schedule_setting.start_day_of_week) - 1.day
+        # TODO: This logic is screwed up. Need to find the beginning of this
+        # scheduling period then add the duration
+        end_date_date = next_date_for(schedule_setting.start_day_of_week) - 1.day
       end
 
       self.end_date = end_date_date.to_s(:integer).to_i
     end
+  end
+
+  def next_date_for(day)
+    # TODO: this function is duplicated, turn into its own class
+    date  = Date.parse(day)
+    # if the start day of the schedule is today, then use the full duration
+    delta = date > Date.today ? 0 : (company.schedule_setting.schedule_duration * 7)
+    date + delta
   end
 end

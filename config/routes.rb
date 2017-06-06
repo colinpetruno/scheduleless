@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     resource :daily_schedule, only: [:show]
 
     scope module: :locations, as: :locations do
-      resources :scheduling_periods, only: [:create, :index, :new]
+      resources :scheduling_periods, only: [:create, :index, :new, :show]
       resources :schedule_rules, only: [:create, :destroy, :edit, :index, :update]
     end
 

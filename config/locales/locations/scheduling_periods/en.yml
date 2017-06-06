@@ -1,0 +1,10 @@
+en:
+  locations:
+    scheduling_periods:
+      index:
+        status:
+          empty: "Creating"
+          generated: "In Progress"
+          scheduleless_approved: "In Progress"
+          company_approved: "In Progress"
+          published: "Published"

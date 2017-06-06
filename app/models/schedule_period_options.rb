@@ -36,6 +36,7 @@ class SchedulePeriodOptions
     end
   end
 
+  # GOOD
   def transition_period_end_date
     next_date_for(schedule_setting.start_day_of_week) - 1.day
   end
