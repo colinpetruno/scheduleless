@@ -37,5 +37,9 @@
       <li>Your employees at this location may not have their positions configured</li>
     </ul>
 
-  </div>
+
+  <br><br>
+
+  <%= button_to "Rebuild",
+    scheduling_period_schedule_period_regenerator_path(scheduling_period) %>
 <% end %>

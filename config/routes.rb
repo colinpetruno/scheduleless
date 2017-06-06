@@ -90,6 +90,10 @@ Rails.application.routes.draw do
     resource :schedule, only: [:create, :show]
   end
 
+  resources :scheduling_period, only: [] do
+    resource :schedule_period_regenerator, only: [:create], path: "regenerate"
+  end
+
   resource :schedules_management, only: [:create, :show]
   resource :search, only: [:show]
 
