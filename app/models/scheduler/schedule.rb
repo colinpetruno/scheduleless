@@ -71,7 +71,10 @@ module Scheduler
       return false if location.users.blank?
 
       ShiftGenerator.
-        new(company: company, location: location, layout: layout, options: options).
+        new(
+          layout: layout,
+          options: options,
+          scheduling_period: scheduling_period).
         generate
     end
 

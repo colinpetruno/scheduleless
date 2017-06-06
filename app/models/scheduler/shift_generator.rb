@@ -1,13 +1,13 @@
 module Scheduler
   class ShiftGenerator
-    def initialize(company:, location:, layout:, options:)
-      @company = company
-      @location = location
+    def initialize(layout:, options:, scheduling_period:)
       @layout = layout
       @options = options
+      @scheduling_period = scheduling_period
     end
 
     def generate
+      # TODO: Add some documentation around this
       (0..options.days_to_schedule).each do |x|
         running_shifts = {}
 
@@ -53,36 +53,27 @@ module Scheduler
         date = options.start_date + day_advance.days
         date_integer = date.strftime('%Y%m%d').to_i
 
-        # TODO: Avoid N+1 Query?
-        employee = employees.find(shift["employee_id"])
-
-        shifts.
-          push(
-            company.
-            shifts.
-            build(
-              company: @company,
-              date: date_integer,
-              location: @location,
-              minute_start: shift["time_start"],
-              minute_end: shift["time_end"],
-              user: employee
-            ))
+        scheduling_period.
+          in_progress_shifts.
+          create(
+            company: scheduling_period.company,
+            date: date_integer,
+            location: scheduling_period.location,
+            minute_start: shift["time_start"],
+            minute_end: shift["time_end"],
+            user_id: shift["employee_id"]
+          )
       end
 
-      shifts
+      scheduling_period.in_progress_shifts
     end
 
     private
 
-    attr_reader :company, :layout, :options
+    attr_reader :layout, :options, :scheduling_period
 
     def timeslot(x=0, y=0)
       layout.get_timeslot(x, y)
-    end
-
-    def employees
-      company.users
     end
 
     def completed_shifts
