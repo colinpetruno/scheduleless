@@ -1,22 +1,16 @@
-require 'active_support/all'
 module Scheduler
   class Schedule
-    include ActiveModel::Model
-    include ActiveSupport
-
-    attr_accessor :company
-    attr_accessor :location
-
-    def self.for(company, location=nil, schedule_start=Date.today, day_range=4, time_range=4)
-      new(company, location, schedule_start, day_range, time_range)
+    def self.for(scheduling_period)
+      new(scheduling_period: scheduling_period)
     end
 
-    def initialize(company, location, schedule_start, day_range, time_range)
-      # time_range needs looked into and removed / updated to interval minutes
-      @options = Options.new(start_date: schedule_start, options: { days_to_schedule: day_range })
-      @company = company
-      @location = location
-      @schedule_start = schedule_start
+    def initialize(scheduling_period:)
+      @scheduling_period = scheduling_period
+    end
+
+    def company
+      # TODO: Does this need to be public?
+      scheduling_period.company
     end
 
     def generate
@@ -25,8 +19,13 @@ module Scheduler
       print
     end
 
-    # called from view
+    def location
+      # TODO: Does this need to be public?
+      scheduling_period.location
+    end
+
     def shifts
+      # called from view, TODO: This should not be needed soon
       @shifts ||= generate_shifts
     end
 
@@ -42,11 +41,24 @@ module Scheduler
 
     private
 
-    attr_reader :options
+    attr_reader :scheduling_period
+
+    def date_end
+      Date.parse(scheduling_period.end_date.to_s)
+    end
+
+    def date_start
+      Date.parse(scheduling_period.start_date.to_s)
+    end
+
+    def days_to_schedule
+      (date_end - date_start).to_i
+    end
 
     def employee_assigner
       @_employee_assigner ||= EmployeeAssigner.
-        new(company: company, location: location, layout: layout,  date_start: @schedule_start, options: options)
+        new(company: company, location: location, layout: layout,
+            date_start: date_start, options: options)
     end
 
     def employees
@@ -54,7 +66,8 @@ module Scheduler
     end
 
     def generate_shifts
-      # don't want to schedule for users, we should surface this error handling better
+      # don't want to schedule for users, we should surface this error handling
+      # better
       return false if location.users.blank?
 
       ShiftGenerator.
@@ -62,12 +75,18 @@ module Scheduler
         generate
     end
 
-    def schedule_rules
-      @_schedule_rules ||= company.schedule_rules
-    end
-
     def layout
       @_layout ||= LayoutGenerator.for(self, schedule_rules, options)
+    end
+
+    def options
+      @_options ||= Options.
+        new(start_date: date_start,
+            options: { days_to_schedule: days_to_schedule })
+    end
+
+    def schedule_rules
+      @_schedule_rules ||= company.schedule_rules
     end
   end
 end

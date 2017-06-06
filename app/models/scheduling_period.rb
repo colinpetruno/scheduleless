@@ -2,6 +2,8 @@ class SchedulingPeriod < ApplicationRecord
   belongs_to :company
   belongs_to :location
 
+  has_many :in_progress_shifts
+
   before_validation :set_end_date
 
   validates :end_date, presence: true
