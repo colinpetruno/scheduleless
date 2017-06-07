@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170606140831) do
+ActiveRecord::Schema.define(version: 20170607034602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -225,6 +225,7 @@ ActiveRecord::Schema.define(version: 20170606140831) do
     t.integer  "minute_schedulable_end"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.index ["location_id", "day"], name: "index_scheduling_hours_on_location_id_and_day", unique: true, using: :btree
     t.index ["location_id"], name: "index_scheduling_hours_on_location_id", using: :btree
   end
 

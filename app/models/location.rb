@@ -1,12 +1,12 @@
 class Location < ApplicationRecord
   belongs_to :company
   has_many :popular_times, as: :popular
+  has_many :scheduling_hours
   has_many :scheduling_periods
   has_many :schedule_rules, as: :ruleable
   has_many :shifts
   has_many :user_locations
   has_many :users, through: :user_locations
-  has_many :scheduling_hours
 
   has_one :preference, as: :preferable
 
@@ -16,6 +16,8 @@ class Location < ApplicationRecord
   validates :time_zone, presence: true
 
   accepts_nested_attributes_for :preference
+
+  before_create :build_scheduling_hours
 
   update_index "site_search#location", :self
 
@@ -37,5 +39,11 @@ class Location < ApplicationRecord
             "shift_overlap"
           )
       )
+  end
+
+  private
+
+  def build_scheduling_hours
+    SchedulingHour.build_for(self)
   end
 end

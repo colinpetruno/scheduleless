@@ -7,7 +7,7 @@ class SchedulingPeriodShowPresenter
     scheduling_period.in_progress_shifts.includes(:user)
   end
 
-  def shifts_for_day(day)
+  def shifts_for(day)
     shifts_by_day_hash[day.to_i]
   end
 
