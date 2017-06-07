@@ -91,6 +91,7 @@ Rails.application.routes.draw do
   end
 
   resources :scheduling_period, only: [] do
+    resource :scheduling_period_publisher, only: [:create], path: "publish"
     resource :schedule_period_regenerator, only: [:create], path: "regenerate"
   end
 

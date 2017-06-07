@@ -43,4 +43,17 @@
       padding: 15px;
     }
   }
+
+  footer {
+    @include make-row();
+
+    > div {
+      @include make-col-ready();
+      @include make-col(6);
+
+      &:last-child {
+        text-align: right;
+      }
+    }
+  }
 }

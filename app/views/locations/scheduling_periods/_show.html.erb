@@ -6,5 +6,16 @@
 
 <br><br>
 
-<%= button_to "Rebuild",
-  scheduling_period_schedule_period_regenerator_path(scheduling_period) %>
+<footer>
+  <div>
+  <%= button_to "Rebuild",
+    scheduling_period_schedule_period_regenerator_path(scheduling_period),
+    class: "white",
+    data: { confirm: "This will completely regenerate this schedule. Your changes will not be saved" } %>
+  </div>
+
+  <div>
+    <%= button_to "Publish",
+    scheduling_period_scheduling_period_publisher_path(scheduling_period) %>
+  </div>
+</footer>
