@@ -1,0 +1,34 @@
+<div class="day-schedule">
+  <div>
+    <div class="labels">
+      <% start = presenter.start_hour %>
+      <% while start <= presenter.end_hour do %>
+        <div><%= start.hour %></div>
+        <% start += 1.hour %>
+      <% end %>
+    </div>
+
+    <div class="ruler">
+      <% start = presenter.start_hour %>
+      <% while start <= presenter.end_hour do %>
+        <div></div>
+        <% start += 1.hour %>
+      <% end %>
+    </div>
+
+    <% presenter.shifts.each do |shift| %>
+      <div class="employee">
+        <div class="email">
+          <%= shift.user.email %>
+        </div>
+        <div class="shifts">
+          <div style="<%= presenter.shift_style(shift) %>"
+            data-toggle="tooltip"
+            data-placement="top"
+            title="<%= presenter.formatted_minutes_for(shift) %>">
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -8,8 +8,16 @@ class MinutesToTime
     @minutes = minutes
   end
 
+  def next_hour
+    time.beginning_of_hour + 1.hour
+  end
+
   def to_s(format: "%l:%M %p")
     time.strftime(format).strip
+  end
+
+  def start_of_hour
+    time.beginning_of_hour
   end
 
   def time

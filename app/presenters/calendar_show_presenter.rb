@@ -63,6 +63,7 @@ class CalendarShowPresenter
   end
 
   def shift_style(shift)
+    # TODO: remove when using shared partial
     left = (shift.minute_start / 15) * 10
     width = (shift.minute_end - shift.minute_start) / 15 * 10
 

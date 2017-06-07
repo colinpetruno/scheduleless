@@ -12,7 +12,16 @@
            class="collapse <%= "show" if presenter.day_keys.first == day %>"
            role="tabpanel">
     <article>
-      some shifts will go here
+      <%= render(
+        partial: "shared/day_schedule",
+        locals: {
+          presenter: DaySchedulePresenter.new(
+            day: day,
+            location: @location,
+            shifts: presenter.shifts_for(day)
+          )
+        }
+      ) %>
     </article>
   </section>
 </div>
