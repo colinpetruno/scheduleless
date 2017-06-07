@@ -80,16 +80,6 @@ Rails.application.routes.draw do
   # TODO: AUTH THIS
   mount Sidekiq::Web, at: "/queues"
 
-  namespace :scheduler do
-    resources :locations, only: [] do
-      resource :schedule_preview, only: [:create]
-    end
-
-    resource :schedule_preview, only: [:show]
-
-    resource :schedule, only: [:create, :show]
-  end
-
   resources :scheduling_period, only: [] do
     resource :scheduling_period_publisher, only: [:create], path: "publish"
     resource :schedule_period_regenerator, only: [:create], path: "regenerate"

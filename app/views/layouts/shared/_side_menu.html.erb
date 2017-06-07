@@ -32,14 +32,6 @@
 
     <li class="seperator"></li>
 
-    <% if policy(:schedule_preview).show? %>
-      <%= content_tag(:li, class: active?(scheduler_schedule_preview_path)) do %>
-        <%= link_to scheduler_schedule_preview_path do %>
-          <span class="oi oi-map"></span>
-        <% end %>
-      <% end %>
-    <% end %>
-
     <% if policy(:settings).show? %>
       <%= content_tag(:li, class: active?(settings_path)) do %>
         <%= link_to settings_path do %>

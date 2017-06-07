@@ -71,12 +71,6 @@
       <%= link_to t(".employees"), business_users_path %>
     </li>
 
-    <% if policy(:schedule_preview).show? %>
-      <li>
-        <%= link_to t(".create_schedule"), scheduler_schedule_preview_path %>
-      </li>
-    <% end %>
-
     <% if policy(:settings).show? %>
       <li>
         <%= link_to t(".settings"), settings_path %>
