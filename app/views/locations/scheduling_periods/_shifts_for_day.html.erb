@@ -1,0 +1,18 @@
+<div class="card">
+  <header>
+    <a data-toggle="collapse"
+       data-parent="#accordion"
+       href="#day-<%= day %>" aria-expanded="<%= presenter.day_keys.first == day ? "true" : "false" %>"
+       aria-controls="collapseOne">
+      <%= Date.parse(day.to_s).to_s(:month_day_year) %>
+    </a>
+  </header>
+
+  <section id="day-<%= day %>"
+           class="collapse <%= "show" if presenter.day_keys.first == day %>"
+           role="tabpanel">
+    <article>
+      some shifts will go here
+    </article>
+  </section>
+</div>

@@ -40,6 +40,8 @@ module Locations
       @scheduling_period = @location.scheduling_periods.find(params[:id])
 
       authorize @scheduling_period
+
+      @presenter = SchedulingPeriodShowPresenter.new(@scheduling_period)
     end
 
     private

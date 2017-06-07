@@ -215,7 +215,7 @@ ActiveRecord::Schema.define(version: 20170606140831) do
     t.datetime "updated_at",                    null: false
     t.index ["company_id"], name: "index_schedule_settings_on_company_id", using: :btree
   end
-  
+
   create_table "scheduling_hours", force: :cascade do |t|
     t.integer  "location_id"
     t.integer  "day",                      null: false

@@ -1,0 +1,35 @@
+<div class="centered info">
+  No Shifts were created for this time period. Below are some reasons of why
+  we may not have been able to schedule any shifts.
+</div>
+
+<br />
+<% if current_company.schedule_rules.blank? && location.schedule_rules.blank? %>
+  <h3>Schedule Rules</h3>
+  There are no company or location scheduling rules. Create some for this
+  location in the
+  <%= link_to "Location Settings",
+    locations_location_schedule_rules_path(location) %>.
+
+    <% if current_user.company_admin? %>
+      <br />
+      You can set up Schedule Rules for all your locations at once by visiting
+      <%= link_to "Your Settings", settings_schedule_rules_path %>.
+
+    <% end %>
+    <br />
+  <% end %>
+
+  <% if !location.users.blank? %>
+    <br />
+    <h3>No Employees</h3>
+    There are no employees present at this location. Add some in your
+    <%= link_to "Location Settings", locations_location_users_path(location) %>
+    <br />
+  <% end %>
+
+  <br />
+  <h3>Other Possible Issues</h3>
+  <ul>
+    <li>Your employees at this location may not have their positions configured</li>
+  </ul>
