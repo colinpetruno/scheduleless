@@ -16,6 +16,10 @@ class LocationSchedule
     ShiftFinder.for(location).on(date).worked_by(user).find
   end
 
+  def shifts
+    @_shifts || find_shifts
+  end
+
   def shifts?
     shifts.present?
   end
@@ -23,10 +27,6 @@ class LocationSchedule
   private
 
   attr_reader :date, :location
-
-  def shifts
-    @_shifts || find_shifts
-  end
 
   def find_shifts
     ShiftFinder.for(location).on(date).find

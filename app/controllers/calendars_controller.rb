@@ -1,5 +1,7 @@
 class CalendarsController < AuthenticatedController
   def show
+    @location = location
+
     authorize :calendar, :show?
 
     @presenter = CalendarShowPresenter.

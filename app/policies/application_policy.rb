@@ -80,7 +80,7 @@ class ApplicationPolicy
   end
 
   def has_overrided_location?
-    EmployeeLocation.
+    UserLocation.
       where(user_id: user.id, location_id: current_location.id, admin: true).
       present?
   end
