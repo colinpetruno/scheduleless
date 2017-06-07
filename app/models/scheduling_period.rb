@@ -29,7 +29,7 @@ class SchedulingPeriod < ApplicationRecord
     save if id.blank?
 
     ScheduleLocationJob.new.perform(self.id)
-    self.update(status: :scheduless_approved)
+    self.update(status: :scheduleless_approved)
   end
 
   def label
