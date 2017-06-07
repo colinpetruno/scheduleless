@@ -1,9 +1,9 @@
-<div class="day-schedule">
+<div class="day-schedule hours-<%= presenter.hours_to_draw %>">
   <div>
     <div class="labels">
       <% start = presenter.start_hour %>
       <% while start <= presenter.end_hour do %>
-        <div><%= start.hour %></div>
+        <div><%= start.strftime("%l") %></div>
         <% start += 1.hour %>
       <% end %>
     </div>

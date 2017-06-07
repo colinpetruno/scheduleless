@@ -1,10 +1,10 @@
 .day-schedule {
   overflow-x: auto;
 
+
+
   & > div {
-    min-width: 1161px;
     position: relative;
-    width: 1161px;
   }
 
   .labels {
@@ -24,11 +24,9 @@
     bottom: 0;
     display: flex;
     min-height: 30px;
-    min-width: 960px;
     position: absolute;
     left: 200px;
     top: 25px;
-    width: 960px;
 
     & > div {
       border-left: 1px solid $font-light;
@@ -36,6 +34,8 @@
       min-width: 40px;
     }
   }
+
+
 
   .employee {
     display: flex;
@@ -46,7 +46,6 @@
 
     .email, .shifts {
       display: inline-block;
-      padding-left: 15px;
     }
 
     .email {
@@ -58,7 +57,6 @@
 
     .shifts {
       position: relative;
-      width: 960px;
 
       > div {
         background-color: lighten($green, 20%);
@@ -75,6 +73,27 @@
         > div {
           background-color: lighten($blue, 20%);
           border: 2px solid $blue;
+        }
+      }
+    }
+  }
+
+  @for $i from 2 through 25 {
+    // each 15 min increment is 10 px
+    &.hours-#{$i} {
+      > div {
+        min-width: ($i * 40) + 201px;
+        width: ($i * 40) + 201px;
+      }
+
+      .ruler {
+        min-width: $i * 40px;
+        width: $i * 40px;
+      }
+
+      .employee {
+        .shifts {
+          width: $i * 40px;
         }
       }
     }

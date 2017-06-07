@@ -16,7 +16,7 @@ class DaySchedulePresenter
   end
 
   def hours_to_draw
-    end_hour.hour - start_hour.hour
+    (end_hour - start_hour).to_i / 3600
   end
 
   def start_hour
@@ -24,7 +24,7 @@ class DaySchedulePresenter
   end
 
   def shift_style(shift)
-    left = (shift.minute_start / 15) * 10
+    left = ((shift.minute_start / 15) - (start_hour.hour * 60 / 15)) * 10
     width = (shift.minute_end - shift.minute_start) / 15 * 10
 
     "left: #{left}px; width: #{width}px"
