@@ -1,4 +1,4 @@
-require "sidekiq/web"
+require "resque_web"
 
 Rails.application.routes.draw do
   root to: "marketing/welcome#index"
@@ -78,7 +78,7 @@ Rails.application.routes.draw do
   end
 
   # TODO: AUTH THIS
-  mount Sidekiq::Web, at: "/queues"
+  mount ResqueWeb::Engine, at: "/queues"
 
   resources :scheduling_period, only: [] do
     resource :scheduling_period_publisher, only: [:create], path: "publish"

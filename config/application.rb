@@ -35,6 +35,6 @@ module Scheduler
       password: Rails.application.secrets.mailgun_password
     }
 
-    config.active_job.queue_adapter = :sidekiq
+    config.active_job.queue_adapter = :resque
   end
 end
