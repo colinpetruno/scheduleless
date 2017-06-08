@@ -36,7 +36,9 @@ Rails.application.routes.draw do
     root to: "welcome#index"
 
     resources :schedule_approvals, only: [:index]
-    resources :scheduling_periods, only: [:show, :update]
+    resources :scheduling_periods, only: [:show, :update] do
+      resource :approval, only: [:create]
+    end
   end
 
   namespace :mobile_api do

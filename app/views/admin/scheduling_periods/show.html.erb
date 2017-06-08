@@ -6,6 +6,12 @@
       <% if @scheduling_period.in_progress_shifts.present? %>
         <%= render partial: "locations/scheduling_periods/shifts",
           locals: { presenter: @presenter } %>
+
+
+        <br /><br />
+        <%= button_to "Approve",
+          admin_scheduling_period_approval_path(@scheduling_period) %>
+
       <% else %>
         Schedule wasn't generated, check setup.
       <% end %>
