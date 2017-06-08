@@ -15,7 +15,8 @@ class SchedulingPeriod < ApplicationRecord
     generated: 1,
     scheduleless_approved: 2,
     company_approved: 3,
-    published: 4
+    published: 4,
+    closed: 5
   }
 
   def generate_admin_preview

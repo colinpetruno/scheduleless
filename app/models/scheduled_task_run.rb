@@ -1,0 +1,2 @@
+class ScheduledTaskRun < ApplicationRecord
+end
