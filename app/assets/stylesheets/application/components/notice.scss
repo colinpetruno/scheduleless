@@ -1,25 +1,59 @@
-.alert, .info, .notice {
+.alert, .info, .notice, .warning {
   border: $alert-border-width solid transparent;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   padding: $alert-padding-y $alert-padding-x;
   margin-bottom: $alert-margin-bottom;
+  text-align: center;
   vertical-align: middle;
 
   form {
     margin-left: auto;
   }
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+a.alert, a.info, a.notice, a.warning {
+  display: block;
 }
 
 .alert {
   @include alert-variant(#f2dede, darken(#f2dede, 15%), #a94442);
 }
 
+a.alert:hover {
+  color: darken(#a94442, 5%);
+}
+
 .info {
   @include alert-variant(lighten($blue, 27%), lighten($blue, 20%), $blue);
 }
 
+a.info:hover {
+  color: darken($blue, 5%);
+}
 .notice {
   @include alert-variant($green-notice, darken($green-notice, 15%), darken($green-notice, 50%));
 }
+
+a.notice:hover {
+  color: darken($green-notice, 55%);
+}
+
+.warning {
+  @include alert-variant(
+    lighten($orange, 27%),
+    lighten($orange, 15%),
+    darken($orange, 20%)
+  );
+}
+
+a.warning:hover {
+  color: darken($orange, 25%);
+}
+
+

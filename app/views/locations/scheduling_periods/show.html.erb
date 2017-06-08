@@ -1,24 +1,12 @@
-<div class="rail narrow">
+<div class="frame">
   <section>
-    <aside>
-      <%= render partial: "locations/sidebar" %>
-    </aside>
-
     <article>
-
-      <div class="frame">
-        <section>
-          <article>
-            <%= render partial: "show",
-              locals: {
-                location: @location,
-                scheduling_period: @scheduling_period
-              }
-            %>
-          </article>
-        </section>
-      </div>
-
+      <%= render partial: "show",
+        locals: {
+          location: @location,
+          scheduling_period: @scheduling_period
+        }
+      %>
     </article>
   </section>
 </div>

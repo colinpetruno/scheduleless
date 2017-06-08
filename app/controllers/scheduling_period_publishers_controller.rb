@@ -8,7 +8,7 @@ class SchedulingPeriodPublishersController < AuthenticatedController
     authorize @scheduling_period
 
     if SchedulingPeriodPublisher.for(@scheduling_period).publish
-      redirect_to locations_location_scheduling_periods_path(@location)
+      redirect_to approvals_path
     else
       redirect_to(
         locations_location_scheduling_period_path(@location, @scheduling_period),

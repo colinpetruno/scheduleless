@@ -7,6 +7,14 @@ class CalendarShowPresenter
     @user = user
   end
 
+  def approvals?
+    ScheduleApprovalPolicy::Scope.new(
+      UserContext.new(location: current_location, user: user),
+      SchedulingPeriod
+    ).
+    resolve
+  end
+
   def location_label(location)
     location.name || location.line_1
   end

@@ -3,6 +3,8 @@ require "resque_web"
 Rails.application.routes.draw do
   root to: "marketing/welcome#index"
 
+  resources :approvals, only: [:index]
+
   namespace :business, path: "company" do
     resources :users,
       only: [:create, :destroy, :edit, :index, :new, :show, :update],

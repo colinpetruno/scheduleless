@@ -1,3 +1,9 @@
+<% if @presenter.approvals? %>
+  <%= link_to approvals_path, class: "warning" do %>
+      Click here to review and approve your upcoming schedules
+  <% end %>
+<% end %>
+
 <div class="rail">
   <section>
     <article>
