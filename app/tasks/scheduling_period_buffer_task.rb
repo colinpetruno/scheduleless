@@ -68,7 +68,7 @@ class SchedulingPeriodBufferTask < CronJob
     # [{"id"=>26, "count"=>1}] example format passed into this function
     locations.map do |location|
       log("Queuing CreateSchedulePeriodsJob for location #{location["id"]}")
-      CreateSchedulePeriodsJob.perform_later location["id"]
+      # CreateSchedulePeriodsJob.perform_later location["id"]
     end
   end
 end

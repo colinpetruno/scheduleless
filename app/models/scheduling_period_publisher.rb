@@ -26,13 +26,12 @@ class SchedulingPeriodPublisher
 
     true
   rescue StandardError => error
+    Rails.logger.info(error.inspect)
     Bugsnag.notify("Schedule Not Published for id: #{scheduling_period.id}") do |notification|
 
       notification.severity = "warning"
     end
     Bugsnag.notify(error)
-
-    binding.pry
 
     false
   end

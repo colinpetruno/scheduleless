@@ -17,6 +17,7 @@ gem "puma", "~> 3.0"
 gem "pundit"
 gem "reamaze"
 gem "resque"
+gem "resque-pool"
 gem "resque-web", require: "resque_web"
 gem "sass-rails", "~> 5.0"
 gem "simple_form"
@@ -44,7 +45,6 @@ group :development, :test do
 end
 
 group :development do
-  gem "listen", "~> 3.0.5"
   gem "web-console", ">= 3.3.0"
 end
 

@@ -14,9 +14,10 @@ module Scheduler
     end
 
     def generate
+      return if scheduling_period.location.users.blank?
+
       employee_assigner.assign
       generate_shifts
-      print
     end
 
     def location

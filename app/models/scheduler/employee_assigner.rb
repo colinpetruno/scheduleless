@@ -1,6 +1,6 @@
 module Scheduler
   class EmployeeAssigner
-    ROTATION_COUNT = 500 # number of assignment rounds to execute for
+    ROTATION_COUNT = 50  # number of assignment rounds to execute for
                          # if we meet the rotation account, then 100% shift coverage is not met
 
     SCHEDULE_STRATEGY = "grow"
@@ -168,7 +168,6 @@ module Scheduler
             not_scheduled = false
           end
           y = (y+1) % options.number_of_intervals
-
         end
       end
     end
