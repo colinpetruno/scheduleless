@@ -17,7 +17,7 @@
         locals: {
           presenter: DaySchedulePresenter.new(
             day: day,
-            location: @location,
+            location: presenter.location,
             shifts: presenter.shifts_for(day)
           )
         }

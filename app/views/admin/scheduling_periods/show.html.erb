@@ -1,0 +1,14 @@
+<div class="frame">
+  <section>
+    <article>
+      Period for: <%= @scheduling_period.label %> and location: <%= @scheduling_period.location_id %>
+      <br /><br />
+      <% if @scheduling_period.in_progress_shifts.present? %>
+        <%= render partial: "locations/scheduling_periods/shifts",
+          locals: { presenter: @presenter } %>
+      <% else %>
+        Schedule wasn't generated, check setup.
+      <% end %>
+    </article>
+  </section>
+</div>

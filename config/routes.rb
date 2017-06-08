@@ -32,6 +32,13 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :admin, path: "management" do
+    root to: "welcome#index"
+
+    resources :schedule_approvals, only: [:index]
+    resources :scheduling_periods, only: [:show, :update]
+  end
+
   namespace :mobile_api do
     resource :future_shifts, only: [:show]
     resources :locations, only: [:index]

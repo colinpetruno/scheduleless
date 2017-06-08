@@ -3,6 +3,10 @@ class SchedulingPeriodShowPresenter
     @scheduling_period = scheduling_period
   end
 
+  def location
+    scheduling_period.location
+  end
+
   def shifts
     scheduling_period.in_progress_shifts.includes(:user)
   end
