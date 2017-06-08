@@ -1,6 +1,6 @@
 namespace :scheduling do
-  desc "Seed a demo account, rake database:seed_demo[demo1]"
+  desc "Close Out Any Old Schedule Periods and Send Reporting"
   task :schedule_period_closer => [:environment] do |t, args|
-    SchedulePeriodCloser.perform
+    SchedulePeriodCloserTask.perform
   end
 end

@@ -7,7 +7,7 @@ class CronJob
     Bugsnag.notify(error)
 
     task_run.update(failed: true,
-                    output: error.backtrace,
+                    output: error.inspect,
                     completed_at: DateTime.now)
   end
 

@@ -1,4 +1,4 @@
-class SchedulePeriodCloser < CronJob
+class SchedulePeriodCloserTask < CronJob
   def self.perform
     new.perform
   end

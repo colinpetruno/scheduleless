@@ -16,6 +16,7 @@ module Scheduler
     config.autoload_paths << "#{Rails.root}/app/policies"
     config.autoload_paths << "#{Rails.root}/app/presenters"
     config.autoload_paths << "#{Rails.root}/app/searches"
+    config.autoload_paths << "#{Rails.root}/app/tasks"
 
     config.i18n.load_path = Dir[Rails.root.join('config', 'locales', '**', '*.yml')]
 
