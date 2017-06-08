@@ -1,7 +1,14 @@
 class SchedulingPeriodPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      location.scheduling_periods
+      location.
+        scheduling_periods.
+        where(status: [
+          :scheduleless_approved,
+          :company_approved,
+          :published,
+          :closed
+        ])
     end
   end
 
