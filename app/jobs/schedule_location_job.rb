@@ -9,5 +9,7 @@ class ScheduleLocationJob < ApplicationJob
     scheduler = Scheduler::Schedule.for(scheduling_period)
 
     scheduler.generate
+
+    scheduling_period.update(status: :generated)
   end
 end

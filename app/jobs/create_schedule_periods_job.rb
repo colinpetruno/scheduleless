@@ -21,7 +21,7 @@ class CreateSchedulePeriodsJob < ApplicationJob
           status: :empty
         )
 
-      # ScheduleLocationJob.perform_later @last_scheduling_period.id
+      ScheduleLocationJob.perform_later @last_scheduling_period.id
     end
   end
 
