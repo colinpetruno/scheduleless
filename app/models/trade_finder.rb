@@ -14,7 +14,9 @@ class TradeFinder
   private
 
   def all
-    Trade.where(location_id: user_location_ids)
+    Trade.
+      where(location_id: user_location_ids).
+      where.not(user_id: user.id)
   end
 
   def user_location_ids
