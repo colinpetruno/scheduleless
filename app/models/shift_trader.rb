@@ -18,7 +18,7 @@ class ShiftTrader
     end
     true
   rescue StandardError => error
-    Bugsnag.report(error)
+    Bugsnag.notify(error)
     false
   end
 
