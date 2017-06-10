@@ -2,7 +2,7 @@ module MobileApi
   class OffersController < ApiAuthenticatedController
 
     def index
-      @offers = trade.offers
+      @offers = policy_scope(Offer.where(trade_id: params[:trade_id]))
 
       render json: { offers: @offers }
     end
