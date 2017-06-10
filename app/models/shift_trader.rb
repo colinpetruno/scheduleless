@@ -17,7 +17,8 @@ class ShiftTrader
       Shift.create(new_shift_attributes(offered_shift, trade.user))
     end
     true
-  rescue
+  rescue StandardError => error
+    Bugsnag.report(error)
     false
   end
 
