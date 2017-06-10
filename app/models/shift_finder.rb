@@ -8,6 +8,11 @@ class ShiftFinder
     self.scope = all
   end
 
+  def includes(*args)
+    self.scope = scope.includes(*args)
+    self
+  end
+
   def find
     scope
   end
