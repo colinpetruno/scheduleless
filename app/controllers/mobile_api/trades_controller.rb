@@ -6,7 +6,9 @@ module MobileApi
       authorize @trade
 
       if @trade.save
-        render json: { trade: @trade }, status: :ok
+        render json: {
+          trade: MobileApi::TradePresenter.for(@trade)
+        }, status: :ok
       else
         render json: { errors: @trade.errors }, status: :bad_request
       end
@@ -15,7 +17,9 @@ module MobileApi
     def index
       @trades = TradeFinder.for(current_user).find
 
-      render json: { trades: @trades }, status: :ok
+      render json: {
+        trades: MobileApi::TradesPresenter.for(@trades)
+      }, status: :ok
     end
 
     private

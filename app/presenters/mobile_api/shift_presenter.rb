@@ -12,12 +12,18 @@ module MobileApi
       {
         id: shift.id,
         city_state_zip: address.city_state_zip,
+        city: location.city,
         day: date.day,
+        end_time: end_time,
         label: time_label,
         location_name: location.name,
         location_line_1: location.line_1,
         location_line_2: location.line_2,
-        short_month: date.strftime("%b")
+        postalcode: location.postalcode,
+        short_month: date.strftime("%b"),
+        start_time: start_time,
+        state: location.county_province,
+        time_zone: location.time_zone
       }
     end
 

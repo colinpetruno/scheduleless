@@ -4,7 +4,9 @@ module MobileApi
       @my_trades = current_user.trades
 
       # TODO: auth this better
-      render json: { my_trades: @my_trades }, status: :ok
+      render json: {
+        my_trades: MobileApi::TradesPresenter.for(@my_trades)
+      }, status: :ok
     end
   end
 end
