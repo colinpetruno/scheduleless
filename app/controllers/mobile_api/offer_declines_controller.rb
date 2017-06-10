@@ -7,7 +7,7 @@ module MobileApi
 
       if @offer_decline.decline
         # TODO: add more stuff?
-        render json: { offer_decline: true }, status: :ok
+        render json: { offer: offer }, status: :ok
       else
         render json: { offer_decline: false }, status: :bad_request
       end

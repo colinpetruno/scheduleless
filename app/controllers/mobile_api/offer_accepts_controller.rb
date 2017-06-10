@@ -6,7 +6,7 @@ module MobileApi
       authorize @offer_accept
 
       if @offer_accept.accept
-        render json: { offer_accept: "true" }, status: :ok
+        render json: { offer: offer }, status: :ok
       else
         render json: { offer_accept: "false" }, status: :bad_request
       end
