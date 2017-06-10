@@ -8,13 +8,20 @@ class ShiftTrader
     # update shift statuses to traded
     with_transaction do
       for_trade_shift.update(state: Shift.states[:traded])
-      offered_shift.update(state: Shift.states[:traded])
+
+      if offered_shift.present?
+        offered_shift.update(state: Shift.states[:traded])
+      end
+
       offer.update(state: Offer.states[:accepted])
       trade.update(status: Trade.statuses[:completed], traded_with_id: offer.user_id)
 
       # NOTE: the user here is inversed since we are swapping shifts
       Shift.create(new_shift_attributes(for_trade_shift, offer.user))
-      Shift.create(new_shift_attributes(offered_shift, trade.user))
+
+      if offered_shift.present?
+        Shift.create(new_shift_attributes(offered_shift, trade.user))
+      end
     end
     true
   rescue StandardError => error

@@ -22,7 +22,7 @@ class OfferAccept
   end
 
   def tradee_can_accept?
-    # if the dates are in the same week we need to account for only the difference in total minutes
+    # TODO: if the dates are in the same week we need to account for only the difference in total minutes
     if shifts_in_same_period?
 
     else
