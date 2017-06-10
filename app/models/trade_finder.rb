@@ -15,7 +15,7 @@ class TradeFinder
 
   def all
     Trade.
-      where(location_id: user_location_ids).
+      where(location_id: user_location_ids, status: :available).
       where.not(user_id: user.id).
       includes(:location, :user)
   end
