@@ -1,10 +1,11 @@
 en:
   locations:
     index:
-      title: "Locations"
-      new_location: "New Location"
+      calendar: "Calendar"
       edit: "Edit"
+      new_location: "New Location"
       show: "Show"
+      title: "Locations"
     show:
       edit: "Edit"
       default_title: "Location"
