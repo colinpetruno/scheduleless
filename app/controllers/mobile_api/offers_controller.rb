@@ -4,7 +4,9 @@ module MobileApi
     def index
       @offers = policy_scope(Offer.where(trade_id: params[:trade_id]))
 
-      render json: { offers: @offers }
+      render json: {
+        offers: MobileApi::OffersPresenter.for(@offers)
+      }
     end
 
     def create
