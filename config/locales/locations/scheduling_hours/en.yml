@@ -13,9 +13,8 @@ en:
         scheduling_start_time: "Scheduling Start Time"
         scheduling_end_time: "Scheduling End Time"
       new:
-        instructions: Add your open an close times for this location.
-          Optionally, you can add when you start scheduling your employees
-          if your business hours differ from working hours.
+        instructions: Add your business hours for this location. If your business
+          hours differ from working hours you can make changes when you start scheduling your employees.
       hours:
         blank: "There are no hours at this location."
         day: "Day of the Week"
