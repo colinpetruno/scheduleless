@@ -24,6 +24,7 @@
           <% if policy(location).edit? %>
             <%= link_to t(".edit"), edit_location_path(location) %>
           <% end %>
+          <%= link_to t(".calendar"), location_calendar_path(location) %>
         </td>
         <td><%= location.line_1 %></td>
         <td><%= location.city %></td>
