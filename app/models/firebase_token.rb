@@ -1,0 +1,2 @@
+class FirebaseToken < ApplicationRecord
+end

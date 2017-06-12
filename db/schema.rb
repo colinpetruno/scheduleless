@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170608145255) do
+ActiveRecord::Schema.define(version: 20170612203930) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,15 @@ ActiveRecord::Schema.define(version: 20170608145255) do
     t.boolean "primary",     default: false, null: false
     t.index ["position_id"], name: "index_employee_positions_on_position_id", using: :btree
     t.index ["user_id"], name: "index_employee_positions_on_user_id", using: :btree
+  end
+
+  create_table "firebase_tokens", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "token",                     null: false
+    t.boolean  "active",     default: true, null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.index ["user_id"], name: "index_firebase_tokens_on_user_id", using: :btree
   end
 
   create_table "in_progress_shifts", force: :cascade do |t|
