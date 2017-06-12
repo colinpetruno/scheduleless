@@ -31,7 +31,7 @@ module MobileApi
         city: location.city,
         day: date.day,
         end_time: end_time,
-        month: date.strftime("%B")
+        month: date.strftime("%B"),
         label: time_label,
         location_name: location.name,
         location_line_1: location.line_1,
