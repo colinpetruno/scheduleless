@@ -25,7 +25,7 @@ module MobileApi
     end
 
     def current_shift
-      @_checked_in_shift ||= ShiftFinder.for(user).current.find
+      @_checked_in_shift ||= ShiftFinder.for(user).current.find.first
     end
 
     def next_shift
