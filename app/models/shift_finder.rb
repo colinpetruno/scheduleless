@@ -21,6 +21,7 @@ class ShiftFinder
     # TODO: this needs fixed for timezones
     self.scope = scope.
       where(date: current_day, minute_end: ((current_minute - 15)..1440))
+    self
   end
 
   def includes(*args)
