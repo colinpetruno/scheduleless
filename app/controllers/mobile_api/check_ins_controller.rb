@@ -13,5 +13,11 @@ module MobileApi
         render json: { errors: check_in_creator.check_in.errors }, status: :bad_request
       end
     end
+
+    private
+
+    def shift
+      current_user.shifts.find(params[:shift_id])
+    end
   end
 end
