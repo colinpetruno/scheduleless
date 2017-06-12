@@ -6,7 +6,9 @@ module MobileApi
       authorize check_out
 
       if check_out.check_out
-        render json: { check_out: check_out.check_in }, status: :ok
+        render json: {
+          featured_shift: FeaturedShift.for(current_user)
+        }, status: :ok
       else
         render json: { errors: check_out.errors }, status: :bad_request
       end
