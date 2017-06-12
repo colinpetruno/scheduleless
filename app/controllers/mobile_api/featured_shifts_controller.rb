@@ -1,5 +1,5 @@
 module MobileApi
-  class FeaturedShiftsController
+  class FeaturedShiftsController < ApiAuthenticatedController
     def show
       render json: {
         featured_shift: FeaturedShift.for(current_user)
