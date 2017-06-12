@@ -8,6 +8,21 @@ class ShiftFinder
     self.scope = all
   end
 
+  def checked_in
+    self.scope = scope.
+      joins(:check_ins).
+      where(check_ins: { check_out_date_time: nil }).
+      first
+
+    self
+  end
+
+  def current
+    # TODO: this needs fixed for timezones
+    self.scope = scope.
+      where(date: current_day, minute_end: ((current_minute - 15)..1440))
+  end
+
   def includes(*args)
     self.scope = scope.includes(*args)
     self
@@ -34,6 +49,7 @@ class ShiftFinder
 
   def future
     # these shifts drop off 15 minutes after they over
+    # TODO fix for timezones
     self.scope = scope.
       where(date: (current_day+1..Float::INFINITY)).
       or(all.

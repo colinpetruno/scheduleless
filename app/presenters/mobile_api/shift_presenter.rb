@@ -8,7 +8,23 @@ module MobileApi
       @shift = shift
     end
 
-    def as_json(_options={})
+    def as_json(options={})
+      if options[:checked_in]
+        base_json.merge({checked_in: checked_in?})
+      else
+        base_json
+      end
+    end
+
+    private
+
+    attr_reader :shift
+
+    def address
+      @_address ||= AddressFormatter.for(shift.location)
+    end
+
+    def base_json
       {
         id: shift.id,
         city_state_zip: address.city_state_zip,
@@ -27,12 +43,8 @@ module MobileApi
       }
     end
 
-    private
-
-    attr_reader :shift
-
-    def address
-      @_address ||= AddressFormatter.for(shift.location)
+    def checked_in?
+      shift.check_ins.where(check_out_date_time: nil).present?
     end
 
     def date
