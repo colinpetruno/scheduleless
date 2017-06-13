@@ -6,7 +6,9 @@ module MobileApi
       authorize @cancellation
 
       if @cancellation.cancel
-        render json: { cancellation: true }, status: :ok
+        render json: {
+          cancellation: MobileApi::ShiftPresenter.for(shift)
+        }, status: :ok
       else
         render json: { cancellation: false }, status: :ok
       end
