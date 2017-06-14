@@ -8,6 +8,11 @@ module MobileApi
       else
         render json: { errors: firebase_token.errors }, status: :bad_request
       end
+    rescue ActiveRecord::RecordNotUnique => e
+      # The app is sending these requests too often.
+      render json: {
+        firebase_token: FirebaseToken.find_by(token: firebase_token.token)
+      }
     end
 
     private
