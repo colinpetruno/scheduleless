@@ -12,7 +12,8 @@ class CalendarShowPresenter
       UserContext.new(location: current_location, user: user),
       SchedulingPeriod
     ).
-    resolve
+    resolve.
+    present?
   end
 
   def location_label(location)
