@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170612203930) do
+ActiveRecord::Schema.define(version: 20170614010802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -285,7 +285,7 @@ ActiveRecord::Schema.define(version: 20170612203930) do
   end
 
   create_table "trades", force: :cascade do |t|
-    t.integer  "shift_id"
+    t.integer  "shift_id",                         null: false
     t.integer  "location_id"
     t.string   "note",                             null: false
     t.boolean  "accept_offers",     default: true, null: false
