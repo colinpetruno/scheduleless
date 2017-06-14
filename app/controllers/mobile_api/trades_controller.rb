@@ -34,6 +34,7 @@ module MobileApi
         permit(:accept_offers, :note).
         merge({
           location_id: shift.location.id,
+          shift_id: shift.id,
           user_id: current_user.id
         })
     end
