@@ -1,7 +1,26 @@
 en:
   shifts:
+    create:
+      notice: "Successfully created shift"
+      alert: "There was an issue creating your shift"
+    destroy:
+      notice: "Successfully edited shift"
+      alert: "There was an issue editing your shift"
+    edit:
+      start_time: "Start Time"
+      end_time: "End Time"
+      notice: "Successfully edited shift"
+      alert: "There was an issue editing your shift"
+    form:
+      remove: "Delete"
+      cancel: "Cancel"
+    new_form:
+      cancel: "Cancel"
     index:
       title: "Upcoming Shifts"
+    new:
+      start_time: "Start Time"
+      end_time: "End Time"
     no_shifts:
       no_shifts: "You don't have any upcoming shifts right now!"
       title: "Upcoming Shifts"

@@ -11,6 +11,10 @@ class DateParser
     parsed_date.strftime("%B")
   end
 
+  def month_number
+    parsed_date.strftime("%m")
+  end
+
   def month_and_day
     parsed_date.strftime("%B %-d")
   end
