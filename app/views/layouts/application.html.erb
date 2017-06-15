@@ -9,6 +9,15 @@
     <%= favicon_link_tag "favicon.ico" %>
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400|Roboto:300,400" rel="stylesheet">
+
+    <% if Rails.env.production? %>
+      <%= render partial: "layouts/shared/reamaze" %>
+    <% end %>
+    <%= render partial: "layouts/shared/google_analytics",
+      locals: { internal: true } %>
+    <%= render partial: "layouts/shared/mixpanel" %>
+
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
   </head>
 
   <body>
@@ -29,14 +38,10 @@
         </div>
       </div>
     </div>
-    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
-    <% if Rails.env.production? %>
-      <%= render partial: "layouts/shared/reamaze" %>
-    <% end %>
-
-    <%= render partial: "layouts/shared/google_analytics",
-      locals: { internal: true } %>
-    <%= render partial: "layouts/shared/mixpanel" %>
+    <div id="tracking-data"
+         style="display:none"
+         data-page-name="<%= "#{controller_path}##{action_name}" %>">
+    </div>
   </body>
 </html>

@@ -9,6 +9,15 @@
 
     <%= stylesheet_link_tag    'onboarding', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'onboarding', 'data-turbolinks-track': 'reload' %>
+
+    <%# TODO: Change this to ENV Var %>
+    <% if Rails.env.production? %>
+      <%= render partial: "layouts/shared/reamaze" %>
+    <% end %>
+
+    <%= render partial: "layouts/shared/google_analytics",
+      locals: { internal: false } %>
+    <%= render partial: "layouts/shared/mixpanel" %>
   </head>
 
   <body>
@@ -28,18 +37,9 @@
       </div>
     </div>
 
-    <script type="text/javascript">
-      var _support = _support || { 'ui': {}, 'user': {} };
-      _support['account'] = 'scheduleless';
-      _support['ui']['widget'] = true;
-    </script>
-    <%# TODO: Change this to ENV Var %>
-    <% if Rails.env.production? %>
-      <%= render partial: "layouts/shared/reamaze" %>
-    <% end %>
-
-    <%= render partial: "layouts/shared/google_analytics",
-      locals: { internal: false } %>
-    <%= render partial: "layouts/shared/mixpanel" %>
+    <div id="tracking-data"
+         style="display:none"
+         data-page-name="<%= "#{controller_path}##{action_name}" %>">
+    </div>
   </body>
 </html>

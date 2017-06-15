@@ -10,3 +10,4 @@
 //= require_tree ./application/components
 //= require_tree ./application/utilities
 //= require_tree ./application/views
+//= require_tree ./tracking

@@ -1,0 +1,7 @@
+document.addEventListener('turbolinks:load', function(event) {
+  var page = $("#tracking-data").data("pageName");
+
+  mixpanel.track("Viewed Page", {
+    "Page": page
+  });
+});

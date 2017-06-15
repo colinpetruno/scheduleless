@@ -12,13 +12,19 @@
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400|Roboto:300,400" rel="stylesheet">
 
+    <% if Rails.env.production? %>
+      <%= render partial: "layouts/shared/reamaze" %>
+    <% end %>
+    <%= render partial: "layouts/shared/google_analytics",
+      locals: { internal: true } %>
+    <%= render partial: "layouts/shared/mixpanel" %>
   </head>
 
   <body data-no-turbolink="true">
     <%= yield %>
-
-    <%= render partial: "layouts/shared/google_analytics",
-      locals: { internal: false } %>
-    <%= render partial: "layouts/shared/mixpanel" %>
+    <div id="tracking-data"
+         style="display:none"
+         data-page-name="<%= "#{controller_path}##{action_name}" %>">
+    </div>
   </body>
 </html>
