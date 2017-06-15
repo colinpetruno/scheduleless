@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Scheduler</title>
+    <title>Scheduleless</title>
 
     <%= csrf_meta_tags %>
     <meta charset="utf-8">
@@ -19,5 +19,6 @@
 
     <%= render partial: "layouts/shared/google_analytics",
       locals: { internal: false } %>
+    <%= render partial: "layouts/shared/mixpanel" %>
   </body>
 </html>
