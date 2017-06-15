@@ -1,0 +1,31 @@
+.marketing-welcome-setup {
+  background-color: #ebf0f8;
+  margin: auto;
+  max-width: 1280px;
+  min-height: 350px;
+
+  > div > article {
+    @include make-col(6);
+    @include make-col-offset(1);
+
+    padding: 50px 75px;
+
+    h2 {
+      margin-bottom: 40px;
+    }
+
+    p {
+      margin-bottom: 15px;
+    }
+  }
+
+  > div > aside {
+    min-height: 350px;
+    background-color: $green;
+    background-image: asset-url("marketing/welcome/setup.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right bottom;
+
+  }
+}

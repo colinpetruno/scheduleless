@@ -1,4 +1,18 @@
 .marketing-welcome-time-clock {
-  @include gradient-y($start-color: #f0fcff, $end-color: #effdf9);
-  min-height: 450px;
+  background-color: $white;
+
+
+  > div > aside {
+    @include make-col(7);
+    background-image: asset-url("marketing/welcome/time_clock.jpg");
+    background-size: cover;
+    min-height: 400px;
+  }
+
+  > div > article {
+    @include make-col(5);
+    min-height: 400px;
+
+    padding: 50px 75px;
+  }
 }

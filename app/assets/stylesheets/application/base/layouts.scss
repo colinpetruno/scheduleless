@@ -6,15 +6,14 @@
 
   & > section {
     @include make-row();
-    & > article,aside {
-      @include make-col-ready();
-    }
 
     & > article {
+      @include make-col-ready();
       @include make-col(9);
     }
 
     & > aside {
+      @include make-col-ready();
       @include make-col(3);
     }
   }

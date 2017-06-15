@@ -1,5 +1,23 @@
 .marketing-welcome-explanation {
+  background-color: $white;
   margin: auto;
   max-width: 1280px;
-  min-height: 450px;
+
+  > div > aside {
+    @include make-col(6);
+    background-image: asset-url("marketing/welcome/explanation.jpg");
+    background-size: cover;
+    min-height: 400px;
+  }
+
+  > div > article {
+    @include make-col(6);
+
+    color: $dark-text;
+    padding: 50px 75px;
+
+    h2 {
+      margin-bottom: 40px;
+    }
+  }
 }

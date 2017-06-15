@@ -6,3 +6,5 @@ en:
         no_cc_required: "30 day trial with no credit card required"
         subtitle: "Let us do your scheduling."
         title: "Spend More Time On Your Business."
+      pricing:
+        call_to_action: "Try For Free"

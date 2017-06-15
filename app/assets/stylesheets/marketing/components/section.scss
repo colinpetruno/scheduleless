@@ -1,0 +1,27 @@
+.section {
+  @include make-container();
+
+  font-family: Roboto, sans-serif;
+
+  > div {
+    @include make-row();
+
+    > aside, article {
+      @include make-col-ready();
+    }
+
+    > aside {
+      @include make-col(5);
+    }
+
+    > article {
+      @include make-col(7);
+
+
+      h1,h2,h3,h4,h5,h6 {
+        color: $blue;
+        font-weight: normal;
+      }
+    }
+  }
+}

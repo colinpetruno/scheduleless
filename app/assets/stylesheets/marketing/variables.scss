@@ -1,5 +1,8 @@
 $enable-rounded: false;
 
+$gray-light:                     #a0acb9;
+$gray-dark:                      #41454b;
+$green:                          #5bd1b1;
 $orange: #ffbc42;
 $white: #ffffff;
 
@@ -15,13 +18,13 @@ $body-bg: $white;
 $header-bg: $brand-primary;
 $footer-bg: #00535c;
 
-$dark-text: #333333;
+$dark-text: $gray-dark;
 
 //
 
 // $body-bg: #48537d; // dark blue
 
 $font-family-serif: "Montserrat", serif;
-$font-family-sans-serif: "Roboto", sans-serif;
+$font-family-sans-serif: "Helvetica", Roboto, sans-serif;
 
 $headings-font-weight: 200;

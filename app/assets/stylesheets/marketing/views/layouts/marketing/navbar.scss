@@ -14,18 +14,28 @@
       image-path("shared/logos/scheduleless-2x.png"),
       101px, 75px
     );
-
     display: block;
     width: 100px;
     height: 75px;
   }
 
-  a {
+  span {
+    color: $white;
+    font-family: "Helvetica", sans-serif;
+    font-size: 1.5rem;
+    display: block;
+    letter-spacing: 8px;
+    margin-right: auto;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+
+  > a {
     color: $white;
     display: block;
     padding-top: .25rem;
     padding-bottom: .25rem;
-    margin-right: auto !important;
+    margin-right: 10px !important;
     font-size: 1.25rem;
     line-height: inherit;
     white-space: nowrap;
@@ -49,9 +59,14 @@
     }
 
     li > a {
-      font-size: 1em;
+      color: $white;
+      font-size: 1.00rem;
       line-height: 75px;
+      padding-top: .25rem;
+      padding-bottom: .25rem;
+      margin-right: 10px !important;
       vertical-align: middle;
+      white-space: nowrap;
     }
   }
 

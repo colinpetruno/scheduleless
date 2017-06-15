@@ -1,0 +1,45 @@
+.marketing-welcome-footer {
+  @include make-row();
+
+  background-color: #484b52;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  letter-spacing: .5px;
+  text-align: center;
+
+  > div {
+    @include make-col-ready();
+    @include make-col(12);
+  }
+
+  article {
+    margin: 25px 0;
+  }
+
+  section {
+    color: $gray-light;
+    padding-bottom: 50px;
+
+    span {
+      color: red;
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin: 30px 0;
+
+    li {
+      display: inline-block;
+      margin-right: 40px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      a {
+        color: $gray-light;
+      }
+    }
+  }
+}

@@ -1,0 +1,76 @@
+.marketing-welcome-pricing {
+  background-color: #ebf0f8;
+
+  > div > article {
+    @include make-col(3);
+    padding: 150px 0;
+  }
+
+  > div > aside {
+    @include make-col(6);
+  }
+
+  article > div {
+    color: $gray-dark;
+  }
+
+  .price {
+    text-align: center;
+    > section {
+      background-color: #dff0d8;
+      background-color: $white;
+      border: 2px solid #b2dba1;
+      border-color: $dark-blue;
+      color: #529138;
+      color: $dark-blue;
+      margin: 50px 50px 50px auto;
+      min-height: 350px;
+      width: 250px;
+
+      span {
+        font-size: 5rem;
+        font-weight: 200;
+      }
+
+      sup {
+        font-size: 1.5rem;
+        vertical-align: top;
+        line-height: 7rem;
+      }
+
+      a.button {
+        display: block;
+        font-size: 16px;
+        margin: 0 20px;
+      }
+
+      .per-employee {
+        margin-top: -20px;
+        margin-bottom: 30px;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 40px;
+
+        li {
+          display: block;
+          font-size: 12px;
+          text-align: left;
+          padding: 5px 15px;
+          line-height: 15px;
+          vertical-align: middle;
+
+          span {
+            color: darken(#b2dba1, 8%);
+            font-size: 14px;
+            line-height: 15px;
+            margin-right: 5px;
+            vertical-align: middle;
+          }
+        }
+      }
+    }
+  }
+}

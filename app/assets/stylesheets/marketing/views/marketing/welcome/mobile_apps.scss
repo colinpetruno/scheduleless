@@ -1,0 +1,49 @@
+.marketing-welcome-mobile-apps {
+  background-color: lighten($dark-blue, 5%);
+  color: $white;
+
+
+  article > div {
+    min-height: 450px;
+    padding: 125px 50px;
+
+    h2 {
+      color: $white;
+    }
+  }
+
+  > div > article {
+    @include make-col-offset(1);
+    @include make-col(4);
+  }
+
+  > div > aside {
+    @include make-col(7);
+    background-image: asset-url("marketing/welcome/ios_app@2x.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left;
+    margin: 20px 0;
+    padding: 125px 0 0 250px;
+
+    a {
+      background-repeat: no-repeat;
+      background-size: contain;
+      cursor: pointer;
+      display: block;
+      height: 47px;
+      margin-bottom: 30px;
+      min-height: 47px;
+      min-width: 142px;
+      width: 142px;
+    }
+
+    .app-store {
+      background-image: asset-url("marketing/welcome/app-store@2x.png");
+    }
+
+    .play-store {
+      background-image: asset-url("marketing/welcome/play-store@2x.png");
+    }
+  }
+}
