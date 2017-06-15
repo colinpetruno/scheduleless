@@ -33,8 +33,12 @@
       _support['account'] = 'scheduleless';
       _support['ui']['widget'] = true;
     </script>
+    <%# TODO: Change this to ENV Var %>
     <% if Rails.env.production? %>
       <%= render partial: "layouts/shared/reamaze" %>
     <% end %>
+
+    <%= render partial: "layouts/shared/google_analytics",
+      locals: { internal: false } %>
   </body>
 </html>

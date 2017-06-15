@@ -16,5 +16,8 @@
 
   <body data-no-turbolink="true">
     <%= yield %>
+
+    <%= render partial: "layouts/shared/google_analytics",
+      locals: { internal: false } %>
   </body>
 </html>
