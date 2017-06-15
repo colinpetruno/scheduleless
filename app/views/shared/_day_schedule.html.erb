@@ -21,13 +21,15 @@
         <div class="email">
           <%= shift.user.email %>
         </div>
-        <div class="shifts">
-          <div style="<%= presenter.shift_style(shift) %>"
-            data-toggle="tooltip"
-            data-placement="top"
-            title="<%= presenter.formatted_minutes_for(shift) %>">
+        <%= link_to edit_location_shift_path(shift.location, shift) do %>
+          <div class="shifts">
+              <div style="<%= presenter.shift_style(shift) %>"
+                data-toggle="tooltip"
+                data-placement="top"
+                title="<%= presenter.formatted_minutes_for(shift) %>">
+              </div>
           </div>
-        </div>
+        <% end %>
       </div>
     <% end %>
   </div>

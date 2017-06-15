@@ -15,6 +15,10 @@ class Shift < ApplicationRecord
     cancelled: 3
   }
 
+  attr_accessor :year
+  attr_accessor :month
+  attr_accessor :date
+
   def belongs_to?(possible_user)
     possible_user.id == user.id
   end
