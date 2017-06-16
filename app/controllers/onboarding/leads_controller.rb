@@ -6,7 +6,12 @@ module Onboarding
       authorize :lead, :create?
 
       if current_user.update(lead_params)
-        SupportMailer.lead(current_user.leads.last).deliver
+        begin
+          SupportMailer.lead(current_user.leads.last).deliver
+        rescue StandardError => error
+          Bugsnag.notify(error)
+          Bugsnag.notify("New User - Support Email Failed To Send")
+        end
 
         render :create
       else
