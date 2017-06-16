@@ -1,0 +1,23 @@
+en:
+  onboarding:
+    schedule_settings:
+      edit:
+        back: "Back"
+        description: >
+          Configure your duration and start date of scheduling. We like to 
+          allow one week to get all your employees set up and time to get their 
+          new schedules.
+        finish: "Finish"
+        title: "Configure Your Schedule"
+      update:
+        dashboard: "Dashboard"
+        line_1: >
+          Your schedules are being prepared! We will send you an email with a 
+          link to review. There you can approve or request changes. Once your 
+          first schedules are approved we will invite your employees to sign 
+          up.
+        line_2: >
+          In the meantime, you can check out your dashboard and download our 
+          apps.
+        title: "Thanks!"
+

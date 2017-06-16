@@ -1,7 +1,6 @@
 <div class="instructions">
-  <h3>Configure Your Schedule</h3>
-  Configure your duration and start date of scheduling. We like to allow one
-  week to get all your employees set up and time to get their new schedules.
+  <h3><%= t(".title") %></h3>
+  <%= t(".description") %>
 </div>
 
 
@@ -30,10 +29,12 @@
 
   <footer>
     <div>
-      <%= link_to "Back", onboarding_locations_path, class: "button white" %>
+      <%= link_to t(".back"),
+        onboarding_locations_path,
+        class: "button white" %>
     </div>
     <div>
-      <%= f.submit "Finish", class: "button orange" %>
+      <%= f.submit t(".finish"), class: "button orange" %>
     </div>
   </footer>
 <% end %>
