@@ -8,28 +8,16 @@ class ShiftsController < AuthenticatedController
     @shift = @location.shifts.find(params[:id])
     @users = @location.users
 
-    date_parse = DateParser.new(date: @shift[:date])
-
-    @shift.year = (@shift[:date]*0.0001).round(0)
-    @shift.month =  date_parse.month_number
-    @shift.date =  date_parse.day.to_i
-
     authorize @shift
   end
 
   def update
     @location = current_company.locations.find(params[:location_id])
     @shift = @location.shifts.find(params[:id])
+
     authorize @shift
 
-    @shift.update(shift_params)
-
-    model_params = params[:shift]
-    shift_date = model_params[:year] + model_params[:month] + model_params[:date]
-
-    @shift[:date] = shift_date.to_i
-
-    if @shift.update
+    if @shift.update(shift_params)
       redirect_to location_calendar_path(@location), notice: t("shifts.edit.notice")
     else
       redirect_to location_calendar_path(@location), alert: t("shifts.edit.notice")
@@ -39,10 +27,9 @@ class ShiftsController < AuthenticatedController
 
   def new
     @location = current_company.locations.find(params[:location_id])
-    @shift = @location.shifts.build
+    @shift = @location.shifts.build(year: Date.today.year)
     @users = @location.users
 
-    @shift.year = TimeRange.year_options[0]
     authorize @shift
   end
 

@@ -8,6 +8,8 @@ class Shift < ApplicationRecord
 
   accepts_nested_attributes_for :company
 
+  before_save :set_date
+
   enum state: {
     active: 0,
     traded: 1,
@@ -15,9 +17,19 @@ class Shift < ApplicationRecord
     cancelled: 3
   }
 
-  attr_accessor :year
-  attr_accessor :month
-  attr_accessor :date
+  attr_writer :day, :month, :year
+
+  def day
+    @day || Date.parse(date.to_s).day
+  end
+
+  def month
+    @month || Date.parse(date.to_s).month
+  end
+
+  def year
+    @year || Date.parse(date.to_s).year
+  end
 
   def belongs_to?(possible_user)
     possible_user.id == user.id
@@ -47,5 +59,13 @@ class Shift < ApplicationRecord
 
   def time_range
     "#{MinutesToTime.for(minute_start)}-#{MinutesToTime.for(minute_end)}"
+  end
+
+  private
+
+  def set_date
+    if day.present? && month.present? && year.present?
+      self.date = "#{year.rjust(4, "0")}#{month.rjust(2, "0")}#{day.rjust(2, "0")}"
+    end
   end
 end

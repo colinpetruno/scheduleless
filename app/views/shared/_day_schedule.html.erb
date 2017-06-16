@@ -21,6 +21,7 @@
         <div class="email">
           <%= shift.user.email %>
         </div>
+        <%# TODO: Check policy here but avoid n+1 %>
         <%= link_to edit_location_shift_path(shift.location, shift) do %>
           <div class="shifts">
               <div style="<%= presenter.shift_style(shift) %>"
