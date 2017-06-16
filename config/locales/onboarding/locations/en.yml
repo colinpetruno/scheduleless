@@ -9,7 +9,7 @@ en:
         description: "Manage your locations."
         employees: "Employees"
         no_locations: "Add Some Locations Before Continuing!" 
-        start: "Start Scheduling"
+        start: "Configure Schedule"
         title: "Locations"
       new:
         description: "Set up a location for your company."

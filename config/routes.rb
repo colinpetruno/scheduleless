@@ -86,7 +86,7 @@ Rails.application.routes.draw do
     end
     resources :positions, only: [:create, :destroy, :new]
     resources :registrations, only: [:create, :new]
-    resource :schedule, only: [:create, :new]
+    resource :schedule_settings, only: [:edit, :update]
     resources :user, only: [:destroy]
   end
 

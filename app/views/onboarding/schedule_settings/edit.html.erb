@@ -1,0 +1,39 @@
+<div class="instructions">
+  <h3>Configure Your Schedule</h3>
+  Configure your duration and start date of scheduling. We like to allow one
+  week to get all your employees set up and time to get their new schedules.
+</div>
+
+
+<%= simple_form_for [:onboarding, @schedule_setting],
+  url: onboarding_schedule_settings_path do |f|
+%>
+  <%= f.input :start_date,
+    as: :select,
+    collection: ScheduleSetting.start_date_options,
+    include_blank: false
+  %>
+
+  <%= f.input :schedule_duration,
+    as: :select,
+    collection: ScheduleSetting.duration_options,
+    include_blank: false
+  %>
+
+  <%= f.input :lead_time,
+    as: :select,
+    collection: ScheduleSetting.lead_time_options,
+    include_blank: false
+  %>
+
+  <%= f.input :note %>
+
+  <footer>
+    <div>
+      <%= link_to "Back", onboarding_locations_path, class: "button white" %>
+    </div>
+    <div>
+      <%= f.submit "Finish", class: "button orange" %>
+    </div>
+  </footer>
+<% end %>

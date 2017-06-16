@@ -23,6 +23,10 @@ en:
         delete_rules: "Delete the Scheduling Rules?"
         new_position_id: "Choose a New Position"
         new_rule_id: "Choose a New Position"
+      schedule_setting:
+        schedule_duration: "Schedule Duration"
+        start_date: "Start Date"
+        lead_time: "Schedule Ahead By"
       subscription:
         plan: "Choose your plan"
       user:
@@ -62,6 +66,11 @@ en:
         shift_overlap: >
           Allow a buffer to ensure that the next employee can get
           there and situated before the previous worker leaves.
+      schedule_setting:
+        lead_time: >
+          This is how many periods we will schedule ahead. If your duration is
+          2 weeks and this is set at 2 periods, you will have 1 active schedule
+          and 2 schedules ready to go for a total of up to 6 weeks.
 
     # Examples
     
