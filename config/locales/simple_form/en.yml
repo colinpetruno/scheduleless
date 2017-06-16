@@ -26,7 +26,7 @@ en:
       schedule_setting:
         schedule_duration: "Schedule Duration"
         start_date: "Start Date"
-        lead_time: "Schedule Ahead By"
+        lead_time: "Additional Schedule Periods"
       subscription:
         plan: "Choose your plan"
       user:
@@ -68,9 +68,10 @@ en:
           there and situated before the previous worker leaves.
       schedule_setting:
         lead_time: >
-          This is how many periods we will schedule ahead. If your duration is
-          2 weeks and this is set at 2 periods, you will have 1 active schedule
-          and 2 schedules ready to go for a total of up to 6 weeks.
+          This is how many periods we will additionally schedule ahead. If the 
+          duration is 2 weeks and the periods are set to 2, you will have 1 
+          active schedule and receive 2 additional ones ready to go for a 
+          total of 6 weeks.
 
     # Examples
     
