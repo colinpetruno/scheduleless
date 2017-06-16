@@ -1,5 +1,5 @@
 <h5><%= t(".your_company") %></h5>
-<%= simple_form_for [:onboarding, current_user], url: onboarding_leads_path, method: :post do |f| %>
+<%= simple_form_for [:onboarding, current_user], url: onboarding_leads_path do |f| %>
   <%= f.simple_fields_for :leads, @lead do |lf| %>
     <%= lf.input :note, label: false, hint: t(".note_hint") %>
 
