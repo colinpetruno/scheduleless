@@ -10,5 +10,5 @@ en:
       new:
         back: "Back"
         description: "Add employees to this location. They will be notified to join as soon as a schedule is available to them!"
-        start: "Start Scheduling"
+        start: "Configure Schedule"
         title: "Add Employees"
