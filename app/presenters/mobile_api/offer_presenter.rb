@@ -4,7 +4,7 @@ module MobileApi
       new(offer: offer)
     end
 
-    def initialize(offer: offer)
+    def initialize(offer:)
       @offer = offer
     end
 
