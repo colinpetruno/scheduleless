@@ -37,6 +37,8 @@ Rails.application.routes.draw do
   namespace :admin, path: "management" do
     root to: "welcome#index"
 
+    resources :companies, only: [:destroy, :edit, :index, :update]
+
     resources :schedule_approvals, only: [:index]
     resources :scheduling_periods, only: [:show, :update] do
       resource :approval, only: [:create]

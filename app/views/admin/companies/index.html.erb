@@ -1,0 +1,4 @@
+<% @companies.each do |company| %>
+  <%= link_to "#{company.id} #{company.name}",
+    edit_admin_company_path(company) %><br>
+<% end %>

@@ -1,0 +1,28 @@
+<div class="frame">
+  <header>
+    <div>Edit Company</div>
+  </header>
+
+  <section>
+    <article>
+      <%= simple_form_for [:admin, @company] do |f| %>
+        <%= f.input :name %>
+        <%= f.input :demo, as: :boolean %>
+
+        <%= f.submit %>
+      <% end %>
+
+      <br><br>
+
+      <div class="alert">
+        ONLY DELETE TEST COMPANIES
+      </div>
+
+      <%= button_to "Delete",
+        admin_company_path(@company),
+        class: "button link",
+        data: { confirm: "This will completely implode this company..." },
+        method: :delete %>
+    </article>
+  </section>
+</div>

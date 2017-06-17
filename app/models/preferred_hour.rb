@@ -1,4 +1,6 @@
 class PreferredHour < ApplicationRecord
+  belongs_to :user
+
   def self.default_scope
     order(:day)
   end
