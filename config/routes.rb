@@ -90,8 +90,9 @@ Rails.application.routes.draw do
     resources :user, only: [:destroy]
   end
 
-  # TODO: AUTH THIS
-  mount ResqueWeb::Engine, at: "/queues"
+  mount ResqueWeb::Engine, at: "/queues", anchor: false, constraints: lambda { |req|
+    req.env['warden'].authenticated? and req.env['warden'].user.scheduleless_admin?
+  }
 
   resources :scheduling_period, only: [] do
     resource :scheduling_period_publisher, only: [:create], path: "publish"
