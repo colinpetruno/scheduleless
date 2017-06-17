@@ -143,6 +143,13 @@ module Scheduler
       (0..options.days_to_schedule).each do |x|
         y = 0 #rand(options.number_of_intervals)
         # this is probably a bit odd?
+
+        # check to ensure there are employees availalbe or line 153 gives
+        # a divide by zero error
+        if employees.length == 0
+          next
+        end
+
         employee = employees[x % employees.length]
         position = employee.positions.sample
 
