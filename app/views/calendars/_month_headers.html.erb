@@ -1,7 +1,31 @@
-<div class="month-headers"> <!-- row -->
-  <% Date::ABBR_MONTHNAMES.compact.map do |month| %>
-    <div class="<%= "selected" if month.downcase == Date.today.strftime("%b").downcase %>">
-      <%= month %>
-    </div>
+<div class="month-headers">
+  <% start_month = Date.today - 5.months %>
+
+  <% (0..11).each do |offset| %>
+    <% current_month = start_month + offset.months %>
+    <% current_month_integer = current_month.month %>
+
+    <% if current_month_integer == presenter.day.month %>
+
+      <%= link_to(
+        "#",
+        class: "selected",
+        remote: true) do %>
+        <div>
+          <%= Date::ABBR_MONTHNAMES[current_month_integer] %>
+        </div>
+      <% end %>
+
+    <% else %>
+
+      <%= link_to(
+        remote_location_calendar_path(presenter.location, month: current_month.month, year: current_month.year),
+        remote: true) do %>
+        <div>
+          <%= Date::ABBR_MONTHNAMES[current_month_integer] %>
+        </div>
+      <% end %>
+
+    <% end %>
   <% end %>
 </div>

@@ -6,8 +6,10 @@
 
 <div class="rail">
   <section>
-    <article>
-      <%= render partial: "calendar_frame", locals: { presenter: @presenter } %>
+    <article class="calendar">
+      <%= render partial: "calendar_frame", locals: {
+        presenter: CalendarPresenter.new(location: presenter.current_location)
+      } %>
     </article>
 
     <aside>

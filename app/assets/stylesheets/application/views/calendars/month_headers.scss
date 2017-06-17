@@ -1,15 +1,45 @@
-.month-headers {
-  @include make-row();
+.frame > header > div {
+  // NOTHING CAN GO HERE
+  .month-headers {
+    @include make-row();
+    width: 100%;
 
-  div {
-    @include make-col-ready();
-    @include make-col(1);
+    > a {
+      @include make-col-ready();
+      @include make-col(1);
 
-    text-align: center;
+      background-color: transparent;
+      display: flex;
+      color: $gray-light;
+      min-height: 40px;
+      line-height: 40px;
+      width: 100%;
 
-    &.selected {
-      background-color: $blue;
-      color: $white;
+      > div {
+        text-align: center;
+        width: 100%;
+      }
+
+      &.selected {
+        background-color: $blue;
+        color: $white;
+
+        &:hover {
+          background-color: $blue;
+        }
+      }
+
+      &:hover {
+        background-color: lighten($blue, 5%);
+        color: $white;
+        text-decoration: none;
+      }
+
+      &:focus, &:active {
+        box-shadow: none;
+        outline: none;
+        text-decoration: none;
+      }
     }
   }
 }

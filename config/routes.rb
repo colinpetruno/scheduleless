@@ -96,6 +96,12 @@ Rails.application.routes.draw do
     req.env['warden'].authenticated? and req.env['warden'].user.scheduleless_admin?
   }
 
+  namespace :remote, defaults: { format: :js } do
+    resources :locations, only: [] do
+      resource :calendar, only: :show
+    end
+  end
+
   resources :scheduling_period, only: [] do
     resource :scheduling_period_publisher, only: [:create], path: "publish"
     resource :schedule_period_regenerator, only: [:create], path: "regenerate"

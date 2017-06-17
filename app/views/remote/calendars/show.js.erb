@@ -1,0 +1,5 @@
+$(".calendar").html("<%=
+  j(
+    render partial: "calendars/calendar_frame", locals: { presenter: @presenter }
+  )
+%>");
