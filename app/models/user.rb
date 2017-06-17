@@ -2,9 +2,10 @@ class User < ApplicationRecord
   include NotDeletable
 
   belongs_to :company
+  has_many :firebase_tokens
   has_many :employee_positions
-  has_many :user_locations
   has_many :leads
+  has_many :user_locations
   has_many :locations, through: :user_locations
   has_many :positions, through: :employee_positions
   has_many :preferred_hours, dependent: :destroy
