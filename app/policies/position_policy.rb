@@ -30,6 +30,6 @@ class PositionPolicy < ApplicationPolicy
   end
 
   def permitted_attributes
-    [:company_admin, :location_admin, :name]
+    [:company_admin, :location_admin, :name, managee_ids: [] ]
   end
 end

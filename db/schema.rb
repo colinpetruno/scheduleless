@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170617021750) do
+ActiveRecord::Schema.define(version: 20170618142114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,6 +105,12 @@ ActiveRecord::Schema.define(version: 20170617021750) do
     t.string   "time_zone",                   default: "Eastern Time (US & Canada)", null: false
     t.boolean  "use_custom_scheduling_rules", default: false,                        null: false
     t.index ["company_id"], name: "index_locations_on_company_id", using: :btree
+  end
+
+  create_table "manage_positions", force: :cascade do |t|
+    t.integer "position_id"
+    t.integer "manages_id",  null: false
+    t.index ["position_id"], name: "index_manage_positions_on_position_id", using: :btree
   end
 
   create_table "oauth_access_grants", force: :cascade do |t|
