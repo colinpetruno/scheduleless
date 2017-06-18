@@ -1,5 +1,6 @@
 class DailySchedulesController < AuthenticatedController
   def show
+    # TODO: This may be a remote only endpoint, if so move to remotes
     location = current_company.locations.find(params[:location_id])
     schedule = DailySchedule.new(location: location)
 

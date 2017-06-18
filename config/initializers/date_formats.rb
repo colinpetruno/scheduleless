@@ -1,4 +1,5 @@
 Date::DATE_FORMATS[:month_day_year] = "%b %e, %Y"
+Date::DATE_FORMATS[:month_day] = "%b %e"
 
 # Friday, June 3rd
 Date::DATE_FORMATS[:full_day_and_month] = lambda do |date|

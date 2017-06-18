@@ -1,6 +1,22 @@
-<div id="daily-schedule" class="frame">
+<div class="frame">
   <header>
     <div>
+      <section class="icon-toggle">
+        <a class="selected" href="#"><span class="oi oi-project"></span></a>
+        <%= link_to(
+          location_daily_schedule_path(
+            presenter.current_location,
+            date: presenter.date.to_s,
+            view: "week",
+            format: :js
+          ),
+          remote: true
+        ) do %>
+          <span class="oi oi-grid-three-up">
+        <% end %>
+        <a href="#"><span class="oi oi-print"></span></a>
+      </section>
+
       Schedule for <%= presenter.date.to_s(:month_day_year) %>
     </div>
   </header>

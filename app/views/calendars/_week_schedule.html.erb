@@ -1,0 +1,51 @@
+<div class="calendars-week-schedule">
+  <header>
+    <div>
+      <section class="icon-toggle">
+        <%= link_to(
+          location_daily_schedule_path(
+            presenter.location,
+            date: presenter.day.to_s,
+            view: "day",
+            format: :js
+          ),
+          remote: true
+        ) do %>
+          <span class="oi oi-project"></span>
+        <% end %>
+        <a class="selected" href="#"><span class="oi oi-grid-three-up"></span></a>
+        <a href="#"><span class="oi oi-print"></span></a>
+      </section>
+    </div>
+    <% presenter.days.each do |day| -%>
+      <div><%= day.to_s(:month_day) %></div>
+    <% end %>
+  </header>
+
+  <div class="table-container">
+    <table>
+      <tbody>
+        <% presenter.users.each do |user| %>
+          <tr>
+            <td><%= "#{user.given_name} #{user.family_name}" %></td>
+
+            <% presenter.days.each do |day| %>
+              <td>
+                <% if presenter.shifts_for(user, day).present? %>
+                  <% presenter.shifts_for(user, day).each do |shift| %>
+                    <div class="shift">
+                      <%= shift.time_range %>
+                    </div>
+                  <% end %>
+                <% end %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+

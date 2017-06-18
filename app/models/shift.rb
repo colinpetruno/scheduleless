@@ -40,4 +40,8 @@ class Shift < ApplicationRecord
   def selection_label
     "#{DateParser.new(date: date).month_and_day}, #{MinutesToTime.for(minute_start)} - #{MinutesToTime.for(minute_end)}"
   end
+
+  def time_range
+    "#{MinutesToTime.for(minute_start)}-#{MinutesToTime.for(minute_end)}"
+  end
 end

@@ -1,0 +1,71 @@
+.calendars-week-schedule {
+  background-color: $white;
+  width: 100%;
+
+  header {
+    background-color: $gray-dark;
+    color: $gray-light;
+    display: flex;
+    flex-direction: row;
+    padding-right: 15px;
+    width: 100%;
+
+    > div {
+      text-align: center;
+      line-height: 42px;
+      min-height: 42px;
+      width: 12%;
+
+      &:first-child {
+        width: 16%;
+      }
+    }
+  }
+
+  > div.table-container {
+     max-height: 400px;
+     overflow-y: scroll;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  thead {
+    tr {
+      th {
+        width: 12%;
+
+        &:first-child {
+          width: 16%;
+        }
+      }
+    }
+  }
+
+
+  tr {
+    td {
+      border: 1px solid lighten($blue, 20%);
+      height: 43px;
+      line-height: 40px;
+      padding: 3px;
+      min-height: 43px;
+      width: 12%;
+
+      &:first-child {
+        padding-left: 5px;
+        width: 16%;
+      }
+
+      .shift {
+        background-color: lighten($blue, 20%);
+        border: 2px solid $blue;
+        line-height: 40px;
+        min-height: 40px;
+        text-align: center;
+      }
+    }
+  }
+}

@@ -1,0 +1,59 @@
+section.icon-toggle {
+  display: flex;
+  flex-direction: row;
+  margin-right: 15px;
+
+  a {
+    border: 1px solid $gray-light;
+    border-right: 0;
+    line-height: 20px;
+    height: 42px;
+    width: 42px;
+    padding: 12px;
+    text-align: center;
+    vertical-align: middle;
+
+    &:last-child {
+      border-right: 1px solid $gray-light;;
+    }
+
+    &.selected {
+      background-color: $white;
+
+      &:hover {
+        color: $blue;
+      }
+    }
+  }
+}
+
+header > div > section.icon-toggle {
+  a {
+    background-color: $gray-dark; // lighten($gray-dark, 10%);
+    border-color: lighten($gray-dark, 10%);
+    border-top: 0;
+    border-bottom: 0;
+    color: $gray-light;
+
+    &:last-child {
+      border-color: lighten($gray-dark, 10%);
+    }
+
+    &.selected {
+      background-color: $white;
+      color: $blue;
+    }
+  }
+}
+
+.frame > header > div > section.icon-toggle {
+  margin-left: -15px;
+
+  a {
+    line-height: 35px;
+
+    &:hover {
+      background-color: $gray-dark;
+    }
+  }
+}
