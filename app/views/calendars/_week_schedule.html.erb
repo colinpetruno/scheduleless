@@ -13,8 +13,17 @@
         ) do %>
           <span class="oi oi-project"></span>
         <% end %>
+
         <a class="selected" href="#"><span class="oi oi-grid-three-up"></span></a>
-        <a href="#"><span class="oi oi-print"></span></a>
+
+        <%= link_to(
+          location_print_path(
+            presenter.location,
+            date: presenter.day.to_s
+          ),
+          target: "_blank") do %>
+          <span class="oi oi-print"></span>
+        <% end %>
       </section>
     </div>
     <% presenter.days.each do |day| -%>

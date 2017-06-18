@@ -1,0 +1,40 @@
+<style>
+  .calendars-week-schedule > div.table-container {
+    max-height: none;
+    overflow: auto;
+  }
+
+  .calendars-week-schedule > header {
+    background-color: #ffffff;
+    color: #000;
+    font-weight: bold;
+  }
+
+  .calendars-week-schedule td {
+    border-color: #000 !important;
+  }
+
+  .icon-toggle {
+    display: none !important;
+  }
+
+  .shift {
+    border: 0 !important;
+    background-color: transparent !important;
+  }
+</style>
+
+<div class="centered" style="margin-top: 20px">
+  <h1><%= @presenter.location.name %></h1>
+  <%= AddressFormatter.for(@presenter.location).multiline_html %>
+</div>
+
+<div style="padding: 50px">
+  <%= render partial: "calendars/week_schedule", locals: {
+    presenter: @presenter
+  } %>
+</div>
+
+<script type="text/javascript">
+  window.print();
+</script>

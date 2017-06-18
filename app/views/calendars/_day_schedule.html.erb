@@ -3,6 +3,7 @@
     <div>
       <section class="icon-toggle">
         <a class="selected" href="#"><span class="oi oi-project"></span></a>
+
         <%= link_to(
           location_daily_schedule_path(
             presenter.current_location,
@@ -14,7 +15,15 @@
         ) do %>
           <span class="oi oi-grid-three-up">
         <% end %>
-        <a href="#"><span class="oi oi-print"></span></a>
+
+        <%= link_to(
+          location_print_path(
+            presenter.current_location,
+            date: presenter.date.to_s
+          ),
+          target: "_blank") do %>
+          <span class="oi oi-print"></span>
+        <% end %>
       </section>
 
       Schedule for <%= presenter.date.to_s(:month_day_year) %>

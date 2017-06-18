@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>Scheduleless</title>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track": "reload" %>
+    <%= favicon_link_tag "favicon.ico" %>
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,400|Roboto:300,400" rel="stylesheet">
+
+    <%= render partial: "layouts/shared/google_analytics",
+      locals: { internal: true } %>
+    <%= render partial: "layouts/shared/mixpanel" %>
+
+    <style type="text/css">
+      @media print{
+        @page { size: landscape }
+      }
+    </style>
+  </head>
+
+  <body style="background-color: #ffffff">
+    <%= yield %>
+  </body>
+</html>
