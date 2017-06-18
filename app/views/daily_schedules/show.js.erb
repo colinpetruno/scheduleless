@@ -1,7 +1,7 @@
 $(".selected-day").removeClass("selected-day");
 $(".<%= @presenter.date.to_s %>").addClass("selected-day");
 
-<% if params[:view] == "week" %>
+<% if @presenter.view == "week" %>
   $("#daily-schedule").
     html("<%= j(render partial: "calendars/week_schedule", locals: {
       presenter: WeekSchedulePresenter.new(

@@ -1,10 +1,11 @@
 class CalendarShowPresenter
-  attr_reader :date, :current_location
+  attr_reader :date, :current_location, :view
 
-  def initialize(user:, current_location: nil, date: Date.today)
+  def initialize(user:, current_location: nil, date: Date.today, view: "day")
     @date = date
     @current_location = current_location || Location.default_for(user)
     @user = user
+    @view = view
   end
 
   def approvals?

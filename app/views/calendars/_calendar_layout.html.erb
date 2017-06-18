@@ -31,7 +31,16 @@
 </div>
 
 <div id="daily-schedule">
-  <%= render partial: "day_schedule", locals: {
-    presenter: @presenter
-  } %>
+  <% if @presenter.view == "week" %>
+    <%= render partial: "calendars/week_schedule", locals: {
+      presenter: WeekSchedulePresenter.new(
+        day: @presenter.date,
+        location: @presenter.current_location
+        )
+    } %>
+  <% else %>
+    <%= render partial: "day_schedule", locals: {
+      presenter: @presenter
+    } %>
+  <% end %>
 </div>

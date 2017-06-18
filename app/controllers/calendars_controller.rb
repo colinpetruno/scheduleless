@@ -5,7 +5,10 @@ class CalendarsController < AuthenticatedController
     authorize :calendar, :show?
 
     @presenter = CalendarShowPresenter.
-      new(date: date, current_location: location, user: current_user)
+      new(date: date,
+          current_location: location,
+          user: current_user,
+          view: cookies[:view])
   end
 
   private
