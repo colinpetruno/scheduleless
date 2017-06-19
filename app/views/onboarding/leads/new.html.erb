@@ -10,3 +10,20 @@
     <%= link_to t(".skip"), new_onboarding_position_path %>
   </article>
 </footer>
+
+<% content_for(:tracking) do %>
+  <script type="text/javascript">
+    $(function(){
+      mixpanel.alias("<%= current_user.id %>");
+      mixpanel.identify("<%= current_user.id %>");
+
+      mixpanel.people.set({
+        "$email": "<%= current_user.email %>",
+        "$last_login": new Date(),
+        "Company Name": "<%= current_company.name %>",
+        "Company Id": "<%= current_company.id %>",
+        "User Id": "<%= current_user.id %>"
+      })
+    });
+  </script>
+<% end %>

@@ -41,5 +41,9 @@
          style="display:none"
          data-page-name="<%= "#{controller_path}##{action_name}" %>">
     </div>
+
+    <% if content_for?(:tracking) %>
+      <%= content_for(:tracking) %>
+    <% end %>
   </body>
 </html>
