@@ -63,6 +63,7 @@ module Business
                :family_name,
                :given_name,
                :mobile_phone,
+               :primary_position_id,
                position_ids: []).
         merge({ company_id: current_company.id })
 

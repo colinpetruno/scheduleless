@@ -1,7 +1,5 @@
 td > form {
   display: inline;
-
-
 }
 
 form {
@@ -130,5 +128,15 @@ input[type=submit] {
   > label > input {
     margin-left: -20px;
     margin-right: 5px;
+  }
+}
+
+.check_boxes {
+  & > label {
+    display: block;
+  }
+
+  & > small {
+    margin-bottom: 5px;
   }
 }

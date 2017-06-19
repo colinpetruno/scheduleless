@@ -2,6 +2,8 @@ class User < ApplicationRecord
   include NotDeletable
 
   belongs_to :company
+  belongs_to :primary_position, class_name: "Position"
+
   has_many :firebase_tokens
   has_many :employee_positions
   has_many :leads

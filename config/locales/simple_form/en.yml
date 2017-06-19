@@ -33,6 +33,7 @@ en:
         family_name: "Last Name"
         given_name: "First Name"
         mobile_phone: "Mobile Phone"
+        positions: "Alternate Positions"
     required:
       text: 'required'
       mark: '*'
@@ -72,6 +73,10 @@ en:
           duration is 2 weeks and the periods are set to 2, you will have 1 
           active schedule and receive 2 additional ones ready to go for a 
           total of 6 weeks.
+      user:
+        positions: >
+          Select positions the user can fill in as if needed. For instance,
+          managers can often stand in as cashiers.
 
     # Examples
     

@@ -1,18 +1,7 @@
 <div class="frame">
   <section>
     <article>
-      <%= simple_form_for [:business, @user] do |f| %>
-        <%= f.input :email %>
-        <%= f.input :given_name %>
-        <%= f.input :family_name %>
-        <%= f.input :mobile_phone %>
-
-        <%= f.association :positions,
-          collection: current_company.positions,
-          as: :check_boxes %>
-
-        <%= f.submit %>
-      <% end %>
+      <%= render partial: "form" %>
     </article>
   </section>
 </div>
