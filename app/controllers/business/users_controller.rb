@@ -8,7 +8,7 @@ module Business
       if employee_inviter.send
         redirect_to business_users_path
       else
-        # TODO handle errors
+        render :new
       end
     end
 
