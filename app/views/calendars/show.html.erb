@@ -4,4 +4,22 @@
   <%= render partial: "no_locations" %>
 <% end %>
 
+<% content_for(:tracking) do %>
+  <script type="text/javascript">
+    $(function(){
+      mixpanel.identify("<%= current_user.id %>");
+
+      mixpanel.people.set({
+        "$email": "<%= current_user.email %>",
+        "Company Name": "<%= current_company.name %>",
+        "Company Id": "<%= current_company.id %>",
+        "User Id": "<%= current_user.id %>",
+        "$last_login": "<%= current_user.current_sign_in_at.strftime('%Y-%m-%dT%H:%M:%S') %>",
+        "$first_name": "<%= current_user.given_name %>",
+        "$last_name": "<%= current_user.family_name %>",
+        "$phone": "<%= current_user.mobile_phone %>"
+      });
+    });
+  </script>
+<% end %>
 

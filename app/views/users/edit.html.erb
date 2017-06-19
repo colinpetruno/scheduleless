@@ -3,18 +3,9 @@
     <div class="frame">
       <section>
         <article>
-          <div class="rail">
-            <section>
-              <aside>
-                photo goes here
-              </aside>
-              <article>
-                <%= f.input :family_name %>
-                <%= f.input :given_name %>
-                <%= f.input :preferred_name %>
-              </article>
-            </section>
-          </div>
+          <%= f.input :family_name %>
+          <%= f.input :given_name %>
+          <%= f.input :preferred_name %>
         </article>
       </section>
     </div>
@@ -27,6 +18,7 @@
       </header>
       <section>
         <article>
+          <%= f.input :email, disabled: true %>
           <%= f.input :mobile_phone %>
         </article>
       </section>

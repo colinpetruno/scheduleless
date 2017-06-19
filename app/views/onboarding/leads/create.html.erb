@@ -8,3 +8,15 @@
     <%= link_to t(".continue"), new_onboarding_position_path %>
   </article>
 </footer>
+
+<% content_for(:tracking) do %>
+  <script type="text/javascript">
+    $(function(){
+      mixpanel.people.set({
+        "$first_name": "<%= current_user.given_name %>",
+        "$last_name": "<%= current_user.family_name %>",
+        "$phone": "<%= current_user.mobile_phone %>"
+      });
+    });
+  </script>
+<% end %>
