@@ -12,11 +12,14 @@ class InvitationSender
   def send
     user.invite!
 
+    # token can only be called after invite! and needs set before generating
+    # the url
+    self.token = user.raw_invitation_token
     send_mobile_invite if user.mobile_phone.present?
 
-    self.token = user.raw_invitation_token
     true
-  rescue
+  rescue StandardError => error
+    Bugsnag.notify(error)
     false
   end
 
@@ -31,10 +34,13 @@ class InvitationSender
   end
 
   def message
+    url = signup_url(source: "sms")
+    Rails.logger.info("Send SMS Invite: Url Is: #{url}")
+
     <<~MESSAGE
-      You have been invited by #{user.company.name} to join Scheduleless in
-      order to receive and manager your schedule! Click the link to complete
-      the registration. #{signup_url(source: "sms")}
+      You have been invited by #{user.company.name} to join Scheduleless. In
+      order to receive and manage your schedule, click the link to complete
+      your registration. #{signup_url(source: "sms")}
     MESSAGE
   end
 
