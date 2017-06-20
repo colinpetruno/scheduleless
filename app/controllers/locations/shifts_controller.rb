@@ -7,7 +7,7 @@ module Locations
       authorize @shift
 
       model_params = params[:shift]
-      shift_date = model_params[:year] + model_params[:month] + model_params[:date]
+      shift_date = model_params[:year] + model_params[:month] + model_params[:day]
 
       @shift[:date] = shift_date.to_i
 
