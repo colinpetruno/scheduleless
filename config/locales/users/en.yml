@@ -1,7 +1,14 @@
 en:
   users:
+    active_badge:
+      label: "Active"
+    awaiting_invite_badge:
+      label: "Awaiting Invite"
+      tooltip: "An Invite will be sent as soon as they are scheduled!"
     edit:
       update_profile_heading: "Update Your Profile"
+    invited_badge:
+      label: "Invited"
     users:
       delete: "Remove"
       edit: "Edit"

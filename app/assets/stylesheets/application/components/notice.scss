@@ -15,6 +15,14 @@
   &:hover {
     text-decoration: none;
   }
+
+  &.badge {
+    display: inline-block;
+    font-size: 10px;
+    padding: 5px 3px;
+    margin: 0 10px;
+    min-width: 75px;
+  }
 }
 
 a.alert, a.info, a.notice, a.warning {

@@ -36,6 +36,19 @@ class User < ApplicationRecord
     super(only: [:email, :id, :given_name, :family_name, :preferred_name])
   end
 
+  def invitation_state
+    if accepted_or_not_invited?
+      if invitation_accepted_at.present? || sign_in_count > 0
+        :active
+      else
+        :awaiting_invite
+      end
+    else
+      :invited
+    end
+
+  end
+
   def manage?(location)
     positions.where(location_admin: true).present? && locations.include?(location)
   end

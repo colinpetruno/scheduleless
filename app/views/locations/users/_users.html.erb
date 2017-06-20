@@ -5,6 +5,8 @@
         <th><%= t(".name") %></th>
         <th><%= t(".email") %></th>
         <th><%= t(".position") %></th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
 
@@ -13,13 +15,16 @@
         <td><%= "#{user.given_name} #{user.family_name}" %></td>
         <td><%= user.email %></td>
         <td><%= EmployeePosition.primary_for(user).name %></td>
+        <td class="centered">
+          <%= render partial: "users/#{user.invitation_state}_badge" %>
+        </td>
         <td>
           <% if policy(user).edit? %>
             <%= link_to t(".edit"),
               edit_business_user_path(user),
               class: "button link" %>
           <% end %>
-
+          &nbsp;&nbsp;&nbsp;
           <% if policy(:employee_position).destroy? %>
             <%= button_to t(".remove"),
               locations_location_user_path(@location, user),

@@ -6,6 +6,7 @@
       <th><%= t(".preferred_name") %></th>
       <th><%= t(".email") %></th>
       <th></th>
+      <th></th>
     </thead>
 
     <tbody>
@@ -15,11 +16,15 @@
           <td><%= user.given_name %></td>
           <td><%= user.preferred_name %></td>
           <td><%= user.email %></td>
+          <td class="centered">
+            <%= render partial: "users/#{user.invitation_state}_badge" %>
+          </td>
           <td>
             <%= link_to_if policy(user).edit?, t(".edit"), edit_business_user_path(user) do %>
               <%= link_to t(".view"), business_user_path(user) %>
             <% end %>
 
+            &nbsp;&nbsp;&nbsp;
             <% if policy(user).edit? %>
               <%= link_to t(".delete"), business_user_path(user), method: :delete %>
             <% end %>
