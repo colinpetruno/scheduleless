@@ -43,7 +43,7 @@ class InvitationSender
   end
 
   def send_mobile_invite
-    SmsMessage.new(message: message, user: user)
+    SmsMessage.new(message: message, user: user).send
   end
 
   def signup_url(source: "email")
