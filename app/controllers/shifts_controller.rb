@@ -26,8 +26,9 @@ class ShiftsController < AuthenticatedController
   end
 
   def new
+    date = Date.parse(params[:date]).strftime('%Y%m%d').to_i
     @location = current_company.locations.find(params[:location_id])
-    @shift = @location.shifts.build(year: Date.today.year)
+    @shift = @location.shifts.build(date: date)
     @users = @location.users
 
     authorize @shift
