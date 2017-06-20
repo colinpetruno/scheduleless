@@ -12,23 +12,25 @@
     :label => t('.end_time')
   %>
 
-  <%= f.input :year,
-    as: :select,
-    collection: TimeRange.year_options,
-    :label => t('.year')
-  %>
+  <div class="inline">
+    <%= f.input :day,
+      as: :select,
+      collection: TimeRange.date_options,
+      :label => t('.date')
+    %>
 
-  <%= f.input :month,
-    as: :select,
-    collection: TimeRange.month_options,
-    :label => t('.month')
-  %>
+    <%= f.input :month,
+      as: :select,
+      collection: TimeRange.month_options,
+      :label => t('.month')
+    %>
 
-  <%= f.input :date,
-    as: :select,
-    collection: TimeRange.date_options,
-    :label => t('.date')
-  %>
+    <%= f.input :year,
+      as: :select,
+      collection: TimeRange.year_options,
+      :label => t('.year')
+    %>
+  </div>
 
   <%= f.input :user_id,
     as: :select,

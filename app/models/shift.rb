@@ -20,15 +20,38 @@ class Shift < ApplicationRecord
   attr_writer :day, :month, :year
 
   def day
-    @day || Date.parse(date.to_s).day
+    if @day
+      return @day.to_s
+    end
+
+    if !date.nil?
+      Date.parse(date.to_s).day.to_s
+    end
   end
 
   def month
-    @month || Date.parse(date.to_s).month
+
+    if @month
+      month_int =  @month.to_s
+    end
+
+    if !date.nil?
+      month_int = Date.parse(date.to_s).month.to_s
+    end
+
+    if !month_int.nil?
+      month_int.rjust(2, "0")
+    end
   end
 
   def year
-    @year || Date.parse(date.to_s).year
+    if @year
+      return @year.to_s
+    end
+
+    if !date.nil?
+      Date.parse(date.to_s).year.to_s
+    end
   end
 
   def belongs_to?(possible_user)
