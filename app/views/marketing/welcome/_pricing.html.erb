@@ -3,10 +3,9 @@
 
     <article>
       <div>
-        <h2>Transparent Pricing</h3>
+        <h2><%= t(".title") %></h3>
+        <%= t(".subtitle") %>
 
-        No hidden features or upgrades. Use the entire platform without
-        being nickel and dimed for the features you want.
       </div>
     </article>
 
@@ -16,7 +15,7 @@
           <div>
             <sup>$</sup><span>3</span>
           </div>
-          <div class="per-employee">per employee</div>
+          <div class="per-employee"><%= t(".unit") %></div>
 
           <%= link_to t(".call_to_action"),
             new_onboarding_registration_path,
@@ -26,35 +25,35 @@
           <ul>
             <li>
               <span class="oi oi-circle-check"></span>
-              <strong>We do your scheduling!</strong>
+              <strong><%= t(".bullet_1") %></strong>
             </li>
             <li>
               <span class="oi oi-circle-check"></span>
-              Time Clock and Reporting
+              <%= t(".bullet_2") %>
             </li>
             <li>
               <span class="oi oi-circle-check"></span>
-              Trade Shifts
+              <%= t(".bullet_3") %>
             </li>
             <li>
               <span class="oi oi-circle-check"></span>
-              Time Off Requests
+              <%= t(".bullet_4") %>
             </li>
             <li>
               <span class="oi oi-circle-check"></span>
-              Multiple Locations
+              <%= t(".bullet_5") %>
             </li>
             <li>
               <span class="oi oi-circle-check"></span>
-              No Hassle Set Up
+              <%= t(".bullet_6") %>
             </li>
             <li>
               <span class="oi oi-circle-check"></span>
-              Schedule well into the future
+              <%= t(".bullet_7") %>
             </li>
             <li>
               <span class="oi oi-circle-check"></span>
-              Android and iOS Apps
+              <%= t(".bullet_8") %>
             </li>
           </ul>
 

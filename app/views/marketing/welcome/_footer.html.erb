@@ -7,24 +7,25 @@
 
       <ul>
         <li>
-          <%= link_to "Knowledge Base", "https://support.scheduleless.com/" %>
+          <%= link_to t(".knowledge_base"),
+            "https://support.scheduleless.com/" %>
         </li>
 
         <li>
-          <%= link_to "Try For Free", new_onboarding_registration_path %>
+          <%= link_to t(".try"), new_onboarding_registration_path %>
         </li>
 
         <li>
-          <%= link_to "Sign In", new_user_session_path %>
+          <%= link_to t(".sign_in"), new_user_session_path %>
         </li>
 
         <li>
-          <a href="mailto:support@scheduleless.com">Support@scheduleless.com</a>
+          <a href="mailto:support@scheduleless.com">support@scheduleless.com</a>
         </li>
       </ul>
 
       <section>
-        Made with <span>♥</span> in Boston
+        <%= t(".made_in_html") %>
       </section>
     </div>
   </div>
