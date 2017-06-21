@@ -4,7 +4,8 @@ class Subscription < ApplicationRecord
 
   enum plan: {
     small: 0,
-    medium: 1
+    medium: 1,
+    standard: 2
   }
 
   def self.collection_labels
