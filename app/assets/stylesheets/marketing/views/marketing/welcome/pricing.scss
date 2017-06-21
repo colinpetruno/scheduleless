@@ -3,11 +3,13 @@
 
   > div > article {
     @include make-col(3);
+    @include make-col-push(6);
     padding: 150px 0;
   }
 
   > div > aside {
     @include make-col(6);
+    @include make-col-pull(3);
   }
 
   article > div {
@@ -71,6 +73,25 @@
           }
         }
       }
+    }
+  }
+}
+
+@media (max-width: map-get($grid-breakpoints, lg)) {
+  .marketing-welcome-pricing {
+    > div > article {
+      @include make-col(12);
+      @include make-col-push(0);
+      margin: 0;
+      padding: 25px 25px 25px 50px;
+    }
+
+    > div > aside {
+      @include make-col(12);
+      @include make-col-pull(0);
+
+      background-position: center;
+      min-height: 200px;
     }
   }
 }

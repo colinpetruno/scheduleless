@@ -21,3 +21,20 @@
     }
   }
 }
+
+
+@media (max-width: map-get($grid-breakpoints, lg)) {
+  .marketing-welcome-explanation {
+    > div > article {
+      @include make-col(12);
+    }
+
+    > div > aside {
+      @include make-col(12);
+
+      background-position: center;
+      max-height: 200px;
+      min-height: 200px;
+    }
+  }
+}

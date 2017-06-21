@@ -1,29 +1,31 @@
 <div class="marketing-welcome-footer">
   <div>
-    <article>
-      <%= image_tag "shared/logos/scheduleless.png" %>
-    </article>
+    <div>
+      <article>
+        <%= image_tag "shared/logos/scheduleless.png" %>
+      </article>
 
-    <ul>
-      <li>
-        <a href="">Knowledge Base</a>
-      </li>
+      <ul>
+        <li>
+          <%= link_to "Knowledge Base", "https://support.scheduleless.com/" %>
+        </li>
 
-      <li>
-        <a href="">Try For Free</a>
-      </li>
+        <li>
+          <%= link_to "Try For Free", new_onboarding_registration_path %>
+        </li>
 
-      <li>
-        <a href="">Login</a>
-      </li>
+        <li>
+          <%= link_to "Sign In", new_user_session_path %>
+        </li>
 
-      <li>
-        <a href="">Support@scheduleless.com</a>
-      </li>
-    </ul>
+        <li>
+          <a href="mailto:support@scheduleless.com">Support@scheduleless.com</a>
+        </li>
+      </ul>
 
-    <section>
-      Made with <span>♥</span> in Boston
-    </section>
+      <section>
+        Made with <span>♥</span> in Boston
+      </section>
+    </div>
   </div>
 </div>

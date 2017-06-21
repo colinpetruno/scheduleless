@@ -78,4 +78,22 @@
   }
 }
 
+@media (max-width: map-get($grid-breakpoints, lg)) {
+  .navbar {
+    ul,.navbar-brand {
+      display: none;
+    }
+
+    span {
+      display: block;
+      margin: 0;
+      padding-top: 25px;
+      text-align: center;
+      width: 100%;
+    }
+  }
+}
+
+
+
 

@@ -47,3 +47,30 @@
     }
   }
 }
+
+@media (max-width: map-get($grid-breakpoints, lg)) {
+  .marketing-welcome-mobile-apps {
+    > div > article {
+      @include make-col(12);
+
+      margin: 0;
+      min-height: 0;
+
+      > div {
+        min-height: 0;
+        padding-bottom: 20px;
+        padding-top: 50px;
+      }
+    }
+
+    > div > aside {
+      @include make-col(12);
+
+      background-position: 40px;
+      padding-left: 180px;
+      padding-top: 40px;
+      max-height: 200px;
+      min-height: 200px;
+    }
+  }
+}

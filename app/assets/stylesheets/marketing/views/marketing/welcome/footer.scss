@@ -1,6 +1,5 @@
 .marketing-welcome-footer {
-  @include make-row();
-
+  @include make-container();
   background-color: #484b52;
   font-family: "Roboto", sans-serif;
   font-size: 14px;
@@ -8,10 +7,12 @@
   text-align: center;
 
   > div {
-    @include make-col-ready();
-    @include make-col(12);
+    @include make-row();
+    > div {
+      @include make-col-ready();
+      @include make-col(12);
+    }
   }
-
   article {
     margin: 25px 0;
   }
@@ -39,6 +40,21 @@
 
       a {
         color: $gray-light;
+      }
+    }
+  }
+}
+
+
+@media (max-width: map-get($grid-breakpoints, lg)) {
+  .marketing-welcome-footer {
+    ul {
+      padding: 0;
+
+      li {
+        display: block;
+        margin: 10px 0;
+        text-align: center;
       }
     }
   }
