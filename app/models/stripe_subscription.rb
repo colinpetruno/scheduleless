@@ -15,8 +15,9 @@ class StripeSubscription
     @stripe_subscription ||= find_stripe_subscription
   end
 
-  def update
+  def update(quantity)
     stripe_subscription.plan = subscription.plan
+    stripe_subscription.quantity = quantity
     stripe_subscription.save
   end
 
@@ -27,7 +28,7 @@ class StripeSubscription
   def create_stripe_subscription
     stripe_subscription = Stripe::Subscription.create(
       customer: subscription.company.stripe_customer_id,
-      plan: subscription.plan
+      plan: "standard" # subscription.plan
     )
 
     subscription.update(stripe_subscription_id: stripe_subscription.id)

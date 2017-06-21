@@ -1,3 +1,4 @@
+# not used until you can change plans again
 class SubscriptionUpdater
   def self.for(subscription)
     new(subscription: subscription)

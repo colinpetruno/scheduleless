@@ -12,4 +12,8 @@ class Subscription < ApplicationRecord
       [I18n.t("models.subscription.#{key}"), key]
     end
   end
+
+  def plan
+    "standard"
+  end
 end
