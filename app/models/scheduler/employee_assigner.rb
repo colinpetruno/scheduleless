@@ -119,7 +119,8 @@ module Scheduler
         sorted_employees = sort_employees_by_timeslots
 
         sorted_employees.each do |employee|
-          employee.positions.each do |position|
+          positions = sort_positions(employee)
+          positions.each do |position|
             if can_schedule?(slot, employee, position, location)
               successful_injection = assign_employee_timeslot(employee, position.name, slot)
               if not successful_injection
@@ -139,6 +140,12 @@ module Scheduler
       end
     end
 
+    def sort_positions(employee)
+      employee.positions.sort_by do |position|
+        !employee.primary_position.nil? and position.id == employee.primary_position.id ? 0 : 1
+      end
+    end
+
     def prepare_initial_schedule # looks good
       (0..options.days_to_schedule).each do |x|
         y = 0 #rand(options.number_of_intervals)
@@ -151,7 +158,7 @@ module Scheduler
         end
 
         employee = employees[x % employees.length]
-        position = employee.positions.sample
+        position = employee.primary_position || employee.positions.sample
 
         not_scheduled = true
         iterations = 0
@@ -170,7 +177,7 @@ module Scheduler
             end
           end
           iterations = iterations + 1
-          position = employee.positions.sample
+          position = employee.primary_position || employee.positions.sample
           if iterations > options.number_of_intervals
             not_scheduled = false
           end
