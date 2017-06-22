@@ -8,10 +8,11 @@ class Registration
   validates :password, presence: true
   validates :password_confirmation, presence: true
   validates_format_of :password,
-    with: /\A(?=.\d)(?=.([a-z]|[A-Z]))([\x20-\x7E]){8,40}\z/,
+    with: /\A(?=.*[a-zA-Z])(?=.*[0-9]).{8,}\z/,
     message: "must include one number, one letter and be between 8 and 40 characters"
 
-  attr_accessor :company_name, :email, :password, :password_confirmation
+  attr_accessor :company_name, :email, :first_name, :last_name,
+    :password, :password_confirmation
 
   def company
     user.company
@@ -68,6 +69,8 @@ class Registration
     {
       company_admin: true,
       email: email,
+      family_name: last_name,
+      given_name: first_name,
       password: password,
       password_confirmation: password_confirmation,
       company_attributes: {

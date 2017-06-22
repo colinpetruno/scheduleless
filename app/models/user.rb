@@ -25,10 +25,10 @@ class User < ApplicationRecord
   validates :email, presence: true, length: { minimum: 3, maximum: 200 }, uniqueness: true
   validates :family_name, presence: true, length: { minimum: 1, maximum: 200 }
   validates :given_name, presence: true, length: { minimum: 1, maximum: 200 }
-  validates :mobile_phone, presence: true, length: { minimum: 7, maximum: 30 }
+  validates :mobile_phone, allow_blank: true, length: { minimum: 7, maximum: 30 }
   validates_format_of :password,
-    with: /\A(?=.\d)(?=.([a-z]|[A-Z]))([\x20-\x7E]){8,40}\z/,
-    if: :require_password?,
+    with: /\A(?=.*[a-zA-Z])(?=.*[0-9]).{8,}\z/,
+    if: :password_required?,
     message: "must include one number, one letter and be between 8 and 40 characters"
 
   accepts_nested_attributes_for :company, :leads, :preferred_hours

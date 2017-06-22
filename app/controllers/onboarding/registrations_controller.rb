@@ -25,6 +25,8 @@ class Onboarding::RegistrationsController < ApplicationController
       permit(
         :company_name,
         :email,
+        :first_name,
+        :last_name,
         :password,
         :password_confirmation,
       )

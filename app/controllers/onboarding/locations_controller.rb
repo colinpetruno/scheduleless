@@ -19,6 +19,7 @@ class Onboarding::LocationsController < AuthenticatedController
     if current_user.save
       redirect_to new_onboarding_location_user_path(@location)
     else
+      binding.pry
       render :new
     end
   end
@@ -29,7 +30,7 @@ class Onboarding::LocationsController < AuthenticatedController
     params.
       require(:location).
       permit(:additional_details, :city, :county_province,
-             :line_1, :line_2, :line_3, :postalcode, :time_zone).
+             :line_1, :line_2, :line_3, :name, :postalcode, :time_zone).
       merge(company: current_company)
   end
 end
