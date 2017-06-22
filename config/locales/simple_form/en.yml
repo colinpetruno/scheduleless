@@ -6,6 +6,9 @@ en:
         update: "Save"
       confirm_delete:
         create: "Delete"
+      credit_card:
+        create: "Add Card"
+        update: "Update Card"
       schedule_rule:
         create: "Add Schedule Rule"
       subscription:

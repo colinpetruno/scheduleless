@@ -1,0 +1,17 @@
+.credit-card-form {
+  #card-element {
+    border: 1px solid hsla(0, 0%, 0%, 0.14902);
+    border-radius: 5px;
+    margin-bottom: 0;
+    max-width: 400px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  #card-errors {
+    font-size: 12px;
+    color: $red;
+    margin-bottom: 20px;
+    min-height: 15px;
+  }
+}

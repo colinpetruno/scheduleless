@@ -5,51 +5,14 @@
       html: {
         id: "credit-card-form"
       } do |f| %>
-
       <%= f.input :name, placeholder: "A short description to remember easily" %>
 
-      <%= f.input :card_number do %>
-        <%= f.input_field :card_number,
-          class: "cc-number",
-          autocomplete: "cc-number",
-          type: "tel",
-          data: { stripe: "number" }
-        %>
-        <span class="help-block hidden blank"><%= t(".blank") %></span>
-        <span class="help-block hidden numeric"><%= t(".number") %></span>
-
-      <% end %>
-
-
-      <section>
-        <div>
-          <%= f.input :exp_month do %>
-            <%= f.input_field :exp_month,
-              as: :select,
-              collection: StripeCreditCardMock.month_select_options,
-              data: { stripe: "exp-month" }
-            %>
-            <span class="help-block hidden blank"><%= t(".blank") %></span>
-          <% end %>
-
-          <%= f.input :exp_year do  %>
-            <%= f.input_field :exp_year,
-              as: :select,
-              collection: StripeCreditCardMock.year_select_options,
-              data: { stripe: "exp-year" }
-            %>
-            <span class="help-block hidden blank"><%= t(".blank") %></span>
-          <% end %>
-        </div>
-
-        <div>
-          <%= f.input :cvc do %>
-            <%= f.input_field :cvc, data: { stripe: "cvc" } %>
-            <span class="help-block hidden blank"><%= t(".blank") %></span>
-            <span class="help-block hidden numeric"><%= t(".cvc_error") %></span>
-          <% end %>
-        </div>
-      </section>
+      <label for="card-element"><strong>Card</strong></label>
+      <div id="card-element" class="field is-empty input string">
+        <!-- a Stripe Element will be inserted here. -->
+      </div>
+      <!-- Used to display form errors -->
+      <div id="card-errors" role="alert"></div>
     <% end %>
 
     <%= simple_form_for [:settings, @credit_card] do |f| %>
@@ -58,5 +21,3 @@
     <% end %>
   </div>
 </div>
-
-<%= render partial: "dev_helper" if Rails.env.development? %>
