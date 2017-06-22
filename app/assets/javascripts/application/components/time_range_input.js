@@ -27,6 +27,7 @@
       this.$slideBar.css("right", this.initialRightPosition());
 
       this.setInitialHandlePositions();
+      this.setLabels();
 
       this.$leftGrip.draggable({
         axis: "x",
@@ -35,7 +36,7 @@
           var position = $(this).position().left;
           var startTime = (position / $timeRangeInput.snapWidth()) * (minutesInHour * $timeRangeInput.settings.interval);
 
-          $timeRangeInput.$startLabel.text(startTime);
+          $timeRangeInput.$startLabel.text($timeRangeInput.minutesToTime(startTime));
           $timeRangeInput.$start.val(startTime);
           $timeRangeInput.$slideBar.css("left", $(this).position().left + 8);
         },
@@ -52,12 +53,34 @@
           // multiply by number of minutes each interval represents
           var endTime = ((position + sliderWidth) / $timeRangeInput.snapWidth()) * (minutesInHour * $timeRangeInput.settings.interval);
 
-          $timeRangeInput.$endLabel.text(endTime - 30);
+          $timeRangeInput.$endLabel.text($timeRangeInput.minutesToTime(endTime - 30));
           $timeRangeInput.$end.val(endTime);
           $timeRangeInput.$slideBar.css("right", 384 - position - 8);
         },
         grid: [this.snapWidth(), 0]
       });
+    },
+
+    setLabels: function() {
+      var startValue = this.$startLabel.text();
+      var endValue = this.$endLabel.text();
+
+      this.$startLabel.text(this.minutesToTime(startValue));
+      this.$endLabel.text(this.minutesToTime(endValue));
+    },
+
+    minutesToTime: function(minutes) {
+      var hours = Math.floor(minutes / 60);
+      var minutes = minutes % 60;
+      var ampm = (hours >= 12 && hours < 24) ? 'pm' : 'am';
+
+      hours = hours % 12;
+      hours = hours ? hours : 12; // the hour '0' should be '12'
+      minutes = minutes < 10 ? '0'+minutes : minutes;
+
+      var strTime = hours + ':' + minutes + ' ' + ampm;
+
+      return strTime;
     },
 
     setInitialHandlePositions: function() {
