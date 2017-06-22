@@ -18,6 +18,7 @@ module Admin
         delete_in_progress_shifts
         delete_leads
         delete_oauth_tokens
+        delete_manage_positions
         delete_popular_times
         delete_preferences
         delete_preferred_hours
@@ -46,6 +47,12 @@ module Admin
     private
 
     attr_reader :company
+
+    def delete_manage_postions
+      ManagePosition.
+        where(position_id: company.positions.pluck(:id)).
+        delete_all
+    end
 
     def delete_users
       users.delete_all
