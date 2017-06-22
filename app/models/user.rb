@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :firebase_tokens
   has_many :employee_positions
+  has_many :in_progress_shifts
   has_many :leads
   has_many :user_locations
   has_many :locations, through: :user_locations

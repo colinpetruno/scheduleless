@@ -18,6 +18,9 @@ class SchedulingPeriodPublisher
         end
       end
 
+      # invite employeees that are in pending state
+      EmployeeInviteJob.perform_later(scheduling_period.id)
+
       # update schedule period as published
       scheduling_period.update(status: :published)
 
