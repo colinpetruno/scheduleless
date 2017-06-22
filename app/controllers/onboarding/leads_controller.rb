@@ -5,7 +5,10 @@ module Onboarding
     def create
       authorize :lead, :create?
 
-      if current_user.update(lead_params)
+      # TODO: Find a better way, lead is validating before parent attributes
+      # are assigned so we need to update just the user first then the user
+      # with the lead attributes. However this is ugly. Very Ugly.
+      if current_user.update(user_params) && current_user.update(lead_params)
         begin
           SupportMailer.lead(current_user.leads.last).deliver
         rescue StandardError => error
@@ -27,6 +30,12 @@ module Onboarding
     end
 
     private
+
+    def user_params
+      params.
+        require(:user).
+        permit(:email, :family_name, :given_name, :mobile_phone)
+    end
 
     def lead_params
       params.

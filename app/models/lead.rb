@@ -11,8 +11,8 @@ class Lead < ApplicationRecord
   private
 
   def phone_presence?
-    if phone? && self.user.mobile_phone.blank?
-      errors.add(:preferred_contact, "must have a phone number")
+    if preferred_contact == "phone" && self.user.mobile_phone.blank?
+      errors.add(:preferred_contact, "please provide a phone number below")
     end
   end
 end
