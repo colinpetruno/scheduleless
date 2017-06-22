@@ -7,6 +7,9 @@ class Registration
   validates :email, presence: true, length: { minimum: 3, maximum: 200 }
   validates :password, presence: true
   validates :password_confirmation, presence: true
+  validates_format_of :password,
+    with: /\A(?=.\d)(?=.([a-z]|[A-Z]))([\x20-\x7E]){8,40}\z/,
+    message: "must include one number, one letter and be between 8 and 40 characters"
 
   attr_accessor :company_name, :email, :password, :password_confirmation
 
