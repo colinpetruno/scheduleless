@@ -32,6 +32,8 @@ en:
       location:
         county_province: "State"
         postalcode: "Zip Code"
+      position:
+        name: "Position Name"
       schedule_setting:
         schedule_duration: "Schedule Duration"
         start_date: "Start Date"
