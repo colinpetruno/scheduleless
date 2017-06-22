@@ -6,6 +6,7 @@ en:
       label: "Awaiting Invite"
       tooltip: "An Invite will be sent as soon as they are scheduled!"
     edit:
+      availablity: "Availablity"
       update_profile_heading: "Update Your Profile"
     invited_badge:
       label: "Invited"
