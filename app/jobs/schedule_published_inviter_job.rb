@@ -10,6 +10,8 @@ class SchedulePublishedInviterJob < ApplicationJob
     @users.map do |user|
       if user.invitation_state == :awaiting_invite
         EmployeeInviteJob.perform_later user.id
+      elsif user.invitation_state == :active
+        PushNotificationSenderJob.perform_later(user.id, :schedule_published)
       end
     end
   end

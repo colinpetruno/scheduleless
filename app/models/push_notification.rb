@@ -7,7 +7,7 @@ class PushNotification
   end
 
   def send
-    if push_enabled?
+    if push_enabled? && tokens.present?
       client.send(tokens, notification_hash)
     else
       true
@@ -44,6 +44,6 @@ class PushNotification
   end
 
   def tokens
-    recipient.firebase_tokens.pluck(:token)
+    @_tokens ||= recipient.firebase_tokens.pluck(:token)
   end
 end

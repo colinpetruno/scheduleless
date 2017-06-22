@@ -1,5 +1,11 @@
 en:
   models:
+    push_notifications:
+      schedule_published:
+        message: >
+          Check the Scheduleless App for the latest schedule. Remember you can
+          trade and look for available shifts!
+        title: "A New Schedule Is Available!"
     schedule_rule:
       open: "at open"
       close: "at close"
