@@ -53,7 +53,7 @@ class LocationsController < AuthenticatedController
              :line_2,
              :line_3,
              :name,
-             :postal_code,
+             :postalcode,
              :time_zone,
              :use_custom_scheduling_rules,
              preference_attributes: [
