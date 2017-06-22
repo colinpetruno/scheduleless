@@ -1,14 +1,14 @@
 class UsersController < AuthenticatedController
   def create
-    @location = location
+    @location = find_location
 
     authorize User # TODO: add location auth here
 
     employee_inviter = EmployeeInviter.
-      new(location: location, user_params: user_params)
+      new(location: @location, user_params: user_params)
 
     if employee_inviter.send
-      redirect_to location_path(location)
+      redirect_to location_path(@location)
     else
       @user = employee_inviter.user
       render :new
@@ -21,22 +21,24 @@ class UsersController < AuthenticatedController
   end
 
   def new
-    @location = location
+    @location = find_location
     @user = current_company.users.build
     authorize @user
   end
 
   def update
     authorize current_user
-
-    current_user.update(user_params)
-
-    redirect_to edit_user_path
+    if current_user.update(user_params)
+      redirect_to edit_user_path
+    else
+      render :edit
+    end
   end
 
   private
 
-  def location
+  # note location is a rails method that will screw up the redirect if used
+  def find_location
     current_company.locations.find(params[:location_id])
   end
 
