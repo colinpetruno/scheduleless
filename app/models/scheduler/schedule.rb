@@ -63,7 +63,7 @@ module Scheduler
     end
 
     def employees
-      company.users
+      location.users
     end
 
     def generate_shifts
@@ -90,7 +90,11 @@ module Scheduler
     end
 
     def schedule_rules
-      @_schedule_rules ||= company.schedule_rules
+      if location.schedule_rules.length > 0 and location.use_custom_scheduling_rules
+        @_schedule_rules ||= location.schedule_rules
+      else
+        @_schedule_rules ||= company.schedule_rules
+      end
     end
   end
 end
