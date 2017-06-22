@@ -1,5 +1,11 @@
-<% if params[:preview] == "on" %>
-  <%= render partial: "preview" %>
-<% else %>
-  <%= render partial: "coming_soon" %>
+<%= render partial: "hero_section" %>
+<%= render partial: "explanation" %>
+<%= render partial: "setup" %>
+<%= render partial: "time_clock" %>
+<%= render partial: "mobile_apps" %>
+<%= render partial: "pricing" %>
+<%= render partial: "footer" %>
+
+<% if Rails.env.production? %>
+  <%= render partial: "layouts/shared/reamaze" %>
 <% end %>
