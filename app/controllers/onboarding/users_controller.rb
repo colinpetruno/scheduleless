@@ -21,14 +21,14 @@ class Onboarding::UsersController < AuthenticatedController
 
     authorize User
 
-    User.invite!(user_params.merge(default_params)) do |user|
+    @user = User.invite!(user_params.merge(default_params)) do |user|
       user.skip_invitation = true
     end
 
-    if params[:add_another_user].present?
+    if @user.persisted?
       redirect_to new_onboarding_location_user_path @location
     else
-      redirect_to new_onboarding_location_user_path @location
+      render :new
     end
   end
 
