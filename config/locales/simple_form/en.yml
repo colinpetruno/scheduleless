@@ -9,6 +9,9 @@ en:
       credit_card:
         create: "Add Card"
         update: "Update Card"
+      scheduling_hour:
+        create: "Add Hours"
+        update: "Update Hours"
       schedule_rule:
         create: "Add Schedule Rule"
       subscription:
@@ -30,6 +33,12 @@ en:
         schedule_duration: "Schedule Duration"
         start_date: "Start Date"
         lead_time: "Additional Schedule Periods"
+      scheduling_hour:
+        day: "Day"
+        minute_open_end: "Closing Time"
+        minute_open_start: "Opening Time"
+        minute_schedulable_start: "Scheduling Start Time"
+        minute_scheduleable_end: "Scheduling End Time"
       subscription:
         plan: "Choose your plan"
       user:

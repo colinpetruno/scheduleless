@@ -2,32 +2,32 @@
   <%= f.input :day,
     as: :select,
     collection: TimeRange::DAY_OPTIONS,
-    :label => t('.day')
+    disabled: true,
+    label: t(".day")
   %>
   <%= f.input :minute_open_start,
     as: :select,
-    collection: TimeRange.quarter_hour_options,
-    :label => t('.business_start_time')
+    collection: TimeRange.quarter_hour_options
   %>
   <%= f.input :minute_open_end,
     as: :select,
-    collection: TimeRange.quarter_hour_options,
-    :label => t('.business_end_time')
+    collection: TimeRange.quarter_hour_options
   %>
 
-  <div class="instructions">
-    <div class="title"><%= t('.optional') %>:</div>
-    <%= f.input :minute_schedulable_start,
-      as: :select,
-      collection: TimeRange.quarter_hour_options,
-      :label => t('.scheduling_start_time')
-    %>
-    <%= f.input :minute_schedulable_end,
-      as: :select,
-      collection: TimeRange.quarter_hour_options,
-      :label => t('.scheduling_end_time')
-    %>
-  </div>
+  <br /><br />
+  <div><%= t(".optional") %>:</div>
+  <small><%= t(".optional_hint") %></small>
+  <br /><br />
 
+  <%= f.input :minute_schedulable_start,
+    as: :select,
+    collection: TimeRange.quarter_hour_options
+  %>
+  <%= f.input :minute_schedulable_end,
+    as: :select,
+    collection: TimeRange.quarter_hour_options
+  %>
+
+  <br>
   <%= f.submit %>
 <% end %>

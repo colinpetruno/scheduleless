@@ -7,11 +7,9 @@ en:
       add_new_day: "Add New Day"
       form:
         optional: "Optional"
-        day: "Day"
-        business_start_time: "Business Start Time"
-        business_end_time: "Business End Time"
-        scheduling_start_time: "Scheduling Start Time"
-        scheduling_end_time: "Scheduling End Time"
+        optional_hint: >
+          If you need your employees to arrive before you open or stay after 
+          you close, you can configure those hours below.
       new:
         instructions: Add your business hours for this location. If your business
           hours differ from working hours you can make changes when you start scheduling your employees.
