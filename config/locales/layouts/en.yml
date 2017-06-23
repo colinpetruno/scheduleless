@@ -1,5 +1,13 @@
 en:
   layouts:
+    application:
+      page_title: "Scheduleless"
+    marketing:
+      meta_description: >
+        Focus on your business while we handle all your scheduling needs. We 
+        are the only scheduling software that makes your schedules.
+      meta_title: "Fully Automated Employee Scheduling."
+      page_title: "Scheduleless"
     shared:
       reamaze:
         label_text: "Let us know if you have any questions!"
