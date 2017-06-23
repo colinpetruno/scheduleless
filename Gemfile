@@ -38,15 +38,20 @@ end
 
 group :development, :test do
   gem "byebug", platform: :mri
-  gem "database_cleaner"
-  gem "factory_girl_rails"
   gem "pry-rails"
   gem "pry-stack_explorer"
-  gem "rspec-rails", "~> 3.5"
 end
 
 group :development do
   gem "web-console", ">= 3.3.0"
+end
+
+group :test do
+  gem "capybara"
+  gem "capybara-webkit"
+  gem "database_cleaner"
+  gem "factory_girl_rails"
+  gem "rspec-rails", "~> 3.5"
 end
 
 ruby "2.3.1"
