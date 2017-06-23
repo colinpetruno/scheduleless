@@ -8,6 +8,7 @@ module Business
       if employee_inviter.send
         redirect_to business_users_path
       else
+        @user = employee_inviter.user
         render :new
       end
     end
