@@ -3,7 +3,6 @@
     <tr>
       <th><%= t(".family_name") %></th>
       <th><%= t(".given_name") %></th>
-      <th><%= t(".preferred_name") %></th>
       <th><%= t(".email") %></th>
       <th></th>
       <th></th>
@@ -14,7 +13,6 @@
         <tr>
           <td><%= user.family_name %></td>
           <td><%= user.given_name %></td>
-          <td><%= user.preferred_name %></td>
           <td><%= user.email %></td>
           <td class="centered">
             <%= render partial: "users/#{user.invitation_state}_badge" %>
