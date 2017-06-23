@@ -1,5 +1,5 @@
 # README
-[![Build Status](https://circleci.com/gh/colinpetruno/scheduler.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/colinpetruno/scheduler)
+[![Build Status](https://circleci.com/gh/colinpetruno/scheduler.svg?style=shield&circle-token=ab605c296c5bc7fbb13eb2f2306b558b2d9c8553)](https://circleci.com/gh/colinpetruno/scheduler)
 
 
 ## Postgres Installation
