@@ -19,6 +19,7 @@ en:
       user_location:
         create: "Add"
       user:
+        create: "Add Employee"
         update: "Update Employee"
   simple_form:
     "yes": 'Yes'

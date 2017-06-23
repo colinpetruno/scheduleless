@@ -1,3 +1,7 @@
+<% if notice.present? %>
+  <div class="notice"><%= notice %></div>
+<% end %>
+
 <div class="instructions">
   <h3><%= t(".title") %></h3>
   <%= t(".description") %>
@@ -10,16 +14,26 @@
   <%= f.input :email %>
   <%= f.input :mobile_phone %>
 
-  <%= f.submit %>
+  <%= f.association :primary_position,
+    collection: current_company.positions %>
+
+  <%= f.association :positions,
+    collection: current_company.positions,
+    as: :check_boxes %>
+
+  <br />
+  <div class="center">
+    <%= f.submit %>
+  </div>
 <% end %>
 
 <footer>
   <div>
-    <%= link_to t(".back"), new_onboarding_location_path, class: "button white" %>
+    <%= link_to t(".back"), onboarding_location_users_path(@location), class: "button white" %>
   </div>
 
   <div>
-    <%= link_to t(".start"), edit_onboarding_schedule_settings_path, class: "button orange" %>
+    <%= link_to t(".continue"), onboarding_locations_path, class: "button orange" %>
   </div>
 </footer>
 

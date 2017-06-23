@@ -1,14 +1,17 @@
 en:
   onboarding:
     users:
+      controller:
+        created_success: "Employee was successfully added!"
       index:
         add: "Add Employee"
+        continue: "Continue"
         description: "Add and remove employees for this location"
         no_users: "No users are added to this location yet. Create some now."
-        start: "Start Scheduling"
+        start: "Configure Schedule"
         title: "Manage Employees"
       new:
-        back: "Back"
+        back: "View All Employees"
+        continue: "Continue"
         description: "Add employees to this location. They will be notified to join as soon as a schedule is available to them!"
-        start: "Configure Schedule"
         title: "Add Employees"

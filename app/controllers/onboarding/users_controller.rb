@@ -26,7 +26,8 @@ class Onboarding::UsersController < AuthenticatedController
     end
 
     if @user.persisted?
-      redirect_to new_onboarding_location_user_path @location
+      redirect_to new_onboarding_location_user_path(@location),
+        notice: I18n.t("onboarding.users.controller.created_success")
     else
       render :new
     end
