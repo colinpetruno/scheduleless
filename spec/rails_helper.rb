@@ -7,7 +7,16 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'support/chewy'
 require 'support/factory_girl'
+require 'capybara/rspec'
 require 'chewy/rspec'
+
+Capybara.javascript_driver = :webkit
+
+Capybara::Webkit.configure do |config|
+  config.block_unknown_urls
+  config.skip_image_loading
+  config.timeout = 5
+end
 
 # Add additional requires below this line. Rails is not loaded until this point!
 

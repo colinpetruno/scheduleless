@@ -1,7 +1,7 @@
 class Marketing::WelcomeController < ApplicationController
   layout "marketing"
 
-  before_filter :check_signed_in_user
+  before_action :check_signed_in_user
 
   def index
   end

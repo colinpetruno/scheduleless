@@ -6,6 +6,7 @@ class Onboarding::LocationsController < AuthenticatedController
   end
 
   def new
+    # TODO: NOTICE APPEARING ON ADD EMPLOYEE SCREEN
     @location = Location.new
 
     authorize @location

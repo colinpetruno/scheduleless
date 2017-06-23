@@ -33,7 +33,9 @@ class Company < ApplicationRecord
   private
 
   def setup_stripe_customer
-    StripeCustomer.for(self).create
-    StripeSubscription.for(subscription).create
+    if !Rails.env.test?
+      StripeCustomer.for(self).create
+      StripeSubscription.for(subscription).create
+    end
   end
 end

@@ -1,7 +1,8 @@
 FactoryGirl.define do
   factory :shift do
     company
-    user_location
+    location
+    user
 
     minute_start 0
     minute_end 225
