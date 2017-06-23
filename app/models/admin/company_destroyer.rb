@@ -48,7 +48,7 @@ module Admin
 
     attr_reader :company
 
-    def delete_manage_postions
+    def delete_manage_positions
       ManagePosition.
         where(position_id: company.positions.pluck(:id)).
         delete_all

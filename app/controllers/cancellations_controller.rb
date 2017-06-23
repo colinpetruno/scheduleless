@@ -1,6 +1,6 @@
 class CancellationsController < AuthenticatedController
   def create
-    @cancellation = Cancellation.for(shift)
+    @cancellation = Cancellation.new(shift: shift)
 
     authorize @cancellation
 

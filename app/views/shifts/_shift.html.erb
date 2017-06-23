@@ -12,8 +12,11 @@
         </div>
 
         <div class="buttons">
-          <%= link_to "Trade", new_shift_trade_path(shift), class: "button" %>
-          <%= button_to "Cancel", shift_cancellation_path(shift), method: :post %>
+          <%= link_to t(".trade"), new_shift_trade_path(shift), class: "button" %>
+          <%= button_to t(".cancel"),
+            shift_cancellation_path(shift),
+            data: { confirm: t(".confirm") },
+            method: :post  %>
         </div>
 
         <div class="location">

@@ -1,7 +1,8 @@
 module MobileApi
   class CancellationsController < ApiAuthenticatedController
     def create
-      @cancellation = Cancellation.for(shift)
+      @cancellation = Cancellation.
+        new(note: cancellation_params[:note], shift: shift)
 
       authorize @cancellation
 
@@ -15,6 +16,10 @@ module MobileApi
     end
 
     private
+
+    def cancellation_params
+      params.require(:cancellation).permit(:note)
+    end
 
     def shift
       @_shift ||= Shift.find(params[:shift_id])

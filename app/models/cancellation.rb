@@ -1,16 +1,19 @@
 class Cancellation
-  attr_reader :shift
+  attr_reader :note, :shift
 
-  def self.for(shift)
-    new(shift: shift)
-  end
-
-  def initialize(shift:)
+  def initialize(note: nil, shift:)
+    @note = note
     @shift = shift
   end
 
   def cancel
-    # TODO: Fill this in
+    shift.update(note: note, state: :cancelled)
+
+    CancelShiftNotificationJob.perform_later shift.id
+
     true
+  rescue StandardError => error
+    Bugsnag.notify(error)
+    false
   end
 end
