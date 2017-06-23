@@ -31,7 +31,11 @@ en:
         new_rule_id: "Choose a New Position"
       location:
         county_province: "State"
-        postalcode: "Zip Code"
+        line_1: "Address Line 1"
+        line_2: "Address Line 2"
+        line_3: "Address Line 3"
+        name: "Description"
+        postalcode: "Postal Code"
       position:
         name: "Position Name"
       schedule_setting:
