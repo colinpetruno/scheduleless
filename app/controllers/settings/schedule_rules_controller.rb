@@ -55,7 +55,7 @@ module Settings
     def schedule_rule_params
       params.
         require(:schedule_rule).
-        permit(:number_of_employees, :period, :position_id)
+        permit(:number_of_employees, :period, :position_id, :day)
     end
   end
 end

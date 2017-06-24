@@ -21,8 +21,11 @@ en:
         locations: "locations"
       schedule_rule:
         requirement:
-          one: "%{position} is needed %{period}"
-          other: "%{position} are needed %{period}"
+          day:
+            one: "%{position} is needed %{period} on %{day}"
+            other: "%{position} are needed %{period} on %{day}"
+          one: "%{position} is needed %{period} every day"
+          other: "%{position} are needed %{period} every day"
       schedule_rules:
         delete: "Delete"
         edit: "Edit"

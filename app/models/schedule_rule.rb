@@ -17,4 +17,12 @@ class ScheduleRule < ApplicationRecord
       [I18n.t("models.schedule_rule.#{key}") ,key]
     end
   end
+
+  def day_name
+    if self.day.nil?
+      return
+    end
+
+    TimeRange::DAY_OPTIONS[self.day][0]
+  end
 end

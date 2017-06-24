@@ -8,6 +8,7 @@
         include_blank: false,
         error: false, label: false %><%= t(".plural") %>
       <%= f.input :period, collection: ScheduleRule.collection_labels, error: false, label: false %>
+      <%= f.input :day, collection: TimeRange::DAY_OPTIONS, :include_blank => t(".every_day"), error: false, label: false %>
     </section>
 
     <% if @schedule_rule.errors.present? %>
