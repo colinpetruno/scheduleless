@@ -21,7 +21,7 @@
         <td>
           <% if policy(user).edit? %>
             <%= link_to t(".edit"),
-              edit_business_user_path(user),
+              edit_locations_location_user_path(@location, user),
               class: "button link" %>
           <% end %>
           &nbsp;&nbsp;&nbsp;
