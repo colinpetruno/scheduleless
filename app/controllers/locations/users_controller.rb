@@ -29,6 +29,12 @@ module Locations
       end
     end
 
+    def edit
+      @location = current_company.locations.find(params[:location_id])
+      @user = current_company.users.find(params[:id])
+      authorize @user
+    end
+
     def index
       skip_policy_scope # TODO: FIX ME
       @location = current_company.locations.find(params[:location_id])
@@ -38,6 +44,17 @@ module Locations
       @location = current_company.locations.find(params[:location_id])
       @user = current_company.users.build
       authorize @user
+    end
+
+    def update
+      @user = current_company.users.find(params[:id])
+      authorize @user
+
+      if @user.update(user_params)
+        redirect_to locations_location_users_path
+      else
+        render :edit
+      end
     end
 
     private
