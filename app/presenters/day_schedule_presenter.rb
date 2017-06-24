@@ -1,10 +1,22 @@
 class DaySchedulePresenter
+  include ActionView::Helpers::UrlHelper
+
   attr_reader :shifts
 
-  def initialize(day:, location:, shifts:)
+  def initialize(day:, location:, shifts:, preview: false)
     @day = day
     @location = location
     @shifts = shifts
+    @preview = preview
+  end
+
+  def edit_shift_route(shift)
+    if preview
+      routes.
+        edit_locations_location_in_progress_shift_path(shift.location, shift)
+    else
+      routes.edit_location_shift_path(shift.location, shift)
+    end
   end
 
   def end_hour
@@ -19,6 +31,11 @@ class DaySchedulePresenter
     (end_hour - start_hour).to_i / 3600
   end
 
+  def manage_shift?(user, shift)
+    # TODO: could check against internal location to prevent n+1
+    user.manage?(shift.location) || user.company_admin?
+  end
+
   def start_hour
     MinutesToTime.new(minutes: hours.minute_schedulable_start).start_of_hour
   end
@@ -30,9 +47,10 @@ class DaySchedulePresenter
     "left: #{left}px; width: #{width}px"
   end
 
+
   private
 
-  attr_reader :day, :location
+  attr_reader :day, :location, :preview
 
   def day_date
     Date.parse(day.to_s)
@@ -46,5 +64,9 @@ class DaySchedulePresenter
     @_hours ||= location.
       scheduling_hours.
       select{ |hour| hour.day == day_integer }.first
+  end
+
+  def routes
+    Rails.application.routes.url_helpers
   end
 end

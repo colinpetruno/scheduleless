@@ -71,6 +71,10 @@ class User < ApplicationRecord
     positions.where(location_admin: true).present?
   end
 
+  def full_name
+    "#{given_name} #{family_name}"
+  end
+
   def twilio_formatted_phone
   end
 

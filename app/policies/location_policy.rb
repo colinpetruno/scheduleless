@@ -22,7 +22,7 @@ class LocationPolicy < ApplicationPolicy
   end
 
   def show?
-    same_company?
+    user.locations.include?(current_location) || user.company_admin?
   end
 
   def update?

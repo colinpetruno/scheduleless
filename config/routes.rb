@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resources :shifts, only: [:new, :edit, :destroy, :update]
 
     scope module: :locations, as: :locations do
+      resources :in_progress_shifts, only: [:edit, :update], path: "pending_shifts"
       resources :shifts, only: [:new, :create]
       resources :scheduling_periods, only: [:create, :index, :new, :show]
       resources :schedule_rules, only: [:create, :destroy, :edit, :index, :update]
