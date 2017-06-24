@@ -19,7 +19,7 @@
     <% presenter.shifts.each do |shift| %>
       <div class="employee">
         <div class="email">
-          <%= shift.user.email %>
+          <%= shift.user.full_name %>
         </div>
         <%# TODO: Check policy here but avoid n+1 %>
 
@@ -39,9 +39,29 @@
               title="<%= presenter.formatted_minutes_for(shift) %>">
             </div>
           <% end %>
-
         </div>
+        <% if presenter.manage_shift?(current_user, shift) %>
+          <%= button_to "delete",
+            locations_location_in_progress_shift_path(shift.location, shift),
+            class: "delete link",
+            data: { confirm: "Are you sure you want to delete this shift?" },
+            method: :delete
+          %>
+        <% end %>
       </div>
     <% end %>
   </div>
+
+  <% if presenter.preview %>
+    <br />
+    <div>
+      <%= link_to "Add Shift",
+        new_locations_location_in_progress_shift_path(
+          presenter.location,
+          date: presenter.day
+        ),
+        class: "button"
+      %>
+    </div>
+  <% end %>
 </div>
