@@ -6,7 +6,7 @@ class DaySchedulePresenter
   def initialize(day:, location:, shifts:, preview: false)
     @day = day
     @location = location
-    @shifts = shifts
+    @shifts = shifts.sort_by{ |obj| obj.minute_start }
     @preview = preview
   end
 
@@ -20,7 +20,12 @@ class DaySchedulePresenter
   end
 
   def end_hour
-    MinutesToTime.new(minutes: hours.minute_schedulable_end).next_hour
+    end_time = [
+      hours.minute_schedulable_end,
+      shifts.sort_by{ |obj| obj.minute_end }.last.minute_end
+    ].sort.last
+
+    MinutesToTime.new(minutes: end_time).next_hour
   end
 
   def formatted_minutes_for(shift)
@@ -37,7 +42,12 @@ class DaySchedulePresenter
   end
 
   def start_hour
-    MinutesToTime.new(minutes: hours.minute_schedulable_start).start_of_hour
+    start_time = [
+      hours.minute_schedulable_start,
+      shifts.sort_by{ |obj| obj.minute_start }.first.minute_start
+    ].sort.first
+
+    MinutesToTime.new(minutes: start_time).start_of_hour
   end
 
   def shift_style(shift)

@@ -1,0 +1,30 @@
+      <%= simple_form_for [:locations, @location, @in_progress_shift] do |f| %>
+        <%= f.input :date, as: :hidden %>
+        <%= f.input :scheduling_period_id, as: :hidden %>
+        <%= f.input :minute_start,
+          as: :select,
+          collection: TimeRange.quarter_hour_options,
+          label: t('.start_time')
+        %>
+
+        <%= f.input :minute_end,
+          as: :select,
+          collection: TimeRange.quarter_hour_options,
+          label: t('.end_time')
+        %>
+
+        <%= f.input :user_id,
+          as: :select,
+          collection: @location.users,
+          label_method: :full_name,
+          value_method: :id
+        %>
+
+        <%= f.submit %>
+
+        <%= link_to("Back",
+          locations_location_scheduling_period_path(
+            @location,
+            @in_progress_shift.scheduling_period
+          )) %>
+      <% end %>

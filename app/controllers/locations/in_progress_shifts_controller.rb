@@ -1,7 +1,29 @@
 module Locations
   class InProgressShiftsController < AuthenticatedController
+
+    def create
+      @location = current_company.locations.find(params[:location_id])
+
+      @in_progress_shift = InProgressShift.new(in_progress_shift_params)
+
+      authorize :in_progress_shift, :create?
+
+      if @in_progress_shift.save
+        redirect_to(
+          locations_location_scheduling_period_path(
+            @location,
+            @in_progress_shift.scheduling_period
+          )
+        )
+      else
+        render :new
+      end
+    end
+
+
     def destroy
       @location = current_company.locations.find(params[:location_id])
+
       @in_progress_shift = InProgressShift.
         where(company_id: current_company.id).
         find(params[:id])
@@ -33,7 +55,11 @@ module Locations
       @location = current_company.locations.find(params[:location_id])
 
       @in_progress_shift = InProgressShift.
-        new(company_id: current_company.id, date: params[:date])
+        new(
+          company_id: current_company.id,
+          date: params[:date],
+          scheduling_period_id: params[:scheduling_period_id]
+        )
 
       authorize :in_progress_shift, :new?
     end
@@ -60,7 +86,16 @@ module Locations
     def in_progress_shift_params
       params.
         require(:in_progress_shift).
-        permit(:minute_end, :minute_start, :user_id)
+        permit(
+          :date,
+          :minute_end,
+          :minute_start,
+          :scheduling_period_id,
+          :user_id).
+        merge(
+          company_id: current_company.id,
+          location_id: params[:location_id]
+        )
     end
   end
 end
