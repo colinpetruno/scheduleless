@@ -15,9 +15,14 @@ module Scheduler
       # Add quantity to opening shifts for scheduling hour duration
 
       (0..options.days_to_schedule).each do |x|
+        # Check that the rule day matches this day
+        scheduling_day_x = get_scheduling_day(x, location.scheduling_hours.length) #x % location.scheduling_hours.length
+        if (!rule.day.nil? and rule.day != scheduling_day_x)
+          next
+        end
+
         # Find scheduling hours for this day
         #   Use % of available scheduling hours
-        scheduling_day_x = x % location.scheduling_hours.length
         scheduling_hours = location.scheduling_hours.find_by(day: scheduling_day_x)
         if !scheduling_hours
           raise "Missing Scheduling Hours for day #{x}"
@@ -39,9 +44,12 @@ module Scheduler
       # Add quantity to closing shifts for scheduling hour duration
 
       (0..options.days_to_schedule).each do |x|
+        scheduling_day_x = get_scheduling_day(x, location.scheduling_hours.length) #x % location.scheduling_hours.length
+        if (!rule.day.nil? and rule.day != scheduling_day_x)
+          next
+        end
         # Find scheduling hours for this day
         #   Use % of available scheduling hours
-        scheduling_day_x = x % location.scheduling_hours.length
         scheduling_hours = location.scheduling_hours.find_by(day: scheduling_day_x)
         if !scheduling_hours
           raise "Missing Scheduling Hours for day #{x}"
@@ -63,9 +71,13 @@ module Scheduler
       # Add quantity to all shifts for scheduling hour duration
 
       (0..options.days_to_schedule).each do |x|
+        scheduling_day_x = get_scheduling_day(x, location.scheduling_hours.length) #x % location.scheduling_hours.length
+        if (!rule.day.nil? and rule.day != scheduling_day_x)
+          next
+        end
+
         # Find scheduling hours for this day
         #   Use % of available scheduling hours
-        scheduling_day_x = x % location.scheduling_hours.length
         scheduling_hours = location.scheduling_hours.find_by(day: scheduling_day_x)
         if !scheduling_hours
           raise "Missing Scheduling Hours for day #{x}"
@@ -79,6 +91,13 @@ module Scheduler
           end
         end
       end
+    end
+
+    def get_scheduling_day(x, length)
+      # translate the x into the day of the of the schedule
+      # add the base day and take the mod of the number of scheduling hours
+      base_day = location.company.schedule_setting.day_start
+      (x + base_day) % length
     end
 
     def preferences
