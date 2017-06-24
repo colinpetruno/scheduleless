@@ -58,7 +58,8 @@
       <%= link_to "Add Shift",
         new_locations_location_in_progress_shift_path(
           presenter.location,
-          date: presenter.day
+          date: presenter.day,
+          scheduling_period_id: @scheduling_period.id
         ),
         class: "button"
       %>
