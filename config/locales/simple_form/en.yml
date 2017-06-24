@@ -59,6 +59,13 @@ en:
         minute_open_start: "Opening Time"
         minute_schedulable_start: "Scheduling Start Time"
         minute_scheduleable_end: "Scheduling End Time"
+      shift:
+        day: "Day"
+        minute_end: "End Time"
+        minute_start: "Start Time"
+        month: "Month"
+        user_id: "Employee"
+        year: "Year"
       subscription:
         plan: "Choose your plan"
       user:

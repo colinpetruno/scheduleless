@@ -29,7 +29,9 @@
       Schedule for <%= presenter.date.to_s(:month_day_year) %>
 
       <aside>
-        <%= link_to "New Shift", new_location_shift_path(date: presenter.date.to_s), {:class=>"btn"} %>
+        <%= link_to "New Shift",
+          new_locations_location_shift_path(date: presenter.date.to_s)
+        %>
       </aside>
     </div>
   </header>

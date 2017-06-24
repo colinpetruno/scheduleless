@@ -13,7 +13,8 @@
     <% presenter.weeks.map do |week| %>
         <tr>
         <% week.map do |day| %>
-          <% classname = day.month == presenter.day.month ? "" : "inactive" %>
+          <% classname = (day.month == presenter.day.month) ? "" : "inactive" %>
+
           <td class="<%= classname %>">
             <div>
               <%= presenter.day_block(day) %>

@@ -8,7 +8,10 @@
   <section>
     <article class="calendar">
       <%= render partial: "calendar_frame", locals: {
-        presenter: CalendarPresenter.new(location: presenter.current_location)
+        presenter: CalendarPresenter.new(
+          day: presenter.date,
+          location: presenter.current_location
+        )
       } %>
     </article>
 
