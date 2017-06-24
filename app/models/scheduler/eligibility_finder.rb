@@ -77,7 +77,7 @@ module Scheduler
 
     private
 
-    attr_reader :layout, :timeslot, :existing_shifts, :company, :options
+    attr_reader :layout, :timeslot, :existing_shifts, :company, :location, :options
 
     def get_timeslot(x, y)
       layout.get_timeslot(x, y)
@@ -114,7 +114,7 @@ module Scheduler
     end
 
     def minmax_not_eligible(employee)
-      MinmaxShiftHelper.new(timeslot: timeslot, employee: employee, layout: layout, company: company, existing_shifts: existing_shifts, options: options).is_not_eligible
+      MinmaxShiftHelper.new(timeslot: timeslot, employee: employee, layout: layout, company: company, location: location, existing_shifts: existing_shifts, options: options).is_not_eligible
     end
   end
 end

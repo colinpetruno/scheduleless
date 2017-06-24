@@ -60,6 +60,7 @@ class LocationsController < AuthenticatedController
                :break_length,
                :id,
                :maximum_shift_length,
+               :preferred_shift_length,
                :minimum_shift_length,
                :preferable_id,
                :preferable_type,

@@ -17,6 +17,7 @@ module Scheduler
       return if scheduling_period.location.users.blank?
 
       employee_assigner.assign
+      print
       generate_shifts
     end
 
@@ -80,7 +81,7 @@ module Scheduler
     end
 
     def layout
-      @_layout ||= LayoutGenerator.for(self, schedule_rules, options)
+      @_layout ||= LayoutGenerator.for(location, schedule_rules, options)
     end
 
     def options

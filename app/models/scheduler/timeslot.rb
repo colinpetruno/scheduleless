@@ -6,18 +6,24 @@ module Scheduler
     attr_reader :employees
     attr_reader :position_slots
     attr_reader :position_employees
-    attr_reader :options
 
-    def initialize(x, y, slots_available, rules, options)
+    def initialize(x, y)
       @x = x
       @y = y
-      @slots_available = slots_available
+      @slots_available = 0
       @employees = []
       @position_slots = {}
       @position_employees = {}
-      @options = options
+    end
 
-      read_rule_slots(rules)
+    def add_slots_available(amount, position)
+      @slots_available = @slots_available + amount
+      if @position_slots.key? position.name
+        @position_slots[position.name] = @position_slots[position.name] + amount
+      else
+        @position_slots[position.name] = amount
+        @position_employees[position.name] = []
+      end
     end
 
     def full?
@@ -60,25 +66,6 @@ module Scheduler
 
     def employees
       @employees
-    end
-
-    def read_rule_slots(rules)
-      rules.each do |rule|
-        if rule_within_bounds(rule.period, y)
-          if position_slots.key? rule.position.name
-            position_slots[rule.position.name] = position_slots[rule.position.name] + 1
-          else
-            position_slots[rule.position.name] = rule.number_of_employees
-            position_employees[rule.position.name] = []
-          end
-        end
-      end
-    end
-
-    def rule_within_bounds(rule_period, interval)
-      interval_minutes = interval*options.time_interval_minutes
-      rule_timeframe = options.period_timeframes(rule_period)
-      interval_minutes >= rule_timeframe[:start] && interval_minutes < rule_timeframe[:end]
     end
 
     def print

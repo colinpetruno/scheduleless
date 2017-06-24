@@ -308,7 +308,7 @@ module Scheduler
     end
 
     def minmax_not_eligible(timeslot, employee)
-      MinmaxShiftHelper.new(timeslot: timeslot, employee: employee, layout: layout, company: company, existing_shifts: existing_shifts, options: options).is_not_eligible
+      MinmaxShiftHelper.new(timeslot: timeslot, employee: employee, layout: layout, company: company, location: location, existing_shifts: existing_shifts, options: options).is_not_eligible
     end
   end
 end

@@ -7,6 +7,10 @@
           as: :select,
           collection: TimeRange.minimum_shift_length_options
         %>
+        <%= f.input :preferred_shift_length,
+          as: :select,
+          collection: TimeRange.preferred_shift_length_options
+        %>
         <%= f.input :maximum_shift_length,
           as: :select,
           collection: TimeRange.maximum_shift_length_options %>
