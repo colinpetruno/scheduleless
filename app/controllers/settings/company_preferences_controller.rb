@@ -32,6 +32,7 @@ module Settings
           :break_length,
           :maximum_shift_length,
           :minimum_hours_for_break,
+          :preferred_shift_length,
           :minimum_shift_length,
           :paid_break,
           :shift_overlap

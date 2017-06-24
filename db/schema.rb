@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170623124751) do
+ActiveRecord::Schema.define(version: 20170624122254) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -199,6 +199,7 @@ ActiveRecord::Schema.define(version: 20170623124751) do
     t.boolean "use_company_settings",    default: true,      null: false
     t.boolean "paid_break",              default: false,     null: false
     t.integer "minimum_hours_for_break", default: 4,         null: false
+    t.integer "preferred_shift_length",  default: 360,       null: false
     t.index ["preferable_id"], name: "index_preferences_on_preferable_id", using: :btree
   end
 

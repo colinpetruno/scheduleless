@@ -35,6 +35,7 @@ class Location < ApplicationRecord
           slice(
             "break_length",
             "minimum_shift_length",
+            "preferred_shift_length",
             "maximum_shift_length",
             "shift_overlap"
           )

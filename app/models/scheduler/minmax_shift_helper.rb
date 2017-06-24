@@ -4,11 +4,12 @@ module Scheduler
     MAX_SHIFT_STRATEGY = 'ABSOLUTE' # ABSOLUTE: Cannot exceed maximum in any day period TODO: Make this another parameter varying on any timeframe
                                     # DISJOINTED: Cannot exceed maximum in consecutive time period
 
-    def initialize(timeslot:, employee:, layout:, company:, existing_shifts:, options:)
+    def initialize(timeslot:, employee:, layout:, company:, location:, existing_shifts:, options:)
       @timeslot = timeslot
       @employee = employee
       @layout = layout
       @company = company
+      @location = location
       @existing_shifts = existing_shifts
       @options = options
     end
@@ -16,11 +17,11 @@ module Scheduler
     def is_not_eligible
       exceeds_maximum = false
       fails_minumum = false
-      if !company_preference.minimum_shift_length.nil?
+      if !preferences.minimum_shift_length.nil?
         fails_minumum = false;
       end
 
-      if !company_preference.maximum_shift_length.nil?
+      if !preferences.maximum_shift_length.nil?
         exceeds_maximum = would_exceed_max
       end
 
@@ -33,10 +34,11 @@ module Scheduler
     attr_reader :employee
     attr_reader :layout
     attr_reader :company
+    attr_reader :location
     attr_reader :options
 
-    def company_preference
-      @_preference ||= PreferenceFinder.for(company)
+    def preferences
+      @_preference ||= PreferenceFinder.for(location)
     end
 
     def would_exceed_max
@@ -107,9 +109,9 @@ module Scheduler
     end
 
     def max_shift_length
-      max = company_preference.maximum_shift_length
-      if max and company_preference.break_length
-        max = max + company_preference.break_length
+      max = preferences.maximum_shift_length
+      if max and preferences.break_length
+        max = max + preferences.break_length
       end
 
       max

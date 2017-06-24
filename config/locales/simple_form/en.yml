@@ -85,7 +85,7 @@ en:
           Give a name to your location to help you identify it.
       confirm_delete:
         delete_positions: >
-          Employees with this position could end up having no positions and 
+          Employees with this position could end up having no positions and
           may not get scheduled.
         delete_rules: >
           These rules will be removed and will no longer be scheduled for.
@@ -93,7 +93,7 @@ en:
         break_length: >
           Amount of time given for a break. If the break is paid it is included
           in the shift. An 8 hour shift has 1 hour paid break. If it is not
-          paid then an 8 hour shift will be scheduled for 9 hours. 
+          paid then an 8 hour shift will be scheduled for 9 hours.
         maximum_shift_length: >
           Most amount of hours allowed per shift. This will ensure they do not
           go over this amount of time in a 24 hour period.
@@ -102,25 +102,28 @@ en:
           break?
         minimum_shift_length: >
           This is the smallest amount of time we will schedule an employee for.
-          They need to work long enough to make traveling worthwhile! It's 
+          They need to work long enough to make traveling worthwhile! It's
           recommended to keep this to over 3 hours.
         paid_break: >
           Do you pay your employees while they are on break?
+        preferred_shift_length: >
+          This is the length of time you expect a shift to last for. These are the
+          lengths of your 'Open', 'Closing', and other time constrained shifts.
         shift_overlap: >
           Allow a buffer to ensure that the next employee can get
           there and situated before the previous worker leaves.
       schedule_setting:
         lead_time: >
-          This is how many periods we will additionally schedule ahead. If the 
-          duration is 2 weeks and the periods are set to 2, you will have 1 
-          active schedule and receive 2 additional ones ready to go for a 
+          This is how many periods we will additionally schedule ahead. If the
+          duration is 2 weeks and the periods are set to 2, you will have 1
+          active schedule and receive 2 additional ones ready to go for a
           total of 6 weeks.
       user:
         positions: >
           Select positions the user can fill in as if needed. For instance,
 
     # Examples
-    
+
     #   defaults:
     #     password: 'Password'
     #   user:
@@ -128,7 +131,7 @@ en:
     #       email: 'E-mail to sign in.'
     #     edit:
     #       email: 'E-mail.'
-    
+
     #  include_blanks:
     #   defaults:
     #     age: 'Rather not say'

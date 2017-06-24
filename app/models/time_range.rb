@@ -46,6 +46,14 @@ class TimeRange
     ]
   end
 
+  def self.preferred_shift_length_options
+    [
+      ["2 hours", 120], ["3 hours", 180], ["4 hours", 240], ["5 hours", 300],
+      ["6 hours", 360], ["7 hours", 420], ["8 hours", 480], ["9 hours", 540],
+      ["10 hours", 600], ["11 hours", 660], ["12 hours", 720]
+    ]
+  end
+
   def self.maximum_shift_length_options
     [
       ["4 hours", 240], ["5 hours", 300], ["6 hours", 360], ["7 hours", 420],
