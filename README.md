@@ -15,7 +15,7 @@ Once logged in you can run these commands to set up the user in postgres.
 `CREATE USER rails WITH PASSWORD 'rails';`
 `ALTER USER rails WITH SUPERUSER;`
 
-You can then try running `rails db:create` If this fails you may need to edit 
+You can then try running `rails db:create` If this fails you may need to edit
 the pg_hba.conf to allow connections on all users from localhost.
 [How to Edit pg_hba.conf](https://www.postgresql.org/docs/9.1/static/auth-pg-hba-conf.html)
 
@@ -43,8 +43,8 @@ locations of different sizes.
 
 `rake database:seed_demo[prefix]`
 
-This will make the company Prefix Company and emails will look like 
-prefix.1@example.com - prefix.200@example.com. 
+This will make the company Prefix Company and emails will look like
+prefix.1@example.com - prefix.200@example.com.
 
 prefix.1@example.com will be the company admin and all login passwords use
 `password` for now.
@@ -73,6 +73,16 @@ Example Curl:
 ```
 curl -X GET -H "Authorization: Bearer c35042ae39fb1bcad57216eebcafdb6b7addb7ceea5cd99eadf11d2310b48b8d" -H "Cache-Control: no-cache" -H "Postman-Token: 5c9a1329-41c7-2d0a-904d-9e2024a9d61c" "http://localhost:3000/mobile_api/future_shifts"
 ```
+
+### Problems Installing Capybara Webkit
+If when installing gems, Capybara webkit fails follow these two cases:  
+`command: qmake not found`: Follow the guides for linking Qt [here](https://github.com/thoughtbot/capybara-webkit/wiki/Installing-Qt-and-compiling-capybara-webkit)
+
+`xcode not set up properly`: (You may have already tried to run `xcodebuild` which probably failed.) You have to agree to the command line interface license agreement. First open XCode itself and agree to the desktop agreement.  
+Then, run `sudo xcode-select -s /Applications/Xcode.app/Contents/Developer`. This will allow you to run the `xcodebuild` command.  
+Lastly run, `sudo xcodebuild -license` and spam `[SPACE]` until you reach the end and type `agree`.
+
+After each case, retry installation of the gem.
 
 
 ## Tools We Use
@@ -105,7 +115,7 @@ curl -X GET -H "Authorization: Bearer c35042ae39fb1bcad57216eebcafdb6b7addb7ceea
 #### Twilio
 
 - Used for inviting users to download the app. Note: Cost is a concern here. If
-  we send more than 500-1000 of these a month per customer cost will be a 
+  we send more than 500-1000 of these a month per customer cost will be a
   factor.
 - Admins: Colin
 
