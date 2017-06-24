@@ -2,7 +2,7 @@ class ShiftsController < AuthenticatedController
   def index
     @shifts = policy_scope(Shift)
   end
-
+ 
   private
 
   def shift_params
