@@ -1,7 +1,7 @@
 class DaySchedulePresenter
   include ActionView::Helpers::UrlHelper
 
-  attr_reader :shifts
+  attr_reader :day, :location, :preview, :shifts
 
   def initialize(day:, location:, shifts:, preview: false)
     @day = day
@@ -49,8 +49,6 @@ class DaySchedulePresenter
 
 
   private
-
-  attr_reader :day, :location, :preview
 
   def day_date
     Date.parse(day.to_s)
