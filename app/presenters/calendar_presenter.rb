@@ -50,6 +50,10 @@ class CalendarPresenter
       class_names = class_names + " today"
     end
 
+    if day == date
+      class_names = class_names + " selected-day"
+    end
+
     class_names
   end
 

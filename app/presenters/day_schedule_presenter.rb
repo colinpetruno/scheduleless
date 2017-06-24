@@ -10,12 +10,25 @@ class DaySchedulePresenter
     @preview = preview
   end
 
+  def delete_shift_route(shift)
+    if preview
+      routes.
+        locations_location_in_progress_shift_path(
+          shift.location,
+          shift
+        )
+    else
+      routes.
+        locations_location_shift_path(shift.location, shift)
+    end
+  end
+
   def edit_shift_route(shift)
     if preview
       routes.
         edit_locations_location_in_progress_shift_path(shift.location, shift)
     else
-      routes.edit_location_shift_path(shift.location, shift)
+      routes.edit_locations_location_shift_path(shift.location, shift)
     end
   end
 

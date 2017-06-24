@@ -1,15 +1,15 @@
 en:
   shifts:
     create:
-      notice: "Successfully created shift"
+      notice: "Your shift was created!"
       alert: "There was an issue creating your shift"
     destroy:
-      notice: "Successfully edited shift"
+      notice: "Your shift was deleted!"
       alert: "There was an issue editing your shift"
     edit:
       start_time: "Start Time"
       end_time: "End Time"
-      notice: "Successfully edited shift"
+      notice: "Your shift was updated!"
       alert: "There was an issue editing your shift"
     form:
       remove: "Delete"

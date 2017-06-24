@@ -1,0 +1,42 @@
+<%= simple_form_for [:locations, @location, @shift] do |f| %>
+
+  <%= f.input :minute_start,
+    as: :select,
+    collection: TimeRange.quarter_hour_options
+  %>
+
+  <%= f.input :minute_end,
+    as: :select,
+    collection: TimeRange.quarter_hour_options
+  %>
+
+  <div class="inline">
+    <%= f.input :day,
+      as: :select,
+      collection: TimeRange.date_options
+    %>
+
+    <%= f.input :month,
+      as: :select,
+      collection: TimeRange.month_options
+    %>
+
+    <%= f.input :year,
+      as: :select,
+      collection: TimeRange.year_options
+    %>
+  </div>
+
+  <%= f.input :user_id,
+    as: :select,
+    collection: @users,
+    label_method: :given_name
+  %>
+
+  <%= f.submit %>
+  <%= link_to("Cancel",
+              location_calendar_path(date: @shift.date),
+              class: "btn btn-link"
+             ) %>
+
+<% end %>
