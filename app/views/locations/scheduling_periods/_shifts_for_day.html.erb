@@ -18,7 +18,8 @@
           presenter: DaySchedulePresenter.new(
             day: day,
             location: presenter.location,
-            shifts: presenter.shifts_for(day)
+            shifts: presenter.shifts_for(day),
+            preview: true
           )
         }
       ) %>

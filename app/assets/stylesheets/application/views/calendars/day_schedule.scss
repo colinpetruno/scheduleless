@@ -58,7 +58,7 @@
     .shifts {
       position: relative;
 
-      > div {
+      > div, > a {
         background-color: lighten($green, 20%);
         border: 2px solid $green;
         border-radius: 2px;

@@ -9,6 +9,9 @@ en:
       credit_card:
         create: "Add Card"
         update: "Update Card"
+      in_progress_shift:
+        create: "Create Shift"
+        update: "Update Shift"
       scheduling_hour:
         create: "Add Hours"
         update: "Update Hours"
@@ -30,6 +33,8 @@ en:
         delete_rules: "Delete the Scheduling Rules?"
         new_position_id: "Choose a New Position"
         new_rule_id: "Choose a New Position"
+      in_progress_shift:
+        user_id: "Employee"
       location:
         county_province: "State"
         line_1: "Address Line 1"
