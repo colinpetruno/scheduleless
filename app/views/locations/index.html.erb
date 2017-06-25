@@ -3,7 +3,9 @@
     <div>
       <%= t(".title") %>
       <aside>
-        <%= link_to_if policy(:location).new?, t(".new_location"), new_location_path %>
+        <% if policy(:location).new? %>
+          <%= link_to t(".new_location"), new_location_path %>
+        <% end %>
       </aside>
     </div>
   </header>
