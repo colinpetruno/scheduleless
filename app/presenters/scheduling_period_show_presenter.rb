@@ -1,10 +1,17 @@
 class SchedulingPeriodShowPresenter
-  def initialize(scheduling_period)
+  attr_reader :date
+
+  def initialize(scheduling_period, date = nil)
+    @date = date
     @scheduling_period = scheduling_period
   end
 
   def location
     scheduling_period.location
+  end
+
+  def day_to_open
+    date || day_keys.first
   end
 
   def shifts

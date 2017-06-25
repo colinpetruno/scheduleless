@@ -41,10 +41,16 @@ module Locations
 
       authorize @scheduling_period
 
-      @presenter = SchedulingPeriodShowPresenter.new(@scheduling_period)
+      @presenter = SchedulingPeriodShowPresenter.new(@scheduling_period, date)
     end
 
     private
+
+    def date
+      params[:date].to_i if params[:date].present?
+    rescue
+      nil
+    end
 
     def scheduling_period_params
       params.

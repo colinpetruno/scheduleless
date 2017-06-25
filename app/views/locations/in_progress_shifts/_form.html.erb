@@ -25,6 +25,7 @@
         <%= link_to("Back",
           locations_location_scheduling_period_path(
             @location,
-            @in_progress_shift.scheduling_period
+            @in_progress_shift.scheduling_period,
+            date: params[:date]
           )) %>
       <% end %>

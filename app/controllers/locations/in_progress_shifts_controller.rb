@@ -12,7 +12,8 @@ module Locations
         redirect_to(
           locations_location_scheduling_period_path(
             @location,
-            @in_progress_shift.scheduling_period
+            @in_progress_shift.scheduling_period,
+            date: @in_progress_shift.date
           )
         )
       else
@@ -33,11 +34,13 @@ module Locations
       if @in_progress_shift.destroy
         redirect_to locations_location_scheduling_period_path(
           @location,
-          @in_progress_shift.scheduling_period)
+          @in_progress_shift.scheduling_period,
+          date: @in_progress_shift.date)
       else
         redirect_to locations_location_scheduling_period_path(
-          @location,
-          @in_progress_shift.scheduling_period),
+            @location,
+            @in_progress_shift.scheduling_period,
+            date: @in_progress_shift.date),
           alert: "We had an error deleting your shift"
       end
     end
@@ -75,7 +78,9 @@ module Locations
       if @in_progress_shift.update(in_progress_shift_params)
         redirect_to locations_location_scheduling_period_path(
           @location,
-          @in_progress_shift.scheduling_period)
+          @in_progress_shift.scheduling_period,
+          date: @in_progress_shift.date
+        )
       else
         render :edit
       end
