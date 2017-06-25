@@ -1,9 +1,10 @@
 class SchedulingPeriodShowPresenter
-  attr_reader :date
+  attr_reader :date, :scheduling_period, :view
 
-  def initialize(scheduling_period, date = nil)
+  def initialize(scheduling_period, date = nil, view="day")
     @date = date
     @scheduling_period = scheduling_period
+    @view = view
   end
 
   def location
@@ -26,9 +27,24 @@ class SchedulingPeriodShowPresenter
     (start_date..end_date).map { |date| date.to_s(:integer).to_i }
   end
 
+  def partial
+    if view == "day"
+      "locations/scheduling_periods/daily_view"
+    else
+      "calendars/week_schedule"
+    end
+  end
+
+  def partial_options
+    if view == "day"
+      { presenter: self }
+    else
+      { presenter: WeekSchedulePreviewPresenter.new(scheduling_period, date) }
+    end
+  end
+
   private
 
-  attr_reader :scheduling_period
 
   def build_shift_hash
     day_keys.inject({}) do |object, day|

@@ -1,13 +1,22 @@
 class WeekSchedulePresenter
-  attr_reader :day, :location, :shifts
+  include ActionView::Helpers::UrlHelper
+
+  attr_reader :day, :location, :preview, :shifts
 
   def initialize(day:, location:)
     @day = day
     @location = location
+    @preview = false
   end
 
   def days
     (start_day..end_day)
+  end
+
+  def day_headers
+    days.map do |day|
+      content_tag(:div, day.to_s(:month_day))
+    end.join.html_safe
   end
 
   def start_day
@@ -26,6 +35,30 @@ class WeekSchedulePresenter
     key = "#{user.id}_#{date.to_s(:integer)}"
 
     shift_map[key]
+  end
+
+  def daily_schedule_tab
+    link_to(
+      "<span class='oi oi-project'></span>".html_safe,
+      routes.location_daily_schedule_path(
+        location,
+        date: day.to_s,
+        view: "day",
+        format: :js
+      ),
+      remote: true
+    )
+ end
+
+  def print_tab
+    link_to(
+      "<span class=\"oi oi-print\"></span>".html_safe,
+      routes.location_print_path(
+        location,
+        date: day.to_s
+      ),
+      target: "_blank"
+    )
   end
 
   private
@@ -51,6 +84,10 @@ class WeekSchedulePresenter
 
   def date_integer_range
     (start_day.to_s(:integer).to_i..end_day.to_s(:integer).to_i)
+  end
+
+  def routes
+    Rails.application.routes.url_helpers
   end
 
   def shift_map

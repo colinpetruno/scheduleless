@@ -23,8 +23,14 @@
   }
 
   > div.table-container {
-     max-height: 400px;
-     overflow-y: scroll;
+    border-bottom: 1px solid $blue;
+    margin-bottom: 20px;
+    max-height: 400px;
+    overflow-y: scroll;
+
+    table {
+      margin-bottom: 0;
+    }
   }
 
   table {
@@ -51,7 +57,7 @@
       height: 43px;
       line-height: 40px;
       padding: 3px;
-      min-height: 43px;
+      min-height: 44px;
       width: 12%;
 
       &:first-child {
@@ -59,12 +65,59 @@
         width: 16%;
       }
 
+      .add-shift {
+        color: $white;
+        display: block;
+        height: 40px;
+        min-height: 40px;
+        text-align: center;
+        width: 100%;
+
+        &:hover {
+          background-color: lighten($green, 25%);
+          border: 2px solid lighten($green, 10%);
+          color: darken($green, 20%);
+          min-height: 36px;
+          text-decoration: none;
+        }
+      }
+
       .shift {
         background-color: lighten($blue, 20%);
         border: 2px solid $blue;
-        line-height: 40px;
-        min-height: 40px;
+        color: darken($blue, 20%);
+        display: block;
+        line-height: 36px;
+        min-height: 36px;
         text-align: center;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  .week-links {
+    text-align: center;
+
+    a {
+      border: 2px solid $blue;
+      color: darken($blue, 30%);
+      display: inline-block;
+      margin-right: 20px;
+      padding: 5px 10px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &:hover {
+        text-decoration: none;
+      }
+
+      &.selected {
+        background-color: lighten($blue, 20%);
       }
     }
   }

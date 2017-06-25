@@ -103,7 +103,8 @@ Rails.application.routes.draw do
 
   namespace :remote, defaults: { format: :js } do
     resources :locations, only: [] do
-      resource :calendar, only: :show
+      resource :calendar, only: [:show]
+      resources :scheduling_periods, only: [:show]
     end
   end
 

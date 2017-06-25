@@ -4,7 +4,7 @@ section.icon-toggle {
   margin-right: 15px;
 
   a {
-    border: 1px solid $gray-light;
+    border: 1px solid $blue;
     border-right: 0;
     line-height: 20px;
     height: 42px;
@@ -14,14 +14,15 @@ section.icon-toggle {
     vertical-align: middle;
 
     &:last-child {
-      border-right: 1px solid $gray-light;;
+      border-right: 1px solid $blue;
     }
 
     &.selected {
-      background-color: $white;
+      background-color: $blue;
+      color: $white;
 
       &:hover {
-        color: $blue;
+        color: $white;
       }
     }
   }
