@@ -2,33 +2,13 @@
   <header>
     <div>
       <section class="icon-toggle">
-        <%= link_to(
-          location_daily_schedule_path(
-            presenter.location,
-            date: presenter.day.to_s,
-            view: "day",
-            format: :js
-          ),
-          remote: true
-        ) do %>
-          <span class="oi oi-project"></span>
-        <% end %>
-
+        <%= presenter.daily_schedule_tab %>
         <a class="selected" href="#"><span class="oi oi-grid-three-up"></span></a>
-
-        <%= link_to(
-          location_print_path(
-            presenter.location,
-            date: presenter.day.to_s
-          ),
-          target: "_blank") do %>
-          <span class="oi oi-print"></span>
-        <% end %>
+        <%= presenter.print_tab %>
       </section>
     </div>
-    <% presenter.days.each do |day| -%>
-      <div><%= day.to_s(:month_day) %></div>
-    <% end %>
+
+    <%= presenter.day_headers %>
   </header>
 
   <div class="table-container">
@@ -42,9 +22,36 @@
               <td>
                 <% if presenter.shifts_for(user, day).present? %>
                   <% presenter.shifts_for(user, day).each do |shift| %>
-                    <div class="shift">
-                      <%= shift.time_range %>
-                    </div>
+                    <% if presenter.preview %>
+
+                      <%= link_to(
+                        edit_locations_location_in_progress_shift_path(
+                          presenter.location,
+                          shift,
+                          date: presenter.day.to_s(:integer),
+                          scheduling_period_id: presenter.scheduling_period.id
+                        ),
+                        class: "shift") do %>
+                          <%= shift.time_range %>
+                        <% end %>
+
+                    <% else %>
+                      <div class="shift">
+                        <%= shift.time_range %>
+                      </div>
+                    <% end %>
+                  <% end %>
+                <% else %>
+                  <% if presenter.preview %>
+                    <%= link_to(
+                      "Add",
+                      new_locations_location_in_progress_shift_path(
+                        presenter.location,
+                        scheduling_period_id: presenter.scheduling_period.id,
+                        date: presenter.day.to_s(:integer)
+                      ),
+                      class: "add-shift"
+                    ) %>
                   <% end %>
                 <% end %>
               </td>
@@ -54,7 +61,23 @@
       </tbody>
     </table>
   </div>
+
+
+  <% if presenter.preview %>
+    <div class="week-links">
+      <% presenter.week_ranges.map do |week| %>
+        <%= link_to(
+          "#{week.first.to_s(:short)} - #{week.last.to_s(:short)}",
+          remote_location_scheduling_period_path(
+            presenter.location,
+            presenter.scheduling_period,
+            date: week.first.to_s(:integer)
+          ),
+          class: (week.first == presenter.day ? "selected" : ""),
+          format: :js,
+          remote: true
+        ) %>
+      <% end %>
+    </div>
+  <% end %>
 </div>
-
-
-

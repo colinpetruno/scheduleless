@@ -17,7 +17,7 @@ module MobileApi
     attr_reader :user
 
     def shift_to_display
-      checked_in_shift || current_shift || next_shift
+      checked_in_shift || current_shift || next_shift || {}
     end
 
     def checked_in_shift

@@ -1,0 +1,6 @@
+<div id="accordion" class="accordion" role="tablist" aria-multiselectable="true">
+  <% presenter.day_keys.each do |day| %>
+    <%= render partial: "locations/scheduling_periods/shifts_for_day",
+      locals: { presenter: presenter, day: day } %>
+  <% end %>
+</div>

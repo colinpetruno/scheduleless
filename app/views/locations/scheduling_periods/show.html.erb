@@ -1,12 +1,16 @@
 <div class="frame">
+  <header>
+    <div>
+      Review Schedule
+    </div>
+  </header>
+
   <section>
-    <article>
       <%= render partial: "show",
         locals: {
           location: @location,
           scheduling_period: @scheduling_period
         }
       %>
-    </article>
   </section>
 </div>

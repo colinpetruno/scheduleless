@@ -8,3 +8,11 @@ en:
           scheduleless_approved: "In Progress"
           company_approved: "In Progress"
           published: "Published"
+      show:
+        confirm: >
+          This will completely regenerate this schedule. Your changes will 
+          not be saved
+        publish: "Publish"
+        rebuild: "Recreate"
+
+

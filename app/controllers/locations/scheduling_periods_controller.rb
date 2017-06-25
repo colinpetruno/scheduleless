@@ -41,7 +41,8 @@ module Locations
 
       authorize @scheduling_period
 
-      @presenter = SchedulingPeriodShowPresenter.new(@scheduling_period, date)
+      @presenter = SchedulingPeriodShowPresenter.
+        new(@scheduling_period, date, view)
     end
 
     private
@@ -58,5 +59,15 @@ module Locations
         permit(:start_date).
         merge(company_id: current_company.id)
     end
+
+    def view
+      if params[:schedule_preview_view].present?
+        cookies[:schedule_preview_view] = params[:schedule_preview_view]
+      end
+
+      cookies[:schedule_preview_view] ||  "day"
+    end
+
+
   end
 end
