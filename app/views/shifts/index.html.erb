@@ -1,11 +1,21 @@
-<% if @shifts.present? %>
-  <div class="frame">
-    <header>
-      <div><%= t(".title") %></div>
-    </header>
-  </div>
+<div class="rail narrow">
+  <section>
+    <aside>
+      <%= render partial: "sidebar" %>
+    </aside>
 
-  <%= render @shifts %>
-<% else %>
-  <%= render partial: "no_shifts" %>
-<% end %>
+    <article>
+      <% if @shifts.present? %>
+        <div class="frame">
+          <header>
+            <div><%= t(".title") %></div>
+          </header>
+        </div>
+
+        <%= render @shifts %>
+      <% else %>
+        <%= render partial: "no_shifts" %>
+      <% end %>
+    </article>
+  </section>
+</div>

@@ -1,0 +1,8 @@
+en:
+  time_off_requests:
+    index:
+      request_time_off: "Request Time Off"
+      title: "Your time off"
+    new:
+      time_hint: "Leave the times empty if you need off for the full day!"
+      title: "Request Time Off"
