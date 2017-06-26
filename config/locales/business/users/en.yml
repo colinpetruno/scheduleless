@@ -5,6 +5,9 @@ en:
         add_employee: "Add Employee"
         email: "Email"
         title: "Employees"
+        no_users: >
+          Looks like you don't have any employees! Add some so you can start making
+          schedules for them.
       new:
         title: "Add Employee"
       user_details:
@@ -18,4 +21,3 @@ en:
       user_locations:
         no_locations: "The employee does not currently belong to any locations"
         title: "Locations"
-

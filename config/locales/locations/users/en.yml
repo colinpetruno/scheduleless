@@ -14,3 +14,7 @@ en:
         name: "Name"
         position: "Position"
         remove: "Remove"
+      employees:
+        no_users: >
+          Looks like you don't have any employees at this location! Add some
+          so you can start making schedules for them.

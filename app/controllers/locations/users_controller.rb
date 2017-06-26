@@ -38,6 +38,10 @@ module Locations
     def index
       skip_policy_scope # TODO: FIX ME
       @location = current_company.locations.find(params[:location_id])
+
+      @users = UserFinder.
+        new(location: @location).
+        by_location_without(current_user)
     end
 
     def new

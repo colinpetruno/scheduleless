@@ -11,6 +11,11 @@
   </header>
 
   <section>
+  <% if @locations.empty? %>
+    <article class="centered">
+      <%= t(".not_added") %>
+    </article>
+  <% else %>
     <table>
       <thead>
         <tr>
@@ -33,5 +38,6 @@
         <td><%= location.county_province %></td>
       </tr>
     <% end %>
+  <% end %>
   </section>
 </div>
