@@ -35,6 +35,11 @@
   } %>
 </div>
 
+<div class="centered" style="padding-50px; margin-bottom: 50px;">
+  Need to join this location? Sign up at the link below. <br />
+  <%= location_join_url(@presenter.location.hash_key) %>
+</div>
+
 <script type="text/javascript">
   window.print();
 </script>

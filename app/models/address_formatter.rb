@@ -18,7 +18,7 @@ class AddressFormatter
   end
 
   def multiline_html
-    safe_join(address.push(city_state_zip).compact, ("<br>".html_safe))
+    safe_join(address.push(city_state_zip).reject(&:blank?), ("<br>".html_safe))
   end
 
   private

@@ -61,8 +61,8 @@ en:
         sign_up: "Sign Up"
         submit: "Sign In"
       signed_in: ""
-      signed_out: "Signed out successfully."
-      already_signed_out: "Signed out successfully."
+      signed_out: ""
+      already_signed_out: ""
     unlocks:
       send_instructions: "You will receive an email with instructions for how to unlock your account in a few minutes."
       send_paranoid_instructions: "If your account exists, you will receive an email with instructions for how to unlock it in a few minutes."

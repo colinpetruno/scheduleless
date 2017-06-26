@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170626132530) do
+ActiveRecord::Schema.define(version: 20170626141805) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 20170626132530) do
     t.string   "name"
     t.string   "time_zone",                   default: "Eastern Time (US & Canada)", null: false
     t.boolean  "use_custom_scheduling_rules", default: false,                        null: false
+    t.string   "hash_key"
     t.index ["company_id"], name: "index_locations_on_company_id", using: :btree
   end
 

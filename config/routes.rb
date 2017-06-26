@@ -19,6 +19,7 @@ Rails.application.routes.draw do
     resources :available_employees, only: [:index]
     resource :calendar, only: [:show]
     resource :daily_schedule, only: [:show]
+    resource :join, only: [:create, :show]
     resource :print, only: [:show]
 
     scope module: :locations, as: :locations do

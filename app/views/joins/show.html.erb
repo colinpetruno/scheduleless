@@ -1,0 +1,17 @@
+<% if @location.present? %>
+  <h3><%= @location.name %></h3>
+  <p><%= @location.company.name %></p>
+  <br />
+  <%= simple_form_for @join, url: location_join_path(@location.hash_key) do |f| %>
+    <%= f.input :email %>
+    <%= f.input :mobile_phone, as: :tel %>
+    <%= f.input :first_name %>
+    <%= f.input :last_name %>
+    <%= f.input :password %>
+    <%= f.input :password_confirmation %>
+
+    <%= f.submit %>
+  <% end %>
+<% else %>
+  We could not find that company. Make sure you typed the url properly
+<% end %>

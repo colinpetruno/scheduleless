@@ -10,6 +10,7 @@ en:
       edit: "Edit"
       default_title: "Location"
       employees: "Employees"
+      invitation_url: "Invitation URL"
     sidebar:
       details: "Details"
       employees: "Employees"

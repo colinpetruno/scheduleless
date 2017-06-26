@@ -27,6 +27,10 @@ class Location < ApplicationRecord
     locations.find_by(user_locations: { home: true }) || locations.first
   end
 
+  def hash_key
+    super || generate_hash_key
+  end
+
   def preference
     super || build_preference(
         company.
@@ -46,5 +50,11 @@ class Location < ApplicationRecord
 
   def build_scheduling_hours
     SchedulingHour.build_for(self)
+  end
+
+  def generate_hash_key
+    key = SecureRandom.hex(6)
+    update_column(:hash_key, key)
+    key
   end
 end
