@@ -18,6 +18,10 @@ class Company < ApplicationRecord
 
   after_create :setup_stripe_customer
 
+  def hash_key
+    super || generate_hash_key
+  end
+
   def preference
     super || create_preference
   end
@@ -31,6 +35,12 @@ class Company < ApplicationRecord
   end
 
   private
+
+  def generate_hash_key
+    key = SecureRandom.hex(6)
+    update_column(:hash_key, key)
+    key
+  end
 
   def setup_stripe_customer
     if !Rails.env.test?
