@@ -10,18 +10,18 @@
   </header>
 
   <section>
-    <%= presenter.next_shift_location.name %><br>
-    <%= safe_join(presenter.next_shift_address_line, "<br />".html_safe) %><br>
-    <%= presenter.next_shift_city_line %>
-
-    <% if presenter.next_shift.checked_in? %>
-      <%= button_to "Check Out",  shift_check_out_path(presenter.next_shift) %>
-    <% else %>
-      <%= button_to "Check In",  shift_check_in_path(presenter.next_shift) %>
-    <% end %>
-
     <div>
-      <%= link_to "View All", shifts_path %>
+      <strong><%= presenter.next_shift_location.name %><strong>
     </div>
+
+    <%= AddressFormatter.for(presenter.next_shift_location).multiline_html %>
+
+    <footer>
+      <% if presenter.next_shift.checked_in? %>
+        <%= button_to t(".check_out"), shift_check_out_path(presenter.next_shift) %>
+      <% else %>
+        <%= button_to t(".check_in"), shift_check_in_path(presenter.next_shift) %>
+      <% end %>
+    </footer>
   </section>
 </div>

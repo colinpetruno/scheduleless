@@ -7,6 +7,9 @@ en:
       next_shift_title: "Your next shift"
     location_select:
       selected_location: "Selected Location"
+    next_shift:
+      check_in: "Check In"
+      check_out: "Check Out"
     no_locations:
       contact_manager: >
         Contact your manager to ensure you get added to your proper location so 

@@ -20,5 +20,12 @@
   section {
     color: $font-dark;
     padding: 15px;
+    text-align: center;
+
+    footer {
+      display: block;
+      margin-top: 25px;
+      text-align: center;
+    }
   }
 }
