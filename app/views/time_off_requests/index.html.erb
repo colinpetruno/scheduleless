@@ -21,7 +21,16 @@
 
         <section>
           <article>
-            hihihi
+            <% if @time_off_requests.present? %>
+              <%= render @time_off_requests %>
+            <% else %>
+              <div class="centered">
+                You haven't requested any time off yet!  <br />
+
+                <%= link_to "Take a Break", new_time_off_request_path %>
+              </div>
+            <% end %>
+
           </article>
         </section>
       </div>

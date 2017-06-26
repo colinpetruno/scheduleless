@@ -4,6 +4,8 @@ td > form {
 
 form {
   .inline {
+    vertical-align: top;
+
     label {
       display: block;
       font-weight: bold;
@@ -11,6 +13,7 @@ form {
 
     .input {
       display: inline-block;
+      vertical-align: top;
     }
   }
 }
@@ -41,6 +44,7 @@ form {
     font-size: $font-size-base;
     line-height: $input-line-height;
     max-width: 400px;
+    min-width: 125px;
     padding: $input-padding-y $input-padding-x;
     width: 100%;
 

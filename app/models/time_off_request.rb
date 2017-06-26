@@ -3,6 +3,7 @@ class TimeOffRequest < ApplicationRecord
   before_validation :set_dates
 
   validates :start_date, presence: true
+  validate :times_are_valid
 
   enum status: {
     pending: 0,
@@ -11,6 +12,42 @@ class TimeOffRequest < ApplicationRecord
   }
 
   attr_writer :start_date_string, :end_date_string
+
+  def badge_type
+    if pending?
+      "info"
+    elsif approved?
+      "notice"
+    else
+      "warning"
+    end
+  end
+
+  def label
+    start_array = [start_date_string, start_time_string].compact
+    end_array = [end_date_string, end_time_string].compact
+
+    # TODO: tidy up
+    if start_date_string.present? && end_date_string.present?
+      "#{start_array.join(' ')} to #{end_array.join(' ')}"
+    elsif start_date_string.present? && end_date_string.blank? &&  end_time_string.present?
+      "#{start_date_string} from #{start_time_string} to #{end_time_string}"
+    else
+      start_array.join(' ')
+    end
+  end
+
+  def start_time_string
+    if start_minutes.present?
+      MinutesToTime.for(start_minutes)
+    end
+  end
+
+  def end_time_string
+    if end_minutes.present?
+      MinutesToTime.for(end_minutes)
+    end
+  end
 
   def start_date_string
     if @start_date_string.present?
@@ -29,6 +66,16 @@ class TimeOffRequest < ApplicationRecord
   end
 
   private
+
+  def times_are_valid
+    if @end_date_string.present? && @start_date_string.blank?
+      errors.add(:end_date_string, "Must choose a start date")
+    end
+
+    if end_minutes.present? && start_minutes.blank?
+      errors.add(:start_minutes, "Select a start time")
+    end
+  end
 
   def set_dates
     if start_date_string.present?

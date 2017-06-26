@@ -1,0 +1,26 @@
+.time-off-requests-time-off-request {
+  @include make-row();
+  border-bottom: 1px solid lighten($blue, 20%);
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+
+  &:last-child {
+    border-bottom: 0;
+    margin-bottom: 0;
+  }
+
+  > div {
+    @include make-col-ready();
+    @include make-col(6);
+    vertical-align: middle;
+
+    &:first-child {
+      line-height: 27px;
+      vertical-align: middle;
+    }
+
+    &:last-child {
+      text-align: right;
+    }
+  }
+}
