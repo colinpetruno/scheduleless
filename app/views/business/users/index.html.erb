@@ -11,7 +11,14 @@
     </div>
   </header>
 
+
   <section>
-    <%= render partial: "users/users", locals: { users: @users } %>
+    <% if @users.empty? %>
+      <article class="centered">
+        <%= t(".no_users") %>
+      </article>
+    <% else %>
+      <%= render partial: "users/users", locals: { users: @users } %>
+    <% end %>
   </section>
 </div>

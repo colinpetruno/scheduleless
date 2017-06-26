@@ -6,6 +6,9 @@ en:
       new_location: "New Location"
       show: "Show"
       title: "Locations"
+      not_added: >
+        You haven't been added to any locations yet! You probably won't be able
+        to see much.
     show:
       edit: "Edit"
       default_title: "Location"
