@@ -1,0 +1,30 @@
+<div class="rail narrow">
+  <section>
+    <aside>
+      <%= render partial: "shifts/sidebar" %>
+    </aside>
+
+    <article>
+      <div class="frame">
+        <header>
+          <div>
+            <%= t(".title") %>
+            <aside>
+              <%= link_to(
+                t(".request_time_off"),
+                new_time_off_request_path,
+                class: "button"
+              ) %>
+            </aside>
+          </div>
+        </header>
+
+        <section>
+          <article>
+            hihihi
+          </article>
+        </section>
+      </div>
+    </article>
+  </section>
+</div>

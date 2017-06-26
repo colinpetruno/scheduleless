@@ -21,6 +21,8 @@ en:
         create: "Add Schedule Rule"
       subscription:
         update: "Update Subscription"
+      time_off_request:
+        create: "Request Time Off"
       user_location:
         create: "Add"
       user:
@@ -70,6 +72,11 @@ en:
         year: "Year"
       subscription:
         plan: "Choose your plan"
+      time_off_request:
+        start_date_string: "Start and End Date"
+        end_date: ""
+        start_minutes: "Start Time"
+        end_minutes: "End Time"
       user:
         family_name: "Last Name"
         given_name: "First Name"

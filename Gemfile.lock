@@ -194,6 +194,7 @@ GEM
       railties (= 5.0.1)
       sprockets-rails (>= 2.0.0)
     rails-assets-jquery (3.2.1)
+    rails-assets-pikaday (1.6.1)
     rails-assets-tether (1.4.0)
     rails-assets-typeahead.js (0.11.1)
       rails-assets-jquery (>= 1.7)
@@ -341,6 +342,7 @@ DEPENDENCIES
   puma (~> 3.0)
   pundit
   rails (~> 5.0.1)
+  rails-assets-pikaday!
   rails-assets-tether!
   rails-assets-typeahead.js!
   rails_12factor

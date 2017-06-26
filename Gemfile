@@ -28,6 +28,7 @@ gem "twilio-ruby"
 gem "uglifier", ">= 1.3.0"
 
 source "https://rails-assets.org" do
+  gem "rails-assets-pikaday"
   gem "rails-assets-tether"
   gem "rails-assets-typeahead.js"
 end
