@@ -1,0 +1,16 @@
+en:
+  time_off_requests:
+    approvals:
+      controller:
+        failure: >
+          We weren't able to process this time off request. We are looking 
+          into it now
+        success: "The time off request has been updated!"
+      index:
+        blank: >
+          There are no time off requests to approve right now! We will let you
+          know when there are.
+        title: "Approve Time Off Requests"
+      time_off_request:
+        accept: "Accept"
+        decline: "Decline"

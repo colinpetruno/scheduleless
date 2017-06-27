@@ -55,10 +55,12 @@ class User < ApplicationRecord
   end
 
   def manage?(location)
+    warn "[DEPRECATION] `manage?` is deprecated.  Please use `UserPermission` instead."
     positions.where(location_admin: true).present? && locations.include?(location)
   end
 
   def company_admin?
+    warn "[DEPRECATION] `company_admin?` is deprecated.  Please use `UserPermission` instead."
     super || positions.where(company_admin: true).present?
   end
 
@@ -68,11 +70,12 @@ class User < ApplicationRecord
   end
 
   def location_admin?
+    warn "[DEPRECATION] `location_admin?` is deprecated.  Please use `UserPermission` instead."
     positions.where(location_admin: true).present?
   end
 
   def full_name
-    "#{given_name} #{family_name}"
+    [given_name, family_name].compact.join
   end
 
   def twilio_formatted_phone

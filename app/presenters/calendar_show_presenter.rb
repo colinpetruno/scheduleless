@@ -17,6 +17,14 @@ class CalendarShowPresenter
     present?
   end
 
+  def time_off_approvals?
+    if pending_time_off.approve? && pending_time_off.waiting_approval.present?
+      true
+    else
+      false
+    end
+  end
+
   def location_label(location)
     location.name || location.line_1
   end
@@ -86,5 +94,9 @@ class CalendarShowPresenter
 
   def next_shift_address
     @_address ||= AddressFormatter.for(next_shift_location)
+  end
+
+  def pending_time_off
+    @_pending_time_off_requests ||= PendingTimeOffRequests.new(user: user)
   end
 end
