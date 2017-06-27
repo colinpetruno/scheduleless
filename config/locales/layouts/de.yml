@@ -1,0 +1,23 @@
+en:
+  layouts:
+    application:
+      page_title: "Scheduleless"
+    marketing:
+      meta_description: >
+        Konzentrieren Sie sich auf Ihr Unternehmen. Wir kümmern uns um die
+        Dienstplanung.
+        Scheduleless ist die einzige Dienstplan-Software die Ihre Schichtplanung
+        übernimmt.
+      meta_title: "Vollautomatisierte Diesnst- und Schichtplanung."
+      page_title: "Scheduleless"
+    shared:
+      reamaze:
+        label_text: "Wir freuen uns über Fragen und Anregungen!"
+      top_nav:
+        calendar: "Kalender"
+        create_schedule: "Dienstplan erstellen"
+        employees: "Arbeitnehmner"
+        locations: "Standorte"
+        logout: "Ausloggen"
+        profile: "Mein Profil"
+        your_shifts: "Meine Schichten"

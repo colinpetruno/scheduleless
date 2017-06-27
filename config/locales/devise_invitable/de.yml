@@ -1,0 +1,31 @@
+de:
+  devise:
+    failure:
+      invited: "Sie haben bereits eine Einladung erhalten. Bitte nehmen Sie die Einladung an um Ihr Nutzerkonto zu erstellen."
+    invitations:
+      send_instructions: "Eine Einladung wurde an %{email} verschickt."
+      invitation_token_invalid: "Der Einladungs-Code ist ungültig!"
+      updated: "Ihr Passwort wurde erstellt. Sie sind nun angemeldet."
+      updated_not_active: "Ihr Passwort wurde erstellt."
+      no_invitations_remaining: "Es gibt keine weiteren Einladungen"
+      invitation_removed: "Ihre Einladung wurde gelöscht."
+      new:
+        header: "Einladung schicken"
+        submit_button: "Einladung schicken"
+      edit:
+        header: "Passwort erstellen"
+        submit_button: "Passwort erstellen"
+    mailer:
+      invitation_instructions:
+        subject: "Einladung"
+        hello: "Hallo %{email}"
+        someone_invited_you: "Jemand hat Sie zu %{url} eingeladen. Sie können die Einladung mit dem Link unten annehmen."
+        accept: "Einladung annehmen"
+        accept_until: "Diese Einladung ist bis zum %{due_date} gültig."
+        ignore: "Ignorieren Sie diese E-Mail, wenn Sie die Einladung nicht annehmen wollen.<br />\nEs wird kein Benutzerkonto erstellt solange Sie nicht die Einladung mittels des Links oben annehmen."
+  time:
+    formats:
+      devise:
+        mailer:
+          invitation_instructions:
+            accept_until_format: "%B %d, %Y %I:%M %p"

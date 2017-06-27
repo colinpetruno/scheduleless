@@ -1,0 +1,15 @@
+de:
+  calendars:
+    blank_next_shift:
+      available: "Verfügbare Schichten"
+      no_shifts: "Momentan sind keine Schichten eingeplant."
+    calendar_layout:
+      next_shift_title: "Nächste Schicht"
+    location_select:
+      selected_location: "Ausgewählter Standort"
+    no_locations:
+      contact_manager: >
+        Kontaktieren Sie ihren Chef um sicherzustellen, dass Sie zum richtigen
+        Standort hinzugefügt wurden.
+      not_added: >
+        Sie wurden noch zu keinem Standort hinzugefügt.
