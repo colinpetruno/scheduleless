@@ -2,17 +2,24 @@
   <div>
     <div class="labels">
       <% start = presenter.start_hour %>
-      <% while start <= presenter.end_hour do %>
-        <div><%= start.strftime("%l") %></div>
-        <% start += 1.hour %>
+      <% if presenter.end_hour and presenter.start_hour %>
+        <% while start <= presenter.end_hour do %>
+          <div><%= start.strftime("%l") %></div>
+          <% start += 1.hour %>
+        <% end %>
       <% end %>
+
     </div>
 
     <div class="ruler">
       <% start = presenter.start_hour %>
-      <% while start <= presenter.end_hour do %>
-        <div></div>
-        <% start += 1.hour %>
+      <% if presenter.end_hour and presenter.start_hour %>
+
+        <% while start <= presenter.end_hour do %>
+          <div></div>
+          <% start += 1.hour %>
+        <% end %>
+
       <% end %>
     </div>
 
