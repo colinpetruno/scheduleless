@@ -1,0 +1,20 @@
+de:
+  business:
+    users:
+      index:
+        add_employee: "Arbeitnehmner hinzufügen"
+        email: "E-Mail"
+        title: "Arbeitnehmner"
+      new:
+        title: "Arbeitnehmner hinzufügen"
+      user_details:
+        contact_information: "Kontaktdaten"
+        details: "Details"
+        email: "E-Mail:"
+        first_name: "Vorname:"
+        last_name: "Nachname:"
+        mobile_phone: "Telefonnummer:"
+        nickname: "Spitzname:"
+      user_locations:
+        no_locations: "Der Arbeitnehmner wurde noch zu keinem Standort hinzugefügt"
+        title: "Standorte"

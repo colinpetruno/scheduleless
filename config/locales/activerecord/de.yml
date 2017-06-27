@@ -1,0 +1,13 @@
+de:
+  errors:
+    format: "%{message}"
+  activerecord:
+    errors:
+      models:
+        schedule_rule:
+          attributes:
+            position:
+              required: "Eine Position muss ausgewählt sein"
+            period:
+              blank: "Ein Zeitraum muss ausgewählt sein"
+              taken: "Eine Dienstplanregel für die Position ist bereits vorhanden"
