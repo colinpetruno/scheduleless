@@ -1,4 +1,7 @@
 <div class="day-schedule hours-<%= presenter.hours_to_draw %>">
+
+  <% if presenter.shifts.length > 0 %>
+
   <div>
     <div class="labels">
       <% start = presenter.start_hour %>
@@ -51,6 +54,12 @@
       </div>
     <% end %>
   </div>
+
+  <% else %>
+    <div>
+      No shifts scheduled for this day.
+    </div>
+  <% end %>
 
   <% if presenter.preview %>
     <br />

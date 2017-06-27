@@ -36,6 +36,10 @@ module Scheduler
       @_existing_shifts ||= ExistingShifts.new(company, date_start, options)
     end
 
+    def timeoff_requests
+      @_timeoff_requests ||= TimeOffRequest.where(user_id: company.users.map {|user| user.id})
+    end
+
     def assign_iteration # looks good
 
       failed_assignments = 0
@@ -241,7 +245,7 @@ module Scheduler
 
     def schedule_for_height(employee, position_name, slot, direction, allotment_remaining, height_traveled)
       # if we out of height or upon scheduling would violate minimax restrictions - return
-      if allotment_remaining <= 0 or slot.nil? or minmax_not_eligible(slot, employee)
+      if allotment_remaining <= 0 or slot.nil? or minmax_not_eligible(slot, employee) or !not_during_time_off(slot, employee)
         return height_traveled
       end
 
@@ -258,7 +262,7 @@ module Scheduler
     def count_min_shift_height(employee, position, slot, direction, n)
 
       # Return if not eligible and not assigned (or doesnt exist)
-      if (!employee_eligible_for?(slot, employee, position) and !slot.has_employee?(employee.id)) or slot.nil?
+      if (!employee_eligible_for?(slot, employee, position) and !slot.has_employee?(employee.id)) or slot.nil? or !not_during_time_off(slot, employee)
         return n
       end
 
@@ -288,7 +292,8 @@ module Scheduler
         !existing_shifts.user_scheduled_at(employee.id, slot.x, slot.y) &&
         slot.not_full? &&
         slot.position_room_available?(position.name) &&
-        !minmax_not_eligible(slot, employee)
+        !minmax_not_eligible(slot, employee) &&
+        not_during_time_off(slot, employee)
     end
 
     def eligible_employees(slot, position)
@@ -309,6 +314,10 @@ module Scheduler
 
     def minmax_not_eligible(timeslot, employee)
       MinmaxShiftHelper.new(timeslot: timeslot, employee: employee, layout: layout, company: company, location: location, existing_shifts: existing_shifts, options: options).is_not_eligible
+    end
+
+    def not_during_time_off(timeslot, employee)
+      TimeslotReader.new(date_start: date_start, timeoff_requests: timeoff_requests, options: options).time_not_during_timeoff?(timeslot, employee)
     end
   end
 end
