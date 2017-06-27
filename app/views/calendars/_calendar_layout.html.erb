@@ -1,7 +1,13 @@
 <% if @presenter.approvals? %>
-  <%= link_to approvals_path, class: "warning" do %>
-      Click here to review and approve your upcoming schedules
-  <% end %>
+  <%= link_to t(".schedule_approvals"), approvals_path, class: "warning" %>
+<% end %>
+
+<% if @presenter.time_off_approvals? %>
+  <%= link_to(
+    t(".time_off_approvals"),
+    time_off_requests_approvals_path,
+    class: "warning"
+  ) %>
 <% end %>
 
 <div class="rail">

@@ -1,0 +1,20 @@
+<div class="frame">
+  <header>
+    <div><%= t(".title") %></div>
+  </header>
+
+  <section>
+    <article>
+      <% if @time_off_requests.present? %>
+        <% @time_off_requests.each do |time_off_request| %>
+          <%= render partial: "time_off_request",
+            locals: { time_off_request: time_off_request } %>
+        <% end %>
+      <% else %>
+        <div class="centered">
+          <%= t(".blank") %>
+        </div>
+      <% end %>
+    </article>
+  </section>
+</div>

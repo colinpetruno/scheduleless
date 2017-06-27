@@ -1,0 +1,22 @@
+<div class="time-off-request-approval-time-off-request">
+  <div>
+    <%= simple_form_for TimeOffRequests::Approval.new, url: time_off_requests_time_off_request_approvals_path(time_off_request) do |f| %>
+      <%= f.input :accept, as: :hidden, input_html: { value: true } %>
+
+      <%= f.submit t(".accept"), class: "button" %>
+    <% end %>
+
+    <%= simple_form_for TimeOffRequests::Approval.new, url: time_off_requests_time_off_request_approvals_path(time_off_request) do |f| %>
+      <%= f.input :accept, as: :hidden, input_html: { value: false } %>
+
+      <%= f.submit t(".decline"), class: "button white" %>
+    <% end %>
+  </div>
+
+  <div>
+    <div>
+      <strong><%= time_off_request.user.full_name %></strong>
+    </div>
+    <%= time_off_request.label %>
+  </div>
+</div>

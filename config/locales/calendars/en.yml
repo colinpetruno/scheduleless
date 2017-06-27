@@ -5,6 +5,10 @@ en:
       no_shifts: "You currently have no shifts scheduled!"
     calendar_layout:
       next_shift_title: "Your next shift"
+      schedule_approvals: >
+        Click here to review and approve your upcoming schedules
+      time_off_approvals: >
+        Click here to review pending time off requests
     location_select:
       selected_location: "Selected Location"
     next_shift:
