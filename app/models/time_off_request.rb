@@ -23,6 +23,10 @@ class TimeOffRequest < ApplicationRecord
     end
   end
 
+  def approved?
+    status == "approved"
+  end
+
   def label
     start_array = [start_date_string, start_time_string].compact
     end_array = [end_date_string, end_time_string].compact
