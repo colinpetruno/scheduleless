@@ -12,8 +12,10 @@ module MobileApi
       {
         id: time_off_request.id,
         label: time_off_request.label,
-        status: time_off_request.status,
-        status_color: status_color
+        status: time_off_request.status.capitalize,
+        background_color: background_color,
+        border_color: border_color,
+        text_color: text_color
       }
     end
 
@@ -21,11 +23,31 @@ module MobileApi
 
     attr_reader :time_off_request
 
-    def status_color
+    def background_color
       colors = {
-        approved: "#b2dba1", # dff0d8 #529138
-        pending: "#c5d9ff", # 5f97ff
-        denied: "#f6ce95" # #fbe8cd; # c77c11
+        approved: "#dff0d8",
+        pending: "#e9f1ff",
+        denied: "#fbe8cd"
+      }
+
+      colors[time_off_request.status.to_sym]
+    end
+
+    def border_color
+      colors = {
+        approved: "#b2dba1",
+        pending: "#c5d9ff",
+        denied: "#f6ce95"
+      }
+
+      colors[time_off_request.status.to_sym]
+    end
+
+    def text_color
+      colors = {
+        approved: "#529138",
+        pending: "#5f97ff",
+        denied: "#c77c11"
       }
 
       colors[time_off_request.status.to_sym]
