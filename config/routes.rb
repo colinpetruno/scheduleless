@@ -72,6 +72,8 @@ Rails.application.routes.draw do
       resources :trades, only: [:create]
     end
 
+    resources :time_off_requests, only: [:index, :create]
+
     resources :trades, only: [:index] do
       resources :offers, only: [:create, :index]
     end
