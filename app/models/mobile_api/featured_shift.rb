@@ -17,7 +17,7 @@ module MobileApi
     attr_reader :user
 
     def shift_to_display
-      checked_in_shift || current_shift || next_shift || {}
+      checked_in_shift || current_shift || next_shift || raise_not_found
     end
 
     def checked_in_shift
@@ -30,6 +30,10 @@ module MobileApi
 
     def next_shift
       @_next_shift ||= ShiftFinder.for(user).next.find
+    end
+
+    def raise_not_found
+      raise ActiveRecord::RecordNotFound
     end
   end
 end

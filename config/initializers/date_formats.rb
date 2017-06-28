@@ -1,6 +1,9 @@
 Date::DATE_FORMATS[:month_day_year] = "%b %e, %Y"
 Date::DATE_FORMATS[:month_day] = "%b %e"
 
+# "Wed Jun 28 2017"
+Date::DATE_FORMATS[:datepicker] = "%a %b %e %Y"
+
 # Friday, June 3rd
 Date::DATE_FORMATS[:full_day_and_month] = lambda do |date|
   date.strftime("%a, %b #{date.day.ordinalize}")

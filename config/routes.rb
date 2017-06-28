@@ -72,6 +72,8 @@ Rails.application.routes.draw do
       resources :trades, only: [:create]
     end
 
+    resources :time_off_requests, only: [:index, :create]
+
     resources :trades, only: [:index] do
       resources :offers, only: [:create, :index]
     end
@@ -142,6 +144,19 @@ Rails.application.routes.draw do
     resource :check_in, only: [:create]
     resource :check_out, only: [:create]
     resources :trades, only: [:create, :new]
+  end
+
+  resources :time_off_requests, only: [:create, :index, :new] do
+  end
+
+  namespace :time_off_requests do
+    resources :approvals, only: [:index]
+  end
+
+  scope module: :time_off_requests, as: :time_off_requests do
+    resources :time_off_requests, only: [] do
+      resources :approvals, only: [:create]
+    end
   end
 
   resources :trades, only: [:index] do

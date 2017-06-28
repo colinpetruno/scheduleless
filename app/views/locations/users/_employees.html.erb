@@ -8,19 +8,21 @@
     </div>
   </header>
   <section>
-    <article>
+    <% if @users.empty? %>
+      <article class="centered">
+        <%= t(".no_users") %>
+      </article>
+    <% else %>
+      <article>
         <div class="locations-edit-users">
           <%= render partial: "users",
             locals: {
-              users: UserFinder.
-                new(location: @location).
-                by_location_without(current_user)
+              users: @users
             }
           %>
         </div>
+      </article>
+    <% end %>
 
-        <div>
-        </div>
-    </article>
   </section>
 </div>

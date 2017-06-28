@@ -1,0 +1,40 @@
+<div class="rail narrow">
+  <section>
+    <aside>
+      <%= render partial: "shifts/sidebar" %>
+    </aside>
+
+    <article>
+      <div class="frame">
+        <header>
+          <div>
+            <%= t(".title") %>
+          </div>
+        </header>
+
+        <section>
+          <article>
+            <%= simple_form_for @request do |f| %>
+              <%= f.input :start_date_string, as: :datepicker_range %>
+
+              <small><%= t(".time_hint") %></small>
+              <div class="inline">
+                <%= f.input :start_minutes,
+                  as: :select,
+                  collection: TimeRange.half_hour_options
+                %>
+
+                <%= f.input :end_minutes,
+                  as: :select,
+                  collection: TimeRange.half_hour_options
+                %>
+              </div>
+
+              <%= f.submit %>
+            <% end %>
+          </article>
+        </section>
+      </div>
+    </article>
+  </section>
+</div>

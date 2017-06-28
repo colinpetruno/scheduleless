@@ -1,0 +1,25 @@
+$(document).on("turbolinks:load", function() {
+  $.each(window.Scheduleless.pickers, function(index, value) {
+    value.destroy();
+  });
+  window.Scheduleless.pickers = [];
+
+  $("input.datepicker").each(function() {
+    var picker = new Pikaday({
+        field: $(this)[0],
+        i18n: {
+          previousMonth: "<%= I18n.t("datepicker.previous_month") %>",
+          nextMonth: "<%= I18n.t("datepicker.next_month") %>",
+          months: <%= I18n.t("datepicker.months").as_json %>,
+          weekdays: <%= I18n.t("datepicker.weekdays").as_json %>,
+          weekdaysShort: <%= I18n.t("datepicker.weekdays_short").as_json %>
+        },
+        minDate: new Date(),
+        onSelect: function() {
+          // console.log("selected");
+          // console.log(this.getMoment().format('Do MMMM YYYY'));
+        }
+    });
+    window.Scheduleless.pickers.push(picker);
+  });
+});
