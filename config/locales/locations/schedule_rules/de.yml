@@ -1,0 +1,32 @@
+de:
+  locations:
+    schedule_rules:
+      controller:
+        alert: "Die Dienstplanregel konnte nicht entfernt werden."
+        notice: "Die Dienstplanregel wurde erfolgreich entfernt!"
+      disable:
+        hint: "Dieser Standort hat benutzerdefinierte Dienstplanregeln."
+        submit: "Geschäfts-Standardeinstellungen anwenden"
+      enable:
+        hint: "Aktivieren Sie die Dienstplanregeln für diesen Standort"
+        submit: "Aktivieren"
+      form:
+        need: "Ich brauche"
+        plural:
+      index:
+        instructions_html: >
+          Passen Sie die Dienstplanregeln für diesen Standort an. Sie können
+          entweder die Geschäfts-Standardeinstellungen verwenden oder neue
+          Regeln, die besser auf diesen Standort zugeschnitten sind, erstellen.
+        locations: "Standorte"
+      schedule_rule:
+        requirement:
+          day:
+            one: "%{position} wird benötigt %{period} am %{day}"
+            other: "%{position} werden benötigt %{period} am %{day}"
+          one: "%{position} wird benötigt %{period} jeden Tag"
+          other: "%{position} werden benötigt %{period} jeden Tag"
+      schedule_rules:
+        delete: "Löschen"
+        edit: "Bearbeiten"
+# NOTE THIS IS ALMOST THE SAME AS SETTINGS BUT NOT SHARED
