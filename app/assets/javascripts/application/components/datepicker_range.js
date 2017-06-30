@@ -8,7 +8,6 @@ $(document).on("turbolinks:load", function() {
 
   $(".datepicker_range").each(function() {
 
-
     var startDate;
     var endDate;
     var updateStartDate = function() {

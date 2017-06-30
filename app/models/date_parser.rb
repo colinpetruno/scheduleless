@@ -19,6 +19,10 @@ class DateParser
     parsed_date.strftime("%B %-d")
   end
 
+  def self.number(date)
+    date.strftime('%Y%m%d').to_i
+  end
+
   private
 
   def parsed_date

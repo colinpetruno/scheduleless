@@ -10,6 +10,7 @@ gem "country_select"
 gem "devise"
 gem "devise_invitable"
 gem "doorkeeper"
+gem "rails-assets-d3", source: 'https://rails-assets.org'
 gem "fcm"
 gem "icalendar"
 gem "jquery-rails"
