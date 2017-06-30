@@ -1,0 +1,20 @@
+de:
+  locations:
+    users:
+      add_employee:
+        title: "Existierenden Mitarbeiter hinzufügen"
+      new:
+        instructions: >
+          Dieser Mitarbeiter erhält eine Einladung sobald seine/ihre erste Schicht erstellt wurde.
+        new_employee: "Laden Sie einen neuen Mitarbeiter zu diesem Standort ein"
+      users:
+        blank: "Dieser Standort hat keine Mitarbeiter."
+        edit: "Bearbeiten"
+        email: "E-Mail"
+        name: "Name"
+        position: "Position"
+        remove: "Entfernen"
+      employees:
+        no_users: >
+          Dieser Standort hat noch keine Mitarbeiter. Fügen Sie welche hinzu,
+          um Dienstpläne zu erstellen.

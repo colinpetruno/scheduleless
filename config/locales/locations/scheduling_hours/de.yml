@@ -1,0 +1,25 @@
+de:
+  locations:
+    scheduling_hours:
+      controller:
+        alert: "Ihre Geschäftszeiten konnten nicht entfernen werden"
+        notice: "Ihre Geschäftszeiten wurden erfolgreich entfernt!"
+      add_new_day: "Neuen Tag hinzufügen"
+      form:
+        optional: "Optional"
+        optional_hint: >
+          Falls Ihre Arbeitnehmer vor oder nach den Geschäftszeiten arbeiten,
+          können Sie die Arbeitszeiten unten konfigurieren
+      new:
+        instructions: Fügen Sie die Geschäftszeiten für diesen Standort hinzu.
+          Falls die Geschäftszeiten von den Arbeitszeiten abweichen, können
+          Veränderungen während der Mitarbeiterplanung gemacht werden.
+      hours:
+        blank: "Dieser Standort hat keine Zeiten."
+        day: "Wochentag"
+        edit: "Bearbeiten"
+        minute_open_start: "Öffnungszeit"
+        minute_open_end: "Ladenschluss"
+        minute_schedulable_start: "Planungsbeginn"
+        minute_schedulable_end: "Planungsende"
+        remove: "Löschen"
