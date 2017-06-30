@@ -4,7 +4,7 @@ class DailySchedulesController < AuthenticatedController
     location = current_company.locations.find(params[:location_id])
     schedule = DailySchedule.new(location: location)
 
-    authorize schedule
+    authorize location
 
     @presenter = CalendarShowPresenter.
       new(date: date, current_location: location, user: current_user, view: view)

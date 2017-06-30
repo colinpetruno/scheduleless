@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   include Pundit
   protect_from_forgery with: :exception
-  helper_method :after_sign_in_path_for, :default_calendar_path_for
+  helper_method :after_sign_in_path_for, :default_calendar_path_for, :reporting_path
 
 
   def default_calendar_path_for(user)
@@ -16,6 +16,16 @@ class ApplicationController < ActionController::Base
     else
       calendar_path
     end
+  end
+
+  def reporting_path
+    location = Location.default_for(current_user)
+
+    if (params[:location_id])
+      location = Location.find(params[:location_id])
+    end
+
+    location_statistics_path(location)
   end
 
   def pundit_user
