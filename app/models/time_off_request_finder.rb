@@ -8,7 +8,7 @@ class TimeOffRequestFinder
   end
 
   def locate
-    TimeOffRequest.where(user_id: user.id)
+    TimeOffRequest.where(user_id: user.id).order(:start_date, :start_minutes)
   end
 
   private

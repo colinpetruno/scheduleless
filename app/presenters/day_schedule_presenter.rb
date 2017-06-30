@@ -33,12 +33,19 @@ class DaySchedulePresenter
   end
 
   def end_hour
-    end_time = [
-      hours.minute_schedulable_end,
-      shifts.sort_by{ |obj| obj.minute_end }.last.minute_end
-    ].sort.last
 
-    MinutesToTime.new(minutes: end_time).next_hour
+    last_shift = shifts.sort_by{ |obj| obj.minute_end }.last
+    last_shift_minute = last_shift.minute_end if last_shift
+
+    if !last_shift_minute
+      nil
+    else
+      end_time = [
+        hours.minute_schedulable_end,
+        last_shift_minute
+      ].sort.last
+      MinutesToTime.new(minutes: end_time).next_hour
+    end
   end
 
   def formatted_minutes_for(shift)
@@ -46,7 +53,11 @@ class DaySchedulePresenter
   end
 
   def hours_to_draw
-    (end_hour - start_hour).to_i / 3600
+    if end_hour and start_hour
+      (end_hour - start_hour).to_i / 3600
+    else
+      24/3600
+    end
   end
 
   def manage_shift?(user, shift)
@@ -55,19 +66,32 @@ class DaySchedulePresenter
   end
 
   def start_hour
-    start_time = [
-      hours.minute_schedulable_start,
-      shifts.sort_by{ |obj| obj.minute_start }.first.minute_start
-    ].sort.first
+    first_shift = shifts.sort_by{ |obj| obj.minute_start }.first
+    first_shift_minute = first_shift.minute_start if first_shift
 
-    MinutesToTime.new(minutes: start_time).start_of_hour
+    if !first_shift_minute
+      nil
+    else
+      start_time = [
+        hours.minute_schedulable_start,
+        first_shift_minute
+      ].sort.first
+
+      MinutesToTime.new(minutes: start_time).start_of_hour
+    end
+
   end
 
   def shift_style(shift)
-    left = ((shift.minute_start / 15) - (start_hour.hour * 60 / 15)) * 10
-    width = (shift.minute_end - shift.minute_start) / 15 * 10
+    if start_hour
+      left = ((shift.minute_start / 15) - (start_hour.hour * 60 / 15)) * 10
+      width = (shift.minute_end - shift.minute_start) / 15 * 10
 
-    "left: #{left}px; width: #{width}px"
+      "left: #{left}px; width: #{width}px"
+    else
+      "left: 0px; width: 0px"
+    end
+
   end
 
 

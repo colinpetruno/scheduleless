@@ -3,7 +3,7 @@ class CancelShiftNotificationJob < ApplicationJob
     @shift = Shift.find(shfit_id)
 
     users.map do |user|
-      PushNotifications::CancelledShift.new(user: user, shift: @shift).send
+      PushNotifications::CancelledShift.new(user: user, shift: @shift).notify
       # TODO: Send email
     end
   end

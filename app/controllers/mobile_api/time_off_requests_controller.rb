@@ -21,5 +21,20 @@ module MobileApi
         render json: { errors: @request.errors }, status: :bad_request
       end
     end
+
+    private
+
+    def time_off_request_params
+      params.
+        require(:time_off_request).
+        permit(
+          :end_date,
+          :end_minutes,
+          :start_date,
+          :start_minutes
+        ).merge(
+          user_id: current_user.id
+        )
+    end
   end
 end

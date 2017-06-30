@@ -10,7 +10,7 @@ class PushNotificationSenderJob < ApplicationJob
   end
 
   def send_notification
-    push_notification_class.new(user: @user).send
+    push_notification_class.new(user: @user).notify
   end
 
   private
