@@ -1,0 +1,33 @@
+de:
+  datepicker:
+    previous_month: "Zurück"
+    next_month: "Weiter"
+    months:
+      - "Januar"
+      - "Februar"
+      - "März"
+      - "April"
+      - "Mai"
+      - "Juni"
+      - "Juli"
+      - "August"
+      - "September"
+      - "Oktober"
+      - "November"
+      - "Dezember"
+    weekdays:
+      - "Sonntag"
+      - "Montag"
+      - "Dienstag"
+      - "Mittwoch"
+      - "Donnerstag"
+      - "Freitag"
+      - "Samstag"
+    weekdays_short:
+      - "So"
+      - "Mo"
+      - "Di"
+      - "Mi"
+      - "Do"
+      - "Fr"
+      - "Sa"
