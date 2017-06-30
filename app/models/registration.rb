@@ -20,6 +20,17 @@ class Registration
 
   def register
     user if valid?
+
+    if user.persisted?
+      begin
+        SupportMailer.new_signup(user).deliver
+      rescue StandardError => error
+        Bugsnag.notify(error)
+        Bugsnag.notify("New Sign Up - Support Email Failed To Send")
+      end
+    end
+
+    user
   end
 
   def user
