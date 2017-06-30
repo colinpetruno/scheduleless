@@ -1,0 +1,21 @@
+de:
+  locations:
+    index:
+      calendar: "Kalender"
+      edit: "Bearbeiten"
+      new_location: "Neuer Standort"
+      show: "Zeigen"
+      title: "Standorte"
+      not_added: >
+        Sie wurden noch zu keinem Standort hinzugefügt.
+    show:
+      edit: "Bearbeiten"
+      default_title: "Standort"
+      employees: "Mitarbeiter"
+      invitation_url: "Einladungs-URL"
+    sidebar:
+      details: "Details"
+      employees: "Mitarbeiter"
+      hours: "Stunden"
+      schedules: "Dienstpläne"
+      schedule_rules: "Dienstplanregeln"

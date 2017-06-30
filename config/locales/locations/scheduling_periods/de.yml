@@ -1,0 +1,16 @@
+de:
+  locations:
+    scheduling_periods:
+      index:
+        status:
+          empty: "Erstellen"
+          generated: "in Arbeit"
+          scheduleless_approved: "in Arbeit"
+          company_approved: "in Arbeit"
+          published: "Veröffentlicht"
+      show:
+        confirm: >
+          Vollständigen Dienstplan erstellen. Ihre Veränderungen werden nicht
+          gespeichert.
+        publish: "Veröffentlichen"
+        rebuild: "Nachbilden"
