@@ -6,7 +6,7 @@ class PushNotification
     @title = title
   end
 
-  def send
+  def notify
     if push_enabled? && tokens.present?
       client.send(tokens, notification_hash)
     else
@@ -36,9 +36,13 @@ class PushNotification
   end
 
   def push_enabled?
-    if Rails.application.secrets.push_enabled == "true"
+    if Rails.application.secrets.push_enabled == true
       true
     else
+      if Rails.env.production?
+        Bugsnag.notify("Someone turned off production push notifications...")
+      end
+
       false
     end
   end

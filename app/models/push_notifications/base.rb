@@ -10,10 +10,10 @@ module PushNotifications
       I18n.t("models.push_notifications.#{translation_key}.message")
     end
 
-    def send
+    def notify
       PushNotification.
         new(message: message, recipient: user, title: title).
-        send
+        notify
     end
 
     def title
