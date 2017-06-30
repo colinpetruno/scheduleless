@@ -5,6 +5,10 @@
         <article>
           <%= f.input :family_name %>
           <%= f.input :given_name %>
+          <%= f.input :locale,
+            as: :select,
+            collection: LocaleOptions.for_select,
+            include_blank: false %>
         </article>
       </section>
     </div>

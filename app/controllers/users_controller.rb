@@ -50,6 +50,7 @@ class UsersController < AuthenticatedController
              :family_name,
              :given_name,
              :mobile_phone,
+             :locale,
              :preferred_name,
              preferred_hours_attributes: [:id, :start, :end]
             ).

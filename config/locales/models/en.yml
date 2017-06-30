@@ -1,5 +1,8 @@
 en:
   models:
+    locale_options:
+      en: "English"
+      de: "German"
     push_notifications:
       cancelled_shift:
         title: "Shift Cancellation Alert"
