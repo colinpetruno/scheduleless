@@ -10,7 +10,7 @@ class ScheduleLocationJob < ApplicationJob
     end
     @scheduling_period.update(status: completed_status)
 
-    notify
+    notify if Rails.env.production?
   end
 
   private
