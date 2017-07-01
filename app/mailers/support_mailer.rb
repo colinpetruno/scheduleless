@@ -9,6 +9,12 @@ class SupportMailer < ApplicationMailer
     mail(to: "support@scheduleless.com", subject: "Customer Lead: #{@company.name}")
   end
 
+  def new_schedule_generated(scheduling_period)
+    @scheduling_period = scheduling_period
+
+    mail(to: "support@scheduleless.com", subject: "New Schedule Generated")
+  end
+
   def new_signup(user)
     @company = user.company
     @user = user

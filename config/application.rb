@@ -23,6 +23,7 @@ module Scheduler
     # Mailing Credentials
     # config.action_mailer.perform_deliveries = false
 
+    config.action_mailer.preview_path = "#{Rails.root}/spec/mailers/previews"
     config.action_mailer.default_url_options = {
       host: Rails.application.secrets.host
     }

@@ -8,8 +8,9 @@ class ScheduleLocationJob < ApplicationJob
       scheduler = Scheduler::Schedule.for(@scheduling_period)
       scheduler.generate
     end
-
     @scheduling_period.update(status: completed_status)
+
+    notify
   end
 
   private
@@ -28,6 +29,12 @@ class ScheduleLocationJob < ApplicationJob
 
   def location
     @scheduling_period.location
+  end
+
+  def notify
+    if completed_status == :generated
+      SupportMailer.new_schedule_generated(@scheduling_period).deliver
+    end
   end
 
   def scheduleable?

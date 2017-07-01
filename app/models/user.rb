@@ -75,7 +75,7 @@ class User < ApplicationRecord
   end
 
   def full_name
-    [given_name, family_name].compact.join
+    [given_name, family_name].compact.join(" ")
   end
 
   def twilio_formatted_phone
