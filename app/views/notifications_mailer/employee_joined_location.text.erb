@@ -1,0 +1,8 @@
+<%= t(".title", new_employee: @new_employee.full_name) %>
+
+<%= @location.name %>
+<%= @location.line_1 if @location.line_1.present? %>
+<%= @location.line_2 if @location.line_2.present? %>
+<%= AddressFormatter.for(@location).city_state_zip %>
+
+<%= t(".message") %>

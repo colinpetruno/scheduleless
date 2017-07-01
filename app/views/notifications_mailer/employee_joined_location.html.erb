@@ -1,0 +1,11 @@
+<div style="text-align: center; color: #41454b">
+  <h4 style="color: #5f97ff">
+    <%= t(".title", new_employee: @new_employee.full_name) %>
+  </h4>
+  <br />
+
+  <%= @location.name %><br/>
+  <%= AddressFormatter.for(@location).multiline_html %>
+  <br /><br />
+  <p><%= t(".message") %></p>
+</div>
