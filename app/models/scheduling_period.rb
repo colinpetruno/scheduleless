@@ -1,7 +1,6 @@
 class SchedulingPeriod < ApplicationRecord
   belongs_to :company
   belongs_to :location
-  belongs_to :user
 
   has_many :in_progress_shifts
 

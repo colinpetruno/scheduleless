@@ -7,3 +7,11 @@ en:
         If you need this employee to be added to your existing schedules let
         us know! Otherwise they will be scheduled the next time we make your
         schedules.
+    schedule_approved:
+      link: "Click Here To Review"
+      message: >
+        We have generated a new schedule to review for %{dates}. If you need to
+        make changes, let us know! You can also make edits yourself if you 
+        prefer.
+      subject: "We made a new schedule for you to review!"
+      title: "A new schedule is available!"

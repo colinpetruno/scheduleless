@@ -1,0 +1,23 @@
+<div style="text-align: center; color: #41454b">
+  <h4 style="color: #5f97ff">
+    <%= t(".title") %>
+  </h4>
+  <br />
+
+  <% if @location.name.present? %>
+    <%= @location.name %><br/>
+  <% end %>
+
+  <%= AddressFormatter.for(@location).multiline_html %>
+  <br /><br />
+  <p><%= t(".message", dates: @scheduling_period.label) %></p>
+
+  <br />
+  <%= link_to(
+    t(".link"),
+    locations_location_scheduling_period_url(@location, @scheduling_period),
+    style: "color: white; background-color: #5f97ff; padding: 10px 15px; text-decoration: none")
+  %>
+  <br />
+  <br />
+</div>

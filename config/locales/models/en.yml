@@ -10,6 +10,11 @@ en:
       employee_joined_location:
         title: "You have a new employee"
         message: "#{user_name} has joined your location!"
+      schedule_approved:
+        message: > 
+          A new schedule is available for you review when you log into
+          scheduleless.com!
+        title: "We made a new schedule for you to review!"
       schedule_published:
         message: >
           Check the Scheduleless App for the latest schedule. Remember you can

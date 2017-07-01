@@ -1,0 +1,13 @@
+<%= t(".title") %>
+
+<% if @location.name.present? %>
+  <%= @location.name %><br/>
+<% end %>
+<%= @location.line_1 if @location.line_1.present? %>
+<%= @location.line_2 if @location.line_2.present? %>
+<%= AddressFormatter.for(@location).city_state_zip %>
+
+<%= t(".message", dates: @scheduling_period.label) %>
+
+Review:
+<%= locations_location_scheduling_period_url(@location, @scheduling_period) %>
