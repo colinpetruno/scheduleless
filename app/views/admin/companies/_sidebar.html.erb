@@ -1,0 +1,11 @@
+<div class="list-nav">
+  <ul>
+    <%= content_tag(:li, class: active?(edit_admin_company_path(@company))) do %>
+      <%= link_to "Company Settings", edit_admin_company_path(@company) %>
+    <% end %>
+
+    <%= content_tag(:li, class: active?(admin_company_schedule_rules_path(@company))) do %>
+      <%= link_to "Schedule Rules", admin_company_schedule_rules_path(@company) %>
+    <% end %>
+  </ul>
+</div>
