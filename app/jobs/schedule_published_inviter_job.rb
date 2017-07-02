@@ -11,7 +11,16 @@ class SchedulePublishedInviterJob < ApplicationJob
       if user.invitation_state == :awaiting_invite
         EmployeeInviteJob.perform_later user.id
       elsif user.invitation_state == :active
-        PushNotificationSenderJob.perform_later(user.id, :schedule_published)
+        begin
+          PushNotificationSenderJob.
+            perform_later(user.id, :schedule_published)
+
+          NotificationsMailer.
+            schedule_published(user, @scheduling_period).
+            deliver
+        rescue StandardError => error
+          Bugsnag.notify(error)
+        end
       end
     end
   end

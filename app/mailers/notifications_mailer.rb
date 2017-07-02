@@ -17,4 +17,12 @@ class NotificationsMailer < ApplicationMailer
 
     mail(to: user.email)
   end
+
+  def schedule_published(user, scheduling_period)
+    @location = scheduling_period.location
+    @scheduling_period = scheduling_period
+    @user = user
+
+    mail(to: user.email)
+  end
 end

@@ -13,4 +13,11 @@ class NotificationsMailerPreview < ActionMailer::Preview
 
     NotificationsMailer.schedule_approved(u, sp)
   end
+
+  def schedule_published
+    u = User.first
+    sp = SchedulingPeriod.last
+
+    NotificationsMailer.schedule_published(u, sp)
+  end
 end

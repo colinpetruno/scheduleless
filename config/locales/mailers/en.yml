@@ -15,3 +15,10 @@ en:
         prefer.
       subject: "We made a new schedule for you to review!"
       title: "A new schedule is available!"
+    schedule_published:
+      link: "View Schedule"
+      message: >
+        You have new shifts available for %{dates}. Remember you can always
+        trade shifts using the Scheduleless App for iOS and Android.
+      subject: "A new schedule has been published!"
+      title: "Your new schedule has been posted!"
