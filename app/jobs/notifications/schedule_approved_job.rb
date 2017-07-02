@@ -21,7 +21,7 @@ module Notifications
     def send_push_to(user)
       PushNotifications::ScheduleApproved.
         new(scheduling_period: @scheduling_period, user: user).
-        send
+        notify
     end
 
     def send_email_to(user)
