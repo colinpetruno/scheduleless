@@ -23,7 +23,8 @@ class Join
         UserLocation.create(user_location_params)
       end
 
-      EmployeeJoinedLocationJob.perform_later(self.user.id, location_id)
+      Notifications::EmployeeJoinedLocationJob.
+        perform_later(self.user.id, location_id)
     else
       false
     end
