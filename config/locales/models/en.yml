@@ -9,7 +9,7 @@ en:
         message: "%{user_name} cancelled their %{shift_time} shift."
       employee_joined_location:
         title: "You have a new employee"
-        message: "#{user_name} has joined your location!"
+        message: "%{user_name} has joined your location!"
       schedule_approved:
         message: > 
           A new schedule is available for you review when you log into
