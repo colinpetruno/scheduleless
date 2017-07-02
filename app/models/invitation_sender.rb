@@ -10,7 +10,9 @@ class InvitationSender
   end
 
   def send
-    user.invite!
+    Chewy.strategy(:atomic) do
+      user.invite!
+    end
 
     # token can only be called after invite! and needs set before generating
     # the url
