@@ -3,22 +3,20 @@ class Onboarding::UsersController < AuthenticatedController
 
   def index
     skip_policy_scope
-
     @location = current_company.locations.find(params[:location_id])
 
     @users = @location.users - [current_user]
   end
 
   def new
-    @location = current_user.locations.find(params[:location_id])
+    @location = current_company.locations.find(params[:location_id])
     @user = User.new
 
     authorize @user
   end
 
   def create
-    @location = current_user.locations.find(params[:location_id])
-
+    @location = current_company.locations.find(params[:location_id])
     authorize User
 
     @user = User.invite!(user_params.merge(default_params)) do |user|
@@ -42,6 +40,13 @@ class Onboarding::UsersController < AuthenticatedController
   def user_params
     params.
       require(:user).
-      permit(:email, :family_name, :given_name, :mobile_phone, :preferred_name)
+      permit(:email,
+             :family_name,
+             :given_name,
+             :mobile_phone,
+             :preferred_name,
+             :primary_position_id,
+             position_ids: []
+            )
   end
 end
