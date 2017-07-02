@@ -9,7 +9,7 @@ module Notifications
       users_to_alert.map do |user|
         begin
           # send email
-          NotificationMailer.
+          NotificationsMailer.
             employee_joined_location(user, @user, @location).
             deliver
 
