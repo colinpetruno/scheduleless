@@ -51,6 +51,7 @@ Rails.application.routes.draw do
     resources :schedule_approvals, only: [:index]
     resources :scheduling_periods, only: [:show, :update] do
       resource :approval, only: [:create]
+      resource :schedule_period_regenerator, only: [:create], path: "regenerate"
     end
   end
 

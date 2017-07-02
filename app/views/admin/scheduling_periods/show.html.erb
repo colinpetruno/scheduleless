@@ -1,22 +1,38 @@
 <div class="frame">
-
-
   <section>
     <article>
+      <h3><%= @scheduling_period.company.name %></h3>
       Period for: <%= @scheduling_period.label %> and location: <%= @scheduling_period.location_id %>
+      <br /><br />
+        <% if ScheduleRuleFinder.for(@scheduling_period.location).present? %>
+          <% @company = @scheduling_period.company %>
+          <%= render partial: "admin/schedule_rules/schedule_rules",
+                  locals: { schedule_rules: ScheduleRuleFinder.for(@scheduling_period.location) } %>
+        <% else %>
+          No Schedule Rules... Bad.
+        <% end %>
+      <br /><br />
+        This location has <%= @scheduling_period.location.users.count %> employee (s)
       <br /><br />
       <% if @scheduling_period.in_progress_shifts.present? %>
         <%= render partial: "locations/scheduling_periods/shifts",
           locals: { presenter: @presenter } %>
 
-
         <br /><br />
+
         <%= button_to "Approve",
           admin_scheduling_period_approval_path(@scheduling_period) %>
 
       <% else %>
         Schedule wasn't generated, check setup.
       <% end %>
+
+      <br /><br />
+      <%= button_to "Rebuild",
+        admin_scheduling_period_schedule_period_regenerator_path(@scheduling_period),
+        class: "white",
+        data: { confirm: "Are you sure?" } %>
+
     </article>
   </section>
 </div>
