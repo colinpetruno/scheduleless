@@ -27,7 +27,7 @@ module Notifications
     private
 
     def users_to_alert
-      UserFinder.new(location: @location).location_admin
+      UserFinder.new(location: @location).location_admins
     end
   end
 end
