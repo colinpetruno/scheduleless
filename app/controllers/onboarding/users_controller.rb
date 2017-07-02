@@ -19,9 +19,8 @@ class Onboarding::UsersController < AuthenticatedController
     @location = current_company.locations.find(params[:location_id])
     authorize User
 
-    @user = User.invite!(user_params.merge(default_params)) do |user|
-      user.skip_invitation = true
-    end
+    @user = User.new(user_params.merge(default_params))
+    @user.save(validate: false)
 
     if @user.persisted?
       redirect_to new_onboarding_location_user_path(@location),
