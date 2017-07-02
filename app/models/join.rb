@@ -22,9 +22,14 @@ class Join
         self.user = User.create(user_params)
         UserLocation.create(user_location_params)
       end
+
+      EmployeeJoinedLocationJob.perform_later(self.user.id, location_id)
     else
       false
     end
+  rescue StandardError => error
+    Bugsnag.notify(error)
+    false
   end
 
   private
