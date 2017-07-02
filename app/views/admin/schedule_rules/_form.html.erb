@@ -4,7 +4,7 @@
       <%= t("settings.schedule_rules.form.need") %>
       <%= f.input :number_of_employees, error: false, label: false %>
       <%= f.association :position,
-        collection: current_company.positions,
+        collection: @company.positions,
         include_blank: false,
         error: false, label: false %><%= t("settings.schedule_rules.form.plural") %>
       <%= f.input :period, collection: ScheduleRule.collection_labels, error: false, label: false %>
