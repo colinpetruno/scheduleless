@@ -44,6 +44,8 @@ module Scheduler
         space_available = space_available || (position_exists?(position.name) && position_room_available?(position.name))
       end
 
+      space_available = space_available || (position_exists?(employee.primary_position.name) && position_room_available?(employee.primary_position.name))
+
       space_available
     end
 
@@ -59,9 +61,9 @@ module Scheduler
       end
     end
 
-    def add_employee(employee, position=nil)
+    def add_employee(employee, position)
       @employees.push(employee)
-      @position_employees[position].push(employee) if not position.nil?
+      @position_employees[position].push(employee)
     end
 
     def employees
@@ -69,8 +71,9 @@ module Scheduler
     end
 
     def print
-      printf "[(#{@x},#{@y}) %{slots_available} %{employees} ]" % {slots_available: @slots_available,
-                                                      employees: @employees.map { |e| e[:given_name]} }
+      printf "[(#{@x},#{@y}) %{slots_available} %{positions} %{employees} ]" % {slots_available: @slots_available,
+                                                      employees: @employees.map { |e| e[:given_name] + " " + e[:family_name]},
+                                                      positions: @position_slots}
     end
 
     def has_employee?(employee_id)

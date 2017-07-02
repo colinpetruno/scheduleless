@@ -25,7 +25,7 @@ module Scheduler
     attr_reader :company, :location, :layout, :date_start, :options
 
     def employees
-      location.users.select{|u| u.positions.length > 0}
+      location.users.select{|u| u.positions.length > 0 || u.primary_position}
     end
 
     def timeslots
@@ -62,7 +62,6 @@ module Scheduler
           day.shuffle!
         end
       end
-
 
       all_timeslots.each do |day|
         day.each do |coordinate|
@@ -124,13 +123,13 @@ module Scheduler
 
         sorted_employees.each do |employee|
           positions = sort_positions(employee)
+          positions.push(employee.primary_position) if employee.primary_position
           positions.each do |position|
             if can_schedule?(slot, employee, position, location)
               successful_injection = assign_employee_timeslot(employee, position.name, slot)
-              if not successful_injection
-                return false
+              if successful_injection
+                return true
               end
-              return true;
             end
           end
         end
@@ -228,9 +227,8 @@ module Scheduler
           # if scheduling upwards is less than the minimum, start scheduling down until min shift is met
           if y_up_traveled < min_shift_length/options.time_interval_minutes
             schedule_for_height(employee, position_name, slot, 1, [y_down_shift_height-y_up_traveled, min_shift_length/options.time_interval_minutes].min, 0)
+            return true
           end
-
-          true
         end
 
         false
