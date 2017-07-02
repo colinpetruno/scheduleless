@@ -6,7 +6,7 @@ class SchedulePeriodRegeneratorsController < AuthenticatedController
 
     authorize @scheduling_period
 
-    SchedulePeriodRegenerator.for(@scheduling_period).regenerate
+    SchedulePeriodRegenerator.for(@scheduling_period, false).regenerate
 
     redirect_to locations_location_scheduling_period_path(
       @location,

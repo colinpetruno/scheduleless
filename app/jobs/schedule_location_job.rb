@@ -1,7 +1,7 @@
 class ScheduleLocationJob < ApplicationJob
   queue_as :default
 
-  def perform(schedule_period_id)
+  def perform(schedule_period_id, send_notification=true)
     @scheduling_period = SchedulingPeriod.find(schedule_period_id)
 
     if scheduleable?
@@ -10,7 +10,7 @@ class ScheduleLocationJob < ApplicationJob
     end
     @scheduling_period.update(status: completed_status)
 
-    notify if Rails.env.production?
+    notify if Rails.env.production? && send_notification
   end
 
   private

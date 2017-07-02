@@ -18,17 +18,10 @@ class SchedulingPeriod < ApplicationRecord
     closed: 5
   }
 
-  def generate_admin_preview
-    save if id.blank?
-
-    ScheduleLocationJob.new.perform(self.id)
-    self.update(status: :generated)
-  end
-
   def generate_company_preview
     save if id.blank?
 
-    ScheduleLocationJob.new.perform(self.id)
+    ScheduleLocationJob.new.perform(self.id, false)
     self.update(status: :scheduleless_approved)
   end
 
