@@ -73,7 +73,7 @@
             presenter.scheduling_period,
             date: week.first.to_s(:integer)
           ),
-          class: (week.first == presenter.day ? "selected" : ""),
+          class: ((week.first..week.last).include?(presenter.day) ? "selected" : ""),
           format: :js,
           remote: true
         ) %>

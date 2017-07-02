@@ -1,6 +1,18 @@
-<div id="accordion" class="accordion" role="tablist" aria-multiselectable="true">
-  <% presenter.day_keys.each do |day| %>
-    <%= render partial: "locations/scheduling_periods/shifts_for_day",
-      locals: { presenter: presenter, day: day } %>
-  <% end %>
+<div class="locations-scheduling-periods-daily-view">
+  <header>
+    <div>
+      <section class="icon-toggle">
+        <a class="selected" href="#"><span class="oi oi-project"></span></a>
+        <%= presenter.weekly_schedule_tab %>
+        <%= presenter.print_tab %>
+      </section>
+    </div>
+  </header>
+
+  <div id="accordion" class="accordion" role="tablist" aria-multiselectable="true">
+    <% presenter.day_keys.each do |day| %>
+      <%= render partial: "locations/scheduling_periods/shifts_for_day",
+        locals: { presenter: presenter, day: day } %>
+    <% end %>
+  </div>
 </div>

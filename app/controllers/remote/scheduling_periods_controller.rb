@@ -13,7 +13,11 @@ module Remote
     private
 
     def date
-      params[:date].to_i if params[:date].present?
+      if params[:date].present?
+        params[:date]
+      else
+        nil
+      end
     rescue
       nil
     end
