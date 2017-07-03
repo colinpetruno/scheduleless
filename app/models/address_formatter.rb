@@ -13,6 +13,10 @@ class AddressFormatter
     [location.line_1, location.line_2, location.line_3].compact
   end
 
+  def calendar_stream
+    (address << city_state_zip).join("\r\n")
+  end
+
   def city_state_zip
     [location.city, location.county_province, location.postalcode].join(" ")
   end

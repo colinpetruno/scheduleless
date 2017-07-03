@@ -33,18 +33,10 @@ class ShiftFinder
     scope
   end
 
-  def worked_by(user)
-    self.scope = scope.where(user_id: user.id)
-    self
-  end
-
-  def next
-    self.scope = future.find.first
-    self
-  end
-
-  def on(date=Date.today)
-    self.scope = scope.where(date: date.strftime('%Y%m%d').to_i)
+  def for_stream
+    self.scope = scope.
+      where( date: ((Date.today - 30.days).to_s(:integer).to_i..Float::INFINITY)).
+      includes(:location)
     self
   end
 
@@ -60,6 +52,21 @@ class ShiftFinder
 
   def find_by(options)
     scope.find_by(options)
+  end
+
+  def next
+    self.scope = future.find.first
+    self
+  end
+
+  def on(date=Date.today)
+    self.scope = scope.where(date: date.strftime('%Y%m%d').to_i)
+    self
+  end
+
+  def worked_by(user)
+    self.scope = scope.where(user_id: user.id)
+    self
   end
 
   private

@@ -152,6 +152,8 @@ Rails.application.routes.draw do
     resources :trades, only: [:create, :new]
   end
 
+  resources :streams, only: [:show], defaults: { format: :ics }
+
   resources :time_off_requests, only: [:create, :index, :new] do
   end
 

@@ -5,3 +5,11 @@
 .hidden {
   display: none;
 }
+
+.selectable {
+  background-color: lighten($blue, 27%);
+  border: 1px solid lighten($blue, 20%);
+  color: $blue;
+  display: inline-block;
+  padding: 10px 15px;
+}

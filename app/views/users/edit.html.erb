@@ -45,6 +45,25 @@
       </section>
     </div>
 
+    <br /><br />
+    <div class="frame">
+      <header>
+        <div>Calendar Feed</div>
+      </header>
+      <section>
+        <article>
+          <div >
+            <span class="selectable">
+              <%= "#{stream_url(current_user.hash_key)}.ics" %>
+            </span>
+          </div>
+          <small>Use this link to add your Scheduleless calendar to
+            applications like iCal or Google Calendar</small>
+        </article>
+      </section>
+    </div>
+
     <%= f.button :submit %>
+
   <% end %>
 </div>
