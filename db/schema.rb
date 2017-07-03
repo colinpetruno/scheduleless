@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170703133255) do
+ActiveRecord::Schema.define(version: 20170703141340) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -375,6 +375,7 @@ ActiveRecord::Schema.define(version: 20170703133255) do
     t.boolean  "scheduleless_admin",     default: false, null: false
     t.integer  "primary_position_id"
     t.string   "locale",                 default: "en",  null: false
+    t.string   "hash_key"
     t.index ["company_id"], name: "index_users_on_company_id", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true, using: :btree

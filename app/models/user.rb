@@ -41,6 +41,10 @@ class User < ApplicationRecord
     super(only: [:email, :id, :given_name, :family_name, :preferred_name])
   end
 
+  def hash_key
+    super || generate_hash_key
+  end
+
   def invitation_state
     if accepted_or_not_invited?
       if invitation_accepted_at.present? || sign_in_count > 0
@@ -85,5 +89,11 @@ class User < ApplicationRecord
 
   def build_availabilities
     PreferredHour.build_for(self)
+  end
+
+  def generate_hash_key
+    key = SecureRandom.hex(22)
+    update_column(:hash_key, key)
+    key
   end
 end
