@@ -48,6 +48,8 @@ Rails.application.routes.draw do
         only: [:create, :destroy, :edit, :index, :new, :update]
     end
 
+    resources :impersonations, only: [:new, :create]
+
     resources :schedule_approvals, only: [:index]
     resources :scheduling_periods, only: [:show, :update] do
       resource :approval, only: [:create]

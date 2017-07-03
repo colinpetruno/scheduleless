@@ -39,5 +39,14 @@
         <% end %>
       <% end %>
     <% end %>
+
+
+    <% if policy(:scheduleless_admin).show? %>
+      <%= content_tag(:li, class: active?(admin_root_path)) do %>
+        <%= link_to admin_root_path do %>
+          <span class="oi oi-bolt"></span>
+        <% end %>
+      <% end %>
+    <% end %>
   </ul>
 </div>

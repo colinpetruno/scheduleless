@@ -1,0 +1,23 @@
+<div class="frame">
+  <section>
+    <article>
+      <%= simple_form_for [:admin, @impersonation] do |f| %>
+        <%= f.input :impersonated_user_id,
+          as: :select,
+          collection: User.where(company_admin: true),
+          label_method: :email,
+          value_method: :id
+        %>
+
+        <%= f.submit %>
+      <% end %>
+      <br />
+
+      <small>Right now you may only impersonate company admins. This is to keep
+        the list short and should give you all the access you need. TODO:
+        Implement elasticsearch search here to make it easier to find anyone
+        on the platform</small>
+
+    </article>
+  </section>
+</div>
