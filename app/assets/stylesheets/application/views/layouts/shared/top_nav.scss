@@ -86,6 +86,11 @@
 
       a {
         color: $font-dark;
+
+        &:hover {
+          text-decoration: none;
+          color: $blue;
+        }
       }
 
       &:first-child {
@@ -128,12 +133,18 @@
 
   ul > li {
     @include hoverable;
-    padding: 15px;
     text-align: right;
   }
 
   ul li a{
     color: $font-light;
+    display: block;
+    padding: 15px;
+    text-align: center;
+
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 
