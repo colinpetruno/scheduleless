@@ -38,7 +38,7 @@ en:
           No hidden features or upgrades. Use the entire platform without
           being nickel and dimed for the features you want.
         title: "Transparent Pricing"
-        unit: "per employee"
+        unit: "per employee / month"
       time_clock:
         title: "Track Time"
         line_1: "Employee Time Tracking built in. At no extra cost."
