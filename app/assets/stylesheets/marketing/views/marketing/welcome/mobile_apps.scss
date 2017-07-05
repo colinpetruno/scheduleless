@@ -60,17 +60,32 @@
         min-height: 0;
         padding-bottom: 20px;
         padding-top: 50px;
+        text-align: center;
+
+        ul {
+          list-style: none;
+          margin-top: 30px;
+          padding-left: 0;
+        }
       }
     }
 
     > div > aside {
       @include make-col(12);
 
-      background-position: 40px;
-      padding-left: 180px;
-      padding-top: 40px;
-      max-height: 200px;
+      background-position: center top;
+      background-size: 100px 200px;
+      padding-top: 200px;
+      padding-left: 0;
+      padding-right: 0;
+       /*max-height: 200px;*/
       min-height: 200px;
+      text-align: center;
+
+      a {
+        display: block;
+        margin: 30px auto;
+      }
     }
   }
 }

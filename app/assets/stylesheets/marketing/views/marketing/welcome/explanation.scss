@@ -27,6 +27,7 @@
   .marketing-welcome-explanation {
     > div > article {
       @include make-col(12);
+      text-align: center;
     }
 
     > div > aside {

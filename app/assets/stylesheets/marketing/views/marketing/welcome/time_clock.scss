@@ -14,7 +14,6 @@
     @include make-col(5);
     @include make-col-push(7);
     min-height: 400px;
-
     padding: 50px 75px;
   }
 }
@@ -24,6 +23,8 @@
     > div > article {
       @include make-col(12);
       @include make-col-push(0);
+
+      text-align: center;
     }
 
     > div > aside {
