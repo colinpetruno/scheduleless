@@ -1,0 +1,142 @@
+.scheduling {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+
+  > header {
+    background-color: $dark-blue;
+    padding: 0 20px;
+  }
+
+  .hero-section {
+    background-color: #dcf2ff;
+    color: darken($dark-blue, 10%);
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    min-height: 300px;
+    text-align: center;
+    text-transform: capitalize;
+
+    > div {
+      padding: 125px 0;
+    }
+
+    h3 {
+      font-size: 30px;
+      font-weight: 200;
+      margin-bottom: 0px;
+      vertical-align: middle;
+    }
+  }
+
+  .section h4 {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 25px;
+    font-weight: 200;
+    margin-bottom: 20px;
+    vertical-align: middle;
+  }
+
+  .enrollment-link {
+    background-color: $dark-blue;
+    // background-color: #9be7b0;
+
+    > div {
+      color: $gray-dark;
+      color: $white;
+      max-width: 800px;
+      margin: auto;
+      padding: 40px;
+      text-align: center;
+
+      h4 {
+        color: $blue;
+        color: $white;
+        font-family: "Helvetica Neue", Helvetica, sans-serif;
+        font-size: 27px;
+        font-weight: 200;
+      }
+    }
+  }
+
+  .notifications {
+    background-color: #dcf2ff;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    min-height: 300px;
+    padding-bottom: 20px;
+    padding-top: 50px;
+
+    aside {
+      @include make-col(6);
+      background-image: asset-url("marketing/welcome/notifications.gif");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+      min-height: 300px;
+    }
+
+    article {
+      @include make-col(6);
+      max-width: 400px;
+      h4 {
+        margin-top: 5px;
+      }
+    }
+  }
+
+  .let-us-handle-it, .review {
+    background-color: $white;
+    margin-top: 50px;
+    min-height: 300px;
+
+    article {
+      padding-right: 100px;
+      margin-left: auto !important;
+      max-width: 500px;
+    }
+
+    aside {
+
+      background-repeat: no-repeat;
+      background-size: contain;
+      min-height: 300px;
+    }
+  }
+
+  .let-us-handle-it {
+    aside {
+      background-image: asset-url("marketing/welcome/scheduleless_setup.gif");
+    }
+   }
+
+  .review {
+    aside {
+      background-image: asset-url("marketing/welcome/review.gif");
+    }
+  }
+
+  .more-info {
+    background-color: $dark-blue;
+    color: $white;
+    padding: 50px 0;
+    text-align: center;
+
+    > div {
+      h4 {
+        color: $white;
+        font-family: "Helvetica Neue", Helvetica, sans-serif;
+        font-size: 27px;
+        font-weight: 200;
+      }
+    }
+
+    .button {
+      margin-bottom: 15px;
+    }
+
+    a.link {
+      color: $white;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}

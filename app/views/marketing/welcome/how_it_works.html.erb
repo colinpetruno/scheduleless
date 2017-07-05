@@ -1,0 +1,67 @@
+<div class="how-it-works">
+  <header class="header">
+    <%= render partial: "layouts/marketing/navbar" %>
+  </header>
+
+  <section class="hero-section">
+    <div>
+      <h3>Scheduling Software Should Make Your Life Easier</h3>
+      <small>We work with you to find the easiest way to get you started</small>
+    </div>
+  </section>
+
+  <section class="section let-us-handle-it">
+    <div>
+      <article>
+        <h4>Let Us Handle It</h4>
+        Entering all your employees data can take awhile no matter what system
+        you use. So let us do it for you. You can send us your employees and
+        positions in whatever way is most convienant for you and we will take
+        the time to get them entered in the system and ready to be scheduled.
+      </article>
+
+      <aside>
+      </aside>
+    </div>
+  </section>
+
+  <section class="enrollment-link">
+    <div>
+      <h4>Use An Enrollment Link</h4>
+
+      Sometimes you don't have every employees contact info readily available.
+      We provide a unique link so your employees can join their locations and
+      enter their own information.
+    </div>
+  </section>
+
+  <section class="guided-setup section">
+    <div>
+      <aside>
+
+      </aside>
+
+      <article>
+        <h4>Easy Guided Setup</h4>
+        For those that enjoy doing things themselves we offer an easy guided
+        setup to walk you through adding your positions, locations and
+        employees.
+      </article>
+  </section>
+
+
+  <section class="more-info">
+    <div>
+      <div>
+        <h4>See how scheduling works with Scheduleless<h4>
+      </div>
+      <%= link_to "Learn More", scheduling_path, class: "button orange" %>
+    </div>
+  </section>
+
+  <%= render partial: "footer" %>
+
+  <% if Rails.env.production? %>
+    <%= render partial: "layouts/shared/reamaze" %>
+  <% end %>
+</div>

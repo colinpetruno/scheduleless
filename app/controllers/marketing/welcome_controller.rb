@@ -3,7 +3,13 @@ class Marketing::WelcomeController < ApplicationController
 
   before_action :check_signed_in_user
 
+  def how_it_works
+  end
+
   def index
+  end
+
+  def scheduling
   end
 
   private

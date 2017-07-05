@@ -1,0 +1,40 @@
+.industries {
+  background-color: $dark-blue;
+  padding: 20px 0;
+
+  > div {
+    text-align: center;
+
+    h4 {
+      color: lighten($dark-blue, 28%);
+      font-family: "Helvetica Neue", Helvetica, sans-serif;
+      font-size: 27px;
+      font-weight: 200;
+      margin-bottom: 30px;
+    }
+  }
+
+  section {
+    @include make-container();
+    max-width: 800px;
+
+    > div {
+      @include make-row();
+      > div {
+        @include make-col-ready();
+        @include make-col(3);
+        font-family: "Helvetica Neue", Helvetica, sans-serif;
+        font-size: 12px;
+        color: $white;
+        color: lighten($dark-blue, 28%);
+        text-align: center;
+
+        span {
+          display: block;
+          font-size: 30px;
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+}

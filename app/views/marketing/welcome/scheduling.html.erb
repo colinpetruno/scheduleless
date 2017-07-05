@@ -1,0 +1,77 @@
+<div class="scheduling">
+  <header class="header">
+    <%= render partial: "layouts/marketing/navbar" %>
+  </header>
+
+  <section class="hero-section">
+    <div>
+      <h3>Scheduling Software Should Make Your Life Easier</h3>
+      <small>We will do all your busy work so you can focus on your business.</small>
+    </div>
+  </section>
+
+  <section class="section let-us-handle-it">
+    <div>
+      <article>
+        <h4>Let Us Know What You Need</h4>
+        Let us know how you prefer to schedule your employees and a past
+        schedule or two for reference. We will create schedules based upon what
+        you like. Don't worry though, if you need a change for an upcoming
+        holiday or event, just let us know and we will adjust if for you.
+      </article>
+
+      <aside>
+      </aside>
+    </div>
+  </section>
+
+
+  <section class="notifications section">
+    <div>
+      <aside>
+      </aside>
+
+      <article>
+        <h4>Your Schedule Sent To You</h4>
+        Get notified on your phone and via email when your schedules are
+        created. No need to remember each week or spend any time making
+        schedules. We will regulary schedule your employees and ensure they
+        have their schedules in advance.
+      </article>
+  </section>
+
+  <section class="section review">
+    <div>
+      <article>
+        <h4>Review And Publish</h4>
+        Check to ensure your schedule suits all your needs. If you need
+        changes you can make them yourself or just let us know. When you're
+        ready, hit publish and we will send it out to all your employees.
+        We learn from every schedule you publish to ensure we are giving you
+        exactly what you want.
+      </article>
+
+      <aside>
+      </aside>
+    </div>
+  </section>
+
+  <section class="more-info">
+    <div>
+      <div>
+        <h4>Get Started For Free<h4>
+      </div>
+      <div>
+        <%= link_to "Try Scheduleless",
+          new_onboarding_registration_path,
+          class: "button orange" %>
+      </div>
+    </div>
+  </section>
+
+  <%= render partial: "footer" %>
+
+  <% if Rails.env.production? %>
+    <%= render partial: "layouts/shared/reamaze" %>
+  <% end %>
+</div>

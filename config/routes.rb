@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   resources :employee_positions, only: [:destroy]
 
+  get "how_it_works", to: "marketing/welcome#how_it_works", as: :how_it_works
+
   resources :locations, only: [:create, :edit, :index, :new, :show, :update] do
     resources :available_employees, only: [:index]
     resource :calendar, only: [:show]
@@ -116,6 +118,8 @@ Rails.application.routes.draw do
       resources :scheduling_periods, only: [:show]
     end
   end
+
+  get "scheduling", to: "marketing/welcome#scheduling", as: :scheduling
 
   resources :scheduling_period, only: [] do
     resource :scheduling_period_publisher, only: [:create], path: "publish"

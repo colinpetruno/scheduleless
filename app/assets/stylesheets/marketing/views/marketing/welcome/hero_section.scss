@@ -9,6 +9,10 @@ section.hero {
   min-height: 400px;
   position: relative;
 
+  nav.navbar {
+    background-color: transparent !important;
+  }
+
   .scroll-down {
     position: absolute;
     bottom: 3vh;

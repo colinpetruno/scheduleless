@@ -39,6 +39,10 @@ button, input[type=submit], a.button {
     @include button-variant($white, $orange, darken($orange, 5%));
   }
 
+  &.white {
+    @include button-variant($gray-dark, $white, $gray-light);
+  }
+
   &.link {
     font-weight: $font-weight-normal;
     color: $link-color;
