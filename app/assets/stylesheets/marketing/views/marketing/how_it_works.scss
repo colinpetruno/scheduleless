@@ -1,4 +1,4 @@
-.scheduling {
+.how-it-works {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
 
   > header {
@@ -136,6 +136,30 @@
       color: $white;
       &:hover {
         text-decoration: none;
+      }
+    }
+  }
+}
+
+@media (max-width: map-get($grid-breakpoints, lg)) {
+  .how-it-works {
+    .notifications, .let-us-handle-it, .review {
+      & > div {
+        & > aside {
+          @include make-col(12);
+
+          background-position: center;
+          background-size: contain;
+          max-height: 225px;
+          padding: 15px;
+        }
+
+        & > article {
+          @include make-col(12);
+          margin-bottom: 20px;
+          padding: 0 15px;
+          text-align: center;
+        }
       }
     }
   }

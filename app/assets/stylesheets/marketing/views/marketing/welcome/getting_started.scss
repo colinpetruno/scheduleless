@@ -1,4 +1,4 @@
-.how-it-works {
+.getting-started {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
 
   > header {
@@ -111,6 +111,29 @@
         font-family: "Helvetica Neue", Helvetica, sans-serif;
         font-size: 27px;
         font-weight: 200;
+      }
+    }
+  }
+}
+
+@media (max-width: map-get($grid-breakpoints, lg)) {
+  .getting-started {
+    .more-info, .let-us-handle-it, .guided-setup {
+      & > div {
+        & > aside {
+          @include make-col(12);
+          background-size: contain;
+          background-position: center;
+          max-height: 225px;
+          padding: 15px;
+        }
+
+        & > article {
+          @include make-col(12);
+          margin-bottom: 20px;
+          padding: 0 15px;
+          text-align: center;
+        }
       }
     }
   }

@@ -6,10 +6,10 @@ class Marketing::WelcomeController < ApplicationController
   def how_it_works
   end
 
-  def index
+  def getting_started
   end
 
-  def scheduling
+  def index
   end
 
   private

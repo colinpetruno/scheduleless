@@ -38,3 +38,12 @@
     }
   }
 }
+
+@media (max-width: map-get($grid-breakpoints, lg)) {
+  .industries {
+    section > div > div {
+      @include make-col(6);
+      margin-bottom: 50px;
+    }
+  }
+}

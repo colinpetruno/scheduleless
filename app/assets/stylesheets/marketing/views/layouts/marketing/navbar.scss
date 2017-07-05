@@ -21,14 +21,22 @@
   }
 
   span {
-    color: $white;
-    font-family: "Helvetica", sans-serif;
-    font-size: 1.5rem;
-    display: block;
-    letter-spacing: 8px;
-    margin-right: auto;
-    text-transform: uppercase;
-    vertical-align: middle;
+    padding-top: 10px;
+
+    a {
+      color: $white;
+      font-family: "Helvetica", sans-serif;
+      font-size: 1.5rem;
+      display: block;
+      letter-spacing: 8px;
+      margin-right: auto;
+      text-transform: uppercase;
+      vertical-align: middle;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
   }
 
   > a {
@@ -52,10 +60,10 @@
     list-style: none;
     margin-bottom: 0;
     margin-left: auto;
-    // padding: $navbar-padding-y 0;
 
     li {
       display: inline-block;
+      margin-top: 11px;
       margin-left: 2em;
     }
 
@@ -63,8 +71,8 @@
       color: $white;
       font-size: 1.00rem;
       line-height: 75px;
-      padding-top: .25rem;
-      padding-bottom: .25rem;
+      padding-top: 0;
+      padding-bottom: 0;
       margin-right: 10px !important;
       vertical-align: middle;
       white-space: nowrap;
@@ -88,7 +96,8 @@
     span {
       display: block;
       margin: 0;
-      padding-top: 25px;
+      padding-top: 15px;
+      padding-bottom: 15px;
       text-align: center;
       width: 100%;
     }
