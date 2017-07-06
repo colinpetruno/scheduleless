@@ -11,6 +11,13 @@
   </article>
 </footer>
 
+<%# prevent people from going back too far %>
+<script type="text/javascript">
+  window.onbeforeunload = function () {
+    return "Are you sure you want to leave?";
+  };
+</script>
+
 <% content_for(:tracking) do %>
   <script type="text/javascript">
     $(function(){

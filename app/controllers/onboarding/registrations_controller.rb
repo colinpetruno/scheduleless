@@ -1,6 +1,8 @@
 class Onboarding::RegistrationsController < ApplicationController
   layout "onboarding"
 
+  before_action :redirect_if_logged_in?
+
   def new
     @registration = Registration.new
   end
@@ -18,6 +20,16 @@ class Onboarding::RegistrationsController < ApplicationController
   end
 
   private
+
+  def redirect_if_logged_in?
+    if current_user.present?
+      if current_user.leads.present?
+        redirect_to new_onboarding_position_path and return
+      else
+        redirect_to new_onboarding_lead_path and return
+      end
+    end
+  end
 
   def registration_params
     params.
