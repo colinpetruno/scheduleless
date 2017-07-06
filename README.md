@@ -4,7 +4,7 @@
 
 ## Postgres Installation
 
-Install Postgres. Postgres can be tricky to set up. After installation try
+Install Postgres `brew install postgresql`. Postgres can be tricky to set up. After installation try
 `psql`. If you cannot log in you may need to manage this through the psql user
 on the system.
 
