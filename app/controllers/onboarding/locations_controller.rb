@@ -20,7 +20,6 @@ class Onboarding::LocationsController < AuthenticatedController
     if current_user.save
       redirect_to new_onboarding_location_user_path(@location)
     else
-      binding.pry
       render :new
     end
   end
