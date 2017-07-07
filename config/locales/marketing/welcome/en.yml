@@ -1,6 +1,33 @@
 en:
   marketing:
     welcome:
+      employee_concierge:
+        heading: "Your Employees Concierge"
+        subtitle: >
+          Be interrupted less. Scheduleless customer service is there to help 
+          out your employees and handle the routine kinks that happen every 
+          week. 
+        apps:
+          article: >
+            Web, Android and iOS Apps make accessing their schedule as easy as
+            possible. Receive upcoming shift and notifications right on your 
+            mobile device.
+          title: "Available Anywhere"
+        time_off:
+          article: >
+            Employees can request time off directly from the app or the web.
+            Your managers will be alerted and can approve or deny the request.
+            If it's approved, we will make sure to not schedule them during
+            that time period!
+          title: "Time Off Requests"
+        trade:
+          article: >
+            Trading shifts allows for an easy way for employees to work when it
+            is most convenient for them. Trading shifts by your employees 
+            significantly lowers the number of cancellations. However, if they 
+            still need to cancel we will let all the eligible employees know 
+            and try to fill it as soon as possible.
+          title: "Shift Trading And Cancellations"
       footer:
         knowledge_base: "Knowledge Base"
         made_in_html: "Made with <span>♥</span> in Boston"
