@@ -1,0 +1,24 @@
+de:
+  notifications_mailer:
+    employee_joined_location:
+      subject: "Ein neuer Mitarbeiter ist beigetreten!"
+      title: "%{new_employee} ist Ihrem Standort beigetreten!"
+      message: >
+        Teilen Sie uns bitte mit falls dieser Mitarbeiter zu bereits bestehenden
+        Dienstplänen hinzugefügt werden muss. Andernfalls wird er/sie in zukünftige
+        Dienstpläne eingeplant.
+    schedule_approved:
+      link: "Hier klicken zum Überprüfen"
+      message: >
+        Der neue Dienstplan vom %{dates} ist bereit zur Überprüfung. Bitte teilen
+        Sie uns mit falls Veränderungen gemacht werden müssen. Je nach Vorzug
+        können Sie auch selbst Veränderungen machen.
+      subject: "Ein neuer Dienstplan ist bereit zur Überprüfung."
+      title: "Ein neuer Dienstplan steht zur Verfügung!"
+    schedule_published:
+      link: "Dienstplan ansehen"
+      message: >
+        Neue Schichten sind für den %{dates} verfügbar. Sie können auch jederzeit
+        Schichten mit der Scheduleless App für iOS and Android tauschen.
+      subject: "Ein neuer Dienstplan wurde veröffentlicht!"
+      title: "Ihr neuer Dienstplan wurde veröffentlicht!"
