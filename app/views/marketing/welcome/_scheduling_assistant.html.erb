@@ -1,0 +1,51 @@
+<div class="marketing-welcome-scheduling-assistant">
+  <div>
+    <div>
+      <header>
+        <h3><%= t(".heading") %></h3>
+      </header>
+
+      <section>
+        <div class="setup">
+          <div></div>
+          <h4><%= t(".setup.title") %></h4>
+
+          <article>
+            <%= t(".setup.article") %>
+          </article>
+
+          <footer>
+            <%= link_to(
+              t(".setup.link"),
+              getting_started_path,
+              class: "button white"
+            ) %>
+          </footer>
+        </div>
+
+        <div class="inbox">
+          <div></div>
+          <h4><%= t(".inbox.title") %></h4>
+          <article>
+            <%= t(".inbox.article") %>
+          </article>
+          <footer>
+            <%= link_to(
+              t(".inbox.link"),
+              how_it_works_path,
+              class: "button white"
+            ) %>
+          </footer>
+        </div>
+
+        <div class="integrated">
+          <div></div>
+          <h4><%= t(".integrated.title") %></h4>
+          <article>
+            <%= t(".integrated.article") %>
+          </article>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

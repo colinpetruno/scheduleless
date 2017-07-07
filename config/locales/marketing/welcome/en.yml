@@ -1,12 +1,6 @@
 en:
   marketing:
     welcome:
-      explanation:
-        title: "Your Personal Assistant"
-        line_1: ""
-        line_2: >
-          Why buy scheduling software that still makes you do scheduling?
-          We are the only ones that will do it for you.
       footer:
         knowledge_base: "Knowledge Base"
         made_in_html: "Made with <span>♥</span> in Boston"
@@ -17,13 +11,6 @@ en:
         no_cc_required: "30 day trial with no credit card required"
         subtitle: "Let us do your scheduling."
         title: "Spend More Time On Your Business."
-      mobile_apps:
-        bullet_1: "Check your schedule"
-        bullet_2: "Clock in and out"
-        bullet_3: "Trade Shifts"
-        bullet_4: "Accept Time Off Requests"
-        subtitle: "Available on iOS and Android"
-        title: "Mobile Apps"
       pricing:
         bullet_1: "We do your scheduling!"
         bullet_2: "Time Clock and Reporting"
@@ -39,10 +26,30 @@ en:
           being nickel and dimed for the features you want.
         title: "Transparent Pricing"
         unit: "per employee / month"
-      time_clock:
-        title: "Track Time"
-        line_1: "Employee Time Tracking built in. At no extra cost."
-        line_2: >
-          Employees can clock in and out on their mobile devices. Get a "to 
-          the minute summary" of the total hours worked. We will review for any
-          anomalies you may need to look into.
+      scheduling_assistant:
+        heading: "Your Personal Scheduling Assistant"
+        setup:
+          article: >
+            Work with our industry leading customer service team to get you set 
+            up as simply and as quickly possible. We can take care of it for it 
+            for you or our onboarding wizard can guide you every step of the 
+            way.
+          link: "Learn More"
+          title: "No Hassel Setup"
+        inbox:
+          article: >
+            We send your schedules directly to you. No more manual scheduling! 
+            Just review and publish. All your empoyees will be notified 
+            automatically! It could not be any easier. Need changes? Let us 
+            know and we can make updates for you or use our editor to tweak 
+            the schedule yourself.
+          link: "How It Works"
+          title: "Delivered To Your Inbox"
+        integrated:
+          article: >
+            You need less complication in your life. Add your Scheduleless 
+            shifts to any popular calendar application to have it seamlessly 
+            integrated with your existing software.
+          title: "Integrated With Your Calendar"
+
+
