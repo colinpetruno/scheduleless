@@ -1,23 +1,38 @@
 .marketing-welcome-pricing {
-  background-color: #ebf0f8;
+  background-color: #eaf6ff;
+  background-color: #f5faff;
 
-  > div > article {
-    @include make-col(3);
-    @include make-col-push(6);
-    padding: 150px 0;
+  > div {
+    @include make-container();
+    max-width: 1280px;
+
+    & > div {
+      @include make-row();
+      & > div {
+        @include make-col-ready();
+        @include make-col(12);
+
+        text-align: center;
+      }
+    }
   }
 
-  > div > aside {
-    @include make-col(6);
-    @include make-col-pull(3);
-  }
+  header {
+    margin-bottom: 20px;
+    margin-top: 50px;
+    text-align: center;
+    width: 100%;
 
-  article > div {
-    color: $gray-dark;
+    p {
+      margin: auto;
+      max-width: 800px;
+    }
   }
 
   .price {
+    display: block;
     text-align: center;
+
     > section {
       background-color: #dff0d8;
       background-color: $white;
@@ -25,7 +40,7 @@
       border-color: $dark-blue;
       color: #529138;
       color: $dark-blue;
-      margin: 50px 50px 50px auto;
+      margin: 50px auto;
       min-height: 350px;
       width: 250px;
 
@@ -79,24 +94,5 @@
 
 @media (max-width: map-get($grid-breakpoints, lg)) {
   .marketing-welcome-pricing {
-    > div > article {
-      @include make-col(12);
-      @include make-col-push(0);
-      margin: 0;
-      padding: 25px 25px 25px 50px;
-      text-align: center;
-    }
-
-    > div > aside {
-      @include make-col(12);
-      @include make-col-pull(0);
-
-      background-position: center;
-      min-height: 200px;
-
-      .price > section {
-        margin: 50px auto;
-      }
-    }
   }
 }

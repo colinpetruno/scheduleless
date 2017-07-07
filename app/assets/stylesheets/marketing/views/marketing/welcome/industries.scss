@@ -7,7 +7,6 @@
 
     h4 {
       color: lighten($dark-blue, 28%);
-      font-family: "Helvetica Neue", Helvetica, sans-serif;
       font-size: 27px;
       font-weight: 200;
       margin-bottom: 30px;
@@ -23,7 +22,6 @@
       > div {
         @include make-col-ready();
         @include make-col(3);
-        font-family: "Helvetica Neue", Helvetica, sans-serif;
         font-size: 12px;
         color: $white;
         color: lighten($dark-blue, 28%);

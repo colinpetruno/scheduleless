@@ -1,65 +1,64 @@
-<section class="section marketing-welcome-pricing">
+<section class="marketing-welcome-pricing">
   <div>
-
-    <article>
+    <div>
       <div>
-        <h2><%= t(".title") %></h3>
-        <%= t(".subtitle") %>
+        <header>
+          <h3><%= t(".title") %></h3>
+          <p><%= t(".subtitle") %></p>
+        </header>
+
+
+        <div class="price">
+          <section>
+            <div>
+              <sup>$</sup><span>3</span>
+            </div>
+            <div class="per-employee"><%= t(".unit") %></div>
+
+            <%= link_to t(".call_to_action"),
+              new_onboarding_registration_path,
+              class: "button orange"
+            %>
+
+            <ul>
+              <li>
+                <span class="oi oi-circle-check"></span>
+                <strong><%= t(".bullet_1") %></strong>
+              </li>
+              <li>
+                <span class="oi oi-circle-check"></span>
+                <%= t(".bullet_2") %>
+              </li>
+              <li>
+                <span class="oi oi-circle-check"></span>
+                <%= t(".bullet_3") %>
+              </li>
+              <li>
+                <span class="oi oi-circle-check"></span>
+                <%= t(".bullet_4") %>
+              </li>
+              <li>
+                <span class="oi oi-circle-check"></span>
+                <%= t(".bullet_5") %>
+              </li>
+              <li>
+                <span class="oi oi-circle-check"></span>
+                <%= t(".bullet_6") %>
+              </li>
+              <li>
+                <span class="oi oi-circle-check"></span>
+                <%= t(".bullet_7") %>
+              </li>
+              <li>
+                <span class="oi oi-circle-check"></span>
+                <%= t(".bullet_8") %>
+              </li>
+            </ul>
+
+          </section>
+        </div>
 
       </div>
-    </article>
-
-    <aside>
-      <div class="price">
-        <section>
-          <div>
-            <sup>$</sup><span>3</span>
-          </div>
-          <div class="per-employee"><%= t(".unit") %></div>
-
-          <%= link_to t(".call_to_action"),
-            new_onboarding_registration_path,
-            class: "button orange"
-          %>
-
-          <ul>
-            <li>
-              <span class="oi oi-circle-check"></span>
-              <strong><%= t(".bullet_1") %></strong>
-            </li>
-            <li>
-              <span class="oi oi-circle-check"></span>
-              <%= t(".bullet_2") %>
-            </li>
-            <li>
-              <span class="oi oi-circle-check"></span>
-              <%= t(".bullet_3") %>
-            </li>
-            <li>
-              <span class="oi oi-circle-check"></span>
-              <%= t(".bullet_4") %>
-            </li>
-            <li>
-              <span class="oi oi-circle-check"></span>
-              <%= t(".bullet_5") %>
-            </li>
-            <li>
-              <span class="oi oi-circle-check"></span>
-              <%= t(".bullet_6") %>
-            </li>
-            <li>
-              <span class="oi oi-circle-check"></span>
-              <%= t(".bullet_7") %>
-            </li>
-            <li>
-              <span class="oi oi-circle-check"></span>
-              <%= t(".bullet_8") %>
-            </li>
-          </ul>
-
-        </section>
-      </div>
-    </aside>
-
+    </div>
   </div>
 </section>

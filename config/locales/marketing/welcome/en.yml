@@ -1,12 +1,33 @@
 en:
   marketing:
     welcome:
-      explanation:
-        title: "Your Personal Assistant"
-        line_1: ""
-        line_2: >
-          Why buy scheduling software that still makes you do scheduling?
-          We are the only ones that will do it for you.
+      employee_concierge:
+        heading: "Your Employees Concierge"
+        subtitle: >
+          Be interrupted less. Scheduleless customer service is there to help 
+          out your employees and handle the routine kinks that happen every 
+          week. 
+        apps:
+          article: >
+            Web, Android and iOS Apps make accessing their schedule as easy as
+            possible. Receive upcoming shift and notifications right on your 
+            mobile device.
+          title: "Available Anywhere"
+        time_off:
+          article: >
+            Employees can request time off directly from the app or the web.
+            Your managers will be alerted and can approve or deny the request.
+            If it's approved, we will make sure to not schedule them during
+            that time period!
+          title: "Time Off Requests"
+        trade:
+          article: >
+            Trading shifts allows for an easy way for employees to work when it
+            is most convenient for them. Trading shifts by your employees 
+            significantly lowers the number of cancellations. However, if they 
+            still need to cancel we will let all the eligible employees know 
+            and try to fill it as soon as possible.
+          title: "Shift Trading And Cancellations"
       footer:
         knowledge_base: "Knowledge Base"
         made_in_html: "Made with <span>♥</span> in Boston"
@@ -17,13 +38,6 @@ en:
         no_cc_required: "30 day trial with no credit card required"
         subtitle: "Let us do your scheduling."
         title: "Spend More Time On Your Business."
-      mobile_apps:
-        bullet_1: "Check your schedule"
-        bullet_2: "Clock in and out"
-        bullet_3: "Trade Shifts"
-        bullet_4: "Accept Time Off Requests"
-        subtitle: "Available on iOS and Android"
-        title: "Mobile Apps"
       pricing:
         bullet_1: "We do your scheduling!"
         bullet_2: "Time Clock and Reporting"
@@ -35,14 +49,41 @@ en:
         bullet_8: "Android and iOS Apps"
         call_to_action: "Try For Free"
         subtitle: >
-          No hidden features or upgrades. Use the entire platform without
-          being nickel and dimed for the features you want.
+          Other scheduling software claims to be free. But in order to be 
+          useful you need to buy upgrades and packages for every feature you
+          want to use. Scheduleless has no hidden features or upgrades. Pay
+          one flat free and get access to everything. And we are the only 
+          scheduling software that actually does your scheduling!
         title: "Transparent Pricing"
         unit: "per employee / month"
-      time_clock:
-        title: "Track Time"
-        line_1: "Employee Time Tracking built in. At no extra cost."
-        line_2: >
-          Employees can clock in and out on their mobile devices. Get a "to 
-          the minute summary" of the total hours worked. We will review for any
-          anomalies you may need to look into.
+      scheduling_assistant:
+        heading: "Your Personal Scheduling Assistant"
+        setup:
+          article: >
+            Work with our industry leading customer service team to get you set 
+            up as simply and as quickly possible. We can take care of it for it 
+            for you or our onboarding wizard can guide you every step of the 
+            way.
+          link: "Learn More"
+          title: "No Hassle Setup"
+        inbox:
+          article: >
+            We send your schedules directly to you. No more manual scheduling! 
+            Just review and publish. All your employees will be notified 
+            automatically! It could not be any easier. Need changes? Let us 
+            know and we can make updates for you or use our editor to tweak 
+            the schedule yourself.
+          link: "How It Works"
+          title: "Delivered To Your Inbox"
+        integrated:
+          article: >
+            You need less complication in your life. Add your Scheduleless 
+            shifts to any popular calendar application to have it seamlessly 
+            integrated with your existing software.
+          title: "Integrated With Your Calendar"
+      sell_message:
+        call_to_action: "Try Now For Free"
+        message: "The Only Scheduling Software That Does Your Scheduling"
+
+
+
