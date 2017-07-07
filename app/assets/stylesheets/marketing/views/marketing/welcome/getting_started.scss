@@ -1,5 +1,4 @@
 .getting-started {
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
 
   > header {
     background-color: $dark-blue;
@@ -9,7 +8,6 @@
   .hero-section {
     background-color: #dcf2ff;
     color: darken($dark-blue, 10%);
-    font-family: "Helvetica Neue", Helvetica, sans-serif;
     min-height: 300px;
     text-align: center;
     text-transform: capitalize;
@@ -27,7 +25,6 @@
   }
 
   .section h4 {
-    font-family: "Helvetica Neue", Helvetica, sans-serif;
     font-size: 25px;
     font-weight: 200;
     margin-bottom: 20px;
@@ -49,7 +46,6 @@
       h4 {
         color: $blue;
         color: $white;
-        font-family: "Helvetica Neue", Helvetica, sans-serif;
         font-size: 27px;
         font-weight: 200;
       }
@@ -108,7 +104,6 @@
     > div {
       h4 {
         color: $white;
-        font-family: "Helvetica Neue", Helvetica, sans-serif;
         font-size: 27px;
         font-weight: 200;
       }
