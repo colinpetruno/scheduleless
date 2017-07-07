@@ -1,0 +1,6 @@
+<%= render partial: "introduction" %>
+<%= render partial: "blog/shared/categories" %>
+
+<% (0..10).each do |i| %>
+  <%= render partial: "blog/posts/tile" %>
+<% end %>

@@ -5,6 +5,10 @@ Rails.application.routes.draw do
 
   resources :approvals, only: [:index]
 
+  namespace :blog do
+    root to: "welcome#index"
+  end
+
   namespace :business, path: "company" do
     resources :users,
       only: [:create, :destroy, :edit, :index, :new, :show, :update],

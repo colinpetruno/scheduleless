@@ -1,0 +1,20 @@
+.blog-shared-categories {
+  border-bottom: 1px solid lighten($blue-dark, 20%);
+
+  ul {
+    list-style: none;
+    padding: 0;
+
+    li {
+      color: darken($gray-light, 10%);
+      display: inline-block;
+      font-size: 11px;
+      margin-right: 20px;
+      text-transform: uppercase;
+
+      &.selected {
+        color: $blue-dark;
+      }
+    }
+  }
+}

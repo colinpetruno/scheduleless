@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <%# TODO: Localize Me" %>
+    <title>Scheduleless</title>
+
+    <%= csrf_meta_tags %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <% if 1 == 2 %>
+    <meta name="title" content="<%= t(".meta_title") %>" />
+    <meta name="description" content="<%= t(".meta_description") %>" />
+  <% end %>
+
+    <%= favicon_link_tag "favicon.ico" %>
+
+    <%= stylesheet_link_tag "blog", media: "all", "data-turbolinks-track": "reload" %>
+    <%= javascript_include_tag "blog", "data-turbolinks-track": "reload" %>
+
+    <% if Rails.env.production? %>
+      <%= render partial: "layouts/shared/reamaze" %>
+    <% end %>
+
+    <%= render partial: "layouts/shared/google_analytics",
+      locals: { internal: false } %>
+    <%= render partial: "layouts/shared/mixpanel" %>
+  </head>
+
+  <body data-no-turbolink="true">
+    <%= render partial: "layouts/shared/blog_header" %>
+
+    <div class="blog-container">
+      <div>
+        <div>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+
+    <%= render partial: "layouts/shared/blog_footer" %>
+
+    <div id="tracking-data"
+         style="display:none"
+         data-page-name="<%= "#{controller_path}##{action_name}" %>">
+    </div>
+  </body>
+</html>

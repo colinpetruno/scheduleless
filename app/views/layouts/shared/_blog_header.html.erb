@@ -1,0 +1,24 @@
+<header class="layouts-shared-blog-header">
+  <h1>
+    <%= link_to "", root_path, class: "logo" %>
+    <%= link_to "Scheduleless", root_path %>
+  </h1>
+
+  <div class="links">
+    <%= link_to "How It Works", how_it_works_path %>
+    <%= link_to "Getting Started", getting_started_path %>
+    <%= link_to "Sign Up", new_onboarding_registration_path %>
+    <%= link_to "Sign In", new_user_session_path %>
+  </div>
+
+  <button type="button" data-toggle="collapse" data-target="#mobile-menu" aria-expanded="false" class="mobile-menu-toggle">
+    <span class="oi oi-menu"></span>
+  </button>
+</header>
+
+<div class="collapse navbar-collapse" id="mobile-menu">
+    <%= link_to "How It Works", how_it_works_path %>
+    <%= link_to "Getting Started", getting_started_path %>
+    <%= link_to "Sign Up", new_onboarding_registration_path %>
+    <%= link_to "Sign In", new_user_session_path %>
+</div>
