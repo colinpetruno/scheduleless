@@ -8,7 +8,7 @@
     <% @locations.each do |location| %>
       <tr>
         <td>
-          <%= AddressFormatter.for(location).address.reject(&:blank?).join(", ") %>
+          <%= AddressFormatter.for(location).address.join(", ") %>
         </td>
         <td>
           <%= AddressFormatter.for(location).city_state_zip %>

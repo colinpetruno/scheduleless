@@ -10,7 +10,7 @@ class AddressFormatter
   end
 
   def address
-    [location.line_1, location.line_2, location.line_3].compact
+    [location.line_1, location.line_2, location.line_3].reject(&:blank?)
   end
 
   def calendar_stream
