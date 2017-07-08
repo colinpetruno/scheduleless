@@ -1,0 +1,22 @@
+.blog-posts-show {
+  header {
+    color: $gray-light;
+    margin: 20px 0 40px 0;
+
+    .author {
+      font-size: 18px;
+      color: $gray-light;
+
+      span:first-child {
+        color: $blue-dark;
+      }
+    }
+
+    .category {
+      span {
+        color: $blue-dark;
+      }
+    }
+  }
+
+}

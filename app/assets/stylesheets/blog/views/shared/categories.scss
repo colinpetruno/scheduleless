@@ -6,15 +6,34 @@
     padding: 0;
 
     li {
-      color: darken($gray-light, 10%);
       display: inline-block;
       font-size: 11px;
       margin-right: 20px;
       text-transform: uppercase;
 
-      &.selected {
-        color: $blue-dark;
+      a {
+        color: darken($gray-light, 10%);
+
+        &:hover {
+          color: $blue-dark;
+          text-decoration: none;
+        }
       }
+
+      &.selected {
+        a {
+          color: $blue-dark;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: map-get($grid-breakpoints, lg)) {
+  .blog-shared-categories {
+    text-align: center;
+    ul {
+
     }
   }
 }

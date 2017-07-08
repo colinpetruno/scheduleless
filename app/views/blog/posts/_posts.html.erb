@@ -1,0 +1,10 @@
+<% if posts.present? %>
+  <% posts.each do |post| %>
+    <%= render partial: "blog/posts/tile", locals: { post: post } %>
+  <% end %>
+<% else %>
+  <div class="centered">
+    <br />
+    <h4><%= t(".empty") %></h4>
+  </div>
+<% end %>

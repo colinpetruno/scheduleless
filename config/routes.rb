@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   namespace :blog do
     root to: "welcome#index"
+    resources :categories, only: [:show]
+    resources :posts, only: [:show]
   end
 
   namespace :business, path: "company" do

@@ -1,5 +1,10 @@
 en:
   models:
+    blog_post:
+      category:
+        product_announcements: "Product Announcements"
+        scheduling: "Scheduling"
+        tutorials: "Tutorials"
     locale_options:
       en: "English"
       de: "German"

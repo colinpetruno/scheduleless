@@ -1,0 +1,22 @@
+<article class="blog-posts-show" itemtype="http://schema.org/Article">
+  <header>
+    <div class="category">
+      <%= link_to "Blog", blog_root_path %> » <span><%= @post.category %></span>
+    </div>
+
+    <h1 itemprop="headline"><%= @post.title %></h1>
+
+    <h3 class="author">
+      by <span itemprop="author">
+        <%= @post.creator.full_name %>
+      </span> on
+      <span itemprop="datePublished">
+        <%= @post.published_at.to_s(:month_day_year) %>
+      </span>
+    </h3>
+  </header>
+
+  <section itemprop="articleBody">
+    <%= @post.body %>
+  </section>
+</article>

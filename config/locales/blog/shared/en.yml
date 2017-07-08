@@ -1,0 +1,8 @@
+en:
+  blog:
+    shared:
+      categories:
+        all: "All Topics"
+        announcements: "Product Announcements"
+        scheduling: "Scheduling"
+        tutorials: "Tutorials"

@@ -3,15 +3,17 @@
     <div>Product Announcements</div>
 
     <header>
-      <h2>We Just Made A Major Update</h2>
+      <h2>
+        <%= link_to post.title, blog_post_path(post) %>
+      </h2>
     </header>
 
     <article>
-      With our recent update, completely rebuilt on HubSpot's new Timeline API, users on all plans have access to everything Enterprise users have been enjoying. We've...
+      <%= post.preview_description %>
     </article>
 
     <footer>
-      by Colin Petruno - July 6, 2017
+      by <span><%= post.creator.full_name %></span> - <%= post.published_at.to_s(:month_day_year) %>
     </footer>
   </section>
 

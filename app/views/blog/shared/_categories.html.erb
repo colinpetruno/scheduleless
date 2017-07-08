@@ -1,8 +1,21 @@
 <div class="blog-shared-categories">
+  <%# TODO: Add a presenter for this logic %>
   <ul>
-    <li class="selected">All Topics</li>
-    <li>Product Announcments</li>
-    <li>Scheduling</li>
-    <li>Tutorials</li>
+    <li class="<%= "selected" if controller_name == "welcome" %>">
+      <%= link_to t(".all"), blog_root_path %>
+    </li>
+
+    <li class="<%= "selected" if controller_name == "categories" && params[:id] == "product_announcements" %>">
+      <%= link_to(t(".announcements"),
+                  blog_category_path("product_announcements") ) %>
+    </li>
+
+    <li class="<%= "selected" if controller_name == "categories" && params[:id] == "scheduling" %>">
+      <%= link_to t(".scheduling"), blog_category_path("scheduling") %>
+    </li>
+
+    <li class="<%= "selected" if controller_name == "categories" && params[:id] == "tutorials" %>">
+      <%= link_to t(".tutorials"), blog_category_path("tutorials") %>
+    </li>
   </ul>
 </div>
