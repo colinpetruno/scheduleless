@@ -1,7 +1,11 @@
 module Blog
   class AdminPolicy < ApplicationPolicy
     def show?
-      UserPermissions.for(user).scheduleless_admin?
+      if user.present?
+        UserPermissions.for(user).scheduleless_admin?
+      else
+        false
+      end
     end
   end
 end
