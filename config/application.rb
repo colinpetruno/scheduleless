@@ -36,6 +36,8 @@ module Scheduler
       password: Rails.application.secrets.mailgun_password
     }
 
+    config.middleware.use Rack::Deflater
+
     config.active_job.queue_adapter = :resque
   end
 end
