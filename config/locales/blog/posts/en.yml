@@ -3,3 +3,5 @@ en:
     posts:
       posts:
         empty: "We don't have content for you right now. Check back soon!"
+      show:
+        edit: "Edit Post"

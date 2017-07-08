@@ -1,0 +1,45 @@
+table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: $spacer;
+  background-color: $table-bg;
+
+  th,
+  td {
+    padding: $table-cell-padding;
+    vertical-align: top;
+    border-top: $table-border-width solid $table-border-color;
+
+    a.button.link, .button.link {
+      padding-bottom: 0;
+      padding-top: 0;
+    }
+  }
+
+  thead th {
+    vertical-align: bottom;
+    border-bottom: (2 * $table-border-width) solid $table-border-color;
+  }
+
+  tbody + tbody {
+    border-top: (2 * $table-border-width) solid $table-border-color;
+  }
+
+  .table {
+    background-color: $body-bg;
+  }
+
+  &.bordered {
+    border: 1px solid lighten($blue, 20%);
+
+    tr:first-child td {
+      border-top: 1px solid lighten($blue, 20%);
+    }
+  }
+
+  &.striped {
+    tbody tr:nth-of-type(odd) {
+      background-color: lighten($blue, 30%);
+    }
+  }
+}

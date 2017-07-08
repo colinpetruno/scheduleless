@@ -12,10 +12,6 @@ class AuthenticatedController < ApplicationController
     current_user.company
   end
 
-  def pundit_user
-    UserContext.new(location: @location, user: current_user)
-  end
-
   def search_params
     params[:search] || {}
   end

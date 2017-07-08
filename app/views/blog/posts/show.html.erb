@@ -17,6 +17,14 @@
   </header>
 
   <section itemprop="articleBody">
-    <%= @post.body %>
+    <%= sanitize @post.body,
+      tags: %w(strong em a h1 h2 h3 h4 h5 h6 blockquote ul li li),
+      attributes: %w(href style src) %>
   </section>
+
+  <% if policy("blog/admin".to_sym).show? %>
+    <div>
+      <%= link_to t(".edit"), edit_blog_admin_blog_post_path(@post) %>
+    </div>
+  <% end %>
 </article>

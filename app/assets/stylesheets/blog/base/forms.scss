@@ -1,0 +1,146 @@
+td > form {
+  display: inline;
+}
+
+form {
+  .inline {
+    vertical-align: top;
+
+    label {
+      display: block;
+      font-weight: bold;
+    }
+
+    .input {
+      display: inline-block;
+      vertical-align: top;
+    }
+  }
+}
+
+.input {
+  margin-bottom: 25px;
+  &.hidden {
+    margin-bottom: 0;
+  }
+
+  label {
+    font-weight: bold;
+    color: lighten($font-dark, 15%);
+    margin-bottom: 4px;
+  }
+
+  input, select {
+    @include box-shadow($input-box-shadow);
+    @include transition($input-transition);
+
+    background-clip: padding-box;
+    background-image: none;
+    background-color: $input-bg;
+    border: $input-btn-border-width solid $input-border-color;
+    border-radius: 0;
+    color: $input-color;
+    display: block;
+    font-size: $font-size-base;
+    line-height: $input-line-height;
+    max-width: 400px;
+    min-width: 125px;
+    padding: $input-padding-y $input-padding-x;
+    width: 100%;
+
+    &:focus {
+      border-color: $blue;
+      outline: 0;
+    }
+
+    &:disabled,
+    &[readonly] {
+      background-color: darken($white, 5%);
+      color: darken($gray-light, 10%);
+      opacity: 1;
+    }
+  }
+
+  input {
+    border-color: rgba(0, 0, 0, 0.14902);
+    border-width: 1px;
+    border-radius: 4px;
+    display: block;
+    padding: 8px 12px;
+    text-shadow: none;
+    width: 100%;
+  }
+
+  select {
+    &::-ms-expand {
+      background-color: transparent;
+      border: 0;
+    }
+
+    &:not([size]):not([multiple]) {
+      $select-border-width: ($border-width * 2);
+      height: calc(#{$input-height} + #{$select-border-width});
+    }
+
+    &:focus::-ms-value {
+      color: $input-color;
+      background-color: $input-bg;
+    }
+  }
+
+  small {
+    color: $blue;
+    display: block;
+    max-width: 400px;
+  }
+
+  &.has-error {
+    input, select {
+      border-color: $red;
+    }
+
+    label {
+      color: $red;
+    }
+
+    .help-block {
+      color: $red;
+      font-size: .8em;
+    }
+  }
+
+  .checkbox {
+    label > input {
+      display: inline-block;
+      width: 25px;
+    }
+  }
+}
+
+input[type=submit] {
+  cursor: pointer;
+}
+
+.form-check-inline {
+  display: inline-block;
+  margin-right: 12px;
+
+  > label {
+    padding-left: 20px;
+  }
+
+  > label > input {
+    margin-left: -20px;
+    margin-right: 5px;
+  }
+}
+
+.check_boxes {
+  & > label {
+    display: block;
+  }
+
+  & > small {
+    margin-bottom: 5px;
+  }
+}

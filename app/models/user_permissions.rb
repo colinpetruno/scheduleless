@@ -15,6 +15,10 @@ class UserPermissions
     positions.where(location_admin: true).present?
   end
 
+  def scheduleless_admin?
+    user.scheduleless_admin?
+  end
+
   def manage?(object)
     if object.is_a? Location
       manage_location?(object)

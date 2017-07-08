@@ -1,0 +1,20 @@
+<br />
+<%= link_to "Manage", blog_admin_root_path %>
+<br /><br />
+<h3>Blog Posts</h3>
+
+<table class="bordered">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <% @post.each do |post| %>
+    <tr>
+      <td><%= post.title %></td>
+      <td><%= link_to "Edit", edit_blog_admin_blog_post_path(post) %></td>
+    </tr>
+  <% end %>
+</table>

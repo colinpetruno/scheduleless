@@ -284,6 +284,8 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.5)
     tilt (2.0.6)
+    trix (0.10.1)
+      rails
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.0)
@@ -356,6 +358,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   simple_form
   stripe
+  trix
   turbolinks (~> 5)
   twilio-ruby
   uglifier (>= 1.3.0)

@@ -8,6 +8,12 @@ Rails.application.routes.draw do
   namespace :blog do
     root to: "welcome#index"
     resources :categories, only: [:show]
+
+    namespace :admin, path: "management" do
+      root to: "welcome#show"
+      resources :blog_posts, only: [:create, :edit, :index, :new, :update]
+    end
+
     resources :posts, only: [:show]
   end
 

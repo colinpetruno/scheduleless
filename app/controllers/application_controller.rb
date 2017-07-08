@@ -17,4 +17,8 @@ class ApplicationController < ActionController::Base
       calendar_path
     end
   end
+
+  def pundit_user
+    UserContext.new(location: @location, user: current_user)
+  end
 end

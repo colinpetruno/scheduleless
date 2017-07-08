@@ -1,5 +1,11 @@
 <div class="blog-welcome-introduction">
   <header><%= t(".title") %></header>
   <%= t(".description_html") %>
+
+  <% if policy("blog/admin".to_sym).show? %>
+    <div>
+      <%= link_to t(".manage"), blog_admin_root_path %>
+    </div>
+  <% end %>
 </div>
 
