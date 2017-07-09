@@ -1,7 +1,8 @@
 <article class="blog-posts-show" itemtype="http://schema.org/Article">
   <header>
     <div class="category">
-      <%= link_to "Blog", blog_root_path %> » <span><%= @post.category %></span>
+      <%= link_to "Blog", blog_root_path %> » <span>
+        <%= t("models.blog_post.category.#{@post.category}") %></span>
     </div>
 
     <h1 itemprop="headline"><%= @post.title %></h1>
@@ -18,7 +19,7 @@
 
   <section itemprop="articleBody">
     <%= sanitize @post.body,
-      tags: %w(strong em a h1 h2 h3 h4 h5 h6 blockquote ul li li),
+      tags: %w(br div strong em a h1 h2 h3 h4 h5 h6 blockquote ul li li),
       attributes: %w(href style src) %>
   </section>
 

@@ -33,7 +33,7 @@ module Blog
 
     def set_published_at
       if published? && published_at.blank?
-        published_at = DateTime.now
+        self.published_at = DateTime.now
       end
     end
   end
