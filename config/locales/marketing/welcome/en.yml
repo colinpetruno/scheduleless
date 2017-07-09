@@ -36,8 +36,10 @@ en:
       hero_section:
         call_to_action: "Start For Free"
         no_cc_required: "30 day trial with no credit card required"
+        learn_more_html: >
+          Learn More About <h2>Automated Employee Scheduling</h2>
         subtitle_html: >
-          The only <h1>Employee Scheduling Software</h1> that schedules for 
+          The only <h1>employee scheduling software</h1> that schedules for 
           you.
         title: "Spend More Time On Your Business."
       pricing:

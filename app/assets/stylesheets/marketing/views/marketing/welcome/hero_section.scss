@@ -24,6 +24,18 @@ section.hero {
       display: block;
       font-size: 2em;
     }
+
+    small {
+      color: $white;
+      font-size: 12px;
+
+      h2 {
+        color: $white;
+        display: inline;
+        font-size: 12px;
+        font-weight: normal;
+      }
+    }
   }
 }
 
