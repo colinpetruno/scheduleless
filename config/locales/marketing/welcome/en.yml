@@ -36,7 +36,9 @@ en:
       hero_section:
         call_to_action: "Start For Free"
         no_cc_required: "30 day trial with no credit card required"
-        subtitle: "Let us do your scheduling."
+        subtitle_html: >
+          The only <h1>Employee Scheduling Software</h1> that schedules for 
+          you.
         title: "Spend More Time On Your Business."
       pricing:
         bullet_1: "We do your scheduling!"

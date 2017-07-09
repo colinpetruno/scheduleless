@@ -1,0 +1,24 @@
+.marketing-welcome-pricing-view {
+  > header {
+    background-color: $dark-blue;
+    padding: 0 20px;
+  }
+  .hero-section {
+    background-color: #dcf2ff;
+    color: darken($dark-blue, 10%);
+    min-height: 300px;
+    text-align: center;
+    text-transform: capitalize;
+
+    > div {
+      padding: 125px 0;
+    }
+
+    h3 {
+      font-size: 30px;
+      font-weight: 200;
+      margin-bottom: 0px;
+      vertical-align: middle;
+    }
+  }
+}

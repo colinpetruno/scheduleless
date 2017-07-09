@@ -121,6 +121,8 @@ Rails.application.routes.draw do
     resources :user, only: [:destroy]
   end
 
+  get "pricing", to: "marketing/welcome#pricing", as: :pricing
+
   mount ResqueWeb::Engine, at: "/queues", anchor: false, constraints: lambda { |req|
     req.env['warden'].authenticated? and req.env['warden'].user.scheduleless_admin?
   }

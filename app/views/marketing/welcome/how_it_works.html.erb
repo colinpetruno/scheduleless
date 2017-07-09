@@ -63,9 +63,10 @@
       </div>
       <div>
         <br />
-        <%= link_to "Try Scheduleless",
+        <%= link_to "Try Scheduleless Now",
           new_onboarding_registration_path,
           class: "button orange" %>
+        <p><small>30 days free, no credit card required.</small></p>
       </div>
       <div>
         <%= link_to "Learn More",
@@ -76,8 +77,4 @@
   </section>
 
   <%= render partial: "footer" %>
-
-  <% if Rails.env.production? %>
-    <%= render partial: "layouts/shared/reamaze" %>
-  <% end %>
 </div>

@@ -50,6 +50,15 @@ section.hero {
           font-weight: normal;
           letter-spacing: 1px;
         }
+        span {
+          font-size: 20px;
+          > h1 {
+            color: $white;
+            display: inline;
+            font-size: 20px;
+            font-weight: normal;
+          }
+        }
       }
     }
   }

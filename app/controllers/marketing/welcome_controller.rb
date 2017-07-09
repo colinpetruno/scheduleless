@@ -12,6 +12,9 @@ class Marketing::WelcomeController < ApplicationController
   def index
   end
 
+  def pricing
+  end
+
   private
 
   def check_signed_in_user
