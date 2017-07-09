@@ -84,3 +84,12 @@ section.hero {
     font-size: .65em;
   }
 }
+
+
+@media (max-width: map-get($grid-breakpoints, lg)) {
+  .content-section {
+    > div > section > article {
+      margin-top: 75px;
+    }
+  }
+}
