@@ -10,7 +10,7 @@ class Onboarding::RegistrationsController < ApplicationController
   def create
     @registration = Registration.new(registration_params)
 
-    if @registration.register
+    if @registration.valid? && @registration.register
       sign_in(@registration.user)
 
       redirect_to new_onboarding_lead_path
