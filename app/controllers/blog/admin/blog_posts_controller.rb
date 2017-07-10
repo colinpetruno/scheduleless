@@ -2,7 +2,9 @@ module Blog
   module Admin
     class BlogPostsController < BaseController
       def create
-        @post = Post.new(blog_post_params)
+        @post = Post.new(blog_post_params.merge(
+            created_by_id: current_user.id
+          ))
 
         if @post.save
           redirect_to blog_admin_root_path
@@ -45,8 +47,6 @@ module Blog
             :published,
             :slug,
             :title
-          ).merge(
-            created_by_id: current_user.id
           )
       end
     end
