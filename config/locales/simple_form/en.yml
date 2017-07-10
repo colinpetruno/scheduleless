@@ -9,6 +9,8 @@ en:
       credit_card:
         create: "Add Card"
         update: "Update Card"
+      email_capture:
+        create: "Try For Free!"
       in_progress_shift:
         create: "Create Shift"
         update: "Update Shift"

@@ -1,6 +1,16 @@
 <div class="marketing-welcome-footer">
   <div>
     <div>
+      <div class="email-capture">
+        <section>
+          <%= simple_form_for EmailCapture.new do |f| %>
+            <%= f.input :email, label: false, placeholder: "Email Address" %>
+            <%= f.submit class: "button orange" %>
+          <% end %>
+          <small>30 days free, no credit card required</small>
+        </section>
+      </div>
+
       <article>
         <%= image_tag "shared/logos/scheduleless.png" %>
       </article>

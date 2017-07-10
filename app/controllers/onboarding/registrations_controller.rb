@@ -4,7 +4,7 @@ class Onboarding::RegistrationsController < ApplicationController
   before_action :redirect_if_logged_in?
 
   def new
-    @registration = Registration.new
+    @registration = Registration.new(email: params[:email])
   end
 
   def create

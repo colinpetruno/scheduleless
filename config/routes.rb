@@ -169,6 +169,8 @@ Rails.application.routes.draw do
     resources :trades, only: [:create, :new]
   end
 
+  resources :email_captures, only: [:create], path: "sign_up"
+
   resources :streams, only: [:show], defaults: { format: :ics }
 
   resources :time_off_requests, only: [:create, :index, :new] do

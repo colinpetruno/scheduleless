@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170707215943) do
+ActiveRecord::Schema.define(version: 20170710140540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,12 @@ ActiveRecord::Schema.define(version: 20170707215943) do
     t.boolean  "default",        default: false, null: false
     t.string   "stripe_card_id"
     t.index ["company_id"], name: "index_credit_cards_on_company_id", using: :btree
+  end
+
+  create_table "email_captures", force: :cascade do |t|
+    t.string   "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "employee_positions", force: :cascade do |t|

@@ -17,7 +17,7 @@
     margin: 25px 0;
   }
 
-  section {
+  > section {
     color: $gray-light;
     padding-bottom: 50px;
 
@@ -43,6 +43,48 @@
       }
     }
   }
+
+  .email-capture {
+    text-align: center;
+
+    > section {
+      background-color: lighten(#484b52, 5%);
+      border: 1px solid darken(#484b52, 5%);
+      display: inline-block;
+      margin: auto;
+      padding: 20px;
+
+      small {
+        color: darken($white, 10%);
+        display: block;
+        margin-top: 5px;
+      }
+    }
+
+    form {
+      margin-bottom: 0;
+    }
+
+    margin-top: 20px;
+    .input {
+      display: inline-block;
+      margin-bottom: 0;
+
+      input {
+        border-radius: 0;
+        border: 1px solid $white;
+        font-size: 18px;
+        margin-top: 1px;
+        min-width: 300px;
+        padding: 15px 30px;
+      }
+    }
+
+    .button {
+      margin-top: -4px;
+      padding: 16px 20px;
+    }
+  }
 }
 
 
@@ -55,6 +97,40 @@
         display: block;
         margin: 10px 0;
         text-align: center;
+      }
+    }
+
+    .email-capture {
+      text-align: center;
+
+
+      > section {
+        display: block;
+        padding: 15px;
+        text-align: center;
+      }
+
+      margin-top: 20px;
+
+      .input {
+        display: block;
+        margin-bottom: 0;
+
+        input {
+          border-radius: 0;
+          border: 1px solid $white;
+          font-size: 14px;
+          margin-bottom: 10px;
+          min-width: 200px;
+          padding: 8px 15px;
+          text-align: center;
+        }
+      }
+
+      .button {
+        display: block;
+        margin: auto;
+        padding: 8px 10px;
       }
     }
   }
