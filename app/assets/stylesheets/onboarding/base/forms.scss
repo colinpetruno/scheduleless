@@ -24,27 +24,28 @@ form {
       background-clip: padding-box;
       background-image: none;
       background-color: $input-bg;
-      border-radius: 0;
-      -webkit-border-radius: 0;
+      border-bottom: 1px solid lighten($font-light, 15%);
+      border-radius: 3px;
+      -webkit-border-radius: 3px;
       color: darken($font-light, 10%);
       display: block;
       font-size: $font-size-base;
       line-height: $input-line-height;
       padding: $input-padding-y $input-padding-x;
-//      -webkit-appearance: none;
       width: 100%;
 
-      &:focus, &.focus {
+      &:focus, &.focus, &:active {
         border-color: $dark-blue;
+        border-bottom: 1px solid $dark-blue;
         outline: 0;
         box-shadow: none;
       }
     }
 
     input {
-      border-top: 0;
-      border-left: 0;
-      border-right: 0;
+      border-top: 1px solid lighten($font-light, 15%);
+      border-left: 1px solid lighten($font-light, 15%);
+      border-right: 1px solid lighten($font-light, 15%);
     }
 
     label {

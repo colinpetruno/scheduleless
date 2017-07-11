@@ -1,0 +1,23 @@
+.onboarding-registrations-form {
+  div.name {
+    display: flex;
+    flex-direction: row;
+
+    > div.input {
+      width: 50%;
+
+      &:first-child {
+        padding-right: 15px;
+      }
+
+      &:last-child {
+        padding-left: 15px;
+      }
+
+      label {
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+}
