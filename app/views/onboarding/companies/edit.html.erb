@@ -1,0 +1,9 @@
+<%= simple_form_for [:onboarding, @company], url: onboarding_company_path do |f| %>
+  <%= f.input :name %>
+  <%= f.input :size,
+    as: :select,
+    collection: Company.size_options,
+    include_blank: false %>
+
+  <%= f.submit %>
+<% end %>
