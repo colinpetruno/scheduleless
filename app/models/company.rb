@@ -18,6 +18,11 @@ class Company < ApplicationRecord
 
   after_create :setup_stripe_customer
 
+  def self.size_options
+    ["1-10 Employees", "11-20 Employees", "21-50 Employees",
+     "50-100 Employees", "100+ Employees"]
+  end
+
   def hash_key
     super || generate_hash_key
   end

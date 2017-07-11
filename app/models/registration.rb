@@ -1,18 +1,16 @@
 class Registration
   include ActiveModel::Model
 
-  validate :email_unique?
-  validate :passwords_match?
-  validates :company_name, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
   validates :email, presence: true, length: { minimum: 3, maximum: 200 }
+  validate :email_unique?
   validates :password, presence: true
-  validates :password_confirmation, presence: true
   validates_format_of :password,
     with: /\A(?=.*[a-zA-Z])(?=.*[0-9]).{8,}\z/,
     message: "must include one number, one letter and be between 8 and 40 characters"
 
-  attr_accessor :company_name, :email, :first_name, :last_name,
-    :password, :password_confirmation
+  attr_accessor :email, :first_name, :last_name, :password
 
   def company
     user.company
@@ -23,7 +21,9 @@ class Registration
 
     if user.persisted?
       begin
-        SupportMailer.new_signup(user).deliver
+        if Rails.application.secrets.deliver_support_mailers
+          SupportMailer.new_signup(user).deliver
+        end
       rescue StandardError => error
         Bugsnag.notify(error)
         Bugsnag.notify("New Sign Up - Support Email Failed To Send")
@@ -83,9 +83,9 @@ class Registration
       family_name: last_name,
       given_name: first_name,
       password: password,
-      password_confirmation: password_confirmation,
+      password_confirmation: password,
       company_attributes: {
-        name: company_name
+        name: "" # we want to make sure a company is created for them here
       }
     }
   end
