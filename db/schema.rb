@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170710140540) do
+ActiveRecord::Schema.define(version: 20170710234417) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20170710140540) do
     t.integer  "view_count",          default: 0,     null: false
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "index_image"
     t.index ["slug"], name: "index_blog_posts_on_slug", using: :btree
   end
 

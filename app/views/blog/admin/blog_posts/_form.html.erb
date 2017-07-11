@@ -4,6 +4,14 @@
     <%= f.input :slug %>
     <%= f.input :preview_description %>
 
+    <% if post.index_image.present? %>
+      <%= image_tag(post.index_image_url, width: 200) %>
+    <% end %>
+
+    <%= f.input :index_image, as: :file %>
+    <small>Size 704x456</small>
+    <br />
+
     <%= f.trix_editor :body %>
 
     <%= f.input :category,

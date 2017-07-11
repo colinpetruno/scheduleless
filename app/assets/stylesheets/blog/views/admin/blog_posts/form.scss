@@ -4,4 +4,14 @@
   trix-editor {
     min-height: 450px;
   }
+
+  .input.file {
+    margin-bottom: 5px;
+  }
+
+  small {
+    display: block;
+    color: $blue;
+    margin-bottom: 20px;
+  }
 }

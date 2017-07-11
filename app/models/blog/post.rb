@@ -13,6 +13,8 @@ module Blog
 
     before_save :set_published_at
 
+    mount_uploader :index_image, BlogIndexImageUploader
+
     enum category: {
       product_announcements: 0,
       scheduling: 1,

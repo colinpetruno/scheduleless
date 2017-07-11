@@ -18,8 +18,10 @@
   </section>
 
   <aside>
-    <a href="#">
-      <img src="https://embed-ssl.wistia.com/deliveries/fdc6f5783b029525882bb06fff55b4d70b7097cc.jpg?image_crop_resized=704x456" />
-    </a>
+    <% if post.index_image.present? %>
+      <%= link_to blog_post_path(post) do %>
+        <%= image_tag(post.index_image_url) %>
+      <% end %>
+    <% end %>
   </aside>
 </div>

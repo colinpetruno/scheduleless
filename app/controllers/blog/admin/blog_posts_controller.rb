@@ -43,6 +43,7 @@ module Blog
           permit(
             :body,
             :category,
+            :index_image,
             :preview_description,
             :published,
             :slug,
