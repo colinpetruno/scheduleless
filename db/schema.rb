@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170710234417) do
+ActiveRecord::Schema.define(version: 20170711143644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20170710234417) do
     t.string   "stripe_customer_id"
     t.boolean  "demo",               default: false, null: false
     t.string   "hash_key"
+    t.string   "size"
   end
 
   create_table "credit_cards", force: :cascade do |t|
