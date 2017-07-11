@@ -1,10 +1,4 @@
 CarrierWave.configure do |config|
-  if Rails.env.production?
-    config.storage = :fog
-  else
-    config.storage = :file
-  end
-
   config.cache_dir = "#{Rails.root}/tmp/uploads"
 
   config.fog_provider = "fog/aws"
@@ -14,6 +8,12 @@ CarrierWave.configure do |config|
     aws_secret_access_key: Rails.application.secrets.s3_secret,
     region: Rails.application.secrets.s3_region
   }
+
+  if Rails.env.production?
+    config.storage = :fog
+  else
+    config.storage = :file
+  end
 
   config.asset_host = "https://blog-assets.scheduleless.com"
   config.fog_directory = Rails.application.secrets.s3_bucket
