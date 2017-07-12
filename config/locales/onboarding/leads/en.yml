@@ -10,10 +10,6 @@ en:
           are making the best possible schedules for you.
         thanks: "Thanks!"
       form:
-        hint_text: >
-          We will need a list of your locations as well as employees and
-          positions at each location. In addition a few past schedules will
-          help to ensure consistency during the transition.
         note_hint: >
           Tell us about your company as well as the best times to contact you.
         submit: "Send"
@@ -21,7 +17,6 @@ en:
         your_details: "Your Details"
       new:
         description: >
-          We would love to hear about your company and scheduling requirements.
-          Let us know more about you and your preferred method of contact.
+          We can take care of getting you up and running at no cost to you. 
         skip: "No thanks! I'll enter the data myself."
         title: "Let us do your setup."
