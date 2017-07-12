@@ -1,10 +1,10 @@
 .instructions {
   color: $dark-blue;
-  font-size: 1.1em;
   margin-bottom: 30px;
 
   h1,h2,h3,h4,h5,h6 {
     color: darken($dark-blue, 15%);
+    margin-bottom: 5px;
   }
 }
 

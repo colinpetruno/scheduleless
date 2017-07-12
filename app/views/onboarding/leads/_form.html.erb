@@ -1,26 +1,22 @@
-<h5><%= t(".your_company") %></h5>
 <%= simple_form_for [:onboarding, current_user], url: onboarding_leads_path, method: :post do |f| %>
   <%= f.simple_fields_for :leads, @lead do |lf| %>
-    <%= lf.input :note, label: false, hint: t(".note_hint") %>
-
     <%= lf.input :preferred_contact,
       as: :select,
       include_blank: false,
+      label: "Preferred Contact Method",
       collection: [["Email", "email"], ["Phone", "phone"]]
     %>
   <% end %>
 
-  <br><br>
-  <h5><%= t(".your_details") %></h5>
   <%= f.input :mobile_phone, type: :tel %>
 
-  <br>
-  <small><%= t(".hint_text") %></small>
-  <br><br>
-  <footer>
-    <%= link_to "Back", edit_onboarding_company_path, class: "button white" %>
-    <%= f.submit "Next" %>
-  </footer>
+  <%= f.simple_fields_for :leads, @lead do |lf| %>
+    <%= lf.input :note, label: "Any Additional Comments", hint: t(".note_hint") %>
+  <% end %>
+
+  <div class="centered">
+    <%= f.submit "Yes, please help me get set up" %>
+  </div>
 <% end %>
 
 
