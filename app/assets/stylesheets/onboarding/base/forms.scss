@@ -110,6 +110,17 @@ form {
       display: block;
     }
 
+    .check_boxes {
+      label,small {
+        display: block;
+      }
+
+      .checkbox {
+        display: inline-block;
+        padding-right: 15px;
+      }
+    }
+
     .input {
       flex: 1;
       vertical-align: top;

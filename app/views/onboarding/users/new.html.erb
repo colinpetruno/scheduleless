@@ -1,39 +1,47 @@
-<% if notice.present? %>
-  <div class="notice"><%= notice %></div>
+<% content_for(:sidebar) do %>
+  <%= render partial: "onboarding/shared/wizard_steps",
+    locals: { current_step: 3 } %>
 <% end %>
 
-<div class="instructions">
-  <h3><%= t(".title") %></h3>
-  <%= t(".description") %>
-</div>
+<section>
+  <% if notice.present? %>
+    <div class="notice"><%= notice %></div>
+  <% end %>
 
-<%= simple_form_for [:onboarding, @location, @user] do |f| %>
-  <%= f.input :given_name %>
-  <%= f.input :family_name %>
-
-  <%= f.input :email %>
-  <%= f.input :mobile_phone %>
-
-  <%= f.association :primary_position,
-    collection: current_company.positions %>
-
-  <%= f.association :positions,
-    collection: current_company.positions,
-    as: :check_boxes %>
-
-  <br />
-  <div class="center">
-    <%= f.submit %>
-  </div>
-<% end %>
-
-<footer>
-  <div>
-    <%= link_to t(".back"), onboarding_location_users_path(@location), class: "button white" %>
+  <div class="instructions">
+    <h3><%= t(".title") %></h3>
+    <%= t(".description") %>
   </div>
 
-  <div>
-    <%= link_to t(".continue"), onboarding_locations_path, class: "button orange" %>
-  </div>
-</footer>
+  <%= simple_form_for [:onboarding, @location, @user] do |f| %>
+    <div class="inline">
+      <%= f.input :given_name %>
+      <%= f.input :family_name %>
+    </div>
+
+    <div class="inline">
+      <%= f.input :email %>
+      <%= f.input :mobile_phone %>
+    </div>
+
+    <%= f.association :primary_position,
+      collection: current_company.positions %>
+
+    <div class="inline">
+      <%= f.association :positions,
+        collection: current_company.positions,
+        as: :check_boxes %>
+    </div>
+
+    <br />
+    <div class="center">
+      <%= f.submit %>
+    </div>
+  <% end %>
+
+  <footer>
+      <%= link_to t(".back"), onboarding_location_users_path(@location), class: "button white" %>
+      <%= link_to t(".continue"), onboarding_locations_path, class: "button" %>
+  </footer>
+</section>
 

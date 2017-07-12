@@ -1,0 +1,12 @@
+.table {
+  tr > td {
+    color: #67798c;
+    font-size: 14px;
+
+    .oi {
+      color: #67798c;
+      color: $dark-blue;
+      font-size: 14px;
+    }
+  }
+}

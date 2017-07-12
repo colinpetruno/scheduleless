@@ -1,53 +1,59 @@
-<div class="instructions">
-  <h3><%= t(".title") %></h3>
-  <%= t(".description") %>
-</div>
-
-<% if @users.present? %>
-  <table class="table">
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.email %><td>
-        <td><%= user.given_name %><td>
-        <td><%= user.family_name %><td>
-        <td>
-          <%= button_to onboarding_user_path(user), method: :delete do %>
-            <span class="oi oi-x"></span>
-          <% end %>
-        </td>
-      </tr>
-    <% end %>
-  </table>
-<% else %>
-  <br><br>
-  <div class="center">
-    <%= t(".no_users") %>
-  </div>
+<% content_for(:sidebar) do %>
+  <%= render partial: "onboarding/shared/wizard_steps",
+    locals: { current_step: 3 } %>
 <% end %>
 
-<br><br>
-<div class="center light">
-  <div>
-    <%= link_to t(".add"),
-      new_onboarding_location_user_path(@location),
-      class: "button" %>
+<section>
+  <div class="instructions">
+    <h3><%= t(".title") %></h3>
+    <%= t(".description") %>
   </div>
-</div>
 
 
-<footer>
-  <div>
-    <%= link_to t(".back"), onboarding_locations_path, class: "button white" %>
+  <% if @users.present? %>
+    <table class="table">
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.full_name %><td>
+          <td><%= user.email %><td>
+          <td><%= user.mobile_phone %><td>
+
+          <td>
+            <%= button_to onboarding_user_path(user), method: :delete, title: "Delete Employee" do %>
+              <span class="oi oi-minus"></span>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  <% else %>
+    <br><br>
+    <div class="center">
+      <%= t(".no_users") %>
+    </div>
+  <% end %>
+
+  <br><br>
+  <div class="center light">
+    <div>
+      <%= link_to t(".add"),
+        new_onboarding_location_user_path(@location),
+        class: "button" %>
+    </div>
   </div>
-  <div>
-    <% if current_company.locations.present? && current_company.users.present? %>
-      <%= link_to t(".continue"),
-        onboarding_locations_path,
-        class: "button orange" %>
-    <% else %>
-      <button class="button orange" disabled="disabled">
-        <%= t(".continue") %>
-      </button>
-    <% end %>
-  </div>
-</footer>
+
+
+  <footer>
+      <%= link_to t(".back"), new_onboarding_position_path, class: "button white" %>
+
+      <% if current_company.locations&.first&.users&.length > 1 %>
+        <%= link_to t(".continue"),
+          edit_onboarding_schedule_settings_path,
+          class: "button" %>
+      <% else %>
+        <button class="button" disabled="disabled">
+          <%= t(".continue") %>
+        </button>
+      <% end %>
+  </footer>
+</section>

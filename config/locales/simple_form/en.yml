@@ -62,9 +62,10 @@ en:
         last_name: "Last Name"
         password_confirmation: "Password Confirmation"
       schedule_setting:
+        note: "Additional Details"
+        lead_time: "Additional Schedule Periods"
         schedule_duration: "Schedule Duration"
         start_date: "Start Date"
-        lead_time: "Additional Schedule Periods"
       scheduling_hour:
         day: "Day"
         minute_open_end: "Closing Time"
@@ -138,9 +139,13 @@ en:
           duration is 2 weeks and the periods are set to 2, you will have 1
           active schedule and receive 2 additional ones ready to go for a
           total of 6 weeks.
+        note: >
+          Any last details you wish us to know. After this all your information
+          will be sent off to our schedulers and you will have your first
+          schedules delivered to you shorty!
       user:
         positions: >
-          Select positions the user can fill in as if needed. For instance:
+          Select positions the user can fill in as if needed.
 
     # Examples
 
