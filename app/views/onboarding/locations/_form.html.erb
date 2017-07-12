@@ -2,20 +2,18 @@
   <%= f.input :name %>
   <%= f.input :line_1 %>
   <%= f.input :line_2 %>
-  <%= f.input :city %>
-  <%= f.input :county_province %>
-  <%= f.input :postalcode %>
+  <div class="inline">
+    <%= f.input :city %>
+    <%= f.input :county_province %>
+    <%= f.input :postalcode %>
+  </div>
   <%= f.input :time_zone, priority: /US/ %>
 
 
   <footer>
-    <div>
-      <%= link_to t(".back"),
-        onboarding_locations_path,
-        class: "button white" %>
-    </div>
-    <div>
-      <%= f.submit class: "button orange" %>
-    </div>
+    <%= link_to t(".back"),
+      onboarding_locations_path,
+      class: "button white" %>
+    <%= f.submit "Save and Continue", class: "button" %>
   </footer>
 <% end %>

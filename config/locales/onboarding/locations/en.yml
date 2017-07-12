@@ -12,6 +12,7 @@ en:
         start: "Configure Schedule"
         title: "Locations"
       new:
-        description: "Set up a location for your company."
+        description: >
+          Set up your primary location. You will be able to add more later!
         title: "Add A Location"
 
