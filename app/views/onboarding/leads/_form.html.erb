@@ -12,15 +12,15 @@
 
   <br><br>
   <h5><%= t(".your_details") %></h5>
-  <%= f.input :given_name %>
-  <%= f.input :family_name %>
-  <%= f.input :email, disabled: true, type: :email %>
   <%= f.input :mobile_phone, type: :tel %>
 
   <br>
   <small><%= t(".hint_text") %></small>
   <br><br>
-  <%= f.submit t(".submit"), class: "orange" %>
+  <footer>
+    <%= link_to "Back", edit_onboarding_company_path, class: "button white" %>
+    <%= f.submit "Next" %>
+  </footer>
 <% end %>
 
 
