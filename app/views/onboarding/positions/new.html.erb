@@ -1,31 +1,41 @@
-<div class="instructions">
-  <h3><%= t(".title") %></h3>
-  <%= t(".description") %>
-</div>
+<% content_for(:sidebar) do %>
+  <%= render partial: "onboarding/shared/wizard_steps",
+    locals: { current_step: 3 } %>
+<% end %>
 
-<div class="row">
-  <div class="col-sm-6">
-    <%= render partial: "form", locals: { position: @position } %>
+<section>
+  <div class="instructions">
+    <h3><%= t(".title") %></h3>
+    <%= t(".description") %>
   </div>
-  <div class="col-sm-6">
-    <% if current_company.positions.reject { |p| p.id.blank? }.present? %>
-      <%= render partial: "positions", locals: { positions: current_company.positions.reject { |p| p.id.blank? } } %>
-    <% else %>
-      <div class="center light">
-        <%= t(".no_positions") %>
-      </div>
-    <% end %>
-  </div>
-</div>
 
-<footer>
-  <div></div>
-  <div>
+  <div class="row">
+    <div class="col-sm-6">
+      <%= render partial: "form", locals: { position: @position } %>
+    </div>
+    <div class="col-sm-6">
+      <% if current_company.positions.reject { |p| p.id.blank? }.present? %>
+        <%= render partial: "positions", locals: { positions: current_company.positions.reject { |p| p.id.blank? } } %>
+      <% else %>
+        <div class="center light">
+          <%= t(".no_positions") %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <footer>
+    <%= link_to "Back",
+      edit_onboarding_location_path(current_user.locations.first),
+      class: "button white" %>
+
     <% if current_company.positions.reject { |p| p.id.blank? }.present? %>
       <%= link_to t(".continue"),
         onboarding_locations_path,
-        class: "button orange"
+        class: "button"
       %>
+    <% else %>
+      <button disabled="disabled" class="button">Continue</button>
     <% end %>
-  </div>
-</footer>
+  </footer>
+</section>

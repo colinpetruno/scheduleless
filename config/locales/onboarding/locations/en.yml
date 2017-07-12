@@ -6,13 +6,10 @@ en:
       index:
         add_location: "Add Location"
         back: "Back"
-        description: "Manage your locations."
         employees: "Employees"
         no_locations: "Add Some Locations Before Continuing!" 
         start: "Configure Schedule"
-        title: "Locations"
-      new:
+      instructions:
         description: >
           Set up your primary location. You will be able to add more later!
         title: "Add A Location"
-

@@ -5,6 +5,11 @@ class Onboarding::LocationsController < AuthenticatedController
     @locations = policy_scope(Location)
   end
 
+  def edit
+    @location = current_company.locations.find(params[:id])
+    authorize @location
+  end
+
   def new
     # TODO: NOTICE APPEARING ON ADD EMPLOYEE SCREEN
     @location = Location.new
@@ -18,9 +23,20 @@ class Onboarding::LocationsController < AuthenticatedController
     authorize @location
 
     if current_user.save
-      redirect_to new_onboarding_location_user_path(@location)
+      redirect_to new_onboarding_position_path # new_onboarding_location_user_path(@location)
     else
       render :new
+    end
+  end
+
+  def update
+    @location = current_company.locations.find(params[:id])
+    authorize @location
+
+    if @location.update(location_params)
+      redirect_to new_onboarding_position_path
+    else
+      render :edit
     end
   end
 
