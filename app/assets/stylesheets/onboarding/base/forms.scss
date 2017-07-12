@@ -100,4 +100,24 @@ form {
       font-size: .8em;
     }
   }
+
+  .inline {
+    display: flex;
+    flex-direction: row;
+    vertical-align: top;
+
+    label {
+      display: block;
+    }
+
+    .input {
+      flex: 1;
+      vertical-align: top;
+      padding-right: 15px;
+
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
 }
