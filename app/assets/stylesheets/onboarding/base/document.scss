@@ -1,7 +1,7 @@
 body {
   @include gradient-directional(
-    $start-color: lighten($dark-blue, 8%),
-    $end-color: $dark-blue,
+    $start-color: lighten(#5776bd, 8%),
+    $end-color: #5776bd,
     $deg: -15deg
   );
 

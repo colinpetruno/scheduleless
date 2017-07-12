@@ -1,6 +1,12 @@
-<div class="instructions">
-  <h2><%= t(".title") %></h2>
-  <%= t(".description") %>
-</div>
+<% content_for(:sidebar) do %>
+  <%= render partial: "onboarding/shared/wizard_steps" %>
+<% end %>
 
-<%= render partial: "form", locals: { registration: @registration } %>
+<section>
+  <div class="instructions">
+    <h2><%= t(".title") %></h2>
+    <%= t(".description") %>
+  </div>
+
+  <%= render partial: "form", locals: { registration: @registration } %>
+</section>

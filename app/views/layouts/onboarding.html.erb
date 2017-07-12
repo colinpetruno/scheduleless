@@ -22,16 +22,20 @@
 
   <body>
     <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div class="logo"></div>
+      <div class="wizard">
+        <div class="logo">
+          <div></div> <span>Scheduleless</span>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="col-12">
+        <div>
           <div class="frame">
-            <%= yield %>
+            <% if content_for?(:sidebar) %>
+              <%= content_for(:sidebar) %>
+            <% end %>
+
+            <div>
+              <%= yield %>
+            </div>
           </div>
         </div>
       </div>

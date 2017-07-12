@@ -10,9 +10,9 @@
     <%= f.input :email %>
     <%= f.input :password %>
 
-    <div>
-      <%= f.submit t(".submit"), class: "button orange" %>
+    <footer>
       <%= link_to t(".sign_in"), new_session_path(:user), class: "button white" %>
-    </div>
+      <%= f.submit t(".submit") %>
+    </footer>
   <% end %>
 </div>

@@ -1,0 +1,27 @@
+.shared-wizard-steps {
+  ul {
+    list-style: none;
+    height: 100%;
+    margin: 0;
+    padding-top: 35px;
+    padding-left: 20px;
+
+    li {
+      display: block;
+      font-size: 14px;
+      padding: 10px 0;
+
+      > div {
+        flex-direction: row;
+      }
+    }
+  }
+
+  span.oi {
+    color: lighten($dark-blue, 15%);
+
+    &.oi-media-record {
+      font-size: 18px;
+    }
+  }
+}

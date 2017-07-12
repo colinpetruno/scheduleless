@@ -1,22 +1,17 @@
-<div class="instructions">
-  <h3><%= t(".title") %> </h3>
-  <%= t(".description") %>
-</div>
+<% content_for(:sidebar) do %>
+  <%= render partial: "onboarding/shared/wizard_steps" %>
+<% end %>
 
-<%= render partial: "form" %>
+<section>
+  <div class="instructions">
+    <h3><%= t(".title") %> </h3>
+    <%= t(".description") %>
+  </div>
 
-<footer>
-  <article>
-    <%= link_to t(".skip"), new_onboarding_position_path %>
-  </article>
-</footer>
+  <%= render partial: "form" %>
+</section>
 
-<%# prevent people from going back too far %>
-<script type="text/javascript">
-  window.onbeforeunload = function () {
-    return "Are you sure you want to leave?";
-  };
-</script>
+
 
 <% content_for(:tracking) do %>
   <script type="text/javascript">

@@ -1,11 +1,38 @@
 .logo {
-  @include img-retina(
-    image-path("shared/logos/scheduleless.png"),
-    image-path("shared/logos/scheduleless-2x.png"),
-    101px, 75px
-  );
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  padding-left: 0;
 
-  display: block;
-  width: 100px;
-  height: 75px;
+  > div {
+    @include img-retina(
+      image-path("shared/logos/scheduleless.png"),
+      image-path("shared/logos/scheduleless-2x.png"),
+      101px, 75px
+    );
+    margin-right: 10px;
+    width: 100px;
+    height: 75px;
+  }
+
+  > span {
+    display: block;
+    color: $white;
+    font-size: 24px;
+    letter-spacing: 8px;
+    line-height: 82px;
+    text-transform: uppercase;
+    vertical-align: middle;
+  }
+}
+
+.wizard {
+  @include make-row();
+
+  > div {
+    @include make-col-ready();
+    @include make-col(10);
+    @include make-col-offset(1)
+  }
 }

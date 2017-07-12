@@ -13,7 +13,7 @@ class Onboarding::RegistrationsController < ApplicationController
     if @registration.valid? && @registration.register
       sign_in(@registration.user)
 
-      redirect_to edit_onboarding_company_path # new_onboarding_lead_path
+      redirect_to edit_onboarding_company_path
     else
       render :new
     end

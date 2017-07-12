@@ -1,9 +1,27 @@
-<%= simple_form_for [:onboarding, @company], url: onboarding_company_path do |f| %>
-  <%= f.input :name %>
-  <%= f.input :size,
-    as: :select,
-    collection: Company.size_options,
-    include_blank: false %>
-
-  <%= f.submit %>
+<% content_for(:sidebar) do %>
+  <%= render partial: "onboarding/shared/wizard_steps" %>
 <% end %>
+
+<%= simple_form_for [:onboarding, @company], url: onboarding_company_path do |f| %>
+  <section>
+    <%= f.input :name, label: "Company Name" %>
+    <%= f.input :size,
+      as: :select,
+      collection: Company.size_options,
+      label: "How many employees do you manage?",
+      include_blank: false %>
+  </section>
+
+  <footer>
+    <button disabled="disabled" class="button white">Back</button>
+    <%= f.submit "Next" %>
+  </footer>
+<% end %>
+
+
+<%# prevent people from going back too far %>
+<script type="text/javascript">
+  window.onbeforeunload = function () {
+    return "Are you sure you want to leave?";
+  };
+</script>

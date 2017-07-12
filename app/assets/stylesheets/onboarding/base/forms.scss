@@ -16,6 +16,7 @@ form {
 
     label {
       color: darken($font-light, 20%);
+      font-size: 14px;
     }
 
     input, select, textarea {
@@ -29,9 +30,9 @@ form {
       -webkit-border-radius: 3px;
       color: darken($font-light, 10%);
       display: block;
-      font-size: $font-size-base;
+      font-size: 14px; // $font-size-base;
       line-height: $input-line-height;
-      padding: $input-padding-y $input-padding-x;
+      padding: 6px 10px; //$input-padding-y $input-padding-x;
       width: 100%;
 
       &:focus, &.focus, &:active {
@@ -54,6 +55,8 @@ form {
     }
 
     select {
+      height: 31px !important;
+
       &::-ms-expand {
         background-color: transparent;
         border: 0;
