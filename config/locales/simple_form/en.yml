@@ -16,6 +16,8 @@ en:
         update: "Update Shift"
       join:
         create: "Join Location"
+      position:
+        create: "Add Position"
       scheduling_hour:
         create: "Add Hours"
         update: "Update Hours"
@@ -51,6 +53,8 @@ en:
         name: "Location Name"
         postalcode: "Postal Code"
       position:
+        company_admin: "Company Admin"
+        location_admin: "Location Admin"
         name: "Position Name"
       registration:
         company_name: "Company Name"

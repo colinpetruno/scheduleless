@@ -4,9 +4,16 @@
     border: 0;
     padding: 2px;
     color: $gray-dark;
+    color: #67798c;
+    font-size: 14px;
   }
 
   table tr > td:last-child {
     text-align: right;
+  }
+
+  table.table tr > td {
+    color: #67798c;
+    font-size: 14px;
   }
 }

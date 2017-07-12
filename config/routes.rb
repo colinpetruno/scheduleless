@@ -113,7 +113,7 @@ Rails.application.routes.draw do
     resource :company, only: [:edit, :update]
     resource :company_preferences, only: [:create, :new]
     resources :leads, only: [:new, :create], path: "contact"
-    resources :locations, only: [:create, :index, :new] do
+    resources :locations, only: [:create, :edit, :index, :new, :update] do
       resources :users, path: :employees, only: [:create, :index, :new]
     end
     resources :positions, only: [:create, :destroy, :new]
