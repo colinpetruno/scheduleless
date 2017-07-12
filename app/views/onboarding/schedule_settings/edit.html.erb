@@ -1,40 +1,45 @@
-<div class="instructions">
-  <h3><%= t(".title") %></h3>
-  <%= t(".description") %>
-</div>
-
-
-<%= simple_form_for [:onboarding, @schedule_setting],
-  url: onboarding_schedule_settings_path do |f|
-%>
-  <%= f.input :start_date,
-    as: :select,
-    collection: ScheduleSetting.start_date_options,
-    include_blank: false
-  %>
-
-  <%= f.input :schedule_duration,
-    as: :select,
-    collection: ScheduleSetting.duration_options,
-    include_blank: false
-  %>
-
-  <%= f.input :lead_time,
-    as: :select,
-    collection: ScheduleSetting.lead_time_options,
-    include_blank: false
-  %>
-
-  <%= f.input :note %>
-
-  <footer>
-    <div>
-      <%= link_to t(".back"),
-        onboarding_locations_path,
-        class: "button white" %>
-    </div>
-    <div>
-      <%= f.submit t(".finish"), class: "button orange" %>
-    </div>
-  </footer>
+<% content_for(:sidebar) do %>
+  <%= render partial: "onboarding/shared/wizard_steps",
+    locals: { current_step: 5 } %>
 <% end %>
+
+
+<section>
+  <div class="instructions">
+    <h3><%= t(".title") %></h3>
+    <%= t(".description") %>
+  </div>
+
+  <%= simple_form_for [:onboarding, @schedule_setting],
+    url: onboarding_schedule_settings_path do |f|
+  %>
+    <div class="inline">
+      <%= f.input :start_date,
+        as: :select,
+        collection: ScheduleSetting.start_date_options,
+        include_blank: false
+      %>
+
+      <%= f.input :schedule_duration,
+        as: :select,
+        collection: ScheduleSetting.duration_options,
+        include_blank: false
+      %>
+    </div>
+
+    <%= f.input :lead_time,
+      as: :select,
+      collection: ScheduleSetting.lead_time_options,
+      include_blank: false
+    %>
+
+    <%= f.input :note %>
+
+    <footer>
+        <%= link_to t(".back"),
+          onboarding_location_users_path(current_user.locations.first),
+          class: "button white" %>
+        <%= f.submit t(".finish"), class: "button" %>
+    </footer>
+  <% end %>
+</section>

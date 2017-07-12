@@ -1,21 +1,27 @@
-<div class="instructions">
-  <div class="center">
-    <h3><%= t(".title") %></h3>
-  </div>
-</div>
+<% content_for(:sidebar) do %>
+  <%= render partial: "onboarding/shared/wizard_steps",
+    locals: { current_step: 6 } %>
+<% end %>
 
-<div class="center">
-  <%= t(".line_1") %>
-  <br /><br /><br />
-  <%= t(".line_2") %>
-</div>
+<section style="height: 100%">
+  <article>
+    <div class="instructions">
+      <div class="center">
+        <h3><%= t(".title") %></h3>
+      </div>
+    </div>
+
+    <div class="center">
+      <%= t(".line_1") %>
+      <br /><br /><br />
+      <%= t(".line_2") %>
+    </div>
 
 
-<footer>
-  <div></div>
-  <div>
-    <%= link_to t(".dashboard"),
-      default_calendar_path_for(current_user),
-      class: "button white" %>
-  </div>
-</footer>
+    <footer>
+      <%= link_to t(".dashboard"),
+        default_calendar_path_for(current_user),
+        class: "button" %>
+    </footer>
+  </article>
+</section>

@@ -31,7 +31,7 @@
 
     <% if current_company.positions.reject { |p| p.id.blank? }.present? %>
       <%= link_to t(".continue"),
-        onboarding_locations_path,
+        onboarding_location_users_path(current_user.locations.first),
         class: "button"
       %>
     <% else %>
