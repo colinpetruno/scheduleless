@@ -1,0 +1,11 @@
+en:
+  onboarding:
+    shared:
+      wizard_steps:
+        steps:
+          - "Create Account"
+          - "Company Info"
+          - "Add a Location"
+          - "Employees"
+          - "Scheduling Rules"
+          - "Schedule Settings"

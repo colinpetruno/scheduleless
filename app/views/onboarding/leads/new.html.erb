@@ -1,5 +1,6 @@
 <% content_for(:sidebar) do %>
-  <%= render partial: "onboarding/shared/wizard_steps" %>
+  <%= render partial: "onboarding/shared/wizard_steps",
+    locals: { current_step: 1 } %>
 <% end %>
 
 <section>
