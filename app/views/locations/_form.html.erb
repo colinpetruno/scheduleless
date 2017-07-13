@@ -27,15 +27,35 @@
 
             <div id="shift-preference-fields">
               <%= pf.input :shift_overlap,
-                disabled: pf.object.use_company_settings? %>
+                disabled: pf.object.use_company_settings?,
+                as: :select,
+                include_blank: false,
+                collection: PreferenceOptions.shift_overlap
+              %>
               <%= pf.input :minimum_shift_length,
-                disabled: pf.object.use_company_settings? %>
+                disabled: pf.object.use_company_settings?,
+                as: :select,
+                include_blank: false,
+                collection: PreferenceOptions.minimum_shift_length
+              %>
               <%= pf.input :preferred_shift_length,
-                disabled: pf.object.use_company_settings? %>
+                disabled: pf.object.use_company_settings?,
+                as: :select,
+                include_blank: false,
+                collection: PreferenceOptions.preferred_shift_length
+              %>
               <%= pf.input :maximum_shift_length,
-                disabled: pf.object.use_company_settings? %>
+                as: :select,
+                collection: PreferenceOptions.maximum_shift_length,
+                disabled: pf.object.use_company_settings?,
+                include_blank: false
+              %>
               <%= pf.input :break_length,
-                disabled: pf.object.use_company_settings? %>
+                as: :select,
+                collection: PreferenceOptions.break_length,
+                disabled: pf.object.use_company_settings?,
+                include_blank: false
+              %>
             </div>
         <% end %>
       </article>

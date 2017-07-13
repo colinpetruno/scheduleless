@@ -3,27 +3,42 @@
     <article>
       <%= simple_form_for [:settings, @company_preference],
         url: settings_company_preference_path do |f| %>
+
         <%= f.input :minimum_shift_length,
           as: :select,
-          collection: TimeRange.minimum_shift_length_options
+          include_blank: false,
+          collection: PreferenceOptions.minimum_shift_length
         %>
+
         <%= f.input :preferred_shift_length,
           as: :select,
-          collection: TimeRange.preferred_shift_length_options
+          include_blank: false,
+          collection: PreferenceOptions.preferred_shift_length
         %>
-        <%= f.input :maximum_shift_length,
+
+        <% f.input :maximum_shift_length,
           as: :select,
-          collection: TimeRange.maximum_shift_length_options %>
+          collection: PreferenceOptions.maximum_shift_length,
+          include_blank: false
+        %>
+
         <%= f.input :break_length,
           as: :select,
-          collection: TimeRange.break_length_options %>
+          collection: PreferenceOptions.break_length,
+          include_blank: false
+        %>
+
         <%= f.input :paid_break, as: :boolean %>
+
         <%= f.input :minimum_hours_for_break,
           as: :select,
-          collection: TimeRange.minimum_hours_for_break_options %>
+          collection: PreferenceOptions.minimum_hours_for_break_options %>
+
         <%= f.input :shift_overlap,
           as: :select,
-          collection: TimeRange.shift_overlap_options %>
+          include_blank: false,
+          collection: PreferenceOptions.shift_overlap
+        %>
 
         <%= f.submit %>
       <% end %>

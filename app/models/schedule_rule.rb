@@ -14,7 +14,7 @@ class ScheduleRule < ApplicationRecord
 
   def self.collection_labels
     self.periods.keys.map do |key|
-      [I18n.t("models.schedule_rule.#{key}") ,key]
+      [I18n.t("models.schedule_rule.#{key}"), key]
     end
   end
 
