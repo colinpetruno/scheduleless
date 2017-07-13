@@ -12,7 +12,9 @@
         <%= @post.creator.full_name %>
       </span> on
       <span itemprop="datePublished">
-        <%= @post.published_at.to_s(:month_day_year) %>
+        <% if @post.published? %>
+          <%= @post.published_at.to_s(:month_day_year) %>
+        <% end %>
       </span>
     </h3>
   </header>
