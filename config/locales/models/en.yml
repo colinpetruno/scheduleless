@@ -2,6 +2,7 @@ en:
   models:
     blog_post:
       category:
+        business_tips: "Business Tips & Tricks"
         product_announcements: "Product Announcements"
         scheduling: "Scheduling"
         tutorials: "Tutorials"

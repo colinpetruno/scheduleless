@@ -18,7 +18,8 @@ module Blog
     enum category: {
       product_announcements: 0,
       scheduling: 1,
-      tutorials: 2
+      tutorials: 2,
+      business_tips: 3
     }
 
     def self.collection_labels
