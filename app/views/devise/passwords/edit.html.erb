@@ -1,34 +1,36 @@
-<div class="instructions">
-  <h2><%= t(".title") %></h2>
-</div>
-
-<%= simple_form_for(resource,
-                    as: resource_name,
-                    url: password_path(resource_name),
-                    html: { method: :put, data: { turbolinks: false }}) do |f| %>
-  <%= f.error_notification %>
-
-  <%= f.input :reset_password_token, as: :hidden %>
-  <%= f.full_error :reset_password_token %>
-
-  <%= f.input :password,
-    label: t(".new_password"),
-    required: true,
-    autofocus: true,
-    hint: t(".hint", length: @minimum_password_length) %>
-
-  <%= f.input :password_confirmation,
-    label: t(".confirm_password"),
-    required: true %>
-
-  <%= f.button :submit, t(".submit") %>
-<% end %>
-
-<footer>
-  <div>
-    <%= link_to t(".sign_in"), new_session_path(:user) %>
+<section>
+  <div class="instructions">
+    <h2><%= t(".title") %></h2>
   </div>
-  <div>
-    <%= link_to t(".sign_up"), new_onboarding_registration_path %>
-  </div>
-</footer>
+
+  <%= simple_form_for(resource,
+                      as: resource_name,
+                      url: password_path(resource_name),
+                      html: { method: :put, data: { turbolinks: false }}) do |f| %>
+    <%= f.error_notification %>
+
+    <%= f.input :reset_password_token, as: :hidden %>
+    <%= f.full_error :reset_password_token %>
+
+    <%= f.input :password,
+      label: t(".new_password"),
+      required: true,
+      autofocus: true,
+      hint: t(".hint", length: @minimum_password_length) %>
+
+    <%= f.input :password_confirmation,
+      label: t(".confirm_password"),
+      required: true %>
+
+    <%= f.button :submit, t(".submit") %>
+  <% end %>
+
+  <footer>
+    <div>
+      <%= link_to t(".sign_in"), new_session_path(:user) %>
+    </div>
+    <div>
+      <%= link_to t(".sign_up"), new_onboarding_registration_path %>
+    </div>
+  </footer>
+</section>

@@ -40,15 +40,8 @@ RSpec.describe "onboarding happy path", type: :feature do
     expect(page).
       to have_content I18n.t("onboarding.leads.new.skip")
 
-
-
-
-
-
-
-    # about your company has no label
-    fill_in "user[leads_attributes][0][note]", with: "Hi this is my company"
-    select "Phone", from: "Preferred contact"
+    fill_in "Any Additional Comments", with: "Hi this is my company"
+    select "Phone", from: "Preferred Contact Method"
 
     click_on I18n.t("onboarding.leads.form.submit")
     expect(page).to have_content("please provide a phone number below")
@@ -61,30 +54,11 @@ RSpec.describe "onboarding happy path", type: :feature do
 
     click_on I18n.t("onboarding.leads.create.continue")
 
+    # ADD A LOCATION
     expect(page).
-      to have_content I18n.t("onboarding.positions.new.title")
+      to have_content I18n.t("onboarding.locations.instructions.title")
     expect(page).
-      to have_content I18n.t("onboarding.positions.new.description")
-
-    fill_in "Position Name", with: "Manager"
-    click_on "Create Position"
-
-    expect(page).
-      to have_content "Manager"
-
-    # TODO: Ensure position can be deleted if needed
-    click_on I18n.t("onboarding.positions.new.continue")
-
-    expect(page).
-      to have_content I18n.t("onboarding.locations.index.title")
-    expect(page).
-      to have_content I18n.t("onboarding.locations.index.description")
-
-    click_on I18n.t("onboarding.locations.index.add_location")
-    expect(page).
-      to have_content I18n.t("onboarding.locations.new.title")
-    expect(page).
-      to have_content I18n.t("onboarding.locations.new.description")
+      to have_content I18n.t("onboarding.locations.instructions.description")
 
     fill_in "Location Name", with: "Centre Street"
     fill_in "Address Line 1", with: "161 Huntington Ave Boston 02130"
@@ -92,10 +66,97 @@ RSpec.describe "onboarding happy path", type: :feature do
     fill_in "State", with: "MA"
     fill_in "Postal Code", with: "02130"
 
-    click_on "Create Location"
+    click_on "Save and Continue"
+
+    expect(page).
+      to have_content I18n.t("onboarding.scheduling_hours.show.title")
+    expect(page).
+      to have_content I18n.t("onboarding.scheduling_hours.show.description")
+    # TODO change some stuff and make sure it works
+    # TODO test disabling of fields
+    click_on "Save and Continue"
+
+
+    # POSITIONS
+    expect(page).
+      to have_content I18n.t("onboarding.positions.new.title")
+    expect(page).
+      to have_content I18n.t("onboarding.positions.new.description")
+
+    fill_in "Position Name", with: "Manager"
+    click_on "Add Position"
+
+    expect(page).
+      to have_content "Manager"
+
+    # TODO: Ensure position can be deleted if needed
+    click_on I18n.t("onboarding.positions.new.continue")
+
+    # ADD USERS
+    expect(page).
+      to have_content I18n.t("onboarding.users.index.description")
+    expect(page).
+      to have_content I18n.t("onboarding.users.index.title")
+
+    click_on I18n.t("onboarding.users.index.add")
+
     expect(page).
       to have_content I18n.t("onboarding.users.new.description")
     expect(page).
       to have_content I18n.t("onboarding.users.new.title")
+
+    fill_in "First Name", with: "Harry"
+    fill_in "Last Name", with: "Potter"
+    fill_in "Email", with: "harry.potter@example.com"
+
+    select "Manager", from: "Primary position"
+
+    click_on "Add Employee"
+    expect(page).to have_content("Employee was successfully added!")
+    click_on "View All Employees"
+    expect(page).to have_content("Harry Potter")
+
+    click_on I18n.t("onboarding.users.index.continue")
+
+    expect(page).
+      to have_content I18n.t("onboarding.schedule_settings.edit.description")
+    expect(page).
+      to have_content I18n.t("onboarding.schedule_settings.edit.title")
+
+    # check going backwards
+    click_on "Back"
+    expect(page).to have_content("Harry Potter")
+
+    # company positions
+    click_on "Back"
+    expect(page).to have_content I18n.t("onboarding.positions.new.title")
+    expect(page).to have_content("Manager")
+
+    click_on "Back"
+    expect(page).
+      to have_content I18n.t("onboarding.locations.instructions.title")
+    expect(page).to have_field("Location Name", with: "Centre Street")
+
+    click_on "Back"
+    expect(page).
+      to have_content I18n.t("onboarding.companies.edit.title")
+    expect(page).to have_field("Company Name", with: "Capybara Company")
+
+    click_on "Continue"
+    click_on I18n.t("onboarding.leads.new.skip")
+    click_on "Save and Continue"
+    click_on "Save and Continue"
+    click_on "Continue"
+    click_on "Continue"
+    click_on "Finish"
+
+    expect(page).
+      to have_content I18n.t("onboarding.schedule_settings.update.title")
+    expect(page).
+      to have_content I18n.t("onboarding.schedule_settings.update.line_1")
+
+    click_on I18n.t("onboarding.schedule_settings.update.dashboard")
+    expect(page).to have_content "Your Shifts"
+    expect(page).to have_content "Calendar"
   end
 end
