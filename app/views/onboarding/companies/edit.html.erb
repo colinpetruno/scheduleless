@@ -1,19 +1,22 @@
 <% content_for(:sidebar) do %>
   <%= render partial: "onboarding/shared/wizard_steps",
-     locals: { current_step: 1 } %>
+    locals: { current_step: 1 } %>
 <% end %>
 
 <%= simple_form_for [:onboarding, @company], url: onboarding_company_path do |f| %>
   <section>
+    <div class="instructions">
+      <h3><%= t(".title") %></h3>
+    </div>
+
     <%= f.input :name, label: "Company Name" %>
     <%= f.input :size,
       as: :select,
       collection: Company.size_options,
-      label: "How many employees do you manage?",
-      include_blank: false %>
+      label: "How many employees do you manage?" %>
   </section>
 
   <footer>
-    <%= f.submit "Next" %>
+    <%= f.submit t(".next") %>
   </footer>
 <% end %>

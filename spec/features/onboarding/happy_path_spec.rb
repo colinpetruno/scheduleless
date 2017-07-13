@@ -15,20 +15,36 @@ RSpec.describe "onboarding happy path", type: :feature do
     expect(page).
       to have_content I18n.t("onboarding.registrations.new.description")
 
+    click_on I18n.t("onboarding.registrations.form.submit");
+    expect(page).to have_content("can't be blank", count: 4)
 
-    fill_in "Company Name", with: "Capybara Company"
+
     fill_in "First Name", with: "Luna"
     fill_in "Last Name", with: "Lovegood"
     fill_in "Email", with: "Luna.Lovegood@example.com"
     fill_in "Password", with: "Password123"
-    fill_in "Password Confirmation", with: "Password123"
 
     click_on I18n.t("onboarding.registrations.form.submit");
+
+    expect(page).
+      to have_content I18n.t("onboarding.companies.edit.title")
+
+    click_on I18n.t("onboarding.companies.edit.next");
+    expect(page).to have_content("can't be blank", count: 1)
+
+    fill_in "Company Name", with: "Capybara Company"
+    click_on I18n.t("onboarding.companies.edit.next");
 
     expect(page).
       to have_content I18n.t("onboarding.leads.new.title")
     expect(page).
       to have_content I18n.t("onboarding.leads.new.skip")
+
+
+
+
+
+
 
     # about your company has no label
     fill_in "user[leads_attributes][0][note]", with: "Hi this is my company"

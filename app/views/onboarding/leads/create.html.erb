@@ -1,13 +1,7 @@
-<div class="instructions">
-  <h3><%= t(".thanks") %></h3>
-  <%= t(".description") %>
-</div>
-
-<footer>
-  <article>
-    <%= link_to t(".continue"), new_onboarding_position_path %>
-  </article>
-</footer>
+<% content_for(:sidebar) do %>
+  <%= render partial: "onboarding/shared/wizard_steps",
+    locals: { current_step: 1 } %>
+<% end %>
 
 <% content_for(:tracking) do %>
   <script type="text/javascript">
@@ -20,3 +14,25 @@
     });
   </script>
 <% end %>
+
+<section style="display: flex; flex-direction: column; height: 100%">
+  <div class="instructions">
+    <h3><%= t(".thanks") %></h3>
+    <%= t(".description") %>
+  </div>
+
+  <footer>
+    <% if current_user.locations.present? %>
+      <%= link_to t(".continue"),
+        edit_onboarding_location_path(current_user.locations.first),
+        class: "button" %>
+    <% else %>
+      <%= link_to t(".continue"),
+        new_onboarding_location_path,
+        class: "button" %>
+    <% end %>
+  </footer>
+</section>
+
+
+
