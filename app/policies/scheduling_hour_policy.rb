@@ -1,4 +1,10 @@
 class SchedulingHourPolicy < ApplicationPolicy
+  class Scope < Scope
+    def resolve
+      user.locations.first.scheduling_hours
+    end
+  end
+
   def create?
     user.company_admin?
   end

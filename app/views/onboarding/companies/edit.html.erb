@@ -14,15 +14,6 @@
   </section>
 
   <footer>
-    <button disabled="disabled" class="button white">Back</button>
     <%= f.submit "Next" %>
   </footer>
 <% end %>
-
-
-<%# prevent people from going back too far %>
-<script type="text/javascript">
-  window.onbeforeunload = function () {
-    return "Are you sure you want to leave?";
-  };
-</script>

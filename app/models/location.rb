@@ -15,7 +15,7 @@ class Location < ApplicationRecord
   validates :postalcode, presence: true
   validates :time_zone, presence: true
 
-  accepts_nested_attributes_for :preference
+  accepts_nested_attributes_for :preference, :scheduling_hours
 
   before_create :build_scheduling_hours
 

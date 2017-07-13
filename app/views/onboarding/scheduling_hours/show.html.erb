@@ -1,0 +1,54 @@
+<% content_for(:sidebar) do %>
+  <%= render partial: "onboarding/shared/wizard_steps",
+    locals: { current_step: 2 } %>
+<% end %>
+
+<section class="scheduling-hours-show">
+  <div class="instructions">
+    <h3><%= t(".title") %></h3>
+    <%= t(".description") %>
+  </div>
+
+  <%= simple_form_for @location, url: onboarding_location_scheduling_hours_path(@location) do |f| %>
+    <% @location.scheduling_hours.order(:day).each do |scheduling_hour| %>
+      <%= f.simple_fields_for "[scheduling_hours_attributes][]", scheduling_hour do |hf| %>
+        <%= hf.input :id, as: :hidden %>
+
+        <div class="inline hours-for-day">
+          <label><%= I18n.t('date.day_names')[scheduling_hour.day] %></label>
+
+            <%= hf.input :minute_open_start,
+              as: :select,
+              collection: TimeRange.quarter_hour_options,
+              label: false,
+              wrapper_html: { class: "scheduling-hour-#{scheduling_hour.id}" }
+            %>
+          to
+            <%= hf.input :minute_open_end,
+              as: :select,
+              collection: TimeRange.quarter_hour_options,
+              label: false,
+              wrapper_html: { class: "scheduling-hour-#{scheduling_hour.id}" }
+            %>
+
+          <%= hf.input :closed,
+            as: :boolean,
+            class: "disable-toggle",
+            input_html: {
+              class: "disable-toggle",
+              data: { target: ".scheduling-hour-#{scheduling_hour.id}" }
+            }
+          %>
+        </div>
+      <% end %>
+    <% end %>
+
+    <footer>
+      <%= link_to "Back",
+        edit_onboarding_location_path(current_user.locations.first),
+        class: "button white"
+      %>
+      <%= f.submit "Save And Continue" %>
+    </footer>
+  <% end %>
+</section>

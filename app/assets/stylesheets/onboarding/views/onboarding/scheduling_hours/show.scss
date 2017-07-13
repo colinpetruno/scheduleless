@@ -1,0 +1,21 @@
+.scheduling-hours-show {
+  .hours-for-day {
+    > label {
+      min-width: 150px;
+      text-align: right;
+      line-height: 30px;
+      padding-right: 15px;
+      vertical-align: bottom;
+    }
+
+    .checkbox {
+      padding-left: 15px;
+      padding-top: 5px;
+    }
+
+    .location_scheduling_hours_minute_open_end {
+      padding-left: 15px;
+      padding-right: 0;
+    }
+  }
+}
