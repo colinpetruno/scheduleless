@@ -6,6 +6,10 @@
   padding-top: 25px;
   margin: 0;
 
+  &:last-child {
+    border-bottom: none;
+  }
+
   section {
     @include make-col-ready();
     @include make-col(6);
