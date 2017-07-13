@@ -23,6 +23,14 @@ class Company < ApplicationRecord
      "50-100 Employees", "100+ Employees"]
   end
 
+  def name
+    if read_attribute(:name) == "Company Name"
+      ""
+    else
+      super
+    end
+  end
+
   def hash_key
     super || generate_hash_key
   end

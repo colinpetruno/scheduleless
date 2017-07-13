@@ -1,18 +1,12 @@
-<%= simple_form_for [:onboarding, current_user], url: onboarding_leads_path, method: :post do |f| %>
-  <%= f.simple_fields_for :leads, @lead do |lf| %>
-    <%= lf.input :preferred_contact,
+<%= simple_form_for [:onboarding, @lead] do |f| %>
+  <%= f.input :preferred_contact,
       as: :select,
       include_blank: false,
       label: "Preferred Contact Method",
-      collection: [["Email", "email"], ["Phone", "phone"]]
-    %>
-  <% end %>
+      collection: [["Email", "email"], ["Phone", "phone"]] %>
 
   <%= f.input :mobile_phone, type: :tel %>
-
-  <%= f.simple_fields_for :leads, @lead do |lf| %>
-    <%= lf.input :note, label: "Any Additional Comments", hint: t(".note_hint") %>
-  <% end %>
+  <%= f.input :note, label: "Any Additional Comments", hint: t(".note_hint") %>
 
   <div class="centered">
     <%= f.submit "Yes, please help me get set up" %>

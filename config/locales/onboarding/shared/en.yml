@@ -7,5 +7,5 @@ en:
           - "Company Info"
           - "Add a Location"
           - "Employees"
-          - "Scheduling Rules"
+          #- "Scheduling Rules"
           - "Schedule Settings"

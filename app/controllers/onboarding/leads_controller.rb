@@ -5,12 +5,11 @@ module Onboarding
     def create
       authorize :lead, :create?
 
-      # TODO: Find a better way, lead is validating before parent attributes
-      # are assigned so we need to update just the user first then the user
-      # with the lead attributes. However this is ugly. Very Ugly.
-      if current_user.update(user_params) && current_user.update(lead_params)
+      @lead = current_user.leads.build(lead_params)
+
+      if @lead.save
         begin
-          SupportMailer.lead(current_user.leads.last).deliver
+          SupportMailer.lead(current_user.leads.last).deliver if Rails.env.production?
         rescue StandardError => error
           Bugsnag.notify(error)
           Bugsnag.notify("New User - Support Email Failed To Send")
@@ -18,7 +17,6 @@ module Onboarding
 
         render :create
       else
-        @lead = current_user.leads.last
         render :new
       end
     end
@@ -31,21 +29,13 @@ module Onboarding
 
     private
 
-    def user_params
-      params.
-        require(:user).
-        permit(:email, :family_name, :given_name, :mobile_phone)
-    end
-
     def lead_params
       params.
-        require(:user).
+        require(:lead).
         permit(
-          :email,
-          :family_name,
-          :given_name,
           :mobile_phone,
-          leads_attributes: [:note, :preferred_contact]
+          :note,
+          :preferred_contact
         )
     end
   end

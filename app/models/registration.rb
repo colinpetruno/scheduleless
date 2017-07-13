@@ -17,8 +17,6 @@ class Registration
   end
 
   def register
-    user if valid?
-
     if user.persisted?
       begin
         if Rails.application.secrets.deliver_support_mailers
@@ -48,8 +46,7 @@ class Registration
   end
 
   def create_user
-    user = User.new(user_params)
-    user.save(validate: false)
+    user = User.create(user_params)
     user
   end
 
@@ -65,17 +62,6 @@ class Registration
     end
   end
 
-  def passwords_match?
-    if password != password_confirmation
-      errors.add(:password,
-                 I18n.t("onboarding.registrations.model.password_confirmation")
-                )
-      errors.add(:password_confirmation,
-                 I18n.t("onboarding.registrations.model.password_confirmation")
-                )
-    end
-  end
-
   def user_params
     {
       company_admin: true,
@@ -85,7 +71,7 @@ class Registration
       password: password,
       password_confirmation: password,
       company_attributes: {
-        name: "" # we want to make sure a company is created for them here
+        name: "Company Name" # we want to make sure a company is created for them here
       }
     }
   end

@@ -1,12 +1,14 @@
-<div class="instructions">
-  <h2><%= t(".title") %></h2>
-</div>
+<section style="max-width: 450px; margin: auto;">
+  <div class="instructions">
+    <h2><%= t(".title") %></h2>
+  </div>
 
-<%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= f.error_notification %>
+  <%= simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= f.error_notification %>
 
-  <%= f.input :email, required: true, autofocus: true %>
+    <%= f.input :email, required: true, autofocus: true %>
 
-  <%= f.button :submit, t(".submit"), class: "button orange" %>
-  <%= link_to t(".sign_in"), new_session_path(:user) %>
-<% end %>
+    <%= f.button :submit, t(".submit"), class: "button" %>
+    <%= link_to t(".sign_in"), new_session_path(:user) %>
+  <% end %>
+</section>

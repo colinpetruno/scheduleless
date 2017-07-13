@@ -4,7 +4,6 @@ module Onboarding
 
     def edit
       @company = current_company
-
       authorize @company
     end
 
