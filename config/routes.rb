@@ -114,6 +114,9 @@ Rails.application.routes.draw do
     resource :company_preferences, only: [:create, :new]
     resources :leads, only: [:new, :create], path: "contact"
     resources :locations, only: [:create, :edit, :index, :new, :update] do
+      resource :scheduling_hours,
+        only: [:show, :update],
+        path: "hours"
       resources :users, path: :employees, only: [:create, :index, :new]
     end
     resources :positions, only: [:create, :destroy, :new]

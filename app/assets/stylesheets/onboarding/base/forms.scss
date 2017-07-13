@@ -41,6 +41,13 @@ form {
         outline: 0;
         box-shadow: none;
       }
+
+      &:disabled,
+      &[readonly] {
+        background-color: darken($white, 5%);
+        color: darken($gray-light, 10%);
+        opacity: 1;
+      }
     }
 
     input {

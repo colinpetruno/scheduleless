@@ -13,7 +13,11 @@
 
   <footer>
     <%= link_to "Back", edit_onboarding_company_path, class: "button white" %>
-    <%= link_to "No Thanks! I'll enter my information.", new_onboarding_location_path, class: "button" %>
+    <% if current_user.locations.present? %>
+      <%= link_to "No Thanks! I'll enter my information.", edit_onboarding_location_path(current_user.locations.first), class: "button" %>
+    <% else %>
+      <%= link_to "No Thanks! I'll enter my information.", new_onboarding_location_path, class: "button" %>
+    <% end %>
   </footer>
 </section>
 

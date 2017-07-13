@@ -1,0 +1,8 @@
+en:
+  onboarding:
+    scheduling_hours:
+      show:
+        description: >
+          Set up the hours your location is open. Choose the hours you
+          need to schedule for even if you may not open until later in the day.
+        title: "Location Hours"
