@@ -19,3 +19,33 @@
     }
   }
 }
+
+
+@media (max-width: map-get($grid-breakpoints, lg)) {
+  .scheduling-hours-show {
+    .inline {
+      display: flex;
+      flex-wrap: wrap;
+
+      label {
+        flex: 0 1 100%;
+        display: block;
+        text-align: left;
+      }
+
+      .input {
+        display: block;
+        padding-right: 10px;
+
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+
+      .location_scheduling_hours_minute_open_end {
+        padding-left: 10px;
+        padding-right: 0;
+      }
+    }
+  }
+}

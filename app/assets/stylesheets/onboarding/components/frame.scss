@@ -53,8 +53,19 @@
 
 @media (max-width: map-get($grid-breakpoints, lg)) {
   .frame {
+    margin-left: 0;
     margin-right: 0;
-    padding-left: 15px;
-    padding-right: 15px;
+    > aside, > div {
+      @include make-col(12);
+    }
+
+    footer {
+      text-align: center;
+      input[type=submit], .button {
+        display: block;
+        margin-bottom: 5px;
+        width: 100%;
+      }
+    }
   }
 }
