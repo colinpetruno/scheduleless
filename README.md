@@ -85,41 +85,10 @@ Lastly run, `sudo xcodebuild -license` and spam `[SPACE]` until you reach the en
 After each case, retry installation of the gem.
 
 
-## Tools We Use
+Guides
+======
 
-#### Heroku
+Guides for getting things done, programming well, and programming in style.
 
-- Production site infrastructure
-- Admins: Colin
-
-#### Mailgun
-
-- Send emails on behalf of our users
-- Admins: Colin
-
-#### BugSnag
-
-- Error reporting
-- Admins: Colin
-
-#### Reamaze
-
-- Knowledge Base and Support
-- Admins: Jenny
-
-#### Stripe
-
-- Credit Card Processing
-- Admins: Colin
-
-#### Twilio
-
-- Used for inviting users to download the app. Note: Cost is a concern here. If
-  we send more than 500-1000 of these a month per customer cost will be a
-  factor.
-- Admins: Colin
-
-#### Zoho
-
-- Emails
-- Admins: Colin
+* [Tools](./documentation/tools)
+* [Css](./documentation/css)
