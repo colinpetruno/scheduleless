@@ -52,3 +52,12 @@
     }
   }
 }
+
+@media (max-width: map-get($grid-breakpoints, lg)) {
+  .shared-wizard-steps {
+    ul {
+      padding-bottom: 10px;
+      padding-top: 10px;
+    }
+  }
+}
