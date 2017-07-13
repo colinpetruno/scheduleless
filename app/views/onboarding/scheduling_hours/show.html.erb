@@ -20,6 +20,7 @@
             <%= hf.input :minute_open_start,
               as: :select,
               collection: TimeRange.quarter_hour_options,
+              include_blank: false,
               label: false,
               wrapper_html: { class: "scheduling-hour-#{scheduling_hour.id}" }
             %>
@@ -27,6 +28,7 @@
             <%= hf.input :minute_open_end,
               as: :select,
               collection: TimeRange.quarter_hour_options,
+              include_blank: false,
               label: false,
               wrapper_html: { class: "scheduling-hour-#{scheduling_hour.id}" }
             %>
