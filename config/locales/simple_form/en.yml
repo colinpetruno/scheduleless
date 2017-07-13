@@ -44,6 +44,7 @@ en:
       in_progress_shift:
         user_id: "Employee"
       lead:
+        mobile_phone: "Mobile Phone"
         preferred_contact: "Preferred Contact Method"
       location:
         county_province: "State"

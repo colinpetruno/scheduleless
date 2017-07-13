@@ -4,6 +4,9 @@ module Onboarding
 
     def edit
       @company = current_company
+      # TODO: This is ugly but is used to skirt validations
+      @company.name = "" if @company.name == "Company Name"
+
       authorize @company
     end
 
