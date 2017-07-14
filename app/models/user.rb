@@ -22,7 +22,11 @@ class User < ApplicationRecord
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :email, presence: true, length: { minimum: 3, maximum: 200 }, uniqueness: true
+  validates :email,
+            allow_blank: true,
+            length: { minimum: 3, maximum: 200 },
+            uniqueness: true
+
   validates :family_name, presence: true, length: { minimum: 1, maximum: 200 }
   validates :given_name, presence: true, length: { minimum: 1, maximum: 200 }
   validates :mobile_phone, allow_blank: true, length: { minimum: 7, maximum: 30 }
@@ -34,6 +38,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :company, :leads, :preferred_hours
 
   before_create :build_availabilities
+  before_save :check_for_blank_email
 
   update_index "site_search#user", :self
 
@@ -89,6 +94,12 @@ class User < ApplicationRecord
 
   def build_availabilities
     PreferredHour.build_for(self)
+  end
+
+  def check_for_blank_email
+    if self.email.blank?
+      self.email = nil
+    end
   end
 
   def generate_hash_key
