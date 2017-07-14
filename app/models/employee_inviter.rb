@@ -1,5 +1,5 @@
 class EmployeeInviter
-  attr_reader :user
+  attr_accessor :user
 
   def self.for(user_params)
     new(user_params: user_params)
@@ -13,11 +13,10 @@ class EmployeeInviter
 
   def send
     if notify_now
-      @user = User.invite!(user_params)
+      self.user = User.invite!(user_params)
     else
-      @user = User.invite!(user_params) do |u|
-        u.skip_invitation = true
-      end
+      self.user = User.new(user_params)
+      user.save(validate: false)
     end
 
     add_location if location.present?
