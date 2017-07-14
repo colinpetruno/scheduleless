@@ -78,6 +78,11 @@ ActiveRecord::Schema.define(version: 20170714010443) do
     t.index ["user_id"], name: "index_employee_positions_on_user_id", using: :btree
   end
 
+  create_table "features", force: :cascade do |t|
+    t.string "key",         null: false
+    t.string "description"
+  end
+
   create_table "firebase_tokens", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "token",                     null: false
@@ -196,6 +201,17 @@ ActiveRecord::Schema.define(version: 20170714010443) do
     t.index ["company_id"], name: "index_offers_on_company_id", using: :btree
     t.index ["trade_id"], name: "index_offers_on_trade_id", using: :btree
     t.index ["user_id"], name: "index_offers_on_user_id", using: :btree
+  end
+
+  create_table "plan_features", force: :cascade do |t|
+    t.integer "plan_id"
+    t.integer "feature_id"
+    t.index ["feature_id"], name: "index_plan_features_on_feature_id", using: :btree
+    t.index ["plan_id"], name: "index_plan_features_on_plan_id", using: :btree
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.string "plan_name"
   end
 
   create_table "popular_times", force: :cascade do |t|
@@ -326,7 +342,9 @@ ActiveRecord::Schema.define(version: 20170714010443) do
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
     t.string   "stripe_subscription_id"
+    t.integer  "plan_id"
     t.index ["company_id"], name: "index_subscriptions_on_company_id", using: :btree
+    t.index ["plan_id"], name: "index_subscriptions_on_plan_id", using: :btree
   end
 
   create_table "time_off_requests", force: :cascade do |t|
