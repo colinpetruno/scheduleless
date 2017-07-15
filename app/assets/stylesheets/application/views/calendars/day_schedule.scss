@@ -15,6 +15,10 @@
       min-width: 40px;
       text-align: center;
       width: 40px;
+
+      &.new-day {
+        color: #009688
+      }
     }
   }
 
@@ -30,6 +34,22 @@
       border-left: 1px solid $font-light;
       display: inline-block;
       min-width: 40px;
+
+      &.new-day {
+        border-left: 3px solid #009688;
+
+        .date-time-ruler {
+          pointer-events: none;
+          transform: rotate(90deg);
+          z-index: 1000;
+          color: rgba(0, 150, 136, 0.3);
+          position: relative;
+          left: 9px;
+          top: -8px;
+          width: 0;
+        }
+      }
+
     }
   }
 

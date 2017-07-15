@@ -6,7 +6,10 @@
     <div class="labels">
       <% start = presenter.start_hour %>
       <% while start <= presenter.end_hour do %>
-        <div><%= start.strftime("%l") %></div>
+        <div <% if start.hour == 0 %>class='new-day'<% end %>>
+          <%= start.strftime("%l") %>
+        </div>
+
         <% start += 1.hour %>
       <% end %>
     </div>
@@ -14,7 +17,11 @@
     <div class="ruler">
       <% start = presenter.start_hour %>
       <% while start <= presenter.end_hour do %>
-        <div></div>
+        <div <% if start.hour == 0 %>class='new-day'<% end %>>
+          <% if start.hour == 0 %>
+            <div class='date-time-ruler'><%= presenter.next_day %></div>
+          <% end %>
+        </div>
         <% start += 1.hour %>
       <% end %>
     </div>
