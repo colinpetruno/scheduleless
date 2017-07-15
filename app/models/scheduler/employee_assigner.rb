@@ -1,7 +1,5 @@
 module Scheduler
   class EmployeeAssigner
-    ROTATION_COUNT = 50  # number of assignment rounds to execute for
-                         # if we meet the rotation account, then 100% shift coverage is not met
 
     SCHEDULE_STRATEGY = "grow"
 
@@ -81,22 +79,19 @@ module Scheduler
       false
     end
 
-    def auto_manage_schedule(failures=0) # looks good
-      if failures > ROTATION_COUNT
-        return true
-      end
+    def auto_manage_schedule # looks good
       successful_iteration = assign_iteration
 
       # if the iteration is successful, run another round
       if successful_iteration
-        auto_manage_schedule(0)
+        auto_manage_schedule
       else
         # if the iteration fails attempt an injection if necessary or cancel
         if !layout.all_slots_full?
           if perform_employee_injection
-            auto_manage_schedule(0)
+            auto_manage_schedule
           else
-            auto_manage_schedule(failures+1)
+            return true
           end
         end
       end
