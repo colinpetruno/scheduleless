@@ -16,6 +16,16 @@ class AuthenticatedController < ApplicationController
     params[:search] || {}
   end
 
+  def reporting_path
+    if (params[:location_id])
+      location = current_company.locations.find(params[:location_id])
+    else
+      location = Location.default_for(current_user)
+    end
+
+    reporting_location_statistics_path(location)
+  end
+
   def set_locale
     I18n.locale = current_user.locale || I18n.default_locale
   end

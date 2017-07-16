@@ -73,6 +73,7 @@ class Shift < ApplicationRecord
 
   def length_in_minutes
     # TODO: Harden against overnight shifts
+    # TODO: Probably Belongs in ShiftDateTimeClass
     minute_end - minute_start
   end
 

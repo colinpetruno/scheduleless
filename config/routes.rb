@@ -39,8 +39,6 @@ Rails.application.routes.draw do
     resource :join, only: [:create, :show]
     resource :print, only: [:show]
 
-    resource :statistics, only: [:show], path: "reporting"
-
     scope module: :locations, as: :locations do
       resources :in_progress_shifts,
         only: [:create, :destroy, :edit, :new, :update],
@@ -138,6 +136,12 @@ Rails.application.routes.draw do
     resources :locations, only: [] do
       resource :calendar, only: [:show]
       resources :scheduling_periods, only: [:show]
+    end
+  end
+
+  namespace :reporting do
+    resources :locations, only: [] do
+      resource :statistics, only: [:show], path: "stats"
     end
   end
 

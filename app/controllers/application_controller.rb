@@ -18,16 +18,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def reporting_path
-    location = Location.default_for(current_user)
-
-    if (params[:location_id])
-      location = Location.find(params[:location_id])
-    end
-
-    location_statistics_path(location)
-  end
-
   def pundit_user
     UserContext.new(location: @location, user: current_user)
   end
