@@ -15,5 +15,12 @@
   table.table tr > td {
     color: #67798c;
     font-size: 14px;
+
+    &:last-child {
+      button {
+        text-align: right;
+      }
+      text-align: right;
+    }
   }
 }
