@@ -117,12 +117,11 @@ Rails.application.routes.draw do
       resource :scheduling_hours,
         only: [:show, :update],
         path: "hours"
-      resources :users, path: :employees, only: [:create, :index, :new]
+      resources :users, path: :employees, only: [:create, :destroy, :index, :new]
     end
     resources :positions, only: [:create, :destroy, :new]
     resources :registrations, only: [:create, :new]
     resource :schedule_settings, only: [:edit, :update]
-    resources :user, only: [:destroy]
   end
 
   get "pricing", to: "marketing/welcome#pricing", as: :pricing

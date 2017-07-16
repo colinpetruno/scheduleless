@@ -19,7 +19,8 @@
           <td><%= user.mobile_phone %><td>
 
           <td>
-            <%= button_to onboarding_user_path(user), method: :delete, title: "Delete Employee" do %>
+            <%= button_to onboarding_location_user_path(@location, user),
+              method: :delete, title: "Delete Employee" do %>
               <span class="oi oi-minus"></span>
             <% end %>
           </td>

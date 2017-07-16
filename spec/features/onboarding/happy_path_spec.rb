@@ -109,7 +109,7 @@ RSpec.describe "onboarding happy path", type: :feature do
     fill_in "Last Name", with: "Potter"
     fill_in "Email", with: "harry.potter@example.com"
 
-    select "Manager", from: "Primary position"
+    select "Manager", from: I18n.t("simple_form.labels.user.primary_position")
 
     click_on "Add Employee"
     expect(page).to have_content("Employee was successfully added!")

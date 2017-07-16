@@ -13,7 +13,7 @@
     <%= t(".description") %>
   </div>
 
-  <%= simple_form_for [:onboarding, @location, @user] do |f| %>
+  <%= simple_form_for [:onboarding, @location, @employee_creator] do |f| %>
     <div class="inline">
       <%= f.input :given_name %>
       <%= f.input :family_name %>
@@ -24,11 +24,11 @@
       <%= f.input :mobile_phone %>
     </div>
 
-    <%= f.association :primary_position,
+    <%= f.input :primary_position_id,
       collection: current_company.positions %>
 
     <div class="inline">
-      <%= f.association :positions,
+      <%= f.input :position_ids,
         collection: current_company.positions,
         as: :check_boxes %>
     </div>

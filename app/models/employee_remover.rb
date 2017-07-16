@@ -13,7 +13,7 @@ class EmployeeRemover
 
   def remove
     if removeable?
-      user.update(
+      user.update_columns(
         email: deleted_email,
         deleted_at: DateTime.now
       )
@@ -27,7 +27,11 @@ class EmployeeRemover
   attr_reader :user
 
   def deleted_email
-    # ensures the email is unique in the event they sign up again
-    "#{DateTime.now.to_i}-deleted-#{user.email}"
+    if user.email.present?
+      # ensures the email is unique in the event they sign up again
+      "#{DateTime.now.to_i}-deleted-#{user.email}"
+    else
+      nil
+    end
   end
 end

@@ -1,6 +1,20 @@
 class Onboarding::UsersController < AuthenticatedController
   layout "onboarding"
 
+  def destroy
+    @location = current_company.locations.find(params[:location_id])
+    @user = @location.users.find(params[:id])
+
+    authorize @user
+
+    if EmployeeRemover.for(@user).remove
+      redirect_to onboarding_location_users_path
+    else
+      redirect_to onboarding_location_users_path,
+        alert: "Something went wrong deleting this employee"
+    end
+  end
+
   def index
     skip_policy_scope
     @location = current_company.locations.find(params[:location_id])
@@ -10,19 +24,18 @@ class Onboarding::UsersController < AuthenticatedController
 
   def new
     @location = current_company.locations.find(params[:location_id])
-    @user = User.new
+    @employee_creator = Onboarding::EmployeeCreator.new # User.new
 
-    authorize @user
+    authorize User
   end
 
   def create
     @location = current_company.locations.find(params[:location_id])
     authorize User
 
-    @user = User.new(user_params.merge(default_params))
-    @user.save(validate: false)
+    @employee_creator = Onboarding::EmployeeCreator.new(user_params.merge(default_params))
 
-    if @user.persisted?
+    if @employee_creator.valid? && @employee_creator.create
       redirect_to new_onboarding_location_user_path(@location),
         notice: I18n.t("onboarding.users.controller.created_success")
     else

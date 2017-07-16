@@ -93,6 +93,9 @@ en:
         locale: "Language"
         mobile_phone: "Mobile Phone"
         positions: "Alternate Positions"
+        position_ids: "Alternate Positions"
+        primary_position: "Position"
+        primary_position_id: "Position"
     required:
       text: 'required'
       mark: '*'
