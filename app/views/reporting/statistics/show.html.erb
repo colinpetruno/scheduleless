@@ -1,0 +1,57 @@
+<div class="frame">
+  <header>
+    <div>
+      <%= @location.name || t(".default_title") %>
+    </div>
+  </header>
+
+  <section>
+    <article>
+      <%= simple_form_for @reporting_params, url: reporting_location_statistics_path(@location), method: :get do |f| %>
+          <div class='inline-flex'>
+            <%= f.input :date_start, as: :datepicker, input_html: {value: @date_start} %>
+            <p style='padding: 30px 10px 10px 10px;'>to</p>
+            <%= f.input :date_end, as: :datepicker, input_html: {value: @date_end} %>
+          </div>
+          <br />
+          <%= f.submit "Go" %>
+      <% end %>
+    </article>
+    <div class="two-columns">
+      <section>
+        <article>
+          <h4 class='centered'>Hours Worked per Employee</h4>
+          <%= render partial: "hours_count_by_employee", locals: {
+            data: @hours_count_by_employee_data.to_json
+          } %>
+        </article>
+        <article style='min-width: 560px;'>
+          <h4 class='centered'>Hours Worked over Time</h4>
+          <%= render partial: "hours_worked_over_time", locals: {
+            data: @hours_worked_over_time_data.to_json
+          } %>
+        </article>
+      </section>
+    </div>
+    <article>
+      <h3>Hours Worked per Employee</h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Employee</th>
+            <th>Hours Worked</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @hours_count_by_employee_data.as_json.each do |d| %>
+          <tr>
+            <td><%= d[:user][:given_name] + " " + d[:user][:family_name] %></td>
+            <td><%= d[:value]/60 %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </article>
+  </section>
+
+</div>

@@ -15,4 +15,5 @@ Rails.application.config.assets.precompile += %w(
   marketing.js
   onboarding.css
   onboarding.js
+  reporting.js
 )
