@@ -25,6 +25,8 @@ Rails.application.routes.draw do
 
   resource :calendar, only: [:show]
 
+  resource :dashboard, only: [:show]
+
   resources :employee_positions, only: [:destroy]
 
   get "getting_started", to: "marketing/welcome#getting_started", as: :getting_started
