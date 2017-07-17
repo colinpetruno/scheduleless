@@ -3,6 +3,10 @@ td > form {
 }
 
 form {
+  .inline-flex {
+    display: inline-flex;
+  }
+
   .inline {
     vertical-align: top;
 
