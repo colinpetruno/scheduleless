@@ -1,0 +1,85 @@
+table.calendar-small {
+  table-layout:fixed;
+  min-width: 212px;
+
+  thead th {
+    border: 0;
+    border-bottom: 1px solid $white;
+    color: $white;
+    font-size: 10px;
+    font-weight: 200;
+    padding: 0px;
+    text-align: center;
+    width: 14.2857143%
+  }
+  tbody tr {
+    min-height: 10px;
+    border-top: none;
+    border-bottom: none;
+  }
+
+  tbody td {
+    border-top: none;
+    border-bottom: none;
+    font-size: 10px;
+    font-weight: 200;
+    min-height: 10px;
+    padding: 5px 0;
+  }
+
+  td.inactive {
+    a {
+      color: $gray-dark;
+
+      &:hover, &:focus {
+        color: lighten(#737a86, 0%);
+        text-decoration: none;
+      }
+    }
+  }
+
+  td > div{
+    padding: 0;
+    text-align: center;
+    line-height: 16px;
+    min-height: 16px;
+    vertical-align: middle;
+
+    a {
+      color: $white;
+
+      &:hover, &:focus {
+        color: $font-dark;
+        text-decoration: none;
+      }
+    }
+  }
+
+  td .today {
+    background-color: $white;
+    border-radius: 50%;
+    color: $white;
+    line-height: 16px;
+    min-height: 16px;
+    min-width: 16px;
+    max-width: 16px;
+    max-height: 16px;
+    margin: auto;
+    vertical-align: middle;
+
+    a {
+      color: $white;
+
+      &:hover, &:focus {
+        color: $white;
+        text-decoration: none;
+      }
+    }
+  }
+
+  td .selected-day {
+    a {
+      color: darken($body-bg, 40%);
+    }
+  }
+}

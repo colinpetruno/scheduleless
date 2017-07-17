@@ -13,12 +13,6 @@
   display: flex;
 }
 
-.static{
-  background:green;
-  width:100%;
-  height:5rem;
-}
-
 .view-content {
   display: block;
   overflow-y: auto;
@@ -27,4 +21,20 @@
   padding-left: 15px;
   padding-right: 15px;
   width: 100%;
+}
+
+.view-sidebar {
+  background-color: $blue;
+  background-color: darken($body-bg, 40%);
+  padding: 20px;
+}
+
+.site-content {
+  display: flex;
+  flex-direction: row;
+
+  .view-sidebar {
+    margin-left: auto;
+    width: 252px;
+  }
 }

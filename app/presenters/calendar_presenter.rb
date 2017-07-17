@@ -2,11 +2,16 @@ class CalendarPresenter
   include ActionView::Helpers::UrlHelper
   include ActionView::Helpers::TagHelper
 
-  attr_reader :day, :location
+  attr_reader :day, :format, :location
 
-  def initialize(day: Date.today, location:)
+  def initialize(day: Date.today, format: :large, location:)
     @day = day
+    @format = format
     @location = location
+  end
+
+  def days
+    I18n.t label_key
   end
 
   def day_block(date)
@@ -55,6 +60,14 @@ class CalendarPresenter
     end
 
     class_names
+  end
+
+  def label_key
+    if format == :small
+     "date.day_initials"
+    else
+     "date.day_names"
+    end
   end
 
   def routes
