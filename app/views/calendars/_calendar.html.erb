@@ -1,13 +1,10 @@
-<table class="table calendar">
+<table class="table calendar-<%= presenter.format %>">
   <thead>
     <tr>
-      <th>Sunday</th>
-      <th>Monday</th>
-      <th>Tuesday</th>
-      <th>Wednesday</th>
-      <th>Thursday</th>
-      <th>Friday</th>
-      <th>Saturday</th>
+      <% presenter.days.map do |day| %>
+        <th><%= day %></th>
+      <% end %>
+    </tr>
   </thead>
   <tbody>
     <% presenter.weeks.map do |week| %>

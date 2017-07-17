@@ -1,4 +1,13 @@
 en:
+  date:
+    day_initials:
+      - S
+      - M
+      - T
+      - W
+      - T
+      - F
+      - S
   datepicker:
     previous_month: "Previous"
     next_month: "Next"

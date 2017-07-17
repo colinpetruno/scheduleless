@@ -1,0 +1,9 @@
+<div class="dashboard-calendar-sidebar">
+  <header>
+    <%= Date::MONTHNAMES[Date.today.month] %>
+  </header>
+  <%= render partial: "calendars/calendar",
+    locals: {
+    presenter: CalendarPresenter.new(format: :small, location: Location.default_for(current_user))
+  } %>
+</div>

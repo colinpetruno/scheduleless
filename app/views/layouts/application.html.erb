@@ -33,6 +33,7 @@
       <%= render partial: "layouts/shared/top_nav" %>
       <div class="site-content">
         <%= render partial: "layouts/shared/side_menu" %>
+
         <div class="view-content">
           <% if notice.present? %>
             <div class="notice"><%= notice %></div>
@@ -44,6 +45,12 @@
 
           <%= yield %>
         </div>
+
+        <% if content_for?(:view_sidebar) %>
+          <aside class="view-sidebar">
+            <%= content_for(:view_sidebar) %>
+          </aside>
+        <% end %>
       </div>
     </div>
 
