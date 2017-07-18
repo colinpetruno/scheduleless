@@ -30,7 +30,7 @@ module Reporting
     def query
       result = location.shifts.
         joins(:user).
-        where(date: (DateParser.number(@date_start))..(DateParser.number(@date_end))).
+        where(date: (DateAndTime::Parser.number(@date_start))..(DateAndTime::Parser.number(@date_end))).
         group(:user).sum("minute_end - minute_start")
       result.map do |user, value|
         {

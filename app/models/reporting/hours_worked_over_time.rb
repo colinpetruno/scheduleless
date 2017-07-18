@@ -33,7 +33,7 @@ module Reporting
       location.shifts.
         group(:user_id, :date).
         select(:user_id, :date, 'SUM(CASE WHEN minute_start < minute_end THEN minute_end - minute_start ELSE 0 END) as shift_length').
-        where(date: (DateParser.number(@date_start))..(DateParser.number(@date_end))).order('user_id, date').
+        where(date: (DateAndTime::Parser.number(@date_start))..(DateAndTime::Parser.number(@date_end))).order('user_id, date').
         collect{|shift| [shift.user.id, shift.user, shift.date, shift.shift_length]}
     end
   end

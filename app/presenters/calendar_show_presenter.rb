@@ -60,7 +60,7 @@ class CalendarShowPresenter
   end
 
   def next_shift_date
-    DateParser.new(date: next_shift.date).month_and_day
+    DateAndTime::Parser.new(date: next_shift.date).month_and_day
   end
 
   def next_shift_location

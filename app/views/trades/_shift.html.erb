@@ -1,7 +1,7 @@
 <div class="shift-display">
   <div class="date">
-    <div><%= DateParser.new(date: trade.shift.date).month %></div>
-    <div><%= DateParser.new(date: trade.shift.date).day %></div>
+    <div><%= DateAndTime::Parser.new(date: trade.shift.date).month %></div>
+    <div><%= DateAndTime::Parser.new(date: trade.shift.date).day %></div>
   </div>
 
   <div class="time">

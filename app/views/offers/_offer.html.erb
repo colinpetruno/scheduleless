@@ -15,8 +15,8 @@
 
       <div class="shift-display">
         <div class="date">
-          <div><%= DateParser.new(date: offer.offered_shift.date).month %></div>
-          <div><%= DateParser.new(date: offer.offered_shift.date).day %></div>
+          <div><%= DateAndTime::Parser.new(date: offer.offered_shift.date).month %></div>
+          <div><%= DateAndTime::Parser.new(date: offer.offered_shift.date).day %></div>
         </div>
 
         <div class="time">

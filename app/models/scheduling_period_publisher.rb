@@ -53,7 +53,7 @@ class SchedulingPeriodPublisher
   end
 
   def valid_shift?(shift)
-    LocationTime.for(location).to_s(:day_integer).to_i < shift.date
+    DateAndTime::LocationTime.for(location).to_s(:day_integer).to_i < shift.date
   end
 
 end
