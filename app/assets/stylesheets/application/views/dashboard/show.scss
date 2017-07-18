@@ -1,0 +1,12 @@
+.dashboard-show {
+  .row {
+    border-left: 3px solid $blue;
+    border-bottom: 1px solid #ebecef;
+    line-height: 40px;
+    vertical-align: middle;
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}

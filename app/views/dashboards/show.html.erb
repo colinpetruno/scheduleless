@@ -1,5 +1,30 @@
-this is the dashboard show
+<div class="dashboard-show two-columns">
+  <section>
+    <article>
+      <%= render partial: "whose_working" %>
+    </article>
+    <article>
+      <%= render partial: "available_shifts" %>
+    </article>
+  </section>
+</div>
+
+<div class="frame">
+  <header class="light">
+    <div>Approvals (Managers Only)</div>
+  </header>
+
+  <section>
+    <article>
+      A list of things to be approved, Schedules, Time off Requests, Shift
+      Trades
+    </article>
+  </section>
+
+</div>
+
 
 <% content_for(:view_sidebar) do %>
   <%= render partial: "calendar_sidebar" %>
+  <%= render partial: "upcoming_shift" %>
 <% end %>

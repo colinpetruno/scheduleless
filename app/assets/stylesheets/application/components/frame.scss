@@ -34,6 +34,28 @@
         line-height: 40px;
       }
     }
+
+    // Light header
+    &.light {
+      border: 1px solid #dbdce2;
+      border-left: 1px solid #dddee4;
+      border-right: 1px solid #dddee4;
+
+      > div {
+        background-color: #f2f3f6;
+        border-top: 1px solid $white;
+        color: $gray-dark;
+      }
+
+      > div:first-child {
+        border-bottom: none;
+        // border-bottom: 1px solid #dbdce2;
+      }
+
+      > div:last-child {
+
+      }
+    }
   }
 
   > section {
@@ -41,6 +63,16 @@
 
     > article {
       padding: 15px;
+    }
+  }
+
+  &.fill {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+
+    > section {
+      flex-grow: 1;
     }
   }
 
