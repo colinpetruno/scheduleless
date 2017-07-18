@@ -1,9 +1,9 @@
 class UserLocationPolicy < ApplicationPolicy
   def create?
-    user.company_admin?
+    UserPermissions.for(user).company_admin?
   end
 
   def destroy?
-    user.company_admin?
+    UserPermissions.for(user).company_admin?
   end
 end

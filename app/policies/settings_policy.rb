@@ -1,5 +1,5 @@
 class SettingsPolicy < ApplicationPolicy
   def show?
-    user.company_admin?
+    UserPermissions.for(user).company_admin?
   end
 end

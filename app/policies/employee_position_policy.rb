@@ -1,5 +1,5 @@
 class EmployeePositionPolicy < ApplicationPolicy
   def destroy?
-    user.company_admin? || location_admin_for?(current_location)
+    UserPermissions.for(user).manage?(current_location)
   end
 end

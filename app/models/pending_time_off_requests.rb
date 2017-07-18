@@ -4,7 +4,7 @@ class PendingTimeOffRequests
   end
 
   def approve?
-    if user.company_admin? || user.location_admin?
+    if UserPermissions.for(user).manager?
       true
     else
       false
@@ -12,7 +12,7 @@ class PendingTimeOffRequests
   end
 
   def waiting_approval
-    if user.company_admin?
+    if UserPermissions.for(user).company_admin?
       TimeOffRequest.
         joins(:user).
         where(status: :pending, users: { company_id: user.company_id })

@@ -1,7 +1,7 @@
 class UserPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      if user.company_admin?
+      if UserPermissions.for(user).company_admin?
         UserFinder.new(user: user).by_company_without_current_user
       else
         UserFinder.new(user: user).by_associated_locations
@@ -10,15 +10,15 @@ class UserPolicy < ApplicationPolicy
   end
 
   def create?
-    user.company_admin? || location_admin_for?(current_location)
+    UserPermissions.for(user).manage?(current_location)
   end
 
   def destroy?
-    user.company_admin? || admin_for?(user)
+    UserPermissions.for(user).manage?(record)
   end
 
   def edit?
-    user.company_admin? || own_profile? || admin_for?(user)
+    UserPermissions.for(user).manage?(record) || own_profile?
   end
 
   def show?
@@ -26,7 +26,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def update?
-    user.company_admin? || own_profile? || admin_for?(user)
+    UserPermissions.for(user).manage?(record) || own_profile?
   end
 
   private

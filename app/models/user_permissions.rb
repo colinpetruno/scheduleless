@@ -15,6 +15,10 @@ class UserPermissions
     positions.where(location_admin: true).present?
   end
 
+  def manager?
+    location_admin? || company_admin?
+  end
+
   def scheduleless_admin?
     user.scheduleless_admin?
   end
@@ -36,7 +40,11 @@ class UserPermissions
   end
 
   def manage_location?(location)
-    positions.where(location_admin: true).present? && locations.include?(location)
+    if company_admin?
+      true
+    else
+      positions.where(location_admin: true).present? && locations.include?(location)
+    end
   end
 
   def manage_user?(user)

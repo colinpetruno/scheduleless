@@ -1,5 +1,5 @@
 class AvailableEmployeesPolicy < ApplicationPolicy
   def index?
-    user.company_admin?
+    UserPermissions.for(user).company_admin?
   end
 end

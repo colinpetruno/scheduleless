@@ -13,14 +13,14 @@ class SchedulingPeriodPolicy < ApplicationPolicy
   end
 
   def create?
-    (user.company_admin? || location_admin_for?(current_location))
+    UserPermissions.for(user).manage?(current_location)
   end
 
   def new?
-    (user.company_admin? || location_admin_for?(current_location))
+    UserPermissions.for(user).manage?(current_location)
   end
 
   def show?
-    (user.company_admin? || location_admin_for?(current_location))
+    UserPermissions.for(user).manage?(current_location)
   end
 end

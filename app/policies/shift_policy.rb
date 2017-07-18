@@ -6,23 +6,23 @@ class ShiftPolicy < ApplicationPolicy
   end
 
   def edit?
-    user.company_admin? || location_admin_for?(shift_location)
+    UserPermissions.for(user).manage?(shift_location)
   end
 
   def new?
-    user.company_admin? || location_admin_for?(shift_location)
+    UserPermissions.for(user).manage?(shift_location)
   end
 
   def create?
-    user.company_admin? || location_admin_for?(shift_location)
+    UserPermissions.for(user).manage?(shift_location)
   end
 
   def destroy?
-    user.company_admin? || location_admin_for?(shift_location)
+    UserPermissions.for(user).manage?(shift_location)
   end
 
   def update?
-    user.company_admin? || location_admin_for?(shift_location)
+    UserPermissions.for(user).manage?(shift_location)
   end
 
   private

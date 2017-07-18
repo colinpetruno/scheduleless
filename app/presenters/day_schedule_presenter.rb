@@ -59,7 +59,7 @@ class DaySchedulePresenter
 
   def manage_shift?(user, shift)
     # TODO: could check against internal location to prevent n+1
-    user.manage?(shift.location) || user.company_admin?
+    UserPermissions.for(user).manage?(shift.location)
   end
 
   def start_hour

@@ -11,7 +11,7 @@
   <%= link_to "Location Settings",
     locations_location_schedule_rules_path(location) %>.
 
-    <% if current_user.company_admin? %>
+    <% if UserPermissions.for(current_user).company_admin? %>
       <br />
       You can set up Schedule Rules for all your locations at once by visiting
       <%= link_to "Your Settings", settings_schedule_rules_path %>.

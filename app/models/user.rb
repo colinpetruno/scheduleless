@@ -68,11 +68,6 @@ class User < ApplicationRecord
     positions.where(location_admin: true).present? && locations.include?(location)
   end
 
-  def company_admin?
-    warn "[DEPRECATION] `company_admin?` is deprecated.  Please use `UserPermission` instead."
-    super || positions.where(company_admin: true).present?
-  end
-
   def deliver_invitation(options = {})
     super # send email through devise invitable
     # send twilio

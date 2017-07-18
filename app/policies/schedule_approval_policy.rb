@@ -1,9 +1,9 @@
 class ScheduleApprovalPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      if user.company_admin?
+      if UserPermissions.for(user).company_admin?
         all_waiting_approvals
-      elsif user.location_admin?
+      elsif UserPermissions.for(user).location_admin?
         approvals_for_locations
       else
         []
