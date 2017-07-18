@@ -6,9 +6,17 @@
   </header>
 
   <section>
-    <% Shift.last(8).each do |shift| %>
-      <div class="row">
-        this is a shift
+    <% if 1 == 2 %>
+      <% Shift.last(8).each do |shift| %>
+        <div class="row">
+          this is a shift
+        </div>
+      <% end %>
+    <% else %>
+      <div class="empty-message">
+        <h3>We're closed right now!</h3>
+        <span class="oi oi-moon"></span>
+        <p>We open at 9am on Tuesday.</p>
       </div>
     <% end %>
   </section>

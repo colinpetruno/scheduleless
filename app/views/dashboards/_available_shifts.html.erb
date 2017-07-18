@@ -4,12 +4,14 @@
   </header>
 
   <section>
-    <article>
-      <% if [].blank? %>
-        no shifts
-      <% else %>
-        there are some shifts!
-      <% end %>
-    </article>
+    <% if [].blank? %>
+      <div class="empty-message">
+        <h3>No Shifts Are Available</h3>
+        Looking for more hours?<br />
+        <%= link_to "Adjust your availability preferences.", edit_user_path %>
+      </div>
+    <% else %>
+      there are some shifts!
+    <% end %>
   </section>
 </div>

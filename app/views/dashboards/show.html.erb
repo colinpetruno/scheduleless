@@ -9,20 +9,7 @@
   </section>
 </div>
 
-<div class="frame">
-  <header class="light">
-    <div>Approvals (Managers Only)</div>
-  </header>
-
-  <section>
-    <article>
-      A list of things to be approved, Schedules, Time off Requests, Shift
-      Trades
-    </article>
-  </section>
-
-</div>
-
+<%= render partial: "approvals" %>
 
 <% content_for(:view_sidebar) do %>
   <%= render partial: "calendar_sidebar" %>

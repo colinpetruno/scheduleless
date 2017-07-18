@@ -1,0 +1,23 @@
+.empty-message {
+  color: lighten($gray-dark, 15%);
+  text-align: center;
+  margin: 0 auto;
+
+  h3 {
+    margin: 25px 0;
+  }
+
+  .oi {
+    display: block;
+    margin: 25px 0;
+  }
+
+  .oi-circle-check {
+    color: $green;
+    font-size: 60px;
+  }
+
+  .oi-moon {
+    font-size: 60px;
+  }
+}

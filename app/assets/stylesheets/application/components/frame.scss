@@ -72,7 +72,16 @@
     flex: 1;
 
     > section {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
       flex-grow: 1;
+
+      > article {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
     }
   }
 
