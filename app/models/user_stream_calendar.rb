@@ -30,7 +30,7 @@ class UserStreamCalendar
   end
 
   def add_shift_to_calendar(shift)
-    shift_datetime = ShiftDateTime.for(shift)
+    shift_datetime = DateAndTime::ShiftDateTime.for(shift)
 
     tz =  Time.find_zone(shift_datetime.timezone).tzinfo
     timezone = tz.ical_timezone shift_datetime.start
