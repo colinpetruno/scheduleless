@@ -56,7 +56,7 @@ class ApplicationPolicy
   private
 
   def admin_for?(user)
-    if user.location_admin?
+    if UserPermissions.for(user).location_admin?
       # check to ensure their locations overlap
       user.locations.where(id: record.locations.pluck(:id)).present?
     else
@@ -73,7 +73,7 @@ class ApplicationPolicy
 
   def location_admin_for?(location)
     if location.present?
-      user.manage?(location) || has_overrided_location?
+      UserPermissions.for(user).manage?(location) || has_overrided_location?
     else
       false
     end

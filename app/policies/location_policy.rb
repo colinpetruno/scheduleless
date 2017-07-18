@@ -14,8 +14,7 @@ class LocationPolicy < ApplicationPolicy
   end
 
   def edit?
-    (user.company_admin? || user.location_admin?) && same_company?
-    UserPermissions.for(user).company_admin?
+    UserPermissions.for(user).manage?(record) && same_company?
   end
 
   def new?

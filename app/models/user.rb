@@ -73,11 +73,6 @@ class User < ApplicationRecord
     # send twilio
   end
 
-  def location_admin?
-    warn "[DEPRECATION] `location_admin?` is deprecated.  Please use `UserPermission` instead."
-    positions.where(location_admin: true).present?
-  end
-
   def full_name
     [given_name, family_name].compact.join(" ")
   end
