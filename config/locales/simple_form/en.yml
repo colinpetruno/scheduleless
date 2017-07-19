@@ -56,6 +56,7 @@ en:
       position:
         company_admin: "Company Admin"
         location_admin: "Location Admin"
+        managees: "This Position Manages"
         name: "Position Name"
       registration:
         company_name: "Company Name"
