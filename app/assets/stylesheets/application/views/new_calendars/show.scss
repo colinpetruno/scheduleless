@@ -1,4 +1,36 @@
 .new-calendars-show {
+  > article {
+    font-size: 18px;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+    text-align: center;
+  }
+
+  > header {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 3px;
+
+    > div {
+      text-align: center;
+      line-height: 42px;
+      vertical-align: middle;
+      width: 33%;
+    }
+
+    > div:first-child {
+      font-size: 16px;
+      letter-spacing: 1px;
+      padding-left: 10px;
+      text-align: left;
+      vertical-align: bottom;
+    }
+
+    > div:last-child {
+      display: flex;
+      text-align: right;
+    }
+  }
 
   section {
     background-color: $white;
