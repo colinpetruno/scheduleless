@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   resources :locations, only: [:create, :edit, :index, :new, :show, :update] do
     resources :available_employees, only: [:index]
     resource :calendar, only: [:show]
+    resource :new_calendar, only: [:show]
     resource :daily_schedule, only: [:show]
     resource :join, only: [:create, :show]
     resource :print, only: [:show]

@@ -1,0 +1,74 @@
+.new-calendars-daily-schedule {
+  overflow-x: auto;
+
+  box-shadow: 0 0 20px darken(#e3eaf5, 3%);
+
+  header {
+    background-color: $white;
+    display: flex;
+    flex-direction: row;
+    margin-left: 130px;
+    > div {
+      min-width: 40px;
+      text-align: center;
+    }
+  }
+
+  > article {
+    border-bottom: 1px solid lighten($blue, 15%);
+    border-top: 1px solid lighten($blue, 15%);
+    display: block;
+    max-height: 450px;
+    overflow-y: scroll;
+  }
+
+  > article > div {
+    display: flex;
+    flex-direction: row;
+  }
+
+  div > aside {
+    background-color: $white;
+    border-right: 1px solid $blue;
+    min-width: 150px;
+  }
+
+  div > section {
+    overflow-x: auto;
+    position: relative;
+
+    > div.shifts {
+      min-width: 1000px;
+      position: relative;
+      padding-top: 5px;
+
+      background: repeating-linear-gradient(
+        to right,
+        lighten($blue, 17%),
+        lighten($blue, 17%) 1px,
+        $white 1px,
+        $white 40px
+      );
+
+      > section {
+        background-color: transparent;
+      }
+    }
+  }
+
+  .shift-row {
+    margin-bottom: 15px;
+    .shift {
+      background-color: lighten($blue, 25%);
+      border-radius: 3px;
+      border: 1px solid $blue;
+      min-height: 35px;
+    }
+  }
+
+  .user {
+    min-height: 40px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+  }
+}

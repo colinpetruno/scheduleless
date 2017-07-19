@@ -16,11 +16,21 @@
 .view-content {
   display: block;
   overflow-y: auto;
-  padding-bottom: 30px;
+  padding-bottom: 15px;
   padding-top: 30px;
   padding-left: 15px;
   padding-right: 15px;
   width: 100%;
+
+  &.full-width {
+    padding-left: 0;
+    padding-right: 0;
+
+    > section {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
 }
 
 .view-sidebar {

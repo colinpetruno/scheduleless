@@ -1,0 +1,7 @@
+<% (1..36).each do |i| %>
+  <% start = (1..16).to_a.sample %>
+  <% length = (1..8).to_a.sample %>
+  <div class="shift-row">
+    <div class="shift" style="margin-left: <%= start * 40 %>px; width: <%= length*40 + 1 %>px;"></div>
+  </div>
+<% end %>

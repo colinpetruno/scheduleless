@@ -1,0 +1,15 @@
+<div class="new-calendars-show">
+  <header>
+    Schedule - Aug 1st-Aug 15th - Date - Toggle Buttons
+  </header>
+
+  <section>
+    <%= render partial: "daily_schedule" %>
+  </section>
+</div>
+
+<% content_for(:view_content_classes, "full-width") %>
+<% content_for(:view_sidebar) do %>
+  <%= render partial: "dashboards/calendar_sidebar" %>
+  <%= render partial: "dashboards/upcoming_shift" %>
+<% end %>
