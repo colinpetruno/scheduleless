@@ -18,6 +18,12 @@ class SchedulingPeriod < ApplicationRecord
     closed: 5
   }
 
+  def self.for(date, location)
+    date_integer = date.to_s(:integer).to_i unless date.is_a?(Integer)
+    where("start_date <= ? and end_date >= ?", date_integer, date_integer).
+      where(location_id: location.id).first
+  end
+
   def generate_company_preview
     save if id.blank?
 

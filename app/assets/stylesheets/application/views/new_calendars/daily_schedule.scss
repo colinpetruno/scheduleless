@@ -19,7 +19,7 @@
     border-top: 1px solid lighten($blue, 15%);
     display: block;
     max-height: 450px;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 
   > article > div {
@@ -36,10 +36,12 @@
   div > section {
     overflow-x: auto;
     position: relative;
+    width: 100%;
 
     > div.shifts {
-      min-width: 961px;
+      min-width: 361px;
       position: relative;
+      width: 100%;
 
       background: repeating-linear-gradient(
         to right,
@@ -48,6 +50,17 @@
         $white 1px,
         $white 40px
       );
+
+
+      $i: 540;
+      @while $i < 1441 {
+        @if $i > 540 {
+          &.day-length-#{$i} {
+            min-width: (40px * ($i/60)) + 1;
+          }
+        }
+        $i: $i + 15;
+      }
 
       > section {
         background-color: transparent;

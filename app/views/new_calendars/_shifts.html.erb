@@ -1,15 +1,14 @@
-<% (1..36).each do |i| %>
-  <% start = (1..16).to_a.sample %>
-  <% length = (1..8).to_a.sample %>
-
+<% shifts.each do |shift| %>
   <div class="shift-row">
-    <div class="shift length-<%= length * 60 %> start-<%= start*60 %>">
+    <div class="<%= shift.classes %>">
+
     <%= link_to remote_new_calendar_shift_shift_detail_path(1), remote: true do %>
       <div>
-        <div class="time">10:15 - 12:46</div>
-        <div class="position">Assistant Manager</div>
+        <div class="time"><%= shift.time_range %></div>
+        <div class="position"><%= shift.position %></div>
       </div>
     <% end %>
+
     </div>
   </div>
 <% end %>

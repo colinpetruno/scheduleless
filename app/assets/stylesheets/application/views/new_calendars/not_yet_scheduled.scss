@@ -1,0 +1,11 @@
+.new-calendar-not-yet-scheduled {
+  > div {
+    padding: 50px 0;
+
+    .oi {
+      color: $blue;
+      font-size: 60px;
+      margin-bottom: 20px;
+    }
+  }
+}

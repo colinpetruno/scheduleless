@@ -1,0 +1,19 @@
+<section class="new-calendar-not-yet-scheduled">
+  <div class="centered">
+    <span class="oi oi-rain"></span>
+    <div>We're sorry. There are no schedules published for this period</div>
+    <div>We will let you know when shifts are available</div>
+  </div>
+
+  <% if presenter.manage? %>
+    <article class="centered">
+      <%= simple_form_for [:locations, presenter.location, SchedulingPeriod.new] do |f| %>
+        <%= f.submit "Auto Populate Schedule" %>
+      <% end %>
+
+      <%= simple_form_for [:locations, presenter.location, SchedulingPeriod.new] do |f| %>
+        <%= f.submit "Start With A Blank Slate", class: "button link" %>
+      <% end %>
+    </article>
+  <% end %>
+</section>

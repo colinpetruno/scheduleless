@@ -1,6 +1,6 @@
 <div class="new-calendars-show">
   <article>
-    Schedule For Aug 1st - Aug 15th
+    <%= @presenter.title %>
   </article>
 
   <header>
@@ -8,7 +8,7 @@
 
     <div>
       <button class="icon"><span class="oi oi-caret-left"></span></button>
-      July 20th
+      <%= @presenter.formatted_date %>
       <button class="icon"><span class="oi oi-caret-right"></span></button>
     </div>
 
@@ -20,9 +20,8 @@
     </div>
   </header>
 
-  <section>
-    <%= render partial: "daily_schedule" %>
-  </section>
+  <%= render partial: @presenter.partial,
+             locals: { presenter: @presenter.partial_presenter } %>
 </div>
 
 <% content_for(:view_content_classes, "full-width") %>
