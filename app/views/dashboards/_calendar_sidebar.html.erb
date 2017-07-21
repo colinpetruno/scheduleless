@@ -4,6 +4,6 @@
   </header>
   <%= render partial: "calendars/calendar",
     locals: {
-    presenter: CalendarPresenter.new(format: :small, location: Location.default_for(current_user))
+    presenter: CalendarPresenter.new(format: :small, location: @location)
   } %>
 </div>
