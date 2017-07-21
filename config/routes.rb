@@ -138,6 +138,12 @@ Rails.application.routes.draw do
       resource :calendar, only: [:show]
       resources :scheduling_periods, only: [:show]
     end
+
+    namespace :new_calendar, only: [] do
+      resources :shifts, only: [] do
+        resource :shift_detail, only: [:show], path: "details"
+      end
+    end
   end
 
   namespace :reporting do

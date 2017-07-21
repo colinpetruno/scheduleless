@@ -36,7 +36,11 @@
 
 .view-sidebar {
   background-color: darken(#ebf0f8, 40%);
-  padding: 20px;
+  position: relative;
+
+  > div {
+    padding: 20px;
+  }
 }
 
 .site-content {

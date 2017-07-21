@@ -1,0 +1,40 @@
+.popup {
+  background-color: darken(#ebf0f8, 40%);
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  transition: width .3s;
+  transition-timing-function: ease-in;
+  width: 0%;
+
+  &.open {
+    width: 100%;
+  }
+
+  header {
+    color: lighten($blue, 35%);
+    font-weight: 200;
+    padding: 5px 10px;
+    border-bottom: 1px solid darken($body-bg, 20%);
+  }
+
+  display: flex;
+  flex-direction: column;
+
+  footer {
+    margin-top: auto;
+    padding: 15px;
+    text-align: center;
+
+    button {
+      width: 100%;
+    }
+  }
+
+  .content {
+    flex-grow: 1;
+    padding: 15px;
+  }
+}

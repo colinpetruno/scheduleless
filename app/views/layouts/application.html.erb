@@ -48,7 +48,11 @@
 
         <% if content_for?(:view_sidebar) %>
           <aside class="view-sidebar">
-            <%= content_for(:view_sidebar) %>
+            <div>
+              <%= content_for(:view_sidebar) %>
+            </div>
+
+            <%= render partial: "layouts/shared/side_popup" %>
           </aside>
         <% end %>
       </div>

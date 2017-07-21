@@ -1,7 +1,15 @@
 <% (1..36).each do |i| %>
   <% start = (1..16).to_a.sample %>
   <% length = (1..8).to_a.sample %>
+
   <div class="shift-row">
-    <div class="shift" style="margin-left: <%= start * 40 %>px; width: <%= length*40 + 1 %>px;"></div>
+    <div class="shift length-<%= length * 60 %> start-<%= start*60 %>">
+    <%= link_to remote_new_calendar_shift_shift_detail_path(1), remote: true do %>
+      <div>
+        <div class="time">10:15 - 12:46</div>
+        <div class="position">Assistant Manager</div>
+      </div>
+    <% end %>
+    </div>
   </div>
 <% end %>

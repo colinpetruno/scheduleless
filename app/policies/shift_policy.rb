@@ -21,6 +21,12 @@ class ShiftPolicy < ApplicationPolicy
     UserPermissions.for(user).manage?(shift_location)
   end
 
+  def show?
+    # TODO: is this needed? placing it temporarily here to make the remote
+    # action work in #shift_details_controller
+    true
+  end
+
   def update?
     UserPermissions.for(user).manage?(shift_location)
   end

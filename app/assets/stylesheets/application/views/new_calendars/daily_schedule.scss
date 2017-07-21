@@ -38,9 +38,8 @@
     position: relative;
 
     > div.shifts {
-      min-width: 1000px;
+      min-width: 961px;
       position: relative;
-      padding-top: 5px;
 
       background: repeating-linear-gradient(
         to right,
@@ -57,18 +56,87 @@
   }
 
   .shift-row {
-    margin-bottom: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     .shift {
       background-color: lighten($blue, 25%);
       border-radius: 3px;
       border: 1px solid $blue;
-      min-height: 35px;
+      font-size: 10px;
+      max-height: 40px;
+      min-height: 40px;
+      overflow: none;
+
+      $i: 0;
+      @while $i < 1441 {
+        &.start-#{$i} {
+          margin-left: 40px * ($i/60);
+
+          @if $i > 1304 {
+            a {
+              > div {
+                left: -100px;
+                text-align: right;
+                width: 95px;
+              }
+            }
+          }
+        }
+
+
+
+        &.length-#{$i} {
+          width: (40px * ($i/60)) + 1;
+
+          // position label to the right of the div
+          @if $i < 106 {
+            a {
+              position: relative;
+              > div {
+                background-color: rgba($white, .3);
+                position: absolute;
+                left: (40px * ($i/60)) + 6;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+            }
+          }
+        }
+        $i: $i + 15;
+      }
+
+
+      a {
+        display: block;
+        width: 100%;
+        min-height: 38px;
+        padding: 2px;
+        padding-top: 4px;
+
+        &:hover {
+          text-decoration: none;
+        }
+
+        .time,.position {
+          max-width: 100%;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
     }
   }
 
   .user {
+    line-height: 40px;
     min-height: 40px;
-    margin-bottom: 10px;
     padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    vertical-align: center;
+
+    &:nth-child(even) {
+      background-color: lighten($blue, 28%);
+    }
   }
 }
