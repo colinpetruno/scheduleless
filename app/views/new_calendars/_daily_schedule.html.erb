@@ -14,5 +14,9 @@
 
       </section>
     </div>
+
+    <% if presenter.manage? %>
+      <%= render partial: "toolbar", locals: { presenter: presenter } %>
+    <% end %>
   </article>
 </div>

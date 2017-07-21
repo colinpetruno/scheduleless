@@ -2,6 +2,7 @@ module Locations
   class SchedulingPeriodsController < AuthenticatedController
     def create
       @location = current_company.locations.find(params[:location_id])
+
       @scheduling_period = @location.
         scheduling_periods.
         build(scheduling_period_params)
@@ -11,17 +12,14 @@ module Locations
       if @scheduling_period.save
         @scheduling_period.generate_company_preview
 
-        redirect_to(
-          locations_location_scheduling_period_path(
-            @location,
-            @scheduling_period
-          )
-        )
+        redirect_to location_new_calendar_path(@location)
       else
-        render :new
+        redirect_to location_new_calendar_path(@location)
       end
     end
 
+    # TODO: these actions may be able to get cleaned up when new
+    # scheduling gets launched
     def index
       @location = current_company.locations.find(params[:location_id])
 

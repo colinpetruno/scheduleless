@@ -12,10 +12,6 @@
       <%= link_to t(".employees"), locations_location_users_path(@location) %>
     <% end %>
 
-    <%= content_tag(:li, class: active?(locations_location_scheduling_periods_path(@location))) do %>
-      <%= link_to t(".schedules"), locations_location_scheduling_periods_path(@location) %>
-    <% end %>
-
     <%= content_tag(:li, class: active?(locations_location_schedule_rules_path(@location))) do %>
       <%= link_to t(".schedule_rules"), locations_location_schedule_rules_path(@location) %>
     <% end %>

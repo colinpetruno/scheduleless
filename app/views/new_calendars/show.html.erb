@@ -27,5 +27,5 @@
 <% content_for(:view_content_classes, "full-width") %>
 <% content_for(:view_sidebar) do %>
   <%= render partial: "dashboards/calendar_sidebar" %>
-  <%= render partial: "dashboards/upcoming_shift" %>
+  <%= render partial: "sidebar_content", locals: { presenter: @presenter } %>
 <% end %>

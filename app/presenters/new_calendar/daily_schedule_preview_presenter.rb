@@ -6,6 +6,10 @@ module NewCalendar
       @user = user
     end
 
+    def manage?
+      true
+    end
+
     def shift_view_width_class
       "shifts day-length-#{day_length}"
     end

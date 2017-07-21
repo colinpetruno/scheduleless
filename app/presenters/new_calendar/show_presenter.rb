@@ -1,9 +1,15 @@
 module NewCalendar
   class ShowPresenter
+    attr_reader :location
+
     def initialize(date: Date.today, location:, user:)
       @date = date
       @location = location
       @user = user
+    end
+
+    def date_integer
+      date.to_s(:integer)
     end
 
     def formatted_date
@@ -43,7 +49,7 @@ module NewCalendar
 
     private
 
-    attr_reader :date, :location, :user
+    attr_reader :date, :user
 
     def manage?
       UserPermissions.for(user).manage?(location)

@@ -1,0 +1,7 @@
+<footer class="centered">
+  <%= link_to "Add Shift",
+    new_remote_new_calendar_location_shift_path(presenter.location,
+                                                date: presenter.date_integer),
+    class: "button",
+    remote: true %>
+</footer>
