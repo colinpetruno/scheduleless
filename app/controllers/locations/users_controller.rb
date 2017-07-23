@@ -71,6 +71,7 @@ module Locations
                :given_name,
                :mobile_phone,
                :preferred_name,
+               :wage,
                preferred_hours_attributes: [:id, :start, :end]
               ).
         merge(company_id: current_company.id)

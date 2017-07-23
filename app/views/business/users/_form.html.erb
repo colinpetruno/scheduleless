@@ -3,6 +3,7 @@
   <%= f.input :given_name %>
   <%= f.input :family_name %>
   <%= f.input :mobile_phone %>
+  <%= f.input :wage, as: :currency, input_html: {value: @user.wage} %>
 
   <%= f.association :primary_position,
     collection: current_company.positions %>

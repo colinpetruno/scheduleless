@@ -39,6 +39,9 @@ class User < ApplicationRecord
 
   before_create :build_availabilities
   before_save :check_for_blank_email
+  before_save :convert_wage_to_cents
+
+  attr_accessor :wage
 
   update_index "site_search#user", :self
 
@@ -48,6 +51,14 @@ class User < ApplicationRecord
 
   def hash_key
     super || generate_hash_key
+  end
+
+  def wage
+    @wage || formatted_wage
+  end
+
+  def display_wage
+    sprintf "%.2f", wage
   end
 
   def invitation_state
@@ -81,6 +92,20 @@ class User < ApplicationRecord
   end
 
   private
+
+  def formatted_wage(wage=nil)
+    if wage_cents.present?
+      (wage_cents/100.00).to_f
+    end
+  end
+
+  def convert_wage_to_cents
+    if wage.blank?
+      self.wage_cents = nil
+    else
+      self.wage_cents = wage.to_f*100
+    end
+  end
 
   def build_availabilities
     PreferredHour.build_for(self)
