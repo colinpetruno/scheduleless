@@ -7,9 +7,15 @@
     <div>&nbsp;</div>
 
     <div>
-      <button class="icon"><span class="oi oi-caret-left"></span></button>
+      <%= link_to @presenter.previous_day_url, class: "button link" do %>
+        <span class="oi oi-caret-left"></span>
+      <% end %>
+
       <%= @presenter.formatted_date %>
-      <button class="icon"><span class="oi oi-caret-right"></span></button>
+
+      <%= link_to @presenter.next_day_url, class: "button link" do %>
+        <span class="oi oi-caret-right"></span>
+      <% end %>
     </div>
 
     <div>
@@ -26,6 +32,11 @@
 
 <% content_for(:view_content_classes, "full-width") %>
 <% content_for(:view_sidebar) do %>
-  <%= render partial: "dashboards/calendar_sidebar" %>
+  <%= render(partial: "dashboards/calendar_sidebar",
+    locals: {
+      current_date: @presenter.current_date,
+      selected_date: @presenter.selected_date
+    }
+  ) %>
   <%= render partial: "sidebar_content", locals: { presenter: @presenter } %>
 <% end %>

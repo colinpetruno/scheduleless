@@ -56,8 +56,9 @@ table.calendar-small {
   }
 
   td .today {
-    background-color: $white;
-    border-radius: 50%;
+    background-color: transparent;
+    border: 1px solid $white;
+    // border-radius: 50%;
     color: $white;
     line-height: 16px;
     min-height: 16px;
@@ -78,6 +79,19 @@ table.calendar-small {
   }
 
   td .selected-day {
+    background-color: $white;
+    border: 1px solid $white;
+    border-radius: 50%;
+    color: $blue;
+    line-height: 16px;
+    min-height: 16px;
+    min-width: 16px;
+    max-width: 16px;
+    max-height: 16px;
+    margin: auto;
+    vertical-align: middle;
+
+
     a {
       color: darken($body-bg, 40%);
     }

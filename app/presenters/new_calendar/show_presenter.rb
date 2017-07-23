@@ -2,10 +2,14 @@ module NewCalendar
   class ShowPresenter
     attr_reader :location
 
-    def initialize(date: Date.today, location:, user:)
-      @date = date
+    def initialize(date: nil, location:, user:)
+      @date = date || current_date
       @location = location
       @user = user
+    end
+
+    def current_date
+      DateAndTime::LocationTime.for(location).to_date
     end
 
     def date_integer
@@ -16,6 +20,10 @@ module NewCalendar
       date.to_s(:full_day_and_month)
     end
 
+    def next_day_url
+      routes.location_new_calendar_path(location, date: date + 1.day)
+    end
+
     def partial
       if published?
         "show"
@@ -24,6 +32,10 @@ module NewCalendar
       else
         "not_yet_scheduled"
       end
+    end
+
+    def previous_day_url
+      routes.location_new_calendar_path(location, date: date - 1.day)
     end
 
     def partial_presenter
@@ -38,6 +50,10 @@ module NewCalendar
 
     def scheduling_period
       SchedulingPeriod.for(date, location)
+    end
+
+    def selected_date
+      date
     end
 
     def title
@@ -63,6 +79,10 @@ module NewCalendar
       scheduling_period.published? || scheduling_period.closed?
     rescue
       false
+    end
+
+    def routes
+      Rails.application.routes.url_helpers
     end
   end
 end
