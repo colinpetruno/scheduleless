@@ -5,6 +5,7 @@ class Shift < ApplicationRecord
 
   has_many :check_ins
   has_one :trade
+  has_one :position
 
   accepts_nested_attributes_for :company
 

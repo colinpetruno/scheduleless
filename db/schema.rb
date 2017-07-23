@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170714010443) do
+ActiveRecord::Schema.define(version: 20170723152504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,6 +76,11 @@ ActiveRecord::Schema.define(version: 20170714010443) do
     t.boolean "primary",     default: false, null: false
     t.index ["position_id"], name: "index_employee_positions_on_position_id", using: :btree
     t.index ["user_id"], name: "index_employee_positions_on_user_id", using: :btree
+  end
+
+  create_table "features", force: :cascade do |t|
+    t.string "key",         null: false
+    t.string "description"
   end
 
   create_table "firebase_tokens", force: :cascade do |t|
@@ -198,6 +203,17 @@ ActiveRecord::Schema.define(version: 20170714010443) do
     t.index ["user_id"], name: "index_offers_on_user_id", using: :btree
   end
 
+  create_table "plan_features", force: :cascade do |t|
+    t.integer "plan_id"
+    t.integer "feature_id"
+    t.index ["feature_id"], name: "index_plan_features_on_feature_id", using: :btree
+    t.index ["plan_id"], name: "index_plan_features_on_plan_id", using: :btree
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.string "plan_name"
+  end
+
   create_table "popular_times", force: :cascade do |t|
     t.integer  "day_start"
     t.integer  "day_end"
@@ -315,8 +331,10 @@ ActiveRecord::Schema.define(version: 20170714010443) do
     t.integer  "user_id",                  null: false
     t.integer  "state",        default: 0, null: false
     t.string   "note"
+    t.integer  "position_id"
     t.index ["company_id"], name: "index_shifts_on_company_id", using: :btree
     t.index ["location_id"], name: "index_shifts_on_location_id", using: :btree
+    t.index ["position_id"], name: "index_shifts_on_position_id", using: :btree
     t.index ["user_id"], name: "index_shifts_on_user_id", using: :btree
   end
 
@@ -326,7 +344,9 @@ ActiveRecord::Schema.define(version: 20170714010443) do
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
     t.string   "stripe_subscription_id"
+    t.integer  "plan_id"
     t.index ["company_id"], name: "index_subscriptions_on_company_id", using: :btree
+    t.index ["plan_id"], name: "index_subscriptions_on_plan_id", using: :btree
   end
 
   create_table "time_off_requests", force: :cascade do |t|
@@ -400,6 +420,7 @@ ActiveRecord::Schema.define(version: 20170714010443) do
     t.integer  "primary_position_id"
     t.string   "locale",                 default: "en",  null: false
     t.string   "hash_key"
+    t.integer  "wage_cents"
     t.index ["company_id"], name: "index_users_on_company_id", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true, using: :btree
