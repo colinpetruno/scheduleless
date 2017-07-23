@@ -57,6 +57,8 @@ module Business
       end
     end
 
+    private
+
     def user_params
       params.
         require(:user).
@@ -65,9 +67,9 @@ module Business
                :given_name,
                :mobile_phone,
                :primary_position_id,
+               :wage,
                position_ids: []).
         merge({ company_id: current_company.id })
-
     end
   end
 end
