@@ -89,6 +89,7 @@ module Locations
           :minute_end,
           :month,
           :user_id,
+          :position_id,
           :year
         ).
         merge(location_id: @location.id,

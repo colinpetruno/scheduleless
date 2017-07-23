@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170714010443) do
+ActiveRecord::Schema.define(version: 20170723152504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -331,8 +331,10 @@ ActiveRecord::Schema.define(version: 20170714010443) do
     t.integer  "user_id",                  null: false
     t.integer  "state",        default: 0, null: false
     t.string   "note"
+    t.integer  "position_id"
     t.index ["company_id"], name: "index_shifts_on_company_id", using: :btree
     t.index ["location_id"], name: "index_shifts_on_location_id", using: :btree
+    t.index ["position_id"], name: "index_shifts_on_position_id", using: :btree
     t.index ["user_id"], name: "index_shifts_on_user_id", using: :btree
   end
 
@@ -418,6 +420,7 @@ ActiveRecord::Schema.define(version: 20170714010443) do
     t.integer  "primary_position_id"
     t.string   "locale",                 default: "en",  null: false
     t.string   "hash_key"
+    t.integer  "wage_cents"
     t.index ["company_id"], name: "index_users_on_company_id", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true, using: :btree

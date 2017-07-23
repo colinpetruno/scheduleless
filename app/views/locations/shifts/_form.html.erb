@@ -27,6 +27,11 @@
     %>
   </div>
 
+  <%= f.input :position_id,
+    as: :select,
+    collection: current_company.positions,
+    label_method: :name %>
+
   <%= f.input :user_id,
     as: :select,
     collection: @users,
