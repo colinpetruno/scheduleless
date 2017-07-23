@@ -140,9 +140,8 @@ Rails.application.routes.draw do
     end
 
     namespace :new_calendar, only: [] do
-      resources :locations, only: [] do
+      resources :scheduling_periods, only: [] do
         resources :in_progress_shifts, only: [:create, :new]
-        resources :shifts, only: [:create, :new]
       end
 
       resources :shifts, only: [] do

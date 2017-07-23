@@ -6,7 +6,13 @@ $(document).on("turbolinks:load", function() {
     window.Scheduleless.pickers = [];
 
     $("input.datepicker").each(function() {
-      var minDate = new Date($(this).attr('min_date'));
+      var minDateString = $(this).data('minDate');
+      if (minDateString) {
+        var minDate = new Date(minDateString);
+      } else {
+        var minDate = new Date();
+      }
+
 
       var picker = new Pikaday({
           field: $(this)[0],

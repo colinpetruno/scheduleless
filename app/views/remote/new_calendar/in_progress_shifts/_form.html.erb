@@ -1,5 +1,4 @@
-this is a new shift form
-<%= simple_form_for [:remote, :new_calendar, @location, @shift] do |f| %>
+<%= simple_form_for [:remote, :new_calendar, @scheduling_period, @shift] do |f| %>
   <%= f.input :date, as: :datepicker %>
   <%# f.input :scheduling_period_id, as: :hidden %>
   <%= f.input :minute_start,

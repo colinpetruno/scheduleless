@@ -34,15 +34,6 @@
   }
 }
 
-.view-sidebar {
-  background-color: darken(#ebf0f8, 40%);
-  position: relative;
-
-  > div {
-    padding: 20px;
-  }
-}
-
 .site-content {
   display: flex;
   flex-direction: row;

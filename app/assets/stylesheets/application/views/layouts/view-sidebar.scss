@@ -1,0 +1,28 @@
+.view-sidebar {
+  background-color: darken(#ebf0f8, 40%);
+  position: relative;
+
+  > div {
+    padding: 20px;
+  }
+
+  form {
+    label {
+      color: $white;
+      font-weight: 300;
+    }
+
+    input {
+      padding: 5px 10px;
+    }
+
+    .input > select.select {
+      height: 29px;
+    }
+
+    input[type=submit] {
+      display: block;
+      width: 100%;
+    }
+  }
+}

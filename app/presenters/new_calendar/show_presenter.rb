@@ -36,6 +36,10 @@ module NewCalendar
       end
     end
 
+    def scheduling_period
+      SchedulingPeriod.for(date, location)
+    end
+
     def title
       # TODO: Translate
       if published?
@@ -59,10 +63,6 @@ module NewCalendar
       scheduling_period.published? || scheduling_period.closed?
     rescue
       false
-    end
-
-    def scheduling_period
-      SchedulingPeriod.for(date, location)
     end
   end
 end
