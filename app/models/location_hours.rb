@@ -17,7 +17,19 @@ class LocationHours
     @location = location
   end
 
+  def close(day)
+    scheduling_hour_for(day).minute_schedulable_end
+  rescue
+    1440
+  end
+
   def closed?
+  end
+
+  def open(day)
+    scheduling_hour_for(day).minute_schedulable_start
+  rescue
+    0
   end
 
   def open?
@@ -26,4 +38,8 @@ class LocationHours
   private
 
   attr_reader :location
+
+  def scheduling_hour_for(day)
+    SchedulingHour.find_by(location_id: location.id, day: day)
+  end
 end

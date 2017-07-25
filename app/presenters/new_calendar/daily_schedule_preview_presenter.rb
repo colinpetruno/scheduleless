@@ -42,10 +42,14 @@ module NewCalendar
       else
         last_shift.minute_end
       end
+    rescue
+      LocationHours.for(location).close(date.wday)
     end
 
     def day_start
       first_shift.minute_start
+    rescue
+      LocationHours.for(location).open(date.wday)
     end
 
     def first_shift

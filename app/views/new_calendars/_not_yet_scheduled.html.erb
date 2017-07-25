@@ -7,13 +7,24 @@
 
   <% if presenter.manage? %>
     <article class="centered">
-      <%= simple_form_for [:locations, presenter.location, SchedulingPeriod.new] do |f| %>
-        <%= f.submit "Auto Populate Schedule" %>
-      <% end %>
+      <%= button_to(
+        "Auto Populate Schedule",
+        locations_location_scheduling_periods_path(
+          presenter.location,
+          date: presenter.date_string,
+          populate: true
+        )
+      ) %>
 
-      <%= simple_form_for [:locations, presenter.location, SchedulingPeriod.new] do |f| %>
-        <%= f.submit "Start With A Blank Slate", class: "button link" %>
-      <% end %>
+      <%= button_to(
+        "Start With A Blank Slate",
+        locations_location_scheduling_periods_path(
+          presenter.location,
+          date: presenter.date_string,
+          populate: false
+        ),
+        class: "button link"
+      ) %>
     </article>
   <% end %>
 </section>

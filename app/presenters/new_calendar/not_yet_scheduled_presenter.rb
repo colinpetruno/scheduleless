@@ -8,6 +8,10 @@ module NewCalendar
       @user = user
     end
 
+    def date_string
+      date.to_s(:integer)
+    end
+
     def manage?
       UserPermissions.for(user).manage?(location)
     end

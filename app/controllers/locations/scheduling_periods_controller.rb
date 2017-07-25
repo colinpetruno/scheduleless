@@ -3,19 +3,15 @@ module Locations
     def create
       @location = current_company.locations.find(params[:location_id])
 
-      @scheduling_period = @location.
-        scheduling_periods.
-        build(scheduling_period_params)
+      @scheduling_period = SchedulingPeriodCreator.
+        new(date: date,
+            location: @location,
+            populate: params[:populate]).
+        create
 
       authorize @scheduling_period
 
-      if @scheduling_period.save
-        @scheduling_period.generate_company_preview
-
-        redirect_to location_new_calendar_path(@location)
-      else
-        redirect_to location_new_calendar_path(@location)
-      end
+      redirect_to location_new_calendar_path(@location, date: date)
     end
 
     # TODO: these actions may be able to get cleaned up when new
@@ -26,46 +22,12 @@ module Locations
       @scheduling_periods = policy_scope(SchedulingPeriod)
     end
 
-    def new
-      @location = current_company.locations.find(params[:location_id])
-      @scheduling_period = @location.scheduling_periods.build
-
-      authorize @scheduling_period
-    end
-
-    def show
-      @location = current_company.locations.find(params[:location_id])
-      @scheduling_period = @location.scheduling_periods.find(params[:id])
-
-      authorize @scheduling_period
-
-      @presenter = SchedulingPeriodShowPresenter.
-        new(@scheduling_period, date, view)
-    end
-
     private
 
     def date
-      params[:date].to_i if params[:date].present?
+      Date.parse(params[:date].to_s)
     rescue
       nil
     end
-
-    def scheduling_period_params
-      params.
-        require(:scheduling_period).
-        permit(:start_date).
-        merge(company_id: current_company.id)
-    end
-
-    def view
-      if params[:schedule_preview_view].present?
-        cookies[:schedule_preview_view] = params[:schedule_preview_view]
-      end
-
-      cookies[:schedule_preview_view] ||  "day"
-    end
-
-
   end
 end
