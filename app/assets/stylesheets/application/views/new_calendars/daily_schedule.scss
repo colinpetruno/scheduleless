@@ -75,6 +75,7 @@
       background-color: lighten($blue, 25%);
       border-radius: 3px;
       border: 1px solid $blue;
+
       font-size: 10px;
       max-height: 40px;
       min-height: 40px;
@@ -96,7 +97,10 @@
           }
         }
 
-
+        &.edited {
+          background-color: rgba(lighten($blue, 28%), .7);
+          border: 1px dashed $blue;
+        }
 
         &.length-#{$i} {
           width: (40px * ($i/60)) + 1;

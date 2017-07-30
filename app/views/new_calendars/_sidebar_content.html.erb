@@ -1,4 +1,5 @@
 <footer class="centered">
+  <% if 1 == 2 %>
   <% if presenter.scheduling_period.present? %>
     <%= link_to(
       "Add Shift",
@@ -10,4 +11,5 @@
       remote: true
     ) %>
   <% end %>
+<% end %>
 </footer>

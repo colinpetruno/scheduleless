@@ -61,15 +61,11 @@ module NewCalendar
     end
 
     def find_shifts
-      @_raw_shifts ||= scheduling_period.
+      @_raw_shifts ||= location.
         in_progress_shifts.
         where(date: date.to_s(:integer).to_i).
         includes(:user).
         order(:date, :minute_start)
-    end
-
-    def scheduling_period
-      SchedulingPeriod.for(date, location)
     end
   end
 end

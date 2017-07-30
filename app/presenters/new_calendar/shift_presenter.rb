@@ -7,7 +7,10 @@ module NewCalendar
     end
 
     def classes
-      "shift length-#{shift_length.to_i} start-#{start_offset}"
+      array = ["shift", "length-#{shift_length.to_i}", "start-#{start_offset}"]
+      array.push("edited") if shift.edited?
+
+      array.reject(&:blank?).join(" ")
     end
 
     def time_range
