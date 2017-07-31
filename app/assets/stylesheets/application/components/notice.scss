@@ -1,7 +1,7 @@
 .alert, .info, .notice, .warning {
   border: $alert-border-width solid transparent;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: flex-start;
   padding: $alert-padding-y $alert-padding-x;
   margin-bottom: $alert-margin-bottom;

@@ -10,6 +10,10 @@ module NewCalendar
       true
     end
 
+    def needs_published?
+      find_shifts.exists?(edited: true)
+    end
+
     def shift_view_width_class
       "shifts day-length-#{day_length}"
     end
