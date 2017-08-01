@@ -1,5 +1,26 @@
-<% users.map do |user| %>
-  <div class="user">
+<% presenter.users.map do |user| %>
+  <div class="new-calendar-users">
     <%= user.full_name %>
+
+    <div class="actions">
+      <div>
+        <article>
+          &nbsp;
+        </article>
+        <article>
+          <%= link_to(
+            "Add Shift",
+            new_remote_location_in_progress_shift_path(
+              presenter.location,
+              date: presenter.date_integer,
+              user_id: user.id
+            ),
+            class: "button",
+            remote: true
+          ) %>
+        </article>
+      </div>
+    </div>
+
   </div>
 <% end %>

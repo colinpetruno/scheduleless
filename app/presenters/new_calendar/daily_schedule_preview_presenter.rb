@@ -1,9 +1,15 @@
 module NewCalendar
   class DailySchedulePreviewPresenter
+    attr_reader :location
+
     def initialize(date: Date.today, location:, user:)
       @date = date
       @location = location
       @user = user
+    end
+
+    def date_integer
+      date.to_s(:integer)
     end
 
     def manage?
@@ -26,15 +32,18 @@ module NewCalendar
       end
     end
 
+    def shifts_for(user)
+      # binding.pry
+      user_shift_map.by(user)
+    end
+
     def users
-      @_users ||= shifts.map do |shift|
-        shift.user
-      end
+      @_users ||= location.users.order(:given_name)
     end
 
     private
 
-    attr_reader :date, :location, :user
+    attr_reader :date, :user
 
     def day_length
       day_end - day_start
@@ -70,6 +79,10 @@ module NewCalendar
         where(date: date.to_s(:integer).to_i).
         includes(:user).
         order(:date, :minute_start)
+    end
+
+    def user_shift_map
+      @_user_shift_map ||= UserShiftMap.for(shifts)
     end
   end
 end

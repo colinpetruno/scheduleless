@@ -1,9 +1,10 @@
 <section>
-  <%= render partial: "daily_schedule", locals: { presenter: presenter } %>
+  <%= render partial: "new_calendars/daily_schedule",
+    locals: { presenter: presenter } %>
 </section>
 
 <% if presenter.needs_published? %>
   <div class="warning">
-    this schedule has shifts that need published
+    There are shifts that aren't published!
   </div>
 <% end %>

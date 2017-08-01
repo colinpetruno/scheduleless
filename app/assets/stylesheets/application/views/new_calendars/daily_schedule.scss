@@ -71,6 +71,9 @@
   .shift-row {
     padding-top: 5px;
     padding-bottom: 5px;
+    max-height: 50px;
+    min-height: 50px;
+
     .shift {
       background-color: lighten($blue, 25%);
       border-radius: 3px;
@@ -141,19 +144,6 @@
           white-space: nowrap;
         }
       }
-    }
-  }
-
-  .user {
-    line-height: 40px;
-    min-height: 40px;
-    padding-left: 10px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    vertical-align: center;
-
-    &:nth-child(even) {
-      background-color: lighten($blue, 28%);
     }
   }
 }

@@ -1,14 +1,24 @@
-<% shifts.each do |shift| %>
-  <div class="shift-row">
-    <div class="<%= shift.classes %>">
+<% presenter.users.each do |user| %>
 
-    <%= link_to remote_new_calendar_shift_shift_detail_path(1), remote: true do %>
-      <div>
-        <div class="time"><%= shift.time_range %></div>
-        <div class="position"><%= shift.position %></div>
+  <% shifts = [presenter.shifts_for(user).first].reject(&:blank?) %>
+
+  <% if shifts.present? %>
+    <% shifts.each do |shift| %>
+      <div class="shift-row">
+        <div class="<%= shift.classes %>">
+
+        <%= link_to remote_new_calendar_shift_shift_detail_path(1), remote: true do %>
+          <div>
+            <div class="time"><%= shift.time_range %></div>
+            <div class="position"><%= shift.position %></div>
+          </div>
+        <% end %>
+
+        </div>
       </div>
     <% end %>
+  <% else %>
+    <div class="shift-row"></div>
+  <% end %>
 
-    </div>
-  </div>
 <% end %>

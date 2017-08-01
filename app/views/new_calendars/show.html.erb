@@ -28,8 +28,10 @@
     </div>
   </header>
 
+  <div id="new-calendar-show-calendar">
   <%= render partial: @presenter.partial,
              locals: { presenter: @presenter.partial_presenter } %>
+  </div>
 </div>
 
 <% content_for(:view_content_classes, "full-width") %>

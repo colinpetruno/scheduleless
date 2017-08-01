@@ -1,0 +1,12 @@
+<% if @shift.errors.present? %>
+    console.log("errors");
+<% else %>
+  $(".popup").removeClass("open");
+  $("#new-calendar-show-calendar").html("<%= j(render(partial: "new_calendars/show",
+               locals: {
+                 presenter: NewCalendar::DailySchedulePreviewPresenter.
+                   new(date: @shift.date,
+                       location: @location,
+                       user: current_user)
+  })) %>");
+<% end %>

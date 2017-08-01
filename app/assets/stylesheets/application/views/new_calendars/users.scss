@@ -1,0 +1,73 @@
+.new-calendar-users {
+  font-size: 12px;
+  line-height: 40px;
+  min-height: 40px;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  position: relative;
+  vertical-align: center;
+
+  &:nth-child(even) {
+    background-color: lighten($blue, 28%);
+  }
+
+
+
+  .actions {
+    bottom: 0;
+    display: none;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    .oi {
+      color: $blue;
+    }
+
+    > div {
+      display: flex;
+      flex-direction: row;
+      height: 100%;
+
+      > article {
+        font-size: 12px;
+        height: 100%;
+        line-height: 50px;
+        text-align: center;
+        vertical-align: middle;
+        width: 50%;
+
+        &:last-child {
+          background-color: lighten($green, 10%);
+          border-left: 1px solid lighten($green, 20%);
+        }
+
+        a {
+          background-color: transparent;
+          border: none;
+          color: $font-dark;
+          color: $white;
+          display: block;
+          font-size: 12px;
+          height: 100%;
+          line-height: 50px;
+          height: 100%;
+          padding: 0;
+          vertical-align: middle;
+
+          &:hover {
+            background-color: $green; // lighten($blue, 25%);
+            box-shadow: inset 0 0 8px darken($green, 10%);
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+
+  &:hover > div.actions {
+    display: block;
+  }
+}

@@ -27,6 +27,10 @@ module NewCalendar
       shift.user
     end
 
+    def user_id
+      shift.user_id
+    end
+
     private
 
     attr_reader :day_start, :manage, :shift

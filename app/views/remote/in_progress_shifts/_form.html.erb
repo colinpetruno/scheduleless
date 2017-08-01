@@ -1,4 +1,4 @@
-<%= simple_form_for [:remote, @location, @shift] do |f| %>
+<%= simple_form_for [:remote, @location, @shift], remote: true do |f| %>
   <%= f.input :date, as: :datepicker %>
 
   <%= f.input :minute_start,
