@@ -136,7 +136,7 @@ Rails.application.routes.draw do
   namespace :remote, defaults: { format: :js } do
     resources :locations, only: [] do
       resource :calendar, only: [:show]
-      resources :in_progress_shifts, only: [:create, :new]
+      resources :in_progress_shifts, only: [:create, :edit, :new, :update]
       resources :scheduling_periods, only: [:show]
     end
 

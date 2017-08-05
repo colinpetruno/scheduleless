@@ -9,11 +9,27 @@ module Remote
       @shift.save
     end
 
+    def edit
+      @location = current_company.locations.find(params[:location_id])
+      @shift = @location.in_progress_shifts.find(params[:id])
+
+      authorize @shift
+    end
+
     def new
       @location = current_company.locations.find(params[:location_id])
       @shift = @location.in_progress_shifts.build(shift_get_params)
 
       authorize @shift
+    end
+
+    def update
+      @location = current_company.locations.find(params[:location_id])
+      @shift = @location.in_progress_shifts.find(params[:id])
+
+      authorize @shift
+
+      @shift.update(in_progress_shift_params)
     end
 
     private

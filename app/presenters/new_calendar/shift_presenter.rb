@@ -13,6 +13,14 @@ module NewCalendar
       array.reject(&:blank?).join(" ")
     end
 
+    def details_url
+      if shift.is_a? InProgressShift
+        routes.edit_remote_location_in_progress_shift_path(shift.location, shift)
+      else
+        routes.remote_new_calendar_shift_shift_detail_path(shift)
+      end
+    end
+
     def time_range
       shift.time_range
     end
@@ -34,6 +42,10 @@ module NewCalendar
     private
 
     attr_reader :day_start, :manage, :shift
+
+    def routes
+      Rails.application.routes.url_helpers
+    end
 
     def shift_length
       DateAndTime::ShiftDateTime.for(shift).length_in_minutes

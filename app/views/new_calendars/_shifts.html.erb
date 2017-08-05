@@ -7,7 +7,7 @@
       <div class="shift-row">
         <div class="<%= shift.classes %>">
 
-        <%= link_to remote_new_calendar_shift_shift_detail_path(1), remote: true do %>
+        <%= link_to shift.details_url, remote: true do %>
           <div>
             <div class="time"><%= shift.time_range %></div>
             <div class="position"><%= shift.position %></div>
