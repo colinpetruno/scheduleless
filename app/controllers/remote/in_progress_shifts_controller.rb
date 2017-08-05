@@ -29,7 +29,7 @@ module Remote
 
       authorize @shift
 
-      @shift.update(in_progress_shift_params)
+      @shift.update(in_progress_shift_params.merge(edited: true))
     end
 
     private
