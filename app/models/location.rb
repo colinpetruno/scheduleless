@@ -2,6 +2,7 @@ class Location < ApplicationRecord
   belongs_to :company
   has_many :in_progress_shifts
   has_many :popular_times, as: :popular
+  has_many :postings
   has_many :scheduling_hours
   has_many :scheduling_periods
   has_many :schedule_rules, as: :ruleable

@@ -2,5 +2,5 @@ $(".view-sidebar > .popup > .content").html("<%= j(
   render partial: "form", locals: { shift: @shift }
 ) %>");
 
-window.Scheduleless.instantiatePickers();
+window.Scheduleless.reinstantiatePickers();
 $(".view-sidebar > .popup").show().addClass("open");

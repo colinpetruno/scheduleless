@@ -1,8 +1,9 @@
 $(document).on("turbolinks:load", function() {
-  window.Scheduleless.instantiatePickers = function() {
+  window.Scheduleless.instantiateDatePickers = function() {
     $.each(window.Scheduleless.pickers, function(index, value) {
       value.destroy();
     });
+
     window.Scheduleless.pickers = [];
 
     $("input.datepicker").each(function() {
@@ -33,5 +34,5 @@ $(document).on("turbolinks:load", function() {
     });
   }
 
-  window.Scheduleless.instantiatePickers();
+  window.Scheduleless.instantiateDatePickers();
 });

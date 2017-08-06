@@ -1,5 +1,14 @@
 <footer class="new-calendars-toolbar">
   Hours For Range: 10, Hours for Period 150, Est. Cost 12000$
   <button>Resolve</button>
-  <button>Publish</button>
+
+  <%= link_to("Publish",
+    new_remote_location_posting_path(
+      presenter.location,
+      date_start: presenter.date_integer,
+      date_end: presenter.date_integer
+    ),
+    class: "button",
+    remote: true
+  ) %>
 </footer>

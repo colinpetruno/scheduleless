@@ -137,6 +137,7 @@ Rails.application.routes.draw do
     resources :locations, only: [] do
       resource :calendar, only: [:show]
       resources :in_progress_shifts, only: [:create, :edit, :new, :update]
+      resources :postings, only: [:new, :create]
       resources :scheduling_periods, only: [:show]
     end
 

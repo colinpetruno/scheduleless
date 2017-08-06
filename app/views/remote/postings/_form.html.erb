@@ -1,0 +1,5 @@
+<%= simple_form_for [:remote, @location, posting], remote: true do |f| %>
+  <%= f.input :date_start, as: :datepicker_range %>
+
+  <%= f.submit %>
+<% end %>
