@@ -2,11 +2,15 @@ module Remote
   class PostingsController < AuthenticatedController
     def create
       @location = current_company.locations.find(params[:location_id])
-      @posting = @location.postings.build(posting_params)
+      @posting = @location.postings.create(posting_params)
 
       authorize @posting
 
-      # @posting.save
+      ShiftPublisher.
+        new(end_date: @posting.date_end,
+            location: @location,
+            start_date: @posting.date_start).
+        publish
     end
 
     def new
