@@ -1,23 +1,20 @@
-<div class="how-it-works">
+<div class="how-it-works marketing-welcome-how-it-works">
   <header class="header">
     <%= render partial: "layouts/marketing/navbar" %>
   </header>
 
   <section class="hero-section">
     <div>
-      <h3>Scheduling Software Should Make Your Life Easier</h3>
-      <small>We will do all your busy work so you can focus on your business.</small>
+      <h3><%= t(".hero.title") %></h3>
+      <small><%= t(".hero.article") %></small>
     </div>
   </section>
 
   <section class="section let-us-handle-it">
     <div>
       <article>
-        <h4>Let Us Know What You Need</h4>
-        Let us know how you prefer to schedule your employees and a past
-        schedule or two for reference. We will create schedules based upon what
-        you like. Don't worry though, if you need a change for an upcoming
-        holiday or event, just let us know and we will adjust it for you.
+        <h4><%= t(".let_us_handle_it.title") %></h4>
+          <%= t(".let_us_handle_it.article") %>
       </article>
 
       <aside>
@@ -32,23 +29,16 @@
       </aside>
 
       <article>
-        <h4>Your Schedule Sent To You</h4>
-        Get notified on your phone and via email when your schedules are
-        created. No need to remember each week or spend any time making
-        schedules. We will regulary schedule your employees and ensure they
-        have their schedules in advance.
+        <h4><%= t(".notifications.title") %></h4>
+          <%= t(".notifications.article") %>
       </article>
   </section>
 
   <section class="section review">
     <div>
       <article>
-        <h4>Review And Publish</h4>
-        Check to ensure your schedule suits all your needs. If you need
-        changes you can make them yourself or just let us know. When you're
-        ready, hit publish and we will send it out to all your employees.
-        We learn from every schedule you publish to ensure we are giving you
-        exactly what you want.
+        <h4><%= t(".review.title") %></h4>
+          <%= t(".review.article") %>
       </article>
 
       <aside>
@@ -59,17 +49,17 @@
   <section class="more-info">
     <div>
       <div>
-        <h4>Get Started For Free<h4>
+        <h4><%= t(".more_info.title") %><h4>
       </div>
       <div>
         <br />
-        <%= link_to "Try Scheduleless Now",
+        <%= link_to t(".more_info.link_one"),
           new_onboarding_registration_path,
           class: "button orange" %>
-        <p><small>30 days free, no credit card required.</small></p>
+        <p><small><%= t(".more_info.no_cc_required") %></small></p>
       </div>
       <div>
-        <%= link_to "Learn More",
+        <%= link_to t(".more_info.link_two"),
           root_path,
           class: "button link" %>
       </div>
