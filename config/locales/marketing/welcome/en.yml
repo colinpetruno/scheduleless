@@ -1,16 +1,18 @@
 en:
   marketing:
     welcome:
+      coming_soon:
+        title: "Coming Soon!"
       employee_concierge:
         heading: "Your Employees Concierge"
         subtitle: >
-          Be interrupted less. Scheduleless customer service is there to help 
-          out your employees and handle the routine kinks that happen every 
-          week. 
+          Be interrupted less. Scheduleless customer service is there to help
+          out your employees and handle the routine kinks that happen every
+          week.
         apps:
           article: >
             Web, Android and iOS Apps make accessing their schedule as easy as
-            possible. Receive upcoming shift and notifications right on your 
+            possible. Receive upcoming shift and notifications right on your
             mobile device.
           title: "Available Anywhere"
         time_off:
@@ -23,9 +25,9 @@ en:
         trade:
           article: >
             Trading shifts allows for an easy way for employees to work when it
-            is most convenient for them. Trading shifts by your employees 
-            significantly lowers the number of cancellations. However, if they 
-            still need to cancel we will let all the eligible employees know 
+            is most convenient for them. Trading shifts by your employees
+            significantly lowers the number of cancellations. However, if they
+            still need to cancel we will let all the eligible employees know
             and try to fill it as soon as possible.
           title: "Shift Trading And Cancellations"
       footer:
@@ -33,15 +35,81 @@ en:
         made_in_html: "Made with <span>♥</span> in Boston"
         sign_in: "Sign In"
         try: "Try For Free"
+        30_days_free: "30 days free, no credit card required"
+        email_address: "Email Address"
+      getting_started:
+        hero:
+          title: "Scheduling Software Should Make Your Life Easier"
+          subtitle: "We work with you to find the easiest way to get you started"
+        let_us_handle_it:
+          title: "Let Us Handle It"
+          article: >
+            Entering all your employees data can take awhile no matter what system
+            you use. So let us do it for you. You can send us your employees and
+            positions in whatever way is most convenient for you and we will take
+            the time to get them entered in the system and ready to be scheduled.
+        enrollment_link:
+          title: "Use An Enrollment Link"
+          article: >
+            Sometimes you don't have every employee's contact info readily available.
+            We provide a unique link so your employees can join their locations and
+            enter their own information.
+        guided_set_up:
+          title: "Easy Guided Setup"
+          article: >
+            For those that enjoy doing things themselves we offer an easy guided
+            setup to walk you through adding your positions, locations and
+            employees.
+        more_info:
+          title: "See how scheduling works with Scheduleless"
+          link: "Learn More"
       hero_section:
         call_to_action: "Start For Free"
         no_cc_required: "30 day trial with no credit card required"
         learn_more_html: >
           Learn More About <h2>Automated Employee Scheduling</h2>
         subtitle_html: >
-          The only <h1>employee scheduling software</h1> that schedules for 
+          The only <h1>employee scheduling software</h1> that schedules for
           you.
         title: "Spend More Time On Your Business."
+      how_it_works:
+        hero:
+          title: "Scheduling Software Should Make Your Life Easier"
+          article: >
+            We will do all your busy work so you can focus on your business
+        let_us_handle_it:
+          title: "Let Us Know What You Need"
+          article: >
+            Let us know how you prefer to schedule your employees and a past
+            schedule or two for reference. We will create schedules based upon what
+            you like. Don't worry though, if you need a change for an upcoming
+            holiday or event, just let us know and we will adjust it for you.
+        notifications:
+          title: "Your Schedule Sent To You"
+          article: >
+            Get notified on your phone and via email when your schedules are
+            created. No need to remember each week or spend any time making
+            schedules. We will regulary schedule your employees and ensure they
+            have their schedules in advance.
+        review:
+          title: "Review And Publish"
+          article: >
+            Check to ensure your schedule suits all your needs. If you need
+            changes you can make them yourself or just let us know. When you're
+            ready, hit publish and we will send it out to all your employees.
+            We learn from every schedule you publish to ensure we are giving you
+            exactly what you want.
+        more_info:
+          title: "Get Started For Free"
+          link_one: "Try Scheduleless Now"
+          no_cc_required: "30 days free, no credit card required"
+          link_two: "Learn More"  
+      industries:
+        title: "For Any Industry"
+        retail: "Retail"
+        bars_cafes_restaurants: "Bars / Cafes / Restaurants"
+        entertainment: "Entertainment"
+        professional_services: "Professional Services"
       pricing:
         bullet_1: "We do your scheduling!"
         bullet_2: "Time Clock and Reporting"
@@ -52,42 +120,44 @@ en:
         bullet_7: "Schedule well into the future"
         bullet_8: "Android and iOS Apps"
         call_to_action: "Try For Free"
+        30_days_free: "30 days free, no credit card required"
         subtitle: >
-          Other scheduling software claims to be free. But in order to be 
+          Other scheduling software claims to be free. But in order to be
           useful you need to buy upgrades and packages for every feature you
           want to use. Scheduleless has no hidden features or upgrades. Pay
-          one flat free and get access to everything. And we are the only 
+          one flat free and get access to everything. And we are the only
           scheduling software that actually does your scheduling!
         title: "Transparent Pricing"
         unit: "per employee / month"
+        hero:
+          title: "Scheduling Software Should Make Your Life Easier"
+          article: >
+            No hidden fees or surprise upgrade tiers. All the features you want are included.
       scheduling_assistant:
         heading: "Your Personal Scheduling Assistant"
         setup:
           article: >
-            Work with our industry leading customer service team to get you set 
-            up as simply and as quickly possible. We can take care of it for it 
-            for you or our onboarding wizard can guide you every step of the 
+            Work with our industry leading customer service team to get you set
+            up as simply and as quickly possible. We can take care of it for it
+            for you or our onboarding wizard can guide you every step of the
             way.
           link: "Learn More"
           title: "No Hassle Setup"
         inbox:
           article: >
-            We send your schedules directly to you. No more manual scheduling! 
-            Just review and publish. All your employees will be notified 
-            automatically! It could not be any easier. Need changes? Let us 
-            know and we can make updates for you or use our editor to tweak 
+            We send your schedules directly to you. No more manual scheduling!
+            Just review and publish. All your employees will be notified
+            automatically! It could not be any easier. Need changes? Let us
+            know and we can make updates for you or use our editor to tweak
             the schedule yourself.
-          link: "How It Works"
+          link: "How It Works!"
           title: "Delivered To Your Inbox"
         integrated:
           article: >
-            You need less complication in your life. Add your Scheduleless 
-            shifts to any popular calendar application to have it seamlessly 
+            You need less complication in your life. Add your Scheduleless
+            shifts to any popular calendar application to have it seamlessly
             integrated with your existing software.
           title: "Integrated With Your Calendar"
       sell_message:
         call_to_action: "Try Now For Free"
         message: "The Only Scheduling Software That Does Your Scheduling"
-
-
-

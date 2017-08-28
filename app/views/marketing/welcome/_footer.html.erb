@@ -4,10 +4,10 @@
       <div class="email-capture">
         <section>
           <%= simple_form_for EmailCapture.new do |f| %>
-            <%= f.input :email, label: false, placeholder: "Email Address" %>
+            <%= f.input :email, label: false, placeholder: t(".email_address") %>
             <%= f.submit class: "button orange" %>
           <% end %>
-          <small>30 days free, no credit card required</small>
+          <small><%= t(".30_days_free")%></small>
         </section>
       </div>
 
