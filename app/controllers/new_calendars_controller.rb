@@ -5,10 +5,19 @@ class NewCalendarsController < AuthenticatedController
 
     @presenter = NewCalendar::ShowPresenter.new(date: date,
                                                 location: @location,
-                                                user: current_user)
+                                                user: current_user,
+                                                view: view)
   end
 
   private
+
+  def view
+    if params[:view].present?
+      cookies[:view] = params[:view]
+    end
+
+    params[:view] || cookies[:view] ||  "daily"
+  end
 
   def date
     Date.parse(params[:date])

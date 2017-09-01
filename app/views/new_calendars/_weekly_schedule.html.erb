@@ -1,0 +1,33 @@
+<div class="new-calendars-weekly-schedule">
+  <header>
+    <div>Employee Name</div>
+    <div>Monday</div>
+    <div>Tuesday</div>
+    <div>Wednesday</div>
+    <div>Thursday</div>
+    <div>Friday</div>
+    <div>Saturday</div>
+    <div>Sunday</div>
+  </header>
+
+
+  <section>
+    <% presenter.employees.each do |employee| %>
+      <div>
+        <div><%= employee.full_name %></div>
+
+        <% presenter.date_range.each do |date| %>
+          <div>
+            <% if presenter.shifts_for(employee, date).present? %>
+              <% presenter.shifts_for(employee, date).each do |shift| %>
+                <div class="shift">
+                  10-4pm
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </section>
+</div>

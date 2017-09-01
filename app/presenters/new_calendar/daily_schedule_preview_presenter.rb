@@ -20,6 +20,10 @@ module NewCalendar
       find_shifts.exists?(edited: true)
     end
 
+    def partial_name
+      "new_calendars/daily_schedule"
+    end
+
     def shift_view_width_class
       "shifts day-length-#{day_length}"
     end
