@@ -13,6 +13,10 @@ module NewCalendar
       date.beginning_of_week(:monday)
     end
 
+    def date_integer
+      date.to_s(:integer).to_i
+    end
+
     def date_range
       (beginning_of_week..end_of_week)
     end

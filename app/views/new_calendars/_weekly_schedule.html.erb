@@ -1,29 +1,38 @@
 <div class="new-calendars-weekly-schedule">
   <header>
     <div>Employee Name</div>
-    <div>Monday</div>
-    <div>Tuesday</div>
-    <div>Wednesday</div>
-    <div>Thursday</div>
-    <div>Friday</div>
-    <div>Saturday</div>
-    <div>Sunday</div>
-  </header>
 
+    <% presenter.date_range.each do |date| %>
+      <div><%= t('date.day_names')[date.wday] %></div>
+    <% end %>
+  </header>
 
   <section>
     <% presenter.employees.each do |employee| %>
       <div>
-        <div><%= employee.full_name %></div>
+        <div class="employee"><%= employee.full_name %></div>
 
         <% presenter.date_range.each do |date| %>
-          <div>
+          <div class="shift-container">
             <% if presenter.shifts_for(employee, date).present? %>
               <% presenter.shifts_for(employee, date).each do |shift| %>
                 <div class="shift">
                   10-4pm
                 </div>
               <% end %>
+            <% else %>
+
+              <%= link_to(
+                "Add Shift",
+                new_remote_location_in_progress_shift_path(
+                  presenter.location,
+                  date: presenter.date_integer,
+                  user_id: employee.id
+                ),
+                class: "add-shift",
+                remote: true
+              ) %>
+
             <% end %>
           </div>
         <% end %>
