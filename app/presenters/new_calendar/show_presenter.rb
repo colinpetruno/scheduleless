@@ -41,6 +41,14 @@ module NewCalendar
       "Title Goes Here"
     end
 
+    def toggle_link_options(format)
+      if format.to_sym == view.to_sym
+        { class: "selected" }
+      else
+        {}
+      end
+    end
+
     private
 
     attr_reader :date, :user, :view

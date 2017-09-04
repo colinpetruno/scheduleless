@@ -22,13 +22,21 @@
 
     <div>
       <div class="new-icon-toggle">
-        <%= link_to location_new_calendar_path(@presenter.location,
-                                               view: "daily") do %>
+        <%= link_to(
+          location_new_calendar_path(
+            @presenter.location,
+            view: "daily"
+          ),
+          @presenter.toggle_link_options(:daily)) do %>
           <span class="oi oi-project"></span>
         <% end %>
 
-        <%= link_to location_new_calendar_path(@presenter.location,
-                                               view: "monthly") do %>
+        <%= link_to(
+          location_new_calendar_path(
+            @presenter.location,
+            view: "monthly"
+          ),
+          @presenter.toggle_link_options(:monthly)) do %>
           <span class="oi oi-grid-three-up"></span>
         <% end %>
       </div>
