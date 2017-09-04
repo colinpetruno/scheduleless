@@ -11,7 +11,7 @@ module Admin
       new_user = User.find impersonation.impersonated_user_id
 
       sign_in(:user, new_user)
-      redirect_to default_calendar_path_for(new_user)
+      redirect_to dashboard_path
     end
 
     private

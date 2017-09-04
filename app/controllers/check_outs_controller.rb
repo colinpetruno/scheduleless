@@ -6,7 +6,7 @@ class CheckOutsController < AuthenticatedController
 
     if check_out.check_out
       # TODO: this is prob not the final place for this
-      redirect_to default_calendar_path_for(current_user)
+      redirect_to dashboard_path
     else
       # TODO: figure out error
     end

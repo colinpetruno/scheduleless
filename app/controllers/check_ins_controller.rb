@@ -7,8 +7,8 @@ class CheckInsController < AuthenticatedController
     if check_in_creator.save
       # TODO: is this the right place to send someone?
       # TODO: Will need some sort of flash here temporaily
-      redirect_to default_calendar_path_for(current_user)
-    else
+      redirect_to dashboard_path
+     else
       # TODO: Error stuff
     end
   end

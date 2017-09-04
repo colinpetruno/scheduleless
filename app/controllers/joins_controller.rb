@@ -7,7 +7,7 @@ class JoinsController < ApplicationController
 
     if @join.process
       sign_in(@join.user)
-      redirect_to default_calendar_path_for(@join.user)
+      redirect_to dashboard_path
     else
       render :show
     end

@@ -5,17 +5,18 @@ class ApplicationController < ActionController::Base
 
 
   def default_calendar_path_for(user)
-    after_sign_in_path_for(user)
+    location = Location.default_for(user)
+
+    if location.present?
+      location_new_calendar_path(location)
+    else
+      # TODO: this is going to need to get removed
+      calendar_path
+    end
   end
 
   def after_sign_in_path_for(resource)
-    location = Location.default_for(resource)
-
-    if location.present?
-      location_calendar_path(location)
-    else
-      calendar_path
-    end
+    dashboard_path
   end
 
   def pundit_user
