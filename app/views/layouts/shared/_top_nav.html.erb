@@ -1,4 +1,12 @@
 <div class="top-nav">
+  <div class="home-icon">
+    <%= link_to dashboard_path do %>
+      <span class="oi oi-home"></span>
+    <% end %>
+  </div>
+
+  <!--
+  TODO: BRING SEARCH BACK SOMEDAY
   <div class="search-icon">
     <button data-toggle="collapse" data-target="#new_employee_and_location_search" aria-expanded="false" aria-controls="search-form">
       <span class="oi oi-magnifying-glass"></span>
@@ -14,6 +22,7 @@
       <%= f.text_field :query, label: false%>
     </div>
   <% end %>
+  -->
 
   <ul class="top-nav-list">
     <%= content_tag(:li, class: active?(after_sign_in_path_for(current_user))) do %>

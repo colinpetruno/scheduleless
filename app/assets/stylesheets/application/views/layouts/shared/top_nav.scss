@@ -2,13 +2,15 @@
   background-color: #fff;
   max-height: 65px;
 
-  .search-icon {
+  .search-icon, .home-icon {
     color: $white;
   }
 
-  .search-icon button {
+  .search-icon button, .home-icon a {
     background-color: $blue;
+    color: $white;
     cursor: pointer;
+    display: block;
     font-size: 30px;
     font-weight: 200px;
     height: 65px;
