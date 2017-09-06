@@ -44,7 +44,7 @@
                 <% else %>
                   <% if presenter.preview %>
                     <%= link_to(
-                      "Add",
+                      t(".add"),
                       new_locations_location_in_progress_shift_path(
                         presenter.location,
                         scheduling_period_id: presenter.scheduling_period.id,

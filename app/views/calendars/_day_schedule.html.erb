@@ -29,8 +29,8 @@
       Schedule for <%= presenter.date.to_s(:month_day_year) %>
 
       <aside>
-        <%= link_to "New Shift",
-          new_locations_location_shift_path(date: presenter.date.to_s)
+        <%= link_to t(".new_shift"),
+          new_locations_location_shift_path(presenter.date.to_s)
         %>
       </aside>
     </div>
@@ -51,15 +51,15 @@
           ) %>
       <% else %>
         <div class="empty-schedule">
-          No shifts are scheduled for today.
+          <%= t(".empty_schedule") %>
 
           <% if policy(:scheduling_period).create? %>
             <br>
-            <%= link_to("Create a Schedule",
+            <%= link_to( t(".create_a_schedule"),
               locations_location_scheduling_periods_path(
                 presenter.current_location
-              )
-             ) %>
+                )
+              ) %>
           <% end %>
         </div>
       <% end %>
