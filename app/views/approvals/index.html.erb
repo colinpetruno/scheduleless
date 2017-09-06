@@ -1,14 +1,12 @@
 <div class="frame">
   <header>
-    <div>Approve Schedules</div>
+    <div><%= t(".title") %></div>
   </header>
 
   <section>
     <article>
       <div class="instructions">
-        We have made some schedules for you. Take a moment to review them and
-        let us know if you have any changes to make! If they look good, simply
-        hit publish and your employees will be notified of their new schedules.
+        <%= t(".instructions") %>
       </div>
       <br /><br />
 
@@ -16,8 +14,8 @@
         <table class="table bordered">
           <thead>
             <tr>
-              <th>Location</th>
-              <th>Date Ranges</th>
+              <th><%= t(".location") %></th>
+              <th><%= t(".date_ranges") %></th>
               <th></th>
           </thead>
           <% @scheduling_periods.each do |scheduling_period| %>
@@ -25,7 +23,7 @@
               <td><%= scheduling_period.location.name %></td>
               <td><%= scheduling_period.label %></td>
               <td>
-                <%= link_to( "View and Approve",
+                <%= link_to( t(".view_and_approve"),
                   locations_location_scheduling_period_path(
                     scheduling_period.location,
                     scheduling_period
@@ -37,8 +35,7 @@
         </table>
       <% else %>
         <div class="centered">
-          There are no schedules to approve right now! We will let you know as
-          soon as we create your next schedule.
+          <%= t(".no_schedules") %>
         </div>
       <% end %>
     </article>

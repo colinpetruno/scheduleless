@@ -1,0 +1,14 @@
+en:
+  approvals:
+    index:
+      title: Approve Schedules
+      instructions: >
+        We have made some schedules for you. Take a moment to review them and
+        let us know if you have any changes to make. If they look good, simply
+        hit publish and your employees will be notified of their new schedules.
+      location: Location.
+      date_ranges: Date Ranges.
+      view_and_approve: View and Approve.
+      no_schedules: >
+        There are no schedules to approve right now! We will let you know as
+        soon as we create your next schedule.
