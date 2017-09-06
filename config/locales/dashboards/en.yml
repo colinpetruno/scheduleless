@@ -1,0 +1,18 @@
+en:
+  dashboards:
+    approvals:
+      approvals: "Approvals (Managers Only)"
+      caught_up: "You're caught up!"
+      downtime: "We'll let you know when something comes up. Enjoy the downtime!"
+    available_shifts:
+      adjust_availability: "Adjust your availability preferences."
+      available_shifts: "Available Shifts"
+      looking: "Looking for more hours?"
+      no_shifts: "No Shifts Are Available"
+      there_are_shifts: "There are some shifts!"
+    upcoming_shift:
+      check_in: Check In
+      upcoming_shifts: Upcoming Shift
+    whose_working:
+      closed: We're closed right now!
+      whose_working: Whose Working?

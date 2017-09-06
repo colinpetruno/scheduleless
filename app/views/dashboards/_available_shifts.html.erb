@@ -1,17 +1,17 @@
 <div class="frame fill">
   <header class="light">
-    <div>Available Shifts</div>
+    <div><%= t(".available_shifts") %></div>
   </header>
 
   <section>
     <% if [].blank? %>
       <div class="empty-message">
-        <h3>No Shifts Are Available</h3>
-        Looking for more hours?<br />
-        <%= link_to "Adjust your availability preferences.", edit_user_path %>
+        <h3><%= t(".no_shifts") %></h3>
+        <%= t(".looking") %><br />
+        <%= link_to t(".adjust_availability"), edit_user_path %>
       </div>
     <% else %>
-      there are some shifts!
+      <%= t(".there_are_shifts") %>
     <% end %>
   </section>
 </div>
