@@ -3,7 +3,7 @@ module NewCalendar
     attr_reader :location
 
     def initialize(date: Date.today, location:, user:)
-      @date = date
+      @date = date.is_a?(Date) ? date : Date.parse(date.to_s)
       @location = location
       @user = user
     end

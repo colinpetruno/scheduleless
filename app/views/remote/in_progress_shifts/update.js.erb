@@ -5,7 +5,7 @@
   $(".popup").removeClass("open");
   $("#new-calendar-show-calendar").html("<%= j(render(partial: "new_calendars/show",
                locals: {
-                 presenter: NewCalendar::DailySchedulePreviewPresenter.
+                 presenter: presenter_class.
                    new(date: @shift.date,
                        location: @location,
                        user: current_user)

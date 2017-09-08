@@ -5,11 +5,10 @@
   $(".popup").removeClass("open");
   $("#new-calendar-show-calendar").html("<%= j(render(partial: "new_calendars/show",
                locals: {
-                 presenter: NewCalendar::ShowPresenter.
+                 presenter: presenter_class.
                    new(date: @shift.date,
                        location: @location,
-                       user: current_user,
-                       view: :weekly
+                       user: current_user
                       )
   })) %>");
 <% end %>

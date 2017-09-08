@@ -1,5 +1,7 @@
 module Remote
   class InProgressShiftsController < AuthenticatedController
+    helper_method :presenter_class
+
     def create
       @location = current_company.locations.find(params[:location_id])
       @shift = @location.in_progress_shifts.build(in_progress_shift_params)
@@ -33,6 +35,22 @@ module Remote
     end
 
     private
+
+    def presenter_class
+      if view == "daily"
+        ::NewCalendar::DailySchedulePreviewPresenter
+      else
+        ::NewCalendar::WeeklySchedulePresenter
+      end
+    end
+
+    def view
+      if params[:view].present?
+        cookies[:view] = params[:view]
+      end
+
+      params[:view] || cookies[:view] ||  "daily"
+    end
 
     def in_progress_shift_params
       params.
