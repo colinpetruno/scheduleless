@@ -50,6 +50,10 @@
       }
 
       &:nth-child(even) {
+        > div {
+          background-color: lighten($blue, 29.5%);
+        }
+
         > div:first-child {
           background-color: lighten($blue, 28%);
         }
@@ -93,14 +97,62 @@
     }
   }
 
-  .shift {
-    background-color: lighten($blue, 25%);
-    border-radius: 3px;
-    border: 1px solid $blue;
+  .shift-container {
+    .shift {
+      background-color: lighten($blue, 25%);
+      border-radius: 2px;
+      border: 1px solid $blue;
+      line-height: 38px;
+      margin: 5px;
+      min-height: 40px;
+      position: relative;
+      text-align: center;
+      vertical-align: middle;
 
-    &.edited {
-      background-color: rgba(lighten($blue, 28%), .7);
-      border: 1px dashed $blue;
+      .actions {
+        background-color: rgba(lighten($blue, 25%), .7);
+        bottom: 0;
+        display: none;
+        left: 0;
+        position: absolute;
+        right: 0;
+        text-align: right;
+        top: 0;
+
+        > div {
+          display: flex;
+          flex-basis: 1;
+          flex-direction: column;
+          padding-left: 5px;
+          vertical-align: middle;
+
+          span.oi {
+            color: darken($blue, 15%);
+            line-height: 36px;
+
+            &:hover {
+              color: $green;
+            }
+          }
+
+          &:last-child {
+            margin-left: auto;
+            padding-left: 0;
+            padding-right: 5px;
+          }
+        }
+      }
+
+      &:hover {
+        .actions {
+          display: flex;
+        }
+      }
+
+      &.edited {
+        background-color: rgba(lighten($blue, 28%), .7);
+        border: 1px dashed $blue;
+      }
     }
   }
 }

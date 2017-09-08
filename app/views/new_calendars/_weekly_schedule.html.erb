@@ -18,6 +18,15 @@
               <% presenter.shifts_for(employee, date).each do |shift| %>
                 <div class="shift">
                   10-4pm
+
+                  <div class="actions">
+                    <div>
+                      <span class="oi oi-star"></span>
+                    </div>
+                    <div>
+                      <span class="oi oi-pencil"></span>
+                    </div>
+                  </div>
                 </div>
               <% end %>
             <% else %>

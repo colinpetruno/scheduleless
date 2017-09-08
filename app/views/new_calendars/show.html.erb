@@ -34,9 +34,9 @@
         <%= link_to(
           location_new_calendar_path(
             @presenter.location,
-            view: "monthly"
+            view: "weekly"
           ),
-          @presenter.toggle_link_options(:monthly)) do %>
+          @presenter.toggle_link_options(:weekly)) do %>
           <span class="oi oi-grid-three-up"></span>
         <% end %>
       </div>
