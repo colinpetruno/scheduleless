@@ -1,14 +1,19 @@
-<div class="new-calendars-shift-week-view">
+<div class="new-calendars-shift-week-view <%= shift.classes %>">
   <section>
     <div><%= shift.time_range %></div>
     <div><%= shift.position %></div>
   </section>
 
-  <% if manager %>
+  <% if presenter.manage? %>
     <div class="actions">
       <div>
         <span class="oi oi-star"></span>
       </div>
+
+      <div>
+        <span class="oi oi-trash"></span>
+      </div>
+
       <div>
         <%= link_to shift.details_url, remote: true do %>
           <span class="oi oi-pencil"></span>

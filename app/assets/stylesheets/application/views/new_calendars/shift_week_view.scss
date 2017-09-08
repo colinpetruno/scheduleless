@@ -19,7 +19,7 @@
   }
 
   .actions {
-    background-color: rgba(lighten($blue, 25%), .7);
+    background-color: rgba(lighten($blue, 25%), .8);
     bottom: 0;
     display: none;
     left: 0;
@@ -36,12 +36,17 @@
       vertical-align: middle;
 
       span.oi {
-        color: darken($blue, 15%);
+        color: darken($blue, 20%);
+        font-size: 14px;
         line-height: 36px;
 
         &:hover {
-          color: $green;
+          color: darken($green, 20%);
         }
+      }
+
+      &:first-child {
+        margin-right: auto;
       }
 
       &:last-child {
