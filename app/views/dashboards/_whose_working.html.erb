@@ -1,4 +1,4 @@
-<div class="frame fill">
+<div class="frame fill dashboards-whose-working">
   <header class="light">
     <div>
       Whose Working?
@@ -6,17 +6,19 @@
   </header>
 
   <section>
-    <% if 1 == 2 %>
-      <% Shift.last(8).each do |shift| %>
-        <div class="row">
-          this is a shift
-        </div>
-      <% end %>
-    <% else %>
-      <div class="empty-message">
-        <h3>We're closed right now!</h3>
-        <span class="oi oi-moon"></span>
-        <p>We open at 9am on Tuesday.</p>
+    <% presenter.locations.map do |location| %>
+      <div class="location">
+        <header>
+          <div>
+            <%= location.name %>
+          </div>
+          <div>
+            <%= presenter.next_event_line_for(location) %>
+          </div>
+        </header>
+
+        <%= render partial: presenter.location_partial_for(location),
+          locals: { location: location, presenter: presenter } %>
       </div>
     <% end %>
   </section>

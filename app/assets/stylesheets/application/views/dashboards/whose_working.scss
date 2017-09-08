@@ -1,0 +1,20 @@
+.dashboards-whose-working {
+  .location {
+    header {
+      background-color: $blue; // darken(#ebf0f8, 40%);
+      color: $white;
+      display: flex;
+      padding: 5px 15px;
+
+      > div {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 1;
+
+        &:last-child {
+          margin-left: auto;
+        }
+      }
+    }
+  }
+}

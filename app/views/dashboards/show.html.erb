@@ -1,7 +1,13 @@
 <div class="dashboard-show two-columns">
   <section>
     <article>
-      <%= render partial: "whose_working" %>
+      <%= render(
+        partial: "whose_working",
+        locals: {
+          presenter: Dashboard::WhoseWorkingPresenter.
+            new(current_user.locations)
+        }
+      ) %>
     </article>
     <article>
       <%= render partial: "available_shifts" %>
