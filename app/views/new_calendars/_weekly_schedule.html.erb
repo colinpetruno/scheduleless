@@ -14,23 +14,18 @@
 
         <% presenter.date_range.each do |date| %>
           <div class="shift-container">
+            <%# TODO: Remove View Conditional %>
             <% if presenter.shifts_for(employee, date).present? %>
               <% presenter.shifts_for(employee, date).each do |shift| %>
-                <div class="shift">
-                  10-4pm
-
-                  <div class="actions">
-                    <div>
-                      <span class="oi oi-star"></span>
-                    </div>
-                    <div>
-                      <span class="oi oi-pencil"></span>
-                    </div>
-                  </div>
-                </div>
+                <%= render(
+                  partial: "shift_week_view",
+                  locals: {
+                    shift: shift,
+                    manager: presenter.manage?
+                  }
+                ) %>
               <% end %>
             <% else %>
-
               <%= link_to(
                 "Add Shift",
                 new_remote_location_in_progress_shift_path(
@@ -41,7 +36,6 @@
                 class: "add-shift",
                 remote: true
               ) %>
-
             <% end %>
           </div>
         <% end %>

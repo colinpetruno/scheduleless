@@ -73,6 +73,7 @@ class Shift < ApplicationRecord
   end
 
   def length_in_minutes
+    # TODO: remove for ShiftDateTime class
     DateAndTime::ShiftDateTime.for(self).length_in_minutes
   end
 

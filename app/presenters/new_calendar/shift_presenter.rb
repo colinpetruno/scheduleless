@@ -22,7 +22,7 @@ module NewCalendar
     end
 
     def time_range
-      shift.time_range
+      DateAndTime::ShiftDateTime.for(shift).time_range
     end
 
     def position

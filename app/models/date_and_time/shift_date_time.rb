@@ -26,6 +26,10 @@ module DateAndTime
         parse(start_time_string)
     end
 
+    def time_range
+      "#{MinutesToTime.for(shift.minute_start)} - #{MinutesToTime.for(shift.minute_end)}".gsub(":00", "")
+    end
+
     def timezone
       location.time_zone
     end

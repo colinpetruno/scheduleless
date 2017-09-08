@@ -25,6 +25,11 @@ module NewCalendar
       location.users
     end
 
+    def manage?
+      # TODO: Fill out
+      true
+    end
+
     def needs_published?
       # shared
       false

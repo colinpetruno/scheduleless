@@ -12,7 +12,7 @@ class MinutesToTime
     time.beginning_of_hour + 1.hour
   end
 
-  def to_s(format: "%l:%M %p")
+  def to_s(format: "%l:%M%P")
     time.strftime(format).strip
   end
 
