@@ -1,0 +1,14 @@
+<%= simple_form_for [:remote,
+                     :new_calendar,
+                     repeating_shift.location,
+                     repeating_shift] do |f| %>
+
+  <%= f.input :location_id, as: :hidden %>
+  <%= f.input :user_id, as: :hidden %>
+  <%= f.input :start_date, as: :hidden %>
+  <%= f.input :repeat_frequency,
+    collection: RepeatingShift.options,
+    include_blank: false %>
+
+  <%= f.submit %>
+<% end %>

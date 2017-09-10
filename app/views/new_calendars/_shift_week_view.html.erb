@@ -13,11 +13,15 @@
       </div>
 
       <div>
-        <span class="oi oi-star"></span>
+        <%= link_to shift.favorite_url, remote: true do %>
+          <span class="oi oi-star"></span>
+        <% end %>
       </div>
 
       <div>
-        <span class="oi oi-loop-circular"></span>
+        <%= link_to shift.repeat_url, remote: true do %>
+          <span class="oi oi-loop-circular"></span>
+        <% end %>
       </div>
 
       <div>

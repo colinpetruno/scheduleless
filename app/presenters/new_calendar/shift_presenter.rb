@@ -21,6 +21,16 @@ module NewCalendar
       end
     end
 
+    def favorite_url
+      routes.
+        new_remote_new_calendar_location_favorite_shift_path(shift.location)
+    end
+
+    def repeat_url
+      routes.
+        new_remote_new_calendar_location_repeating_shift_path(shift.location)
+    end
+
     def time_range
       DateAndTime::ShiftDateTime.for(shift).time_range
     end

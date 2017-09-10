@@ -20,6 +20,10 @@ class ApplicationController < ActionController::Base
   end
 
   def pundit_user
+    if params[:location_id].present? && @location.blank?
+      @location = current_company.locations.find(params[:location_id])
+    end
+
     UserContext.new(location: @location, user: current_user)
   end
 end

@@ -135,15 +135,22 @@ Rails.application.routes.draw do
 
   namespace :remote, defaults: { format: :js } do
     resources :locations, only: [] do
+      # TODO: ensure routes used in new_calendar/calendar are in the right
+      # namespace
       resource :calendar, only: [:show]
       resources :in_progress_shifts, only: [:create, :edit, :new, :update]
-      resources :postings, only: [:new, :create]
+      resources :postings, only: [:create, :new]
       resources :scheduling_periods, only: [:show]
     end
 
     namespace :new_calendar, only: [] do
       resources :shifts, only: [] do
         resource :shift_detail, only: [:show], path: "details"
+      end
+
+      resources :locations, only: [] do
+        resources :favorite_shifts, only: [:create, :new]
+        resources :repeating_shifts, only: [:create, :new]
       end
     end
   end
