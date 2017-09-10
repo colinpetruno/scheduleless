@@ -1,20 +1,6 @@
 module NewCalendar
-  class DailySchedulePreviewPresenter
+  class DailySchedulePreviewPresenter < BasePresenter
     attr_reader :location
-
-    def initialize(date: Date.today, location:, user:)
-      @date = date
-      @location = location
-      @user = user
-    end
-
-    def date_integer
-      date.to_s(:integer)
-    end
-
-    def manage?
-      true
-    end
 
     def needs_published?
       find_shifts.exists?(edited: true)

@@ -7,17 +7,21 @@
   <% if presenter.manage? %>
     <div class="actions">
       <div>
+        <%= link_to shift.details_url, remote: true do %>
+          <span class="oi oi-pencil"></span>
+        <% end %>
+      </div>
+
+      <div>
         <span class="oi oi-star"></span>
       </div>
 
       <div>
-        <span class="oi oi-trash"></span>
+        <span class="oi oi-loop-circular"></span>
       </div>
 
       <div>
-        <%= link_to shift.details_url, remote: true do %>
-          <span class="oi oi-pencil"></span>
-        <% end %>
+        <span class="oi oi-trash"></span>
       </div>
     </div>
   <% end %>

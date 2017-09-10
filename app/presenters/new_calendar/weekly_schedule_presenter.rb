@@ -1,20 +1,10 @@
 module NewCalendar
-  class WeeklySchedulePresenter
+  class WeeklySchedulePresenter < BasePresenter
     attr_reader :location
-
-    def initialize(date: Date.today, location:, user:)
-      @date = date.is_a?(Date) ? date : Date.parse(date.to_s)
-      @location = location
-      @user = user
-    end
 
     def beginning_of_week
       # TODO: pull from company settings
       date.beginning_of_week(:monday)
-    end
-
-    def date_integer
-      date.to_s(:integer).to_i
     end
 
     def date_range
@@ -23,11 +13,6 @@ module NewCalendar
 
     def employees
       location.users
-    end
-
-    def manage?
-      # TODO: Fill out
-      true
     end
 
     def needs_published?
@@ -90,6 +75,7 @@ module NewCalendar
       @_raw_shifts ||= location.
         in_progress_shifts.
         where(date: date_range_integers).
+        where("date >= ?", current_location_date).
         includes(:user).
         order(:date, :minute_start)
     end
