@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170812161928) do
+ActiveRecord::Schema.define(version: 20170910143818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,6 +78,18 @@ ActiveRecord::Schema.define(version: 20170812161928) do
     t.index ["user_id"], name: "index_employee_positions_on_user_id", using: :btree
   end
 
+  create_table "favorite_shifts", force: :cascade do |t|
+    t.integer  "location_id",  null: false
+    t.integer  "position_id",  null: false
+    t.integer  "start_minute", null: false
+    t.integer  "end_minute",   null: false
+    t.integer  "week_day"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["location_id"], name: "index_favorite_shifts_on_location_id", using: :btree
+    t.index ["position_id"], name: "index_favorite_shifts_on_position_id", using: :btree
+  end
+
   create_table "features", force: :cascade do |t|
     t.string "key",         null: false
     t.string "description"
@@ -111,11 +123,9 @@ ActiveRecord::Schema.define(version: 20170812161928) do
     t.integer  "user_id"
     t.integer  "scheduling_period_id"
     t.boolean  "edited",               default: true, null: false
-    t.integer  "shift_id"
     t.index ["company_id"], name: "index_in_progress_shifts_on_company_id", using: :btree
     t.index ["location_id"], name: "index_in_progress_shifts_on_location_id", using: :btree
     t.index ["scheduling_period_id"], name: "index_in_progress_shifts_on_scheduling_period_id", using: :btree
-    t.index ["shift_id"], name: "index_in_progress_shifts_on_shift_id", using: :btree
     t.index ["user_id"], name: "index_in_progress_shifts_on_user_id", using: :btree
   end
 
@@ -272,6 +282,17 @@ ActiveRecord::Schema.define(version: 20170812161928) do
     t.integer "end",     default: 1440, null: false
     t.index ["user_id", "day"], name: "index_preferred_hours_on_user_id_and_day", unique: true, using: :btree
     t.index ["user_id"], name: "index_preferred_hours_on_user_id", using: :btree
+  end
+
+  create_table "repeating_shifts", force: :cascade do |t|
+    t.integer  "user_id",                      null: false
+    t.integer  "position_id",                  null: false
+    t.integer  "start_date",                   null: false
+    t.integer  "repeat_frequency", default: 7, null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.index ["position_id"], name: "index_repeating_shifts_on_position_id", using: :btree
+    t.index ["user_id"], name: "index_repeating_shifts_on_user_id", using: :btree
   end
 
   create_table "schedule_rules", force: :cascade do |t|
