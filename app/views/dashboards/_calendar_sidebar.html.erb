@@ -4,7 +4,11 @@
   </header>
   <%= render partial: "calendars/calendar",
     locals: {
-    presenter: CalendarPresenter.new(day: selected_date,
+    presenter: CalendarPresenter.new(day: begin
+                                       selected_date
+                                     rescue
+                                       Date.today
+                                     end,
                                      format: :small,
                                      location: current_company.locations.first)
   } %>
