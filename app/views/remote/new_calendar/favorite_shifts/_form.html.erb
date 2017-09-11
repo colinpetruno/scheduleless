@@ -1,7 +1,7 @@
 <%= simple_form_for [:remote,
                      :new_calendar,
                      favorite_shift.location,
-                     favorite_shift] do |f| %>
+                     favorite_shift], remote: true do |f| %>
   <%= f.input :location_id, as: :hidden %>
 
   <%= f.association :position,
@@ -15,7 +15,8 @@
     collection: TimeRange.quarter_hour_options %>
   <%= f.input :week_day,
     as: :select,
-    collection: FavoriteShift.week_day_options %>
+    collection: FavoriteShift.week_day_options,
+    include_blank: false %>
 
   <%= f.submit %>
 <% end %>

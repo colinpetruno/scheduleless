@@ -7,12 +7,17 @@
       <div class="shift-row">
         <div class="<%= shift.classes %>">
 
-        <%= link_to shift.details_url, remote: true do %>
           <div>
-            <div class="time"><%= shift.time_range %></div>
-            <div class="position"><%= shift.position %></div>
+            <%= link_to shift.details_url, remote: true do %>
+              <div class="time"><%= shift.time_range %></div>
+              <div class="position"><%= shift.position %></div>
+            <% end %>
+
+            <% if presenter.manage? %>
+              <%= render partial: "new_calendars/shared/shift_actions",
+                locals: { shift: shift } %>
+            <% end %>
           </div>
-        <% end %>
 
         </div>
       </div>

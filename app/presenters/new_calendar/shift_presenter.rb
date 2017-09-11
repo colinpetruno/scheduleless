@@ -23,12 +23,26 @@ module NewCalendar
 
     def favorite_url
       routes.
-        new_remote_new_calendar_location_favorite_shift_path(shift.location)
+        new_remote_new_calendar_location_favorite_shift_path(
+          shift.location,
+          favorite_shift: {
+            position_id: shift&.user&.primary_position_id,
+            start_minute: shift.minute_start,
+            end_minute: shift.minute_end
+          }
+        )
     end
 
     def repeat_url
       routes.
-        new_remote_new_calendar_location_repeating_shift_path(shift.location)
+        new_remote_new_calendar_location_repeating_shift_path(
+          shift.location,
+          repeating_shift: {
+            location_id: shift.location_id,
+            start_date: shift.date,
+            user_id: shift.user_id
+          }
+        )
     end
 
     def time_range

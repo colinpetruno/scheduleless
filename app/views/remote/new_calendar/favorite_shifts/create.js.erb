@@ -1,0 +1,7 @@
+<% if @favorite_shift.errors.present? %>
+    <%# TODO: ADD BETTER ERROR MESSAGING %>
+    console.log("errors");
+<% else %>
+  <%# TODO: ADD FLASH MESSAGING THAT FADES AWAY %>
+  $(".popup").removeClass("open");
+<% end %>

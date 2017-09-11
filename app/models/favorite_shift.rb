@@ -17,7 +17,7 @@ class FavoriteShift < ApplicationRecord
 
   def self.week_day_options
     self.week_days.map do |key, value|
-      [key, value]
+      [I18n.t("models.favorite_shift.weekday_options.#{key}"), key]
     end
   end
 end

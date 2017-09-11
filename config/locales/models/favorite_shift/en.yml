@@ -1,0 +1,14 @@
+en:
+  models:
+    favorite_shift:
+      weekday_options:
+        sunday: "Sunday"
+        monday: "Monday"
+        tuesday: "Tuesday"
+        wednesday: "Wednesday"
+        thursday: "Thursday"
+        friday: "Friday"
+        saturday: "Saturday"
+        weekdays: "Weekdays"
+        weekends: "Weekends"
+        any_day: "All Days"

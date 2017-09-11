@@ -18,6 +18,8 @@ en:
         create: "Join Location"
       position:
         create: "Add Position"
+      repeating_shift: 
+        create: "Save"
       scheduling_hour:
         create: "Add Hours"
         update: "Update Hours"
@@ -65,6 +67,9 @@ en:
         first_name: "First Name"
         last_name: "Last Name"
         password_confirmation: "Password Confirmation"
+      repeating_shift:
+        repeat_frequency: "Every:"
+        user_id: "Employee"
       schedule_setting:
         note: "Additional Details"
         lead_time: "Additional Schedule Periods"

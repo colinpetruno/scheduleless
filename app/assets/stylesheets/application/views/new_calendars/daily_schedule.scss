@@ -83,6 +83,7 @@
       max-height: 40px;
       min-height: 40px;
       overflow: none;
+      position: relative;
 
       $i: 0;
       @while $i < 1441 {
@@ -123,6 +124,47 @@
           }
         }
         $i: $i + 15;
+      }
+
+      .actions {
+        background-color: rgba(lighten($blue, 25%), .8);
+        bottom: 0;
+        display: none;
+        left: 0;
+        position: absolute;
+        right: 0;
+        text-align: right;
+        top: 0;
+
+        > a {
+          padding: 0;
+        }
+
+        > div {
+          display: flex;
+          vertical-align: middle;
+          margin: 0 5px;
+
+          &:first-child {
+            margin-left: auto;
+          }
+
+          span.oi {
+            color: darken($blue, 20%);
+            font-size: 14px;
+            line-height: 30px;
+
+            &:hover {
+              color: darken($green, 20%);
+            }
+          }
+        }
+      }
+
+      &:hover {
+        .actions {
+          display: flex;
+        }
       }
 
 
