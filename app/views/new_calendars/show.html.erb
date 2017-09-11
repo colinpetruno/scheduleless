@@ -25,6 +25,7 @@
         <%= link_to(
           location_new_calendar_path(
             @presenter.location,
+            date: @presenter.date_integer,
             view: "daily"
           ),
           @presenter.toggle_link_options(:daily)) do %>
@@ -34,6 +35,7 @@
         <%= link_to(
           location_new_calendar_path(
             @presenter.location,
+            date: @presenter.date_integer,
             view: "weekly"
           ),
           @presenter.toggle_link_options(:weekly)) do %>

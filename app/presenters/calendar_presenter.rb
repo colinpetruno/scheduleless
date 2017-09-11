@@ -6,7 +6,7 @@ class CalendarPresenter
 
   def initialize(day: Date.today, format: :large, location:)
     @day = day
-    @format = format
+    @format = format # TODO: this can prob be removed now
     @location = location
   end
 
@@ -18,12 +18,10 @@ class CalendarPresenter
     content_tag(:div, class: classes_for(date)) do
       link_to(
         date.day,
-        routes.location_daily_schedule_path(
+        routes.location_new_calendar_path(
           location,
-          date: date.to_s,
-          format: :js
-        ),
-        remote: true
+          date: date.to_s
+        )
       )
     end
   end
