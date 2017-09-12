@@ -3,6 +3,8 @@ class RepeatingShift < ApplicationRecord
   belongs_to :position
   belongs_to :user
 
+  has_many :in_progress_shifts
+
   after_initialize do |repeating_shift|
     if repeating_shift.user.present?
       repeating_shift.position_id = user.primary_position_id

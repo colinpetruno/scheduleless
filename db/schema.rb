@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170911153952) do
+ActiveRecord::Schema.define(version: 20170912160847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -123,8 +123,10 @@ ActiveRecord::Schema.define(version: 20170911153952) do
     t.integer  "user_id"
     t.integer  "scheduling_period_id"
     t.boolean  "edited",               default: true, null: false
+    t.integer  "repeating_shift_id"
     t.index ["company_id"], name: "index_in_progress_shifts_on_company_id", using: :btree
     t.index ["location_id"], name: "index_in_progress_shifts_on_location_id", using: :btree
+    t.index ["repeating_shift_id"], name: "index_in_progress_shifts_on_repeating_shift_id", using: :btree
     t.index ["scheduling_period_id"], name: "index_in_progress_shifts_on_scheduling_period_id", using: :btree
     t.index ["user_id"], name: "index_in_progress_shifts_on_user_id", using: :btree
   end
