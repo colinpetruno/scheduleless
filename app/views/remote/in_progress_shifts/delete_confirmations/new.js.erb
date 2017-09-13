@@ -1,0 +1,5 @@
+$(".view-sidebar > .popup > .content").html("<%= j(
+  render partial: "form", locals: { confirmation: @confirmation }
+) %>");
+
+$(".view-sidebar > .popup").show().addClass("open");

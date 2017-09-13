@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170912160847) do
+ActiveRecord::Schema.define(version: 20170913144919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -114,16 +114,17 @@ ActiveRecord::Schema.define(version: 20170912160847) do
 
   create_table "in_progress_shifts", force: :cascade do |t|
     t.integer  "company_id"
-    t.integer  "minute_start",                        null: false
-    t.integer  "minute_end",                          null: false
-    t.integer  "date",                                null: false
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.integer  "minute_start",                         null: false
+    t.integer  "minute_end",                           null: false
+    t.integer  "date",                                 null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
     t.integer  "location_id"
     t.integer  "user_id"
     t.integer  "scheduling_period_id"
-    t.boolean  "edited",               default: true, null: false
+    t.boolean  "edited",               default: true,  null: false
     t.integer  "repeating_shift_id"
+    t.boolean  "published",            default: false, null: false
     t.index ["company_id"], name: "index_in_progress_shifts_on_company_id", using: :btree
     t.index ["location_id"], name: "index_in_progress_shifts_on_location_id", using: :btree
     t.index ["repeating_shift_id"], name: "index_in_progress_shifts_on_repeating_shift_id", using: :btree

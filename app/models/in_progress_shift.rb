@@ -5,6 +5,8 @@ class InProgressShift < ApplicationRecord
   belongs_to :repeating_shift
   belongs_to :user
 
+  has_many :shifts
+
   def time_range
     "#{MinutesToTime.for(minute_start)}-#{MinutesToTime.for(minute_end)}"
   end

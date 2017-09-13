@@ -13,6 +13,13 @@ module NewCalendar
       array.reject(&:blank?).join(" ")
     end
 
+    def delete_url
+      routes.
+        new_remote_in_progress_shifts_in_progress_shift_delete_confirmation_path(
+          shift
+        )
+    end
+
     def details_url
       if shift.is_a? InProgressShift
         routes.edit_remote_location_in_progress_shift_path(shift.location, shift)

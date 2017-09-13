@@ -134,6 +134,13 @@ Rails.application.routes.draw do
   }
 
   namespace :remote, defaults: { format: :js } do
+
+    resources :in_progress_shifts, only: [] do
+      scope module: :in_progress_shifts, as: :in_progress_shifts do
+        resource :delete_confirmation, only: [:create, :new], path: "delete"
+      end
+    end
+
     resources :locations, only: [] do
       # TODO: ensure routes used in new_calendar/calendar are in the right
       # namespace

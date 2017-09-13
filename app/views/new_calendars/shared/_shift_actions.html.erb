@@ -18,8 +18,8 @@
   </div>
 
   <div>
-    <a href="#">
+    <%= link_to shift.delete_url, remote: true do %>
       <span class="oi oi-trash"></span>
-    </a>
+    <% end %>
   </div>
 </div>
