@@ -2,9 +2,3 @@
   <%= render partial: presenter.partial_name,
     locals: { presenter: presenter } %>
 </section>
-
-<% if presenter.needs_published? %>
-  <div class="warning">
-    There are shifts that aren't published!
-  </div>
-<% end %>

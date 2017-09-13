@@ -1,14 +1,16 @@
+<% display_date = begin
+                    selected_date
+                  rescue
+                    Date.today
+                  end %>
+
 <div class="dashboard-calendar-sidebar">
   <header>
-    <%= Date::MONTHNAMES[Date.today.month] %>
+    <%= Date::MONTHNAMES[display_date.month] %>
   </header>
   <%= render partial: "calendars/calendar",
     locals: {
-    presenter: CalendarPresenter.new(day: begin
-                                       selected_date
-                                     rescue
-                                       Date.today
-                                     end,
+    presenter: CalendarPresenter.new(day: display_date,
                                      format: :small,
                                      location: current_company.locations.first)
   } %>

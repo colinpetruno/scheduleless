@@ -64,9 +64,18 @@ header > div > section.icon-toggle {
   flex-direction: row;
   margin-left: auto;
 
+  &.centered {
+    > a:first-child {
+      margin-left: auto;
+    }
+    > a:last-child {
+      margin-right: auto;
+    }
+  }
+
   a {
     background-color: $white;
-    border: 1px solid $gray-light;
+    border: 1px solid $blue;
     border-right: 0;
     color: $gray-light;
     line-height: 20px;
@@ -81,7 +90,12 @@ header > div > section.icon-toggle {
     }
 
     &:hover {
-      color: darken($gray-light, 10%);
+      background-color: $white;
+      color: darken($gray-light, 15%);
+    }
+
+    &:active {
+      background-color: $blue;
     }
 
     &.selected {
