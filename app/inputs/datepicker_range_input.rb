@@ -28,7 +28,13 @@ class DatepickerRangeInput < SimpleForm::Inputs::StringInput
     # TODO: find a better way to deal with the passed reference here
     options[:class].pop
     options[:class].push("datepicker-range-end")
-    @builder.text_field_tag("#{end_attribute_name}_display", 2, options) +
+    end_value = @builder.object.send(attribute_name)
+
+    if end_value.present?
+      end_value_date = Date.parse(end_value.to_s).to_s(:month_day_year)
+    end
+
+    @builder.text_field_tag("#{end_attribute_name}_display", end_value_date, options) +
       @builder.hidden_field(end_attribute_name, class: "datepicker-range-end-value")
   end
 

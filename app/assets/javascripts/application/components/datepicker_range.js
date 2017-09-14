@@ -58,8 +58,6 @@ $(document).on("turbolinks:load", function() {
 
       if (_startDate) {
           startDate = _startDate;
-          console.log("start date present and it is blah");
-          console.log(startDate);
           updateStartDate();
       }
 

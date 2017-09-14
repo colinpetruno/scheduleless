@@ -3,7 +3,8 @@ $(document).on("turbolinks:load", function() {
 
   scheduleless.reinstantiatePickers = function() {
     scheduleless.instantiateDatePickers();
-    Scheduleless.instantiateTimePickers();
-    Scheduleless.instantiateTimePickerRange();
+    scheduleless.instantiateDateRangePickers();
+    scheduleless.instantiateTimePickers();
+    scheduleless.instantiateTimePickerRange();
   };
 });
