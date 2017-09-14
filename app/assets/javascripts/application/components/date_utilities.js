@@ -12,6 +12,19 @@ window.Scheduleless.dateUtils = {
     var month = date.getMonth().toString();
     var day = date.getDate().toString();
 
+    // Mon 9/16
     return weekdaysShort[date.getDay()] + " " + month + "/" + day;
+  },
+
+  datePickerLongFormat: function(date) {
+    var monthsShort = window.Scheduleless.i18n.dates.monthsShort;
+    var weekdaysShort = window.Scheduleless.i18n.dates.weekdaysShort;
+
+    var year = date.getFullYear().toString();
+    var month = date.getMonth();
+    var day = date.getDate().toString();
+
+    // Sept 16, 2017
+    return weekdaysShort[date.getDay()] + ", " + monthsShort[month] + " " + day + " " + year;
   }
 };

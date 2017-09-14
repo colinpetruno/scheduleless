@@ -8,27 +8,34 @@ $(document).on("turbolinks:load", function() {
 
     $("input.datepicker").each(function() {
       var minDateString = $(this).data('minDate');
+      var $hiddenField = $(this).
+        closest("div.input").
+        find(".datepicker-value");
+
       if (minDateString) {
         var minDate = new Date(minDateString);
       } else {
         var minDate = new Date();
       }
 
-      var picker = new Pikaday({
-          field: $(this)[0],
-          i18n: {
-            previousMonth: "<%= I18n.t("datepicker.previous_month") %>",
-            nextMonth: "<%= I18n.t("datepicker.next_month") %>",
-            months: <%= I18n.t("datepicker.months").as_json %>,
-            weekdays: <%= I18n.t("datepicker.weekdays").as_json %>,
-            weekdaysShort: <%= I18n.t("datepicker.weekdays_short").as_json %>
-          },
+      var picker = new Pikaday(
+        Object.assign({}, window.Scheduleless.picker_options($(this)), {
           minDate: minDate,
           onSelect: function() {
-            // console.log("selected");
-            // console.log(this.getMoment().format('Do MMMM YYYY'));
+            var selectedDate = this.getDate();
+            var dateInt = window.
+              Scheduleless.
+              dateUtils.
+              toInteger(new Date(selectedDate));
+
+            $hiddenField.val(dateInt);
+          },
+          toString: function(date) {
+            return window.Scheduleless.dateUtils.datePickerLongFormat(date);
           }
-      });
+        })
+      );
+
       window.Scheduleless.pickers.push(picker);
     });
   }

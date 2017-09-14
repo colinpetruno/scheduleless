@@ -4,6 +4,7 @@
       previousMonth: "<%= I18n.t("datepicker.previous_month") %>",
       nextMonth: "<%= I18n.t("datepicker.next_month") %>",
       months: <%= raw(I18n.t("datepicker.months").to_json) %>,
+      monthsShort: <%= raw(I18n.t("date.abbr_month_names").compact.to_json) %>,
       weekdays: <%= raw(I18n.t("datepicker.weekdays").as_json) %>,
       weekdaysShort: <%= raw(I18n.t("datepicker.weekdays_short").as_json) %>
     }
