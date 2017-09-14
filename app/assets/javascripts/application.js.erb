@@ -1,3 +1,4 @@
+//= require_self
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
@@ -19,14 +20,11 @@ window.Scheduleless = {
   picker_options: function(field) {
         return {
       field: field[0],
-      i18n: {
-        previousMonth: "<%= I18n.t("datepicker.previous_month") %>",
-        nextMonth: "<%= I18n.t("datepicker.next_month") %>",
-        months: <%= I18n.t("datepicker.months").as_json %>,
-        weekdays: <%= I18n.t("datepicker.weekdays").as_json %>,
-        weekdaysShort: <%= I18n.t("datepicker.weekdays_short").as_json %>
-      },
-      minDate: new Date()
+      i18n: window.Scheduleless.i18n.dates,
+      minDate: new Date(),
+      toString: function(date) {
+        return window.Scheduleless.dateUtils.datePickerFormat(date);
+      }
     };
   },
   range_pickers: []

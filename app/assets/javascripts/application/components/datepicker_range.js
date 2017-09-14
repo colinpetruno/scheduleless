@@ -8,23 +8,30 @@ $(document).on("turbolinks:load", function() {
     scheduleless.range_pickers = [];
 
     $(".datepicker_range").each(function() {
-
       var startDate;
       var endDate;
+      var $container = $(this);
+      var $start = $(this).find(".datepicker-range-start");
+      var $startValue = $(this).find(".datepicker-range-start-value");
+      var $end = $(this).find(".datepicker-range-end");
+      var $endValue = $(this).find(".datepicker-range-end-value");
+
       var updateStartDate = function() {
         startPicker.setStartRange(startDate);
         endPicker.setStartRange(startDate);
         endPicker.setMinDate(startDate);
+
+        var dateInt = window.Scheduleless.dateUtils.toInteger(new Date(startDate));
+        $startValue.val(dateInt);
       };
       var updateEndDate = function() {
         startPicker.setEndRange(endDate);
         startPicker.setMaxDate(endDate);
         endPicker.setEndRange(endDate);
-      };
 
-      var $container = $(this);
-      var $start = $(this).find(".datepicker-range-start");
-      var $end = $(this).find(".datepicker-range-end");
+        var dateInt = window.Scheduleless.dateUtils.toInteger(new Date(endDate));
+        $endValue.val(dateInt);
+      };
 
       var startOptions = Object.assign({}, scheduleless.picker_options($start), {
         onSelect: function() {
@@ -39,8 +46,8 @@ $(document).on("turbolinks:load", function() {
       var endOptions = Object.assign({}, scheduleless.picker_options($end), {
         onSelect: function() {
           endDate = this.getDate();
-          updateEndDate();
 
+          updateEndDate();
           return endDate;
         }
       });
@@ -51,6 +58,8 @@ $(document).on("turbolinks:load", function() {
 
       if (_startDate) {
           startDate = _startDate;
+          console.log("start date present and it is blah");
+          console.log(startDate);
           updateStartDate();
       }
 

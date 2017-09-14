@@ -1,0 +1,11 @@
+<script type="text/javascript">
+  window.Scheduleless.i18n = {
+    dates: {
+      previousMonth: "<%= I18n.t("datepicker.previous_month") %>",
+      nextMonth: "<%= I18n.t("datepicker.next_month") %>",
+      months: <%= raw(I18n.t("datepicker.months").to_json) %>,
+      weekdays: <%= raw(I18n.t("datepicker.weekdays").as_json) %>,
+      weekdaysShort: <%= raw(I18n.t("datepicker.weekdays_short").as_json) %>
+    }
+  };
+</script>

@@ -63,6 +63,8 @@
          data-page-name="<%= "#{controller_path}##{action_name}" %>">
     </div>
 
+    <%= render partial: "layouts/shared/js_i18n" %>
+
     <% if content_for?(:tracking) %>
       <%= content_for(:tracking) %>
     <% end %>
