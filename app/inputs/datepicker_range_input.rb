@@ -7,7 +7,10 @@ class DatepickerRangeInput < SimpleForm::Inputs::StringInput
 
     options = merge_wrapper_options(input_html_options, wrapper_options)
 
-    start_field(options) + end_field(options)
+    "<div>" +
+      "<section>" + start_field(options) + "</section>" +
+      "<section>" + end_field(options) + "</section>" +
+    "</div>"
   end
 
   private

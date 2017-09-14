@@ -15,4 +15,17 @@
       margin-right: 15px;
     }
   }
+
+  > div {
+    display: flex;
+
+    > section {
+      flex-basis: 1;
+      flex-direction: column;
+
+      input {
+        min-width: 75px;
+      }
+    }
+  }
 }

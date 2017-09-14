@@ -61,6 +61,8 @@ en:
         location_admin: "Location Admin"
         managees: "This Position Manages"
         name: "Position Name"
+      posting: 
+        date_start: "Date Range"
       prompts:
         email_address: "Email Address"
       registration:
