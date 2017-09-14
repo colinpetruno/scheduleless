@@ -5,16 +5,23 @@ class TimePickerRangeInput < SimpleForm::Inputs::StringInput
       input_html_options[:type] ||= input_type if html5?
     end
     options = merge_wrapper_options(input_html_options, wrapper_options)
+    options[:class].push("scrollable")
 
-    start_field(options) + hidden_start_field(options) +
-      @builder.label("End Time", { class: 'end-label'}) +
-      end_field(options) + hidden_end_field(options)
+
+    "<div>" +
+      "<section>" +
+        start_field(options) + hidden_start_field(options) +
+      "</section>" +
+      "<section>" +
+        end_field(options) + hidden_end_field(options) +
+      "</section>" +
+    "</div>"
   end
 
   private
 
   def start_field(options)
-    options[:class].push('timepicker-range-start')
+    options[:class].push("timepicker-range-start")
     @builder.text_field(attribute_name, options)
   end
 

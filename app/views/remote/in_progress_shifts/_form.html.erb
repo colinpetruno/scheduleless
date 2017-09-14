@@ -1,12 +1,13 @@
 <%= simple_form_for [:remote, @location, @shift], remote: true do |f| %>
-  <%= f.input :date, as: :datepicker, input_html: {value: @shift.date} %>
+  <%= f.input :date, as: :datepicker, input_html: { value: @shift.date } %>
 
   <%= f.input :minute_start,
     as: :time_picker_range,
-    input_html: { collection: TimeRange.quarter_hour_options.to_json, :class => 'scrollable'},
-    label: t('.start_time')
+    input_html: {
+      collection: TimeRange.quarter_hour_options.to_json
+    }
   %>
-  
+
   <%= f.input :user_id,
     as: :select,
     collection: @location.users,

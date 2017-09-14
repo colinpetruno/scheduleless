@@ -1,9 +1,23 @@
 .time_picker_range {
-  label, input {
-    display: block;
+  label {
+    width: 100%;
   }
 
-  .end-label {
-    margin-top: 25px;
+  > div {
+    display: flex;
+
+    > section {
+      flex-basis: 1;
+      flex-direction: column;
+
+      input {
+        min-width: 75px;
+      }
+    }
+  }
+
+  .scrollable.tt-menu{
+    max-height: 150px;
+    overflow-y: auto;
   }
 }

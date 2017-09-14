@@ -44,6 +44,7 @@ en:
         new_position_id: "Choose a New Position"
         new_rule_id: "Choose a New Position"
       in_progress_shift:
+        minute_start: "Hours"
         user_id: "Employee"
       lead:
         mobile_phone: "Mobile Phone"
