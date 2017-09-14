@@ -18,6 +18,8 @@ en:
         create: "Join Location"
       position:
         create: "Add Position"
+      posting:
+        create: "Publish"
       repeating_shift: 
         create: "Save"
       scheduling_hour:

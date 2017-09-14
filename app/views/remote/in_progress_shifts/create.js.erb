@@ -2,7 +2,8 @@
     <%# TODO: ADD BETTER ERROR MESSAGING %>
     console.log("errors");
 <% else %>
-  $(".popup").removeClass("open");
+  window.Scheduleless.sidebar.close();
+
   $("#new-calendar-show-calendar").html("<%= j(render(partial: "new_calendars/show",
                locals: {
                  presenter: presenter_class.

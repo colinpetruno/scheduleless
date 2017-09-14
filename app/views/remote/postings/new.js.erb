@@ -1,7 +1,3 @@
-$(".view-sidebar > .popup > .content").html("<%= j(
+window.Scheduleless.sidebar.appendAndOpen("<%= j(
   render partial: "form", locals: { location: @location, posting: @posting }
 ) %>");
-
-window.Scheduleless.reinstantiatePickers();
-
-$(".view-sidebar > .popup").show().addClass("open");
