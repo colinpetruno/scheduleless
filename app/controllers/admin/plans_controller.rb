@@ -15,7 +15,7 @@ module Admin
     end
 
     def index
-      @plans = Plan.all
+      @plans = Plan.all.order(:plan_name)
     end
 
     def new
@@ -35,7 +35,7 @@ module Admin
     private
 
     def plan_params
-      params.require(:plan).permit(:plan_name, feature_ids: [])
+      params.require(:plan).permit(:default, :plan_name, feature_ids: [])
     end
   end
 end

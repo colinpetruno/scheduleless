@@ -1,5 +1,6 @@
 <%= simple_form_for [:admin, plan] do |f| %>
   <%= f.input :plan_name %>
+  <%= f.input :default, disabled: plan.default?  %>
   <%= f.association :features, as: :check_boxes, label_method: :key  %>
   <%= f.submit %>
 <% end %>
