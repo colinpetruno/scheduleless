@@ -29,4 +29,4 @@ Working With Time
 ======
 
 There is module that provides many of the utilities you will need when working
-with time in our application. [source](./models/date_and_time)
+with time in our application. [source](/models/date_and_time)
