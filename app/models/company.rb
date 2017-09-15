@@ -36,7 +36,7 @@ class Company < ApplicationRecord
   end
 
   def subscription
-    super || create_subscription
+    super || create_subscription(plan_id: Plan.find_by(default: true).id)
   end
 
   private

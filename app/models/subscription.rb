@@ -1,12 +1,7 @@
 class Subscription < ApplicationRecord
   belongs_to :company
   belongs_to :credit_card
-
-  enum plan: {
-    small: 0,
-    medium: 1,
-    standard: 2
-  }
+  belongs_to :plan
 
   def self.collection_labels
     self.plans.keys.map do |key|
@@ -14,7 +9,7 @@ class Subscription < ApplicationRecord
     end
   end
 
-  def plan
-    "standard"
+  def plan_id
+    super || Plan.find_by(default: true).try(:id)
   end
 end
