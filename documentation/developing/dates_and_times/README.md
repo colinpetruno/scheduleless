@@ -38,6 +38,10 @@ with time in our application. [Source](/app/models/date_and_time)
 
 ##### Convert YYYYMMDD Format
 ```ruby
-  DateAndTime::Parser.for("20170423")
+  date = DateAndTime::Parser.new(date: "20170423")
+  date.day # -> "23"
+  date.month # -> "April"
+  date.month_number # -> "04"
+  date.month_and_day # -> "April 23"
 ```
-[Source](/app/models/date_and_time/date_parser.rb)
+[Source](/app/models/date_and_time/parser.rb)
