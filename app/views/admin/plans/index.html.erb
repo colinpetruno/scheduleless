@@ -1,0 +1,25 @@
+<div class="frame">
+  <section>
+    <article>
+      <%= link_to "New Plan", new_admin_plan_path, class: "button" %>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th></th>
+          </tr>
+        </head>
+
+        <tbody>
+          <% @plans.each do |plan| %>
+            <tr>
+              <td><%= plan.plan_name %></td>
+              <td><%= link_to "Edit", edit_admin_plan_path(plan) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </article>
+  </section>
+</div>

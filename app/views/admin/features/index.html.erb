@@ -1,0 +1,27 @@
+<div class="frame">
+  <section>
+    <article>
+      <%= link_to "New Feature", new_admin_feature_path, class: "button" %>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Key</th>
+            <th>Description</th>
+            <th></th>
+          </tr>
+        </head>
+
+        <tbody>
+          <% @features.each do |feature| %>
+            <tr>
+              <td><%= feature.key %></td>
+              <td><%= feature.description %></td>
+              <td><%= link_to "Edit", edit_admin_feature_path(feature) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </article>
+  </section>
+</div>

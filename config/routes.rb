@@ -66,7 +66,9 @@ Rails.application.routes.draw do
         only: [:create, :destroy, :edit, :index, :new, :update]
     end
 
+    resources :features, only: [:create, :edit, :index, :new, :update]
     resources :impersonations, only: [:new, :create]
+    resources :plans, only: [:create, :edit, :index, :new, :update]
 
     resources :schedule_approvals, only: [:index]
     resources :scheduling_periods, only: [:show, :update] do
