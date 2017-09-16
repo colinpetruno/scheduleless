@@ -23,8 +23,6 @@ Rails.application.routes.draw do
       path: "employees"
   end
 
-  resource :calendar, only: [:show]
-
   resource :dashboard, only: [:show]
 
   resources :employee_positions, only: [:destroy]
@@ -34,7 +32,6 @@ Rails.application.routes.draw do
 
   resources :locations, only: [:create, :edit, :index, :new, :show, :update] do
     resources :available_employees, only: [:index]
-    resource :calendar, only: [:show]
     resource :new_calendar, only: [:show]
     resource :daily_schedule, only: [:show]
     resource :join, only: [:create, :show]
@@ -146,7 +143,6 @@ Rails.application.routes.draw do
     resources :locations, only: [] do
       # TODO: ensure routes used in new_calendar/calendar are in the right
       # namespace
-      resource :calendar, only: [:show]
       resources :in_progress_shifts, only: [:create, :edit, :new, :update]
       resources :postings, only: [:create, :new]
       resources :scheduling_periods, only: [:show]
