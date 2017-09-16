@@ -1,6 +1,6 @@
 # Checkbox Disable
 
-![Disable Toggle](example.jpg | width=150)
+<img src="example.jpg" alt="Disable Toggle" style="width: 150px;"/>
 
 Disable toggles allow us to disable fields in a certain target section when 
 a checkbox is clicked. To use simply specify the disable-toggle class on the 
