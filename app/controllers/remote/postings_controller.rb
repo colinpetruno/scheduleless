@@ -43,7 +43,7 @@ module Remote
     def posting_params
       params.
         require(:posting).
-        permit(:date_start, :date_end).
+        permit(:all_shifts, :date_start, :date_end).
         merge(user_id: current_user.id)
     end
   end

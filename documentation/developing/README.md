@@ -9,5 +9,7 @@ In this guide we will highlight the key things you need to know to be
 successful developing on this application.
 
 * Front End
+  * Custom Inputs
+    * [Checkbox Disable](/documentation/developing/front_end/custom_inputs/check_box_disable)
 * Back End
   * [How To Handle Dates and Times](dates_and_times/)
