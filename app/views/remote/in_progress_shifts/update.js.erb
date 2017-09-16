@@ -3,7 +3,7 @@
     console.log("errors");
 <% else %>
   $(".popup").removeClass("open");
-  $("#new-calendar-show-calendar").html("<%= j(render(partial: "new_calendars/show",
+  $("#new-calendar-show-calendar").html("<%= j(render(partial: "calendars/show",
                locals: {
                  presenter: presenter_class.
                    new(date: @shift.date,

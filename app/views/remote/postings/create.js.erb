@@ -1,8 +1,8 @@
-  window.Scheduleless.sidebar.close();
+window.Scheduleless.sidebar.close();
 
-$("#new-calendar-show-calendar").html("<%= j(render(partial: "new_calendars/show",
+$("#new-calendar-show-calendar").html("<%= j(render(partial: "calendars/show",
              locals: {
-               presenter: NewCalendar::DailySchedulePreviewPresenter.
+               presenter: Calendar::DailySchedulePreviewPresenter.
                  new(date: @posting.date_start,
                      location: @location,
                      user: current_user)

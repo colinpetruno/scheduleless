@@ -1,4 +1,4 @@
-module NewCalendar
+module Calendar
   class WeeklySchedulePresenter < BasePresenter
     attr_reader :location
 
@@ -21,7 +21,7 @@ module NewCalendar
     end
 
     def partial_name
-      "new_calendars/weekly_schedule"
+      "calendars/weekly_schedule"
     end
 
     def shifts_for(user, day)

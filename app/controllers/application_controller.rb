@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
     location = Location.default_for(user)
 
     if location.present?
-      location_new_calendar_path(location)
+      location_calendar_path(location)
     else
       # TODO: this is going to need to get removed
       calendar_path

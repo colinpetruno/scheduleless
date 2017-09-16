@@ -18,7 +18,7 @@ class CalendarPresenter
     content_tag(:div, class: classes_for(date)) do
       link_to(
         date.day,
-        routes.location_new_calendar_path(
+        routes.location_calendar_path(
           location,
           date: date.to_s
         )

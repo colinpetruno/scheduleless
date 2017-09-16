@@ -1,5 +1,5 @@
 module Remote
-  module NewCalendar
+  module Calendar
     class FavoriteShiftsController < AuthenticatedController
       def create
         @favorite_shift = FavoriteShift.new(favorite_shift_params)

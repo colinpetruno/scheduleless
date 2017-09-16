@@ -1,4 +1,4 @@
-module NewCalendar
+module Calendar
   class DailySchedulePresenter
     def initialize(date: Date.today, location:, user:)
       @date = date

@@ -17,7 +17,7 @@
     <div>
       <div class="new-icon-toggle">
         <%= link_to(
-          location_new_calendar_path(
+          location_calendar_path(
             @presenter.location,
             date: @presenter.date_integer,
             view: "daily"
@@ -27,7 +27,7 @@
         <% end %>
 
         <%= link_to(
-          location_new_calendar_path(
+          location_calendar_path(
             @presenter.location,
             date: @presenter.date_integer,
             view: "weekly"

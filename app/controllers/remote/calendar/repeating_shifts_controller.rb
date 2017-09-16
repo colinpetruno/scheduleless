@@ -1,5 +1,5 @@
 module Remote
-  module NewCalendar
+  module Calendar
     class RepeatingShiftsController < AuthenticatedController
       def create
         @repeating_shift = RepeatingShift.new(repeat_shift_params)

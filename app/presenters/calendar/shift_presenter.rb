@@ -1,4 +1,4 @@
-module NewCalendar
+module Calendar
   class ShiftPresenter
     def initialize(shift:, manage: false, day_start: 0)
       @day_start = day_start
@@ -24,13 +24,13 @@ module NewCalendar
       if shift.is_a? InProgressShift
         routes.edit_remote_location_in_progress_shift_path(shift.location, shift)
       else
-        routes.remote_new_calendar_shift_shift_detail_path(shift)
+        routes.remote_calendar_shift_shift_detail_path(shift)
       end
     end
 
     def favorite_url
       routes.
-        new_remote_new_calendar_location_favorite_shift_path(
+        new_remote_calendar_location_favorite_shift_path(
           shift.location,
           favorite_shift: {
             position_id: shift&.user&.primary_position_id,
@@ -42,7 +42,7 @@ module NewCalendar
 
     def repeat_url
       routes.
-        new_remote_new_calendar_location_repeating_shift_path(
+        new_remote_calendar_location_repeating_shift_path(
           shift.location,
           repeating_shift: {
             location_id: shift.location_id,

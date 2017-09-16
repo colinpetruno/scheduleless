@@ -1,4 +1,4 @@
-module NewCalendar
+module Calendar
   class ShowPresenter
     attr_reader :location
 
@@ -22,11 +22,11 @@ module NewCalendar
     end
 
     def next_day_url
-      routes.location_new_calendar_path(location, date: date + 1.day)
+      routes.location_calendar_path(location, date: date + 1.day)
     end
 
     def previous_day_url
-      routes.location_new_calendar_path(location, date: date - 1.day)
+      routes.location_calendar_path(location, date: date - 1.day)
     end
 
     def partial_presenter

@@ -1,4 +1,4 @@
-module NewCalendar
+module Calendar
   class DailySchedulePreviewPresenter < BasePresenter
     attr_reader :location
 
@@ -7,7 +7,7 @@ module NewCalendar
     end
 
     def partial_name
-      "new_calendars/daily_schedule"
+      "calendars/daily_schedule"
     end
 
     def shift_view_width_class

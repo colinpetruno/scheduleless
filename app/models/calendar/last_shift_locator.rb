@@ -1,4 +1,4 @@
-module NewCalendar
+module Calendar
   class LastShiftLocator
     def initialize(shifts:)
       @shifts = shifts

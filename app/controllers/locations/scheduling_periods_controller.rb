@@ -11,7 +11,7 @@ module Locations
 
       authorize @scheduling_period
 
-      redirect_to location_new_calendar_path(@location, date: date)
+      redirect_to location_calendar_path(@location, date: date)
     end
 
     # TODO: these actions may be able to get cleaned up when new

@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
   resources :locations, only: [:create, :edit, :index, :new, :show, :update] do
     resources :available_employees, only: [:index]
-    resource :new_calendar, only: [:show]
+    resource :calendar, only: [:show]
     resource :daily_schedule, only: [:show]
     resource :join, only: [:create, :show]
     resource :print, only: [:show]
@@ -148,7 +148,7 @@ Rails.application.routes.draw do
       resources :scheduling_periods, only: [:show]
     end
 
-    namespace :new_calendar, only: [] do
+    namespace :calendar, only: [] do
       resources :shifts, only: [] do
         resource :shift_detail, only: [:show], path: "details"
       end

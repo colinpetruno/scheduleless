@@ -1,4 +1,4 @@
-module NewCalendar
+module Calendar
   class UserShiftMap
     def self.for(shifts)
       new(shifts: shifts)

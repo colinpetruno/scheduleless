@@ -18,7 +18,7 @@
             <% if presenter.shifts_for(employee, date).present? %>
               <% presenter.shifts_for(employee, date).each do |shift| %>
                 <%= render(
-                  partial: "new_calendars/shift_week_view",
+                  partial: "calendars/shift_week_view",
                   locals: {
                     shift: shift,
                     presenter: presenter

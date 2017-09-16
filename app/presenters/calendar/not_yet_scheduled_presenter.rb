@@ -1,4 +1,4 @@
-module NewCalendar
+module Calendar
   class NotYetScheduledPresenter
     attr_reader :location
 

@@ -2,14 +2,14 @@
   <article>
     <div>
       <aside>
-        <%= render partial: "new_calendars/users",
+        <%= render partial: "calendars/users",
           locals: { presenter: presenter } %>
       </aside>
 
       <section>
         <div class="<%= presenter.shift_view_width_class %>">
           <section>
-            <%= render partial: "new_calendars/shifts",
+            <%= render partial: "calendars/shifts",
               locals: { presenter: presenter } %>
           </section>
         </div>
@@ -19,7 +19,7 @@
   </article>
 
   <% if 1==2 && presenter.manage? %>
-    <%= render partial: "new_calendars/toolbar",
+    <%= render partial: "calendars/toolbar",
       locals: { presenter: presenter } %>
   <% end %>
 </div>

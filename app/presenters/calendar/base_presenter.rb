@@ -1,4 +1,4 @@
-module NewCalendar
+module Calendar
   class BasePresenter
 
     def initialize(date: Date.today, location:, user:)
