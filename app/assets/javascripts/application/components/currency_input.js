@@ -1,12 +1,18 @@
 $(document).on("turbolinks:load", function() {
-  function padInputCurrency() {
-    var value = parseFloat($('input.currency').val())
-    $('input.currency').val(value.toFixed(2))
+  function padInputCurrency($input) {
+    var value = $input.val();
+
+    if(value) {
+      value = parseFloat($('input.currency').val())
+      $('input.currency').val(value.toFixed(2))
+    }
   }
 
-  $('input.currency').change(function(e){
-    padInputCurrency()
-  })
+  $('input.currency').each(function(index, input){
+    $(input).off("change.currency").on("change.currency", function(e){
+      padInputCurrency($(this));
+    });
 
-  padInputCurrency()
+    padInputCurrency($(this));
+  });
 })

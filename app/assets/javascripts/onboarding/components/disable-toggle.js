@@ -8,9 +8,7 @@ $(document).on("turbolinks:load", function() {
   });
 
   $(".disable-toggle").change(function(){
-    console.log("changed");
     var target = $(this).data("target");
-    console.log(target);
 
     if (this.checked) {
       $(target).find(".input").addClass("disabled");

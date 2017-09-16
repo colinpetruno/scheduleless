@@ -1,10 +1,4 @@
 <div class="new-calendars-show">
-  <!--
-  <article>
-    <%= @presenter.title %>
-  </article>
-  -->
-
   <header>
     <div>&nbsp;</div>
 
@@ -46,6 +40,7 @@
   </header>
 
   <div id="new-calendar-show-calendar">
+  <%# DailySchedulePreviewPresenter or WeeklySchedulePresenter %>
   <%= render partial: "show",
              locals: { presenter: @presenter.partial_presenter } %>
   </div>
@@ -59,5 +54,7 @@
       selected_date: @presenter.selected_date
     }
   ) %>
+
+  <%# NewCalender::ShowPresenter %>
   <%= render partial: "sidebar_content", locals: { presenter: @presenter } %>
 <% end %>

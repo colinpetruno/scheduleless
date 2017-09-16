@@ -1,16 +1,68 @@
 <%= simple_form_for [:business, @user] do |f| %>
-  <%= f.input :email %>
-  <%= f.input :given_name %>
-  <%= f.input :family_name %>
-  <%= f.input :mobile_phone %>
-  <%= f.input :wage, as: :currency, input_html: {value: @user.wage} %>
+  <div class="frame">
+    <header class="light">
+      <div>
+        Employee Information
+      </div>
+    </header>
 
-  <%= f.association :primary_position,
-    collection: current_company.positions %>
+    <section>
+      <article>
+        <div class="two-columns">
+          <section>
+            <article>
+              <%= f.input :given_name %>
+            </article>
+            <article>
+              <%= f.input :family_name %>
+            </article>
+          </section>
+        </div>
 
-  <%= f.association :positions,
-    collection: current_company.positions,
-    as: :check_boxes %>
+        <div class="two-columns">
+          <section>
+            <article>
+              <%= f.input :email %>
+            </article>
+            <article>
+              <%= f.input :mobile_phone %>
+            </article>
+          </section>
+        </div>
+      </article>
+    </section>
+  </div>
+
+  <div class="frame">
+    <header class="light">
+      <div>
+        Position Information
+      </div>
+    </header>
+
+    <section>
+      <article>
+        <%= f.input :salary,
+          as: :boolean,
+          input_html: {
+            class: "disable-toggle",
+            data: { target: ".user-wage-container" }
+          } %>
+
+        <div class="user-wage-container">
+          <%= f.input :wage, as: :currency %>
+        </div>
+
+        <%= f.association :primary_position,
+          collection: current_company.positions %>
+
+        <%= f.association :positions,
+          collection: current_company.positions,
+          as: :check_boxes %>
+      </article>
+    </section>
+  </div>
 
   <%= f.submit %>
+  <br /><br />
 <% end %>

@@ -14,6 +14,13 @@ class Features
       exists?
   end
 
+  def wages?
+    PlanFeature.
+      joins(:feature).
+      where(plan_id: plan_id, features: { key: "wages"}).
+      exists?
+  end
+
   private
 
   attr_reader :company

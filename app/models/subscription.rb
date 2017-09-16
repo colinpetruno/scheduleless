@@ -10,6 +10,15 @@ class Subscription < ApplicationRecord
   end
 
   def plan_id
-    super || Plan.find_by(default: true).try(:id)
+    if super.present?
+      super
+    else
+      plan = Plan.find_by(default: true)
+      self.update_attribute(:plan_id, plan.try(:id))
+
+      plan.id
+    end
+  rescue
+    nil
   end
 end

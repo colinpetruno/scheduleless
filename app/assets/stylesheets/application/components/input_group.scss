@@ -5,23 +5,17 @@
   width: 100%;
 
   .input-group-addon {
-    line-height: 2;
-    width: 25px;
-    text-align: center;
-    background: rgba(0, 0, 0, 0.1);
-
+    background: lighten($blue, 0%);
+    color: $white;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
-
-    & + input{
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-    }
+    line-height: 35px;
+    text-align: center;
+    width: 25px;
+    vertical-align: middle;
   }
 
   > input[type=text], > .twitter-typeahead {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
     display: flex !important;
     flex-basis: auto;
     flex-direction: column;
@@ -29,8 +23,6 @@
     flex-shrink: 1;
 
     input {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
       max-width: 100%;
     }
   }
