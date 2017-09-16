@@ -9,7 +9,14 @@ In this guide we will highlight the key things you need to know to be
 successful developing on this application.
 
 * Front End
+  * [CSS/JS and Partial Organization](./front_end/css_partial_organization)
   * [Custom Inputs](/documentation/developing/front_end/custom_inputs)
     * [Checkbox Disable](/documentation/developing/front_end/custom_inputs/check_box_disable)
+    * Currency
+    * Datepicker
+    * Datepicker Range
+    * Timepicker
+    * Timepicker Range
+    * Time Range
 * Back End
   * [How To Handle Dates and Times](dates_and_times/)
