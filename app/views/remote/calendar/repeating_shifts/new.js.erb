@@ -1,0 +1,5 @@
+$(".view-sidebar > .popup > .content").html("<%= j(
+  render partial: "form", locals: { repeating_shift: @repeating_shift }
+) %>");
+
+$(".view-sidebar > .popup").show().addClass("open");

@@ -85,6 +85,13 @@
       overflow: none;
       position: relative;
 
+      .repeating-shift-icon {
+        color: $blue;
+        position: absolute;
+        right: 5px;
+        top: 5px;
+      }
+
       $i: 0;
       @while $i < 1441 {
         &.start-#{$i} {

@@ -149,13 +149,13 @@ Rails.application.routes.draw do
     end
 
     namespace :calendar, only: [] do
-      resources :shifts, only: [] do
-        resource :shift_detail, only: [:show], path: "details"
-      end
-
       resources :locations, only: [] do
         resources :favorite_shifts, only: [:create, :new]
-        resources :repeating_shifts, only: [:create, :new]
+        resources :repeating_shifts, only: [:create, :edit, :new, :update]
+      end
+
+      resources :shifts, only: [] do
+        resource :shift_detail, only: [:show], path: "details"
       end
     end
   end

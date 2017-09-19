@@ -17,6 +17,15 @@
               <%= render partial: "calendars/shared/shift_actions",
                 locals: { shift: shift } %>
             <% end %>
+
+
+            <% if shift.repeating? %>
+              <div class="repeating-shift-icon">
+                <div>
+                  <span class="oi oi-loop-circular"></span>
+                </div>
+              </div>
+            <% end %>
           </div>
 
         </div>

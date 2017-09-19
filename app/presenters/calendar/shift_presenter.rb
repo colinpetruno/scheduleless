@@ -41,15 +41,21 @@ module Calendar
     end
 
     def repeat_url
-      routes.
-        new_remote_calendar_location_repeating_shift_path(
-          shift.location,
-          repeating_shift: {
-            location_id: shift.location_id,
-            start_date: shift.date,
-            user_id: shift.user_id
-          }
-        )
+      if repeating?
+        routes.
+          edit_remote_calendar_location_repeating_shift_path(shift.location_id,
+                                                             shift.repeating_shift_id)
+      else
+        routes.
+          new_remote_calendar_location_repeating_shift_path(
+            shift.location,
+            repeating_shift: {
+              location_id: shift.location_id,
+              start_date: shift.date,
+              user_id: shift.user_id
+            }
+          )
+      end
     end
 
     def time_range
@@ -60,6 +66,10 @@ module Calendar
       shift.user.primary_position.name
     rescue
       ""
+    end
+
+    def repeating?
+      shift.repeating_shift_id.present?
     end
 
     def user

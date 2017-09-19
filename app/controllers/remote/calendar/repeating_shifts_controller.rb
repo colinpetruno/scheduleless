@@ -9,10 +9,24 @@ module Remote
         @repeating_shift.save
       end
 
+      def edit
+        @repeating_shift = RepeatingShift.find(params[:id])
+
+        authorize @repeating_shift
+      end
+
       def new
         @repeating_shift = RepeatingShift.new(repeat_shift_params)
 
         authorize @repeating_shift
+      end
+
+      def update
+        @repeating_shift = RepeatingShift.find(params[:id])
+
+        authorize @repeating_shift
+
+        @repeating_shift.update(repeat_shift_params)
       end
 
       private
@@ -20,7 +34,7 @@ module Remote
       def repeat_shift_params
         params.
           require(:repeating_shift).
-          permit(:position_id, :start_date, :user_id).
+          permit(:position_id, :repeat_frequency, :start_date, :user_id).
           merge(location_id: params[:location_id])
       end
     end

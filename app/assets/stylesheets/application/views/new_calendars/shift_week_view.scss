@@ -18,6 +18,14 @@
     flex-direction: column;
   }
 
+  .repeating-shift-icon {
+    top: -8px;
+    position: absolute;
+    right: -6px;
+
+    color: $blue;
+  }
+
   .actions {
     background-color: rgba(lighten($blue, 25%), .8);
     bottom: 0;
