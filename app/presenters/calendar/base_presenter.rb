@@ -19,7 +19,6 @@ module Calendar
       true
     end
 
-
     private
 
     def current_location_date

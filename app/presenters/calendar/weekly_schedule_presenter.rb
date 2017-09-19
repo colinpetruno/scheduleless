@@ -3,8 +3,7 @@ module Calendar
     attr_reader :location
 
     def beginning_of_week
-      # TODO: pull from company settings
-      date.beginning_of_week(:monday)
+      DateAndTime::WeekDates.for(date).beginning_of_week
     end
 
     def date_range
@@ -55,8 +54,7 @@ module Calendar
     end
 
     def end_of_week
-      # TODO: pull from company settings
-      date.end_of_week(:monday)
+      DateAndTime::WeekDates.for(date).end_of_week
     end
 
     def shift_map
@@ -72,12 +70,9 @@ module Calendar
     end
 
     def find_shifts
-      @_raw_shifts ||= location.
-        in_progress_shifts.
-        where(date: date_range_integers).
-        where("date >= ?", current_location_date).
-        includes(:user).
-        order(:date, :minute_start)
+      @_raw_shifts ||= Shifts::Finders::ByWeek.
+        new(date: date, in_progress: true, location: location).
+        find
     end
   end
 end

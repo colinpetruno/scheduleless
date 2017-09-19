@@ -16,8 +16,7 @@ class ShiftPublisher
         if active_shift.present?
           active_shift.update(shift_params(in_progress_shift))
         else
-          Shift.create(shift_params(in_progress_shift).
-                        merge(in_progress_shift_id: in_progress_shift.id))
+          Shift.create(shift_params(in_progress_shift))
         end
       end
 
@@ -35,11 +34,13 @@ class ShiftPublisher
   end
 
   def shift_params(in_progress_shift)
-    in_progress_shift.slice(:minute_start,
-                            :minute_end,
-                            :date,
-                            :location_id,
-                            :user_id)
+    in_progress_shift.
+      slice(:minute_start,
+            :minute_end,
+            :date,
+            :location_id,
+            :user_id).
+      merge(in_progress_shift_id: in_progress_shift.id)
   end
 
   def shifts_to_publish
