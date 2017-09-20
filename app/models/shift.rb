@@ -20,6 +20,10 @@ class Shift < ApplicationRecord
 
   attr_writer :day, :month, :year
 
+  def self.default_scope
+    where(deleted_at: nil)
+  end
+
   def day
     if @day
       return @day.to_s

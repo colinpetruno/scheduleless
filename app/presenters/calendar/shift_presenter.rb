@@ -50,7 +50,10 @@ module Calendar
           new_remote_calendar_location_repeating_shift_path(
             shift.location,
             repeating_shift: {
+              in_progress_shift_id: shift.id,
               location_id: shift.location_id,
+              minute_end: shift.minute_end,
+              minute_start: shift.minute_start,
               start_date: shift.date,
               user_id: shift.user_id
             }

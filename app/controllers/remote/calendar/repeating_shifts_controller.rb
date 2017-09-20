@@ -2,7 +2,7 @@ module Remote
   module Calendar
     class RepeatingShiftsController < AuthenticatedController
       def create
-        @repeating_shift = RepeatingShift.new(repeat_shift_params)
+        @repeating_shift = RepeatingShift.new(repeating_shift_params)
 
         authorize @repeating_shift
 
@@ -16,7 +16,7 @@ module Remote
       end
 
       def new
-        @repeating_shift = RepeatingShift.new(repeat_shift_params)
+        @repeating_shift = RepeatingShift.new(repeating_shift_params)
 
         authorize @repeating_shift
       end
@@ -26,15 +26,23 @@ module Remote
 
         authorize @repeating_shift
 
-        @repeating_shift.update(repeat_shift_params)
+        Shifts::RepeatingShiftsUpdater.
+          for(@repeating_shift).
+            update(repeating_shift_params)
       end
 
       private
 
-      def repeat_shift_params
+      def repeating_shift_params
         params.
           require(:repeating_shift).
-          permit(:position_id, :repeat_frequency, :start_date, :user_id).
+          permit(:in_progress_shift_id,
+                 :minute_end,
+                 :minute_start,
+                 :position_id,
+                 :repeat_frequency,
+                 :start_date,
+                 :user_id).
           merge(location_id: params[:location_id])
       end
     end

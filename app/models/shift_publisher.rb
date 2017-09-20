@@ -1,4 +1,11 @@
 class ShiftPublisher
+  def self.from(posting)
+    new(end_date: posting.date_end,
+        start_date: posting.date_start,
+        location: posting.location).
+    publish
+  end
+
   def initialize(end_date: Date.today, location:, start_date: Date.today)
     @end_date = end_date.is_a?(String) ? Date.parse(end_date.to_s) : end_date
     @location = location
@@ -8,20 +15,11 @@ class ShiftPublisher
   def publish
     ActiveRecord::Base.transaction do
       shifts_to_publish.map do |in_progress_shift|
-        # TODO: we only need to do this if its edited
-        active_shift = location.
-          shifts.
-          find_by(in_progress_shift_id: in_progress_shift.id)
-
-        if active_shift.present?
-          active_shift.update(shift_params(in_progress_shift))
-        else
-          Shift.create(shift_params(in_progress_shift))
-        end
+        Shifts::Publishers::SingleShift.
+          new(in_progress_shift: in_progress_shift,
+              notify: false).
+          publish
       end
-
-      # todo we need to send notifications if it is edited
-      shifts_to_publish.update(edited: false)
     end
   end
 

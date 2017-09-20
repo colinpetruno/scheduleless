@@ -7,8 +7,11 @@ module Shifts
       end
 
       def publish
+        return true unless in_progress_shift.edited?
+
         ActiveRecord::Base.transaction do
           if active_shift.present?
+            # TODO: something different needs to happen here
             active_shift.update(shift_params)
           else
             Shift.create(shift_params)

@@ -4,15 +4,21 @@
                      repeating_shift], remote: true do |f| %>
 
   <%= f.input :location_id, as: :hidden %>
+  <%= f.input :in_progress_shift_id, as: :hidden %>
+  <%= f.input :minute_end, as: :hidden %>
+  <%= f.input :minute_start, as: :hidden %>
+  <%= f.input :start_date, as: :hidden %>
+
   <%= f.input :position_id,
     collection: current_company.positions,
     include_blank: false %>
-  <%= f.input :start_date, as: :hidden %>
+
   <%= f.input :user_id,
     collection: repeating_shift.location.users,
     include_blank: false,
     label_method: :full_name
   %>
+
   <%= f.input :repeat_frequency,
     collection: RepeatingShift.options,
     include_blank: false %>
