@@ -31,7 +31,7 @@ module Remote
 
       authorize @shift
 
-      @shift.update(in_progress_shift_params.merge(edited: true))
+      Shifts::Updater.update(@shift, in_progress_shift_params)
     end
 
     private
@@ -58,6 +58,7 @@ module Remote
         permit(:date,
                :minute_end,
                :minute_start,
+               :update_repeating_rule,
                :user_id).
         merge(company_id: current_company.id,
               location_id: params[:location_id])

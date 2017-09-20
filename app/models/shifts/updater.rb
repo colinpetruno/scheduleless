@@ -1,37 +1,28 @@
 module Shifts
   class Updater
-    def self.for(in_progress_shift)
-      new(in_progress_shift)
+    def self.update(in_progress_shift, params)
+      new(in_progress_shift, params).update
     end
 
-    def initialize(in_progress_shift)
+    def initialize(in_progress_shift, params={})
       @in_progress_shift = in_progress_shift
+      @params = params
     end
 
-    def update(params = {})
-      record_changes(params)
+    def update
+      return true if not_changed?
 
       ActiveRecord::Base.transaction do
-        in_progress_shift.update(params).merge(edited: true)
-
-        if in_progress_shift.published?
-          Shift.
-            where(in_progress_shift_id: in_progress_shift.id).
-            update_all(minute_start: in_progress_shift.minute_start,
-                       minute_end: in_progress_shift.minute_end,
-                       date: in_progress_shift.date,
-                       location_id: in_progress_shift.location_id,
-                       user_id: in_progress_shift.user_id)
-          # need to notify the published person their shift changed
+        if in_progress_shift.repeating?
+          if params[:update_repeating_rule] == "all"
+            puts "update all repeating shift 0"
+            update_all_repeating_shifts
+          else
+            update_single_repeating_shift
+          end
+        else
+          in_progress_shift.update(@params.merge(edited: true))
         end
-      end
-
-      # do this outside the transaction so it happens if the transaction block
-      # is successful, prevents queuing jobs and then having the transaction
-      # roll back
-      if in_progress_shift.published? && needs_notification?
-        # TODO: add proper notifications queueing here
-        puts "NOTIFICATIONS WILL GET QUEUED HERE"
       end
     rescue StandardError => error
       Bugsnag.notify(error)
@@ -40,33 +31,46 @@ module Shifts
 
     private
 
-    attr_reader :in_progress_shift
+    attr_reader :in_progress_shift, :params
 
-    def needs_notifications?
-      @user_changed || @time_changed || @date_changed
+    def not_changed?
+      # assign the attributes and use dirty attributes to see if there was any
+      # changes to the model. If not then we can just skip this record
+      # because the user didn't actually change any data
+      in_progress_shift.assign_attributes(@params)
+      changed = in_progress_shift.changed?
+
+      # ensure we revert all changes to the in_progress_shift
+      in_progress_shift.restore_attributes
+      !changed
     end
 
-    def record_changes(params)
-      if params[:user_id].present? && in_progress_shift.user_id != params[:user_id]
-        @original_user = in_progress_shift.user_id
-        @new_user = params[:user_id]
-        @user_changed = true
-      end
+    def repeating_shift
+      in_progress_shift.repeating_shift
+    end
 
-      if params[:minute_start].present? &&
-          in_progress_shift.minute_start != params[:minute_start]
-        @time_changed = true
-      end
+    def repeating_shift_id
+      in_progress_shift.repeating_shift_id
+    end
 
-      if params[:minute_end].present? &&
-          in_progress_shift.minute_end != params[:minute_end]
-        @time_changed = true
-      end
+    def update_all_repeating_shifts
+      repeating_shift.update(preview_minute_end: params[:minute_end],
+                             preview_minute_start: params[:minute_start],
+                             preview_user_id: params[:user_id])
 
-      if params[:date].present? &&
-          in_progress_shift.user_id != params[:date]
-        @date_changed = true
-      end
+      InProgressShift.
+        where(repeating_shift_id: repeating_shift_id).
+        update_all(edited: true,
+                   minute_end: params[:minute_end],
+                   minute_start: params[:minute_start],
+                   user_id: params[:user_id])
+    end
+
+    def update_single_repeating_shift
+
+      in_progress_shift.update(deleted_at: DateTime.now)
+
+      InProgressShift.create(@params.merge(edited: true))
     end
   end
 end

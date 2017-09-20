@@ -7,6 +7,12 @@ class InProgressShift < ApplicationRecord
 
   has_many :shifts
 
+  attr_accessor :update_repeating_rule
+
+  def self.default_scope
+    where(deleted_at: nil)
+  end
+
   def publish(notify: true)
     Shifts::Publishers::SingleShift.
       new(in_progress_shift: self,

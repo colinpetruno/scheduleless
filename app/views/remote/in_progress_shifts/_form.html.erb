@@ -1,5 +1,5 @@
 <%= simple_form_for [:remote, @location, @shift], remote: true do |f| %>
-  <%= f.input :date, as: :datepicker %>
+  <%= f.input :date, as: :datepicker, disabled: @shift.repeating? %>
 
   <%= f.input :minute_start,
     as: :time_picker_range,
@@ -14,6 +14,17 @@
     label_method: :full_name,
     value_method: :id
   %>
+
+  <% if @shift.repeating? && @shift.persisted? %>
+    <%= f.input :update_repeating_rule,
+      as: :radio_buttons,
+      checked: "single",
+      collection: [
+        ["All Repeating Shifts", "all"],
+        ["Just This One", "single"]
+      ]
+    %>
+  <% end %>
 
   <%= f.submit %>
 <% end %>

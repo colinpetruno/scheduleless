@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170920041835) do
+ActiveRecord::Schema.define(version: 20170920142833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -292,17 +292,25 @@ ActiveRecord::Schema.define(version: 20170920041835) do
   end
 
   create_table "repeating_shifts", force: :cascade do |t|
-    t.integer  "user_id",                              null: false
-    t.integer  "position_id",                          null: false
-    t.integer  "start_date",                           null: false
-    t.integer  "repeat_frequency",     default: 7,     null: false
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
-    t.integer  "location_id",                          null: false
-    t.boolean  "published",            default: false, null: false
-    t.integer  "minute_start",                         null: false
-    t.integer  "minute_end",                           null: false
+    t.integer  "user_id",                                  null: false
+    t.integer  "position_id",                              null: false
+    t.integer  "start_date",                               null: false
+    t.integer  "repeat_frequency",         default: 7,     null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.integer  "location_id",                              null: false
+    t.boolean  "published",                default: false, null: false
+    t.integer  "minute_start",                             null: false
+    t.integer  "minute_end",                               null: false
     t.integer  "in_progress_shift_id"
+    t.integer  "preview_user_id"
+    t.integer  "preview_position_id"
+    t.integer  "preview_start_date"
+    t.integer  "preview_repeat_frequency"
+    t.integer  "preview_location_id"
+    t.integer  "preview_minute_end"
+    t.integer  "preview_minute_start"
+    t.datetime "deleted_at"
     t.index ["location_id"], name: "index_repeating_shifts_on_location_id", using: :btree
     t.index ["position_id"], name: "index_repeating_shifts_on_position_id", using: :btree
     t.index ["user_id"], name: "index_repeating_shifts_on_user_id", using: :btree

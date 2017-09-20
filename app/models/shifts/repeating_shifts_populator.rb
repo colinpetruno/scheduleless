@@ -38,21 +38,26 @@ module Shifts
       # should pull out the in_progress repeating shifts into an array and then
       # detect in that array to avoid many sql queries.
 
+      # ensure we check to make sure it wasn't previously populated and deleted
       in_progress_shift = InProgressShift.
+        unscoped.
         find_or_create_by(company_id: company.id,
                           date: date.to_s(:integer),
                           location_id: location.id,
-                          minute_end: repeating_shift.minute_end,
-                          minute_start: repeating_shift.minute_start,
+                          minute_end: repeating_shift.preview_minute_end,
+                          minute_start: repeating_shift.preview_minute_start,
                           repeating_shift_id: repeating_shift.id,
                           published: repeating_shift.published,
-                          user_id: repeating_shift.user_id)
+                          user_id: repeating_shift.preview_user_id)
 
-      if repeating_shift.published?
-        Shifts::Publishers::SingleShift.
-          new(in_progress_shift: in_progress_shift,
-              notify: false).
-          publish
+      # TODO: DO I WANT TO DO THIS NOW?
+      if 1 == 2
+        if repeating_shift.published?
+          Shifts::Publishers::SingleShift.
+            new(in_progress_shift: in_progress_shift,
+                notify: false).
+            publish
+        end
       end
     end
 

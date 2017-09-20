@@ -148,3 +148,19 @@ input[type=submit] {
     margin-bottom: 5px;
   }
 }
+
+.input.radio_buttons {
+  span.radio {
+    display: block;
+
+    label {
+      display: block;
+      width: 100%;
+    }
+
+    label > input {
+      display: inline;
+      max-width: 25px;
+    }
+  }
+}
