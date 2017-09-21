@@ -1,17 +1,26 @@
 # Scheduleless Installation
 
+## Ruby Installation
+
+I use rvm but you could use rbenv or something similar. Follow the instructions
+here: 
+https://rvm.io/rvm/install
+
+* rvm install 2.3.1
+* gem install bundler
+
 ## Postgres Installation
 
 Install Postgres `brew install postgresql`. Postgres can be tricky to set up. After installation try
 `psql`. If you cannot log in you may need to manage this through the psql user
 on the system.
 
-createdb `whoami`
-psql -d mydb -U myuser
+* createdb `whoami`
+* psql -d `whomai` -U `whoami` 
 
 Once logged in you can run these commands to set up the user in postgres.
-`CREATE USER rails WITH PASSWORD 'rails';`
-`ALTER USER rails WITH SUPERUSER;`
+* `CREATE USER rails WITH PASSWORD 'rails';`
+* `ALTER USER rails WITH SUPERUSER;`
 
 You can then try running `rails db:create` If this fails you may need to edit
 the pg_hba.conf to allow connections on all users from localhost.
@@ -81,3 +90,8 @@ Then, run `sudo xcode-select -s /Applications/Xcode.app/Contents/Developer`. Thi
 Lastly run, `sudo xcodebuild -license` and spam `[SPACE]` until you reach the end and type `agree`.
 
 After each case, retry installation of the gem.
+
+
+## TODO
+
+* a plan needs to be seeded by default

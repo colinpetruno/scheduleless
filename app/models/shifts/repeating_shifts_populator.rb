@@ -75,7 +75,7 @@ module Shifts
     end
 
     def repeating_shifts
-      RepeatingShift.where(options)
+      RepeatingShift.where(preview_deleted_at: nil).where(options)
     end
   end
 end

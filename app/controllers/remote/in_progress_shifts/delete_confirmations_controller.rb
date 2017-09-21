@@ -6,7 +6,8 @@ module Remote
                                           company_id: current_company.id)
         authorize shift
 
-        @confirmation = ::InProgressShifts::DeleteConfirmation.for(shift)
+        @confirmation = ::InProgressShifts::DeleteConfirmation.
+          new(delete_confirmation_params)
 
         @confirmation.process
       end
@@ -17,7 +18,16 @@ module Remote
 
         authorize shift
 
-        @confirmation = ::InProgressShifts::DeleteConfirmation.for(shift)
+        @confirmation = ::InProgressShifts::DeleteConfirmation.
+          new({ in_progress_shift_id: shift.id })
+      end
+
+      private
+
+      def delete_confirmation_params
+        params.
+          require(:in_progress_shifts_delete_confirmation).
+          permit(:in_progress_shift_id, :delete_series)
       end
     end
   end

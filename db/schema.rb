@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170920142833) do
+ActiveRecord::Schema.define(version: 20170921040614) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -311,6 +311,7 @@ ActiveRecord::Schema.define(version: 20170920142833) do
     t.integer  "preview_minute_end"
     t.integer  "preview_minute_start"
     t.datetime "deleted_at"
+    t.datetime "preview_deleted_at"
     t.index ["location_id"], name: "index_repeating_shifts_on_location_id", using: :btree
     t.index ["position_id"], name: "index_repeating_shifts_on_position_id", using: :btree
     t.index ["user_id"], name: "index_repeating_shifts_on_user_id", using: :btree

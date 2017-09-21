@@ -14,6 +14,13 @@
   ),
   remote: true
 ) do |f| %>
+  <%= f.input :in_progress_shift_id, as: :hidden %>
+
+  <% if confirmation.in_progress_shift.repeating? %>
+    <%= f.input :delete_series, as: :boolean, checked: true, default: false %>
+  <% end %>
+
+
   <%= f.submit "Delete" %>
 <% end %>
 
