@@ -45,6 +45,17 @@ class RepeatingShift < ApplicationRecord
     super || self.minute_end
   end
 
+  def publish
+    update(minute_end: preview_minute_end,
+           minute_start: preview_minute_start,
+           location_id: preview_location_id,
+           repeat_frequency: preview_repeat_frequency,
+           position_id: preview_position_id,
+           published: true,
+           start_date: preview_start_date,
+           user_id: preview_user_id)
+  end
+
   private
 
   def update_in_progress_shift

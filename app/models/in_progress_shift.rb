@@ -13,13 +13,6 @@ class InProgressShift < ApplicationRecord
     where(deleted_at: nil)
   end
 
-  def publish(notify: true)
-    Shifts::Publishers::SingleShift.
-      new(in_progress_shift: self,
-          notify: notify).
-      publish
-  end
-
   def repeating?
     repeating_shift_id.present?
   end

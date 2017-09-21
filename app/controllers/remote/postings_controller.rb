@@ -6,7 +6,7 @@ module Remote
 
       authorize @posting
 
-      ShiftPublisher.
+      Shifts::Publishers::DateRange.
         new(end_date: @posting.date_end,
             location: @location,
             start_date: @posting.date_start).

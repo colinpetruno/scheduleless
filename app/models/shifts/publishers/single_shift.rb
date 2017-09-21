@@ -10,16 +10,27 @@ module Shifts
         return true unless in_progress_shift.edited?
 
         ActiveRecord::Base.transaction do
-          if active_shift.present?
-            # TODO: something different needs to happen here
-            active_shift.update(shift_params)
-          else
-            Shift.create(shift_params)
-          end
 
-          if notify?
-            # TODO: QUEUE NOTIFICATIONS
-          end
+          # if the shift is deleted
+          #  if active shift is present
+          #    delete it
+          #    record delete notification
+          #  if its a repeating shift and the repeatig shift is marked deleted
+          #    delete repeating shift
+          #    if active shift present
+          #      record delete notificaiton for series
+          #
+          # if the shift is not deleted
+          #   if an active shift is present
+          #     update params
+          #     figure out changes
+          #     return potential notifications
+          #   else
+          #     create new shift
+          #     return potential notifications
+          #
+          #
+          #  mark edited as false
         end
       end
 
