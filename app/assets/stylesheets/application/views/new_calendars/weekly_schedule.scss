@@ -30,6 +30,11 @@
         padding-left: 10px;
         text-align: left;
       }
+
+      &.today {
+        background-color: $green;
+        color: darken($green, 38%);
+      }
     }
   }
 
@@ -47,11 +52,27 @@
         flex-grow: 1;
         min-height: 50px;
         border-right: 1px solid lighten($blue, 20%);
+
+        &.past-date {
+          background-color: darken($body-bg, 5%);
+        }
+
+        &.today {
+          background-color: lighten($body-bg, 2%);
+        }
       }
 
       &:nth-child(even) {
         > div {
           background-color: lighten($blue, 29.5%);
+
+          &.past-date {
+            background-color: lighten($blue, 28%);
+          }
+
+          &.today {
+            background-color: lighten($blue, 32%);
+          }
         }
 
         > div:first-child {

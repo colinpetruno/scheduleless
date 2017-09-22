@@ -3,7 +3,9 @@
     <div>Employee Name</div>
 
     <% presenter.date_range.each do |date| %>
-      <div><%= t('date.day_names')[date.wday] %></div>
+      <div class="<%= "today" if presenter.today?(date) %>">
+        <%= I18n.t("date.day_names")[date.wday] %>
+      </div>
     <% end %>
   </header>
 
@@ -13,7 +15,7 @@
         <div class="employee"><%= employee.full_name %></div>
 
         <% presenter.date_range.each do |date| %>
-          <div class="shift-container">
+          <div class="<%= presenter.container_classes(date) %>">
             <%# TODO: Remove View Conditional %>
             <% if presenter.shifts_for(employee, date).present? %>
               <% presenter.shifts_for(employee, date).each do |shift| %>

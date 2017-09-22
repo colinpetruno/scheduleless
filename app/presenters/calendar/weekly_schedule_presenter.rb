@@ -6,6 +6,18 @@ module Calendar
       DateAndTime::WeekDates.for(date).beginning_of_week
     end
 
+    def container_classes(date)
+      classes = ["shift-container"]
+
+      if date.to_s(:integer).to_i < location_time.to_s(:day_integer).to_i
+        classes.push "past-date"
+      elsif today?(date)
+        classes.push "today"
+      end
+
+      classes.join(" ")
+    end
+
     def date_range
       (beginning_of_week..end_of_week)
     end
@@ -25,6 +37,10 @@ module Calendar
 
     def shifts_for(user, day)
       shift_map["#{user.id}-#{day.to_s(:integer)}"]
+    end
+
+    def today?(date)
+      date.to_s(:integer).to_i == location_time.to_s(:day_integer).to_i
     end
 
     private
@@ -55,6 +71,10 @@ module Calendar
 
     def end_of_week
       DateAndTime::WeekDates.for(date).end_of_week
+    end
+
+    def location_time
+      DateAndTime::LocationTime.for(location)
     end
 
     def shift_map
