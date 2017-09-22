@@ -1,8 +1,15 @@
 .new-calendars-weekly-schedule {
-  overflow-y: hidden;
   position: relative;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
 
-  header {
+  > section {
+    display: flex;
+    flex-grow: 1;
+  }
+
+  > header {
     background-color: $white;
     border-bottom: 1px solid $blue;
     position: absolute;
@@ -39,15 +46,20 @@
   }
 
   > section {
-    max-height: 400px;
-    overflow-y: auto;
+    background-color: lighten($body-bg, 2%);
+    background-color: white;
+    flex-direction: column;
     margin-top: 30px;
+    overflow-y: scroll; // always display scroll to prevent popping
 
     > div {
+      background-color: $body-bg;
       display: flex;
       flex-direction: row;
+      flex-shrink: 0;
 
       > div {
+        // flex-direction: row;
         flex-basis: 0;
         flex-grow: 1;
         min-height: 50px;
@@ -77,6 +89,16 @@
 
         > div:first-child {
           background-color: lighten($blue, 28%);
+        }
+      }
+
+      &.calendar-filler {
+        flex-grow: 1;
+        flex-shrink: 1;
+
+        .employee, .shift-container {
+          min-height: 0;
+          padding: 0;
         }
       }
     }

@@ -1,4 +1,4 @@
-<div class="new-calendars-show">
+<div class="calendars-show">
   <header>
     <div>&nbsp;</div>
 
@@ -39,10 +39,10 @@
     </div>
   </header>
 
-  <div id="new-calendar-show-calendar">
-  <%# DailySchedulePreviewPresenter or WeeklySchedulePresenter %>
-  <%= render partial: "show",
-             locals: { presenter: @presenter.partial_presenter } %>
+  <div class="calendar-container" id="calendar-container">
+    <%# DailySchedulePreviewPresenter or WeeklySchedulePresenter %>
+    <%= render partial: "show",
+           locals: { presenter: @presenter.partial_presenter } %>
   </div>
 </div>
 

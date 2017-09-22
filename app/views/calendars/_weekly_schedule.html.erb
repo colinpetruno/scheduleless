@@ -43,5 +43,13 @@
         <% end %>
       </div>
     <% end %>
+
+    <div class="calendar-filler">
+      <div class="employee"></div>
+      <% presenter.date_range.each do |date| %>
+        <div class="<%= presenter.container_classes(date) %>">
+        </div>
+      <% end %>
+    </div>
   </section>
 </div>

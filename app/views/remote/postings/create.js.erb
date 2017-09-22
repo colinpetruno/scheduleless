@@ -1,6 +1,6 @@
 window.Scheduleless.sidebar.close();
 
-$("#new-calendar-show-calendar").html("<%= j(render(partial: "calendars/show",
+$("#calendar-container").html("<%= j(render(partial: "calendars/show",
              locals: {
                presenter: Calendar::DailySchedulePreviewPresenter.
                  new(date: @posting.date_start,
