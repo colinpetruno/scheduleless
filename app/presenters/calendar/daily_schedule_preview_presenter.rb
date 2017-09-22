@@ -1,6 +1,6 @@
 module Calendar
   class DailySchedulePreviewPresenter < BasePresenter
-    attr_reader :location
+    attr_reader :date, :location
 
     def needs_published?
       find_shifts.exists?(edited: true)
@@ -33,7 +33,7 @@ module Calendar
 
     private
 
-    attr_reader :date, :user
+    attr_reader :user
 
     def day_length
       day_end - day_start

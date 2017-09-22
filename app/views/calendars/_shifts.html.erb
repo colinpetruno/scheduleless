@@ -1,3 +1,5 @@
+<%# shifts for daily schedule %>
+
 <% presenter.users.each do |user| %>
 
   <% shifts = [presenter.shifts_for(user).first].reject(&:blank?) %>
@@ -8,9 +10,16 @@
         <div class="<%= shift.classes %>">
 
           <div>
-            <%= link_to shift.details_url, remote: true do %>
-              <div class="time"><%= shift.time_range %></div>
-              <div class="position"><%= shift.position %></div>
+            <% if presenter.manage? %>
+              <%= link_to(shift.details_url, class: "label", remote: true) do %>
+                <div class="time"><%= shift.time_range %></div>
+                <div class="position"><%= shift.position %></div>
+              <% end %>
+            <% else %>
+              <section class="label">
+                <div class="time"><%= shift.time_range %></div>
+                <div class="position"><%= shift.position %></div>
+              </section>
             <% end %>
 
             <% if presenter.manage? %>

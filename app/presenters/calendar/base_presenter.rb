@@ -8,7 +8,7 @@ module Calendar
     end
 
     def schedulable?(date)
-      current_location_date < date.to_s(:integer).to_i
+      current_location_date < date.to_s(:integer).to_i && manage?
     end
 
     def date_integer
@@ -16,7 +16,7 @@ module Calendar
     end
 
     def manage?
-      true
+      UserPermissions.for(@user).manage?(@location)
     end
 
     private

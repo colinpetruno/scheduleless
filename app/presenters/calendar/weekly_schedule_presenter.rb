@@ -58,7 +58,7 @@ module Calendar
         end
 
         result[key].push(ShiftPresenter.new(shift: shift,
-                                            manage: true,
+                                            manage: manage?,
                                             day_start: 0))
       end
 
@@ -84,7 +84,7 @@ module Calendar
     def shifts
       @_shifts ||= find_shifts.map do |shift|
         ShiftPresenter.new(shift: shift,
-                           manage: true,
+                           manage: manage?,
                            day_start: 0)
       end
     end

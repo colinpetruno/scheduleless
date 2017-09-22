@@ -98,7 +98,7 @@
           margin-left: 40px * ($i/60);
 
           @if $i > 1304 {
-            a {
+            a, section.label {
               > div {
                 left: -100px;
                 text-align: right;
@@ -118,7 +118,7 @@
 
           // position label to the right of the div
           @if $i < 106 {
-            a {
+            a, section.label {
               position: relative;
               > div {
                 background-color: rgba($white, .3);
@@ -175,7 +175,8 @@
       }
 
 
-      a {
+      a, section.label {
+        color: $gray-dark;
         display: block;
         width: 100%;
         min-height: 38px;
