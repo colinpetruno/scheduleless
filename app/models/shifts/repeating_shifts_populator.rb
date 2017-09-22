@@ -55,6 +55,8 @@ module Shifts
         in_progress_shift.save
 
         Publishers::Utilities::ShiftCreator.create_from(in_progress_shift)
+      else
+        in_progress_shift.save
       end
     end
 

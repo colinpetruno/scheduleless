@@ -94,7 +94,7 @@ module Shifts
           Utilities::ShiftCreator.create_from(new_shift)
 
           if new_shift.repeating?
-            new_shift.repeating_shift.publish
+            new_shift.repeating_shift.reload.publish
           end
 
           add_notification(new_shift.user_id, :shift_added)
