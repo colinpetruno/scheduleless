@@ -13,8 +13,10 @@ class RepeatingShift < ApplicationRecord
     end
   end
 
-  def self.options
-    [["Day", 1], ["Week", 7], ["Other Week", 14]]
+  def self.options(include_blank: false)
+    options = [["Day", 1], ["Week", 7], ["Other Week", 14]]
+    options.unshift(["None", 0]) if include_blank
+    options
   end
 
   def preview_user_id

@@ -15,6 +15,13 @@
     value_method: :id
   %>
 
+  <% if @shift.new_record? %>
+    <%= f.input :repeat_frequency,
+      as: :select,
+      collection: RepeatingShift.options(include_blank: true),
+      include_blank: false %>
+  <% end %>
+
   <% if @shift.repeating? && @shift.persisted? %>
     <%= f.input :update_repeating_rule,
       as: :radio_buttons,
@@ -26,5 +33,7 @@
     %>
   <% end %>
 
+  <%= f.submit t(".create_and_publish") %>
+  <br />
   <%= f.submit %>
 <% end %>

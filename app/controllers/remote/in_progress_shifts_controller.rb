@@ -8,7 +8,17 @@ module Remote
 
       authorize @shift
 
-      @shift.save
+      ActiveRecord::Base.transaction do
+        # using a transaction here to ensure that the shift is only created
+        # if the publish also succeeds
+        @shift.save
+
+        if @shift.persisted? && publish?
+          Shifts::Publishers::SingleShift.
+            new(in_progress_shift: @shift, notify: true).
+            publish
+        end
+      end
     end
 
     def edit
@@ -58,10 +68,15 @@ module Remote
         permit(:date,
                :minute_end,
                :minute_start,
+               :repeat_frequency,
                :update_repeating_rule,
                :user_id).
         merge(company_id: current_company.id,
               location_id: params[:location_id])
+    end
+
+    def publish?
+      params[:commit] == I18n.t("remote.in_progress_shifts.form.create_and_publish")
     end
 
     def shift_get_params

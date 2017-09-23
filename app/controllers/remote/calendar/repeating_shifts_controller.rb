@@ -28,7 +28,7 @@ module Remote
 
         Shifts::RepeatingShiftsUpdater.
           for(@repeating_shift).
-            update(repeating_shift_params)
+          update(repeating_shift_params)
       end
 
       private

@@ -1,0 +1,5 @@
+en:
+  remote:
+    in_progress_shifts:
+      form:
+        create_and_publish: "Create and Publish"
