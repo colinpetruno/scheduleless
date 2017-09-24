@@ -103,7 +103,7 @@ en:
           title: "Get Started For Free"
           link_one: "Try Scheduleless Now"
           no_cc_required: "30 days free, no credit card required"
-          link_two: "Learn More"  
+          link_two: "Learn More"
       industries:
         title: "For Any Industry"
         retail: "Retail"
@@ -111,6 +111,11 @@ en:
         entertainment: "Entertainment"
         professional_services: "Professional Services"
       pricing:
+        hero:
+          title: "Scheduling Software Should Make Your Life Easier"
+          article: >
+            No hidden fees or surprise upgrade tiers. All the features you want are included.
+      pricing_tile:
         bullet_1: "We do your scheduling!"
         bullet_2: "Time Clock and Reporting"
         bullet_3: "Trade Shifts"
@@ -129,10 +134,6 @@ en:
           scheduling software that actually does your scheduling!
         title: "Transparent Pricing"
         unit: "per employee / month"
-        hero:
-          title: "Scheduling Software Should Make Your Life Easier"
-          article: >
-            No hidden fees or surprise upgrade tiers. All the features you want are included.
       scheduling_assistant:
         heading: "Your Personal Scheduling Assistant"
         setup:
