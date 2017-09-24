@@ -1,0 +1,85 @@
+.marketing-welcome-pricing-tier {
+  display: flex;
+  flex-grow: 1;
+  flex-basis: 1;
+  margin: 0 20px;
+  text-align: center;
+
+  > section {
+    background-color: #dff0d8;
+    background-color: $white;
+    border: 2px solid #b2dba1;
+    border-color: $dark-blue;
+    color: $dark-blue;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto 50px auto;
+    min-height: 350px;
+    width: 250px;
+
+    > header {
+      min-height: 40px;
+
+      > div {
+        background-color: darken($green, 10%);
+        color: $white;
+        line-height: 40px;
+        vertical-align: middle;
+      }
+    }
+
+    > footer {
+      background-color: $dark-blue;
+      color: $white;
+      font-weight: 200;
+      margin-top: auto;
+      padding: 5px 0;
+      text-align: center;
+    }
+
+    span {
+      font-size: 5rem;
+      font-weight: 200;
+    }
+
+    sup {
+      font-size: 1.5rem;
+      vertical-align: top;
+      line-height: 7rem;
+    }
+
+    a.button {
+      display: block;
+      font-size: 16px;
+      margin: 0 20px;
+    }
+
+    .per-employee {
+      margin-top: -20px;
+      margin-bottom: 30px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 40px;
+
+      li {
+        display: block;
+        font-size: 12px;
+        text-align: left;
+        padding: 5px 15px;
+        line-height: 15px;
+        vertical-align: middle;
+
+        span {
+          color: darken(#b2dba1, 8%);
+          font-size: 14px;
+          line-height: 15px;
+          margin-right: 5px;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+}

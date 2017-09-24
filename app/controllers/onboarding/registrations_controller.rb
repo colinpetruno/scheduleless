@@ -4,7 +4,7 @@ class Onboarding::RegistrationsController < ApplicationController
   before_action :redirect_if_logged_in?
 
   def new
-    @registration = Registration.new(email: params[:email])
+    @registration = Registration.new(new_registration_params)
   end
 
   def create
@@ -12,7 +12,6 @@ class Onboarding::RegistrationsController < ApplicationController
 
     if @registration.valid? && @registration.register
       sign_in(@registration.user)
-
       redirect_to edit_onboarding_company_path
     else
       render :new
@@ -31,16 +30,33 @@ class Onboarding::RegistrationsController < ApplicationController
     end
   end
 
+  def new_registration_params
+    {
+      email: params[:email],
+      plan_id: selected_plan_id
+    }
+  end
+
+  def selected_plan_id
+    begin
+      Plan.where("lower(plan_name) = ?", params[:tier].downcase).first.id
+    rescue
+      Plan.find_by(default: true).id
+    end
+  rescue
+    nil
+  end
+
   def registration_params
     params.
       require(:registration).
       permit(
-        :company_name,
         :email,
         :first_name,
         :last_name,
         :password,
         :password_confirmation,
+        :plan_id
       )
   end
 end

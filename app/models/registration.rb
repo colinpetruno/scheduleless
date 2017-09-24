@@ -10,13 +10,23 @@ class Registration
     with: /\A(?=.*[a-zA-Z])(?=.*[0-9]).{8,}\z/,
     message: "must include one number, one letter and be between 8 and 40 characters"
 
-  attr_accessor :email, :first_name, :last_name, :password
+  attr_accessor :email, :first_name, :last_name, :password, :plan_id
 
   def company
-    user.company
+    @_company || create_company
   end
 
   def register
+    ActiveRecord::Base.transaction do
+      create_company
+      create_user # makes company again?
+      create_subscription
+    end
+
+    # TODO: Background...
+    StripeCustomer.for(company).create
+    StripeSubscription.for(subscription).create
+
     if user.persisted?
       begin
         if Rails.application.secrets.deliver_support_mailers
@@ -26,9 +36,10 @@ class Registration
         Bugsnag.notify(error)
         Bugsnag.notify("New Sign Up - Support Email Failed To Send")
       end
+      true
+    else
+      false
     end
-
-    user
   end
 
   def user
@@ -37,22 +48,23 @@ class Registration
 
   private
 
-  def create_payment_account
-    customer.
-      subscriptions.
-      create(plan: company.subscription.plan)
+  def create_company
+    @_company = Company.create(name: "My Company Name")
+  end
 
-    customer
+  def create_subscription
+    @_subscription = Subscription.create(company: company, plan: plan)
   end
 
   def create_user
-    user = User.create(user_params)
-    user
-  end
-
-  def customer
-    @_customer ||= Stripe::Customer.create(
-      description: company.name
+    @_user = User.create(
+      company_admin: true,
+      company_id: company.id,
+      email: email,
+      family_name: last_name,
+      given_name: first_name,
+      password: password,
+      password_confirmation: password
     )
   end
 
@@ -62,17 +74,15 @@ class Registration
     end
   end
 
-  def user_params
-    {
-      company_admin: true,
-      email: email,
-      family_name: last_name,
-      given_name: first_name,
-      password: password,
-      password_confirmation: password,
-      company_attributes: {
-        name: "Company Name" # we want to make sure a company is created for them here
-      }
-    }
+  def plan
+    if plan_id.present?
+      Plan.find(plan_id)
+    else
+      Plan.find_by!(default: true)
+    end
+  end
+
+  def subscription
+    @_subscription ||= create_subscription
   end
 end

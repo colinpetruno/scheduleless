@@ -1,0 +1,37 @@
+<div class="price marketing-welcome-pricing-tier">
+  <section>
+    <header>
+      <% if defined?(recommended) %>
+        <div>
+          Recommended
+        </div>
+      <% end %>
+    </header>
+
+    <article>
+      <div>
+        <sup>$</sup><span><%= t(".#{tier}.price") %></span>
+      </div>
+      <div class="per-employee"><%= t(".unit") %></div>
+
+      <%= link_to t(".call_to_action"),
+        new_onboarding_registration_path(tier: tier),
+        class: "button orange"
+      %>
+      <p><small><%= t(".30_days_free") %></small></p>
+
+      <ul>
+        <% t(".#{tier}.features").each do |feature| %>
+          <li>
+            <span class="oi oi-circle-check"></span>
+            <strong><%= feature %></strong>
+          </li>
+        <% end %>
+      </ul>
+    </article>
+
+    <footer>
+      <%= t(".#{tier}.name") %>
+    </footer>
+  </section>
+</div>

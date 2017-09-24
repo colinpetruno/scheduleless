@@ -111,23 +111,37 @@ en:
         entertainment: "Entertainment"
         professional_services: "Professional Services"
       pricing:
-        bullet_1: "We do your scheduling!"
-        bullet_2: "Time Clock and Reporting"
-        bullet_3: "Trade Shifts"
-        bullet_4: "Time Off Requests"
-        bullet_5: "Multiple Locations"
-        bullet_6: "No Hassle Set Up"
-        bullet_7: "Schedule well into the future"
-        bullet_8: "Android and iOS Apps"
-        call_to_action: "Try For Free"
-        30_days_free: "30 days free, no credit card required"
+        title: "Transparent Pricing"
         subtitle: >
           Other scheduling software claims to be free. But in order to be
           useful you need to buy upgrades and packages for every feature you
           want to use. Scheduleless has no hidden features or upgrades. Pay
           one flat free and get access to everything. And we are the only
           scheduling software that actually does your scheduling!
-        title: "Transparent Pricing"
+      pricing_tier:
+        entry:
+          price: 1
+          features:
+            - "Schedule Builder"
+            - "Time Off Requests"
+            - "Multiple Locations"
+            - "iPhone & Android apps"
+          name: "Basic Scheduling"
+        standard:
+          price: 2
+          features:
+            - "All of Basic"
+            - "Employee Wage Calculator"
+            - "Shift Trading"
+          name: "Complete Scheduling"
+        advanced:
+          price: 3
+          features:
+            - "All of Standard"
+            - "Time Clock"
+          name: "With Time Tracking"
+        call_to_action: "Try For Free"
+        30_days_free: "30 days free, no credit card required"
         unit: "per employee / month"
         hero:
           title: "Scheduling Software Should Make Your Life Easier"

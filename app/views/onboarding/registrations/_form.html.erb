@@ -2,6 +2,8 @@
   <%= simple_form_for [:onboarding, registration],
     html: { class: "vertical_form" } do |f|
   %>
+    <%= f.input :plan_id, as: :hidden %>
+
     <div class="name">
       <%= f.input :first_name %>
       <%= f.input :last_name %>

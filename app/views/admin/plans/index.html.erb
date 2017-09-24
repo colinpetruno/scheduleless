@@ -7,6 +7,7 @@
         <thead>
           <tr>
             <th>Name</th>
+            <th>Default</th>
             <th></th>
           </tr>
         </head>
@@ -15,6 +16,7 @@
           <% @plans.each do |plan| %>
             <tr>
               <td><%= plan.plan_name %></td>
+              <td><%= plan.default.to_s.capitalize %></td>
               <td><%= link_to "Edit", edit_admin_plan_path(plan) %></td>
             </tr>
           <% end %>

@@ -16,8 +16,6 @@ class Company < ApplicationRecord
 
   accepts_nested_attributes_for :shifts, :users
 
-  after_create :setup_stripe_customer
-
   def self.size_options
     ["1-10 Employees", "11-20 Employees", "21-50 Employees",
      "50-100 Employees", "100+ Employees"]
@@ -45,12 +43,5 @@ class Company < ApplicationRecord
     key = SecureRandom.hex(6)
     update_column(:hash_key, key)
     key
-  end
-
-  def setup_stripe_customer
-    if !Rails.env.test?
-      StripeCustomer.for(self).create
-      StripeSubscription.for(subscription).create
-    end
   end
 end
