@@ -19,6 +19,12 @@ module Calendar
       UserPermissions.for(@user).manage?(@location)
     end
 
+    def wages
+      return unless Features.for(location.company).wages?
+
+      # TODO: add date here
+      @wages ||= Calculators::Wages::WeeklyForLocation.new(location: location)
+    end
     private
 
     def current_location_date

@@ -16,7 +16,7 @@ class CalendarsController < AuthenticatedController
       cookies[:view] = params[:view]
     end
 
-    params[:view] || cookies[:view] ||  "daily"
+    params[:view] || cookies[:view] ||  "weekly"
   end
 
   def date

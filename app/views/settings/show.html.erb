@@ -13,14 +13,16 @@
         <% end %>
       </div>
 
-      <div>
-        <%= link_to settings_schedule_rules_path do %>
-          <div>
-            <span class="oi oi-project"></span>
-            <%= t(".schedule_rules") %>
-          </div>
-        <% end %>
-      </div>
+      <% if 1 == 2 %>
+        <div>
+          <%= link_to settings_schedule_rules_path do %>
+            <div>
+              <span class="oi oi-project"></span>
+              <%= t(".schedule_rules") %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
 
       <div>
         <%= link_to edit_settings_company_preference_path do %>
@@ -31,14 +33,16 @@
         <% end %>
       </div>
 
-      <div>
-        <%= link_to settings_popular_times_path do %>
-          <div>
-            <span class="oi oi-timer"></span>
-            <%= t(".popular_times") %>
-          </div>
-        <% end %>
-      </div>
+      <% if 1 ==2 %>
+        <div>
+          <%= link_to settings_popular_times_path do %>
+            <div>
+              <span class="oi oi-timer"></span>
+              <%= t(".popular_times") %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
 
       <div>
         <%= link_to settings_credit_cards_path do %>

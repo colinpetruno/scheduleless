@@ -43,13 +43,6 @@ module Calendar
       date.to_s(:integer).to_i == location_time.to_s(:day_integer).to_i
     end
 
-    def wages
-      return unless Features.for(location.company).wages?
-
-
-      @wages ||= Calculators::Wages::WeeklyForLocation.new(location: location)
-    end
-
     private
 
     attr_reader :date, :user
