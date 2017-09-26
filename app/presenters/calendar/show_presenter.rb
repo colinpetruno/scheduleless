@@ -30,7 +30,8 @@ module Calendar
     end
 
     def partial_presenter
-      presenter_class.new(date: date, location: location, user: user)
+      @_partial_presenter ||= presenter_class.
+        new(date: date, location: location, user: user)
     end
 
     def selected_date

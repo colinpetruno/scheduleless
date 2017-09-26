@@ -8,6 +8,7 @@
   <header>
     <%= Date::MONTHNAMES[display_date.month] %>
   </header>
+
   <%= render partial: "calendars/calendar",
     locals: {
     presenter: CalendarPresenter.new(day: display_date,

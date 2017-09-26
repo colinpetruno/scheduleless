@@ -11,6 +11,38 @@ module Calculators
         weekly_sum
       end
 
+      def double_overtime_hours
+        weekly_sum[:double_overtime_hours]
+      end
+
+      def double_overtime_pay
+        weekly_sum[:double_overtime_pay]
+      end
+
+      def total_hours
+        weekly_sum[:hours]
+      end
+
+      def total_pay
+        weekly_sum[:total]
+      end
+
+      def overtime_hours
+        weekly_sum[:overtime_hours]
+      end
+
+      def overtime_pay
+        weekly_sum[:overtime_pay]
+      end
+
+      def regular_hours
+        weekly_sum[:regular_hours]
+      end
+
+      def regular_pay
+        weekly_sum[:regular_hour_pay]
+      end
+
       def wages_by_user
         @_wages_by_user ||= build_wages_by_user_hash
       end

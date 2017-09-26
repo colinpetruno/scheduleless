@@ -1,0 +1,52 @@
+.calendars-wages {
+  color: $white;
+  font-size: 12px;
+  font-weight: 200;
+
+  > table {
+    th {
+      border-top: 0;
+      border-bottom: 1px solid $white;
+    }
+
+    tr, td, th {
+      font-weight: 200;
+      padding: 0;
+    }
+
+    td, th {
+      text-align: right;
+
+      &:first-child {
+        text-align: left;
+      }
+    }
+
+    td {
+      border: 0;
+    }
+
+    tr {
+      &:last-child {
+        td {
+          // padding-top: 5px;
+          border-top: 1px solid $white;
+        }
+      }
+    }
+
+    tbody {
+      tr:first-child {
+        td {
+          padding-top: 5px;
+        }
+      }
+
+      tr:nth-child(3) {
+        td {
+          padding-bottom: 5px;
+        }
+      }
+    }
+  }
+}

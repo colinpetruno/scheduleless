@@ -16,7 +16,7 @@ module Calculators
       def calculate
         # if user exempt
           # 0
-        Shifts::Processors::Lookup.
+        ::Calculators::Wages::Shifts::Processors::Lookup.
           for(location).
           new(company: company, shift: shift, location: location, rate: 1000).
           process
