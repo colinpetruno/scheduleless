@@ -11,29 +11,21 @@
   </div>
 
   <%= simple_form_for [:onboarding, @schedule_setting],
+    method: :put,
     url: onboarding_schedule_settings_path do |f|
   %>
-    <div class="inline">
-      <%= f.input :start_date,
-        as: :select,
-        collection: ScheduleSetting.start_date_options,
-        include_blank: false
-      %>
 
-      <%= f.input :schedule_duration,
-        as: :select,
-        collection: ScheduleSetting.duration_options,
-        include_blank: false
-      %>
-    </div>
-
-    <%= f.input :lead_time,
+    <%= f.input :start_day,
       as: :select,
-      collection: ScheduleSetting.lead_time_options,
+      collection: ScheduleSetting.day_options,
       include_blank: false
     %>
 
-    <%= f.input :note %>
+    <%= f.input :payment_method,
+      as: :select,
+      collection: ScheduleSetting.pay_method_options,
+      include_blank: false
+    %>
 
     <footer>
         <%= link_to t(".back"),

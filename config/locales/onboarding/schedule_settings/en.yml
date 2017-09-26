@@ -10,14 +10,9 @@ en:
         finish: "Finish"
         title: "Configure Your Schedule"
       update:
-        dashboard: "Dashboard"
+        dashboard: "Go To Dashboard"
         line_1: >
-          Your schedules are being prepared! We will send you an email with a 
-          link to review. There you can approve or request changes. Once your 
-          first schedules are approved we will invite your employees to sign 
-          up.
-        line_2: >
-          In the meantime, you can check out your dashboard and download our 
-          apps.
+          Thanks for setting up your account! Enjoy spending less time on your
+          scheduling and reach out to us with any questions you may have!
         title: "Thanks!"
 

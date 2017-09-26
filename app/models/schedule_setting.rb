@@ -1,27 +1,20 @@
-class ScheduleSetting < ApplicationRecord
-  belongs_to :company
+class ScheduleSetting
+  include ActiveModel::Model
 
-  attr_accessor :start_date
+  attr_accessor :company, :start_day, :payment_method
 
-  def self.duration_options
-    [["1 week", 1], ["2 weeks", 2], ["3 weeks", 3], ["4 weeks", 4]]
+  def update
+    # binding.pry
+    company.update(schedule_start_day: start_day, pay_by_type: payment_method)
   end
 
-  def self.lead_time_options
-    [["1 period", 1], ["2 periods", 2], ["3 periods", 3]]
-  end
-
-  def self.start_date_options
-    start_date = Date.today + 1.week
-
-    (1..21).map do |offset|
-      date = Date.today + offset.days
-
-      [date.to_s(:full_day_and_month), date.to_s(:day_integer)]
+  def self.day_options
+    I18n.t("date.day_names").each_with_index.map do |day, index|
+      [day, index]
     end
   end
 
-  def start_day_of_week
-    Date::DAYNAMES[day_start]
+  def self.pay_method_options
+    [["User", "user"], ["Position", "position"]]
   end
 end

@@ -23,7 +23,6 @@ module Admin
         delete_preferences
         delete_preferred_hours
         delete_schedule_rules
-        delete_schedule_settings
         delete_scheduling_hours
         delete_scheduling_periods
         delete_shifts
@@ -91,10 +90,6 @@ module Admin
       SchedulingHour.
         where(location_id: company.locations.pluck(:id)).
         delete_all
-    end
-
-    def delete_schedule_settings
-      ScheduleSetting.where(company_id: company.id).delete_all
     end
 
     def delete_schedule_rules

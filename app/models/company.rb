@@ -9,12 +9,16 @@ class Company < ApplicationRecord
   has_many :shifts
 
   has_one :preference, as: :preferable
-  has_one :schedule_setting
   has_one :subscription
 
   validates :name, presence: true, length: { minimum: 3, maximum: 150 }
 
   accepts_nested_attributes_for :shifts, :users
+
+  enum pay_by_type: {
+    user: 0,
+    position: 1
+  }
 
   def self.size_options
     ["1-10 Employees", "11-20 Employees", "21-50 Employees",
@@ -27,10 +31,6 @@ class Company < ApplicationRecord
 
   def preference
     super || create_preference
-  end
-
-  def schedule_setting
-    super || create_schedule_setting
   end
 
   def subscription
