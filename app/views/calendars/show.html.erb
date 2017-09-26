@@ -59,8 +59,10 @@
   <%= render partial: "sidebar_content", locals: { presenter: @presenter } %>
 
   <% if Features.for(current_company).wages? %>
-    <%= render partial: "wages", locals: {
-      wages: @presenter.partial_presenter.wages
-    } %>
+    <div id="wage-container">
+      <%= render partial: "wages", locals: {
+        wages: @presenter.partial_presenter.wages
+      } %>
+    </div>
   <% end %>
 <% end %>

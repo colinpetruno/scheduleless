@@ -1,10 +1,11 @@
 class ApplicationPolicy
-  attr_reader :current_location, :user, :record
+  attr_reader :current_location, :company, :user, :record
 
   def initialize(context, record)
     @current_location = context.location
     @record = record
     @user = context.user
+    @company = context.user&.company
   end
 
   def index?
@@ -12,7 +13,7 @@ class ApplicationPolicy
   end
 
   def show?
-    scope.where(:id => record.id).exists?
+    scope.where(id: record.id).exists?
   end
 
   def create?

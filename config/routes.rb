@@ -152,6 +152,7 @@ Rails.application.routes.draw do
       resources :locations, only: [] do
         resources :favorite_shifts, only: [:create, :new]
         resources :repeating_shifts, only: [:create, :edit, :new, :update]
+        resources :wages, only: [:index]
       end
 
       resources :shifts, only: [] do

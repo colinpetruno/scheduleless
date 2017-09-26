@@ -1,0 +1,8 @@
+$("#wage-container").html("<%= j(
+  render(
+    partial: "calendars/wages",
+    locals: {
+      wages: @wages
+    }
+  )
+) %>");
