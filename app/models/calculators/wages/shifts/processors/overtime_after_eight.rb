@@ -12,7 +12,8 @@ module Calculators
               regular_hour_pay: regular_hour_cost,
               overtime_pay: overtime_hour_cost,
               double_overtime_pay: 0,
-              total: overtime_hour_cost + regular_hour_cost
+              total: overtime_hour_cost + regular_hour_cost,
+              rate: rate
             }
           end
 

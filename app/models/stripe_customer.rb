@@ -37,6 +37,8 @@ class StripeCustomer
   end
 
   def create_customer
+    return if Rails.env.test?
+
     stripe_customer = Stripe::Customer.create(description: company.name)
 
     if company.persisted?
@@ -49,6 +51,8 @@ class StripeCustomer
   end
 
   def retrieve_customer
+    return if Rails.env.test?
+
     Stripe::Customer.retrieve(company.stripe_customer_id)
   end
 end

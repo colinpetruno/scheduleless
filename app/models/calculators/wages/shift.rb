@@ -5,11 +5,12 @@ module Calculators
         new(shift: shift)
       end
 
-      def initialize(shift:, company: nil, user: nil, position: nil)
-        @shift = shift
+      def initialize(shift:, company: nil, location: nil, user: nil, position: nil)
         @company = company
-        @user = user
+        @location = location
         @position = position
+        @shift = shift
+        @user = user
       end
 
       def calculate
@@ -17,7 +18,7 @@ module Calculators
           # 0
         Shifts::Processors::Lookup.
           for(location).
-          new(shift: shift, rate: 1000).
+          new(company: company, shift: shift, location: location, rate: 1000).
           process
       end
 
@@ -34,7 +35,7 @@ module Calculators
       end
 
       def location
-        shift.location
+        @location ||= shift.location
       end
 
       def position

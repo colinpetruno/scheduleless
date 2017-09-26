@@ -3,8 +3,10 @@ module Calculators
     module Shifts
       module Processors
         class Base
-          def initialize(shift:, rate:)
+          def initialize(company: nil, shift:, location: nil, rate:)
+            @company = company
             @shift = shift
+            @location = location
             @rate = rate
           end
 
@@ -17,7 +19,8 @@ module Calculators
               regular_hour_pay: hours * rate,
               overtime_pay: 0,
               double_overtime_pay: 0,
-              total: hours * rate
+              total: hours * rate,
+              rate: rate
             }
           end
 
@@ -37,6 +40,14 @@ module Calculators
           private
 
           attr_reader :shift, :rate
+
+          def company
+            @company ||= shift.company
+          end
+
+          def location
+            @location ||= shift.location
+          end
         end
       end
     end

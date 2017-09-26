@@ -26,6 +26,7 @@ class StripeSubscription
   attr_reader :subscription
 
   def create_stripe_subscription
+    return if Rails.env.test?
     stripe_subscription = Stripe::Subscription.create(
       customer: subscription.company.stripe_customer_id,
       plan: "standard" # subscription.plan
@@ -37,6 +38,8 @@ class StripeSubscription
   end
 
   def find_stripe_subscription
+    return if Rails.env.test?
+
     if subscription.stripe_subscription_id.present?
       retrieve_stripe_subscription
     else
@@ -45,6 +48,8 @@ class StripeSubscription
   end
 
   def retrieve_stripe_subscription
+    return if Rails.env.test?
+
     Stripe::Subscription.retrieve(subscription.stripe_subscription_id)
   end
 

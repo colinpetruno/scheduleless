@@ -78,7 +78,11 @@ class Registration
     if plan_id.present?
       Plan.find(plan_id)
     else
-      Plan.find_by!(default: true)
+      begin
+        Plan.find_by!(default: true)
+      rescue ActiveRecord::RecordNotFound
+        Plan.create(plan_name: "Standard", default: true)
+      end
     end
   end
 

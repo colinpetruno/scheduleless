@@ -12,15 +12,12 @@ module Calculators
               regular_hour_pay: regular_hour_cost,
               overtime_pay: overtime_hour_cost,
               double_overtime_pay: 0,
-              total: total_cost
+              total: total_cost,
+              rate: rate
             }
           end
 
           private
-
-          def company
-            shift.company
-          end
 
           def schedule_period
             @_schedule_period ||= SchedulePeriod.for(company)
