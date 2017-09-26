@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170921040614) do
+ActiveRecord::Schema.define(version: 20170925170222) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20170921040614) do
     t.boolean  "demo",               default: false, null: false
     t.string   "hash_key"
     t.string   "size"
+    t.integer  "schedule_start_day", default: 1,     null: false
   end
 
   create_table "credit_cards", force: :cascade do |t|
@@ -150,7 +151,7 @@ ActiveRecord::Schema.define(version: 20170921040614) do
     t.string   "city"
     t.string   "county_province"
     t.string   "postalcode"
-    t.string   "country"
+    t.string   "country",                     default: "US",                         null: false
     t.string   "additional_details"
     t.datetime "created_at",                                                         null: false
     t.datetime "updated_at",                                                         null: false

@@ -110,7 +110,7 @@ en:
         position_ids: "Alternate Positions"
         primary_position: "Position"
         primary_position_id: "Position"
-        salary: "Salaried Employee?"
+        salary: "Exempt Employee?"
         wage: "Hourly Wage"
     required:
       text: 'required'

@@ -15,9 +15,13 @@ module DateAndTime
         parse(end_time_string)
     end
 
+    def  length_in_hours
+      length_in_minutes.to_f / 60.to_f
+    end
+
     def length_in_minutes
       # difference is in seconds
-      (self.end - self.start) / 60
+      (self.end - self.start).to_f / 60.to_f
     end
 
     def start
