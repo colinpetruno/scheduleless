@@ -1,4 +1,27 @@
-<table class="table calendar-<%= presenter.format %>">
+<header>
+  <% if presenter.month_link_disabled?(presenter.previous_month) %>
+    <span class="oi oi-caret-left disabled"></span>
+  <% else %>
+    <%= link_to presenter.previous_month_url,
+      remote: true do %>
+      <span class="oi oi-caret-left"></span>
+    <% end %>
+  <% end %>
+
+  <div class="month-name">
+    <%= Date::MONTHNAMES[presenter.month.month] %>
+  </div>
+
+  <% if presenter.month_link_disabled?(presenter.next_month) %>
+    <span class="oi oi-caret-right disabled"></span>
+  <% else %>
+    <%= link_to presenter.next_month_url, remote: true do %>
+      <span class="oi oi-caret-right"></span>
+    <% end %>
+  <% end %>
+</header>
+
+<table class="table calendar-small">
   <thead>
     <tr>
       <% presenter.days.map do |day| %>
@@ -10,7 +33,7 @@
     <% presenter.weeks.map do |week| %>
         <tr>
         <% week.map do |day| %>
-          <% classname = (day.month == presenter.day.month) ? "" : "inactive" %>
+          <% classname = (day.month == presenter.month.month) ? "" : "inactive" %>
 
           <td class="<%= classname %>">
             <div>

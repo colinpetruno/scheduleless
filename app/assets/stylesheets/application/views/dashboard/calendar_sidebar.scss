@@ -6,5 +6,22 @@
     margin-bottom: 10px;
     font-weight: 200;
     letter-spacing: 3px;
+    vertical-align: middle;
+
+    a {
+      color: $white;
+      vertical-align: middle;
+    }
+
+    span.disabled {
+      color: lighten($blue, 15%);
+      line-height: 20px;
+      vertical-align: top;
+    }
+
+    > .month-name {
+      display: inline-block;
+      min-width: 100px;
+    }
   }
 }

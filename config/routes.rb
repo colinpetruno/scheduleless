@@ -150,6 +150,7 @@ Rails.application.routes.draw do
 
     namespace :calendar, only: [] do
       resources :locations, only: [] do
+        resource :calendar_sidebar, only: [:show]
         resources :favorite_shifts, only: [:create, :new]
         resources :repeating_shifts, only: [:create, :edit, :new, :update]
         resources :wages, only: [:index]

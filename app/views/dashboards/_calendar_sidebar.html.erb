@@ -5,15 +5,10 @@
                   end %>
 
 <div class="dashboard-calendar-sidebar">
-  <header>
-    <%= Date::MONTHNAMES[display_date.month] %>
-  </header>
-
   <%= render partial: "calendars/calendar",
     locals: {
-    presenter: CalendarPresenter.new(company: current_company,
+    presenter: CalendarPresenter.new(schedule_start: current_company.schedule_start,
                                      day: display_date,
-                                     format: :small,
                                      location: current_company.locations.first)
   } %>
 </div>
