@@ -62,7 +62,11 @@
   }
 
   &.edited {
-    background-color: rgba(lighten($blue, 28%), .7);
-    border: 1px dashed $blue;
+    // background-color: rgba(lighten($blue, 28%), .7);
+    // border: 1px dashed $blue;
+
+    background-color: lighten($orange, 33%);
+    border: 1px dashed lighten($orange, 10%);
+    color: darken($orange, 25%);
   }
 }
