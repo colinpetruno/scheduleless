@@ -41,20 +41,25 @@ module Shifts
       # ensure we check to make sure it wasn't previously populated and deleted
       in_progress_shift = InProgressShift.
         unscoped.
-        find_or_initialize_by(company_id: company.id,
-                              date: date.to_s(:integer),
-                              location_id: location.id,
-                              minute_end: repeating_shift.preview_minute_end,
-                              minute_start: repeating_shift.preview_minute_start,
-                              repeating_shift_id: repeating_shift.id,
-                              published: repeating_shift.published,
-                              user_id: repeating_shift.preview_user_id)
+        find_or_initialize_by(
+          company_id: company.id,
+          date: date.to_s(:integer),
+          location_id: location.id,
+          repeating_shift_id: repeating_shift.id,
+          user_id: repeating_shift.preview_user_id
+        ) do |ips|
+          ips.minute_end = repeating_shift.preview_minute_end
+          ips.minute_start = repeating_shift.preview_minute_start
+        end
 
       if repeating_shift.published? && in_progress_shift.new_record?
         in_progress_shift.edited = false
+        in_progress_shift.published = true
         in_progress_shift.save
 
         Publishers::Utilities::ShiftCreator.create_from(in_progress_shift)
+      elsif repeating_shift.published?
+        #TODO what?
       else
         in_progress_shift.save
       end
