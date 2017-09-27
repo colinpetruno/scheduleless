@@ -22,11 +22,19 @@ module Calendar
     end
 
     def next_day_url
-      routes.location_calendar_path(location, date: date + 1.day)
+      if view.to_sym == :daily
+        routes.location_calendar_path(location, date: date + 1.day)
+      else
+        routes.location_calendar_path(location, date: date + 7.days)
+      end
     end
 
     def previous_day_url
-      routes.location_calendar_path(location, date: date - 1.day)
+      if view.to_sym == :daily
+        routes.location_calendar_path(location, date: date - 1.day)
+      else
+        routes.location_calendar_path(location, date: date - 7.days)
+      end
     end
 
     def partial_presenter
@@ -39,7 +47,16 @@ module Calendar
     end
 
     def title
-      "Title Goes Here"
+      if view.to_sym == :daily
+        formatted_date
+      else
+        week = DateAndTime::WeekDates.new(date: date,
+                                          start_day: company.schedule_start)
+        beginning = week.beginning_of_week.to_s(:full_day_and_month)
+        end_of_week = week.end_of_week.to_s(:full_day_and_month)
+
+        "#{beginning} - #{end_of_week}"
+      end
     end
 
     def toggle_link_options(format)
@@ -53,6 +70,10 @@ module Calendar
     private
 
     attr_reader :date, :user, :view
+
+    def company
+      @_company ||= location.company
+    end
 
     def manage?
       UserPermissions.for(user).manage?(location)

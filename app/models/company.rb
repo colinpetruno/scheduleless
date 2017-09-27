@@ -33,6 +33,10 @@ class Company < ApplicationRecord
     super || create_preference
   end
 
+  def schedule_start
+    I18n.t("date.day_names")[schedule_start_day].downcase.to_sym
+  end
+
   def subscription
     super || create_subscription(plan_id: Plan.find_by(default: true).id)
   end
