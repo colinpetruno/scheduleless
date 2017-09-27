@@ -4,14 +4,15 @@ class CalendarPresenter
 
   attr_reader :day, :format, :location
 
-  def initialize(day: Date.today, format: :large, location:)
+  def initialize(company:, day: Date.today, format: :large, location:)
+    @company = company
     @day = day
     @format = format # TODO: this can prob be removed now
     @location = location
   end
 
   def days
-    I18n.t label_key
+    week_dates.days_abbr
   end
 
   def day_block(date)
@@ -31,11 +32,11 @@ class CalendarPresenter
   end
 
   def start_day
-    day.beginning_of_month.beginning_of_week(:sunday)
+    day.beginning_of_month.beginning_of_week(company.schedule_start)
   end
 
   def end_day
-    day.end_of_month.end_of_week(:sunday)
+    day.end_of_month.end_of_week(company.schedule_start)
   end
 
   def weeks
@@ -44,7 +45,7 @@ class CalendarPresenter
 
   private
 
-  attr_accessor :output_buffer
+  attr_accessor :company, :output_buffer
 
   def classes_for(date)
     class_names = date.to_s
@@ -70,5 +71,10 @@ class CalendarPresenter
 
   def routes
     Rails.application.routes.url_helpers
+  end
+
+  def week_dates
+    @_week_dates ||= DateAndTime::WeekDates.
+      new(date: day, start_day: company.schedule_start)
   end
 end

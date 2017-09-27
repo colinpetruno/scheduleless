@@ -11,7 +11,8 @@
 
   <%= render partial: "calendars/calendar",
     locals: {
-    presenter: CalendarPresenter.new(day: display_date,
+    presenter: CalendarPresenter.new(company: current_company,
+                                     day: display_date,
                                      format: :small,
                                      location: current_company.locations.first)
   } %>
