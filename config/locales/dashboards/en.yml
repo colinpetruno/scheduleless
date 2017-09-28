@@ -1,0 +1,6 @@
+en:
+  dashboards:
+    upcoming_shifts:
+      shift:
+        cancel: "Cancel"
+        confirm: "Are you sure you want to cancel this shift?"

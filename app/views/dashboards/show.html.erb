@@ -1,21 +1,37 @@
-<div class="dashboard-show two-columns">
-  <section>
-    <article>
-      <%= render(
-        partial: "whose_working",
-        locals: {
-          presenter: Dashboard::WhoseWorkingPresenter.
-            new(current_user.locations)
-        }
-      ) %>
-    </article>
-    <article>
-      <%= render partial: "available_shifts" %>
-    </article>
-  </section>
+<div class="dashboard-show">
+  <div class="two-columns">
+    <section>
+      <article>
+        <%= render(
+          partial: "whose_working",
+          locals: {
+            presenter: Dashboard::WhoseWorkingPresenter.
+              new(current_user.locations)
+          }
+        ) %>
+      </article>
+      <article>
+        <%= render partial: "upcoming_shifts",
+          locals: {
+            presenter: Dashboard::UpcomingShiftsPresenter.new(current_user)
+          } %>
+      </article>
+    </section>
+  </div>
+
+  <div class="two-columns">
+    <section>
+      <article>
+        <%= render partial: "available_shifts" %>
+      </article>
+
+      <article>
+        <%= render partial: "approvals" %>
+      </article>
+    </section>
+  </div>
 </div>
 
-<%= render partial: "approvals" %>
 
 <% content_for(:view_sidebar) do %>
   <%= render partial: "calendar_sidebar" %>

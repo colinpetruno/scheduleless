@@ -1,0 +1,24 @@
+<div class="frame fill dashboard-upcoming-shifts">
+  <header class="light">
+    <div>Upcoming Shifts</div>
+  </header>
+
+  <section>
+    <% if presenter.displayable? %>
+      <% presenter.shifts.each do |shift| %>
+        <%= render partial: "dashboards/upcoming_shifts/shift", locals: {
+          shift: shift
+        } %>
+      <% end %>
+      <div class="see-all centered">
+        <%= link_to "View All", shifts_path %>
+      </div>
+    <% else %>
+      <div class="empty-message">
+        <h3>You have no upcoming shifts!</h3>
+        <span class="oi oi-circle-check"></span>
+        <p>We'll let you know when something comes up. Enjoy the downtime!</p>
+      </div>
+    <% end %>
+  </section>
+</div>

@@ -33,6 +33,11 @@ class ShiftFinder
     scope
   end
 
+  def first(number=1)
+    self.scope = scope.first(number)
+    self
+  end
+
   def for_stream
     self.scope = scope.
       where( date: ((Date.today - 30.days).to_s(:integer).to_i..Float::INFINITY)).
