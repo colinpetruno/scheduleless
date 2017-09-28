@@ -19,6 +19,9 @@
     }
 
     .hours {
+      min-width: 150px;
+      text-align: right;
+
       &.late {
         background-color: lighten($orange, 10%);
         border-left: 1px solid $orange;

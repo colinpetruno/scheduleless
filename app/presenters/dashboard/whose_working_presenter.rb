@@ -31,6 +31,16 @@ module Dashboard
       location_hours_for(location).opening
     end
 
+    def shifts_for(location)
+      date = DateAndTime::LocationTime.
+        new(location: location).
+        current_date_integer
+
+      Shift.
+        where(location: location, date: date).
+        order([:minute_start, :minute_end])
+    end
+
     private
 
     def build_location_hour_map
@@ -49,6 +59,5 @@ module Dashboard
     def location_hour_map
       @_location_hour_map ||= build_location_hour_map
     end
-
   end
 end

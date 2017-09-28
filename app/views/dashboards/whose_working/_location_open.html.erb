@@ -1,44 +1,17 @@
 <section class="dashboards-whose-working-location-open">
-  <div class="shift">
-    <div class="name">
-      Luna Lovegood
-    </div>
+  <% presenter.shifts_for(location).each do |shift| %>
+    <div class="shift">
+      <div class="name">
+        <%= shift.user.full_name %>
+      </div>
 
-    <div class="position">
-      Waitress
-    </div>
+      <div class="position">
+        <%= shift.position&.name %>
+      </div>
 
-    <div class="hours">
-      10am-4pm
+      <div class="hours">
+        <%= shift.time_range %>
+      </div>
     </div>
-  </div>
-
-  <div class="shift">
-    <div class="name">
-      Luna Lovegood
-    </div>
-
-    <div class="position">
-      Waitress
-    </div>
-
-    <div class="hours checked-in">
-      10am-4pm
-    </div>
-  </div>
-
-  <div class="shift">
-    <div class="name">
-      Luna Lovegood
-    </div>
-
-    <div class="position">
-      Waitress
-    </div>
-
-    <div class="hours late">
-      10am-4pm
-    </div>
-  </div>
-
+  <% end %>
 </section>
