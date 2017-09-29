@@ -1,10 +1,17 @@
-<div class="dashboard-upcoming-shift">
-  <h3>Upcoming Shift</h3>
-  <div>
-    July
-    <section>20</section>
-    9am - 5pm
+<% if presenter.upcoming_shift.present? %>
+  <div class="dashboard-upcoming-shift">
+    <h3>Upcoming Shift</h3>
 
-    <button>Check In</button>
+    <div>
+      <%= presenter.month %>
+      <section><%= presenter.day %></section>
+      <%= presenter.time_range %>
+
+      <%= button_to presenter.check_in_text,
+        presenter.check_in_link,
+        remote: true,
+        class: "button" %>
+      <!-- <button>Check In</button> -->
+    </div>
   </div>
-</div>
+<% end %>

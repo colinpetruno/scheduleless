@@ -32,8 +32,14 @@
   </div>
 </div>
 
-
 <% content_for(:view_sidebar) do %>
   <%= render partial: "calendar_sidebar" %>
-  <%= render partial: "upcoming_shift" %>
+.
+  <% if Features.for(current_company).time_clock? %>
+    <div id="dashboards-upcoming-shift">
+      <%= render partial: "upcoming_shift", locals: {
+        presenter: Dashboard::UpcomingShiftPresenter.new(current_user)
+      } %>
+    </div>
+  <% end %>
 <% end %>

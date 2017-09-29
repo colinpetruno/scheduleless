@@ -1,0 +1,11 @@
+<% if @saved %>
+  $("#dashboards-upcoming-shift").html("<%= j(
+  render(
+    partial: "dashboards/upcoming_shift",
+    locals: {
+      presenter: Dashboard::UpcomingShiftPresenter.new(current_user)
+    }
+  )) %>");
+<% else %>
+    // TODO: error handling
+<% end %>

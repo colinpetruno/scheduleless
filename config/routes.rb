@@ -133,7 +133,6 @@ Rails.application.routes.draw do
   }
 
   namespace :remote, defaults: { format: :js } do
-
     resources :in_progress_shifts, only: [] do
       scope module: :in_progress_shifts, as: :in_progress_shifts do
         resource :delete_confirmation, only: [:create, :new], path: "delete"
@@ -158,6 +157,13 @@ Rails.application.routes.draw do
 
       resources :shifts, only: [] do
         resource :shift_detail, only: [:show], path: "details"
+      end
+    end
+
+    namespace :dashboard do
+      resources :shifts, only: [] do
+        resource :check_in, only: [:create]
+        resource :check_out, only: [:create]
       end
     end
   end
