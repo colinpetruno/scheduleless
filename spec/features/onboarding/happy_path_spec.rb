@@ -63,7 +63,7 @@ RSpec.describe "onboarding happy path", type: :feature do
     fill_in "Location Name", with: "Centre Street"
     fill_in "Address Line 1", with: "161 Huntington Ave Boston 02130"
     fill_in "City", with: "Boston"
-    fill_in "State", with: "MA"
+    select "Massachusetts", from: "State"
     fill_in "Postal Code", with: "02130"
 
     click_on "Save and Continue"
