@@ -68,10 +68,6 @@ Rails.application.routes.draw do
     resources :plans, only: [:create, :edit, :index, :new, :update]
 
     resources :schedule_approvals, only: [:index]
-    resources :scheduling_periods, only: [:show, :update] do
-      resource :approval, only: [:create]
-      resource :schedule_period_regenerator, only: [:create], path: "regenerate"
-    end
   end
 
   namespace :mobile_api do
