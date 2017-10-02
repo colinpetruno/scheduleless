@@ -1,37 +1,44 @@
 <div class="calendars-wages">
-  <table>
-    <thead>
-      <tr>
-        <th></th>
-        <th>Est. Hours</th>
-        <th>Est. Pay</th>
-      </tr>
-    </thead>
+  <% if wages.errors? %>
+    <div>
+      We encountered an error calculating your estimated wages. We have been
+      notified and are looking into it.
+    </div>
+  <% else %>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Est. Hours</th>
+          <th>Est. Pay</th>
+        </tr>
+      </thead>
 
-    <tbody>
-      <tr>
-        <td>Regular</td>
-        <td><%= wages.regular_hours %></td>
-        <td><%= Currency::FromNumber.for(wages.regular_pay) %></td>
-      </tr>
+      <tbody>
+        <tr>
+          <td>Regular</td>
+          <td><%= wages.regular_hours %></td>
+          <td><%= Currency::FromNumber.for(wages.regular_pay) %></td>
+        </tr>
 
-      <tr>
-        <td>Overtime</td>
-        <td><%= wages.overtime_hours %></td>
-        <td><%= Currency::FromNumber.for(wages.overtime_pay) %></td>
-      </tr>
+        <tr>
+          <td>Overtime</td>
+          <td><%= wages.overtime_hours %></td>
+          <td><%= Currency::FromNumber.for(wages.overtime_pay) %></td>
+        </tr>
 
-      <tr>
-        <td>2x Overtime</td>
-        <td><%= wages.double_overtime_hours %></td>
-        <td><%= Currency::FromNumber.for(wages.double_overtime_pay) %></td>
-      </tr>
+        <tr>
+          <td>2x Overtime</td>
+          <td><%= wages.double_overtime_hours %></td>
+          <td><%= Currency::FromNumber.for(wages.double_overtime_pay) %></td>
+        </tr>
 
-      <tr>
-        <td>Total</td>
-        <td><%= wages.total_hours %></td>
-        <td><%= Currency::FromNumber.for(wages.total_pay) %></td>
-      </tr>
-    </tbody>
-  </table>
+        <tr>
+          <td>Total</td>
+          <td><%= wages.total_hours %></td>
+          <td><%= Currency::FromNumber.for(wages.total_pay) %></td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
 </div>

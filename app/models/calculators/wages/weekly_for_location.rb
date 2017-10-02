@@ -13,34 +13,61 @@ module Calculators
 
       def double_overtime_hours
         weekly_sum[:double_overtime_hours]
+      rescue
+        0
       end
 
       def double_overtime_pay
         weekly_sum[:double_overtime_pay]
+      rescue
+        0
+      end
+
+      def errors?
+        if @_errors.present?
+          @_errors
+        else
+          weekly_sum
+        end
+      rescue StandardError => error
+        Bugsnag.notify(error)
+        @_errors = false
       end
 
       def total_hours
         weekly_sum[:hours]
+      rescue
+        0
       end
 
       def total_pay
         weekly_sum[:total]
+      rescue
+        0
       end
 
       def overtime_hours
         weekly_sum[:overtime_hours]
+      rescue
+        0
       end
 
       def overtime_pay
         weekly_sum[:overtime_pay]
+      rescue
+        0
       end
 
       def regular_hours
         weekly_sum[:regular_hours]
+      rescue
+        0
       end
 
       def regular_pay
         weekly_sum[:regular_hour_pay]
+      rescue
+        0
       end
 
       def wages_by_user
