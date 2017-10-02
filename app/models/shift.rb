@@ -34,8 +34,12 @@ class Shift < ApplicationRecord
     end
   end
 
-  def month
+  def edited?
+    # maintain same interface as in_progress_shift
+    false
+  end
 
+  def month
     if @month
       month_int =  @month.to_s
     end
@@ -47,6 +51,10 @@ class Shift < ApplicationRecord
     if !month_int.nil?
       month_int.rjust(2, "0")
     end
+  end
+
+  def repeating?
+    repeating_shift_id.present?
   end
 
   def year

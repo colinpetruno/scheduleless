@@ -21,6 +21,14 @@ module Shifts
 
       attr_reader :date, :in_progress, :location
 
+      def base_scope
+        if in_progress == true
+          location.in_progress_shifts
+        else
+          location.shifts
+        end
+      end
+
       def current_location_date
         DateAndTime::LocationTime.new(location: location).current_date_integer
       end
@@ -29,17 +37,28 @@ module Shifts
         (dates.beginning_of_week(:integer)..dates.end_of_week(:integer))
       end
 
-      def in_progress?
-        in_progress
-      end
-
-      def shifts
-        @_raw_shifts ||= location.
-          in_progress_shifts.
+      def future_shifts
+        @_future_shifts ||= base_scope.
           where(date: date_range_integers).
           where("date >= ?", current_location_date).
           includes(:user).
           order(:date, :minute_start)
+      end
+
+      def in_progress?
+        in_progress
+      end
+
+      def past_shifts
+        @_past_shifts ||= location.
+          shifts.
+          where("date < ?", current_location_date).
+          includes(:user).
+          order(:date, :minute_start)
+      end
+
+      def shifts
+        @_raw_shifts ||= future_shifts + past_shifts
       end
 
       def dates
