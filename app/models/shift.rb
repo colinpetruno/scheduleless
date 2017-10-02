@@ -1,5 +1,6 @@
 class Shift < ApplicationRecord
   belongs_to :company
+  belongs_to :in_progress_shift
   belongs_to :location
   belongs_to :position
   belongs_to :user

@@ -53,7 +53,7 @@ module Shifts
         @_past_shifts ||= location.
           shifts.
           where("date < ?", current_location_date).
-          includes(:user).
+          includes(:in_progress_shift, :user).
           order(:date, :minute_start)
       end
 

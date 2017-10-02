@@ -16,7 +16,7 @@ module Calendar
     def delete_url
       routes.
         new_remote_in_progress_shifts_in_progress_shift_delete_confirmation_path(
-          shift
+          in_progress_shift
         )
     end
 
@@ -38,6 +38,22 @@ module Calendar
             end_minute: shift.minute_end
           }
         )
+    end
+
+    def future_shift?
+      location_date = DateAndTime::LocationTime.
+        new(location: shift.location).
+        current_date_integer
+
+      location_date.to_i < shift.date.to_i
+    end
+
+    def editable?
+      future_shift?
+    end
+
+    def uneditable?
+      !editable?
     end
 
     def repeat_url
@@ -86,6 +102,10 @@ module Calendar
     private
 
     attr_reader :day_start, :manage, :shift
+
+    def in_progress_shift
+      shift.is_a?(InProgressShift) ? shift : shift.in_progress_shift
+    end
 
     def routes
       Rails.application.routes.url_helpers

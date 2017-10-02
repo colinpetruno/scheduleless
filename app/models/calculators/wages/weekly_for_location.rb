@@ -28,6 +28,7 @@ module Calculators
           @_errors
         else
           weekly_sum
+          nil
         end
       rescue StandardError => error
         Bugsnag.notify(error)

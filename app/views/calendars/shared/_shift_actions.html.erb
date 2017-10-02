@@ -1,9 +1,11 @@
 <div class="actions">
-  <div>
-    <%= link_to shift.details_url, remote: true do %>
-      <span class="oi oi-pencil"></span>
-    <% end %>
-  </div>
+  <% if shift.editable? %>
+    <div>
+      <%= link_to shift.details_url, remote: true do %>
+        <span class="oi oi-pencil"></span>
+      <% end %>
+    </div>
+  <% end %>
 
   <div>
     <%= link_to shift.favorite_url, remote: true do %>
@@ -17,9 +19,11 @@
     <% end %>
   </div>
 
-  <div>
-    <%= link_to shift.delete_url, remote: true do %>
-      <span class="oi oi-trash"></span>
-    <% end %>
-  </div>
+  <% if shift.editable? %>
+    <div>
+      <%= link_to shift.delete_url, remote: true do %>
+        <span class="oi oi-trash"></span>
+      <% end %>
+    </div>
+  <% end %>
 </div>
