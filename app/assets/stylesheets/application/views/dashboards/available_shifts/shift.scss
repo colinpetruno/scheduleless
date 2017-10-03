@@ -1,0 +1,70 @@
+.dashboards-availalbe-shifts-shift {
+  border-bottom: 1px solid $gray-light;
+  display: flex;
+  font-size: 12px;
+
+  .date {
+    margin: 2px;
+    border: 2px solid $gray-light;
+    min-width: 70px;
+    max-width: 70px;
+    padding: 5px;
+    text-align: center;
+    vertical-align: middle;
+
+    display: flex;
+    flex-direction: column;
+
+    > div {
+      &:first-child {
+        margin-top: auto;
+      }
+
+      &:last-child {
+        margin-bottom: auto;
+      }
+    }
+  }
+
+  .time {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+
+    > div {
+      &:first-child {
+        margin-top: auto;
+      }
+
+      &:last-child {
+        margin-bottom: auto;
+      }
+    }
+  }
+
+  .location {
+    // margin-left: auto;
+    min-width: 150px;
+  }
+
+  .buttons {
+    display: none;
+  }
+
+  .accept {
+    background-color: $green;
+    color: $white;
+
+    a {
+      color: $white;
+      display: block;
+      min-width: 40px;
+      text-align: center;
+      line-height: 54px;
+      vertical-align: middle;
+    }
+  }
+}

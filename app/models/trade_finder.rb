@@ -11,6 +11,10 @@ class TradeFinder
     all
   end
 
+  def first(number=5)
+    all.first(number)
+  end
+
   private
 
   def all

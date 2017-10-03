@@ -22,7 +22,9 @@
   <div class="two-columns">
     <section>
       <article>
-        <%= render partial: "available_shifts" %>
+        <%= render partial: "available_shifts", locals: {
+          presenter: Dashboard::AvailableShiftsPresenter.new(current_user)
+        } %>
       </article>
 
       <article>
