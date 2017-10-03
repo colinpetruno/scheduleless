@@ -2,6 +2,6 @@ en:
   offers:
     new:
       trade_for_title: "Create a Trade For"
-      offer_title: "Offer A Shift"
+      offer_title: "Offer to take the shift"
       instructions: "Pick a shift you would like to offer for this one. We will 
         let you know when the original shift owner approves the trade!"

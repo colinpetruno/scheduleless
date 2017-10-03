@@ -10,11 +10,19 @@
     & > article {
       @include make-col-ready();
       @include make-col(9);
+
+      > section {
+        padding: 15px;
+      }
     }
 
     & > aside {
       @include make-col-ready();
       @include make-col(3);
+
+      > section {
+        padding: 15px;
+      }
     }
   }
 

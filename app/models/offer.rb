@@ -7,7 +7,8 @@ class Offer < ApplicationRecord
   enum state: {
     offered: 0,
     accepted: 1,
-    declined: 2
+    declined: 2,
+    waiting_approval: 3
   }
 
   def for_shift

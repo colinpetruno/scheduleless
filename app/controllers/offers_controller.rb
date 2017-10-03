@@ -1,13 +1,14 @@
 class OffersController < AuthenticatedController
   def create
-    @offer = trade.offers.build(offer_params)
+    offer_creater = Offers::Creator.new(current_company, trade, offer_params)
 
-    authorize @offer
+    authorize offer_creater.offer
 
-    if @offer.save
+    if offer_creater.save
       redirect_to trades_path
     else
-      # TODO handle error
+      @offer = offer_creator.offer
+      render :new
     end
   end
 

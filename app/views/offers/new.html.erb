@@ -20,12 +20,16 @@
     <div class="rail">
       <section>
         <article>
-          <%= render partial: "form", locals: { offer: @offer } %>
+          <section>
+            <%= render partial: "form", locals: { offer: @offer } %>
+          </section>
         </article>
         <aside>
-          <div class="instructions">
-            <%= t(".instructions") %>
-          </div>
+          <section>
+            <div class="instructions">
+              <%= t(".instructions") %>
+            </div>
+          </section>
         </aside>
       </section>
     </div>
