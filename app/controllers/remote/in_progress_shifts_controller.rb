@@ -59,7 +59,7 @@ module Remote
         cookies[:view] = params[:view]
       end
 
-      params[:view] || cookies[:view] ||  "daily"
+      params[:view] || cookies[:view] ||  "weekly"
     end
 
     def in_progress_shift_params
