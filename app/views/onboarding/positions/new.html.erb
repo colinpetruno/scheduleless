@@ -11,6 +11,13 @@
 
   <div class="row">
     <div class="col-sm-6">
+      <% if current_company.positions.reject(&:new_record?).blank? %>
+        Whats your position?
+      <% else %>
+        What other positions are in your company?
+      <% end %>
+
+      <br /><br />
       <%= render partial: "form", locals: { position: @position } %>
     </div>
     <div class="col-sm-6">

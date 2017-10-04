@@ -10,6 +10,10 @@ module Onboarding
       authorize @position
 
       if @position.save
+        if current_user.primary_position_id.blank?
+          current_user.update(primary_position_id: @position.id)
+        end
+
         redirect_to new_onboarding_position_path
       else
         render :new

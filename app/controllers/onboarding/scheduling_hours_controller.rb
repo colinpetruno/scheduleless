@@ -14,7 +14,7 @@ module Onboarding
       authorize @location
 
       if @location.update(location_params)
-        redirect_to new_onboarding_position_path(@location)
+        redirect_to new_onboarding_position_path
       else
         render :show
       end
