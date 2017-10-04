@@ -1,0 +1,21 @@
+<div class="dashboard-approvals-trade-offers">
+  <article>
+    <div class="message">
+      <% offers.each do |offer| %>
+        <% if offer.offered_shift_id.present? %>
+          <%= offer.user.full_name %> offered a shift of their own
+        <% else %>
+          <%= offer.user.full_name %> offered to take this shift
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="deny">
+      <a href="#"><span class="oi oi-x"></span></a>
+    </div>
+
+    <div class="approve">
+      <a href="#"><span class="oi oi-check"></span></a>
+    </div>
+  </article>
+</div>

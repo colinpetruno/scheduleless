@@ -28,7 +28,11 @@
       </article>
 
       <article>
-        <%= render partial: "approvals" %>
+        <% if UserPermissions.for(current_user).manager? %>
+          <%= render partial: "approvals", locals: {
+            presenter: Dashboard::ApprovalsPresenter.new(current_user)
+          } %>
+        <% end %>
       </article>
     </section>
   </div>

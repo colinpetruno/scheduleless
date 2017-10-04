@@ -1,0 +1,10 @@
+.dashboard-approvals-trade-approval {
+  display: block;
+  width: 100%;
+
+  > header {
+    background-color: $blue;
+    color: $white;
+    padding: 5px 15px;
+  }
+}

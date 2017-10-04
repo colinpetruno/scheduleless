@@ -1,0 +1,9 @@
+<div class="dashboard-approvals-trade-approval">
+  <header>
+    <%= shift.user.full_name %> wants to trade his shift on <%= shift.date %>.
+  </header>
+
+  <%= render partial: "dashboards/approvals/trade_offers", locals: {
+    offers: offers
+  } %>
+</div>
