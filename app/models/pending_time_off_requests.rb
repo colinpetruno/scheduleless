@@ -15,11 +15,15 @@ class PendingTimeOffRequests
     if UserPermissions.for(user).company_admin?
       TimeOffRequest.
         joins(:user).
-        where(status: :pending, users: { company_id: user.company_id })
+        where(status: :pending,
+              start_date: (Date.today.to_s(:integer).to_i..Float::INFINITY),
+              users: { company_id: user.company_id })
     else
       TimeOffRequest.
         joins("INNER JOIN user_locations on user_locations.user_id = time_off_requests.user_id").
-        where(status: :pending, user_locations: { location_id: user_location_ids })
+        where(status: :pending,
+              start_date: (Date.today.to_s(:integer).to_i..Float::INFINITY),
+              user_locations: { location_id: user_location_ids })
     end
   end
 

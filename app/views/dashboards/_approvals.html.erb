@@ -12,6 +12,12 @@
           offers: offers
         } %>
       <% end %>
+
+      <% presenter.time_off_approvals.each do |time_off_request| %>
+        <%= render partial: "dashboards/approvals/time_off_approval", locals: {
+          time_off_request: time_off_request
+        } %>
+      <% end %>
     <% else %>
       <div class="empty-message">
         <h3>You're caught up!</h3>

@@ -1,0 +1,19 @@
+<div class="dashboards-approvals-time-off-approval">
+  <header>
+    <%= time_off_request.user.full_name %> is requesting time off.
+  </header>
+
+  <article>
+    <div class="message">
+      <%= time_off_request.label %>
+    </div>
+
+    <div class="deny">
+      <a href="#"><span class="oi oi-x"></span></a>
+    </div>
+
+    <div class="approve">
+      <a href="#"><span class="oi oi-check"></span></a>
+    </div>
+  </article>
+</div>

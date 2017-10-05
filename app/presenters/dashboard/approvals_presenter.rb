@@ -8,6 +8,12 @@ module Dashboard
       offers.present?
     end
 
+    def time_off_approvals
+      @_time_off_requests = PendingTimeOffRequests.
+        new(user: user).
+        waiting_approval
+    end
+
     def trade_approvals
       trade_map
     end
