@@ -9,11 +9,31 @@
     </div>
 
     <div class="deny">
-      <a href="#"><span class="oi oi-x"></span></a>
+      <%= simple_form_for(
+        TimeOffRequests::Approval.new,
+        remote: true,
+        url: remote_dashboard_time_off_request_time_off_approvals_path(time_off_request)
+      ) do |f| %>
+        <%= f.input :accept, as: :hidden, input_html: { value: false } %>
+
+        <%= button_tag type: "submit" do %>
+          <span class='oi oi-x'></span>
+        <% end %>
+      <% end %>
     </div>
 
     <div class="approve">
-      <a href="#"><span class="oi oi-check"></span></a>
+      <%= simple_form_for(
+        TimeOffRequests::Approval.new,
+        remote: true,
+        url: remote_dashboard_time_off_request_time_off_approvals_path(time_off_request)
+      ) do |f| %>
+        <%= f.input :accept, as: :hidden, input_html: { value: true } %>
+
+        <%= button_tag type: "submit" do %>
+          <span class='oi oi-check'></span>
+        <% end %>
+      <% end %>
     </div>
   </article>
 </div>

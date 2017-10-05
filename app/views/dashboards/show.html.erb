@@ -27,7 +27,7 @@
         } %>
       </article>
 
-      <article>
+      <article id="dashboard-approvals">
         <% if UserPermissions.for(current_user).manager? %>
           <%= render partial: "approvals", locals: {
             presenter: Dashboard::ApprovalsPresenter.new(current_user)

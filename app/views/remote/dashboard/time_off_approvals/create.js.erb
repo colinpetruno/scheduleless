@@ -1,0 +1,9 @@
+<% if @status == false %>
+  <%# TODO: Error messaging %>
+<% end %>
+
+$("#dashboard-approvals").html("<%= j(
+  render(partial: "dashboards/approvals", locals: {
+    presenter: Dashboard::ApprovalsPresenter.new(current_user)
+  })
+) %>");

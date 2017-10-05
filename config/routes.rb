@@ -161,6 +161,10 @@ Rails.application.routes.draw do
         resource :check_in, only: [:create]
         resource :check_out, only: [:create]
       end
+
+      resources :time_off_requests, only: [] do
+        resources :time_off_approvals, only: [:create]
+      end
     end
   end
 
