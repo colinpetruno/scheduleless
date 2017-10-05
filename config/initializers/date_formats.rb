@@ -1,5 +1,6 @@
 Date::DATE_FORMATS[:month_day_year] = "%b %e, %Y"
-Date::DATE_FORMATS[:month_day] = "%b %e"
+Date::DATE_FORMATS[:month_day] = "%b %-d"
+Date::DATE_FORMATS[:short_month_day] = "%-m/%-d"
 
 # "Wed Jun 28 2017"
 Date::DATE_FORMATS[:datepicker] = "%a %b %e %Y"

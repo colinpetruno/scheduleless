@@ -18,6 +18,13 @@ module Calendar
       classes.join(" ")
     end
 
+    def date_label(date)
+      day = I18n.t("date.abbr_day_names")[date.wday]
+      date = date.to_s(:short_month_day)
+
+      "#{day} #{date}"
+    end
+
     def date_range
       (beginning_of_week..end_of_week)
     end

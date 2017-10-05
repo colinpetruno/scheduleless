@@ -4,7 +4,8 @@
 
     <% presenter.date_range.each do |date| %>
       <div class="<%= "today" if presenter.today?(date) %>">
-        <%= I18n.t("date.day_names")[date.wday] %>
+        <%= presenter.date_label(date) %>
+        <%# I18n.t("date.abbr_day_names")[date.wday] %>
       </div>
     <% end %>
   </header>
