@@ -1,5 +1,7 @@
 module Remote
   class PostingsController < AuthenticatedController
+    helper_method :presenter_class
+
     def create
       @location = current_company.locations.find(params[:location_id])
       @posting = @location.postings.create(posting_params)
@@ -40,11 +42,25 @@ module Remote
       { date_start: start_date, date_end: end_date }
     end
 
+    def presenter_class
+      if view == "daily"
+        ::Calendar::DailySchedulePreviewPresenter
+      else
+        ::Calendar::WeeklySchedulePresenter
+      end
+    end
+
     def posting_params
       params.
         require(:posting).
         permit(:all_shifts, :date_start, :date_end).
         merge(user_id: current_user.id)
+    end
+
+    def view
+      cookies[:view] = params[:view] || cookies[:view] ||  "weekly"
+
+      cookies[:view]
     end
   end
 end

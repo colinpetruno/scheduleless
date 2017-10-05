@@ -12,11 +12,9 @@ class CalendarsController < AuthenticatedController
   private
 
   def view
-    if params[:view].present?
-      cookies[:view] = params[:view]
-    end
+    cookies[:view] = params[:view] || cookies[:view] ||  "weekly"
 
-    params[:view] || cookies[:view] ||  "weekly"
+    cookies[:view]
   end
 
   def date

@@ -2,8 +2,9 @@ window.Scheduleless.sidebar.close();
 
 $("#calendar-container").html("<%= j(render(partial: "calendars/show",
              locals: {
-               presenter: Calendar::DailySchedulePreviewPresenter.
+               presenter: presenter_class.
                  new(date: @posting.date_start,
                      location: @location,
-                     user: current_user)
+                     user: current_user
+                    )
 })) %>");
