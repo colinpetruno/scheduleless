@@ -7,50 +7,42 @@ class OfferAccept
 
   def initialize(offer:)
     @offer = offer
+    @trade = offer.trade
   end
 
   def accept
-    if can_accept_offer?
+    if trade_needs_approval?
+      # if it needs approval it needs kicked to the manager
+      offer.update(state: :waiting_approval)
+    elsif offer_is_a_trade?
       ShiftTrader.new(offer: offer, trade: offer.trade).execute
+    else
+      # if it does not need approval and the shift is a take use shift taker
+      ShiftTaker.new(trade: trade, user: offer.user).take
     end
   end
 
   private
 
-  def can_accept_offer?
-    true
+  attr_reader :offer, :trade
+
+  def preferences
+    @_preferences ||= PreferenceFinder.for(trade.location)
   end
 
-  def tradee_can_accept?
-    # TODO: if the dates are in the same week we need to account for only the difference in total minutes
-    if shifts_in_same_period?
-
-    else
-    AvailabilityChecker.new(date: offered_shift.date, minutes_to_add: offered_shift)
-    end
+  def offer_is_a_trade?
+    offer.shift_id.present?
   end
 
   def offered_shift
     offer.offered_shift
   end
 
-  def offered_shift_date
-    Date.parse(offered_shift.date.to_s)
-  end
-
-  def offered_shift_week
-    (offered_shift_date.beginning_of_week(:monday)..offered_shift_date.end_of_week(:monday))
-  end
-
-  def shifts_in_same_period?
-    offered_shift_week.include?(traded_shift_date)
+  def trade_needs_approval?
+    preferences.approve_trades?
   end
 
   def traded_shift
-    trade.shfit
-  end
-
-  def traded_shift_date
-    Date.parse(traded_shift.date.to_s)
+    trade.shift
   end
 end

@@ -2,7 +2,10 @@
   <section>
     <article>
       <%= render partial: "trades/shift",
-        locals: { show_actions: true, trade: trade } %>
+        locals: {
+          presenter: Trades::ShiftPresenter.new(trade: trade,
+                                                user: current_user)
+        } %>
     </article>
   </section>
 </div>

@@ -1,0 +1,12 @@
+<% if presenter.waiting_approval? %>
+  <div class="badge green">
+    Trade is pending manager approval
+  </div>
+<% else %>
+  <div class="buttons">
+    <%= link_to t(".offers"), trade_offers_path(presenter.trade), class: "button" %>
+    <%# TODO: add a cancel trade options %>
+  </div>
+<% end %>
+
+

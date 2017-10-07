@@ -1,0 +1,13 @@
+<% if presenter.made_offer? %>
+  <div class="offer-present">
+    <div class="badge green">
+      <%= t(".already_offered") %>
+    </div>
+  </div>
+<% else %>
+  <div class="buttons">
+    <%= link_to(t(".make_offer"),
+                new_trade_offer_path(presenter.trade),
+                class: "button") %>
+  </div>
+<% end %>

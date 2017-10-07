@@ -5,10 +5,13 @@
 
   form {
     display: inline-block;
+  }
 
+  form:last-child {
     input[type=submit] {
       @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
       @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
+
     }
   }
 

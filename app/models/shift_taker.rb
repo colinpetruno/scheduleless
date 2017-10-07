@@ -27,10 +27,13 @@ class ShiftTaker
   end
 
   def permitted?
-    AvailabilityChecker.
-      new(date: original_shift.date,
-          minutes_to_add: original_shift.length_in_minutes,
-          user: user).
-      can_work?
+    # AvailabilityChecker.
+    #  new(date: original_shift.date,
+    #     minutes_to_add: original_shift.length_in_minutes,
+    #    user: user).
+    #  can_work?
+
+    # todo rewrite
+    true
   end
 end

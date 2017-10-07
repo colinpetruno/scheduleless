@@ -1,40 +1,21 @@
 <div class="shift-display">
   <div class="date">
-    <div><%= DateAndTime::Parser.new(date: trade.shift.date).month %></div>
-    <div><%= DateAndTime::Parser.new(date: trade.shift.date).day %></div>
+    <div><%= presenter.month %></div>
+    <div><%= presenter.day %></div>
   </div>
 
   <div class="time">
-    <%= "#{MinutesToTime.for(trade.shift.minute_start)} - #{MinutesToTime.for(trade.shift.minute_end)}" %>
+    <%= presenter.time %>
   </div>
 
-  <%# TODO: Remove nested boolean and simplify this logic %>
-  <% if show_actions %>
-    <% if trade.offers.any? { |offer| offer.user_id == current_user.id } %>
-       <div class="offer-present">
-        <div class="badge green">
-          <%= t(".already_offered") %>
-        </div>
-      </div>
-    <% elsif trade.user_id == current_user.id %>
-      <div class="buttons">
-        <%= link_to t(".offers"), trade_offers_path(trade), class: "button" %>
-        <%# TODO: add a cancel trade options %>
-      </div>
-    <% else %>
-      <div class="buttons">
-        <%= link_to t(".make_offer"), new_trade_offer_path(trade), class: "button" %>
-        <%= button_to t(".take_shift"), trade_trade_accept_path(trade), method: :post %>
-      </div>
-    <% end %>
-  <% end %>
+  <%= render partial: presenter.actions_partial,
+    locals: { presenter: presenter } %>
 
   <div class="location">
-    <% if trade.shift.location.name.present? %>
-      <strong><%= trade.shift.location.name  %></strong><br>
+    <% if presenter.shift.location.name.present? %>
+      <strong><%= presenter.shift.location.name  %></strong><br>
     <% end %>
 
-    <%= AddressFormatter.for(trade.shift.location).multiline_html %>
+    <%= AddressFormatter.for(presenter.shift.location).multiline_html %>
   </div>
 </div>
-<%# TODO: Get this stuff into a presenter or something. Dementer is angry %>

@@ -14,27 +14,37 @@
 
 
       <div class="shift-display">
-        <div class="date">
-          <div><%= DateAndTime::Parser.new(date: offer.offered_shift.date).month %></div>
-          <div><%= DateAndTime::Parser.new(date: offer.offered_shift.date).day %></div>
-        </div>
+        <% if offer.offered_shift.present? %>
+          <div class="date">
+            <div><%= DateAndTime::Parser.new(date: offer.offered_shift.date).month %></div>
+            <div><%= DateAndTime::Parser.new(date: offer.offered_shift.date).day %></div>
+          </div>
 
-        <div class="time">
-          <%= "#{MinutesToTime.for(offer.offered_shift.minute_start)} - #{MinutesToTime.for(offer.offered_shift.minute_end)}" %>
-        </div>
+          <div class="time">
+            <%= "#{MinutesToTime.for(offer.offered_shift.minute_start)} - #{MinutesToTime.for(offer.offered_shift.minute_end)}" %>
+          </div>
+        <% else %>
+          <div>
+            <%= offer.user.full_name %> has offered take this shift for you!
+          </div>
+        <% end %>
 
         <div class="buttons">
-          <%= button_to "Accept", [offer, :offer_accept], method: :post %>
+          <%= button_to("Accept",
+                        [offer, :offer_accept],
+                        method: :post) %>
           <%= button_to "Decline", [offer, :offer_decline], method: :post %>
         </div>
 
-        <div class="location">
-          <% if offer.offered_shift.location.name.present? %>
-            <strong><%= offer.offered_shift.location.name  %></strong><br>
-          <% end %>
+        <% if offer.offered_shift.present? %>
+          <div class="location">
+            <% if offer.offered_shift.location.name.present? %>
+              <strong><%= offer.offered_shift.location.name  %></strong><br>
+            <% end %>
 
-          <%= AddressFormatter.for(offer.offered_shift.location).multiline_html %>
-        </div>
+            <%= AddressFormatter.for(offer.offered_shift.location).multiline_html %>
+          </div>
+        <% end %>
       </div>
     </article>
 

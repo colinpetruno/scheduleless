@@ -1,8 +1,10 @@
 <div class="frame trades-trade">
   <section>
     <article>
-      <%= render partial: "trades/shift",
-        locals: { show_actions: true, trade: trade } %>
+      <%= render(partial: "trades/shift",
+        locals: {
+          presenter: Trades::ShiftPresenter.new(trade: trade,
+                                                user: current_user) } ) %>
     </article>
   </section>
 </div>

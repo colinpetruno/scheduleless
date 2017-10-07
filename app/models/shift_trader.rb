@@ -7,6 +7,9 @@ class ShiftTrader
   def execute
     # update shift statuses to traded
     with_transaction do
+      # TODO: rewrite this to account for in_progress shifts
+
+
       for_trade_shift.update(state: Shift.states[:traded])
 
       if offered_shift.present?
