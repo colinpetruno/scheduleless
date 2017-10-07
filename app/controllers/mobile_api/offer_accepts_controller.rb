@@ -1,7 +1,7 @@
 module MobileApi
   class OfferAcceptsController < ApiAuthenticatedController
     def create
-      @offer_accept = OfferAccept.for(offer)
+      @offer_accept = Offers::Accept.for(offer)
 
       authorize @offer_accept
 

@@ -1,6 +1,6 @@
 class OfferDeclinesController < AuthenticatedController
   def create
-    @offer_decline = OfferDecline.for(offer)
+    @offer_decline = Offers::Decline.for(offer)
 
     authorize @offer_decline
 

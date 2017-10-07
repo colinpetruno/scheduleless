@@ -165,6 +165,13 @@ Rails.application.routes.draw do
       resources :time_off_requests, only: [] do
         resources :time_off_approvals, only: [:create]
       end
+
+      scope module: :offers, as: :offers do
+        resources :offers, only: [] do
+          resource :approval, only: [:create], path: "approve"
+          resource :denial, only: [:create], path: "deny"
+        end
+      end
     end
   end
 

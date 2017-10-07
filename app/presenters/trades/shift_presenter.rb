@@ -1,14 +1,17 @@
 module Trades
   class ShiftPresenter
-    attr_reader :trade, :user
+    attr_reader :hide_actions, :trade, :user
 
-    def initialize(trade:, user:)
+    def initialize(trade:, user:, hide_actions: false)
+      @hide_actions = hide_actions
       @trade = trade
       @user = user
     end
 
     def actions_partial
-      if trade.user_id == user.id
+      if hide_actions
+        "shared/blank"
+      elsif trade.user_id == user.id
         "trades/owner_actions"
       else
         "trades/offer_actions"

@@ -26,7 +26,7 @@ en:
       title: "Upcoming Shifts"
       trades: "Search for available shifts."
     shift:
-      cancel: "Cancel"
+      cancel: "Cancel Shift"
       confirm: >
         Have you tried to trade this shift? Are you sure you want to cancel?
       trade: "Trade"

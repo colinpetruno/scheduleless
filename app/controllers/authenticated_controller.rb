@@ -6,10 +6,14 @@ class AuthenticatedController < ApplicationController
   before_action :authenticate_user!
   before_action :set_locale
 
-  helper_method :current_company, :search_params
+  helper_method :current_company, :features, :search_params
 
   def current_company
     current_user.company
+  end
+
+  def features
+    @_features ||= Features.for(current_company)
   end
 
   def search_params

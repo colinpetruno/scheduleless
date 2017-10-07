@@ -1,21 +1,27 @@
-<div class="dashboard-approvals-trade-offers">
-  <article>
-    <div class="message">
-      <% offers.each do |offer| %>
+<% offers.each do |offer| %>
+  <div class="dashboard-approvals-trade-offers">
+    <article>
+      <div class="message">
         <% if offer.offered_shift_id.present? %>
           <%= offer.user.full_name %> offered a shift of their own
         <% else %>
           <%= offer.user.full_name %> offered to take this shift
         <% end %>
-      <% end %>
-    </div>
+      </div>
 
-    <div class="deny">
-      <a href="#"><span class="oi oi-x"></span></a>
-    </div>
+      <div class="deny">
+        <%= button_to remote_dashboard_offers_offer_denial_path(offer),
+          remote: true do %>
+          <span class="oi oi-x"></span>
+        <% end %>
+      </div>
 
-    <div class="approve">
-      <a href="#"><span class="oi oi-check"></span></a>
-    </div>
-  </article>
-</div>
+      <div class="approve">
+        <%= button_to remote_dashboard_offers_offer_approval_path(offer),
+          remote: true do %>
+          <span class="oi oi-check"></span>
+        <% end %>
+      </div>
+    </article>
+  </div>
+<% end %>

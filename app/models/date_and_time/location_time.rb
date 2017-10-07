@@ -9,10 +9,12 @@ module DateAndTime
     end
 
     def current_date_integer
+      # 20170321 full date integer
       current_time.to_s(:day_integer).to_i
     end
 
     def current_day_integer
+      # 1,2,3,4 for day of week
       current_time.wday
     end
 

@@ -12,7 +12,18 @@
         </div>
 
         <div class="buttons">
-          <%= link_to t(".trade"), new_shift_trade_path(shift), class: "button" %>
+          <% if features.trading? %>
+            <% if shift.trade.blank? %>
+              <%= link_to t(".trade"),
+                new_shift_trade_path(shift),
+                class: "button" %>
+            <% else %>
+              <%= link_to "View Trade",
+                my_trades_path,
+                class: "button" %>
+            <% end %>
+          <% end %>
+
           <%= button_to t(".cancel"),
             shift_cancellation_path(shift),
             data: { confirm: t(".confirm") },

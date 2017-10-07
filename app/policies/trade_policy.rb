@@ -3,11 +3,19 @@ class TradePolicy < ApplicationPolicy
     def resolve
       scope.
         available.
+        joins(:shift).
         includes(:offers).
         where(
-          location_id: user.locations.pluck(:id)
+          location_id: user.locations.pluck(:id),
+          shifts: { date: (location_date..Float::INFINITY) }
         ).
         where.not(user_id: user.id)
+    end
+
+    def location_date
+      DateAndTime::LocationTime.
+        new(location: user.locations.first).
+        current_date_integer
     end
   end
 

@@ -1,0 +1,6 @@
+$("#dashboard-approvals").html("<%= j(
+  render(partial: "dashboards/approvals",
+         locals: {
+           presenter: Dashboard::ApprovalsPresenter.new(current_user)
+          })
+) %>");

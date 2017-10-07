@@ -1,6 +1,6 @@
 class OfferAcceptsController < AuthenticatedController
   def create
-    @offer_accept = OfferAccept.for(offer)
+    @offer_accept = Offers::Accept.for(offer)
 
     authorize @offer_accept
 

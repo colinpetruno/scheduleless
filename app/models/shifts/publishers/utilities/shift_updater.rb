@@ -65,7 +65,8 @@ module Shifts
 
         def shift_params
           in_progress_shift.
-            slice(:minute_start,
+            slice(:company_id,
+                  :minute_start,
                   :minute_end,
                   :date,
                   :location_id,

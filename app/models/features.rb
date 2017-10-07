@@ -14,6 +14,13 @@ class Features
       exists?
   end
 
+  def trading?
+    PlanFeature.
+      joins(:feature).
+      where(plan_id: plan_id, features: { key: "trading"}).
+      exists?
+  end
+
   def wages?
     PlanFeature.
       joins(:feature).

@@ -1,7 +1,7 @@
 class ShiftPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      Shifts::Finder.for(user).future.find
+      Shifts::Finder.for(user).future.includes(:trade).find
     end
   end
 

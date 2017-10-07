@@ -22,7 +22,7 @@ class Shift < ApplicationRecord
   attr_writer :day, :month, :year
 
   def self.default_scope
-    where(deleted_at: nil)
+    where(deleted_at: nil, state: :active)
   end
 
   def day
