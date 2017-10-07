@@ -3,7 +3,7 @@
 
   <%= f.input :offered_shift_id,
     as: :select,
-    collection: ShiftFinder.for(current_user).future.find,
+    collection: Shifts::Finder.for(current_user).future.find,
     label_method: :selection_label %>
 
   <%= f.submit %>

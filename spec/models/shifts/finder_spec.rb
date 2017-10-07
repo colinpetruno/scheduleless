@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe ShiftFinder, type: :model do
+RSpec.describe Shifts::Finder, type: :model do
   describe "#next" do
     it "returns the next shift" do
       user = create(:user)
@@ -27,7 +27,7 @@ RSpec.describe ShiftFinder, type: :model do
              minute_start: 300,
              minute_end: 400)
 
-      sf = ShiftFinder.for(user)
+      sf = Shifts::Finder.for(user)
       expect(sf.next.find.id).to eql(shift.id)
     end
   end

@@ -21,15 +21,15 @@ module MobileApi
     end
 
     def checked_in_shift
-      @_checked_in_shift ||= ShiftFinder.for(user).checked_in.find
+      @_checked_in_shift ||= Shifts::Finder.for(user).checked_in.find
     end
 
     def current_shift
-      @_checked_in_shift ||= ShiftFinder.for(user).current.find.first
+      @_checked_in_shift ||= Shifts::Finder.for(user).current.find.first
     end
 
     def next_shift
-      @_next_shift ||= ShiftFinder.for(user).next.find
+      @_next_shift ||= Shifts::Finder.for(user).next.find
     end
 
     def raise_not_found

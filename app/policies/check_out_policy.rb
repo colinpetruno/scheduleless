@@ -1,5 +1,5 @@
 class CheckOutPolicy < ApplicationPolicy
   def create?
-    ShiftFinder.for(user).find_by(id: record.shift.id).present?
+    Shifts::Finder.for(user).find_by(id: record.shift.id).present?
   end
 end

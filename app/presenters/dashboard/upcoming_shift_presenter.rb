@@ -37,7 +37,7 @@ module Dashboard
     end
 
     def upcoming_shift
-      @_upcoming_shift ||= ShiftFinder.for(user).next.find
+      @_upcoming_shift ||= Shifts::Finder.for(user).next.find
     end
 
     private

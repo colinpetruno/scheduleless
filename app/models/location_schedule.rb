@@ -13,7 +13,7 @@ class LocationSchedule
   end
 
   def shifts_for(user)
-    ShiftFinder.for(location).on(date).worked_by(user).find
+    Shifts::Finder.for(location).on(date).worked_by(user).find
   end
 
   def shifts
@@ -29,6 +29,6 @@ class LocationSchedule
   attr_reader :date, :location
 
   def find_shifts
-    ShiftFinder.for(location).on(date).find
+    Shifts::Finder.for(location).on(date).find
   end
 end

@@ -9,7 +9,7 @@ module Dashboard
     end
 
     def shifts
-      @_shifts ||= ShiftFinder.
+      @_shifts ||= Shifts::Finder.
         for(user).
         future.
         includes(:location, :position).

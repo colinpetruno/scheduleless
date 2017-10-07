@@ -25,7 +25,7 @@ module MobileApi
     private
 
     def shift
-      @_shift ||= ShiftFinder.for(current_user).find_by(id: params[:shift_id])
+      @_shift ||= Shifts::Finder.for(current_user).find_by(id: params[:shift_id])
     end
 
     def trade_params

@@ -38,7 +38,7 @@ class CalendarShowPresenter
   end
 
   def next_shift
-    @_next_shift ||= ShiftFinder.for(user).next.find
+    @_next_shift ||= Shifts::Finder.for(user).next.find
   end
 
   def next_shift_partial

@@ -60,7 +60,7 @@ class UserStreamCalendar
   end
 
   def shifts
-    @_shifts ||= ShiftFinder.for(user).for_stream.find
+    @_shifts ||= Shifts::Finder.for(user).for_stream.find
   end
 
   def summary

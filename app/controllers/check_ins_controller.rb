@@ -16,6 +16,6 @@ class CheckInsController < AuthenticatedController
   private
 
   def shift
-    @shift ||= ShiftFinder.for(current_user).find_by(id: params[:shift_id])
+    @shift ||= Shifts::Finder.for(current_user).find_by(id: params[:shift_id])
   end
 end
