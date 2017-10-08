@@ -182,7 +182,8 @@ module Admin
 
     def delete_oauth_tokens
       Doorkeeper::AccessToken.
-        where(resource_owner_id: users.pluck(:id))
+        where(resource_owner_id: users.pluck(:id)).
+        delete_all
     end
 
     def delete_check_ins
