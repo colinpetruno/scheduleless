@@ -1,11 +1,13 @@
-class Onboarding::CompanyPreferencesController < BaseController
-  layout "onboarding"
+module  Onboarding
+  class CompanyPreferencesController < BaseController
+    layout "onboarding"
 
-  def new
-    @preferences = current_company.build_company_preferences
-  end
+    def new
+      @preferences = current_company.build_company_preferences
+    end
 
-  def create
+    def create
 
+    end
   end
 end
