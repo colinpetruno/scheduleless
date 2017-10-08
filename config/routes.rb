@@ -72,6 +72,7 @@ Rails.application.routes.draw do
 
   namespace :mobile_api do
     resources :firebase_tokens, only: [:create]
+    resources :features, only: [:index]
     resource :featured_shift, only: [:show]
     resource :future_shifts, only: [:show]
     resources :locations, only: [:index]
