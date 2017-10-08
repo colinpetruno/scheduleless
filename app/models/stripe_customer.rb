@@ -24,6 +24,11 @@ class StripeCustomer
     @customer ||= find_customer
   end
 
+  def update
+    stripe_object.description = company.name
+    stripe_object.save
+  end
+
   private
 
   attr_reader :company, :customer

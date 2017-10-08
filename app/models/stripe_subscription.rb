@@ -16,7 +16,7 @@ class StripeSubscription
   end
 
   def update(quantity)
-    stripe_subscription.plan = subscription.plan
+    stripe_subscription.plan = subscription.plan.plan_name.downcase
     stripe_subscription.quantity = quantity
     stripe_subscription.save
   end
@@ -27,9 +27,10 @@ class StripeSubscription
 
   def create_stripe_subscription
     return if Rails.env.test?
+
     stripe_subscription = Stripe::Subscription.create(
       customer: subscription.company.stripe_customer_id,
-      plan: "standard" # subscription.plan
+      plan: (subscription&.plan&.plan_name&.downcase || "standard")
     )
 
     subscription.update(stripe_subscription_id: stripe_subscription.id)

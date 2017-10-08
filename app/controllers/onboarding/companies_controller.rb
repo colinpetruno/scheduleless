@@ -16,6 +16,12 @@ module Onboarding
       authorize @company
 
       if @company.update(company_params)
+        begin
+          StripeCustomer.for(current_company).update
+        rescue StandardError => error
+          Bugsnag.notify(error)
+        end
+
         Onboarding::Status.for(current_company).move_to_next_step!(1)
         redirect_to new_onboarding_lead_path
       else
