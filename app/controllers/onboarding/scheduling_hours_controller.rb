@@ -1,5 +1,5 @@
 module Onboarding
-  class SchedulingHoursController < AuthenticatedController
+  class SchedulingHoursController < BaseController
     layout "onboarding"
 
     def show
@@ -14,6 +14,7 @@ module Onboarding
       authorize @location
 
       if @location.update(location_params)
+        Onboarding::Status.for(current_company).move_to_next_step!(4)
         redirect_to new_onboarding_position_path
       else
         render :show

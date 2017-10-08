@@ -17,7 +17,7 @@
         <div class="inline hours-for-day">
           <label><%= I18n.t('date.day_names')[scheduling_hour.day] %></label>
 
-          <div class="scheduling-hour-<%= scheduling_hour.id %>">
+          <div class="scheduling-hours scheduling-hour-<%= scheduling_hour.id %>">
             <%= hf.input :minute_open_start,
               as: :time_picker_range,
               input_html: {

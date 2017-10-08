@@ -1,4 +1,4 @@
-class Onboarding::CompanyPreferencesController < AuthenticatedController
+class Onboarding::CompanyPreferencesController < BaseController
   layout "onboarding"
 
   def new

@@ -1,5 +1,5 @@
 module Onboarding
-  class LeadsController < AuthenticatedController
+  class LeadsController < BaseController
     layout "onboarding"
 
     def create
@@ -8,6 +8,7 @@ module Onboarding
       @lead = current_user.leads.build(lead_params)
 
       if @lead.save
+        Onboarding::Status.for(current_company).move_to_next_step!(2)
         begin
           SupportMailer.lead(current_user.leads.last).deliver if Rails.env.production?
         rescue StandardError => error

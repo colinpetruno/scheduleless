@@ -1,9 +1,20 @@
 .scheduling-hours-show {
   .hours-for-day {
+    display: flex;
+    flex-direction: row;
+
+    > label, div {
+      display: flex;
+    }
+
+    > div.scheduling-hours {
+      max-width: 300px;
+    }
+
     > label {
-      min-width: 150px;
       text-align: right;
       line-height: 30px;
+      min-width: 125px;
       padding-right: 15px;
       vertical-align: bottom;
     }

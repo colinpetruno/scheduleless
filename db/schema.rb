@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171003203944) do
+ActiveRecord::Schema.define(version: 20171008044031) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20171003203944) do
     t.string   "size"
     t.integer  "schedule_start_day", default: 1,     null: false
     t.integer  "pay_by_type",        default: 0,     null: false
+    t.integer  "onboarding_step",    default: 0,     null: false
   end
 
   create_table "credit_cards", force: :cascade do |t|

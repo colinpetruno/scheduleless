@@ -1,5 +1,5 @@
 module Onboarding
-  class ScheduleSettingsController < AuthenticatedController
+  class ScheduleSettingsController < BaseController
     # TODO: this controller could be a bit weird because schedule setting
     # is really now a wrapper around company. However since company already
     # has an action it would be annoying to use the same controller but I feel
@@ -21,6 +21,7 @@ module Onboarding
       schedule_setting = ScheduleSetting.new(schedule_setting_params)
 
       if schedule_setting.update
+        Onboarding::Status.for(current_company).move_to_next_step!(7)
         render :update
       else
         render :edit
