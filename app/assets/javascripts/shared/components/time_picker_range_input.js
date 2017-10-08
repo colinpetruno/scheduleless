@@ -29,7 +29,6 @@ $(document).on("turbolinks:load", function() {
       try {
         collection = JSON.parse($($start).attr('collection'))
       } catch (e) {
-        console.warn("Could not parse", e);
         return;
       }
 
@@ -50,12 +49,12 @@ $(document).on("turbolinks:load", function() {
 
       if (startVal) {
         var timeString = minuteToStringInCollection(collection_strings, startVal)
-        $start.val(timeString)
+        $start.typeahead('val', timeString);
       }
 
       if (endVal) {
         var timeString = minuteToStringInCollection(collection_strings, endVal)
-        $end.val(timeString)
+        $end.typeahead('val', timeString);
       }
 
       $start.on('typeahead:selected', function($e, datum) {
@@ -116,8 +115,21 @@ $(document).on("turbolinks:load", function() {
           display: 'name',
           limit: 24,
           source: source
+        }).bind('change blur', function () {
+          // custom function for check existing value in listing
+          match = false
+          for (var prop in bloodhound.index.datums) {
+            if ($(this).val() == bloodhound.index.datums[prop].name) {
+              match = true;
+            }
+          }
+
+          if (!match) {
+            $(this).val('');
+          }
         });
       }
+
     })
   }
 

@@ -17,21 +17,16 @@
         <div class="inline hours-for-day">
           <label><%= I18n.t('date.day_names')[scheduling_hour.day] %></label>
 
+          <div class="scheduling-hour-<%= scheduling_hour.id %>">
             <%= hf.input :minute_open_start,
-              as: :select,
-              collection: TimeRange.quarter_hour_options,
-              include_blank: false,
-              label: false,
-              wrapper_html: { class: "scheduling-hour-#{scheduling_hour.id}" }
+              as: :time_picker_range,
+              input_html: {
+                collection: TimeRange.quarter_hour_options.to_json,
+                seperator: "to",
+              },
+              label: false
             %>
-          to
-            <%= hf.input :minute_open_end,
-              as: :select,
-              collection: TimeRange.quarter_hour_options,
-              include_blank: false,
-              label: false,
-              wrapper_html: { class: "scheduling-hour-#{scheduling_hour.id}" }
-            %>
+          </div>
 
           <%= hf.input :closed,
             as: :boolean,
