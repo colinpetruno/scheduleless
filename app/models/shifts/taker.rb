@@ -6,7 +6,10 @@ module Shifts
     end
 
     def take
-      ShiftsTransferer.new(new_user: user, shift: traded_shift).transfer
+      ActiveRecord::Base.transaction do
+        ShiftsTransferer.new(new_user: user, shift: traded_shift).transfer
+        trade.update(status: :completed)
+      end
 
       # TODO: send notificaitons
     end

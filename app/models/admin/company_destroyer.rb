@@ -29,8 +29,16 @@ module Admin
         delete_subscriptions
         delete_trades
         delete_user_locations
-        delete_users
 
+        delete_favorite_shifts # implement
+        delete_firebase_tokens
+        delete_in_progress_shifts
+        delete_offers
+        delete_postings
+        delete_repeating_shifts
+        delete_time_off_requests
+
+        delete_users
         delete_locations
         delete_positions
 
@@ -46,6 +54,49 @@ module Admin
     private
 
     attr_reader :company
+
+    def delete_time_off_requests
+      TimeOffRequest.
+        joins(:user).
+        where(users: { company_id: company.id }).
+        delete_all
+    end
+
+    def delete_repeating_shifts
+      RepeatingShift.
+        joins(:user).
+        where(users: { company_id: company.id }).
+        delete_all
+    end
+
+    def delete_postings
+      Posting.
+        joins(:location).
+        where(locations: { company_id: company.id }).
+        delete_all
+    end
+
+    def delete_offers
+      Offer.where(company_id: company.id).delete_all
+    end
+
+    def delete_in_progress_shifts
+      InProgressShift.where(company_id: company.id).delete_all
+    end
+
+    def delete_firebase_tokens
+      FirebaseToken.
+        joins(:user).
+        where(users: { company_id: company.id }).
+        delete_all
+    end
+
+    def delete_favorite_shifts
+      FavoriteShift.
+        joins(:location).
+        where(locations: { company_id: company.id }).
+        delete_all
+    end
 
     def delete_manage_positions
       ManagePosition.
