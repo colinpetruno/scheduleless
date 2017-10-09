@@ -6,9 +6,11 @@
   .tt-menu.tt-open {
     background-color: $white;
     border: 1px solid $gray-light;
+    display: block;
     right: 0;
 
     .tt-dataset {
+      display: block;
       .tt-empty-message {
         padding: 5px 10px;
       }
