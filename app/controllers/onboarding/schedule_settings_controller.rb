@@ -6,6 +6,14 @@ module Onboarding
     # theres a better way
     layout "onboarding"
 
+    def show
+      # This route is to ensure if a user pushes back in the browser they don't
+      # get a 404, instead just direct them back to edit so they can continue
+      # going back
+      skip_authorization
+      redirect_to edit_onboarding_schedule_settings_path and return
+    end
+
     def edit
       authorize :schedule_setting, :edit?
 

@@ -120,7 +120,7 @@ Rails.application.routes.draw do
     end
     resources :positions, only: [:create, :destroy, :new]
     resources :registrations, only: [:create, :new]
-    resource :schedule_settings, only: [:edit, :update]
+    resource :schedule_settings, only: [:edit, :show, :update]
   end
 
   get "pricing", to: "marketing/welcome#pricing", as: :pricing
