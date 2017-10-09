@@ -12,6 +12,9 @@
   > div {
     @include make-col-ready();
     @include make-col(9);
+
+    // max-height: 450px;
+    // overflow-y: auto;
   }
 
   > aside {
@@ -47,6 +50,26 @@
 
     input[type=submit] {
       display: inline-block;
+    }
+
+    > section {
+      @include make-row();
+      > div {
+        justify-content: center;
+        text-align: center;
+        @include make-col-ready();
+        @include make-col(4);
+
+        &:first-child {
+          margin-left: 0;
+          text-align: left;
+        }
+
+        &:last-child {
+          margin-right: 0;
+          text-align: right;
+        }
+      }
     }
   }
 }

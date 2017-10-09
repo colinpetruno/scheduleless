@@ -13,7 +13,10 @@
     <%= t(".description") %>
   </div>
 
+  <br />
+
   <%= simple_form_for [:onboarding, @location, @employee_creator] do |f| %>
+    <h5>Basic Info</h5>
     <div class="inline">
       <%= f.input :given_name %>
       <%= f.input :family_name %>
@@ -24,32 +27,60 @@
       <%= f.input :mobile_phone %>
     </div>
 
-    <%= f.input :primary_position_id,
-      collection: current_company.positions %>
+    <br /><br />
+    <h5>Positions</h5>
+    <div class="inline">
+      <%= f.input :primary_position_id,
+        collection: current_company.positions %>
+
+        <%= f.input :position_ids,
+          collection: current_company.positions,
+          as: :check_boxes %>
+    </div>
+
+    <br /><br />
+    <h5>Wages</h5>
+
 
     <div class="inline">
-      <%= f.input :position_ids,
-        collection: current_company.positions,
-        as: :check_boxes %>
+      <%= f.input :wage,
+        as: :currency,
+        wrapper_html: { class: "wage-input-field" } %>
+
+      <%= f.input :salary,
+            as: :boolean,
+            wrapper_html: { style: "margin-top: 25px;"},
+            input_html: {
+              class: "disable-toggle",
+              data: { target: ".wage-input-field" }
+            } %>
+
     </div>
 
-    <br />
-    <div class="center">
-      <%= f.submit %>
-    </div>
+    <footer>
+      <section>
+        <div>
+          <%= link_to(t(".back"),
+                      onboarding_location_users_path(@location),
+                      class: "button white") %>
+        </div>
+
+        <div>
+          <%= f.submit %>
+        </div>
+
+        <div>
+          <% if current_company.locations&.first&.users&.length > 1 %>
+            <%= link_to t(".continue"),
+              edit_onboarding_schedule_settings_path,
+              class: "button white" %>
+          <% else %>
+            <button class="button white" disabled="disabled">
+              <%= t(".continue") %>
+            </button>
+          <% end %>
+        </div>
+    </footer>
   <% end %>
-
-  <footer>
-      <%= link_to t(".back"), onboarding_location_users_path(@location), class: "button white" %>
-      <% if current_company.locations&.first&.users&.length > 1 %>
-        <%= link_to t(".continue"),
-          edit_onboarding_schedule_settings_path,
-          class: "button" %>
-      <% else %>
-        <button class="button" disabled="disabled">
-          <%= t(".continue") %>
-        </button>
-      <% end %>
-  </footer>
 </section>
 

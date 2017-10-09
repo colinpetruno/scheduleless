@@ -60,6 +60,8 @@ module Onboarding
                :mobile_phone,
                :preferred_name,
                :primary_position_id,
+               :salary,
+               :wage,
                position_ids: []
               )
     end

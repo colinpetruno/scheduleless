@@ -7,7 +7,8 @@ module Onboarding
     validates :primary_position_id, presence: true
 
     attr_accessor :company, :email, :family_name, :given_name, :locations,
-      :mobile_phone, :preferred_name, :primary_position_id, :position_ids
+      :mobile_phone, :preferred_name, :primary_position_id, :position_ids,
+      :salary, :wage_cents, :wage
 
     def create
       user = User.new(user_params)
@@ -30,7 +31,9 @@ module Onboarding
         mobile_phone: mobile_phone,
         preferred_name: preferred_name,
         primary_position_id: primary_position_id,
-        position_ids: position_ids
+        position_ids: position_ids,
+        salary: salary,
+        wage: wage
       }
     end
   end

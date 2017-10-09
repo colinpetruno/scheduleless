@@ -1,0 +1,20 @@
+.input.currency {
+  .input-group {
+    height: 31px;
+
+    .input-group-addon {
+      background-color: $dark-blue;
+      color: $white;
+      font-weight: 200;
+      width: 31px;
+      padding-left: 0;
+      padding-right: 0;
+      text-align: center;
+    }
+
+    input {
+      height: 31px;
+      text-align: right;
+    }
+  }
+}
