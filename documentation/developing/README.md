@@ -20,3 +20,4 @@ successful developing on this application.
     * Time Range
 * Back End
   * [How To Handle Dates and Times](dates_and_times/)
+* [Localizations](/documentation/developing/localizations)

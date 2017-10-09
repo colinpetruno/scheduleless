@@ -44,6 +44,7 @@ end
 
 group :development, :test do
   gem "byebug", platform: :mri
+  gem "i18n-tasks"
   gem "pry-rails"
   gem "pry-stack_explorer"
 end
