@@ -25,7 +25,7 @@ class Subscription < ApplicationRecord
   end
 
   def update_stripe_subscription
-    if plan_id_changed?
+    if plan_id_changed? && company.stripe_customer_id.present?
       StripeSubscription.for(self).update(company.users.count)
     end
   end
