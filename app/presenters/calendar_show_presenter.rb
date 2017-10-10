@@ -11,10 +11,9 @@ class CalendarShowPresenter
   def approvals?
     ScheduleApprovalPolicy::Scope.new(
       UserContext.new(location: current_location, user: user),
-      SchedulingPeriod
-    ).
-    resolve.
-    present?
+      SchedulingPeriod).
+        resolve.
+        present?
   end
 
   def time_off_approvals?

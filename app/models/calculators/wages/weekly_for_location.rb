@@ -84,6 +84,7 @@ module Calculators
           hash[user.id] = Calculators::Wages::WeeklyForUser.
             new(date: date,
                 published: published,
+                shifts: shifts_for_(user),
                 user: user).
             calculate
 
@@ -101,6 +102,33 @@ module Calculators
           hash.merge( el ) do |k, old_v, new_v|
             old_v + new_v
           end
+        end
+      end
+
+      def company
+        @_company ||= location.company
+      end
+
+      def schedule_period
+        @_schedule_period ||= SchedulePeriod.new(company: company,
+                                                 date: date)
+      end
+
+      def shifts_for_(user)
+        shifts.select { |shift| shift.user_id == user.id }
+      end
+
+      def shifts
+        @_shifts ||= shift_class.
+          where(date: schedule_period.date_range_integers,
+                location_id: location.id)
+      end
+
+      def shift_class
+        if published
+          ::Shift
+        else
+          ::InProgressShift
         end
       end
 

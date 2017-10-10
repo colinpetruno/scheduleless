@@ -25,7 +25,7 @@
   -->
 
   <ul class="top-nav-list">
-    <%= content_tag(:li, class: active?(after_sign_in_path_for(current_user))) do %>
+    <%= content_tag(:li, class: active?(default_calendar_path_for(current_user))) do %>
       <%= link_to default_calendar_path_for(current_user) do %>
         <%= t(".calendar") %>
       <% end %>

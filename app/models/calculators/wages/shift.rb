@@ -14,8 +14,6 @@ module Calculators
       end
 
       def calculate
-        # if user exempt
-          # 0
         ::Calculators::Wages::Shifts::Processors::Lookup.
           for(location).
           new(company: company, shift: shift, location: location, rate: 1000).
@@ -27,6 +25,7 @@ module Calculators
       attr_reader :shift
 
       def hourly_rate
+        # NEED RATE HERE
         1000
       end
 

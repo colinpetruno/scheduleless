@@ -3,10 +3,11 @@ module Calculators
     class WeeklyForUser
       OVERTIME_THRESHOLD = 40
 
-      def initialize(user:, date: Date.today, location: nil, published: true)
+      def initialize(user:, date: Date.today, location: nil, shifts: nil, published: true)
         @date = date
         @location = location
         @published = published
+        @shifts = shifts
         @user = user
       end
 
@@ -101,6 +102,10 @@ module Calculators
       end
 
       def shifts
+        @shifts ||= retrieve_shifts
+      end
+
+      def retrieve_shifts
         scope = shift_class.where(date: schedule_period.date_range_integers,
                                   user_id: user.id)
 
