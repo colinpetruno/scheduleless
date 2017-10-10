@@ -21,21 +21,38 @@ module InProgressShifts
     end
 
     def process
-      in_progress_shift.update(deleted_at: DateTime.now)
+      ActiveRecord::Base.transaction do
+        in_progress_shift.update(deleted_at: DateTime.now, edited: true)
 
-      if in_progress_shift.repeating? && delete_series == "1"
-        InProgressShift.
-          where(repeating_shift_id: in_progress_shift.repeating_shift_id).
-          update_all(deleted_at: DateTime.now)
+        if in_progress_shift.repeating? && delete_series == "1"
+          InProgressShift.
+            where(repeating_shift_id: in_progress_shift.repeating_shift_id,
+                  edited: true).
+            update_all(deleted_at: DateTime.now)
 
-        in_progress_shift.
-          repeating_shift.
-          update(preview_deleted_at: DateTime.now)
+          in_progress_shift.
+            repeating_shift.
+            update(preview_deleted_at: DateTime.now)
+        end
       end
+
+      send_notification
+
+      true
+    rescue StandardError => error
+      Bugsnag.notify(error)
+      false
     end
 
     def in_progress_shift
       @in_progress_shift ||= InProgressShift.find(in_progress_shift_id)
+    end
+
+    private
+
+    def send_notification
+      # STOP  since this cant be published right away no need to notify at
+      # this point
     end
   end
 end

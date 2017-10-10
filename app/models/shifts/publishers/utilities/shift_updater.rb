@@ -25,7 +25,7 @@ module Shifts
         end
 
         def update
-          record_changes
+          @changes ||= record_changes
 
           shifts.update_all(shift_params)
         end

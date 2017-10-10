@@ -18,7 +18,7 @@ module Shifts
           publish_new_shifts
         end
 
-        # TODO: send notificaitons
+        send_notifications
       end
 
       private
@@ -42,7 +42,10 @@ module Shifts
       end
 
       def deleted_shifts
-        base_scope.where("deleted_at is not null")
+        base_scope.
+          unscoped.
+          where(edited: true).
+          where("deleted_at is not null")
       end
 
       def new_shifts
@@ -112,7 +115,13 @@ module Shifts
       end
 
       def notifications
+        # {20=>[:shift_added], 308=>[:shift_added], 17=>[:shift_added]}
+        # {308=>[:shift_deleted, :shift_added, :shift_added], 20=>[:shift_added]}
         @_notifications ||= {}
+      end
+
+      def send_notifications
+        # binding.pry
       end
     end
   end
