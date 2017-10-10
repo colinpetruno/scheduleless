@@ -1,10 +1,12 @@
 module Remote
   module InProgressShifts
     class DeleteConfirmationsController < AuthenticatedController
+      helper_method :presenter_class
+
       def create
-        shift = InProgressShift.find_by!(id: params[:in_progress_shift_id],
+        @shift = InProgressShift.find_by!(id: params[:in_progress_shift_id],
                                           company_id: current_company.id)
-        authorize shift
+        authorize @shift
 
         @confirmation = ::InProgressShifts::DeleteConfirmation.
           new(delete_confirmation_params)
@@ -28,6 +30,20 @@ module Remote
         params.
           require(:in_progress_shifts_delete_confirmation).
           permit(:in_progress_shift_id, :delete_series)
+      end
+
+      def presenter_class
+        if view == "daily"
+          ::Calendar::DailySchedulePreviewPresenter
+        else
+          ::Calendar::WeeklySchedulePresenter
+        end
+      end
+
+      def view
+        cookies[:view] = params[:view] || cookies[:view] ||  "weekly"
+
+        cookies[:view]
       end
     end
   end

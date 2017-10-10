@@ -1,3 +1,12 @@
 window.Scheduleless.sidebar.close();
 
-// TODO: Add redraw of calendar here
+$("#calendar-container").html("<%= j(render(partial: "calendars/show",
+             locals: {
+               presenter: presenter_class.
+                 new(date: @shift.date,
+                     location: @shift.location,
+                     user: current_user
+                    )
+})) %>");
+
+window.Scheduleless.wages.refresh(<%= @shift.location.id %>);
