@@ -101,12 +101,14 @@ form {
 
 
   &.select .input-wrap,
+  &.country .input-wrap,
   &.time_zone .input-wrap {
     max-width: 400px;
     position: relative;
   }
 
   &.select .input-wrap::after,
+  &.country .input-wrap::after,
   &.time_zone .input-wrap::after{
     font-family: 'Icons';
     content: "\e05a";
@@ -118,9 +120,6 @@ form {
   }
 
   select {
-    @include truncatable();
-    // background: url(M300 800l300 -300h-600zM0 300h600l-300 -300z);
-    // background-color: $white;
     background-position: right 5px top;
     border-radius: 4px;
     padding: 4px 8px;

@@ -4,20 +4,28 @@
         <%= f.input :name %>
         <%= f.input :line_1 %>
         <%= f.input :line_2 %>
+
         <div class="inline">
           <%= f.input :city %>
+
+          <%= f.input :postalcode %>
+        </div>
+
+
+        <div class="inline">
           <%= f.input :county_province,
             as: :select,
             include_blank: true,
             collection: CountiesProvinces.state_options
           %>
-          <%= f.input :postalcode %>
+
+          <%= f.input :country,
+            include_blank: false,
+            only: CountriesWhiteList.allowed,
+            priority_countries: CountriesWhiteList.priorities %>
         </div>
 
-        <div class="inline">
-          <%= f.input :country %>
-          <%= f.input :time_zone, priority: /US/ %>
-        </div>
+        <%= f.input :time_zone, priority: /US/ %>
       </article>
     </section>
 
