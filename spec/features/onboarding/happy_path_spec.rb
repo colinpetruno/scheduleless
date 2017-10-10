@@ -68,13 +68,14 @@ RSpec.describe "onboarding happy path", type: :feature do
 
     click_on "Save and Continue"
 
-    expect(page).
-      to have_content I18n.t("onboarding.scheduling_hours.show.title")
-    expect(page).
-      to have_content I18n.t("onboarding.scheduling_hours.show.description")
+    # this step is now skipped
+    # expect(page).
+    #   to have_content I18n.t("onboarding.scheduling_hours.show.title")
+    # expect(page).
+    #   to have_content I18n.t("onboarding.scheduling_hours.show.description")
     # TODO change some stuff and make sure it works
     # TODO test disabling of fields
-    click_on "Save and Continue"
+    # click_on "Save and Continue"
 
 
     # POSITIONS
@@ -145,7 +146,7 @@ RSpec.describe "onboarding happy path", type: :feature do
     click_on "Continue"
     click_on I18n.t("onboarding.leads.new.skip")
     click_on "Save and Continue"
-    click_on "Save and Continue"
+    # click_on "Save and Continue"
     click_on "Continue"
     click_on "Continue"
     click_on "Finish"
