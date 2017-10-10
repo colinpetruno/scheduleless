@@ -4,6 +4,7 @@
         <%= f.input :name %>
         <%= f.input :line_1 %>
         <%= f.input :line_2 %>
+
         <div class="inline">
           <%= f.input :city %>
           <%= f.input :county_province,
@@ -13,6 +14,19 @@
           %>
           <%= f.input :postalcode %>
         </div>
+
+        <%= f.input :city %>
+        <%= f.input :county_province,
+          as: :select,
+          include_blank: true,
+          collection: CountiesProvinces.state_options
+        %>
+        <%= f.input :postalcode %>
+        <%= f.input :country,
+          as: :select,
+          include_blank: true,
+          collection: Countries.options
+        %>
 
         <div class="inline">
           <%= f.input :country %>
