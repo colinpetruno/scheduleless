@@ -29,11 +29,9 @@ module Onboarding
       authorize @location
 
       if current_user.save
-        Onboarding::Status.for(current_company).move_to_next_step!(3)
-        redirect_to onboarding_location_scheduling_hours_path(@location)
-
-        # new_onboarding_position_path
-        # # new_onboarding_location_user_path(@location)
+        # skipping step 3
+        Onboarding::Status.for(current_company).move_to_next_step!(4)
+        redirect_to new_onboarding_position_path
       else
         render :new
       end
@@ -44,8 +42,7 @@ module Onboarding
       authorize @location
 
       if @location.update(location_params)
-        redirect_to onboarding_location_scheduling_hours_path(@location)
-        # redirect_to new_onboarding_position_path
+        redirect_to new_onboarding_position_path
       else
         render :edit
       end
