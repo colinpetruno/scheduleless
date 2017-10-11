@@ -1,0 +1,28 @@
+<div style="color: #61656b; padding: 20px;">
+  <div style="text-align: center; font-size: 16px; margin-bottom: 30px">
+    <%= t(".title") %>
+  </div>
+
+  <div style="font-size: 13px">
+    <%= t(".greeting", name: @presenter.user.given_name) %>
+    <p><%= t(".subtitle") %></p>
+  </div>
+
+  <ul style="font-size: 12px; list-style-type: none; padding-left: 0;">
+    <% @presenter.notifications.each do |notification| %>
+      <li><%= t(".messages.#{notification.to_s}") %></li>
+    <% end %>
+  </ul>
+
+  <div style="font-size: 13px">
+    <%= t(".review_schedule") %>
+  </div>
+
+  <br />
+
+  <div style="text-align: center">
+    <%= link_to "See All Shifts",
+      shifts_url,
+      style: "background-color: #5776bd; color: #ffffff; text-decoration: none; padding: 5px 10px; font-size: 12px" %>
+  </div>
+</div>

@@ -1,4 +1,20 @@
 en:
+  schedule_mailer:
+    schedule_updated:
+      subject: "You have new schedule updates to view!"
+      title: "Schedule Updates Have Been Posted"
+      greeting: "Hello %{name},"
+      subtitle: "The following updates have been made to your schedule"
+      messages:
+        multiple_changes: >
+          There have been updates to your schedule. See the latest in the
+          Scheduleless app!
+        shift_added: "You have new shifts to view!"
+        shift_changed: "Some of your shifts have been changed!"
+        shift_cancelled: "Some of your shifts were cancelled!"
+      review_schedule: >
+        Please take a few moments to review your schedule. Get the Scheduleless
+        app in the Apple App Store or Google Play Store!
   notifications_mailer:
     employee_joined_location:
       subject: "A new employee has joined your location!"

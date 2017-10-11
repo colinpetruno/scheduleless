@@ -22,7 +22,9 @@ module Shifts
                 in_progress_shift.repeating_shift.update(published: true)
               end
 
-              # TODO: send notification
+              Notifications::ScheduleUpdatedJob.
+                perform_later(in_progress_shift.user_id,
+                              Marshal.dump([:shift_added]))
             end
 
             in_progress_shift.update(edited: false, published: true)

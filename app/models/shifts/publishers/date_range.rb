@@ -117,11 +117,15 @@ module Shifts
       def notifications
         # {20=>[:shift_added], 308=>[:shift_added], 17=>[:shift_added]}
         # {308=>[:shift_deleted, :shift_added, :shift_added], 20=>[:shift_added]}
+        # :shift_added, :shift_cancelled, :shift_changed
         @_notifications ||= {}
       end
 
       def send_notifications
-        # binding.pry
+        notifications.each do |user_id, notifications|
+          Notifications::ScheduleUpdatedJob.
+            perform_later(user_id, Marshal.dump(notifications))
+        end
       end
     end
   end

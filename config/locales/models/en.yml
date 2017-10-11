@@ -21,6 +21,15 @@ en:
           A new schedule is available for you review when you log into
           scheduleless.com!
         title: "We made a new schedule for you to review!"
+      schedule_updated:
+        messages:
+          multiple_changes: >
+            There have been updates to your schedule. See the latest in the
+            Scheduleless app!
+          shift_added: "You have new shifts to view!"
+          shift_changed: "Some of your shifts have been changed!"
+          shift_cancelled: "Some of your shifts were cancelled!"
+        title: "Schedule Updates have been posted!"
       schedule_published:
         message: >
           Check the Scheduleless App for the latest schedule. Remember you can

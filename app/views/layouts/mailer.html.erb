@@ -7,40 +7,43 @@
     </style>
   </head>
 
-  <body bgcolor="#6695fb">
-    <table width=100%">
-      <tr>
-        <td align="center">
+  <body bgcolor="#748ec9" style="padding: 0; margin: 0; border: 0">
+    <table width="100%" height: "100%" style="min-height: 100%; position: absolute; top: 0; bottom: 0; left: 0; right: 0;">
+      <tr style="background: linear-gradient(-15deg, #748ec9 0%, #5776bd 100%); min-height: 650px">
+        <td style="min-height: 640px;" height="500">
+          <table width=100%" height: "100%" border="0" style="border: none">
+            <tr>
+              <td align="center">
+                <table width="600" style="margin: auto">
+                  <tr>
+                    <td width="600" style="max-width: 371px; text-align: left;">
+                      <%= image_tag "shared/logos/scheduleless-email-1x.png" %>
+                    </td>
+                  </tr>
+                </table>
+
+                <br />
+
+                <table width="600" style="margin: auto; font-family: sans-serif;">
+                  <tr>
+                    <td bgcolor="#ffffff" style="border-radius: 5px; box-shadow: 0 0 5px #5776bd; padding: 10px;`">
+                      <%= yield %>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+
+          <br>
+
           <table width="600" style="margin: auto">
             <tr>
-              <td width="110" style="max-width: 110px">
-                <%= image_tag "shared/logos/scheduleless.png" %>
-              </td>
-              <td color="#ffffff" style="color: #ffffff; font-family: sans-serif; font-size: 30px">
-                ScheduleLess
+              <td color="#ffffff" style="color: #ffffff; font-family: sans-serif; font-size: 11px; text-align: center">
+                161 S. Huntington Ave, Boston Ma 02130, Suite 429
               </td>
             </tr>
           </table>
-
-          <br />
-
-          <table width="600" style="margin: auto; font-family: sans-serif;">
-            <tr>
-              <td bgcolor="#ffffff" style="border: 1px solid #2c76ff; box-shadow: 0 0 3px #2c76ff; padding: 10px;`">
-                <%= yield %>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-    </table>
-
-    <br>
-
-    <table width="600" style="margin: auto">
-      <tr>
-        <td color="#ffffff" style="color: #ffffff; font-family: sans-serif; font-size: 11px; text-align: center">
-          161 S. Huntington Ave, Boston Ma 02130, Suite 429
         </td>
       </tr>
     </table>
