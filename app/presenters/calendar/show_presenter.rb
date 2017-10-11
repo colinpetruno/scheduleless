@@ -10,11 +10,11 @@ module Calendar
     end
 
     def current_date
-      DateAndTime::LocationTime.for(location).to_date
+      location_datetime.current_time.to_date
     end
 
     def date_integer
-      date.to_s(:integer)
+      date.to_s(:integer).to_i
     end
 
     def formatted_date
@@ -67,12 +67,25 @@ module Calendar
       end
     end
 
+    def unpublished_shifts?
+      puts "unpublished query"
+      @_unpublished_shifts ||= InProgressShift.
+        where(location_id: location.id,
+              edited: true,
+              date: (date_integer..Float::INFINITY)).
+        exists?
+    end
+
     private
 
     attr_reader :date, :user, :view
 
     def company
       @_company ||= location.company
+    end
+
+    def location_datetime
+      @_location_datetime ||= DateAndTime::LocationTime.new(location: location)
     end
 
     def manage?

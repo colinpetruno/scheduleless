@@ -1,6 +1,6 @@
 window.Scheduleless.sidebar.close();
 
-$("#calendar-container").html("<%= j(render(partial: "calendars/show",
+window.Scheduleless.calendar.redraw("<%= j(render(partial: "calendars/show",
              locals: {
                presenter: presenter_class.
                  new(date: @shift.date,

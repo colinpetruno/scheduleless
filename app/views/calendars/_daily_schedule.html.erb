@@ -1,12 +1,12 @@
 <div class="calendars-daily-schedule">
   <article>
     <div>
-      <aside>
+      <aside class="user-list">
         <%= render partial: "calendars/users",
           locals: { presenter: presenter } %>
       </aside>
 
-      <section>
+      <section class="shifts-container">
         <div class="<%= presenter.shift_view_width_class %>">
           <section>
             <%= render partial: "calendars/shifts",

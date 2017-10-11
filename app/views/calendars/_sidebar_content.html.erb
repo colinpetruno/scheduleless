@@ -29,13 +29,16 @@
   </div>
 
   <br />
-  <div class="warning">
+
+  <div class="warning <% "hidden" unless presenter.unpublished_shifts? %>">
     There are shifts that aren't published!
   </div>
-
-  <% if Features.for(current_company).wages? %>
-    <div>
-      <%# TODO: Add me %>
-    </div>
-  <% end %>
 </footer>
+
+<% if Features.for(current_company).wages? %>
+  <div id="wage-container">
+    <%= render partial: "wages", locals: {
+      wages: @presenter.partial_presenter.wages
+    } %>
+  </div>
+<% end %>
