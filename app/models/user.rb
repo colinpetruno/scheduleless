@@ -91,13 +91,13 @@ class User < ApplicationRecord
   def twilio_formatted_phone
   end
 
-  private
-
   def formatted_wage(wage=nil)
     if wage_cents.present?
       (wage_cents/100.00).to_f
     end
   end
+
+  private
 
   def convert_wage_to_cents
     if wage.blank?

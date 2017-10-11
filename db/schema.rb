@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171008044031) do
+ActiveRecord::Schema.define(version: 20171011184911) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -130,6 +130,7 @@ ActiveRecord::Schema.define(version: 20171008044031) do
     t.boolean  "published",            default: false, null: false
     t.integer  "state",                default: 0,     null: false
     t.datetime "deleted_at"
+    t.integer  "position_id"
     t.index ["company_id"], name: "index_in_progress_shifts_on_company_id", using: :btree
     t.index ["location_id"], name: "index_in_progress_shifts_on_location_id", using: :btree
     t.index ["repeating_shift_id"], name: "index_in_progress_shifts_on_repeating_shift_id", using: :btree
@@ -257,6 +258,7 @@ ActiveRecord::Schema.define(version: 20171008044031) do
     t.boolean  "company_admin",  default: false, null: false
     t.boolean  "location_admin", default: false, null: false
     t.datetime "deleted_at"
+    t.integer  "base_pay",       default: 0
     t.index ["company_id"], name: "index_positions_on_company_id", using: :btree
   end
 

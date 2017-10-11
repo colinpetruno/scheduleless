@@ -16,7 +16,7 @@ module Calculators
       def calculate
         ::Calculators::Wages::Shifts::Processors::Lookup.
           for(location).
-          new(company: company, shift: shift, location: location, rate: 1000).
+          new(company: company, shift: shift, location: location, rate: hourly_rate).
           process
       end
 
@@ -25,8 +25,7 @@ module Calculators
       attr_reader :shift
 
       def hourly_rate
-        # NEED RATE HERE
-        1000
+        Users::Wage.for(user: user, company: company, position: position)
       end
 
       def company
