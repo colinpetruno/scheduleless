@@ -2,17 +2,23 @@
   <%# TODO: ADD BETTER ERROR MESSAGING %>
   console.log("errors");
 <% else %>
-    window.Scheduleless.sidebar.close();
-    window.Scheduleless.calendar.redraw("<%= j(
-      render(partial: "calendars/show",
-             locals: {
-                presenter: presenter_class.
-                new(date: @shift.date,
-                    location: @location,
-                    user: current_user
-                   )
-              }
-    )) %>");
+  window.Scheduleless.sidebar.close();
 
-window.Scheduleless.wages.refresh(<%= @location.id %>);
+  window.
+    Scheduleless.
+    sidebar.
+    togglePublishedShiftHint(<%= Shifts::Unpublished.new(@location).present? %>);
+
+  window.Scheduleless.calendar.redraw("<%= j(
+    render(partial: "calendars/show",
+           locals: {
+              presenter: presenter_class.
+              new(date: @shift.date,
+                  location: @location,
+                  user: current_user
+                 )
+            }
+  )) %>");
+
+  window.Scheduleless.wages.refresh(<%= @location.id %>);
 <% end %>

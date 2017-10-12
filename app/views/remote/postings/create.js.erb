@@ -1,5 +1,10 @@
 window.Scheduleless.sidebar.close();
 
+window.
+  Scheduleless.
+  sidebar.
+  togglePublishedShiftHint(<%= Shifts::Unpublished.new(@location).present? %>);
+
 window.Scheduleless.calendar.redraw("<%= j(render(partial: "calendars/show",
              locals: {
                presenter: presenter_class.

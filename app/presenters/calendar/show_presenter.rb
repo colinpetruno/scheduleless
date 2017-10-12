@@ -68,12 +68,7 @@ module Calendar
     end
 
     def unpublished_shifts?
-      puts "unpublished query"
-      @_unpublished_shifts ||= InProgressShift.
-        where(location_id: location.id,
-              edited: true,
-              date: (date_integer..Float::INFINITY)).
-        exists?
+      @_unpublished_shifts ||= Shifts::Unpublished.new(location).present?
     end
 
     private

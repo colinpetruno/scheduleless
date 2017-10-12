@@ -30,7 +30,8 @@
 
   <br />
 
-  <div class="warning <% "hidden" unless presenter.unpublished_shifts? %>">
+  <div id="unpublished-shift-hint"
+       class="warning <%= "hidden" unless presenter.unpublished_shifts? %>">
     There are shifts that aren't published!
   </div>
 </footer>
