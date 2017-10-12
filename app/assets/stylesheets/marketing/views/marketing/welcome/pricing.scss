@@ -32,11 +32,14 @@
   .price-tiers {
     text-align: center;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
   }
 }
 
 @media (max-width: map-get($grid-breakpoints, lg)) {
   .marketing-welcome-pricing {
+    .price-tiers {
+      flex-direction: column;
+    }
   }
 }
