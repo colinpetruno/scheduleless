@@ -1,13 +1,44 @@
 section.hero {
-  @include gradient-directional(
-    $start-color: lighten(#5776bd, 8%),
-    $end-color: #5776bd,
-    $deg: -15deg
-  );
-
+  background-color: #5776bd;
   height: 101vh;
+  max-width: 100%;
   min-height: 400px;
   position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
+
+  .gradient {
+    @include gradient-directional(
+      $start-color: lighten(#5776bd, 5%),
+      $end-color: darken(#5776bd, 10%),
+      $deg: -15deg
+    );
+    position: absolute;
+    top: -30%;
+    right: 20%;
+    width: 150%;
+    height: 135%;
+    -webkit-transform: rotate(-15deg);
+    transform: rotate(-15deg);
+    opacity: .9;
+  }
+
+
+  .gradient-2 {
+    // (bluish)
+    background: #5f2c82;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #49a09d, #5f2c82);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #49a09d, #5f2c82); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
+    position: absolute;
+    top: -60%;
+    right: -10%;
+    width: 120%;
+    height: 130%;
+    transform: rotate(25deg);
+    opacity: .4;
+  }
 
   nav.navbar {
     background-color: transparent !important;
@@ -58,20 +89,62 @@ section.hero {
 
         h2 {
           color: $white;
-          font-size: 1.8em;
+          font-family: $font-family-sans-serif;
+          font-size: 1.65em;
           font-weight: normal;
-          letter-spacing: 1px;
+          font-weight: 200;
+          text-transform: uppercase;
+          letter-spacing: 4px;
         }
         span {
           font-size: 20px;
+          font-weight: 200;
           > h1 {
             color: $white;
             display: inline;
             font-size: 20px;
             font-weight: normal;
+            font-weight: 200;
           }
         }
       }
+    }
+  }
+
+  .signup-input {
+    background-color: rgba(darken(#5878bb, 20%), .7);
+    display: inline-block;
+    padding: 15px;
+    vertical-align: top;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+
+    form {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 0;
+    }
+
+    .input, input[type=submit] {
+      display: flex;
+    }
+
+    .input {
+      margin-left: auto;
+    }
+
+    input[type=submit] {
+      margin-right: auto;
+    }
+
+    input[type=email] {
+      background-color: $white;
+      color: darken(#5878bb, 20%);
+      font-size: 16px;
+      border: 1px solid $white;
+      padding: 5px 15px;
+      width: 300px;
     }
   }
 
@@ -90,6 +163,41 @@ section.hero {
   .content-section {
     > div > section > article {
       margin-top: 75px;
+    }
+  }
+
+
+  .signup-input {
+    display: inline-block;
+    padding: 8px;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+
+    form {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 0;
+    }
+
+    .input, input[type=submit] {
+      display: flex;
+    }
+
+    .input {
+      margin-left: auto;
+
+      input[type=email] {
+        font-size: 12px !important;
+        border: 1px solid $white;
+        padding: 3px 8px;
+        width: 200px !important;
+      }
+    }
+
+    input[type=submit] {
+      font-size: 12px;
+      margin-right: auto;
     }
   }
 }

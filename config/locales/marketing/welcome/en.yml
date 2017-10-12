@@ -65,6 +65,7 @@ en:
           link: "Learn More"
       hero_section:
         call_to_action: "Start For Free"
+        email_address: "Enter Your Email Address"
         no_cc_required: "30 day trial with no credit card required"
         learn_more_html: >
           Learn More About <h2>Automated Employee Scheduling</h2>

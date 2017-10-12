@@ -1,4 +1,6 @@
 <section class="hero">
+  <div class="gradient"></div>
+  <div class="gradient-2"></div>
   <article class="content-section">
     <div>
       <section>
@@ -8,11 +10,15 @@
           <h2><%= t(".title") %></h2>
           <span><%= t(".subtitle_html") %></span>
           <br><br>
-          <%= link_to t(".call_to_action"),
-            new_onboarding_registration_path,
-            class: "button orange"
-          %>
-          <br>
+
+          <div>
+            <div class="signup-input">
+              <%= simple_form_for EmailCapture.new do |f| %>
+                <%= f.input :email, label: false, placeholder: t(".email_address") %>
+                <%= f.submit class: "button" %>
+              <% end %>
+            </div>
+          </div>
           <small><%= t(".no_cc_required") %></small>
         </article>
       </section>
