@@ -1,6 +1,14 @@
 .marketing-welcome-footer {
   @include make-container();
   background-color: #484b52;
+
+  @include gradient-directional(
+    $start-color: darken(#484b52, 3%),
+    $end-color: darken(#484b52, 14%),
+    $deg: 188deg
+  );
+
+  color: $gray-light;
   font-family: "Roboto", sans-serif;
   font-size: 14px;
   letter-spacing: .5px;

@@ -29,12 +29,18 @@ class UserFinder
     user.company.users.where.not(id: user.id)
   end
 
+  def by_location
+    location.
+      users.
+      order(:given_name, :family_name)
+  end
+
   def by_location_without(user)
     location.
       users.
       where.
       not(user_locations: { user_id: user.id }).
-      order(:family_name, :given_name)
+      order(:given_name, :family_name)
   end
 
   def company_admins

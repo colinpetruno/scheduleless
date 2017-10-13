@@ -4,7 +4,14 @@
   padding: 20px 0;
   text-align: center;
 
+  @include gradient-directional(
+    $start-color: lighten(#5776bd, 5%),
+    $end-color: darken(#5776bd, 10%),
+    $deg: 4deg
+  );
+
   h3 {
     color: $white;
+    font-weight: 200;
   }
 }

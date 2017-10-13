@@ -41,7 +41,7 @@ module Locations
 
       @users = UserFinder.
         new(location: @location).
-        by_location_without(current_user)
+        by_location
     end
 
     def new

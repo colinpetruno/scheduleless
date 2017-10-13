@@ -1,5 +1,11 @@
 .industries {
-  background-color: $dark-blue;
+  @include gradient-directional(
+    $start-color: lighten(#5776bd, 5%),
+    $end-color: darken(#5776bd, 10%),
+    $deg: 185deg
+  );
+
+
   padding: 20px 0;
 
   > div {

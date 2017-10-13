@@ -53,7 +53,7 @@ form {
   }
 
   label {
-    font-weight: bold;
+    font-weight: 400;
     color: lighten($font-dark, 15%);
     margin-bottom: 4px;
   }
@@ -66,14 +66,14 @@ form {
     background-image: none;
     background-color: $input-bg;
     border: $input-btn-border-width solid $input-border-color;
-    border-radius: 0;
+    border-radius: 3px;
     color: $input-color;
     display: block;
-    font-size: $font-size-base;
+    font-size: 14px;
     line-height: $input-line-height;
     max-width: 400px;
     min-width: 125px;
-    padding: $input-padding-y $input-padding-x;
+    padding: 6px 10px;
     width: 100%;
 
     &:focus {
