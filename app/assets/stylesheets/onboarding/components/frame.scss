@@ -1,6 +1,7 @@
 .frame {
   background-color: $white;
   box-shadow: 0 0 20px darken(#5776bd, 10%);
+  border-radius: 3px;
   margin-bottom: 75px;
   margin-top: 20px;
   margin-left: auto;
@@ -13,7 +14,8 @@
     @include make-col-ready();
     @include make-col(9);
 
-    // max-height: 450px;
+    // max-height: 475px;
+    // min-height: 475px;
     // overflow-y: auto;
   }
 
@@ -22,6 +24,7 @@
     @include make-col(3);
 
     background-color: $dark-blue;
+    border-radius: 3px 0 0 3px;
     color: $white;
   }
 
