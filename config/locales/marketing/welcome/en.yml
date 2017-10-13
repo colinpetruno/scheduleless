@@ -1,8 +1,6 @@
 en:
   marketing:
     welcome:
-      coming_soon:
-        title: "Coming Soon!"
       employee_concierge:
         heading: "Your Employees Concierge"
         subtitle: >
@@ -19,8 +17,6 @@ en:
           article: >
             Employees can request time off directly from the app or the web.
             Your managers will be alerted and can approve or deny the request.
-            If it's approved, we will make sure to not schedule them during
-            that time period!
           title: "Time Off Requests"
         trade:
           article: >
@@ -68,9 +64,9 @@ en:
         email_address: "Enter Your Email Address"
         no_cc_required: "30 day trial with no credit card required"
         learn_more_html: >
-          Learn More About <h2>Automated Employee Scheduling</h2>
+          Learn More About Our <h2>Employee & Shift Scheduling</h2> Software
         subtitle_html: >
-          The only <h1>employee scheduling software</h1> that schedules for
+          The easiest to use <h1>employee scheduling software</h1>.
           you.
         title: "Spend More Time On Your Business."
       how_it_works:
@@ -112,13 +108,9 @@ en:
         entertainment: "Entertainment"
         professional_services: "Professional Services"
       pricing:
-        title: "Transparent Pricing"
+        title: "Get started for free"
         subtitle: >
-          Other scheduling software claims to be free. But in order to be
-          useful you need to buy upgrades and packages for every feature you
-          want to use. Scheduleless has no hidden features or upgrades. Pay
-          one flat free and get access to everything. And we are the only
-          scheduling software that actually does your scheduling!
+          Be scheduling in minutes. No credit card or commitments required.
       pricing_tier:
         entry:
           price: 1
@@ -175,11 +167,9 @@ en:
           title: "No Hassle Setup"
         inbox:
           article: >
-            We send your schedules directly to you. No more manual scheduling!
-            Just review and publish. All your employees will be notified
-            automatically! It could not be any easier. Need changes? Let us
-            know and we can make updates for you or use our editor to tweak
-            the schedule yourself.
+            Get the latest notifications and events happening in the company
+            directly to your email or mobile phone. No need to spend time 
+            tracking things down or following up.
           link: "How It Works!"
           title: "Delivered To Your Inbox"
         integrated:
