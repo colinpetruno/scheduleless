@@ -6,6 +6,6 @@ $(document).on("turbolinks:load", function() {
   }
 
   $element.on("click", function() {
-    $(".popup").removeClass("open");
+    window.Scheduleless.sidebar.close();
   });
 });
