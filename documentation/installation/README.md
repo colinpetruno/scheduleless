@@ -16,7 +16,7 @@ Install Postgres `brew install postgresql`. Postgres can be tricky to set up. Af
 on the system.
 
 * createdb `whoami`
-* psql -d `whomai` -U `whoami` 
+* psql -d `whoami` -U `whoami` 
 
 Once logged in you can run these commands to set up the user in postgres.
 * `CREATE USER rails WITH PASSWORD 'rails';`
