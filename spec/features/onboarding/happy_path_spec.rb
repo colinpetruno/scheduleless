@@ -8,7 +8,10 @@ RSpec.describe "onboarding happy path", type: :feature do
     expect(page).
       to have_content I18n.t("marketing.welcome.hero_section.title")
 
-    click_on I18n.t("marketing.welcome.hero_section.call_to_action")
+    within ".content-section" do
+      fill_in "Enter Your Email Address", with: "Luna.Lovegood@example.com"
+      click_on "Try For Free!"
+    end
 
     expect(page).
       to have_content I18n.t("onboarding.registrations.new.title")
@@ -16,12 +19,12 @@ RSpec.describe "onboarding happy path", type: :feature do
       to have_content I18n.t("onboarding.registrations.new.description")
 
     click_on I18n.t("onboarding.registrations.form.submit");
-    expect(page).to have_content("can't be blank", count: 4)
+    expect(page).to have_content("can't be blank", count: 3)
 
 
     fill_in "First Name", with: "Luna"
     fill_in "Last Name", with: "Lovegood"
-    fill_in "Email", with: "Luna.Lovegood@example.com"
+    # fill_in "Email", with: "Luna.Lovegood@example.com"
     fill_in "Password", with: "Password123"
 
     click_on I18n.t("onboarding.registrations.form.submit");
