@@ -71,6 +71,7 @@ module Locations
                :given_name,
                :mobile_phone,
                :preferred_name,
+               :primary_position_id,
                :wage,
                preferred_hours_attributes: [:id, :start, :end]
               ).

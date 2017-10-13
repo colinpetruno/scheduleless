@@ -8,16 +8,40 @@ form {
   }
 
   .inline {
+    display: flex;
+    flex-direction: row;
     vertical-align: top;
 
     label {
       display: block;
-      font-weight: bold;
+    }
+
+    .check_boxes {
+      label,small {
+        display: block;
+      }
+
+      .checkbox {
+        display: inline-block;
+        padding-right: 15px;
+      }
     }
 
     .input {
-      display: inline-block;
+      flex: 1;
+      max-width: 420px;
+      padding-right: 15px;
       vertical-align: top;
+
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+
+    .input.boolean {
+      .checkbox {
+        margin-top: 32px;
+      }
     }
   }
 }

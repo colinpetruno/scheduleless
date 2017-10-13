@@ -1,8 +1,31 @@
 <%= simple_form_for [:locations, @location, @user] do |f| %>
-  <%= f.input :email %>
-  <%= f.input :mobile_phone %>
-  <%= f.input :given_name %>
-  <%= f.input :family_name %>
+  <h3>Employee Details</h3>
+  <div class="inline">
+    <%= f.input :given_name %>
+    <%= f.input :family_name %>
+  </div>
+
+  <br />
+  <h3>Position Details</h3>
+  <%= f.input :primary_position_id, as: :select, collection: current_company.positions %>
+
+  <div class="inline">
+    <%= f.input :wage, as: :currency %>
+
+    <%= f.input :salary,
+      as: :boolean,
+      input_html: {
+        class: "disable-toggle",
+        data: { target: ".user_wage" }
+      } %>
+  </div>
+
+  <br />
+  <h3>Contact Information</h3>
+  <div class="inline">
+    <%= f.input :email %>
+    <%= f.input :mobile_phone %>
+  </div>
 
   <%= f.submit %>
 <% end %>
