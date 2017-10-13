@@ -11,7 +11,8 @@ class AvailableEmployees
       company.
       users.
       where(id: matching_employees).
-      where.not(id: existing_employees)
+      where.not(id: existing_employees).
+      order(:given_name, :family_name)
   end
 
   private

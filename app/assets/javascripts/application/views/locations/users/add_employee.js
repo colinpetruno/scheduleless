@@ -1,12 +1,16 @@
 $(document).on("turbolinks:load", function() {
   if($('#location-available-employees').length) {
     var available_employees = new Bloodhound({
-      datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+      datumTokenizer: Bloodhound.tokenizers.obj.whitespace(),
       queryTokenizer: Bloodhound.tokenizers.whitespace,
+      identify: function(obj) {
+        return obj.id;
+      },
       remote: {
         url: $("#location-available-employees").data("url"),
         wildcard: 'QUERY'
-      }
+      },
+
     });
 
     $('#location-available-employees').typeahead(null, {
@@ -19,7 +23,7 @@ $(document).on("turbolinks:load", function() {
           return obj.email;
         }
       },
-      limit: 10,
+      limit: "Infinity",
       source: available_employees,
       templates: {
         empty: [
