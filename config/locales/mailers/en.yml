@@ -20,9 +20,8 @@ en:
       subject: "A new employee has joined your location!"
       title: "%{new_employee} has joined your location!"
       message: >
-        If you need this employee to be added to your existing schedules let
-        us know! Otherwise they will be scheduled the next time we make your
-        schedules.
+        You have a new employee available to be scheduled. Make sure you add
+        some shifts for them so they can get started!
     schedule_approved:
       link: "Click Here To Review"
       message: >

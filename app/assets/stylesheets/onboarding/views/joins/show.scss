@@ -1,0 +1,21 @@
+.joins-show {
+  > div {
+    margin: 0 auto;
+    min-width: 450px;
+  }
+}
+
+.joins-show-aside {
+  font-weight: 200;
+  padding-top: 40px;
+
+  h5 {
+    color: $white;
+    margin-bottom: 5px;
+  }
+
+  small {
+    color: $white;
+    font-weight: 200;
+  }
+}

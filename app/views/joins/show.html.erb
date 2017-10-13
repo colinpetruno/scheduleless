@@ -1,17 +1,39 @@
-<% if @location.present? %>
-  <h3><%= @location.name %></h3>
-  <p><%= @location.company.name %></p>
-  <br />
-  <%= simple_form_for @join, url: location_join_path(@location.hash_key) do |f| %>
-    <%= f.input :email %>
-    <%= f.input :mobile_phone, as: :tel %>
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
-    <%= f.input :password %>
-    <%= f.input :password_confirmation %>
+<% content_for(:sidebar) do %>
+<aside class="joins-show-aside">
+  <% if @location.present? %>
+    <h5><%= @location.name %></h5>
+    <p><%= @location.company.name %></p>
 
-    <%= f.submit %>
+    <br /><br /><br />
+
+    <small>
+      Welcome to Scheduleless! The best way for you to receive and control
+      your schedule. <br /><br />
+      Once you join your manager will be able to schedule you for upcoming
+      shifts.
+    </small>
   <% end %>
-<% else %>
-  We could not find that company. Make sure you typed the url properly
+</aside>
 <% end %>
+
+<section class="joins-show">
+  <% if @location.present? %>
+    <%= simple_form_for @join, url: location_join_path(@location.hash_key) do |f| %>
+      <div class="inline">
+        <%= f.input :first_name %>
+        <%= f.input :last_name %>
+      </div>
+      <div class="inline">
+        <%= f.input :email %>
+        <%= f.input :mobile_phone, as: :tel %>
+      </div>
+
+      <%= f.input :password %>
+      <%= f.input :password_confirmation %>
+
+      <%= f.submit %>
+    <% end %>
+  <% else %>
+    We could not find that company. Make sure you typed the url properly
+  <% end %>
+<section>
