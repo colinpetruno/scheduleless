@@ -4,7 +4,8 @@
   <%= f.input :minute_start,
     as: :time_picker_range,
     input_html: {
-      collection: TimeRange.quarter_hour_options.to_json
+      collection: TimeRange.quarter_hour_options.to_json,
+      preference: @location.preference.to_json
     }
   %>
 
