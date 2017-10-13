@@ -21,14 +21,24 @@ $(document).on("turbolinks:load", function() {
       var startVal = $(that).find('.start').val()
       var endVal = $(that).find('.end').val()
 
+      var START_HOURS = [6, 7, 8, 9, 10]
+      var END_HOURS   = [16, 17, 18, 19, 20]
+
+      var selectedStartMinutes = null,
+          selectedEndMinutes = null;
+
       if (!$start.length || !$end.length) {
         return;
       }
 
-      var collection
+      var collection,
+          preference,
+          shift;
       try {
         collection = JSON.parse($($start).attr('collection'))
+        preference = JSON.parse($($start).attr('preference'))
       } catch (e) {
+        console.log("Error Parsing JSON", e)
         return;
       }
 
@@ -58,10 +68,16 @@ $(document).on("turbolinks:load", function() {
       }
 
       $start.on('typeahead:selected', function($e, datum) {
+        selectedStartMinutes = datum.id
+        $end.typeahead('destroy')
+        endPicker = applyTypehead($end, endSourceDefaults)
         $(that).find('.start').val(datum.id)
       })
 
       $end.on('typeahead:selected', function($e, datum) {
+        selectedEndMinutes = datum.id
+        $start.typeahead('destroy')
+        startPicker = applyTypehead($start, startSourceDefaults)
         $(that).find('.end').val(datum.id)
       })
 
@@ -81,9 +97,38 @@ $(document).on("turbolinks:load", function() {
         return 0;
       }
 
+      function getDefaultHours (arr) {
+        return arr.map(function (d) {
+          return createTime(d)
+        })
+      }
+
+      function getStartHours () {
+        return START_HOURS
+      }
+
+      function getEndHours () {
+        var arr = END_HOURS
+        if (selectedStartMinutes !== null) {
+
+          var startHour = selectedStartMinutes/60
+          var lowerBound = startHour + preference.minimum_shift_length/60
+          var upperBound = startHour + preference.maximum_shift_length/60
+
+          var hours = [];
+          for (var i = lowerBound; i <= upperBound; i++) {
+            hours.push(i);
+          }
+
+          arr = hours
+        }
+        return arr
+      }
+
       function startSourceDefaults(q, sync) {
+        var timeOverrides = getDefaultHours(getStartHours())
         if (q === '') {
-          sync(bloodhound.get('5:00 am', '6:00 am', '7:00 am', '8:00 am', '9:00 am'));
+          sync(bloodhound.get(timeOverrides));
         }
 
         else {
@@ -92,13 +137,25 @@ $(document).on("turbolinks:load", function() {
       }
 
       function endSourceDefaults(q, sync) {
+        var timeOverrides = getDefaultHours(getEndHours())
         if (q === '') {
-          sync(bloodhound.get('4:00 pm', '5:00 pm', '6:00 pm', '7:00 pm'));
+          sync(bloodhound.get(timeOverrides));
         }
 
         else {
           bloodhound.search(q, sync);
         }
+      }
+
+      function createTime (hour) {
+        var suffix = 'am'
+
+        if (hour > 12) {
+          suffix = 'pm'
+          hour = hour % 12
+        }
+
+        return hour + ':00 ' + suffix
       }
 
       function applyTypehead(selector, source) {
