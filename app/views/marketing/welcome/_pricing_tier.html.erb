@@ -23,8 +23,13 @@
       <ul>
         <% t(".#{tier}.features").each do |feature| %>
           <li>
-            <span class="oi oi-circle-check"></span>
-            <strong><%= feature %></strong>
+            <span class="oi oi-circle-check"></span> <%= feature %>
+          </li>
+        <% end %>
+
+        <% t(".#{tier}.restricted_features").each do |feature| %>
+          <li>
+            <span class="empty"></span> <%= feature %>
           </li>
         <% end %>
       </ul>

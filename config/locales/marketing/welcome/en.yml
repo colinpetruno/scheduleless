@@ -127,19 +127,34 @@ en:
             - "Time Off Requests"
             - "Multiple Locations"
             - "iPhone & Android apps"
+          restricted_features:
+            - "Employee Wage Calculator"
+            - "Shift Trading"
+            - "Time Clock"
           name: "Basic Scheduling"
         standard:
           price: 2
           features:
-            - "All of Basic"
+            - "Schedule Builder"
+            - "Time Off Requests"
+            - "Multiple Locations"
+            - "iPhone & Android apps"
             - "Employee Wage Calculator"
             - "Shift Trading"
+          restricted_features:
+            - "Time Clock"
           name: "Complete Scheduling"
         advanced:
           price: 3
           features:
-            - "All of Standard"
+            - "Schedule Builder"
+            - "Time Off Requests"
+            - "Multiple Locations"
+            - "iPhone & Android apps"
+            - "Employee Wage Calculator"
+            - "Shift Trading"
             - "Time Clock"
+          restricted_features: []
           name: "With Time Tracking"
         call_to_action: "Try For Free"
         30_days_free: "30 days free, no credit card required"

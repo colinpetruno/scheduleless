@@ -67,17 +67,30 @@
       li {
         display: block;
         font-size: 12px;
+        font-weight: 400;
         text-align: left;
         padding: 5px 15px;
         line-height: 15px;
         vertical-align: middle;
 
         span {
-          color: darken(#b2dba1, 8%);
+          color: $gray-light;
           font-size: 14px;
           line-height: 15px;
           margin-right: 5px;
           vertical-align: middle;
+        }
+
+        span.oi-circle-check {
+          color: darken(#b2dba1, 8%);
+        }
+
+        .empty {
+          background-color: lighten($gray-light, 15%);
+          border-radius: 50%;
+          display: inline-block;
+          width: 14px;
+          height: 14px;
         }
       }
     }
