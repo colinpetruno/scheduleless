@@ -10,6 +10,10 @@ en:
       en: "English"
       de: "German"
     push_notifications:
+      time_off_requests:
+        created:
+          title: "A New Time Off Approval Is Pending"
+          message: "%{user_name} has requested time off on #{dates}"
       cancelled_shift:
         title: "Shift Cancellation Alert"
         message: "%{user_name} cancelled their %{shift_time} shift."

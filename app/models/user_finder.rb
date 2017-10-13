@@ -5,8 +5,6 @@ class UserFinder
   end
 
   def admins_for_location
-    company = location.company
-
     position_ids = company.
       positions.
       where("company_admin = ? or location_admin = ?", true, true).
@@ -22,7 +20,7 @@ class UserFinder
   def by_associated_locations
     User.
       joins(:user_locations).
-      where(company: user.company).
+      where(company: company).
       where(user_locations: { location_id: user.locations }).
       where.not(user_locations: { user_id: user.id })
   end
@@ -40,7 +38,6 @@ class UserFinder
   end
 
   def company_admins
-    company = location.company
     position_ids = company.positions.where(company_admin: true).pluck(:id)
 
     company.
@@ -51,7 +48,6 @@ class UserFinder
   end
 
   def location_admins
-    company = location.company
     position_ids = company.positions.where(location_admin: true).pluck(:id)
 
     company.
@@ -64,4 +60,12 @@ class UserFinder
   private
 
   attr_reader :location, :user
+
+  def company
+    if user.present?
+      user.company
+    elsif location.present?
+      location.company
+    end
+  end
 end

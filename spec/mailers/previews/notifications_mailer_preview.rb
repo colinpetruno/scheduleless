@@ -20,4 +20,11 @@ class NotificationsMailerPreview < ActionMailer::Preview
 
     NotificationsMailer.schedule_published(u, sp)
   end
+
+  def new_time_off_approval
+    u = User.first
+    to = TimeOffRequest.last
+
+    NotificationsMailer.new_time_off_approval(u, to)
+  end
 end

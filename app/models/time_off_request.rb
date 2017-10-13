@@ -5,6 +5,8 @@ class TimeOffRequest < ApplicationRecord
   validates :start_date, presence: true
   validate :times_are_valid
 
+  after_create :send_notification
+
   enum status: {
     pending: 0,
     denied: 1,
@@ -70,6 +72,10 @@ class TimeOffRequest < ApplicationRecord
   end
 
   private
+
+  def send_notification
+    Notifications::TimeOffRequests::CreatedJob.perform_later(self.id)
+  end
 
   def times_are_valid
     if @end_date_string.present? && @start_date_string.blank?

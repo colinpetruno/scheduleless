@@ -1,0 +1,15 @@
+<div style="color: #61656b; text-align: center; padding-top: 30px; padding-bottom: 30px;">
+  <div style="font-size: 13px">
+    <%= @presenter.requestee %> is requesting time off on
+  </div>
+
+  <br />
+  <div style="font-size: 14px">
+    <%= @presenter.time_label %>.
+  </div>
+  <br />
+
+  <%= link_to "View and Approve",
+    dashboard_url,
+    style: "background-color: #5776bd; color: #ffffff; text-decoration: none; padding: 5px 10px; font-size: 12px" %>
+</div>

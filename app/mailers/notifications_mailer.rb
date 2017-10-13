@@ -25,4 +25,12 @@ class NotificationsMailer < ApplicationMailer
 
     mail(to: user.email)
   end
+
+  def new_time_off_approval(user, time_off_request)
+    @user = user
+    @presenter = NotificationsMailers::NewTimeOffApprovalPresenter.
+      new(time_off_request)
+
+    mail(to: user.email)
+  end
 end
