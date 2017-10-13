@@ -1,0 +1,31 @@
+.calendars-sidebar-content {
+  .location-select-dropdown {
+    margin-bottom: 10px;
+
+    > button {
+      @include truncatable();
+      background-color: transparent;
+      border: 1px solid $white;
+      color: $white;
+      display: block;
+      width: 100%;
+    }
+
+    > div {
+      width: 100%;
+      text-align: center;
+
+      > a {
+        @include truncatable();
+        text-align: center;
+      }
+    }
+  }
+
+  .location-name {
+    @include truncatable();
+    color: $white;
+    font-weight: 200;
+    margin-bottom: 10px;
+  }
+}

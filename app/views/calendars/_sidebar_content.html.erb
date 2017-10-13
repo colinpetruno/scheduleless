@@ -1,60 +1,82 @@
-<footer class="centered">
-  <div class="new-icon-toggle centered">
-    <button data-toggle="modal" data-target="#join-link-modal">
-      <span data-toggle="tooltip" title="Invite Url">
-        <span class="oi oi-link-intact"></span>
-      </span>
-    </button>
+<div class="calendars-sidebar-content">
+  <footer class="centered">
 
-    <%= link_to(
-      locations_location_users_path(presenter.location),
-      class: "button",
-      title: "Employees",
-      data: { toggle: "tooltip" }
-    ) do %>
-      <span class="oi oi-people"></span>
+    <% if presenter.dropdown_locations.present? %>
+      <div class="dropdown location-select-dropdown">
+        <button role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= presenter.location.name %>
+        </button>
+
+        <div>
+          <% presenter.dropdown_locations.each do |location| %>
+            <%= link_to "#{location.name}", location_calendar_path(location) %>
+          <% end %>
+        </div>
+      </div>
+    <% else %>
+      <h3 class="location-name"><%= presenter.location.name %></h3>
     <% end %>
 
-    <%= link_to(
-      new_remote_location_in_progress_shift_path(
-        presenter.location,
-        date: presenter.date_integer
-      ),
-      class: "button",
-      title: "Add a Shift",
-      data: { toggle: "tooltip" },
-      remote: true
-    ) do %>
-      <span class="oi oi-plus"></span>
-    <% end %>
+    <div class="new-icon-toggle centered">
+      <button data-toggle="modal" data-target="#join-link-modal">
+        <span data-toggle="tooltip" title="Invite Url">
+          <span class="oi oi-link-intact"></span>
+        </span>
+      </button>
 
-    <%= link_to(
-      new_remote_location_posting_path(
-        presenter.location,
-        date_start: presenter.date_integer,
-        date_end: presenter.date_integer
-      ),
-      class: "button",
-      title: "Publish",
-      data: { toggle: "tooltip" },
-      remote: true
-    ) do %>
-      <span class="oi oi-share"></span>
-    <% end %>
-  </div>
+      <%= link_to(
+        locations_location_users_path(presenter.location),
+        class: "button",
+        title: "Employees",
+        data: { toggle: "tooltip" }
+      ) do %>
+        <span class="oi oi-people"></span>
+      <% end %>
 
-  <br />
+      <%= link_to(
+        new_remote_location_in_progress_shift_path(
+          presenter.location,
+          date: presenter.date_integer
+        ),
+        class: "button",
+        title: "Add a Shift",
+        data: { toggle: "tooltip" },
+        remote: true
+      ) do %>
+        <span class="oi oi-plus"></span>
+      <% end %>
 
-  <div id="unpublished-shift-hint"
-       class="warning <%= "hidden" unless presenter.unpublished_shifts? %>">
-    There are shifts that aren't published!
-  </div>
-</footer>
+      <%= link_to(
+        new_remote_location_posting_path(
+          presenter.location,
+          date_start: presenter.date_integer,
+          date_end: presenter.date_integer
+        ),
+        class: "button",
+        title: "Publish",
+        data: { toggle: "tooltip" },
+        remote: true
+      ) do %>
+        <span class="oi oi-share"></span>
+      <% end %>
+    </div>
 
-<% if Features.for(current_company).wages? %>
-  <div id="wage-container">
-    <%= render partial: "wages", locals: {
-      wages: @presenter.partial_presenter.wages
-    } %>
-  </div>
-<% end %>
+    <br />
+
+
+    <br />
+
+    <div id="unpublished-shift-hint"
+         class="warning <%= "hidden" unless presenter.unpublished_shifts? %>">
+      There are shifts that aren't published!
+    </div>
+  </footer>
+
+  <% if Features.for(current_company).wages? %>
+    <div id="wage-container">
+      <%= render partial: "wages", locals: {
+        wages: @presenter.partial_presenter.wages
+      } %>
+    </div>
+  <% end %>
+</div>

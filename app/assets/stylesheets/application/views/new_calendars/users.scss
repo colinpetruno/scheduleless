@@ -1,6 +1,9 @@
 .new-calendar-users {
+  @include truncatable();
+
   font-size: 12px;
   line-height: 40px;
+  max-width: 150px;
   min-height: 40px;
   padding-left: 10px;
   padding-top: 5px;

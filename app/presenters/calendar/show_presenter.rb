@@ -21,6 +21,10 @@ module Calendar
       date.to_s(:full_day_and_month)
     end
 
+    def dropdown_locations
+      user.locations - [location]
+    end
+
     def next_day_url
       if view.to_sym == :daily
         routes.location_calendar_path(location, date: date + 1.day)

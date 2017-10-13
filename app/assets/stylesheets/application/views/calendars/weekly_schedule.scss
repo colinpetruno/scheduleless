@@ -104,6 +104,8 @@
     }
 
     .employee {
+      @include truncatable();
+
       flex-basis: auto;
       border-right: 1px solid $blue;
       width: 150px;

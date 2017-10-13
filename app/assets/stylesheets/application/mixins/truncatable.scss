@@ -1,0 +1,18 @@
+@mixin truncatable() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin flex-truncatable() {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  white-space: nowrap;
+
+  > * {
+    display: table-cell;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

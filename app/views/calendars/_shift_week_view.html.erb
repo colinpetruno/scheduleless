@@ -1,7 +1,13 @@
 <div class="new-calendars-shift-week-view <%= shift.classes %>">
   <section>
-    <div><%= shift.time_range %></div>
-    <div><%= shift.position %></div>
+    <div>
+      <span><%= shift.time_range %></span>
+    </div>
+    <div>
+      <span>
+        <%= shift.position %>
+      </span>
+    </div>
   </section>
 
   <% if shift.repeating? %>

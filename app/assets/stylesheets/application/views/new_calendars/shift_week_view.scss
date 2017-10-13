@@ -16,6 +16,10 @@
     margin: auto;
     display: flex;
     flex-direction: column;
+
+    > div {
+      @include flex-truncatable();
+    }
   }
 
   .repeating-shift-icon {

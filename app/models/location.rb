@@ -29,6 +29,10 @@ class Location < ApplicationRecord
     locations.find_by(user_locations: { home: true }) || locations.first
   end
 
+  def name
+    super || self.line_1
+  end
+
   def hash_key
     super || generate_hash_key
   end
