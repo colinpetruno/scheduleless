@@ -20,7 +20,7 @@ module Users
 
     private
 
-    attr_reader :user
+    attr_reader :user, :position
 
     def company
       @company ||= user.company
