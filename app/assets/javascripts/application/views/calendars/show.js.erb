@@ -1,0 +1,10 @@
+$(document).on("turbolinks:load", function() {
+  $(document).off("keyup.calendar");
+  if ($(".calendars-show").length < 1) { return; }
+
+  $(document).on("keyup.calendar", function(e){
+    if(e.keyCode === 27) {
+      window.Scheduleless.sidebar.close();
+    }
+  });
+});

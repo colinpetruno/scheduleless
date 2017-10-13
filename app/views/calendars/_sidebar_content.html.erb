@@ -1,5 +1,20 @@
 <footer class="centered">
   <div class="new-icon-toggle centered">
+    <button data-toggle="modal" data-target="#join-link-modal">
+      <span data-toggle="tooltip" title="Invite Url">
+        <span class="oi oi-link-intact"></span>
+      </span>
+    </button>
+
+    <%= link_to(
+      locations_location_users_path(presenter.location),
+      class: "button",
+      title: "Employees",
+      data: { toggle: "tooltip" }
+    ) do %>
+      <span class="oi oi-people"></span>
+    <% end %>
+
     <%= link_to(
       new_remote_location_in_progress_shift_path(
         presenter.location,

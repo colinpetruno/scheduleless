@@ -46,6 +46,10 @@
   </div>
 </div>
 
+
+<%= render partial: "locations/join_url_modal",
+           locals: { location: @presenter.location } %>
+
 <% content_for(:view_content_classes, "full-width") %>
 <% content_for(:view_sidebar) do %>
   <%= render(partial: "dashboards/calendar_sidebar",

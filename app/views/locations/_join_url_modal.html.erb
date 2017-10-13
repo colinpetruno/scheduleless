@@ -1,0 +1,31 @@
+<div class="modal fade locations-join-url-modal"
+     id="join-link-modal"
+     tabindex="-1"
+     role="dialog" aria-hidden="true">
+
+  <div class="modal-dialog" role="document">
+    <section>
+
+      <header class="modal-header">
+        <h4 class="title">Join Location Url</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </header>
+
+      <article>
+        <div>
+          Any person you send this link to will be able to sign up and join
+          this location. They will be prompted to enter their information
+          when they visit the link.
+        </div>
+        <div class="input">
+          <input type="text"
+                 class="input"
+                 disabled="disabled"
+                 value="<%= location_join_url(location.hash_key) %>" />
+        </div>
+      </article>
+    </section>
+  </div>
+</div>

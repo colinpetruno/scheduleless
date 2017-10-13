@@ -1,0 +1,14 @@
+.locations-join-url-modal {
+
+  article {
+    display: flex;
+    flex-direction: column;
+
+    > div {
+      margin: 0 auto;
+      margin-bottom: 15px;
+      min-width: 375px;
+      text-align: center;
+    }
+  }
+}

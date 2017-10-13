@@ -616,8 +616,8 @@ $btn-padding-y-sm:               .25rem;
 // $zindex-dropdown:           1000;
 // $zindex-fixed:              1030;
 // $zindex-sticky:             1030;
-// $zindex-modal-backdrop:     1040;
-// $zindex-modal:              1050;
+$zindex-modal-backdrop:     1040;
+$zindex-modal:              1050;
 // $zindex-popover:            1060;
 // $zindex-tooltip:            1070;
 
@@ -812,32 +812,32 @@ $tooltip-padding-x:           15px;
 // Modals
 
 // Padding applied to the modal body
-// $modal-inner-padding:         15px;
+$modal-inner-padding:         15px;
 
-// $modal-dialog-margin:         10px;
-// $modal-dialog-sm-up-margin-y: 30px;
+$modal-dialog-margin:         10px;
+$modal-dialog-sm-up-margin-y: 30px;
 
-// $modal-title-line-height:     $line-height-base;
+$modal-title-line-height:     14px;
 
-// $modal-content-bg:               $white;
-// $modal-content-border-color:     rgba($black,.2);
-// $modal-content-border-width:     $border-width;
-// $modal-content-xs-box-shadow:    0 3px 9px rgba($black,.5);
-// $modal-content-sm-up-box-shadow: 0 5px 15px rgba($black,.5);
+$modal-content-bg:               $white;
+$modal-content-border-color:     rgba($black,.2);
+$modal-content-border-width:     $border-width;
+$modal-content-box-shadow-xs:    0 3px 9px rgba($black,.5);
+$modal-content-box-shadow-sm-up: 0 5px 15px rgba($black,.5);
 
-// $modal-backdrop-bg:           $black;
-// $modal-backdrop-opacity:      .5;
-// $modal-header-border-color:   $gray-lighter;
-// $modal-footer-border-color:   $modal-header-border-color;
-// $modal-header-border-width:   $modal-content-border-width;
-// $modal-footer-border-width:   $modal-header-border-width;
-// $modal-header-padding:        15px;
+$modal-backdrop-bg:           $black;
+$modal-backdrop-opacity:      .5;
+$modal-header-border-color:   $gray-light;
+$modal-footer-border-color:   $modal-header-border-color;
+$modal-header-border-width:   $modal-content-border-width;
+$modal-footer-border-width:   $modal-header-border-width;
+$modal-header-padding:        15px;
 
-// $modal-lg:                    800px;
-// $modal-md:                    500px;
-// $modal-sm:                    300px;
+$modal-lg:                    800px;
+$modal-md:                    500px;
+$modal-sm:                    300px;
 
-// $modal-transition:            transform .3s ease-out;
+$modal-transition:            transform .3s ease-out;
 
 
 // Alerts
