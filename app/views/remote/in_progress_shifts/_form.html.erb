@@ -16,6 +16,12 @@
     value_method: :id
   %>
 
+  <%= f.input :position_id,
+    as: :select,
+    collection: current_company.positions,
+    include_blank: false
+  %>
+
   <% if @shift.new_record? %>
     <%= f.input :repeat_frequency,
       as: :select,

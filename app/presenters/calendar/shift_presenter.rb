@@ -82,7 +82,7 @@ module Calendar
     end
 
     def position
-      shift.user.primary_position.name
+      shift.position.name
     rescue
       ""
     end

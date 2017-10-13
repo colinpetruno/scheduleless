@@ -25,6 +25,7 @@ module Shifts
                   :minute_end,
                   :date,
                   :location_id,
+                  :position_id,
                   :repeating_shift_id,
                   :user_id).
             merge(in_progress_shift_id: in_progress_shift.id)

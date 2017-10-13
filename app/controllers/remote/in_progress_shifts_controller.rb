@@ -66,6 +66,7 @@ module Remote
         permit(:date,
                :minute_end,
                :minute_start,
+               :position_id,
                :repeat_frequency,
                :update_repeating_rule,
                :user_id).
@@ -80,6 +81,7 @@ module Remote
     def shift_get_params
       shift_param_hash = { date: params[:date] }
       shift_param_hash.merge!(user_id: user.id) if user.present?
+      shift_param_hash.merge!(position_id: user.primary_position_id) if user.present?
       shift_param_hash
     end
 
