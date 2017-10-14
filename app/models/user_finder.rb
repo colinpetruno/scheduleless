@@ -25,6 +25,10 @@ class UserFinder
       where.not(user_locations: { user_id: user.id })
   end
 
+  def by_company
+    user.company.users
+  end
+
   def by_company_without_current_user
     user.company.users.where.not(id: user.id)
   end
