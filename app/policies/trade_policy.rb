@@ -1,14 +1,25 @@
 class TradePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.
+      base = scope.
         available.
         joins(:shift).
-        includes(:offers).
+        includes(:offers)
+
+      base.
         where(
           location_id: user.locations.pluck(:id),
-          shifts: { date: (location_date..Float::INFINITY) }
-        ).
+          shifts: {
+            date: ((location_date+1)..Float::INFINITY)
+          }
+        ).or(
+          base.where(
+            location_id: user.locations.pluck(:id),
+            shifts: {
+              date: location_date,
+              minute_start: (location_time_minutes..Float::INFINITY)
+            }
+          )).
         where.not(user_id: user.id)
     end
 
@@ -16,6 +27,12 @@ class TradePolicy < ApplicationPolicy
       DateAndTime::LocationTime.
         new(location: user.locations.first).
         current_date_integer
+    end
+
+    def location_time_minutes
+      DateAndTime::LocationTime.
+        new(location: user.locations.first).
+        current_time_minutes
     end
   end
 
