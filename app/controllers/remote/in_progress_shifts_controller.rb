@@ -41,7 +41,7 @@ module Remote
 
       authorize @shift
 
-      Shifts::Updater.update(@shift, in_progress_shift_params)
+      Shifts::Updater.update(@shift, in_progress_shift_params, publish?)
     end
 
     private

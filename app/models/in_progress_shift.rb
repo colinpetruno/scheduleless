@@ -36,6 +36,7 @@ class InProgressShift < ApplicationRecord
                             minute_end: self.minute_end,
                             minute_start: self.minute_start,
                             location_id: self.location_id,
+                            position_id: self.position_id,
                             repeat_frequency: self.repeat_frequency,
                             start_date: self.date,
                             user_id: self.user_id)

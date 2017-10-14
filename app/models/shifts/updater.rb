@@ -1,12 +1,13 @@
 module Shifts
   class Updater
-    def self.update(in_progress_shift, params)
-      new(in_progress_shift, params).update
+    def self.update(in_progress_shift, params, publish=false)
+      new(in_progress_shift, params, publish).update
     end
 
-    def initialize(in_progress_shift, params={})
+    def initialize(in_progress_shift, params={}, publish=false)
       @in_progress_shift = in_progress_shift
       @params = params
+      @publish = publish
     end
 
     def update
@@ -15,13 +16,16 @@ module Shifts
       ActiveRecord::Base.transaction do
         if in_progress_shift.repeating?
           if params[:update_repeating_rule] == "all"
-            puts "update all repeating shift 0"
             update_all_repeating_shifts
           else
             update_single_repeating_shift
           end
         else
           in_progress_shift.update(@params.merge(edited: true))
+
+          if publish?
+            publish_shift(in_progress_shift)
+          end
         end
       end
     rescue StandardError => error
@@ -45,6 +49,10 @@ module Shifts
       !changed
     end
 
+    def publish?
+      @publish
+    end
+
     def repeating_shift
       in_progress_shift.repeating_shift
     end
@@ -58,19 +66,32 @@ module Shifts
                              preview_minute_start: params[:minute_start],
                              preview_user_id: params[:user_id])
 
-      InProgressShift.
-        where(repeating_shift_id: repeating_shift_id).
-        update_all(edited: true,
-                   minute_end: params[:minute_end],
-                   minute_start: params[:minute_start],
-                   user_id: params[:user_id])
+
+      if publish?
+        repeating_shift.publish
+      else
+        InProgressShift.
+          where(repeating_shift_id: repeating_shift_id).
+          update_all(edited: true,
+                     minute_end: params[:minute_end],
+                     minute_start: params[:minute_start],
+                     user_id: params[:user_id])
+      end
     end
 
     def update_single_repeating_shift
-
       in_progress_shift.update(deleted_at: DateTime.now)
+      new_shift = InProgressShift.create(@params.merge(edited: true))
 
-      InProgressShift.create(@params.merge(edited: true))
+      if publish?
+        publish_shift(new_shift)
+      end
+    end
+
+    def publish_shift(shift)
+      Shifts::Publishers::SingleShift.
+        new(in_progress_shift: shift).
+        publish
     end
   end
 end
