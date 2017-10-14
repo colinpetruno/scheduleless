@@ -8,9 +8,13 @@ module TimeOffRequests
       if accept == "true"
         time_off_request.
           update_columns(status: :approved, reviewed_by: reviewer.id)
+
+        Notifications::TimeOffRequests::ApprovedJob.perform_later(time_off_request.id)
       else
         time_off_request.
           update_columns(status: :denied, reviewed_by: reviewer.id)
+
+        Notifications::TimeOffRequests::DeniedJob.perform_later(time_off_request.id)
       end
 
       true

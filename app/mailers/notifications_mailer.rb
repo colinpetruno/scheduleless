@@ -33,4 +33,18 @@ class NotificationsMailer < ApplicationMailer
 
     mail(to: user.email)
   end
+
+  def time_off_request_denied(user, time_off_request)
+    @time_off_request = time_off_request
+    @user = user
+
+    mail(to: user.email)
+  end
+
+  def time_off_request_approved(user, time_off_request)
+    @time_off_request = time_off_request
+    @user = user
+
+    mail(to: user.email)
+  end
 end

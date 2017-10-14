@@ -11,9 +11,15 @@ en:
       de: "German"
     push_notifications:
       time_off_requests:
+        approved:
+          title: "Your Time Off Request Was Approved!"
+          message: "%{dates}"
         created:
           title: "A New Time Off Approval Is Pending"
           message: "%{user_name} has requested time off on #{dates}"
+        denied:
+          title: "Your Time Off Request Was Not Approved."
+          message: "%{dates}"
       cancelled_shift:
         title: "Shift Cancellation Alert"
         message: "%{user_name} cancelled their %{shift_time} shift."

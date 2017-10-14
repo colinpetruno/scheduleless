@@ -27,4 +27,18 @@ class NotificationsMailerPreview < ActionMailer::Preview
 
     NotificationsMailer.new_time_off_approval(u, to)
   end
+
+  def time_off_request_denied
+    u = User.first
+    to = TimeOffRequest.last
+
+    NotificationsMailer.time_off_request_denied(u, to)
+  end
+
+  def time_off_request_approved
+    u = User.first
+    to = TimeOffRequest.last
+
+    NotificationsMailer.time_off_request_approved(u, to)
+  end
 end

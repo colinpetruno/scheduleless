@@ -1,0 +1,15 @@
+<div style="color: #61656b; text-align: center; padding-top: 30px; padding-bottom: 30px;">
+  <div style="font-size: 13px">
+    Your request for time off was denied. Perhaps try another date?
+  </div>
+
+  <br />
+  <div style="font-size: 14px">
+    <%= @time_off_request.label %>.
+  </div>
+  <br />
+
+  <%= link_to "Request Another Time Off",
+    new_time_off_request_url,
+    style: "background-color: #5776bd; color: #ffffff; text-decoration: none; padding: 5px 10px; font-size: 12px" %>
+</div>
