@@ -68,6 +68,7 @@ module Business
                :mobile_phone,
                :primary_position_id,
                :wage,
+               :salary,
                position_ids: []).
         merge({ company_id: current_company.id })
     end
