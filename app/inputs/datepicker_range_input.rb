@@ -9,11 +9,10 @@ class DatepickerRangeInput < SimpleForm::Inputs::StringInput
     # prevent typing in the fields
     options[:readonly] = "readyonly"
 
-
-    "<div>" +
-      "<section>" + start_field(options) + "</section>" +
-      "<section>" + end_field(options) + "</section>" +
-    "</div>"
+    (
+      start_field(options) + hidden_start_field +
+      end_field(options) + hidden_end_field
+    ).html_safe
   end
 
   private
@@ -26,8 +25,11 @@ class DatepickerRangeInput < SimpleForm::Inputs::StringInput
       start_value_date = Date.parse(start_value.to_s).to_s(:month_day_year)
     end
 
-    @builder.text_field_tag("#{attribute_name}_display", start_value_date, options) +
-      @builder.hidden_field(attribute_name, class: "datepicker-range-start-value")
+    @builder.text_field_tag("#{attribute_name}_display", start_value_date, options)
+  end
+
+  def hidden_start_field
+    @builder.hidden_field(attribute_name, class: "datepicker-range-start-value")
   end
 
   def end_field(options)
@@ -40,8 +42,11 @@ class DatepickerRangeInput < SimpleForm::Inputs::StringInput
       end_value_date = Date.parse(end_value.to_s).to_s(:month_day_year)
     end
 
-    @builder.text_field_tag("#{end_attribute_name}_display", end_value_date, options) +
-      @builder.hidden_field(end_attribute_name, class: "datepicker-range-end-value")
+    @builder.text_field_tag("#{end_attribute_name}_display", end_value_date, options)
+  end
+
+  def hidden_end_field
+    @builder.hidden_field(end_attribute_name, class: "datepicker-range-end-value")
   end
 
   def end_attribute_name
