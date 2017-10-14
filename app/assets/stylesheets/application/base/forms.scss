@@ -81,8 +81,7 @@ form {
       outline: 0;
     }
 
-    &:disabled,
-    &[readonly] {
+    &:disabled {
       background-color: darken($white, 5%);
       color: darken($gray-light, 10%);
       opacity: 1;

@@ -6,6 +6,9 @@ class DatepickerRangeInput < SimpleForm::Inputs::StringInput
     end
 
     options = merge_wrapper_options(input_html_options, wrapper_options)
+    # prevent typing in the fields
+    options[:readonly] = "readyonly"
+
 
     "<div>" +
       "<section>" + start_field(options) + "</section>" +
