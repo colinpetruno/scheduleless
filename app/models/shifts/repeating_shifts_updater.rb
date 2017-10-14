@@ -38,7 +38,6 @@ module Shifts
 
       end
     rescue StandardError => error
-      binding.pry
       Bugsnag.notify(error)
       false
     end

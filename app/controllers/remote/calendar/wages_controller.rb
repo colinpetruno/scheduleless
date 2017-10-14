@@ -8,6 +8,8 @@ module Remote
         skip_policy_scope # we aren't using resolve here
 
         @wages = Calculators::Wages::WeeklyForLocation.new(location: @location)
+      rescue Pundit::NotAuthorizedError
+        render json: {}, status: :unauthorized
       end
     end
   end
