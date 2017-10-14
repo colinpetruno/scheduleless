@@ -7,15 +7,9 @@ class TimePickerRangeInput < SimpleForm::Inputs::StringInput
     options = merge_wrapper_options(input_html_options, wrapper_options)
     options[:class].push("scrollable")
 
-    "<div>" +
-      "<section>" +
-        start_field(options) + hidden_start_field(options) +
-      "</section>" +
+    (start_field(options) + hidden_start_field(options) +
       options[:seperator].to_s +
-      "<section>" +
-        end_field(options) + hidden_end_field(options) +
-      "</section>" +
-    "</div>"
+        end_field(options) + hidden_end_field(options)).html_safe
   end
 
   private
