@@ -23,8 +23,10 @@ module Calendar
       return unless Features.for(location.company).wages?
 
       # TODO: add date here
-      @wages ||= Calculators::Wages::WeeklyForLocation.new(location: location)
+      @wages ||= Calculators::Wages::WeeklyForLocation.new(location: location,
+                                                           date: @date)
     end
+
     private
 
     def current_location_date

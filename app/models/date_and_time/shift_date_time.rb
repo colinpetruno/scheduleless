@@ -1,11 +1,12 @@
 module DateAndTime
   class ShiftDateTime
     # TODO Test meeee
-    def self.for(shift)
-      new(shift: shift)
+    def self.for(shift, location=nil)
+      new(shift: shift, location: location)
     end
 
-    def initialize(shift:)
+    def initialize(shift:, location: nil)
+      @location = location
       @shift = shift
     end
 
@@ -60,7 +61,7 @@ module DateAndTime
     end
 
     def location
-      shift.location
+      @location ||= shift.location
     end
 
     def overnight?

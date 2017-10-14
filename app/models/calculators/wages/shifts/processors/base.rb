@@ -34,7 +34,7 @@ module Calculators
           end
 
           def hours
-            DateAndTime::ShiftDateTime.for(shift).length_in_hours
+            DateAndTime::ShiftDateTime.for(shift, location).length_in_hours
           end
 
           private
