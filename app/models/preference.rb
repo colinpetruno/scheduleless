@@ -6,5 +6,6 @@ class Preference < ApplicationRecord
   validates :minimum_shift_length, inclusion: { in: (120..480) }
   validates :shift_overlap, presence: true
   validates :preferred_shift_length, presence: true
+  validates :minimum_hours_for_break, presence: true, inclusion: { in: (1..12) }
 
 end

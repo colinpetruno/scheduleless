@@ -32,6 +32,7 @@
 
         <%= f.input :minimum_hours_for_break,
           as: :select,
+          include_blank: false,
           collection: PreferenceOptions.minimum_hours_for_break_options %>
 
         <%= f.input :shift_overlap,
