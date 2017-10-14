@@ -37,7 +37,7 @@ class User < ApplicationRecord
     if: :password_required?,
     message: "must include one number, one letter and be between 8 and 40 characters"
   validates :locale, inclusion: { in: LocaleOptions.valid_locales }
-  validates :wage, inclusion: { in: (0..9999), message: "must be between 0 and 9999" }
+  validates :wage, allow_blank: true, inclusion: { in: (0..9999), message: "must be between 0 and 9999" }
 
   accepts_nested_attributes_for :company, :leads, :preferred_hours
 
