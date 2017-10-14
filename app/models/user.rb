@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  include EmailValidatable
   include NotDeletable
 
   belongs_to :company
@@ -24,6 +25,7 @@ class User < ApplicationRecord
 
   validates :email,
             allow_blank: true,
+            email: true,
             length: { minimum: 3, maximum: 200 },
             uniqueness: true
 
@@ -121,6 +123,19 @@ class User < ApplicationRecord
     if self.email.blank?
       self.email = nil
     end
+  end
+
+  # override devise method so it performs our validation instead
+  def email_required?
+    false
+  end
+
+  def email_changed?
+    false
+  end
+
+  def will_save_change_to_email?
+    false
   end
 
   def generate_hash_key
