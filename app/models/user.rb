@@ -34,6 +34,7 @@ class User < ApplicationRecord
     with: /\A(?=.*[a-zA-Z])(?=.*[0-9]).{8,}\z/,
     if: :password_required?,
     message: "must include one number, one letter and be between 8 and 40 characters"
+  validates :locale, inclusion: { in: LocaleOptions.valid_locales }
 
   accepts_nested_attributes_for :company, :leads, :preferred_hours
 
