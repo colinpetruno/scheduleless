@@ -16,7 +16,7 @@ class SchedulePeriod
   end
 
   def start_date
-    start_date = date - (day_of(date) - 1).days
+    date - (day_of(date) - 1).days
   end
 
   def end_date

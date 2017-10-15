@@ -1,6 +1,5 @@
 module Calendar
   class BasePresenter
-
     def initialize(date: Date.today, location:, user:)
       @date = date.is_a?(Date) ? date : Date.parse(date.to_s)
       @location = location
@@ -31,6 +30,10 @@ module Calendar
     end
 
     private
+
+    def company
+      @_company ||= location.company
+    end
 
     def current_location_date
       DateAndTime::LocationTime.new(location: location).current_date_integer

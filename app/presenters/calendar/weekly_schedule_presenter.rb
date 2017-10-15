@@ -3,7 +3,7 @@ module Calendar
     attr_reader :location
 
     def beginning_of_week
-      DateAndTime::WeekDates.for(date).beginning_of_week
+      schedule_period.start_date
     end
 
     def container_classes(date)
@@ -65,7 +65,11 @@ module Calendar
     end
 
     def end_of_week
-      DateAndTime::WeekDates.for(date).end_of_week
+      schedule_period.end_date
+    end
+
+    def schedule_period
+      @_schedule_period ||= SchedulePeriod.new(company: company, date: date)
     end
 
     def location_time
