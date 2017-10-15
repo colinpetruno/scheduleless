@@ -1,21 +1,19 @@
 <div class="calendars-sidebar-content">
   <footer class="centered">
 
-    <% if presenter.dropdown_locations.present? %>
-      <div class="dropdown location-select-dropdown">
-        <button role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <%= presenter.location.name %>
-        </button>
+    <div class="dropdown location-select-dropdown">
+      <button role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <%= presenter.location.name %>
+      </button>
 
-        <div>
-          <% presenter.dropdown_locations.each do |location| %>
-            <%= link_to "#{location.name}", location_calendar_path(location) %>
-          <% end %>
-        </div>
+      <div>
+        <% presenter.dropdown_locations.each do |location| %>
+          <%= link_to "#{location.name}", location_calendar_path(location) %>
+        <% end %>
+
+        <%= link_to "Create a new location", new_location_path %>
       </div>
-    <% else %>
-      <h3 class="location-name"><%= presenter.location.name %></h3>
-    <% end %>
+    </div>
 
     <div class="new-icon-toggle centered">
       <button data-toggle="modal" data-target="#join-link-modal">
@@ -67,8 +65,19 @@
     <br />
 
     <div id="unpublished-shift-hint"
-         class="warning <%= "hidden" unless presenter.unpublished_shifts? %>">
-      There are shifts that aren't published!
+         class="<%= "hidden" unless presenter.unpublished_shifts? %>">
+      <%= link_to(
+        new_remote_location_posting_path(
+          presenter.location,
+          date_start: presenter.date_integer,
+          date_end: presenter.date_integer
+        ),
+        class: "warning",
+        remote: true
+      ) do %>
+         <div>There are shifts that aren't published!</div>
+         <div>Click on "<span class="oi oi-share"></span>" to publish.</div>
+       <% end %>
     </div>
   </footer>
 

@@ -60,8 +60,10 @@ a.notice:hover {
   );
 }
 
-a.warning:hover {
+a.warning:hover, a.warning:focus {
   color: darken($orange, 25%);
+  text-decoration: none;
+  outline: none;
 }
 
 
