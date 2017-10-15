@@ -43,34 +43,22 @@ module Calendar
     end
 
     def shifts_for(user, day)
-      shift_map["#{user.id}-#{day.to_s(:integer)}"]
+      shift_finder.for_user_on_date(user, day).map do |shift|
+        ShiftPresenter.new(shift: shift, manage: manage?, day_start: 0)
+      end
     end
 
     def today?(date)
       date.to_s(:integer).to_i == location_time.to_s(:day_integer).to_i
     end
 
+    def wages_for(lookup_date)
+      wages.for_date(lookup_date)
+    end
+
     private
 
     attr_reader :date, :user
-
-    def build_shift_map
-      result = {}
-
-      find_shifts.map do |shift|
-        key = "#{shift.user_id}-#{shift.date}"
-
-        if result[key].blank?
-          result[key] = []
-        end
-
-        result[key].push(ShiftPresenter.new(shift: shift,
-                                            manage: manage?,
-                                            day_start: 0))
-      end
-
-      result
-    end
 
     def date_range_integers
       beginning_of_week.to_s(:integer).to_i..end_of_week.to_s(:integer).to_i
@@ -84,22 +72,14 @@ module Calendar
       DateAndTime::LocationTime.for(location)
     end
 
-    def shift_map
-      @_shift_map ||= build_shift_map
+    def shift_finder
+      @_shift_finder ||= Shifts::Finders::ByWeek.new(date: date,
+                                                     in_progress: true,
+                                                     location: location)
     end
 
-    def shifts
-      @_shifts ||= find_shifts.map do |shift|
-        ShiftPresenter.new(shift: shift,
-                           manage: manage?,
-                           day_start: 0)
-      end
-    end
-
-    def find_shifts
-      @_raw_shifts ||= Shifts::Finders::ByWeek.
-        new(date: date, in_progress: true, location: location).
-        find
+    def week_dates
+      @_week_dates ||= DateAndTime::WeekDates.for(date)
     end
   end
 end

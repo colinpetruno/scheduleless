@@ -1,0 +1,13 @@
+<footer id="calendars-wage-footer">
+  <div>&nbsp;</div>
+  <% date_range.each do |date| %>
+    <div>
+      <section>
+        <%= wages.for_date(date).total_hours %> hours
+      </section>
+      <section>
+        <%= Currency::FromNumber.for(wages.for_date(date).total_pay) %>
+      </section>
+    </div>
+  <% end %>
+</footer>

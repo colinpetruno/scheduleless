@@ -2,7 +2,19 @@ $("#wage-container").html("<%= j(
   render(
     partial: "calendars/wages",
     locals: {
-      wages: @wages
+      errors: @wages.errors?,
+      wages: @wages.for_full_week
     }
   )
 ) %>");
+
+$footer = $("<%= j(
+  render(partial: "calendars/wage_footer",
+         locals: {
+           date_range: SchedulePeriod.new(company: current_company, date: @date).date_range,
+           wages: @wages
+          }
+        )
+) %>");
+
+$("#calendars-wage-footer").html($footer.html());

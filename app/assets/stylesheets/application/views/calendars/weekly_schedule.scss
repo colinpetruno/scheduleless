@@ -9,6 +9,42 @@
     flex-grow: 1;
   }
 
+  > footer {
+    background-color: lighten($blue, 28%);
+    border-top: 1px solid $blue;
+    font-size: 12px;
+    margin-top: auto;
+    min-height: 40px;
+    display: flex;
+    flex-direction: row;
+    padding-right: 15px;
+
+    > div {
+      border-right: 1px solid $blue;
+      display: flex;
+      flex-basis: 0;
+      flex-grow: 1;
+      flex-direction: column;
+      text-align: center;
+
+      &:first-child {
+        flex-basis: auto;
+        max-width: 130px;
+        min-width: 130px;
+      }
+
+      &:last-child {
+        border-right: 0;
+      }
+
+      > section {
+        display: block;
+        text-align: center;
+        width: 100%;
+      }
+    }
+  }
+
   > header {
     background-color: $white;
     border-bottom: 1px solid $blue;
@@ -32,8 +68,8 @@
 
       &:first-child {
         flex-basis: auto;
-        max-width: 150px;
-        min-width: 150px;
+        max-width: 130px;
+        min-width: 130px;
         padding-left: 10px;
         text-align: left;
       }
@@ -108,8 +144,8 @@
 
       flex-basis: auto;
       border-right: 1px solid $blue;
-      width: 150px;
-      max-width: 150px;
+      width: 130px;
+      max-width: 130px;
       font-size: 12px;
       line-height: 40px;
       min-height: 40px;

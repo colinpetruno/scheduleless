@@ -5,16 +5,25 @@ module Shifts
         @date = date
         @in_progress = in_progress
         @location = location
-      end
 
-      def find
+        # ensure repeating shifts get populated during this range
         Shifts::RepeatingShiftsPopulator.
           new(end_date: dates.end_of_week,
               location: location,
               start_date: dates.beginning_of_week).
           populate
+      end
 
+      def all
         shifts
+      end
+
+      def for_date(date)
+        date_map[date.to_s(:integer)] || []
+      end
+
+      def for_user_on_date(user, date)
+        user_date_map["#{user.id}-#{date.to_s(:integer)}"] || []
       end
 
       private
@@ -41,7 +50,7 @@ module Shifts
         @_future_shifts ||= base_scope.
           where(date: date_range_integers).
           where("date >= ?", current_location_date).
-          includes(:user).
+          includes(:user, :position).
           order(:date, :minute_start)
       end
 
@@ -53,7 +62,7 @@ module Shifts
         @_past_shifts ||= location.
           shifts.
           where("date < ?", current_location_date).
-          includes(:in_progress_shift, :user).
+          includes(:in_progress_shift, :user, :position).
           order(:date, :minute_start)
       end
 
@@ -63,6 +72,26 @@ module Shifts
 
       def dates
         @_week_dates ||= DateAndTime::WeekDates.for(date)
+      end
+
+      def date_map
+        @_date_map ||= shifts.inject({}) do |hash, shift|
+          key = "#{shift.date}" # this needs to be a string
+          hash[key] = [] if hash[key].blank?
+
+          hash[key].push(shift)
+          hash
+        end
+      end
+
+      def user_date_map
+        @_user_date_map ||= shifts.inject({}) do |hash, shift|
+          key = "#{shift.user_id}-#{shift.date}"
+          hash[key] = [] if hash[key].blank?
+
+          hash[key].push(shift)
+          hash
+        end
       end
     end
   end

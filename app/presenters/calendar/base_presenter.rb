@@ -19,10 +19,13 @@ module Calendar
       UserPermissions.for(@user).manage?(@location)
     end
 
+    def full_week_wages
+      @_full_week_wages = wages.for_full_week
+    end
+
     def wages
       return unless Features.for(location.company).wages?
 
-      # TODO: add date here
       @wages ||= Calculators::Wages::WeeklyForLocation.new(location: location,
                                                            date: @date)
     end

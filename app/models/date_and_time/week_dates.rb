@@ -1,5 +1,6 @@
 module DateAndTime
   class WeekDates
+    # TODO: this class is very similar to SchedulePeriod, we could consolidate
     def self.for(date)
       new(date: date)
     end

@@ -14,7 +14,11 @@ module Shifts
             # remove active shift
           elsif !deleted?
             if published?
-              # update stuff and send notifications
+              Utilities::ShiftUpdater.new(in_progress_shift).update
+
+              Notifications::ScheduleUpdatedJob.
+                perform_later(in_progress_shift.user_id,
+                              Marshal.dump([:shift_changed]))
             else
               Utilities::ShiftCreator.create_from(in_progress_shift)
 

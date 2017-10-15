@@ -7,20 +7,16 @@ module Calculators
         @published = published
       end
 
-      def calculate
-        weekly_sum
+      def for_full_week
+        @_for_full_week ||= Totals.for(weekly_sum)
       end
 
-      def double_overtime_hours
-        weekly_sum[:double_overtime_hours]
-      rescue
-        0
+      def for_date(lookup_date)
+        Totals.for(wages_by_date[lookup_date.to_s(:integer)])
       end
 
-      def double_overtime_pay
-        weekly_sum[:double_overtime_pay]
-      rescue
-        0
+      def for_user(user)
+        Totals.for(wages_by_user[user.id])
       end
 
       def errors?
@@ -35,61 +31,37 @@ module Calculators
         @_errors = false
       end
 
-      def total_hours
-        weekly_sum[:hours]
-      rescue
-        0
-      end
-
-      def total_pay
-        weekly_sum[:total]
-      rescue
-        0
-      end
-
-      def overtime_hours
-        weekly_sum[:overtime_hours]
-      rescue
-        0
-      end
-
-      def overtime_pay
-        weekly_sum[:overtime_pay]
-      rescue
-        0
-      end
-
-      def regular_hours
-        weekly_sum[:regular_hours]
-      rescue
-        0
-      end
-
-      def regular_pay
-        weekly_sum[:regular_hour_pay]
-      rescue
-        0
-      end
-
-      def wages_by_user
-        @_wages_by_user ||= build_wages_by_user_hash
-      end
-
       private
 
       attr_reader :date, :location, :published
 
-      def build_wages_by_user_hash
-        users.inject({}) do |hash, user|
+      def wages_by_date
+        @_wages_by_date ||= schedule_period.date_range.inject({}) do |hash, lookup_date|
+          hash[lookup_date.to_s(:integer)] = Calculators::Wages::DailyForLocation.
+            new(location: location,
+                date: lookup_date,
+                shifts: shifts_on(lookup_date)).
+            calculate
+
+          hash
+        end
+      end
+
+      def wages_by_user
+        @_wages_by_user ||= users.inject({}) do |hash, user|
           hash[user.id] = Calculators::Wages::WeeklyForUser.
             new(date: date,
                 published: published,
-                shifts: shifts_for_(user),
+                shifts: shifts_for(user),
                 user: user).
             calculate
 
           hash
         end
+      end
+
+      def shifts_on(lookup_date)
+        shifts.select { |shift| shift.date.to_s == lookup_date.to_s(:integer) }
       end
 
       def wages_by_user_array
@@ -114,11 +86,12 @@ module Calculators
                                                  date: date)
       end
 
-      def shifts_for_(user)
+      def shifts_for(user)
         shifts.select { |shift| shift.user_id == user.id }
       end
 
       def shifts
+        # use shift finder here
         @_shifts ||= shift_class.
           where(date: schedule_period.date_range_integers,
                 location_id: location.id)

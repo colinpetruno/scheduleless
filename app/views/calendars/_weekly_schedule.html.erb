@@ -53,4 +53,12 @@
       <% end %>
     </div>
   </section>
+
+  <% if features.wages? %>
+    <%= render partial: "calendars/wage_footer",
+      locals: {
+        date_range: presenter.date_range,
+        wages: presenter.wages
+      } %>
+  <% end %>
 </div>
