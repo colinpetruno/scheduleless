@@ -1,6 +1,6 @@
 class CancelShiftNotificationJob < ApplicationJob
   def perform(shift_id)
-    @shift = Shift.find(shfit_id)
+    @shift = Shift.find(shift_id)
 
     users.map do |user|
       PushNotifications::CancelledShift.new(user: user, shift: @shift).notify
