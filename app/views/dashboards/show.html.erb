@@ -39,8 +39,11 @@
 </div>
 
 <% content_for(:view_sidebar) do %>
-  <%= render partial: "calendar_sidebar" %>
-.
+  <%= render partial: "calendar_sidebar", locals: {
+    display_date: Date.today,
+    location: Location.default_for(current_user)
+  } %>
+
   <% if Features.for(current_company).time_clock? %>
     <div id="dashboards-upcoming-shift">
       <%= render partial: "upcoming_shift", locals: {
