@@ -22,6 +22,10 @@ module Shifts
         date_map[date.to_s(:integer)] || []
       end
 
+      def unassigned_on(date)
+        user_date_map["unassigned-#{date.to_s(:integer)}"] || []
+      end
+
       def for_user_on_date(user, date)
         user_date_map["#{user.id}-#{date.to_s(:integer)}"] || []
       end
@@ -86,7 +90,11 @@ module Shifts
 
       def user_date_map
         @_user_date_map ||= shifts.inject({}) do |hash, shift|
-          key = "#{shift.user_id}-#{shift.date}"
+          if shift.user_id.blank?
+            key = "unassigned-#{shift.date}"
+          else
+            key = "#{shift.user_id}-#{shift.date}"
+          end
           hash[key] = [] if hash[key].blank?
 
           hash[key].push(shift)
