@@ -17,6 +17,13 @@ class NotificationsMailer < ApplicationMailer
     mail(to: user.email)
   end
 
+  def offer_declined(user, offer)
+    @user = user
+    @offer = offer
+
+    mail(to: user.email)
+  end
+
   def new_trade(user, trade)
     @user = user
     @trade = trade

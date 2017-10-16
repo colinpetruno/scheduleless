@@ -16,6 +16,8 @@ en:
         Please take a few moments to review your schedule. Get the Scheduleless
         app in the Apple App Store or Google Play Store!
   notifications_mailer:
+    offer_declined:
+      subject: "Your offer to trade shifts was not accepted."
     new_offer:
       subject: "Somebody made an offer for your trade!"
     new_trade:
