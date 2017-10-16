@@ -15,19 +15,19 @@ class Features
   end
 
   def enabled?(feature_key)
-    plan_features.any? { |f| f.key == feature_key }
+    trial? || plan_features.any? { |f| f.key == feature_key }
   end
 
   def time_clock?
-    plan_features.any? { |f| f.key == "time_clock" }
+    trial? || plan_features.any? { |f| f.key == "time_clock" }
   end
 
   def trading?
-    plan_features.any? { |f| f.key == "trading" }
+    trial? || plan_features.any? { |f| f.key == "trading" }
   end
 
   def wages?
-    plan_features.any? { |f| f.key == "wages" }
+    trial? || plan_features.any? { |f| f.key == "wages" }
   end
 
   private
@@ -44,6 +44,10 @@ class Features
 
   def plan_id
     subscription.plan_id
+  end
+
+  def trial?
+    company.created_at > (Date.today - 32.days)
   end
 
   def subscription
