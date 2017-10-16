@@ -69,3 +69,13 @@
   }
 }
 
+
+.centered-layout {
+  display: flex;
+  flex-direction: row;
+
+  > section {
+    display: flex;
+    margin: auto;
+  }
+}

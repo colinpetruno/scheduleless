@@ -10,6 +10,7 @@ form {
   .inline {
     display: flex;
     flex-direction: row;
+    max-width: 400px;
     vertical-align: top;
 
     label {
@@ -99,12 +100,14 @@ form {
   }
 
 
-  &.select .input-wrap {
+  &.select .input-wrap,
+  &.time_zone .input-wrap {
     max-width: 400px;
     position: relative;
   }
 
-  &.select .input-wrap::after {
+  &.select .input-wrap::after,
+  &.time_zone .input-wrap::after{
     font-family: 'Icons';
     content: "\e05a";
     font-size: 12px;
@@ -115,11 +118,13 @@ form {
   }
 
   select {
+    @include truncatable();
     // background: url(M300 800l300 -300h-600zM0 300h600l-300 -300z);
     // background-color: $white;
     background-position: right 5px top;
     border-radius: 4px;
     padding: 4px 8px;
+    padding-right: 15px;
 
     -moz-appearance: none;
     -webkit-appearance: none;

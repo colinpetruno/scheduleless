@@ -5,6 +5,9 @@ class LocationsController < AuthenticatedController
     authorize @location
 
     if @location.save
+      # add the user creating it to the location
+      UserLocation.create(user: current_user, location: @location)
+
       redirect_to locations_path
     else
       render :new

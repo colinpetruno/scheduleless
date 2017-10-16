@@ -1,7 +1,17 @@
-<div class="frame">
+<header class="view-header">
+  <h2>Create a new location</h2>
+</header>
+
+<br />
+
+<div class="centered-layout">
   <section>
-    <article>
-      <%= render partial: "form", locals: { location: @location } %>
-    </article>
+    <div class="frame">
+      <section>
+        <article>
+          <%= render partial: "form", locals: { location: @location } %>
+        </article>
+      </section>
+    </div>
   </section>
 </div>
