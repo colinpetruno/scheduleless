@@ -1,0 +1,18 @@
+<div style="text-align: center">
+  <%= @trade.user.full_name %> wants to trade their shift.
+  <br /><br />
+
+  <strong>Position:</strong> <%= @trade.shift&.position&.name || "N/A" %><br>
+  <strong>Date:</strong> <%= @trade.shift.selection_label %>
+</div>
+<br /><br />
+
+<div style="text-align: center">
+  Interested? Take the shift or offer a shift of your own.
+
+  <br /><br />
+
+  <%= link_to "See Trades",
+    trades_url,
+    style: "background-color: #5776bd; color: #ffffff; text-decoration: none; padding: 5px 10px; font-size: 12px" %>
+</div>

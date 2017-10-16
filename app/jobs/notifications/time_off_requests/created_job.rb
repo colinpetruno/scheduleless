@@ -15,7 +15,6 @@ module Notifications
               deliver
           rescue StandardError => error
             Bugsnag.notify(error)
-            raise error
           end
         end
       end

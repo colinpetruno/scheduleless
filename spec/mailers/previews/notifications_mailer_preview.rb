@@ -41,4 +41,13 @@ class NotificationsMailerPreview < ActionMailer::Preview
 
     NotificationsMailer.time_off_request_approved(u, to)
   end
+
+  def new_trade
+    s = Shift.last
+    u = s.user
+
+    t = Trade.new(shift: s, location: s.location, user: u)
+
+    NotificationsMailer.new_trade(u, t)
+  end
 end

@@ -10,6 +10,13 @@ class NotificationsMailer < ApplicationMailer
     mail(to: user.email)
   end
 
+  def new_trade(user, trade)
+    @user = user
+    @trade = trade
+
+    mail(to: user.email)
+  end
+
   def schedule_approved(user, scheduling_period)
     @location = scheduling_period.location
     @scheduling_period = scheduling_period

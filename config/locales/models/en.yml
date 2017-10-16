@@ -10,6 +10,10 @@ en:
       en: "English"
       de: "German"
     push_notifications:
+      trades:
+        created:
+          title: "A New Trade Is Available To View!"
+          message: "%{user_name} wants to trade his shift on %{dates}"
       time_off_requests:
         approved:
           title: "Your Time Off Request Was Approved!"
