@@ -10,9 +10,11 @@ module Notifications
               new(user: user, time_off_request: time_off_request).
               notify
 
-            NotificationsMailer.
-              new_time_off_approval(user, time_off_request).
-              deliver
+            if Users::Emailable.for(user)
+              NotificationsMailer.
+                new_time_off_approval(user, time_off_request).
+                deliver
+            end
           rescue StandardError => error
             Bugsnag.notify(error)
           end

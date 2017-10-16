@@ -25,9 +25,11 @@ module Notifications
     end
 
     def send_email_to(user)
-      NotificationsMailer.
-        schedule_approved(user, @scheduling_period).
-        deliver
+      if Users::Emailable.for(user)
+        NotificationsMailer.
+          schedule_approved(user, @scheduling_period).
+          deliver
+      end
     end
 
     def users_to_notify
