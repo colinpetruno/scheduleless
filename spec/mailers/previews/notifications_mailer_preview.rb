@@ -21,6 +21,45 @@ class NotificationsMailerPreview < ActionMailer::Preview
     NotificationsMailer.schedule_published(u, sp)
   end
 
+  def trade_completed
+    s = Shift.last
+    s2 = Shift.last(2).first
+    u = s.user
+    u2 = s2.user
+
+    t = Trade.last
+    o = Offer.new(trade: t, user: u2, offered_shift: s2, note: "heres a shift for you")
+    t.offers << o
+
+    NotificationsMailer.trade_completed(u, t, o)
+  end
+
+  def trade_waiting_approval
+    s = Shift.last
+    s2 = Shift.last(2).first
+    u = s.user
+    u2 = s2.user
+
+    t = Trade.last
+    o = Offer.new(trade: t, user: u2, offered_shift: s2, note: "heres a shift for you")
+    t.offers << o
+
+    NotificationsMailer.trade_awaiting_approval(u, t, o)
+  end
+
+  def new_trade_approval
+    s = Shift.last
+    s2 = Shift.last(2).first
+    u = s.user
+    u2 = s2.user
+
+    t = Trade.last
+    o = Offer.new(trade: t, user: u2, offered_shift: s2, note: "heres a shift for you")
+    t.offers << o
+
+    NotificationsMailer.new_trade_approval(u, t, o)
+  end
+
   def new_offer
     s = Shift.last
     s2 = Shift.last(2).first

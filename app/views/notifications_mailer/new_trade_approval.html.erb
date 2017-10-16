@@ -1,0 +1,12 @@
+<div style="color: #61656b; text-align: center; padding-top: 30px; padding-bottom: 30px;">
+  <div style="font-size: 13px">
+    <%= @trade.user.full_name %> and <%= @offer.user.full_name %> want to
+    trade shifts.
+  </div>
+
+  <br />
+
+  <%= link_to "View and Approve",
+    dashboard_url,
+    style: "background-color: #5776bd; color: #ffffff; text-decoration: none; padding: 5px 10px; font-size: 12px" %>
+</div>

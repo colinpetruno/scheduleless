@@ -18,9 +18,18 @@ en:
           title: "Your offer was declined"
           message: "Your offer for the shift on %{dates} was declined."
       trades:
+        awaiting_approval:
+          title: "Your trade is waiting approval"
+          message: "We will let you know when its approved!"
+        approval:
+          title: "A new trade is ready to be approved"
+          message: "A trade created by %{user_name} is ready to be reviewed."
         created:
           title: "A New Trade Is Available To View!"
           message: "%{user_name} wants to trade his shift on %{dates}"
+        completed:
+          title: "Your trade was completed!"
+          message: "Enjoy your new shifts."
       time_off_requests:
         approved:
           title: "Your Time Off Request Was Approved!"

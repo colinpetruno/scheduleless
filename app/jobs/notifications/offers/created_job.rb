@@ -13,7 +13,7 @@ module Notifications
 
           if Users::Emailable.for(trade.user)
             NotificationsMailer.
-              new_offer(user, offer).
+              new_offer(user_to_alert, offer).
               deliver
           end
         rescue StandardError => error

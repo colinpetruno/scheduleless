@@ -16,6 +16,12 @@ en:
         Please take a few moments to review your schedule. Get the Scheduleless
         app in the Apple App Store or Google Play Store!
   notifications_mailer:
+    trade_completed:
+      subject: "Your trade has been completed!"
+    trade_awaiting_approval:
+      subject: "Your trade is waiting for approval"
+    new_trade_approval:
+      subject: "THere is a new shift trade for you to review."
     offer_declined:
       subject: "Your offer to trade shifts was not accepted."
     new_offer:
