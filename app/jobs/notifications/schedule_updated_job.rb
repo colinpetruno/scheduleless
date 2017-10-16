@@ -6,7 +6,7 @@ module Notifications
 
       if @user.invitation_state == :awaiting_invite
         # send invite if they haven't been invited.
-        EmployeeInviteJob.perform @user.id
+        EmployeeInviteJob.perform_now @user.id
       end
 
       PushNotifications::ScheduleUpdated.
