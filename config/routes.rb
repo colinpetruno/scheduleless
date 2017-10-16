@@ -182,11 +182,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :scheduling_period, only: [] do
-    resource :scheduling_period_publisher, only: [:create], path: "publish"
-    resource :schedule_period_regenerator, only: [:create], path: "regenerate"
-  end
-
   resource :schedules_management, only: [:create, :show]
   resource :search, only: [:show]
 
