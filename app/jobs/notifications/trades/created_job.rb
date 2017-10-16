@@ -1,6 +1,6 @@
 module Notifications
   module Trades
-    class CreatedJob
+    class CreatedJob < ApplicationJob
       def perform(trade_id)
         @trade = Trade.find(trade_id)
 

@@ -16,6 +16,8 @@ en:
         Please take a few moments to review your schedule. Get the Scheduleless
         app in the Apple App Store or Google Play Store!
   notifications_mailer:
+    new_offer:
+      subject: "Somebody made an offer for your trade!"
     new_trade:
       subject: "A new trade is available for you!"
     employee_joined_location:
@@ -25,7 +27,7 @@ en:
         You have a new employee available to be scheduled. Make sure you add
         some shifts for them so they can get started!
     new_time_off_approval:
-      subject: "A new time off request was created."
+      subject: "A New Time Off Request was Created."
     time_off_request_denied:
       subject: "Your Time Off Request was Declined."
     time_off_request_approved:

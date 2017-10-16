@@ -1,0 +1,35 @@
+<div style="text-align: center; padding: 30px 15px;">
+  <div style="margin-bottom: 15px">
+    <% if @offer.offered_shift.present? %>
+      <%= @offer.user.full_name %> has offered a shift for your trade!
+    <% else %>
+      <%= @offer.user.full_name %> can take your shift!
+    <% end %>
+  </div>
+
+  <div>
+    <strong>Shift to trade:</strong>
+  </div>
+  <div style="margin-bottom: 15px">
+    <%= @offer.trade.shift.selection_label %>
+  </div>
+
+  <% if @offer.offered_shift.present? %>
+    <div>
+      <strong>Offered Shift:</strong>
+    </div>
+    <div style="margin-bottom: 15px">
+      <%= @offer.offered_shift.selection_label %>
+    </div>
+  <% end %>
+
+
+
+  <br />
+  <div>
+    <%= link_to "View & Accept Offers",
+      trade_offers_url(@offer.trade),
+      style: "background-color: #5776bd; color: #ffffff; text-decoration: none; padding: 5px 10px; font-size: 12px" %>
+  </div>
+</div>
+

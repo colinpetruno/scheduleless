@@ -10,6 +10,10 @@ en:
       en: "English"
       de: "German"
     push_notifications:
+      offers:
+        created:
+          title: "An offer has been posted for your trade!"
+          message: "%{user_name} has offered to trade for your shift"
       trades:
         created:
           title: "A New Trade Is Available To View!"

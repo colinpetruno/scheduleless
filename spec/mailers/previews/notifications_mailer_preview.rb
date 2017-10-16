@@ -21,6 +21,18 @@ class NotificationsMailerPreview < ActionMailer::Preview
     NotificationsMailer.schedule_published(u, sp)
   end
 
+  def new_offer
+    s = Shift.last
+    s2 = Shift.last(2).first
+    u = s.user
+    u2 = s2.user
+
+    t = Trade.last
+    o = Offer.new(trade: t, user: u2, offered_shift: s2, note: "heres a shift for you")
+
+    NotificationsMailer.new_offer(u, o)
+  end
+
   def new_time_off_approval
     u = User.first
     to = TimeOffRequest.last
