@@ -1,6 +1,6 @@
 module Notifications
   module Offers
-    class DeclinedJob < ApplicationJob<
+    class DeclinedJob < ApplicationJob
       def perform(offer_id)
         @offer = Offer.find(offer_id)
 
