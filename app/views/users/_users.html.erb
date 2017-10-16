@@ -1,8 +1,7 @@
-<table class="striped">
+<table class="striped users-users">
   <thead>
     <tr>
-      <th><%= t(".family_name") %></th>
-      <th><%= t(".given_name") %></th>
+      <th>Name</th>
       <th><%= t(".email") %></th>
       <th></th>
       <th></th>
@@ -11,20 +10,30 @@
     <tbody>
       <% users.map do |user| %>
         <tr>
-          <td><%= user.family_name %></td>
-          <td><%= user.given_name %></td>
+          <td><%= link_to user.full_name, business_user_path(user) %></td>
           <td><%= user.email %></td>
           <td class="centered">
             <%= render partial: "users/#{user.invitation_state}_badge" %>
           </td>
           <td>
-            <%= link_to_if policy(user).edit?, t(".edit"), edit_business_user_path(user) do %>
-              <%= link_to t(".view"), business_user_path(user) %>
+            <% if policy(user).edit? %>
+              <%= link_to(edit_business_user_path(user),
+                          title: "Edit",
+                          data: { toggle: "tooltip" }) do %>
+                <span class="oi oi-pencil">
+              <% end %>
             <% end %>
 
-            &nbsp;&nbsp;&nbsp;
-            <% if policy(user).edit? %>
-              <%= link_to t(".delete"), business_user_path(user), method: :delete %>
+            <% if policy(user).destroy? %>
+              <%= link_to(business_user_path(user),
+                          method: :delete,
+                          title: "Delete Employee",
+                          data: {
+                            confirm: "Are you sure? This employee will be permenantly deleted.",
+                            toggle: "tooltip"
+                          }) do %>
+                <span class="oi oi-x"></span>
+              <% end %>
             <% end %>
           </td>
         </tr>

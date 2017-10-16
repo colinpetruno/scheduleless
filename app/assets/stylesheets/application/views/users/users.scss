@@ -1,0 +1,14 @@
+.users-users {
+  tr td {
+    line-height: 20px;
+    vertical-align: middle;
+
+    &:last-child {
+      text-align: right;
+
+      > a {
+        margin-left: 15px;
+      }
+    }
+  }
+}

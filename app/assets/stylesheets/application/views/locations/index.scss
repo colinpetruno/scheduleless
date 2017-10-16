@@ -1,0 +1,27 @@
+.locations-index {
+  table tr {
+    td {
+      width: 35%;
+
+      &:first-child {
+        width: 20%;
+      }
+
+      &.narrow {
+        width: 10%;
+      }
+
+      &:last-child {
+        text-align: right;
+      }
+
+      a:hover {
+        text-decoration: none;
+      }
+
+      span.oi {
+        margin-left: 15px;
+      }
+    }
+  }
+}

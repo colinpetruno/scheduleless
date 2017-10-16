@@ -20,16 +20,20 @@
         </td>
         <td>
           <% if policy(user).edit? %>
-            <%= link_to t(".edit"),
-              edit_locations_location_user_path(@location, user),
-              class: "button link" %>
+            <%= link_to(edit_locations_location_user_path(@location, user),
+                        title: "Edit",
+                        data: { toggle: "tooltip" }) do %>
+              <span class="oi oi-pencil">
+            <% end %>
           <% end %>
-          &nbsp;&nbsp;&nbsp;
           <% if policy(:employee_position).destroy? %>
-            <%= button_to t(".remove"),
-              locations_location_user_path(@location, user),
-              class: "button link",
-              method: :delete %>
+            <%= button_to(locations_location_user_path(@location, user),
+                          method: :delete,
+                          title: "Remove From Location",
+                          class: "button link",
+                          data: { toggle: "tooltip" }) do %>
+              <span class="oi oi-minus">
+            <% end%>
           <% end %>
         </td>
       </tr>

@@ -1,4 +1,4 @@
-<div class="frame">
+<div class="frame locations-index">
   <header>
     <div>
       <%= t(".title") %>
@@ -19,23 +19,39 @@
     <table>
       <thead>
         <tr>
+          <th>Name</th>
+          <th>Address</th>
+          <th>City</th>
+          <th>State</th>
           <th></th>
-          <th></th>
-          <th></th>
-          <tr></th>
         </tr>
     <% @locations.each do |location| %>
       <tr>
         <td>
-          <%= link_to t(".show"), location_path(location) %>
-          <% if policy(location).edit? %>
-            <%= link_to t(".edit"), edit_location_path(location) %>
-          <% end %>
-          <%= link_to t(".calendar"), location_calendar_path(location) %>
+          <%= link_to location.name || "Unnamed Location", location_path(location) %>
+
         </td>
-        <td><%= location.line_1 %></td>
-        <td><%= location.city %></td>
-        <td><%= location.county_province %></td>
+        <td>
+          <span>
+          <%= location.line_1 %>
+        </span>
+        </td>
+        <td class="narrow"><%= location.city %></td>
+        <td class="narrow"><%= location.county_province %></td>
+        <td class="narrow">
+          <% if policy(location).edit? %>
+            <%= link_to(edit_location_path(location),
+                        title: "Edit",
+                        data: { toggle: "tooltip" }) do %>
+              <span class="oi oi-pencil"></span>
+            <% end %>
+          <% end %>
+          <%= link_to(location_calendar_path(location),
+                      title: "Calendar",
+                      data: { toggle: "tooltip" }) do %>
+            <span class="oi oi-calendar"></span>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   <% end %>

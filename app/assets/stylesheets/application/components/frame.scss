@@ -18,6 +18,12 @@
         @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-sm, $btn-border-radius);
         @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
         @include transition($btn-transition);
+        font-weight: 200;
+        text-transform: none;
+
+        &:hover {
+          text-decoration: none;
+        }
       }
 
       &:first-child {
