@@ -26,6 +26,7 @@ module Calendar
       return unless Features.for(location.company).wages?
 
       @wages ||= Calculators::Wages::WeeklyForLocation.new(location: location,
+                                                           published: false,
                                                            date: @date)
     end
 

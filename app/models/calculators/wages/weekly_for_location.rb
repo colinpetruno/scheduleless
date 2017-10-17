@@ -40,6 +40,7 @@ module Calculators
           hash[lookup_date.to_s(:integer)] = Calculators::Wages::DailyForLocation.
             new(location: location,
                 date: lookup_date,
+                published: published,
                 shifts: shifts_on(lookup_date)).
             calculate
 
