@@ -1,5 +1,9 @@
 window.Scheduleless.sidebar.appendAndOpen("<%= j(
-  render partial: "form", locals: { location: @location, posting: @posting }
+  render partial: "form", locals: {
+    location: @location,
+    posting: @posting,
+    display_date: params[:display_date] || Date.today
+  }
 ) %>");
 
 window.Scheduleless.instantiateDisableToggles();

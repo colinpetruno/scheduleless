@@ -9,4 +9,4 @@ window.Scheduleless.calendar.redraw("<%= j(render(partial: "calendars/show",
                     )
 })) %>");
 
-window.Scheduleless.wages.refresh(<%= @shift.location.id %>);
+window.Scheduleless.wages.refresh(<%= @shift.location.id %>, <%= @shift.date %>);

@@ -10,6 +10,7 @@ module Remote
 
       Shifts::Publishers::DateRange.
         new(end_date: @posting.date_end,
+            all_shifts: @posting.all_shifts,
             location: @location,
             start_date: @posting.date_start).
         publish

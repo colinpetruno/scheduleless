@@ -3,9 +3,11 @@ module Shifts
     class DateRange
       def initialize(end_date: Date.today,
                      location:,
+                     all_shifts: true,
                      notify: true,
                      start_date: Date.today)
         @end_date = end_date.is_a?(Date) ? end_date : Date.parse(end_date.to_s)
+        @all_shifts = all_shifts
         @location = location
         @notify = notify
         @start_date = start_date.is_a?(Date) ? start_date : Date.parse(start_date.to_s)
@@ -13,7 +15,9 @@ module Shifts
 
       def publish
         ActiveRecord::Base.transaction do
-          publish_deleted_shifts
+          # publish_deleted_shifts
+          # hiding this for now because deleted shifts should instantly be
+          # published
           publish_active_shifts
           publish_new_shifts
         end
@@ -25,9 +29,16 @@ module Shifts
 
       attr_reader :end_date, :location, :notify, :start_date
 
+      def all_shifts?
+        if [true, "true"].include?(@all_shifts)
+          true
+        else
+          false
+        end
+      end
+
       def base_scope
         InProgressShift.
-          unscoped.
           where(date: date_range,
                 edited: true,
                 location_id: location.id)
@@ -44,7 +55,7 @@ module Shifts
       def deleted_shifts
         base_scope.
           unscoped.
-          where(edited: true).
+          where(edied: true).
           where("deleted_at is not null")
       end
 
@@ -130,21 +141,3 @@ module Shifts
     end
   end
 end
-
-
-#  if its a repeating shift and the repeatig shift is marked deleted
-#    delete repeating shift
-#    if active shift present
-#      record delete notificaiton for series
-#
-# if the shift is not deleted
-#   if an active shift is present
-#     update params
-#     figure out changes
-#     return potential notifications
-#   else
-#     create new shift
-#     return potential notifications
-#
-#
-#  mark edited as false

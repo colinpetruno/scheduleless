@@ -17,6 +17,9 @@ module Shifts
     def populate
       repeating_shifts.each do |repeating_shift|
         (start_date..end_date).each do |date|
+          # ensure we only populate if its past the repeating shift start date
+          next if date.to_s(:integer).to_i < repeating_shift.start_date.to_i
+
           if multiple_of?(repeating_shift, date)
             create_shift(repeating_shift, date)
           end
@@ -50,6 +53,7 @@ module Shifts
         ) do |ips|
           ips.minute_end = repeating_shift.preview_minute_end
           ips.minute_start = repeating_shift.preview_minute_start
+          ips.position_id = repeating_shift.position_id
         end
 
       if repeating_shift.published? && in_progress_shift.new_record?

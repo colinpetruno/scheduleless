@@ -5,8 +5,6 @@ class RepeatingShift < ApplicationRecord
 
   has_many :in_progress_shifts
 
-  after_create :update_in_progress_shift
-
   def self.options(include_blank: false)
     options = [["Day", 1], ["Week", 7], ["Other Week", 14]]
     options.unshift(["None", 0]) if include_blank
@@ -46,6 +44,7 @@ class RepeatingShift < ApplicationRecord
   end
 
   def publish
+    # this method is screwed up
     ActiveRecord::Base.transaction do
       update(minute_end: preview_minute_end,
              minute_start: preview_minute_start,
@@ -62,16 +61,8 @@ class RepeatingShift < ApplicationRecord
                    minute_start: preview_minute_start,
                    position_id: preview_position_id,
                    user_id: preview_user_id,
-                   published: true,
-                   edited: false)
+                   # published: true,
+                   edited: true)
     end
-  end
-
-  private
-
-  def update_in_progress_shift
-    InProgressShift.
-      find(self.in_progress_shift_id).
-      update(repeating_shift_id: self.id, edited: true)
   end
 end

@@ -30,8 +30,14 @@ module Shifts
       def create_new_shift
         Utilities::ShiftCreator.create_from(in_progress_shift)
 
-        if repeating?
-          in_progress_shift.repeating_shift.update(published: true)
+        if repeating? # this is false???
+          repeating_shift = in_progress_shift.repeating_shift
+          repeating_shift.update(published: true)
+
+
+          InProgressShift.
+            where(repeating_shift_id: repeating_shift.id).
+            update_all(edited: false, published: true)
         end
 
         if notify?

@@ -8,7 +8,7 @@ window.
 window.Scheduleless.calendar.redraw("<%= j(render(partial: "calendars/show",
              locals: {
                presenter: presenter_class.
-                 new(date: @posting.date_start,
+                 new(date: params[:display_date] || Date.today.to_s(:integer),
                      location: @location,
                      user: current_user
                     )
