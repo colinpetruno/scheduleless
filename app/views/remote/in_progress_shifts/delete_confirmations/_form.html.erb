@@ -1,9 +1,11 @@
 <div class="remote-in-progress-shifts-delete-confirmations-form">
   <article>
+    Are you sure you want to delete this shift? This action cannot be undone.
+    <br /><br />
+
     <% if confirmation.in_progress_shift.published? %>
-      This shift is published and deleting will have issues.
-    <% else %>
-      Are you sure you want to delete this shift?
+      This shift is already published to your employee. We will notify them of
+      the shift change.
     <% end %>
   </article>
 

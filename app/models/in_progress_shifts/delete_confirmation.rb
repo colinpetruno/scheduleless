@@ -24,20 +24,18 @@ module InProgressShifts
       ActiveRecord::Base.transaction do
         in_progress_shift.update(deleted_at: DateTime.now, edited: true)
 
-        if in_progress_shift.repeating? && delete_series == "1"
+        if in_progress_shift.repeating? && delete_series?
           InProgressShift.
             where(repeating_shift_id: in_progress_shift.repeating_shift_id,
                   edited: true).
             update_all(deleted_at: DateTime.now)
-
-          in_progress_shift.
-            repeating_shift.
-            update(preview_deleted_at: DateTime.now)
         end
+
+        Shifts::Publishers::SingleShift.new(
+          in_progress_shift: in_progress_shift,
+          delete_series: delete_series?
+        ).publish
       end
-
-      send_notification
-
       true
     rescue StandardError => error
       Bugsnag.notify(error)
@@ -50,9 +48,12 @@ module InProgressShifts
 
     private
 
-    def send_notification
-      # STOP  since this cant be published right away no need to notify at
-      # this point
+    def delete_series?
+      if ["1", true, "true"].include?(delete_series)
+        true
+      else
+        false
+      end
     end
   end
 end

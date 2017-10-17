@@ -13,6 +13,10 @@ class RepeatingShift < ApplicationRecord
     options
   end
 
+  def self.default_scope
+    where(deleted_at: nil)
+  end
+
   def preview_user_id
     super || self.user_id
   end

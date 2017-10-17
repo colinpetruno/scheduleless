@@ -1,7 +1,8 @@
 module Shifts
   module Publishers
     class SingleShift
-      def initialize(in_progress_shift:, notify: true)
+      def initialize(in_progress_shift:, notify: true, delete_series: true)
+        @delete_series = delete_series
         @in_progress_shift = in_progress_shift
         @notify = notify
       end
@@ -10,53 +11,69 @@ module Shifts
         return true unless in_progress_shift.edited?
 
         ActiveRecord::Base.transaction do
-          if deleted? && published?
-            # remove active shift
-          elsif !deleted?
+          if deleted?
+            delete_in_progress_shifts
+          else
             if published?
-              Utilities::ShiftUpdater.new(in_progress_shift).update
-
-              Notifications::ScheduleUpdatedJob.
-                perform_later(in_progress_shift.user_id,
-                              Marshal.dump([:shift_changed]))
+              update_existing_shift
             else
-              Utilities::ShiftCreator.create_from(in_progress_shift)
-
-              if repeating?
-                in_progress_shift.repeating_shift.update(published: true)
-              end
-
-              Notifications::ScheduleUpdatedJob.
-                perform_later(in_progress_shift.user_id,
-                              Marshal.dump([:shift_added]))
+              create_new_shift
             end
 
             in_progress_shift.update(edited: false, published: true)
           end
-
-
-          # if
-          # if the shift is deleted
-          #  if its a repeating shift and the repeatig shift is marked deleted
-          #    delete repeating shift
-          #    if active shift present
-          #      record delete notificaiton for series
-          #
-          # if the shift is not deleted
-          #   if an active shift is present
-          #     update params
-          #     figure out changes
-          #     return potential notifications
-          #   else
-          #     create new shift
-          #     return potential notifications
-          #
-          #
-          #  mark edited as false
         end
       end
 
       private
+
+      def create_new_shift
+        Utilities::ShiftCreator.create_from(in_progress_shift)
+
+        if repeating?
+          in_progress_shift.repeating_shift.update(published: true)
+        end
+
+        Notifications::ScheduleUpdatedJob.
+          perform_later(in_progress_shift.user_id,
+                        Marshal.dump([:shift_added]))
+      end
+
+      def update_existing_shift
+        Utilities::ShiftUpdater.new(in_progress_shift).update
+
+        Notifications::ScheduleUpdatedJob.
+          perform_later(in_progress_shift.user_id,
+                        Marshal.dump([:shift_changed]))
+      end
+
+      def delete_in_progress_shifts
+        Shift.
+          where(in_progress_shift_id: in_progress_shift.id).
+          update_all(deleted_at: DateTime.now)
+
+        if in_progress_shift.repeating? && delete_series?
+          repeating_shift = in_progress_shift.repeating_shift
+
+          InProgressShift.
+            where(repeating_shift_id: repeating_shift.id).
+            update_all(deleted_at: DateTime.now)
+
+          Shift.
+            where(repeating_shift_id: repeating_shift.id).
+            update_all(deleted_at: DateTime.now)
+
+          repeating_shift.update(deleted_at: DateTime.now)
+        end
+
+        Notifications::ScheduleUpdatedJob.
+          perform_later(in_progress_shift.user_id,
+                        Marshal.dump([:shift_cancelled]))
+      end
+
+      def delete_series?
+        @delete_series
+      end
 
       def deleted?
         in_progress_shift.deleted?
