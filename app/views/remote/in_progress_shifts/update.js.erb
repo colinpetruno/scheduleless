@@ -16,4 +16,6 @@
                        location: @location,
                        user: current_user)
   })) %>");
+
+  window.Scheduleless.wages.refresh(<%= @location.id %>, "<%= @shift.date %>");
 <% end %>
