@@ -11,7 +11,11 @@ module Shifts
     end
 
     def update
-      return true if not_changed?
+      # in the event of a shift that was modified but not published immediately
+      # then a user comes back and edits it to publish it but not make a change
+      # this prevents the publish from happening. I like the optimization and
+      # we should TODO: try to add it back
+      # return true if not_changed?
 
       ActiveRecord::Base.transaction do
         if in_progress_shift.repeating?

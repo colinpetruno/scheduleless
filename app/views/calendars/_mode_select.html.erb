@@ -1,0 +1,15 @@
+<div class="dropdown calendars-mode-select">
+  <button role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <%= mode == "scheduling" ? "Scheduling Mode" : "Display Mode" %>
+  </button>
+
+  <div>
+    <% if mode == "scheduling" %>
+      <%= link_to "Display Mode",
+        location_calendar_path(location, date: date, mode: "display") %>
+    <% else %>
+      <%= link_to "Scheduling Mode",
+        location_calendar_path(location, date: date, mode: "scheduling") %>
+    <% end %>
+  </div>
+</div>

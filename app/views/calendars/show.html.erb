@@ -1,6 +1,15 @@
 <div class="calendars-show">
   <header>
-    <div>&nbsp;</div>
+    <div>
+      <% if @presenter.display_mode_select? %>
+        <%= render partial: "calendars/mode_select",
+          locals: {
+            location: @presenter.location,
+            date: @presenter.date_integer,
+            mode: @presenter.mode
+          } %>
+      <% end %>
+    </div>
 
     <div>
       <%= link_to @presenter.previous_day_url, class: "button link" do %>

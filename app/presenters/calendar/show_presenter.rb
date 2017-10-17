@@ -1,10 +1,11 @@
 module Calendar
   class ShowPresenter
-    attr_reader :location
+    attr_reader :location, :mode
 
-    def initialize(date: nil, location:, user:, view: :daily)
+    def initialize(date: nil, location:, user:, view: :daily, mode: "scheduling")
       @location = location
       @date = date || current_date
+      @mode = mode
       @user = user
       @view = view
     end
@@ -15,6 +16,14 @@ module Calendar
 
     def date_integer
       date.to_s(:integer).to_i
+    end
+
+    def display_in_progress?
+      manage? && mode == "scheduling"
+    end
+
+    def display_mode_select?
+      manage?
     end
 
     def formatted_date
@@ -43,7 +52,7 @@ module Calendar
 
     def partial_presenter
       @_partial_presenter ||= presenter_class.
-        new(date: date, location: location, user: user)
+        new(date: date, location: location, mode: mode, user: user)
     end
 
     def selected_date
@@ -75,6 +84,10 @@ module Calendar
       @_unpublished_shifts ||= Shifts::Unpublished.new(location).present?
     end
 
+    def manage?
+      UserPermissions.for(user).manage?(location)
+    end
+
     private
 
     attr_reader :date, :user, :view
@@ -85,10 +98,6 @@ module Calendar
 
     def location_datetime
       @_location_datetime ||= DateAndTime::LocationTime.new(location: location)
-    end
-
-    def manage?
-      UserPermissions.for(user).manage?(location)
     end
 
     def presenter_class

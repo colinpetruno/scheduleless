@@ -18,7 +18,7 @@
     </div>
   <% end %>
 
-  <% if presenter.manage? %>
+  <% if presenter.display_in_progress? %>
     <%= render partial: "calendars/shared/shift_actions",
       locals: { shift: shift } %>
   <% end %>

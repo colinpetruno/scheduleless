@@ -31,32 +31,34 @@
         <span class="oi oi-people"></span>
       <% end %>
 
-      <%= link_to(
-        new_remote_location_in_progress_shift_path(
-          presenter.location,
-          date: presenter.date_integer
-        ),
-        class: "button",
-        title: "Add a Shift",
-        data: { toggle: "tooltip" },
-        remote: true
-      ) do %>
-        <span class="oi oi-plus"></span>
-      <% end %>
+      <% if presenter.display_in_progress? %>
+        <%= link_to(
+          new_remote_location_in_progress_shift_path(
+            presenter.location,
+            date: presenter.date_integer
+          ),
+          class: "button",
+          title: "Add a Shift",
+          data: { toggle: "tooltip" },
+          remote: true
+        ) do %>
+          <span class="oi oi-plus"></span>
+        <% end %>
 
-      <%= link_to(
-        new_remote_location_posting_path(
-          presenter.location,
-          date_start: presenter.date_integer,
-          date_end: presenter.date_integer,
-          display_date: presenter.date_integer
-        ),
-        class: "button",
-        title: "Publish",
-        data: { toggle: "tooltip" },
-        remote: true
-      ) do %>
-        <span class="oi oi-share"></span>
+        <%= link_to(
+          new_remote_location_posting_path(
+            presenter.location,
+            date_start: presenter.date_integer,
+            date_end: presenter.date_integer,
+            display_date: presenter.date_integer
+          ),
+          class: "button",
+          title: "Publish",
+          data: { toggle: "tooltip" },
+          remote: true
+        ) do %>
+          <span class="oi oi-share"></span>
+        <% end %>
       <% end %>
     </div>
 
@@ -65,6 +67,7 @@
 
     <br />
 
+    <% if presenter.display_in_progress? %>
     <div id="unpublished-shift-hint"
          class="<%= "hidden" unless presenter.unpublished_shifts? %>">
       <%= link_to(
@@ -81,9 +84,18 @@
          <div>Click on "<span class="oi oi-share"></span>" to publish.</div>
        <% end %>
     </div>
+    <% elsif presenter.manage? %>
+      <%= link_to(
+        location_calendar_path(presenter.location,
+                               date: presenter.date_integer,
+                               mode: "scheduling"),
+        class: "warning") do %>
+        Select "Scheduling Mode" to make edits to the schedule
+      <% end %>
+    <% end %>
   </footer>
 
-  <% if Features.for(current_company).wages? %>
+  <% if Features.for(current_company).wages? && presenter.manage? %>
     <div id="wage-container">
       <%= render partial: "wages", locals: {
         errors: @presenter.partial_presenter.wages.errors?,

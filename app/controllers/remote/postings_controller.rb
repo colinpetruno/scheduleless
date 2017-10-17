@@ -1,5 +1,6 @@
 module Remote
   class PostingsController < AuthenticatedController
+    include StatefulParams
     helper_method :presenter_class
 
     def create
@@ -56,12 +57,6 @@ module Remote
         require(:posting).
         permit(:all_shifts, :date_start, :date_end).
         merge(user_id: current_user.id)
-    end
-
-    def view
-      cookies[:view] = params[:view] || cookies[:view] ||  "weekly"
-
-      cookies[:view]
     end
   end
 end

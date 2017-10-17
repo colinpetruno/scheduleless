@@ -84,7 +84,7 @@ module Calendar
 
     def shift_finder
       @_shift_finder ||= Shifts::Finders::ByWeek.new(date: date,
-                                                     in_progress: true,
+                                                     in_progress: display_in_progress?,
                                                      location: location)
     end
 

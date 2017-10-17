@@ -90,7 +90,7 @@
     </div>
   </section>
 
-  <% if features.wages? %>
+  <% if features.wages? && presenter.manage? %>
     <%= render partial: "calendars/wage_footer",
       locals: {
         date_range: presenter.date_range,

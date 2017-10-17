@@ -1,0 +1,23 @@
+.calendars-mode-select {
+  > button {
+    font-weight: 200;
+    min-height: 42px;
+    min-width: 175px;
+    vertical-align: top;
+  }
+
+  > div {
+    min-width: 175px;
+    text-align: center;
+    padding: 0;
+
+    a {
+      font-weight: 200;
+      line-height: 40px;
+
+      &:hover {
+        font-weight: 200;
+      }
+    }
+  }
+}

@@ -1,5 +1,7 @@
 module Remote
   class InProgressShiftsController < AuthenticatedController
+    include StatefulParams
+
     helper_method :presenter_class
 
     def create
@@ -52,12 +54,6 @@ module Remote
       else
         ::Calendar::WeeklySchedulePresenter
       end
-    end
-
-    def view
-      cookies[:view] = params[:view] || cookies[:view] ||  "weekly"
-
-      cookies[:view]
     end
 
     def in_progress_shift_params
