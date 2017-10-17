@@ -20,24 +20,43 @@
 
   .shift {
     border: 0 !important;
-    background-color: transparent !important;
+     background-color: transparent !important;
+  }
+
+  .add-shift, .actions, .repeating-shift-icon, #calendars-wage-footer {
+    display: none !important;
+  }
+
+  .new-calendars-shift-week-view {
+    background-color: #ffffff !important;
+    border: 1px solid #5f97ff !important;
+    color: #333 !important;
+  }
+
+  .calendars-weekly-schedule > section{
+    overflow-y: auto !important;
   }
 </style>
 
 <div class="centered" style="margin-top: 20px">
-  <h1><%= @presenter.location.name %></h1>
-  <%= AddressFormatter.for(@presenter.location).multiline_html %>
+  <h1><%= @location.name %></h1>
+  <%= AddressFormatter.for(@location).multiline_html %>
 </div>
 
 <div style="padding: 50px">
-  <%= render partial: "calendars/week_schedule", locals: {
-    presenter: @presenter
-  } %>
+<%= render(
+  partial: "calendars/show",
+  locals: {
+    presenter: ::Calendar::WeeklySchedulePresenter.new(date: @date,
+                                                       location: @location,
+                                                       user: current_user)
+  }
+) %>
 </div>
 
 <div class="centered" style="padding-50px; margin-bottom: 50px;">
   Need to join this location? Sign up at the link below. <br />
-  <%= location_join_url(@presenter.location.hash_key) %>
+  <%= location_join_url(@location.hash_key) %>
 </div>
 
 <script type="text/javascript">

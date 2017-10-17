@@ -35,6 +35,17 @@
           @presenter.toggle_link_options(:weekly)) do %>
           <span class="oi oi-grid-three-up"></span>
         <% end %>
+
+        <%= link_to(
+          location_print_path(
+            @presenter.location,
+            date: @presenter.date_integer,
+            view: "weekly"
+          ),
+          target: "_blank") do %>
+          <span class="oi oi-print"></span>
+        <% end %>
+
       </div>
     </div>
   </header>

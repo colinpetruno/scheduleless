@@ -4,11 +4,8 @@ class PrintsController < AuthenticatedController
   def show
     authorize :print, :show?
 
-    location = policy_scope(Location).find(params[:location_id])
-
-    @presenter = WeekSchedulePresenter.
-      new(day: date,
-          location: location)
+    @location = policy_scope(Location).find(params[:location_id])
+    @date = date
   end
 
   private
