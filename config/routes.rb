@@ -135,7 +135,6 @@ Rails.application.routes.draw do
       # namespace
       resources :in_progress_shifts, only: [:create, :edit, :new, :update]
       resources :postings, only: [:create, :new]
-      resources :scheduling_periods, only: [:show]
     end
 
     namespace :calendar, only: [] do
