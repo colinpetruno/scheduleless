@@ -74,27 +74,22 @@ en:
           article: >
             We will do all your busy work so you can focus on your business
         let_us_handle_it:
-          title: "Let Us Know What You Need"
+          title: "Quick Setup"
           article: >
-            Let us know how you prefer to schedule your employees and a past
-            schedule or two for reference. We will create schedules based upon what
-            you like. Don't worry though, if you need a change for an upcoming
-            holiday or event, just let us know and we will adjust it for you.
+            All you need to get started are a few business details and an list 
+            of your employees. You will publishing your first schedule in
+            minutes.
         notifications:
           title: "Your Schedule Sent To You"
           article: >
-            Get notified on your phone and via email when your schedules are
-            created. No need to remember each week or spend any time making
-            schedules. We will regulary schedule your employees and ensure they
-            have their schedules in advance.
+            Fast and Secure. Receive a notification on your phone or email when 
+            a schedule is ready for your employees or changes are being made.
         review:
           title: "Review And Publish"
           article: >
-            Check to ensure your schedule suits all your needs. If you need
-            changes you can make them yourself or just let us know. When you're
-            ready, hit publish and we will send it out to all your employees.
-            We learn from every schedule you publish to ensure we are giving you
-            exactly what you want.
+            Before publishing your schedule you have the option review it and 
+            make changes. Happy with your schedule? Send it out to all 
+            employees with a push of a button.
         more_info:
           title: "Get Started For Free"
           link_one: "Try Scheduleless Now"
