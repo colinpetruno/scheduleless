@@ -117,7 +117,7 @@ $(document).on("turbolinks:load", function() {
 
           var hours = [];
           for (var i = lowerBound; i <= upperBound; i++) {
-            hours.push(i);
+            hours.push(i % 24);
           }
 
           arr = hours
@@ -150,9 +150,13 @@ $(document).on("turbolinks:load", function() {
       function createTime (hour) {
         var suffix = 'am'
 
-        if (hour > 12) {
+        if (hour >= 12) {
           suffix = 'pm'
           hour = hour % 12
+        }
+
+        if (hour == 0) {
+          hour = 12
         }
 
         return hour + ':00 ' + suffix
