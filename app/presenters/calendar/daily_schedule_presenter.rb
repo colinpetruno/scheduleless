@@ -1,33 +1,78 @@
 module Calendar
-  class DailySchedulePresenter
-    def initialize(date: Date.today, location:, user:)
-      @date = date
-      @location = location
-      @user = user
+  class DailySchedulePresenter < BasePresenter
+    attr_reader :date, :location
+
+    def needs_published?
+      find_shifts.exists?(edited: true)
+    end
+
+    def partial_name
+      "calendars/daily_schedule"
+    end
+
+    def shift_view_width_class
+      "shifts day-length-#{day_length}"
     end
 
     def shifts
-      if published?
-      else
+      @_shifts ||= find_shifts.map do |shift|
+        ShiftPresenter.new(shift: shift,
+                           manage: true,
+                           day_start: first_shift.minute_start)
       end
+    end
+
+    def shifts_for(user)
+      # binding.pry
+      user_shift_map.by(user)
+    end
+
+    def users
+      @_users ||= location.users.order(:given_name)
     end
 
     private
 
-    attr_reader :date, :location, :user
+    attr_reader :user
 
-    def manage?
-      UserPermissions.for(user).manage?(location)
+    def day_length
+      day_end - day_start
     end
 
-    def published?
-      scheduling_period.published? || scheduling_period.closed?
+    def day_end
+      if last_shift.minute_start > last_shift.minute_end
+        1440
+      else
+        last_shift.minute_end
+      end
     rescue
-      false
+      LocationHours.for(location).close(date.wday)
     end
 
-    def scheduling_period
-      SchedulingPeriod.for(date, location)
+    def day_start
+      first_shift.minute_start
+    rescue
+      LocationHours.for(location).open(date.wday)
+    end
+
+    def first_shift
+      find_shifts.first
+    end
+
+    def last_shift
+      @_last_shift ||= LastShiftLocator.new(shifts: find_shifts).find
+    end
+
+    def find_shifts
+      @_raw_shifts ||= location.
+        in_progress_shifts.
+        where(date: date.to_s(:integer).to_i).
+        includes(:user).
+        order(:date, :minute_start)
+    end
+
+    def user_shift_map
+      @_user_shift_map ||= UserShiftMap.for(shifts)
     end
   end
 end

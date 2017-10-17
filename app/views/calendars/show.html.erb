@@ -51,7 +51,7 @@
   </header>
 
   <div class="calendar-container" id="calendar-container">
-    <%# DailySchedulePreviewPresenter or WeeklySchedulePresenter %>
+    <%# DailySchedulePresenter or WeeklySchedulePresenter %>
     <%= render partial: "show",
            locals: { presenter: @presenter.partial_presenter } %>
   </div>

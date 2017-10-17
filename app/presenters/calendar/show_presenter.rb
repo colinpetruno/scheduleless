@@ -93,7 +93,7 @@ module Calendar
 
     def presenter_class
       if view.to_sym == :daily
-        DailySchedulePreviewPresenter
+        DailySchedulePresenter
       else
         WeeklySchedulePresenter
       end

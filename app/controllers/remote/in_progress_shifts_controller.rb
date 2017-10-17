@@ -48,7 +48,7 @@ module Remote
 
     def presenter_class
       if view == "daily"
-        ::Calendar::DailySchedulePreviewPresenter
+        ::Calendar::DailySchedulePresenter
       else
         ::Calendar::WeeklySchedulePresenter
       end
