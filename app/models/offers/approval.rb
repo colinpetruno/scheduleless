@@ -24,7 +24,7 @@ module Offers
         end
       end
 
-      # TODO: Send notifications
+      Notifications::Offers::ApprovedJob.perform_later(offer.id)
     end
 
     private

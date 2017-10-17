@@ -16,6 +16,8 @@ en:
         Please take a few moments to review your schedule. Get the Scheduleless
         app in the Apple App Store or Google Play Store!
   notifications_mailer:
+    offer_denied:
+      subject: "Your trade was denied."
     trade_completed:
       subject: "Your trade has been completed!"
     trade_awaiting_approval:

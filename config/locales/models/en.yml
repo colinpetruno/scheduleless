@@ -27,6 +27,9 @@ en:
         created:
           title: "A New Trade Is Available To View!"
           message: "%{user_name} wants to trade his shift on %{dates}"
+        denied:
+          title: "Your trade was denied"
+          message: "View other shifts to trade for in the Scheduleless App"
         completed:
           title: "Your trade was completed!"
           message: "Enjoy your new shifts."

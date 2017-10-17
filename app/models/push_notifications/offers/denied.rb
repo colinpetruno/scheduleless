@@ -1,6 +1,6 @@
 module PushNotifications
   module Trades
-    class Completed < Base
+    class Denied < Base
       def initialize(user:, trade:)
         @user = user
         @trade = trade
@@ -15,7 +15,7 @@ module PushNotifications
       attr_reader :user, :trade
 
       def translation_key
-        "trades.completed"
+        "trades.denied"
       end
     end
   end

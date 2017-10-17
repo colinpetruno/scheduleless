@@ -14,7 +14,8 @@ module Offers
 
     def perform
       offer.update(state: :not_approved)
-      # TODO: send notifications
+
+      Notifications::Offers::DeniedJob.perform_later(offer.id)
     end
 
     private

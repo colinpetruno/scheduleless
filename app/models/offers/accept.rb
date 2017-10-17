@@ -21,6 +21,8 @@ module Offers
         # if it does not need approval and the shift is a take use shift taker
         ShiftTaker.new(trade: trade, user: offer.user).take
       end
+
+      Notifications::Offers::AcceptedJob.perform_later(offer.id)
     end
 
     private
