@@ -34,17 +34,21 @@ module Shifts
           in_progress_shift.repeating_shift.update(published: true)
         end
 
-        Notifications::ScheduleUpdatedJob.
-          perform_later(in_progress_shift.user_id,
-                        Marshal.dump([:shift_added]))
+        if notify?
+          Notifications::ScheduleUpdatedJob.
+            perform_later(in_progress_shift.user_id,
+                          Marshal.dump([:shift_added]))
+        end
       end
 
       def update_existing_shift
         Utilities::ShiftUpdater.new(in_progress_shift).update
 
-        Notifications::ScheduleUpdatedJob.
-          perform_later(in_progress_shift.user_id,
-                        Marshal.dump([:shift_changed]))
+        if notify?
+          Notifications::ScheduleUpdatedJob.
+            perform_later(in_progress_shift.user_id,
+                          Marshal.dump([:shift_changed]))
+        end
       end
 
       def delete_in_progress_shifts
@@ -66,9 +70,11 @@ module Shifts
           repeating_shift.update(deleted_at: DateTime.now)
         end
 
-        Notifications::ScheduleUpdatedJob.
-          perform_later(in_progress_shift.user_id,
-                        Marshal.dump([:shift_cancelled]))
+        if notify?
+          Notifications::ScheduleUpdatedJob.
+            perform_later(in_progress_shift.user_id,
+                          Marshal.dump([:shift_cancelled]))
+        end
       end
 
       def delete_series?
@@ -85,7 +91,7 @@ module Shifts
       end
 
       def notify?
-        notify
+        notify && published?
       end
 
       def published?
