@@ -4,7 +4,7 @@ module ScheduleMailers
 
     def initialize(user:, notifications:)
       @user = user
-      @notifications = notifications
+      @notifications = notifications.uniq
     end
 
     def messsage_key
