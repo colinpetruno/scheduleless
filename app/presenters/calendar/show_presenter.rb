@@ -26,6 +26,14 @@ module Calendar
       manage?
     end
 
+    def employees_link
+      if manage?
+        routes.locations_location_users_path(location)
+      else
+        routes.location_path(location)
+      end
+    end
+
     def formatted_date
       date.to_s(:full_day_and_month)
     end

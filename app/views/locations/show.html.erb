@@ -1,15 +1,10 @@
-<div class="frame">
-  <header>
-    <div>
-      <%= @location.name || t(".default_title") %>
-      <% if policy(@location).edit? %>
-        <aside>
-          <%= link_to t(".edit"), edit_location_path(@location) %>
-        </aside>
-      <% end %>
-    </div>
-  </header>
+<header class="view-header">
+  <h2><%= @location.name %></h2>
+</header>
 
+<br />
+
+<div class="frame">
   <section>
     <article>
       <%= AddressFormatter.for(@location).multiline_html %>
