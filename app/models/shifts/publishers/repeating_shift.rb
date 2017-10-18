@@ -53,7 +53,7 @@ module Shifts
                  location_id: repeating_shift.preview_location_id,
                  repeat_frequency: repeating_shift.preview_repeat_frequency,
                  position_id: repeating_shift.preview_position_id,
-                 published: true,
+                 published: all_dates?, # only make future things published if publishing all dates
                  start_date: repeating_shift.preview_start_date,
                  user_id: repeating_shift.preview_user_id)
       end
