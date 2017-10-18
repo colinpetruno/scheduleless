@@ -41,7 +41,8 @@ module Shifts
         InProgressShift.
           where(date: date_range,
                 edited: true,
-                location_id: location.id)
+                location_id: location.id).
+          where("user_id is not null and position_id is not null")
       end
 
       def date_range
