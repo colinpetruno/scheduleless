@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
       location_calendar_path(location)
     else
       # TODO: this is going to need to get removed
-      calendar_path
+      dashboard_path
     end
   end
 

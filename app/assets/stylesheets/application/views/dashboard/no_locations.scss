@@ -1,0 +1,22 @@
+.dashboard-no-locations {
+
+  article {
+    padding: 50px;
+
+    h1 {
+      font-weight: 200;
+    }
+
+    > section {
+      max-width: 500px;
+      margin: auto;
+      margin-bottom: 50px;
+    }
+  }
+
+  .icon {
+    color: #ffa900;
+    font-size: 80px;
+    margin-bottom: 30px;
+  }
+}
