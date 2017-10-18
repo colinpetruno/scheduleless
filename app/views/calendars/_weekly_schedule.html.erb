@@ -13,8 +13,10 @@
   <section>
     <%# Unassigned Shifts %>
     <div>
-      <div class="employee">
-        Unassigned
+      <div class="employee">Unassigned Shifts
+        <span class="tooltip-hint"
+              title="Unassigned shifts need an employee and position before they can be published."
+              data-toggle="tooltip"></span>
       </div>
 
       <% presenter.date_range.each do |date| %>
