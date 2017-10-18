@@ -11,6 +11,8 @@ module Users
     end
 
     def rate
+      return 0 unless user.present?
+
       if company.pay_by_type == "user"
         user.wage_cents || position_base_pay
       else
