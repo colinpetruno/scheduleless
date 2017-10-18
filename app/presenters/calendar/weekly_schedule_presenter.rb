@@ -30,7 +30,7 @@ module Calendar
     end
 
     def employees
-      location.users
+      @_employees ||= UserFinder.new(location: location).by_location
     end
 
     def needs_published?
