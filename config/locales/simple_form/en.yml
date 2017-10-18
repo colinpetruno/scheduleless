@@ -83,6 +83,7 @@ en:
         lead_time: "Additional Schedule Periods"
         schedule_duration: "Schedule Duration"
         start_date: "Start Date"
+        payment_method: "How do you pay your employees?"
       scheduling_hour:
         day: "Day"
         minute_open_end: "Closing Time"
@@ -160,6 +161,14 @@ en:
           Allow a buffer to ensure that the next employee can get
           there and situated before the previous worker leaves.
       schedule_setting:
+        start_day:
+          This will be the day that all the calendars start with. If you choose
+          monday our calendars will go from Monday to Sunday to match your
+          work week.
+        payment_method:
+          Choose "Employee" if each worker has their own rate irregardless of 
+          which position they work. Choose "Position" if they get paid by the
+          position they work.
         lead_time: >
           This is how many periods we will additionally schedule ahead. If the
           duration is 2 weeks and the periods are set to 2, you will have 1

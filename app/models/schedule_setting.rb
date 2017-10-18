@@ -15,6 +15,6 @@ class ScheduleSetting
   end
 
   def self.pay_method_options
-    [["User", "user"], ["Position", "position"]]
+    [["By Employee", "user"], ["By Position", "position"]]
   end
 end
