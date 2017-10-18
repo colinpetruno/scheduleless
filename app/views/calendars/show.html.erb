@@ -31,7 +31,7 @@
             date: @presenter.date_integer,
             view: "daily"
           ),
-          @presenter.toggle_link_options(:daily)) do %>
+          @presenter.toggle_link_options(:daily, "View by Day")) do %>
           <span class="oi oi-project"></span>
         <% end %>
 
@@ -41,7 +41,7 @@
             date: @presenter.date_integer,
             view: "weekly"
           ),
-          @presenter.toggle_link_options(:weekly)) do %>
+          @presenter.toggle_link_options(:weekly, "View by Week")) do %>
           <span class="oi oi-grid-three-up"></span>
         <% end %>
 
@@ -51,6 +51,8 @@
             date: @presenter.date_integer,
             view: "weekly"
           ),
+          title: "Print",
+          data: { toggle: "tooltip" },
           target: "_blank") do %>
           <span class="oi oi-print"></span>
         <% end %>

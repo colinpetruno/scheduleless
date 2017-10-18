@@ -80,12 +80,12 @@ module Calendar
       end
     end
 
-    def toggle_link_options(format)
-      if format.to_sym == view.to_sym
-        { class: "selected" }
-      else
-        {}
-      end
+    def toggle_link_options(format, tooltip=nil)
+      options = {}
+      options.merge!({ class: "selected" }) if format.to_sym == view.to_sym
+      options.merge!({ title: tooltip, data: { toggle: "tooltip" }}) if tooltip.present?
+
+      options
     end
 
     def unpublished_shifts?

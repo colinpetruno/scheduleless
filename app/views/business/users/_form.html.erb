@@ -33,35 +33,37 @@
     </section>
   </div>
 
-  <div class="frame">
-    <header class="light">
-      <div>
-        Position Information
-      </div>
-    </header>
-
-    <section>
-      <article>
-        <%= f.input :salary,
-          as: :boolean,
-          input_html: {
-            class: "disable-toggle",
-            data: { target: ".user-wage-container" }
-          } %>
-
-        <div class="user-wage-container">
-          <%= f.input :wage, as: :currency %>
+  <% if UserPermissions.for(current_user).manage?(@user) %>
+    <div class="frame">
+      <header class="light">
+        <div>
+          Position Information
         </div>
+      </header>
 
-        <%= f.association :primary_position,
-          collection: current_company.positions %>
+      <section>
+        <article>
+          <%= f.input :salary,
+            as: :boolean,
+            input_html: {
+              class: "disable-toggle",
+              data: { target: ".user-wage-container" }
+            } %>
 
-        <%= f.association :positions,
-          collection: current_company.positions,
-          as: :check_boxes %>
-      </article>
-    </section>
-  </div>
+          <div class="user-wage-container">
+            <%= f.input :wage, as: :currency %>
+          </div>
+
+          <%= f.association :primary_position,
+            collection: current_company.positions %>
+
+          <%= f.association :positions,
+            collection: current_company.positions,
+            as: :check_boxes %>
+        </article>
+      </section>
+    </div>
+  <% end %>
 
   <%= f.submit %>
   <br /><br />

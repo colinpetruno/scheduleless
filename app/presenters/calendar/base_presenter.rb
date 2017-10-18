@@ -8,7 +8,7 @@ module Calendar
     end
 
     def schedulable?(date)
-      current_location_date < date.to_s(:integer).to_i && display_in_progress?
+      current_location_date <= date.to_s(:integer).to_i && display_in_progress?
     end
 
     def date_integer
