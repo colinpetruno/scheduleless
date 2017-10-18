@@ -61,4 +61,4 @@ group :test do
   gem "rspec-rails", "~> 3.5"
 end
 
-ruby "2.3.1"
+ruby "2.3.3"
