@@ -20,14 +20,20 @@ module Calendar
       end
     end
 
+    def unassigned
+      shift_map["unassigned"] || []
+    end
+
     private
 
     attr_reader :shifts
 
     def build_shift_map
       shifts.each do |shift|
-        shift_map[shift.user_id] = [] unless shift_map[shift.user.id].present?
-        shift_map[shift.user_id].push(shift)
+        shift_key = shift&.user&.id || "unassigned"
+
+        shift_map[shift_key] = [] unless shift_map[shift_key].present?
+        shift_map[shift_key].push(shift)
       end
     end
 
