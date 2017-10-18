@@ -4,7 +4,7 @@
   </header>
 
   <section>
-    <% if presenter.trade_approvals? %>
+    <% if presenter.trade_approvals? || presenter.time_off_approvals? %>
       <% presenter.trade_approvals.map do |key, offers| %>
         <%= render partial: "dashboards/approvals/trade_approval", locals: {
           trade: presenter.trade_for(key),
