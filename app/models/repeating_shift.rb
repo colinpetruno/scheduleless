@@ -42,27 +42,4 @@ class RepeatingShift < ApplicationRecord
   def preview_minute_end
     super || self.minute_end
   end
-
-  def publish
-    # this method is screwed up
-    ActiveRecord::Base.transaction do
-      update(minute_end: preview_minute_end,
-             minute_start: preview_minute_start,
-             location_id: preview_location_id,
-             repeat_frequency: preview_repeat_frequency,
-             position_id: preview_position_id,
-             published: true,
-             start_date: preview_start_date,
-             user_id: preview_user_id)
-
-      self.
-        in_progress_shifts.
-        update_all(minute_end: preview_minute_end,
-                   minute_start: preview_minute_start,
-                   position_id: preview_position_id,
-                   user_id: preview_user_id,
-                   # published: true,
-                   edited: true)
-    end
-  end
 end

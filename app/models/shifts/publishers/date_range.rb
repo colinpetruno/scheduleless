@@ -56,7 +56,7 @@ module Shifts
       def deleted_shifts
         base_scope.
           unscoped.
-          where(edied: true).
+          where(edited: true).
           where("deleted_at is not null")
       end
 
@@ -89,7 +89,13 @@ module Shifts
         active_shifts.each do |active_shift|
           if active_shift.repeating?
             repeating_shift = active_shift.repeating_shift
-            repeating_shift.publish
+
+            Shifts::Publishers::RepeatingShift.
+              new(repeating_shift: repeating_shift,
+                  all: all_shifts?,
+                  start_date: start_date,
+                  end_date: end_date).
+              publish
           end
 
           updater = Utilities::ShiftUpdater.new(active_shift)
@@ -109,7 +115,12 @@ module Shifts
           Utilities::ShiftCreator.create_from(new_shift)
 
           if new_shift.repeating?
-            new_shift.repeating_shift.reload.publish
+            Shifts::Publishers::RepeatingShift.
+              new(repeating_shift: new_shift.repeating_shift.reload,
+                  all: all_shifts?,
+                  start_date: start_date,
+                  end_date: end_date).
+              publish
           end
 
           add_notification(new_shift.user_id, :shift_added)

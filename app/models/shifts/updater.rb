@@ -72,7 +72,9 @@ module Shifts
 
 
       if publish?
-        repeating_shift.publish
+        Shifts::Publishers::RepeatingShift.
+          new(repeating_shift: repeating_shift).
+          publish
       else
         InProgressShift.
           where(repeating_shift_id: repeating_shift_id).
