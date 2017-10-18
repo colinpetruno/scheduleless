@@ -47,6 +47,13 @@ module Shifts
     end
 
     def future
+      if object.is_a?(User)
+        Shifts::RepeatingShiftsPopulator.
+          new(end_date: Date.today + 6.weeks,
+              user: object).
+          populate
+      end
+
       # these shifts drop off 15 minutes after they over
       # TODO fix for timezones
       self.scope = scope.

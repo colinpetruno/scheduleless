@@ -32,7 +32,11 @@ module Shifts
     attr_reader :end_date, :location, :start_date, :user
 
     def company
-      location.company
+      if location.present?
+        location.company
+      else
+        user.company
+      end
     end
 
     def create_shift(repeating_shift, date)
@@ -47,7 +51,7 @@ module Shifts
         find_or_initialize_by(
           company_id: company.id,
           date: date.to_s(:integer),
-          location_id: location.id,
+          location_id: repeating_shift.location_id,
           repeating_shift_id: repeating_shift.id,
           user_id: repeating_shift.preview_user_id
         ) do |ips|
