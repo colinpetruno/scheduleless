@@ -3,18 +3,6 @@
     locals: { current_step: 1 } %>
 <% end %>
 
-<% content_for(:tracking) do %>
-  <script type="text/javascript">
-    $(function(){
-      mixpanel.people.set({
-        "$first_name": "<%= current_user.given_name %>",
-        "$last_name": "<%= current_user.family_name %>",
-        "$phone": "<%= current_user.mobile_phone %>"
-      });
-    });
-  </script>
-<% end %>
-
 <section style="display: flex; flex-direction: column; height: 100%">
   <div class="instructions">
     <h3><%= t(".thanks") %></h3>

@@ -29,6 +29,9 @@
     $(function(){
       mixpanel.people.set({
         "Company Name": "<%= current_company.name %>",
+        "$first_name": "<%= current_user.given_name %>",
+        "$last_name": "<%= current_user.family_name %>",
+        "$phone": "<%= current_user.mobile_phone %>"
       })
     });
   </script>
