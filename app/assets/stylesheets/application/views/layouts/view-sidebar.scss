@@ -9,6 +9,22 @@
   form {
     min-width: 222px;
 
+    .has-error {
+      > label {
+        color: #ff9d00;
+        font-weight: bold;
+      }
+
+      .input-wrap > input {
+        border: 1px solid #ff9d00;
+      }
+
+      > span.help-block {
+        color: #ff9d00;
+        font-weight: bold;
+      }
+    }
+
     label {
       color: $white;
       font-weight: 300;

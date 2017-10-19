@@ -1,6 +1,7 @@
 <% if @shift.errors.present? %>
-  <%# TODO: ADD BETTER ERROR MESSAGING %>
-  console.log("errors");
+  window.Scheduleless.sidebar.addErrors("<%= j(
+    render(partial: "remote/in_progress_shifts/form", locals: { shift: @shift })
+  ) %>");
 <% else %>
   window.Scheduleless.sidebar.close();
 

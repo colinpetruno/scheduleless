@@ -10,6 +10,10 @@ class InProgressShift < ApplicationRecord
 
   attr_accessor :repeat_frequency, :update_repeating_rule
 
+  validates :minute_start, presence: true
+  validates :minute_end, presence: true
+  validates :date, presence: true
+
   after_create :add_repeating_shift
 
   def self.default_scope

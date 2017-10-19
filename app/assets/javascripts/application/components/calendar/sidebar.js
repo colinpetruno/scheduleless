@@ -5,6 +5,11 @@ window.Scheduleless.sidebar = {
     this.open();
   },
 
+  addErrors: function(content) {
+    $(".view-sidebar > .popup > .content").html(content);
+    window.Scheduleless.reinstantiatePickers();
+  },
+
   close: function () {
     $('[data-toggle="tooltip"]').tooltip("hide");
     $(".view-sidebar > .popup").removeClass("open");
