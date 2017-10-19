@@ -6,7 +6,7 @@ module Notifications
         @trade = @offer.trade
         @location = @trade.location
 
-        preferences = PreferenceFinder.for(location)
+        preferences = PreferenceFinder.for(@location)
 
         begin
           if preferences.approve_trades?
