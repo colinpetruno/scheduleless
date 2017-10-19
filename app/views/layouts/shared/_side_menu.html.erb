@@ -1,40 +1,66 @@
-<div class="side-menu">
+<div class="layouts-shared-side-menu">
   <ul>
     <%= content_tag(:li, class: (controller_name == "calendars" ? "active" : "")) do %>
-      <%= link_to default_calendar_path_for(current_user) do %>
+      <%= link_to(
+        default_calendar_path_for(current_user),
+        title: "Calendar",
+        data: { toggle: "tooltip", placement: "right" }
+      ) do %>
         <span class="oi oi-calendar"></span>
       <% end %>
     <% end %>
 
     <% if params[:reporting].present? %>
       <%= content_tag(:li, class: active?(reporting_path)) do %>
-        <%= link_to reporting_path do %>
+        <%= link_to(
+          reporting_path,
+          title: "Reporting",
+          data: { toggle: "tooltip", placement: "right" }
+        ) do %>
           <span class="oi oi-bar-chart"></span>
         <% end %>
       <% end %>
     <% end %>
 
     <%= content_tag(:li, class: active?(shifts_path)) do %>
-      <%= link_to shifts_path do %>
+      <%= link_to(
+        shifts_path,
+        title: "Your Shifts",
+        data: { toggle: "tooltip", placement: "right" }
+      ) do %>
         <span class="oi oi-signpost"></span>
       <% end %>
     <% end %>
 
     <%= content_tag(:li, class: active?(locations_path)) do %>
-      <%= link_to locations_path do %>
+      <%= link_to(
+        locations_path,
+        title: "Locations",
+        data: { toggle: "tooltip", placement: "right" }
+      ) do %>
         <span class="oi oi-map-marker"></span>
       <% end %>
     <% end %>
 
     <%= content_tag(:li, class: active?(business_users_path)) do %>
-      <%= link_to business_users_path do %>
+      <%= link_to(
+        business_users_path,
+        title: "Employees",
+        data: { toggle: "tooltip", placement: "right" }
+      ) do %>
         <span class="oi oi-people"></span>
       <% end %>
     <% end %>
 
-    <%= content_tag(:li, class: active?(trades_path)) do %>
-      <%= link_to trades_path do %>
-        <span class="oi oi-loop"></span>
+    <% if features.trading? %>
+      <%= content_tag(:li, class: active?(trades_path)) do %>
+        <%= link_to(
+          trades_path,
+          title: "Trades",
+          data: { toggle: "tooltip", placement: "right" }
+        ) do %>
+          <span class="oi oi-loop"></span>
+        <% end %>
       <% end %>
     <% end %>
 
@@ -42,7 +68,11 @@
 
     <% if policy(:settings).show? %>
       <%= content_tag(:li, class: active?(settings_path)) do %>
-        <%= link_to settings_path do %>
+        <%= link_to(
+          settings_path,
+          title: "Company Settings",
+          data: { toggle: "tooltip", placement: "right" }
+         ) do %>
           <span class="oi oi-cog"></span>
         <% end %>
       <% end %>
@@ -51,7 +81,11 @@
 
     <% if policy(:scheduleless_admin).show? %>
       <%= content_tag(:li, class: active?(admin_root_path)) do %>
-        <%= link_to admin_root_path do %>
+        <%= link_to(
+          admin_root_path,
+          title: "Scheduleless Admin",
+          data: { toggle: "tooltip", placement: "right" }
+        ) do %>
           <span class="oi oi-bolt"></span>
         <% end %>
       <% end %>

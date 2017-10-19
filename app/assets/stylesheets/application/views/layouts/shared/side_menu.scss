@@ -1,4 +1,4 @@
-.side-menu {
+.layouts-shared-side-menu {
   background: $primary-dark-bg;
   width: 65px;
   display: block;
@@ -33,6 +33,7 @@
 
       a {
         color: $font-light;
+        display: block;
 
         &:hover {
           color: $white;
