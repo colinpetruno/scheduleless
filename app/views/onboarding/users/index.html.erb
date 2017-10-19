@@ -47,14 +47,8 @@
   <footer>
       <%= link_to t(".back"), new_onboarding_position_path, class: "button white" %>
 
-      <% if current_company.locations&.first&.users&.length > 1 %>
-        <%= link_to t(".continue"),
-          edit_onboarding_schedule_settings_path,
-          class: "button" %>
-      <% else %>
-        <button class="button" disabled="disabled">
-          <%= t(".continue") %>
-        </button>
-      <% end %>
+      <%= link_to t(".continue"),
+        edit_onboarding_schedule_settings_path,
+        class: "button" %>
   </footer>
 </section>

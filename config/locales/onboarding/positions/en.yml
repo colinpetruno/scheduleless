@@ -4,8 +4,8 @@ en:
       new:
         continue: "Continue"
         description: >
-          Location Admins will be able to manage their location and employees
-          that belong to their locations. Company Admins can manage the entire
+          Location admins will be able to manage their location and employees
+          that belong to their locations. Company admins can manage the entire
           company.
-        title: "Add Your Companys Positions"
+        title: "Add Your Company's Positions"
         no_positions: "Add positions before continuing."

@@ -3,12 +3,8 @@ en:
     schedule_settings:
       edit:
         back: "Back"
-        description: >
-          Configure your duration and start date of scheduling. We like to 
-          allow one week to get all your employees set up and time to get their 
-          new schedules.
         finish: "Finish"
-        title: "Configure Your Schedule"
+        title: "Company Settings"
       update:
         dashboard: "Go To Dashboard"
         line_1: >
