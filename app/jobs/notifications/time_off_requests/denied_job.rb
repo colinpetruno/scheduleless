@@ -7,11 +7,11 @@ module Notifications
 
         begin
           PushNotifications::TimeOffRequests::Denied.
-              new(user: user, time_off_request: time_off_request).
+              new(user: user, time_off_request: @time_off_request).
               notify
 
             NotificationsMailer.
-              time_off_request_denied(user, time_off_request).
+              time_off_request_denied(user, @time_off_request).
               deliver
         rescue StandardError => error
           Bugsnag.notify(error)
