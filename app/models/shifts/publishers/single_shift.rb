@@ -97,7 +97,7 @@ module Shifts
       end
 
       def notify?
-        notify && published?
+        notify
       end
 
       def published?
