@@ -39,7 +39,7 @@ en:
           message: "%{dates}"
         created:
           title: "A New Time Off Approval Is Pending"
-          message: "%{user_name} has requested time off on #{dates}"
+          message: "%{user_name} has requested time off on %{dates}"
         denied:
           title: "Your Time Off Request Was Not Approved."
           message: "%{dates}"
