@@ -9,6 +9,8 @@ class Cancellation
   def cancel
     shift.update(note: note, state: :cancelled)
 
+    shift.in_progress_shift.update(edited: true, user_id: nil)
+
     CancelShiftNotificationJob.perform_later shift.id
 
     true
