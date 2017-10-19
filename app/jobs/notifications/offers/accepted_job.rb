@@ -57,7 +57,7 @@ module Notifications
       attr_reader :offer
 
       def managers_to_notify
-        UserFinder.new(@location).location_admins
+        UserFinder.new(location: @location).location_admins
       end
     end
   end
