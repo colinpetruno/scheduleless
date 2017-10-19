@@ -9,7 +9,7 @@ module Dashboard
     end
 
     def trades
-      @_trades ||= finder.first(5)
+      @_trades ||= finder.available_with_limit(5)
     end
 
     private
@@ -17,7 +17,7 @@ module Dashboard
     attr_reader :user
 
     def finder
-      @_finder ||= TradeFinder.for(user)
+      @_finder ||= Trades::Finder.new(user: user)
     end
   end
 end

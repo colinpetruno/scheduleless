@@ -1,7 +1,7 @@
 module MobileApi
   class MyTradesController < ApiAuthenticatedController
     def show
-      @my_trades = current_user.trades.available
+      @my_trades = Trades::Finder.new(user: current_user).created
 
       # TODO: auth this better
       render json: {

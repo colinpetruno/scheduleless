@@ -15,7 +15,7 @@ module MobileApi
     end
 
     def index
-      @trades = TradeFinder.for(current_user).find
+      @trades = Trades::Finder.new(user: current_user).available
 
       render json: {
         trades: MobileApi::TradesPresenter.for(@trades)
