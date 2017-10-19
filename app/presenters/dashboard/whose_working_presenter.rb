@@ -2,8 +2,9 @@ module Dashboard
   class WhoseWorkingPresenter
     attr_reader :locations
 
-    def initialize(locations)
+    def initialize(locations, manage=false)
       @locations = locations
+      @manage = manage
     end
 
     def closing_time_for(location)
@@ -16,6 +17,10 @@ module Dashboard
       else
         "dashboards/whose_working/location_closed"
       end
+    end
+
+    def manage?
+      @manage
     end
 
     def next_event_line_for(location)

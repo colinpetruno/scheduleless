@@ -6,7 +6,7 @@
           partial: "whose_working",
           locals: {
             presenter: Dashboard::WhoseWorkingPresenter.
-              new(current_user.locations)
+              new(current_user.locations, UserPermissions.for(current_user).manager?)
           }
         ) %>
       </article>

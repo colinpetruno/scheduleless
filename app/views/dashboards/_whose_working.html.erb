@@ -14,6 +14,11 @@
           </div>
           <div>
             <%= presenter.next_event_line_for(location) %>
+
+            <% if presenter.manage? %>
+              <%= link_to "(edit)",
+                locations_location_scheduling_hours_path(location) %>
+            <% end %>
           </div>
         </header>
 
