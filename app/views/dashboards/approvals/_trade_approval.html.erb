@@ -1,6 +1,6 @@
 <div class="dashboard-approvals-trade-approval">
   <header>
-    <%= shift.user.full_name %> wants to trade their shift on <%= Date.parse(shift.date).to_s(:month_day_year) %>.
+    <%= shift.user.full_name %> wants to trade their shift on <%= Date.parse(shift.date.to_s).to_s(:month_day_year) %>.
   </header>
 
   <%= render partial: "dashboards/approvals/trade_offers", locals: {
