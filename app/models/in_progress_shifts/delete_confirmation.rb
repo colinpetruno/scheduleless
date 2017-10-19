@@ -33,7 +33,8 @@ module InProgressShifts
 
         Shifts::Publishers::SingleShift.new(
           in_progress_shift: in_progress_shift,
-          delete_series: delete_series?
+          delete_series: delete_series?,
+          notify: in_progress_shift.published?
         ).publish
       end
       true
