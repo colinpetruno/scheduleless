@@ -123,8 +123,6 @@ RSpec.describe "onboarding happy path", type: :feature do
     click_on I18n.t("onboarding.users.index.continue")
 
     expect(page).
-      to have_content I18n.t("onboarding.schedule_settings.edit.description")
-    expect(page).
       to have_content I18n.t("onboarding.schedule_settings.edit.title")
 
     # check going backwards

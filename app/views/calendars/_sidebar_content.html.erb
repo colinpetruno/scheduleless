@@ -11,7 +11,9 @@
           <%= link_to "#{location.name}", location_calendar_path(location) %>
         <% end %>
 
-        <%= link_to "Create a new location", new_location_path %>
+        <% if presenter.manage? %>
+          <%= link_to "Create a new location", new_location_path %>
+        <% end %>
       </div>
     </div>
 
