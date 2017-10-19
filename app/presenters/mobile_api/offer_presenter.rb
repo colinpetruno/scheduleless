@@ -19,9 +19,9 @@ module MobileApi
         note: offer.note,
         offered_by_name: offered_by_name,
         shift_end_time: shift_end_time,
-        shift_date: shift_date.day,
+        shift_date: shift_day,
         shift_label: shift_label,
-        shift_short_month: shift_date.strftime("%b"),
+        shift_short_month: shift_short_month,
         shift_start_time: shift_start_time
       }
     end
@@ -35,7 +35,8 @@ module MobileApi
     end
 
     def location
-      shift.location
+      # might not always have a shift
+      offer.trade.location
     end
 
     def offered_by_name
@@ -43,23 +44,55 @@ module MobileApi
     end
 
     def shift
-      offer.offered_shift
+      @_shift ||= offer.offered_shift
+    end
+
+    def shift_day
+      if shift.present?
+        shift_date.day
+      else
+        ""
+      end
+    end
+
+    def shift_short_month
+      if shift.present?
+        shift_date.strftime("%b")
+      else
+        ""
+      end
     end
 
     def shift_date
-      Date.parse(shift.date.to_s)
+      if shift.present?
+        Date.parse(shift.date.to_s)
+      else
+        ""
+      end
     end
 
     def shift_end_time
-      MinutesToTime.for(shift.minute_end)
+      if shift.present?
+        MinutesToTime.for(shift.minute_end)
+      else
+        0
+      end
     end
 
     def shift_label
-      "#{shift_start_time} - #{shift_end_time}"
+      if shift.present?
+        "#{shift_start_time} - #{shift_end_time}"
+      else
+        "#{offered_by_name} can take this shift"
+      end
     end
 
     def shift_start_time
-      MinutesToTime.for(shift.minute_start)
+      if shift.present?
+        MinutesToTime.for(shift.minute_start)
+      else
+        0
+      end
     end
   end
 end
