@@ -12,7 +12,8 @@ module Offers
 
     def decline
       offer.update(state: :declined)
-      # TODO: send notifications
+
+      Notifications::Offers::DeclinedJob.perform_later(offer.id)
     end
   end
 end

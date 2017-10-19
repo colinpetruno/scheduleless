@@ -1,6 +1,6 @@
 module Users
   class Emailable
-    DOMAIN_BLACKLIST = %w(example.com)
+    DOMAIN_BLACKLIST = %w(example.com test.com a.com)
 
     def self.for(user)
       new(user: user).emailable?
