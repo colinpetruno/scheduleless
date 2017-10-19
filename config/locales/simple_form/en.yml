@@ -129,7 +129,7 @@ en:
           Give a name to your location to help you identify it.
       offer:
         offered_shift_id: >
-          Select a trip to offer for a trade. If accepted you can swap shifts!
+          Select a shift to offer for a trade. If accepted you can swap shifts!
           Leave it blank to take the shift.
       confirm_delete:
         delete_positions: >
