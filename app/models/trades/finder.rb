@@ -37,6 +37,11 @@ module Trades
         available
     end
 
+    def for_dashboard
+      excluded_trade_ids = Offer.where(user_id: user.id).pluck(:trade_id)
+      available.where.not(id: excluded_trade_ids).first(5)
+    end
+
     private
 
     attr_reader :user

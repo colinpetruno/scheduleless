@@ -9,7 +9,7 @@ module Dashboard
     end
 
     def trades
-      @_trades ||= finder.available_with_limit(5)
+      @_trades ||= finder.for_dashboard
     end
 
     private

@@ -115,6 +115,8 @@ en:
         primary_position_id: "Position"
         salary: "Exempt Employee?"
         wage: "Hourly Wage"
+      user_location:
+        home: "Primary Location?"
     required:
       text: 'required'
       mark: '*'
