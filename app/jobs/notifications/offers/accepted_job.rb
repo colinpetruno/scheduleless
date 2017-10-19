@@ -3,8 +3,8 @@ module Notifications
     class AcceptedJob < ApplicationJob
       def perform(offer_id)
         @offer = Offer.find(offer_id)
-        @trade = offer.trade
-        @location = trade.location
+        @trade = @offer.trade
+        @location = @trade.location
 
         preferences = PreferenceFinder.for(location)
 
@@ -34,7 +34,7 @@ module Notifications
               end
             end
           else # offer can be directly accepted
-            [offer.user, @trade.user].each do |user|
+            [@offer.user, @trade.user].each do |user|
               PushNotifications::Trades::Completed.
                 new(user: user, trade: @trade).
                 notify
