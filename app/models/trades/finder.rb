@@ -6,7 +6,10 @@ module Trades
 
     def available
       Trade.
-        where(location_id: user_location_ids, status: :available).
+        joins(:shift).
+        where(location_id: user_location_ids,
+              status: :available,
+             ).
         where.not(user_id: user.id).
         includes(:location, :user)
     end
@@ -16,9 +19,9 @@ module Trades
     end
 
     def created
-      user.
-        trades.
-        includes(:offers, :shift).
+      base_trades = user.trades.includes(:offers, :shift)
+
+      base_trades.
         where(
           shifts: {
             date: ((location_date+1)..Float::INFINITY)
@@ -37,6 +40,18 @@ module Trades
     private
 
     attr_reader :user
+
+    def location_date
+      DateAndTime::LocationTime.
+        new(location: user.locations.first).
+        current_date_integer
+    end
+
+    def location_time_minutes
+      DateAndTime::LocationTime.
+        new(location: user.locations.first).
+        current_time_minutes
+    end
 
     def user_location_ids
       user.user_locations.pluck(:location_id)
