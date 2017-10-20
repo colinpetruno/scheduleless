@@ -1,13 +1,15 @@
-<section>
-  <div class="instructions">
-    <h2><%= t(".title") %></h2>
+<section style="max-width: 400px; margin: auto">
+  <div class="instructions center">
+    <h3><%= t(".title") %></h3>
   </div>
 
   <%= simple_form_for(resource,
                       as: resource_name,
                       url: password_path(resource_name),
                       html: { method: :put, data: { turbolinks: false }}) do |f| %>
-    <%= f.error_notification %>
+    <div class="alert">
+      <%= f.error_notification %>
+    </div>
 
     <%= f.input :reset_password_token, as: :hidden %>
     <%= f.full_error :reset_password_token %>
@@ -25,12 +27,7 @@
     <%= f.button :submit, t(".submit") %>
   <% end %>
 
-  <footer>
-    <div>
-      <%= link_to t(".sign_in"), new_session_path(:user) %>
-    </div>
-    <div>
-      <%= link_to t(".sign_up"), new_onboarding_registration_path %>
-    </div>
-  </footer>
+  <div class="center" style="margin-top: 5px;">
+    <%= link_to t(".sign_in"), new_session_path(:user) %>
+  </div>
 </section>

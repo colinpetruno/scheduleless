@@ -10,13 +10,15 @@
 
   @include make-row();
 
+
   > div {
     @include make-col-ready();
     @include make-col(9);
+  }
 
-    // max-height: 475px;
-    // min-height: 475px;
-    // overflow-y: auto;
+  // this controls when there is no sidebar
+  > div:first-child {
+    @include make-col(12);
   }
 
   > aside {

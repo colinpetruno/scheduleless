@@ -119,6 +119,8 @@ Rails.application.routes.draw do
   get "pricing", to: "marketing/welcome#pricing", as: :pricing
 
   mount ResqueWeb::Engine, at: "/queues", anchor: false, constraints: lambda { |req|
+    return true if Rails.env.development?
+
     req.env['warden'].authenticated? and req.env['warden'].user.scheduleless_admin?
   }
 

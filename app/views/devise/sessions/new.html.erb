@@ -1,5 +1,5 @@
 <section style="max-width: 450px; margin: auto;">
-  <div class="instructions">
+  <div class="instructions center">
     <h2><%= t(".title") %></h2>
   </div>
 
@@ -12,10 +12,13 @@
       <div class="alert"><%= alert %></div>
     <% end %>
 
-    <div>
+    <div class="center">
       <%= f.button :submit, t(".submit"), class: "button" %>
       <%= link_to t(".sign_up"), new_onboarding_registration_path, class: "button white" %>
-      <%= link_to t(".forgot"), new_password_path(resource_name) %>
+
+      <div style="margin-top: 5px">
+        <%= link_to t(".forgot"), new_password_path(resource_name) %>
+      </div>
     </div>
   <% end %>
 </section>
