@@ -1,8 +1,22 @@
-<div class="marketing-welcome-pricing-view">
-  <header class="header">
-    <%= render partial: "layouts/marketing/navbar" %>
-  </header>
+<div class="welcome-pricing">
+  <section class="hero">
+    <div class="gradient"></div>
+    <div class="gradient-2"></div>
 
-  <%= render partial: "pricing" %>
-  <%= render partial: "footer" %>
+    <article class="content-section">
+      <div>
+        <section>
+          <%= render partial: "layouts/marketing/navbar" %>
+
+          <%= render partial: "marketing/welcome/pricing/plan_tiles" %>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <%= render partial: "marketing/welcome/pricing/included_features" %>
+  <%= render partial: "marketing/welcome/pricing/testimonials" %>
+  <%= render partial: "marketing/welcome/pricing/best_features" %>
+  <%= render partial: "marketing/welcome/shared/divider_bar" %>
+  <%= render partial: "marketing/welcome/shared/footer" %>
 </div>

@@ -1,5 +1,7 @@
 .marketing-welcome-employee-concierge {
   @include make-container();
+  font-size: .9rem;
+  color: lighten($gray-dark, 20%);
   margin-bottom: 50px;
   max-width: 1280px;
 
@@ -36,8 +38,9 @@
 
       > div {
         background-repeat: no-repeat;
+        background-position: center;
         margin-bottom: 25px;
-        min-height: 300px;
+        min-height: 150px;
       }
 
       > article {

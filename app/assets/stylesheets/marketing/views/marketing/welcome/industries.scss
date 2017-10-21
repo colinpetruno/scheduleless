@@ -1,9 +1,10 @@
-.industries {
-  @include gradient-directional(
-    $start-color: lighten(#5776bd, 5%),
-    $end-color: darken(#5776bd, 10%),
-    $deg: 185deg
-  );
+.welcome-industries {
+  background-image: image-url("marketing/welcome/shared/divider_bar_alt.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(#9b80d1, .6);
+
+  min-height: 300px;
 
 
   padding: 20px 0;
@@ -17,6 +18,23 @@
       font-weight: 200;
       margin-bottom: 30px;
     }
+
+    a {
+      background-color: rgba(darken(#9b80d1, 40%), .6);
+      border-radius: 3px;
+      color: $white;
+      font-weight: 200;
+      font-size: .8rem;
+      display: inline-block;
+      padding: 8px 20px;
+      margin-top: 15px;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        background-color: rgba(darken(#9b80d1, 40%), .8);
+        text-decoration: none;
+      }
+    }
   }
 
   section {
@@ -25,6 +43,12 @@
 
     > div {
       @include make-row();
+      margin-bottom: 50px;
+
+      &:last-child {
+        margin-bottom: 25px;
+      }
+
       > div {
         @include make-col-ready();
         @include make-col(3);

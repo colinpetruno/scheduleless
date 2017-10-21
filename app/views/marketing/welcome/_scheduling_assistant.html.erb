@@ -13,14 +13,6 @@
           <article>
             <%= t(".setup.article") %>
           </article>
-
-          <footer>
-            <%= link_to(
-              t(".setup.link"),
-              getting_started_path,
-              class: "button white"
-            ) %>
-          </footer>
         </div>
 
         <div class="inbox">
@@ -29,13 +21,6 @@
           <article>
             <%= t(".inbox.article") %>
           </article>
-          <footer>
-            <%= link_to(
-              t(".inbox.link"),
-              how_it_works_path,
-              class: "button white"
-            ) %>
-          </footer>
         </div>
 
         <div class="integrated">
@@ -46,6 +31,10 @@
           </article>
         </div>
       </section>
+    </div>
+
+    <div style="margin-top: 50px;">
+      <%= link_to "See All Features", pricing_path, class: "button white" %>
     </div>
   </div>
 </div>

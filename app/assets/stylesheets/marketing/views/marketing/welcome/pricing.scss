@@ -1,45 +1,43 @@
-.marketing-welcome-pricing {
-  background-color: #eaf6ff;
-  background-color: #f5faff;
-
-  > div {
-    @include make-container();
-    max-width: 1280px;
-
-    & > div {
-      @include make-row();
-      & > div {
-        @include make-col-ready();
-        @include make-col(12);
-
-        text-align: center;
-      }
-    }
+.welcome-pricing {
+  .hero {
+    min-height: 625px;
   }
 
-  header.header {
-    margin-bottom: 20px;
-    margin-top: 50px;
-    text-align: center;
-    width: 100%;
+  h1,h2,h3 {
+    color: $gray-dark;
 
-    p {
+    &:after {
+      display: block;
+      border-bottom: 1px solid #7f64b5;
+      content: "";
+      max-width: 75px;
       margin: auto;
-      max-width: 800px;
+      padding-top: 20px;
     }
   }
 
-  .price-tiers {
-    text-align: center;
-    display: flex;
-    flex-direction: row;
-  }
+
 }
 
 @media (max-width: map-get($grid-breakpoints, lg)) {
-  .marketing-welcome-pricing {
-    .price-tiers {
-      flex-direction: column;
+.welcome-pricing {
+  .hero {
+    height: auto;
+
+    .plan-container > .plan-details {
+      margin-left: auto;
+      margin-right: auto;
+
+      margin-bottom: 30px;
+
+      &:last-child {
+        margin-bottom: 15px;
+      }
+    }
+
+    .free-trial {
+      margin-bottom: 15px;
     }
   }
+}
 }

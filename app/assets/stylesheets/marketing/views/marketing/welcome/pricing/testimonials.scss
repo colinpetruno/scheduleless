@@ -1,0 +1,79 @@
+.welcome-pricing-testimonials {
+  background-color: #f4f8f9;
+  font-size: .9rem;
+  min-height: 400px;
+  padding-bottom: 50px;
+  padding-top: 50px;
+  text-align: center;
+
+  > article {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  > article > header {
+    color: lighten($gray-dark, 25%);
+    font-weight: 200;
+    margin: 20px auto;
+    margin-bottom: 50px;
+    max-width: 400px;
+  }
+
+  section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: auto;
+
+    > div {
+      background-color: $white;
+      font-size: .9rem;
+      margin: 20px;
+      min-height: 150px;
+      position: relative;
+      padding: 45px 20px 20px 20px;
+      text-align: left;
+
+      aside {
+        background-image: image-url("marketing/welcome/pricing/testimonials/portrait-2.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        border-radius: 50%;
+        min-width: 64px;
+        min-height: 64px;
+        width: 64px;
+        height: 64px;
+        position: absolute;
+        top: -32px;
+        left: 32px;
+      }
+
+      &:last-child > aside {
+        background-image: image-url("marketing/welcome/pricing/testimonials/portrait-1.jpg");
+      }
+
+      header {
+        color: lighten($gray-dark, 20%);
+      }
+
+      section {
+        color: $gray-light;
+        margin: 10px 0 15px 0;
+      }
+
+      footer {
+        color: $purple;
+        font-size: .8rem;
+      }
+    }
+  }
+}
+
+@media (max-width: map-get($grid-breakpoints, lg)) {
+.welcome-pricing-testimonials {
+  > article > section {
+    flex-direction: column;
+  }
+}
+}

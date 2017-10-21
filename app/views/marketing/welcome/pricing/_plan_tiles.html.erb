@@ -1,0 +1,79 @@
+<div class="welcome-pricing-plan-tiles">
+  <h2>Select a Plan</h2>
+
+  <article class="plan-container">
+    <div class="plan-details">
+      <h4>Basics</h4>
+
+      <div class="price">
+        <header>
+          $1
+        </header>
+
+        <section>per employee monthly</section>
+
+        <article>
+          Basic scheduling to make creating and viewing schedules easier.
+        </article>
+
+        <footer>
+          <%= link_to "Select Plan",
+            new_onboarding_registration_path(tier: "entry"),
+            class: "button white" %>
+        </footer>
+      </div>
+    </div>
+
+    <div class="plan-details">
+      <div class="recommended">
+        Best Value
+      </div>
+
+      <h4>Essentials</h4>
+      <div class="price">
+        <header>
+          $2
+        </header>
+
+        <section>per employee monthly</section>
+
+        <article>
+          Accurate wage and overtime calcuations and employee shift trading
+          to save hours each week.
+        </article>
+
+        <footer>
+          <%= link_to "Select Plan",
+            new_onboarding_registration_path(tier: "standard"),
+            class: "button" %>
+        </footer>
+      </div>
+    </div>
+
+    <div class="plan-details">
+      <h4>Essentials & Time Tracking</h4>
+      <div class="price">
+        <header>
+          $3
+        </header>
+
+        <section>per employee monthly</section>
+
+        <article>
+          Allow your employees to track time and receive wage reports
+          on the actual hours worked.
+        </article>
+
+        <footer>
+        <%= link_to "Select Plan",
+          new_onboarding_registration_path(tier: "advanced"),
+          class: "button white" %>
+        </footer>
+      </div>
+    </div>
+  </article>
+  <div class="free-trial center" style="margin-top: 10px; color: #f3f3f3; font-weight: 200; font-size: .8rem">
+    Free 30 day trial on all plans!
+  </div>
+
+</div>
