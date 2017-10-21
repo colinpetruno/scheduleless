@@ -1,12 +1,13 @@
 <%= render partial: "hero_section" %>
 
 <%= render partial: "scheduling_assistant" %>
-<%= render partial: "sell_message" %>
+<%# render partial: "sell_message" %>
+<%= render partial: "industries" %>
 <%= render partial: "employee_concierge" %>
 
-<%= render partial: "pricing" %>
-<%= render partial: "industries" %>
-<%= render partial: "footer" %>
+
+<%= render partial: "marketing/welcome/shared/divider_bar" %>
+<%= render partial: "marketing/welcome/shared/footer" %>
 
 <% if Rails.env.production? %>
   <%= render partial: "layouts/shared/reamaze" %>

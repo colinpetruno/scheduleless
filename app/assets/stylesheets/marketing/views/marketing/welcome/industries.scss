@@ -1,9 +1,10 @@
-.industries {
-  @include gradient-directional(
-    $start-color: lighten(#5776bd, 5%),
-    $end-color: darken(#5776bd, 10%),
-    $deg: 185deg
-  );
+.welcome-industries {
+  background-image: image-url("marketing/welcome/shared/divider_bar_alt.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(#9b80d1, .6);
+
+  min-height: 300px;
 
 
   padding: 20px 0;
@@ -25,6 +26,8 @@
 
     > div {
       @include make-row();
+      margin-bottom: 50px;
+
       > div {
         @include make-col-ready();
         @include make-col(3);
