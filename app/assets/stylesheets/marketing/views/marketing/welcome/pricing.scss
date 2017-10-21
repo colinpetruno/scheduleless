@@ -1,3 +1,142 @@
+.welcome-pricing {
+  .hero {
+    min-height: 625px;
+  }
+
+  .hero-content {
+    margin-top: 50px;
+    text-align: center;
+
+    h1,h2,h3 {
+      color: $white;
+      font-family: "Whitney", Helvetica, Roboto, sans-serif;
+      font-size: 1.65rem;
+      font-weight: 200;
+      letter-spacing: 4px;
+      &:after {
+        border-bottom-color: $white;
+      }
+    }
+  }
+
+  .plan-container {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+
+    > div {
+      background-color: $white;
+      border-radius: 3px;
+      max-width: 275px;
+      min-width: 275px;
+      min-height: 350px;
+      margin: 0 15px;
+
+      &:first-child {
+        margin-left: auto;
+      }
+
+      &:last-child {
+        margin-right: auto;
+      }
+
+      h4 {
+        color: $gray-dark;
+        font-size: 1rem;
+        margin: 15px 0;
+      }
+    }
+  }
+
+
+  .plan-details {
+    padding: 20px 30px;
+
+    .price {
+      color: $gray-dark;
+      font-size: 60px;
+      font-weight: 200;
+
+      section {
+        font-size: 1rem;
+      }
+    }
+
+    article {
+      color: $gray-dark;
+      font-size: .8rem;
+      margin: 15px 0;
+    }
+  }
+
+  h1,h2,h3 {
+    color: $gray-dark;
+
+    &:after {
+      display: block;
+      border-bottom: 1px solid #7f64b5;
+      content: "";
+      max-width: 75px;
+      margin: auto;
+      padding-top: 20px;
+    }
+  }
+
+  .section-1, .section-2, .section-3 {
+    > article {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    min-height: 400px;
+    padding-top: 50px;
+    text-align: center;
+  }
+
+  .section-2 {
+    background-color: #f4f8f9;
+  }
+
+  .info-tile {
+    flex-direction: row;
+
+    aside {
+      img {
+        display: block;
+        font-size: 60px;
+        line-height: 40px;
+        color: #7f64b5;
+        text-align: center;
+        width: 100px;
+        height: 100px;
+        padding: 25px;
+      }
+    }
+
+    section {
+      border-radius: 3px;
+      flex-direction: column;
+      font-weight: 200;
+      font-size: .85rem;
+      line-height: 14px;
+      text-align: left;
+      width: 75%;
+      padding-top: 22px;
+
+      > div:first-child {
+        margin-bottom: 8px;
+      }
+
+      strong {
+        font-size: 1rem;
+        font-weight: 400;
+      }
+    }
+  }
+}
+
+
+
 .marketing-welcome-pricing {
   background-color: #eaf6ff;
   background-color: #f5faff;

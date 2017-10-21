@@ -1,8 +1,82 @@
-<div class="marketing-welcome-pricing-view">
-  <header class="header">
-    <%= render partial: "layouts/marketing/navbar" %>
-  </header>
+<div class="welcome-pricing">
+  <section class="hero">
+    <div class="gradient"></div>
+    <div class="gradient-2"></div>
 
-  <%= render partial: "pricing" %>
-  <%= render partial: "footer" %>
+    <article class="content-section">
+      <div>
+        <section>
+          <%= render partial: "layouts/marketing/navbar" %>
+          <div class="hero-content">
+            <h2>Select a Plan</h2>
+
+            <article class="plan-container">
+              <div class="plan-details">
+                <h4>Basics</h4>
+                <div class="price">
+                  $1
+                  <section>per employee monthly</section>
+                </div>
+              </div>
+
+              <div class="plan-details">
+                <h4>Essentials</h4>
+                <div class="price">
+                  $2
+                  <section>per employee monthly</section>
+                </div>
+              </div>
+
+              <div class="plan-details">
+                <h4>Essentials & Time Tracking</h4>
+                <div class="price">
+                  $3
+                  <section>per employee monthly</section>
+                </div>
+
+                <article>
+                  Allow your employees to track time and receive wage reports
+                  on the actual hours worked.
+                </article>
+
+                <%= link_to "Select Plan",
+                  new_onboarding_registration_path(tier: "basic"),
+                  class: "button"
+                %>
+              </div>
+            </article>
+
+            <div class="center" style="margin-top: 10px; color: #f3f3f3; font-weight: 200; font-size: .8rem">
+              Free 30 day trial on all plans!
+            </div>
+
+          </div>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <%= render partial: "marketing/welcome/pricing/included_features" %>
+
+  <div class="section-2">
+
+  </div>
+
+  <div class="section-3">
+    <h3>All The Best Features</h3>
+  </div>
+
+  <%= render partial: "marketing/welcome/shared/divider_bar" %>
+
+  <%= render partial: "marketing/welcome/shared/footer" %>
 </div>
+
+<% if 1 == 2 %>
+  <div class="marketing-welcome-pricing-view">
+    <header class="header">
+      <%= render partial: "layouts/marketing/navbar" %>
+    </header>
+    <%= render partial: "pricing" %>
+    <%= render partial: "footer" %>
+  </div>
+<% end %>

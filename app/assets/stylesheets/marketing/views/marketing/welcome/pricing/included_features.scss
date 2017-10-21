@@ -1,0 +1,78 @@
+.welcome-pricing-included-features {
+  > article {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  padding-top: 50px;
+  text-align: center;
+
+  > article > section {
+    display: flex;
+    flex-direction: row;
+    padding: 35px 0;
+
+    > div {
+      background-color: #f4f8f9;
+      min-height: 100px;
+      display: flex;
+      flex-grow: 1;
+      max-width: 50%;
+
+      &:first-child {
+        margin-right: 15px;
+      }
+      &:last-child {
+        margin-left: 15px;
+      }
+    }
+  }
+
+  .feature-list {
+    @include make-container();
+
+    > article {
+      width: 100%;
+      @include make-row();
+
+      > div {
+        @include make-col-ready();
+        @include make-col(4);
+        color: $gray-dark;
+        font-weight: 200;
+
+
+        footer {
+          margin-top: 40px;
+          font-weight: 200;
+          font-size: .8rem;
+          text-align: left;
+
+          strong {
+            font-size: .9rem;
+            font-weight: 400;
+          }
+        }
+      }
+    }
+
+    .feature {
+      display: flex;
+      flex-direction: row;
+      margin: 20px 0;
+      text-align: left;
+
+      img {
+        display: block;
+        min-width: 25px;
+        min-height: 25px;
+        max-width: 25px;
+        max-height: 25px;
+      }
+
+      div:last-child  {
+        padding-left: 20px;
+      }
+    }
+  }
+}

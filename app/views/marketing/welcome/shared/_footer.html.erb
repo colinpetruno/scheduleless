@@ -1,0 +1,67 @@
+<div class="welcome-shared-footer">
+  <article class="nav-links">
+    <section class="navigate">
+      <header>Navigate</header>
+
+      <div>
+        <%= link_to "Home", root_path %>
+      </div>
+      <div>
+        <%= link_to "Pricing", pricing_path %>
+      </div>
+      <div>
+        <%= link_to "Support", ExternalLinks.support_url %>
+      </div>
+      <div>
+        <%= link_to "Sign Up", new_onboarding_registration_path %>
+      </div>
+      <div>
+        <%= link_to "Sign In", new_user_session_path %>
+      </div>
+    </section>
+
+    <section>
+      <header>Contact</header>
+
+      Not all employee scheduling software is created equal. Scheduleless
+      provides the most functionality without nagging spend more for the
+      features you need.
+
+      <br /><br />
+      <div class="contact-detail">
+        <div>
+          @
+        </div>
+        <div>
+          <a href="mailto:support@scheduleless.com">support@scheduleless.com</a>
+        </div>
+      </div>
+
+      <div class="contact-detail">
+        <div>
+          <span class="oi oi-map-marker"></span>
+        </div>
+        <div>
+          <div>429 Huntington Ave #429</div>
+          <div>Boston MA 02130</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <header>Newsletter</header>
+
+      Subscribe to our newsletter and get tips and tricks for your business.
+      <br />
+
+      <%= simple_form_for EmailCapture.new do |f| %>
+        <%= f.input :email, label: false, placeholder: "Email Address" %>
+        <%= f.submit class: "button" %>
+      <% end %>
+    </section>
+  </article>
+
+  <article class="made-in">
+    Made With ❤️  in Boston
+  </article>
+</div>

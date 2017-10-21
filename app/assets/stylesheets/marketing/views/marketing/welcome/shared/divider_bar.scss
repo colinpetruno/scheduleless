@@ -1,0 +1,52 @@
+.welcome-shared-divider-bar {
+  min-height: 180px;
+  background-image: image-url("marketing/welcome/shared/divider_bar.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: rgba(#9b80d1, .6);
+
+  display: flex;
+  flex-direction: row;
+
+  > article {
+    margin: auto;
+    display: flex;
+    max-width: 900px;
+    flex-direction: row;
+    width: 100%;
+  }
+
+  > article > section {
+    color: $white;
+    font-weight: 200;
+    flex-grow: 1;
+
+    &:last-child {
+      margin-left: auto;
+      text-align: right;
+      vertical-align: middle;
+    }
+  }
+
+  h5 {
+    color: $white;
+    font-size: 1.5rem;
+    font-weight: 200;
+    margin-bottom: 0;
+  }
+
+  a {
+    background-color: rgba(darken(#9b80d1, 40%), .6);
+    border-radius: 3px;
+    color: $white;
+    display: inline-block;
+    padding: 8px 20px;
+    margin-top: 15px;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: rgba(darken(#9b80d1, 40%), .8);
+      text-decoration: none;
+    }
+  }
+}

@@ -1,0 +1,87 @@
+.welcome-shared-footer {
+  @include make-container();
+  margin: auto;
+  max-width: 930px;
+  padding: 50px 0 20px 0;
+
+  > article {
+    width: 100%;
+  }
+
+  form {
+    input.email {
+      border: 1px solid $gray-light;
+      border-radius: 3px;
+      margin: 15px 0 5px 0;
+      padding: 5px 10px;
+      width: 100%;
+    }
+
+    input[type=submit] {
+      font-size: .8rem;
+    }
+  }
+
+  .made-in {
+    font-size: .8rem;
+    text-align: center;
+  }
+
+  .nav-links {
+    @include make-row();
+    border-bottom: 1px solid lighten(#9b80d1, 20%);
+    padding-bottom: 50px;
+    margin-bottom: 50px;
+
+    > section {
+      @include make-col-ready();
+      @include make-col(4);
+      color: lighten($gray-dark, 20%);
+      font-size: .8rem;
+
+      header {
+        color: $gray-dark;
+        font-weight: 400;
+        font-size: .9rem;
+        margin-bottom: 15px;
+      }
+    }
+
+    .navigate {
+      > div {
+        margin-bottom: 5px;
+
+        a {
+          color: lighten($gray-dark, 20%);
+          transition: all 0.2s ease-in-out;
+
+          &:hover {
+            color: $gray-dark;
+            text-decoration: none;
+          }
+        }
+      }
+    }
+
+    .contact-detail {
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 10px;
+
+      > div:first-child {
+
+        span {
+          margin-top: 4px;
+        }
+      }
+
+      > div:last-child {
+        padding-left: 10px;
+      }
+
+      div {
+        vertical-align: middle;
+      }
+    }
+  }
+}
