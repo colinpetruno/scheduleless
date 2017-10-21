@@ -50,3 +50,16 @@
     }
   }
 }
+
+@media (max-width: map-get($grid-breakpoints, lg)) {
+.welcome-shared-divider-bar {
+  > article {
+    flex-direction: column;
+    > section {
+      margin: auto;
+      text-align: center !important;
+      justify-content: center;
+    }
+  }
+}
+}

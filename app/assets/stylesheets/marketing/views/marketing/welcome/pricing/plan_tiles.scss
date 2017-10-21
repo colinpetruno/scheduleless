@@ -99,3 +99,11 @@
     }
   }
 }
+
+@media (max-width: map-get($grid-breakpoints, lg)) {
+.welcome-pricing-plan-tiles {
+  .plan-container {
+    flex-direction: column;
+  }
+}
+}

@@ -85,3 +85,41 @@
     }
   }
 }
+
+@media (max-width: map-get($grid-breakpoints, lg)) {
+.welcome-shared-footer {
+  margin: 15px;
+  margin-left: 0;
+  margin-right: 0;
+  text-align: center;
+
+  .nav-links {
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding-bottom: 0;
+  }
+
+  .nav-links > section {
+    @include make-col(12);
+    margin-bottom: 50px;
+    width: 100%;
+
+    > header {
+      font-size: 1rem;
+    }
+
+    .contact-detail {
+      justify-content: center;
+    }
+
+    input[type=submit] {
+      width: 100%;
+    }
+  }
+
+  article.made-in {
+    margin-top: 10px;
+  }
+}
+}

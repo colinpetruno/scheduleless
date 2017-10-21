@@ -48,3 +48,11 @@
     }
   }
 }
+
+@media (max-width: map-get($grid-breakpoints, lg)) {
+.welcome-pricing-best-features {
+  > article > div {
+    @include make-col(12);
+  }
+}
+}
