@@ -1,0 +1,19 @@
+<%= content_for(:view_sidebar) do %>
+  <%= render(partial: "reporting/locations/view_sidebar",
+             locals: { locations: @locations } ) %>
+
+<% end %>
+
+<div class="reporting-locations-index">
+  <section>
+    <div>
+      <span class="oi oi-location"></span>
+    </div>
+
+    <div>
+      <h1>Choose a Location To Get Started</h1>
+    </div>
+  </section>
+</div>
+
+

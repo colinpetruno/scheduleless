@@ -1,0 +1,18 @@
+<div class="reporting-locations-view-sidebar">
+  <h2>Select a Location</h2>
+
+
+  <div class="dropdown location-select-dropdown">
+    <button role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Locations
+    </button>
+
+    <div>
+      <% locations.each do |location| %>
+        <%= link_to "#{location.name}", reporting_location_time_sheet_path(location) %>
+      <% end %>
+
+      <%= link_to "Create a new location", new_location_path %>
+    </div>
+  </div>
+</div>

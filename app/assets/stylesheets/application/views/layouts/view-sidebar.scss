@@ -1,5 +1,7 @@
 .view-sidebar {
   background-color: darken(#ebf0f8, 40%);
+  min-width: 252px;
+  max-width: 252px;
   position: relative;
 
   > div {
@@ -47,5 +49,12 @@
   .alert,.notice,.warning {
     font-size: 11px;
     padding: 5px;
+  }
+
+  h1,h2,h3 {
+    color: $white;
+    font-weight: 200;
+    font-size: 1.3rem;
+    text-align: center;
   }
 }

@@ -171,8 +171,9 @@ Rails.application.routes.draw do
   end
 
   namespace :reporting do
-    resources :locations, only: [] do
+    resources :locations, only: [:index] do
       resource :statistics, only: [:show], path: "stats"
+      resource :time_sheet, only: [:show]
     end
   end
 

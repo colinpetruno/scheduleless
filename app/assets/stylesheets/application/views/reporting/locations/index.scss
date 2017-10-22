@@ -1,0 +1,25 @@
+.reporting-locations-index {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  justify-content: center;
+
+  > section {
+    text-align: center;
+
+    .oi {
+      color: darken($body-bg, 10%);
+      font-size: 6rem;
+    }
+
+    h1 {
+      color: $gray-dark;
+      font-weight: 200;
+    }
+
+    div {
+      margin-bottom: 50px;
+    }
+  }
+}

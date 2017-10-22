@@ -11,9 +11,9 @@
     <% end %>
 
     <% if params[:reporting].present? %>
-      <%= content_tag(:li, class: active?(reporting_path)) do %>
+      <%= content_tag(:li, class: active?(default_reporting_path_for(current_user))) do %>
         <%= link_to(
-          reporting_path,
+          default_reporting_path_for(current_user),
           title: "Reporting",
           data: { toggle: "tooltip", placement: "right" }
         ) do %>

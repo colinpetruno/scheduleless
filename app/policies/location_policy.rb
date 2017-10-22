@@ -2,9 +2,9 @@ class LocationPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       if UserPermissions.for(user).company_admin?
-        user.company.locations
+        user.company.locations.order(:name, :line_1)
       else
-        user.locations
+        user.locations.order(:name, :line_1)
       end
     end
   end
