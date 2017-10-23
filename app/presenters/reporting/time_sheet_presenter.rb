@@ -14,6 +14,10 @@ module Reporting
       @_employees ||= location.users
     end
 
+    def graph_labels
+      period.labels
+    end
+
     def total_scheduled_hours
       number_with_precision(wages.for_full_week.total_hours,
                             precision: 2,

@@ -26,6 +26,10 @@ module DateAndTime
       (current_time.hour * 60) + current_time.min
     end
 
+    def for(time)
+      time.in_time_zone(location.time_zone)
+    end
+
     private
 
     attr_reader :location

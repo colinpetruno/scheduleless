@@ -26,26 +26,6 @@
       border-right: 1px solid darken($body-bg, 10%);
       width: 50%;
     }
-
-    > article:first-child {
-      > div:first-child {
-        // background-color: $white;
-      }
-
-      > div:last-child {
-        // background-color: #f4f8f9;
-      }
-    }
-
-    > article:last-child {
-      > div:first-child {
-        // background-color: $white;
-      }
-
-      > div:last-child {
-        // background-color: #f4f8f9;
-      }
-    }
   }
 
   .graph {

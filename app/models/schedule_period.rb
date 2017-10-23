@@ -9,6 +9,12 @@ class SchedulePeriod
     @date = date
   end
 
+  def labels
+    (0..6).to_a.rotate(first_day).map do |day_int|
+      I18n.t("date.abbr_day_names")[day_int]
+    end
+  end
+
   def day_of(date_num)
     wday = date_num.is_a?(Date) ? date_num.wday : Date.parse(date_num.to_s).wday
 

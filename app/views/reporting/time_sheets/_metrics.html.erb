@@ -47,19 +47,11 @@
         {
           "type":"bar",
           "data": {
-            "labels": [
-              "Mon.",
-              "Tue.",
-              "Wed.",
-              "Thu.",
-              "Fri.",
-              "Sat.",
-              "Sun."
-            ],
+            "labels": <%= presenter.graph_labels.to_json.html_safe %>,
              "datasets":[
                {
                  "label": false,
-                 "data": <%= presenter.week_graph_values.as_json %>,
+                 "data": <%= presenter.week_graph_values.to_json.html_safe %>,
                  "fill":false,
                  "backgroundColor": [
                    "rgba(255, 99, 132, 0.4)",
