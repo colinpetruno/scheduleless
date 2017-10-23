@@ -22,8 +22,8 @@ module Onboarding
           Bugsnag.notify(error)
         end
 
-        Onboarding::Status.for(current_company).move_to_next_step!(1)
-        redirect_to new_onboarding_lead_path
+        Onboarding::Status.for(current_company).move_to_next_step!(2)
+        redirect_to new_onboarding_location_path
       else
         render :edit
       end
