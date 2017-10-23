@@ -6,7 +6,7 @@ en:
         password_confirmation: "does not match"
       new:
         title: "Welcome To Scheduleless"
-        description: "Let us do your scheduling for you"
+        description: "Save hours every week on scheduling."
       form:
         company_name: "Company Name"
         sign_in: "Sign In"
