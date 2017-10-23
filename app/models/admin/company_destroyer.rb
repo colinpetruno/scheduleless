@@ -24,7 +24,6 @@ module Admin
         delete_preferred_hours
         delete_schedule_rules
         delete_scheduling_hours
-        delete_scheduling_periods
         delete_shifts
         delete_subscriptions
         delete_trades
@@ -128,13 +127,6 @@ module Admin
 
     def delete_shifts
       Shift.where(company_id: company.id).delete_all
-    end
-
-
-    def delete_scheduling_periods
-      SchedulingPeriod.
-        where(company_id: company.id).
-        delete_all
     end
 
     def delete_scheduling_hours

@@ -41,7 +41,6 @@ Rails.application.routes.draw do
         only: [:create, :destroy, :edit, :new, :update],
         path: "pending_shifts"
       resources :shifts, only: [:create, :destroy, :edit, :new, :update]
-      resources :scheduling_periods, only: [:create]
       resources :schedule_rules, only: [:create, :destroy, :edit, :index, :update]
     end
 
