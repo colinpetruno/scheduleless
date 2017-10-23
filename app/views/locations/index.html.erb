@@ -25,6 +25,7 @@
           <th>State</th>
           <th></th>
         </tr>
+      </thead>
     <% @locations.each do |location| %>
       <tr>
         <td>
@@ -32,9 +33,7 @@
 
         </td>
         <td>
-          <span>
           <%= location.line_1 %>
-        </span>
         </td>
         <td class="narrow"><%= location.city %></td>
         <td class="narrow"><%= location.county_province %></td>

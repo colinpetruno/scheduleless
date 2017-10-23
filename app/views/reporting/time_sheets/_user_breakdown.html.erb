@@ -1,0 +1,28 @@
+<article class="reporting-time-sheets-user-breakdown">
+  <table>
+    <thead>
+      <tr>
+        <th>Employee Name</th>
+        <th>Scheduled</th>
+        <th>Actual</th>
+        <th>Variance</th>
+        <th>Reg Hours</th>
+        <th>OT Hours</th>
+        <th>Wage Estimate</th>
+    </thead>
+    <% presenter.employees.each do |employee| %>
+      <tr>
+        <td><%= employee.full_name %> <%= presenter.warnings_for(employee) %></td>
+        <td><%= presenter.wages_for_user(employee).total_hours %></td>
+        <td>-.34%</td>
+        <td></td>
+        <td><%= presenter.wages_for_user(employee).regular_hours %></td>
+        <td><%= presenter.wages_for_user(employee).overtime_hours %></td>
+        <td>
+          <%= Currency::FromNumber.
+            for(presenter.wages_for_user(employee).total_pay) %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</article>

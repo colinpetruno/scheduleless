@@ -1,0 +1,108 @@
+<section class="reporting-time-sheets-metrics">
+  <section class="four-up">
+    <article>
+      <div>
+        <section class="stat">
+          <article><%= presenter.total_scheduled_hours %></article>
+          <footer>hours scheduled</footer>
+        </section>
+      </div>
+
+      <div>
+        <section class="stat">
+          <article>n/a</article>
+          <footer>hours worked</footer>
+        </section>
+      </div>
+    </article>
+
+    <article>
+      <div>
+        <section class="stat">
+          <article><%= presenter.total_scheduled_wages %></article>
+          <footer>wages scheduled</footer>
+        </section>
+      </div>
+
+      <div>
+        <section class="stat">
+          <article>n/a</article>
+          <footer>wages worked</footer>
+        </section>
+      </div>
+    </article>
+  </section>
+
+  <section class="graph">
+    <canvas id="chartjs-1"></canvas>
+
+    <script type="text/javascript">
+      $(function(){
+        console.log("loaded");
+        Chart.defaults.global.legend.display = false;
+
+
+      new Chart(document.getElementById("chartjs-1"),
+        {
+          "type":"bar",
+          "data": {
+            "labels": [
+              "Mon.",
+              "Tue.",
+              "Wed.",
+              "Thu.",
+              "Fri.",
+              "Sat.",
+              "Sun."
+            ],
+             "datasets":[
+               {
+                 "label": false,
+                 "data": <%= presenter.week_graph_values.as_json %>,
+                 "fill":false,
+                 "backgroundColor": [
+                   "rgba(255, 99, 132, 0.4)",
+                   "rgba(255, 159, 64, 0.4)",
+                   "rgba(255, 205, 86, 0.4)",
+                   "rgba(75, 192, 192, 0.4)",
+                   "rgba(54, 162, 235, 0.4)",
+                   "rgba(153, 102, 255, 0.4)",
+                   "rgba(201, 203, 207, 0.4)"
+                 ],
+                 "borderColor": [
+                   "rgb(255, 99, 132)",
+                   "rgb(255, 159, 64)",
+                   "rgb(255, 205, 86)",
+                   "rgb(75, 192, 192)",
+                   "rgb(54, 162, 235)",
+                   "rgb(153, 102, 255)",
+                   "rgb(201, 203, 207)"
+                 ],
+                 "borderWidth":1
+               }
+             ]
+            },
+          "options": {
+            "scales": {
+              "xAxes": [ { "gridLines": { "display": false } } ],
+              "yAxes": [
+                {
+                  "ticks": { "beginAtZero": true },
+                  "gridLines": { "color": "#c5d4eb" }
+                }
+              ]
+            },
+            "tooltips": {
+              "backgroundColor": "#3b5c9a",
+              "titleFontColor": "#ffffff",
+              "bodyFontColor": "#ffffff",
+              "cornerRadius": 3,
+              "yAlign": "left",
+              "mode": "x"
+            }
+          }
+        });
+});
+    </script>
+  </section>
+</section>

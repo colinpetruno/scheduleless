@@ -32,6 +32,7 @@ gem "twilio-ruby"
 gem "uglifier", ">= 1.3.0"
 
 source "https://rails-assets.org" do
+  gem "rails-assets-chartjs"
   gem "rails-assets-d3"
   gem "rails-assets-pikaday"
   gem "rails-assets-tether"

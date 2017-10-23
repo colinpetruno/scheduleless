@@ -19,6 +19,10 @@ module Calculators
         Totals.for(wages_by_user[user.id])
       end
 
+      def hours_by_day_array
+        wages_by_date.values.map { |o| o[:hours] }
+      end
+
       def errors?
         if @_errors.present?
           @_errors

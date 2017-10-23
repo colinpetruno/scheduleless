@@ -4,17 +4,25 @@ table {
   margin-bottom: $spacer;
   background-color: $table-bg;
 
+  thead {
+    background-color: lighten($purple, 30%);
+  }
+
   th,
   td {
+    border-top: $table-border-width solid $table-border-color;
     padding: $table-cell-padding;
     position: relative;
     vertical-align: top;
-    border-top: $table-border-width solid $table-border-color;
 
     a.button.link, .button.link {
       padding-bottom: 0;
       padding-top: 0;
     }
+  }
+
+  td {
+    color: lighten($gray-dark, 15%);
   }
 
   td > span {
@@ -25,9 +33,13 @@ table {
     @include truncatable();
   }
 
-  thead th {
+  thead > tr > th {
     vertical-align: bottom;
     border-bottom: (2 * $table-border-width) solid $table-border-color;
+    color: darken($gray-dark, 15%);
+    font-weight: 400;
+    padding: 8px 12px;
+    padding-bottom: 5px;
   }
 
   tbody + tbody {

@@ -1,0 +1,30 @@
+<% content_for(:view_content_classes, "full-width") %>
+
+<header class="view-header">
+  <h2><%= @presenter.location.name %></h2>
+</header>
+
+
+<%= render(partial: "reporting/time_sheets/metrics",
+           locals: { presenter: @presenter } ) %>
+<%= render(partial: "reporting/time_sheets/user_breakdown",
+           locals: { presenter: @presenter } ) %>
+
+
+<!--
+<section>
+  <a href="#" class="button link"><span class="oi oi-caret-left"></span></a>
+  Mon Oct 15th - Sun Oct 22
+  <a href="#" class="button link"><span class="oi oi-caret-right"></span></a>
+</section>
+-->
+
+<!--
+hi im time sheets show help me please
+
+<br />
+Total Scheduled Hours: <%= @presenter.total_scheduled_hours %><br />
+Total Scheduled Wages: <%= @presenter.total_scheduled_wages %>
+
+
+-->

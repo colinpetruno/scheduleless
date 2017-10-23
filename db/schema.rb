@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171011184911) do
+ActiveRecord::Schema.define(version: 20171023015917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,9 @@ ActiveRecord::Schema.define(version: 20171011184911) do
     t.bigint   "check_out_date_time"
     t.datetime "created_at",          null: false
     t.datetime "updated_at",          null: false
+    t.integer  "location_id"
+    t.integer  "user_id"
+    t.integer  "check_in_date"
     t.index ["shift_id"], name: "index_check_ins_on_shift_id", using: :btree
   end
 

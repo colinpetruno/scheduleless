@@ -16,7 +16,12 @@ class CheckInCreator
     # checked into
     @check_in ||= shift.
       check_ins.
-      create(check_in_date_time: DateTime.now.strftime("%Y%m%d%H%M%S"))
+      create(check_in_date_time: DateTime.now.strftime("%Y%m%d%H%M%S"),
+             check_in_date: DateAndTime::LocationTime.
+               new(location: shift.location).
+               current_date_integer,
+             location_id: shift.location_id,
+             user_id: shift.user_id)
   end
 
   private

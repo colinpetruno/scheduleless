@@ -1,0 +1,10 @@
+.reporting-time-sheets-user-breakdown {
+  background-color: $white;
+
+  td span {
+    color: lighten($orange, 15%);
+    font-size: 1.1rem;
+    margin-left: 5px;
+    vertical-align: middle;
+  }
+}

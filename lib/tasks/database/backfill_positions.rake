@@ -1,14 +1,12 @@
 namespace :database do
-  desc "Backfill positions to add primary position_id"
-  task :backfill_positions => :environment do
+  desc "Backfill check ins"
+  task :backfill_check_ins => :environment do
     Chewy.strategy(:atomic) do
-      User.all.map do |user|
-        puts "Updating Position for User: #{user.id}"
-        positions = user.positions
+      CheckIn.all.includes(:shift) do |check_in|
+        check_in.user_id = check_in.shift.user_id
+        check_in.location_id = check_in.shift.location_id
 
-        if positions.present?
-          user.update(primary_position_id: positions.first.id)
-        end
+        check_in.save
       end
     end
   end
