@@ -116,7 +116,6 @@ module Calendar
     end
 
     def start_offset
-      puts "DAY START IS #{day_start}"
       shift.minute_start - day_start
     end
   end

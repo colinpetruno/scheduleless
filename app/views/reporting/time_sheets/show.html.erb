@@ -1,7 +1,37 @@
 <% content_for(:view_content_classes, "full-width") %>
 
-<header class="view-header">
-  <h2><%= @presenter.location.name %></h2>
+<header class="view-header time-sheets-show-view-header">
+  <section>
+    <h2><%= @presenter.location.name %></h2>
+  </section>
+
+  <section class="nav-buttons">
+    <%= link_to @presenter.previous_link, class: "button link" do %>
+      <span class="oi oi-caret-left"></span>
+    <% end %>
+
+    <%= @presenter.title %>
+
+    <%= link_to @presenter.next_link, class: "button link" do %>
+      <span class="oi oi-caret-right"></span>
+    <% end %>
+  </section>
+
+  <section>
+    <div class="dropdown location-select-dropdown">
+      <button role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Change Location
+      </button>
+
+      <div>
+        <% @presenter.location_options.each do |location| %>
+          <%= link_to "#{location.name}", reporting_location_time_sheet_path(location) %>
+        <% end %>
+
+        <%= link_to "Create a new location", new_location_path %>
+      </div>
+    </div>
+  </section>
 </header>
 
 
@@ -9,22 +39,3 @@
            locals: { presenter: @presenter } ) %>
 <%= render(partial: "reporting/time_sheets/user_breakdown",
            locals: { presenter: @presenter } ) %>
-
-
-<!--
-<section>
-  <a href="#" class="button link"><span class="oi oi-caret-left"></span></a>
-  Mon Oct 15th - Sun Oct 22
-  <a href="#" class="button link"><span class="oi oi-caret-right"></span></a>
-</section>
--->
-
-<!--
-hi im time sheets show help me please
-
-<br />
-Total Scheduled Hours: <%= @presenter.total_scheduled_hours %><br />
-Total Scheduled Wages: <%= @presenter.total_scheduled_wages %>
-
-
--->

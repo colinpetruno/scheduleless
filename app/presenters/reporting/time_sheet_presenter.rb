@@ -4,10 +4,11 @@ module Reporting
 
     attr_reader :company, :date, :location
 
-    def initialize(company:, date: Date.today, location:)
+    def initialize(company:, date: Date.today, location:, locations: [])
       @company = company
       @date = date
       @location = location
+      @locations = locations
     end
 
     def employees
@@ -16,6 +17,10 @@ module Reporting
 
     def graph_labels
       period.labels
+    end
+
+    def location_options
+      @locations - [location]
     end
 
     def total_scheduled_hours
@@ -36,6 +41,23 @@ module Reporting
       hours.for_employee(user)
     end
 
+    def next_link
+      routes.reporting_location_time_sheet_path(location, date: date + 7.days)
+    end
+
+    def title
+      week = DateAndTime::WeekDates.new(date: date,
+                                        start_day: company.schedule_start)
+      beginning = week.beginning_of_week.to_s(:full_day_and_month)
+      end_of_week = week.end_of_week.to_s(:full_day_and_month)
+
+      "#{beginning} - #{end_of_week}"
+    end
+
+    def previous_link
+      routes.reporting_location_time_sheet_path(location, date: date - 7.days)
+    end
+
     def wages_for_user(user)
       wages.for_user(user)
     end
@@ -53,6 +75,10 @@ module Reporting
     def hours
       @_hours ||= Calculators::Hours::WeeklyForLocation.new(location: location,
                                                             date: date)
+    end
+
+    def routes
+      Rails.application.routes.url_helpers
     end
 
     def wages

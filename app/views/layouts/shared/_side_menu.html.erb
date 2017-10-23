@@ -10,7 +10,7 @@
       <% end %>
     <% end %>
 
-    <% if params[:reporting].present? %>
+    <% if UserPermissions.for(current_user).manager? %>
       <%= content_tag(:li, class: active?(default_reporting_path_for(current_user))) do %>
         <%= link_to(
           default_reporting_path_for(current_user),

@@ -21,5 +21,13 @@
         }
       %>
     <% end %>
+
   </table>
+
+  <% if presenter.employees.blank? %>
+    <div class="empty-message">
+      There aren't any employees at this location.<br />
+      <%= link_to "Add Some Now", locations_location_users_path(presenter.location) %>
+    </div>
+  <% end %>
 </article>

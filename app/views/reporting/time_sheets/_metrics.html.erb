@@ -3,7 +3,7 @@
     <article>
       <div>
         <section class="stat">
-          <article><%= presenter.total_scheduled_hours %></article>
+          <article><%= presenter.total_scheduled_hours || 0 %></article>
           <footer>hours scheduled</footer>
         </section>
       </div>

@@ -1,5 +1,7 @@
 .view-header {
   background-color: $blue;
+  display: flex;
+  flex-directon: row;
 
   @include gradient-directional(
     $start-color: lighten(#5776bd, 5%),
@@ -11,11 +13,31 @@
   padding: 10px 30px;
   vertical-align: middle;
 
-  > h2 {
+  h2 {
     color: $white;
     font-weight: 200;
     line-height: 36px;
     margin-bottom: 0;
+  }
+
+  > section {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    text-align: center;
+    width: 33.333333%;
+
+    &:first-child {
+      justify-content: left;
+      margin-right: auto;
+      text-align: left;
+    }
+
+    &:last-child {
+      align-items: right;
+      justify-content: flex-end;
+      text-align: right;
+    }
   }
 }
 
