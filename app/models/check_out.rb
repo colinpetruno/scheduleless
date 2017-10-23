@@ -10,7 +10,9 @@ class CheckOut
   end
 
   def check_out
-    check_in.update(check_out_date_time: DateTime.now.strftime("%Y%m%d%H%M%S"))
+    check_in.
+      update(check_out_date_time: DateTime.now.strftime("%Y%m%d%H%M%S"),
+             check_out: DateTime.now)
   end
 
   def errors

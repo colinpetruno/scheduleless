@@ -4,12 +4,17 @@
   font-weight: 200;
 
   > table {
+    thead {
+      background-color: transparent;
+    }
+
     th {
       border-top: 0;
       border-bottom: 1px solid $white;
     }
 
     tr, td, th {
+      color: $white;
       font-weight: 200;
       padding: 0;
     }

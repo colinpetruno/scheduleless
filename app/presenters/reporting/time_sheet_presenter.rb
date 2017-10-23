@@ -20,20 +20,20 @@ module Reporting
                             strip_insignificant_zeros: true)
     end
 
+    def total_hours_worked
+      hours.total_hours
+    end
+
     def total_scheduled_wages
       Currency::FromNumber.for(wages.for_full_week.total_pay)
     end
 
-    def wages_for_user(user)
-      wages.for_user(user)
+    def hours_for_user(user)
+      hours.for_employee(user)
     end
 
-    def warnings_for(employee)
-      wage = employee.wage_cents
-
-      if (wage.blank? || wage == 0) && !employee.salary?
-        '<span class="oi oi-warning" data-toggle="tooltip" title="Missing Hourly Rate"></span>'.html_safe
-      end
+    def wages_for_user(user)
+      wages.for_user(user)
     end
 
     def week_graph_values
@@ -44,6 +44,11 @@ module Reporting
 
     def period
       @_period ||= SchedulePeriod.new(company: company, date: date)
+    end
+
+    def hours
+      @_hours ||= Calculators::Hours::WeeklyForLocation.new(location: location,
+                                                            date: date)
     end
 
     def wages

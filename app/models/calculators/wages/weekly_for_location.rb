@@ -75,7 +75,7 @@ module Calculators
 
       def weekly_sum
         # combines multiple hashes into one summing all the elements
-        @_weekly_sum ||= wages_by_user_array.inject do |hash, el|
+        @_weekly_sum ||= wages_by_user_array.inject({}) do |hash, el|
           hash.merge( el ) do |k, old_v, new_v|
             old_v + new_v
           end

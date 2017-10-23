@@ -21,6 +21,7 @@ class CheckInCreator
                new(location: shift.location).
                current_date_integer,
              location_id: shift.location_id,
+             check_in: DateTime.now,
              user_id: shift.user_id)
   end
 

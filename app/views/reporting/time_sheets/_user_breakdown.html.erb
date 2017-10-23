@@ -11,18 +11,15 @@
         <th>Wage Estimate</th>
     </thead>
     <% presenter.employees.each do |employee| %>
-      <tr>
-        <td><%= employee.full_name %> <%= presenter.warnings_for(employee) %></td>
-        <td><%= presenter.wages_for_user(employee).total_hours %></td>
-        <td>-.34%</td>
-        <td></td>
-        <td><%= presenter.wages_for_user(employee).regular_hours %></td>
-        <td><%= presenter.wages_for_user(employee).overtime_hours %></td>
-        <td>
-          <%= Currency::FromNumber.
-            for(presenter.wages_for_user(employee).total_pay) %>
-        </td>
-      </tr>
+      <%= render partial: "user_breakdown_row",
+        locals: {
+          presenter: ::Reporting::TimeSheets::UserBreakdownRowPresenter.new(
+            employee: employee,
+            hours: presenter.hours_for_user(employee),
+            wages: presenter.wages_for_user(employee)
+          )
+        }
+      %>
     <% end %>
   </table>
 </article>

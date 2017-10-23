@@ -3,6 +3,10 @@ table.calendar-small {
   min-height: 172px;
   min-width: 212px;
 
+  thead {
+    background-color: transparent;
+  }
+
   thead th {
     border: 0;
     border-bottom: 1px solid $white;
