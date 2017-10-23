@@ -12,7 +12,7 @@ module Notifications
 
           if Users::Emailable.for(@user)
             NotificationsMailer.
-              time_off_request_denied(@user, @time_off_request).
+              time_off_request_approved(@user, @time_off_request).
               deliver
           end
         rescue StandardError => error
