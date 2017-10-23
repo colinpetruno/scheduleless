@@ -13,14 +13,8 @@
 
           <div>
             <div class="signup-input">
-              <% if 1 == 2 %>
-                <%= simple_form_for EmailCapture.new do |f| %>
-                  <%= f.input :email, label: false, placeholder: t(".email_address") %>
-                  <%= f.submit class: "button" %>
-                <% end %>
-              <% end %>
               <%= link_to "Get Started For Free!",
-                new_onboarding_registration_path,
+                pricing_path,
                 class: "button"
               %>
             </div>

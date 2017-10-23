@@ -14,6 +14,13 @@ RSpec.describe "onboarding happy path", type: :feature do
     end
 
     expect(page).
+      to have_content "Select a Plan"
+
+    within ".recommended-plan" do
+      click_on "Select Plan"
+    end
+
+    expect(page).
       to have_content I18n.t("onboarding.registrations.new.title")
     expect(page).
       to have_content I18n.t("onboarding.registrations.new.description")
