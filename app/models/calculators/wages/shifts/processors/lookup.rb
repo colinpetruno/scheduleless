@@ -12,7 +12,8 @@ module Calculators
           }
 
           COUNTRY_MAP = {
-            US: Base
+            US: Base,
+            CA: OvertimeAfterEight
           }
 
           def self.for(location)
