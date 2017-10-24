@@ -1,27 +1,41 @@
 <div class="actions">
   <% if shift.editable? %>
     <div>
-      <%= link_to shift.details_url, remote: true do %>
+      <%= link_to shift.details_url,
+        data: { toggle: "tooltip" },
+        title: "Edit Shift",
+        remote: true do %>
         <span class="oi oi-pencil"></span>
       <% end %>
     </div>
   <% end %>
 
+  <!--
   <div>
-    <%= link_to shift.favorite_url, remote: true do %>
+    <%= link_to shift.favorite_url,
+      data: { toggle: "tooltip" },
+      title: "Favorite",
+      remote: true do %>
       <span class="oi oi-star"></span>
     <% end %>
   </div>
+  -->
 
   <div>
-    <%= link_to shift.repeat_url, remote: true do %>
+    <%= link_to shift.repeat_url,
+      data: { toggle: "tooltip" },
+      title: "Make Repeating",
+      remote: true do %>
       <span class="oi oi-loop-circular"></span>
     <% end %>
   </div>
 
   <% if shift.editable? %>
     <div>
-      <%= link_to shift.delete_url, remote: true do %>
+      <%= link_to shift.delete_url,
+        data: { toggle: "tooltip" },
+        title: "Delete Shift",
+        remote: true do %>
         <span class="oi oi-trash"></span>
       <% end %>
     </div>
