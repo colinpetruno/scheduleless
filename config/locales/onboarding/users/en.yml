@@ -7,7 +7,7 @@ en:
         add: "Add Employee"
         continue: "Continue"
         description: "Add and remove employees for this location"
-        no_users: "No users are added to this location yet. Create some now."
+        no_users: "No employees have been added here yet. Add some now."
         start: "Configure Schedule"
         title: "Manage Employees"
       new:
