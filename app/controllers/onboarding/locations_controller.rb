@@ -53,7 +53,7 @@ module Onboarding
     def location_params
       params.
         require(:location).
-        permit(:additional_details, :city, :county_province,
+        permit(:additional_details, :city, :county_province, :country,
                :line_1, :line_2, :line_3, :name, :postalcode, :time_zone).
         merge(company: current_company)
     end
