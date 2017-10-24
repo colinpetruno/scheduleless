@@ -45,7 +45,7 @@ module Calendar
         new(location: shift.location).
         current_date_integer
 
-      location_date.to_i < shift.date.to_i
+      location_date.to_i <= shift.date.to_i
     end
 
     def editable?
