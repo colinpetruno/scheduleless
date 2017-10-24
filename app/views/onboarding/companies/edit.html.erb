@@ -57,5 +57,12 @@
     <img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/849058464/?label=UICsCKPp43IQoLXulAM&amp;guid=ON&amp;script=0"/>
     </div>
     </noscript>
+
+    <script id="fullstory" type="text/javascript">
+      FS.identify("<%= current_user.id %>", {
+        displayName: "<%= current_user.full_name %>",
+        email: "<%= current_user.email %>",
+      });
+    </script>
   <% end %>
 <% end %>
