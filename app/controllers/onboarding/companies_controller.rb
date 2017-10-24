@@ -23,7 +23,12 @@ module Onboarding
         end
 
         Onboarding::Status.for(current_company).move_to_next_step!(2)
-        redirect_to new_onboarding_location_path
+
+        if current_user.locations.present?
+          redirect_to edit_onboarding_location_path(current_user.locations.first)
+        else
+          redirect_to new_onboarding_location_path
+        end
       else
         render :edit
       end

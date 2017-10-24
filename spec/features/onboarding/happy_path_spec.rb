@@ -45,24 +45,24 @@ RSpec.describe "onboarding happy path", type: :feature do
     fill_in "Company Name", with: "Capybara Company"
     click_on I18n.t("onboarding.companies.edit.next");
 
-    expect(page).
-      to have_content I18n.t("onboarding.leads.new.title")
-    expect(page).
-      to have_content I18n.t("onboarding.leads.new.skip")
+#    expect(page).
+#      to have_content I18n.t("onboarding.leads.new.title")
+#    expect(page).
+#      to have_content I18n.t("onboarding.leads.new.skip")
 
-    fill_in "Any Additional Comments", with: "Hi this is my company"
-    select "Phone", from: "Preferred Contact Method"
+#    fill_in "Any Additional Comments", with: "Hi this is my company"
+#    select "Phone", from: "Preferred Contact Method"
 
-    click_on I18n.t("onboarding.leads.form.submit")
-    expect(page).to have_content("please provide a phone number below")
+#    click_on I18n.t("onboarding.leads.form.submit")
+#    expect(page).to have_content("please provide a phone number below")
 
-    fill_in "Mobile Phone", with: "9788910597"
-    click_on I18n.t("onboarding.leads.form.submit")
+#    fill_in "Mobile Phone", with: "9788910597"
+#    click_on I18n.t("onboarding.leads.form.submit")
 
-    expect(page).
-      to have_content I18n.t("onboarding.leads.create.description")
+#    expect(page).
+#      to have_content I18n.t("onboarding.leads.create.description")
 
-    click_on I18n.t("onboarding.leads.create.continue")
+#    click_on I18n.t("onboarding.leads.create.continue")
 
     # ADD A LOCATION
     expect(page).
@@ -152,9 +152,7 @@ RSpec.describe "onboarding happy path", type: :feature do
     expect(page).to have_field("Company Name", with: "Capybara Company")
 
     click_on "Continue"
-    click_on I18n.t("onboarding.leads.new.skip")
     click_on "Save and Continue"
-    # click_on "Save and Continue"
     click_on "Continue"
     click_on "Continue"
     click_on "Finish"
