@@ -13,7 +13,8 @@
     <%= f.input :password %>
 
     <footer>
-      <%= f.submit t(".submit") %>
+      <%= link_to "Back", pricing_path, class: "button white" %>
+      <%= f.submit t(".submit"), class: "button" %>
     </footer>
   <% end %>
 </div>

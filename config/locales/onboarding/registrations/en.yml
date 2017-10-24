@@ -6,7 +6,10 @@ en:
         password_confirmation: "does not match"
       new:
         title: "Welcome To Scheduleless"
-        description: "Save hours every week on scheduling."
+        description: "Save hours every week on scheduling with our great features:"
+        subtitle: > 
+          Wage Calculation - Time Off Requests - Repeating Shifts - Multiple 
+          Locations
       form:
         company_name: "Company Name"
         sign_in: "Sign In"

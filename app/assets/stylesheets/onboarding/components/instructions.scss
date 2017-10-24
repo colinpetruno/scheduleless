@@ -1,10 +1,17 @@
 .instructions {
-  color: $dark-blue;
+  color: darken($gray-light, 20%);
   margin-bottom: 30px;
 
   h1,h2,h3,h4,h5,h6 {
-    color: darken($dark-blue, 15%);
+    color: $purple;
+    font-weight: 200;
     margin-bottom: 5px;
+  }
+
+  small {
+    color: $gray-light;
+    display: block;
+    font-size: .75rem;
   }
 }
 

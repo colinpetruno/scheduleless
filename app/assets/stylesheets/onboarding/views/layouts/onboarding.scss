@@ -30,7 +30,7 @@
 .wizard {
   @include make-row();
 
-  > div {
+  > div, > a {
     @include make-col-ready();
     @include make-col(10);
     @include make-col-offset(1)
@@ -60,7 +60,7 @@
   }
 
   .wizard {
-    > div {
+    > div, > a {
       @include make-col(12);
       @include make-col-offset(0);
     }
