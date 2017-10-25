@@ -1,13 +1,17 @@
 module Calendar
   class ShiftPresenter
-    def initialize(shift:, manage: false, day_start: 0)
+    def initialize(shift:, manage: false, day_start: 0, color: "color-0")
+      @color = color
       @day_start = day_start
       @manage = manage
       @shift = shift
     end
 
     def classes
-      array = ["shift", "length-#{shift_length.to_i}", "start-#{start_offset}"]
+      array = ["shift",
+               color,
+               "length-#{shift_length.to_i}",
+               "start-#{start_offset}"]
       array.push("edited") if shift.edited?
 
       array.reject(&:blank?).join(" ")
@@ -101,7 +105,7 @@ module Calendar
 
     private
 
-    attr_reader :day_start, :manage, :shift
+    attr_reader :color, :day_start, :manage, :shift
 
     def in_progress_shift
       shift.is_a?(InProgressShift) ? shift : shift.in_progress_shift

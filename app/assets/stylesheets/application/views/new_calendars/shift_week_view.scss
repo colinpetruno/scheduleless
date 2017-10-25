@@ -69,8 +69,176 @@
     // background-color: rgba(lighten($blue, 28%), .7);
     // border: 1px dashed $blue;
 
-    background-color: lighten($orange, 33%);
-    border: 1px dashed lighten($orange, 10%);
-    color: darken($orange, 25%);
+    // background-color: lighten($orange, 33%);
+    border: 1px dashed lighten($blue, 10%);
+    color: $font-dark;
+
+    background: repeating-linear-gradient(
+      45deg,
+      lighten($blue, 23%),
+      lighten($blue, 23%) 7px,
+      lighten($blue, 28%) 7px,
+      lighten($blue, 28%) 14px
+    );
+  }
+
+  // colors
+
+  &.color-0 {
+
+  }
+
+  &.color-1 {
+    // purple
+    $color1: lighten(#D5C4FF, 5%);
+    background-color: $color1;
+    border-color: darken($color1, 20%);
+
+    &.edited {
+      background: repeating-linear-gradient(
+        45deg,
+        lighten($color1, 0%),
+        lighten($color1, 0%) 7px,
+        lighten($color1, 3%) 7px,
+        lighten($color1, 3%) 14px
+      );
+    }
+
+    .actions {
+      background-color: rgba(lighten($color1, 5%), .8);
+
+      .oi {
+        color: darken($color1, 30%);
+      }
+    }
+  }
+
+  &.color-2 {
+    // green mint
+    $color3: lighten(#7bdcc0, 5%);
+
+    background-color: $color3;
+    border-color: darken($color3, 20%);
+
+    &.edited {
+      background: repeating-linear-gradient(
+        45deg,
+        lighten($color3, 3%),
+        lighten($color3, 3%) 7px,
+        lighten($color3, 10%) 7px,
+        lighten($color3, 10%) 14px
+      );
+    }
+
+    .actions {
+      background-color: rgba(lighten($color3, 5%), .8);
+
+      .oi {
+        color: darken($color3, 30%);
+      }
+    }
+  }
+
+  &.color-3 {
+    // yellow
+    $color2: #fee7a0;
+
+    background-color: $color2;
+    border-color: darken($color2, 20%);
+
+    &.edited {
+      background: repeating-linear-gradient(
+        45deg,
+        lighten($color2, 3%),
+        lighten($color2, 3%) 7px,
+        lighten($color2, 8%) 7px,
+        lighten($color2, 8%) 14px
+      );
+    }
+
+    .actions {
+      background-color: rgba(lighten($color2, 5%), .8);
+
+      .oi {
+        color: darken($color2, 45%);
+      }
+    }
+  }
+
+  &.color-4 {
+    // orangish
+    $color4: lighten(#fbb69e, 7%);
+    background-color: $color4;
+    border-color: darken($color4, 20%);
+
+    &.edited {
+      background: repeating-linear-gradient(
+        45deg,
+        lighten($color4, 3%),
+        lighten($color4, 3%) 7px,
+        lighten($color4, 8%) 7px,
+        lighten($color4, 8%) 14px
+      );
+    }
+
+    .actions {
+      background-color: rgba(lighten($color4, 5%), .8);
+
+      .oi {
+        color: darken($color4, 30%);
+      }
+    }
+  }
+
+  &.color-5 {
+    // green lime
+    $color5: lighten(#bfe292, 5%);
+
+    background-color: $color5;
+    border-color: darken($color5, 20%);
+
+    &.edited {
+      background: repeating-linear-gradient(
+        45deg,
+        lighten($color5, 3%),
+        lighten($color5, 3%) 7px,
+        lighten($color5, 8%) 7px,
+        lighten($color5, 8%) 14px
+      );
+    }
+
+    .actions {
+      background-color: rgba(lighten($color5, 5%), .8);
+
+      .oi {
+        color: darken($color5, 44%);
+      }
+    }
+  }
+
+  &.color-6 {
+    // redish
+    $color6: lighten(#f1afbb, 5%);
+
+    background-color: $color6;
+    border-color: darken($color6, 20%);
+
+    &.edited {
+      background: repeating-linear-gradient(
+        45deg,
+        lighten($color6, 3%),
+        lighten($color6, 3%) 7px,
+        lighten($color6, 8%) 7px,
+        lighten($color6, 8%) 14px
+      );
+    }
+
+    .actions {
+      background-color: rgba(lighten($color6, 5%), .8);
+
+      .oi {
+        color: darken($color6, 30%);
+      }
+    }
   }
 }

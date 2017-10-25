@@ -48,6 +48,19 @@ module Calendar
       @_company ||= location.company
     end
 
+    def color_positions
+      counter = 0
+
+      @_color_positions ||= company.positions.order(:id).inject({}) do |hash, position|
+        hash[position.id] = "color-#{counter}"
+        counter += 1
+        if counter == 7
+          counter = 0 # reset to cycle position colors
+        end
+        hash
+      end
+    end
+
     def current_location_date
       DateAndTime::LocationTime.new(location: location).current_date_integer
     end
