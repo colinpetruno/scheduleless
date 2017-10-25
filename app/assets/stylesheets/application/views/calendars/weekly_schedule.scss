@@ -89,7 +89,7 @@
     overflow-y: scroll; // always display scroll to prevent popping
 
     > div {
-      background-color: $body-bg;
+      background-color: $white;
       display: flex;
       flex-direction: row;
       flex-shrink: 0;
@@ -102,24 +102,24 @@
         border-right: 1px solid lighten($blue, 20%);
 
         &.past-date {
-          background-color: darken($body-bg, 5%);
+          background-color: #f8f8f8;
         }
 
         &.today {
-          background-color: lighten($body-bg, 2%);
+          background-color: $white;
         }
       }
 
       &:nth-child(even) {
         > div {
-          background-color: lighten($blue, 29.5%);
+          background-color: #f8f8f8;
 
           &.past-date {
-            background-color: lighten($blue, 28%);
+            background-color: #f7f7f7;
           }
 
           &.today {
-            background-color: lighten($blue, 32%);
+            background-color: #fcfcfc;
           }
         }
 

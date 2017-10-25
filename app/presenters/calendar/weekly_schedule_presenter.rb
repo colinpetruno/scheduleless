@@ -44,13 +44,19 @@ module Calendar
 
     def unassigned_shifts(day)
       shift_finder.unassigned_on(day).map do |shift|
-        ShiftPresenter.new(shift: shift, manage: manage?, day_start: 0)
+        ShiftPresenter.new(shift: shift,
+                           manage: manage?,
+                           color: color_positions[shift.position_id],
+                           day_start: 0)
       end
     end
 
     def shifts_for(user, day)
       shift_finder.for_user_on_date(user, day).map do |shift|
-        ShiftPresenter.new(shift: shift, manage: manage?, day_start: 0)
+        ShiftPresenter.new(shift: shift,
+                           manage: manage?,
+                           day_start: 0,
+                           color: color_positions[shift.position_id])
       end
     end
 
