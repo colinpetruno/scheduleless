@@ -1,6 +1,6 @@
 @mixin pretty-scroll($bar-background: $body-bg, $handle: lighten($purple, 15%)) {
   &::-webkit-scrollbar {
-    width: 4px;
+    width: 6px;
   }
 
   /* Track */

@@ -4,6 +4,10 @@ module DateAndTime
       @date = date
     end
 
+    def dashboard_format
+      "#{parsed_date.strftime("%-d")} #{I18n.t("date.abbr_day_names")[parsed_date.wday]}"
+    end
+
     def day
       parsed_date.strftime("%-d")
     end

@@ -10,7 +10,12 @@
         }
       ) %>
     </div>
-    <div></div>
+    <div>
+      <%= render partial: "upcoming_shifts",
+        locals: {
+          presenter: Dashboard::UpcomingShiftsPresenter.new(current_user)
+        } %>
+    </div>
   </section>
 
   <section>
