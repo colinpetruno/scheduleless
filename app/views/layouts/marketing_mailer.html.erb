@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+      /* Email styles need to be inline */
+    </style>
+  </head>
+
+  <body bgcolor="#f1f1fa" style="padding: 0; margin: 0; border: 0">
+    <style type="text/css">
+      @media only screen and (max-device-width: 480px) {
+        .mobile-full-width {
+          width: 100% !important;
+        }
+      }
+    </style>
+
+    <table width="100%" height: "100%" style="min-height: 100%; position: absolute; top: 0; bottom: 0; left: 0; right: 0; font-family: ‘Arial Black’, Gadget, sans-serif; font-size: 14px;">
+      <tr style="min-height: 650px">
+        <td style="min-height: 640px;" height="500">
+          <table width=100%" height: "100%" border="0" style="border: none">
+            <tr>
+              <td align="center">
+                <table width="600" style="margin: auto; font-family: sans-serif;" class="mobile-full-width" border="0">
+                  <tr>
+                    <td bgcolor="#ffffff" style="border-radius: 3px; padding: 0; box-shadow: 0px 0px 40px #b3b3ba; color: #61656b;">
+                        <div style="background-image: url('<%= image_url("welcome_drip_mailer/header.jpg")%>'); min-height: 100px;">
+                          <table width="100%" style="width: 100%">
+                            <tr>
+                              <td style="padding-top: 20px; padding-left: 15px;">
+                                <%= image_tag "shared/logos/scheduleless-email-1x.png", width: 250, alt: "Scheduleless" %>
+                              </td>
+                              <td style="text-align: right; vertical-align: top; padding-right: 20px; padding-top: 42px; font-size: 12px">
+                                <%= link_to "Dashboard",
+                                  dashboard_url,
+                                  style: "text-decoration: none; color: #ffffff; font-weight: 200; margin-right: 10px" %>
+
+                                <% location = Location.default_for(@user) %>
+                                <% if location.present? %>
+                                  <%= link_to "Schedule",
+                                    location_calendar_url(location),
+                                    style: "text-decoration: none; color: #ffffff; font-weight: 200; " %>
+                                <% end %>
+                              </td>
+                            </tr>
+                          </table>
+                        </div>
+                      <%= yield %>
+                    </td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+
+          <br>
+
+          <table width="600" style="margin: auto" class="mobile-full-width">
+            <tr>
+              <td style="text-align: center; font-size: 11px;">
+                <%= link_to "Login", new_user_session_url, style: "color: #9b80d1;" %> |
+                <%= link_to "Unsubscribe", unsubscribe_url(uuid: @user.hash_key), style: "color: #9b80d1;" %>
+              </td>
+            </tr>
+            <tr>
+              <td color="#41454b" style="color: #41454b; font-family: sans-serif; font-size: 11px; text-align: center">
+                161 S. Huntington Ave, Boston Ma 02130, Suite 429
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+
+  </body>
+</html>

@@ -1,0 +1,22 @@
+en:
+  welcome_drip_mailer:
+    welcome:
+      greeting: "Welcome %{name},"
+      thanks: >
+        Thanks for your interest in Scheduleless! We are here to help make your 
+        life easier and reduce the amount of time you spend scheduling each 
+        week.
+      help_image_alt: "Need Help?"
+      getting_started: "Do you need help getting started?"
+      questions_html: > 
+        Let us know any questions you may have on getting started 
+        with Scheduleless by respoonding to this email or sending an email to 
+        <a href="mailto:support@scheduleless.com" style="text-decoration: none; 
+        color: #9b80d1;">support@scheduleless.com</a>.
+      working_with_you: > 
+        We look forward to working with you! Let us know anything we can do to help
+        save you hours each week scheduling your employees.
+      not_you: "Was this not you? Let us know."
+      signature_line_1: "Sincerely,"
+      signature_line_2: "Colin"
+      signature_line_3: "Founder"

@@ -27,6 +27,8 @@ class Registration
     StripeCustomer.for(company).create
     StripeSubscription.for(subscription).create
 
+    NewCustomerJob.perform_later(user)
+
     if user.persisted?
       begin
         if Rails.application.secrets.deliver_support_mailers
