@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= t(".page_title") %></title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag "blank", media: "all", "data-turbolinks-track": "reload" %>
+    <%= favicon_link_tag "favicon.ico" %>
+
+    <%= render partial: "layouts/shared/google_analytics",
+      locals: { internal: false } %>
+    <%= render partial: "layouts/shared/mixpanel" %>
+
+  </head>
+  <body>
+    <%= yield %>
+
+    <div id="tracking-data"
+         style="display:none"
+         data-page-name="<%= "#{controller_path}##{action_name}" %>">
+    </div>
+
+    <script type="text/javascript">
+      document.addEventListener('turbolinks:load', function(event) {
+        var page = $("#tracking-data").data("pageName");
+
+        mixpanel.track("Viewed Page", {
+          "Page": page
+        });
+      });
+    </script>
+  </body>
+</html>

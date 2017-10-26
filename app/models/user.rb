@@ -16,6 +16,8 @@ class User < ApplicationRecord
   has_many :shifts
   has_many :trades
 
+  has_one :notification_preference
+
   default_scope { where(deleted_at: nil) }
 
   # Include default devise modules. Others available are:
@@ -55,6 +57,10 @@ class User < ApplicationRecord
 
   def hash_key
     super || generate_hash_key
+  end
+
+  def notification_preference
+    super || create_notification_preference
   end
 
   def wage

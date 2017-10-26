@@ -1,0 +1,53 @@
+.unsubscribes-show {
+  color: lighten($dark-text, 15%);
+  padding-top: 30px;
+  text-align: center;
+
+
+  > div {
+    margin: 40px 0;
+
+    img {
+      max-height: 300px;
+    }
+  }
+
+  > article {
+    input[type=submit] {
+      background-color: lighten($purple, 5%);
+      border: 1px solid $purple;
+      color: #ffffff;
+      font-size: 1.2rem;
+      font-weight: 200;
+      padding: 8px 15px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background-color: lighten($purple, 0%);
+      }
+    }
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+
+  section {
+    display: flex;
+    flex-direction: row;
+    max-width: 700px;
+    margin: auto;
+    margin-bottom: 50px;
+
+    > div {
+      display: flex;
+      font-size: 1.2rem;
+      line-height: 1.5rem;
+      text-align: left;
+
+      margin: 0 25px;
+    }
+  }
+}

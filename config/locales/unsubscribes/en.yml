@@ -1,0 +1,26 @@
+en:
+  unsubscribes:
+    show:
+      confirm_unsubscribe: "Confirm Unsubscribe"
+      heading: "We miss you already."
+      subheading: "(But don't worry, we won't take it personally.)"
+      left_section: >
+        We understand that you want to spend less time in your inbox. Let's
+        connect on Twitter or Facebook instead!
+      right_section: >
+        Are you experiencing FOMO? It's okay. You can always opt back in on 
+        your subscription preference page.
+    update:
+      heading: "We miss you already."
+      subheading: "(But don't worry, we won't take it personally.)"
+      success: "You were successfully removed from our lists."
+      left_section: >
+        We understand that you want to spend less time in your inbox. Let's
+        connect on Twitter or Facebook instead!
+      right_section: >
+        Are you experiencing FOMO? It's okay. You can always opt back in on 
+        your subscription preference page.
+      footer: >
+        You have been unsubscribed from our marketing emails. You may still
+        receive notifications of events happening inside the app and regarding your
+        account.

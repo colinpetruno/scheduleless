@@ -228,6 +228,8 @@ Rails.application.routes.draw do
     resources :offers, only: [:create, :index, :new]
   end
 
+  resource :unsubscribe, only: [:show, :update]
+
   resource :user, only: [:edit, :update]
 
   devise_for :users, controllers: { invitations: "users/invitations" }

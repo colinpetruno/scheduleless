@@ -1,0 +1,27 @@
+<div class="unsubscribes-show">
+  <h1><%= t(".heading") %></h1>
+  <small><%= t(".subheading") %></small>
+
+  <div>
+    <%= image_tag "blank/unsubscribes/email_face.png" %>
+  </div>
+
+  <article>
+    <%= simple_form_for :unsubscribe,
+                        method: :put,
+                        url: unsubscribe_path(uuid: params[:uuid]) do |f| %>
+
+      <%= f.submit t(".confirm_unsubscribe") %>
+    <% end %>
+    <br /><br />
+  </article>
+
+  <section>
+    <div>
+      <%= t(".left_section") %>
+    </div>
+    <div>
+      <%= t(".right_section") %>
+    </div>
+  </section>
+</div>

@@ -2,6 +2,8 @@ en:
   layouts:
     application:
       page_title: "Scheduleless"
+    blank:
+      page_title: "Scheduleless"
     marketing:
       meta_description: >
         Focus on your business while we handle all your employee scheduling 
