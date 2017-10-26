@@ -2,6 +2,11 @@
   <div class="empty-message">
     <h3>We're closed right now!</h3>
     <span class="oi oi-moon"></span>
-    <p>We open on <%= presenter.opening_time_for(location) %></p>
+    <p>We open on <%= presenter.opening_time_for(location) %>
+      <% if presenter.manage? %>
+        <%= link_to "(edit)",
+          locations_location_scheduling_hours_path(location) %>
+      <% end %>
+    </p>
   </div>
 </div>

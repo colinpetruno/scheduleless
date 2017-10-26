@@ -1,21 +1,19 @@
-<div class="frame fill">
-  <header class="light">
-    <div>Available Shifts</div>
-  </header>
+<section class="dashboards-available-shifts">
+  <h2>Available Shifts</h2>
 
-  <section>
-    <% if presenter.trades? %>
-      <% presenter.trades.each do |trade| %>
-        <%= render partial: "dashboards/available_shifts/shift", locals: {
-          trade: trade
-        } %>
-      <% end %>
-    <% else %>
-      <div class="empty-message">
+  <% if presenter.trades? %>
+    <% presenter.trades.each do |trade| %>
+      <%= render partial: "dashboards/available_shifts/shift", locals: {
+        trade: trade
+      } %>
+    <% end %>
+  <% else %>
+    <div class="empty-message">
+      <div>
         <h3>No Shifts Are Available</h3>
         Already made some offers?<br />
         <%= link_to "Review your oustanding trades.", trades_path %>
       </div>
-    <% end %>
-  </section>
-</div>
+    </div>
+  <% end %>
+</section>

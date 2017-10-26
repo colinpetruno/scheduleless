@@ -2,7 +2,15 @@
   width: 100%;
 
   h2 {
-    color: $purple;
+    color: darken($purple, 10%);
     font-weight: 200;
+  }
+
+  > section > article {
+    margin-bottom: 15px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 }

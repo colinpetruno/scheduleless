@@ -14,7 +14,11 @@
   </section>
 
   <section>
-    <div></div>
+    <div>
+      <%= render partial: "available_shifts", locals: {
+        presenter: Dashboard::AvailableShiftsPresenter.new(current_user)
+      } %>
+    </div>
     <div></div>
   </section>
 </div>
