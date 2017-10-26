@@ -1,39 +1,28 @@
 .dashboards-upcoming-shifts-shift {
-  border-bottom: 1px solid $gray-light;
   display: flex;
-  font-size: 12px;
-  padding: 5px;
+  flex-direction: row;
+  font-size: .9rem;
+  padding: 10px 15px;
 
   .date {
-    margin: 2px;
-    border: 2px solid $gray-light;
-    min-width: 70px;
-    max-width: 70px;
-    padding: 5px;
-    text-align: center;
+    color: darken($purple, 0%);
+    font-size: 1rem;
+    letter-spacing: 2px;
+    max-width: 120px;
+    width: 25%;
     vertical-align: middle;
-
-    display: flex;
-    flex-direction: column;
-
-    > div {
-      &:first-child {
-        margin-top: auto;
-      }
-
-      &:last-child {
-        margin-bottom: auto;
-      }
-    }
   }
 
   .time {
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-
+    color: lighten($gray-dark, 20%);
     display: flex;
     flex-direction: column;
+
+    span {
+      color: $purple;
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
 
     > div {
       &:first-child {
@@ -49,9 +38,5 @@
   .location {
     // margin-left: auto;
     min-width: 150px;
-  }
-
-  .buttons {
-    display: none;
   }
 }

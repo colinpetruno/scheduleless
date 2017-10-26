@@ -1,5 +1,6 @@
 module DateAndTime
   class ShiftDateTime
+    include ActionView::Helpers::NumberHelper
     # TODO Test meeee
     def self.for(shift, location=nil)
       new(shift: shift, location: location)
@@ -21,7 +22,11 @@ module DateAndTime
     end
 
     def length_in_hours
-      length_in_minutes.to_f / 60.to_f
+      length = length_in_minutes.to_f / 60.to_f
+
+      number_with_precision(length,
+                            precision: 2,
+                            strip_insignificant_zeros: true)
     end
 
     def length_in_minutes

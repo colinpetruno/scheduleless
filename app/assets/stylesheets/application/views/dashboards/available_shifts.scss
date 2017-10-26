@@ -1,16 +1,11 @@
-.dashboard-approvals {
+.dashboards-available-shifts {
   display: flex;
   flex-direction: column;
   width: 100%;
 
-  h2 {
+  h2, h3 {
     color: darken($purple, 10%);
     font-weight: 200;
-  }
-
-  > section {
-    display: flex;
-    flex-direction: column;
   }
 
   .empty-message {
@@ -24,15 +19,6 @@
     > div {
       text-align: center;
       padding-bottom: 36px;
-    }
-
-    h3 {
-      color: darken($purple, 10%);
-      font-weight: 200;
-    }
-    .oi {
-      color: darken($body-bg, 10%);
-      font-size: 3.5rem;
     }
   }
 }

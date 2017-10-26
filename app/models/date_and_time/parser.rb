@@ -4,6 +4,14 @@ module DateAndTime
       @date = date
     end
 
+    def dashboard_format(format = :short)
+      if format == :short
+        "#{day} #{I18n.t("date.abbr_day_names")[parsed_date.wday]}"
+      else
+        "#{day} #{I18n.t("date.abbr_day_names")[parsed_date.wday]}, #{month}"
+      end
+    end
+
     def day
       parsed_date.strftime("%-d")
     end

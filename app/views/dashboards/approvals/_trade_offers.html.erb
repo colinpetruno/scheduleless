@@ -9,18 +9,14 @@
         <% end %>
       </div>
 
-      <div class="deny">
-        <%= button_to remote_dashboard_offers_offer_denial_path(offer),
-          remote: true do %>
-          <span class="oi oi-x"></span>
-        <% end %>
-      </div>
+      <div class="actions">
+        <div class="approve">
+          <%= button_to "Approve", remote_dashboard_offers_offer_approval_path(offer), remote: true %>
+        </div>
 
-      <div class="approve">
-        <%= button_to remote_dashboard_offers_offer_approval_path(offer),
-          remote: true do %>
-          <span class="oi oi-check"></span>
-        <% end %>
+        <div class="deny">
+          <%= button_to "Decline", remote_dashboard_offers_offer_denial_path(offer), remote: true %>
+        </div>
       </div>
     </article>
   </div>

@@ -1,12 +1,17 @@
 .dashboards-whose-working-location-closed {
   .empty-message {
+    background-color: $white;
+    border-radius: 3px;
+    border: 1px solid lighten($purple, 15%);
+
     h3, span {
       margin-bottom: 10px;
       margin-top: 10px;
     }
 
     span {
-      font-size: 48px;
+      color: darken($body-bg, 15%);
+      font-size: 40px;
     }
   }
 }

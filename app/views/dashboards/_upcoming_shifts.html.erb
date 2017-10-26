@@ -1,24 +1,21 @@
-<div class="frame fill dashboard-upcoming-shifts">
-  <header class="light">
-    <div>Upcoming Shifts</div>
-  </header>
+<div class="dashboards-upcoming-shifts">
+  <% if presenter.displayable? %>
+    <% presenter.month_keys.map do |month_integer| %>
+      <h2>Upcoming shifts in <%= I18n.t("date.month_names")[month_integer] %></h2>
 
-  <section>
-    <% if presenter.displayable? %>
-      <% presenter.shifts.each do |shift| %>
-        <%= render partial: "dashboards/upcoming_shifts/shift", locals: {
-          shift: shift
-        } %>
-      <% end %>
-      <div class="see-all centered">
-        <%= link_to "View All", shifts_path %>
-      </div>
-    <% else %>
-      <div class="empty-message">
-        <h3>You have no upcoming shifts!</h3>
-        <span class="oi oi-circle-check"></span>
-        <p>We'll let you know when something comes up. Enjoy the downtime!</p>
+      <div class="month-section">
+        <% presenter.shifts_for(month_integer).map do |shift| %>
+          <%= render partial: "dashboards/upcoming_shifts/shift", locals: {
+            shift: shift
+          } %>
+        <% end %>
       </div>
     <% end %>
-  </section>
+  <% else %>
+    <div class="empty-message">
+      <h3>You have no upcoming shifts!</h3>
+      <span class="oi oi-circle-check"></span>
+      <p>We'll let you know when something comes up. Enjoy the downtime!</p>
+    </div>
+  <% end %>
 </div>

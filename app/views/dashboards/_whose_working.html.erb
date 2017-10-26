@@ -1,30 +1,14 @@
-<div class="frame fill dashboards-whose-working">
-  <header class="light">
-    <div>
-      Who's Working?
-    </div>
-  </header>
-
+<div class="dashboards-whose-working">
   <section>
     <% presenter.locations.map do |location| %>
-      <div class="location">
-        <header>
-          <div>
-            <%= location.name %>
-          </div>
-          <div>
-            <%= presenter.next_event_line_for(location) %>
+      <article>
+        <h2><%= location.name %></h2>
 
-            <% if presenter.manage? %>
-              <%= link_to "(edit)",
-                locations_location_scheduling_hours_path(location) %>
-            <% end %>
-          </div>
-        </header>
-
-        <%= render partial: presenter.location_partial_for(location),
-          locals: { location: location, presenter: presenter } %>
-      </div>
+        <div>
+          <%= render partial: presenter.location_partial_for(location),
+            locals: { location: location, presenter: presenter } %>
+        </div>
+      </article>
     <% end %>
   </section>
 </div>

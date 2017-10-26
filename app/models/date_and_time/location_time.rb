@@ -13,6 +13,11 @@ module DateAndTime
       current_time.to_s(:day_integer).to_i
     end
 
+    def current_month_integer
+      # 1,2,3..11,12
+      current_time.month
+    end
+
     def current_day_integer
       # 1,2,3,4 for day of week
       current_time.wday

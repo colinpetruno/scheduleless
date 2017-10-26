@@ -1,10 +1,38 @@
 .dashboard-approvals-trade-approval {
+  background-color: $white;
+  border: 1px solid lighten($purple, 20%);
+  border-radius: 3px;
   display: block;
+  margin-bottom: 15px;
   width: 100%;
 
   > header {
-    background-color: $blue;
-    color: $white;
-    padding: 5px 15px;
+    display: flex;
+    flex-direction: row;
+
+    > div {
+      line-height: 40px;
+      vertical-align: middle;
+    }
+
+    > div:first-child {
+      padding: 5px 15px;
+
+      > div {
+        align-items: center;
+        background-color: lighten($purple, 20%);
+        border: 1px solid $purple;
+        border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        min-height: 30px;
+        min-width: 30px;
+      }
+
+      .oi {
+        color: $purple;
+        font-size: 1.1rem;
+      }
+    }
   }
 }

@@ -1,10 +1,8 @@
-<div class="frame dashboard-approvals">
-  <header class="light">
-    <div>Approvals</div>
-  </header>
+<div class="dashboard-approvals">
+  <h2>Approvals</h2>
 
-  <section>
-    <% if presenter.trade_approvals? || presenter.time_off_approvals? %>
+  <% if presenter.trade_approvals? || presenter.time_off_approvals? %>
+    <section>
       <% presenter.trade_approvals.map do |key, offers| %>
         <%= render partial: "dashboards/approvals/trade_approval", locals: {
           trade: presenter.trade_for(key),
@@ -18,12 +16,14 @@
           time_off_request: time_off_request
         } %>
       <% end %>
-    <% else %>
-      <div class="empty-message">
+    </section>
+  <% else %>
+    <div class="empty-message">
+      <div>
         <h3>You're caught up!</h3>
         <span class="oi oi-circle-check"></span>
         <p>We'll let you know when something comes up. Enjoy the downtime!</p>
       </div>
-    <% end %>
-  </section>
+    </div>
+  <% end %>
 </div>

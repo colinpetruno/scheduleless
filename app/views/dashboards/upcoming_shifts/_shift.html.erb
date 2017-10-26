@@ -1,29 +1,21 @@
 <div class="dashboards-upcoming-shifts-shift">
   <div class="date">
-    <div><%= DateAndTime::Parser.new(date: shift.date).month %></div>
-    <div><%= DateAndTime::Parser.new(date: shift.date).day %></div>
+    <div>
+      <%= DateAndTime::Parser.new(date: shift.date).dashboard_format %>
+    </div>
   </div>
 
   <div class="time">
     <div>
-      <%= "#{MinutesToTime.for(shift.minute_start)} - #{MinutesToTime.for(shift.minute_end)}" %>
+      <span>
+        <%= "#{MinutesToTime.for(shift.minute_start)} - #{MinutesToTime.for(shift.minute_end)}" %>
+      </span>
     </div>
     <div><%= shift.position&.name %></div>
-  </div>
+    <div><%= pluralize(shift.length_in_hours, "hour") %></div>
 
-  <div class="buttons">
-    <%= link_to t(".trade"), new_shift_trade_path(shift), class: "button" %>
-    <%= button_to t(".cancel"),
-      shift_cancellation_path(shift),
-      data: { confirm: t(".confirm") },
-      method: :post  %>
-  </div>
-
-  <div class="location">
     <% if shift.location.name.present? %>
-      <strong><%= shift.location.name  %></strong><br>
+      <div><%= shift.location.name  %></div>
     <% end %>
-
-    <%= AddressFormatter.for(shift.location).multiline_html %>
   </div>
 </div>

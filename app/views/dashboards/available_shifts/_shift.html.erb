@@ -1,7 +1,6 @@
 <div class="dashboards-availalbe-shifts-shift">
   <div class="date">
-    <div><%= DateAndTime::Parser.new(date: trade.shift.date).month %></div>
-    <div><%= DateAndTime::Parser.new(date: trade.shift.date).day %></div>
+    <div><%= DateAndTime::Parser.new(date: trade.shift.date).dashboard_format(:long) %></div>
   </div>
 
   <div class="time">
@@ -9,19 +8,14 @@
       <%= "#{MinutesToTime.for(trade.shift.minute_start)} - #{MinutesToTime.for(trade.shift.minute_end)}" %>
     </div>
     <div><%= trade.shift.position&.name %></div>
-  </div>
-
-  <div class="location">
-    <% if trade.shift.location.name.present? %>
-      <strong><%= trade.shift.location.name  %></strong><br>
-    <% end %>
-
-    <%= AddressFormatter.for(trade.shift.location).multiline_html %>
+    <div>
+      <% if trade.shift.location.name.present? %>
+        <%= trade.shift.location.name  %>
+      <% end %>
+    </div>
   </div>
 
   <div class="accept">
-    <%= link_to new_trade_offer_path(trade) do %>
-      <span class="oi oi-arrow-thick-right"></span>
-    <% end %>
+    <%= link_to "Make an Offer", new_trade_offer_path(trade), class: "button" %>
   </div>
 </div>

@@ -1,41 +1,59 @@
 .dashboard-approvals-trade-offers {
+  &:last-child {
+    > article .actions {
+      border-bottom: none;
+      margin-bottom: 0;
+    }
+  }
+
   > article {
-    border-bottom: 1px solid $gray-light;
-    display: flex;
-    flex-direction: row;
     font-size: 12px;
 
-    > div {
+    .message {
+      padding: 5px 15px 5px 15px;
+      text-align: center;
+    }
+
+    .actions {
+      border-bottom: 1px solid lighten($purple, 20%);
+
       display: flex;
+      flex-direction: row;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      width: 100%;
 
-      &.message {
-        padding: 5px 0 5px 15px;
-      }
+      > div {
+        display: flex;
 
-      &.approve button,a, &.deny button,a {
-        background-color: transparent;
-        border: none;
-        color: $white;
-        cursor: pointer;
-        display: block;
-        min-width: 54px;
-        line-height: 54px;
-        padding: 0 15px;
-        text-align: center;
-      }
+        &:first-child {
+          margin-left: auto;
+        }
 
-      &.approve {
-        background-color: darken($green, 6%);
-        box-shadow: inset 0 0 5px darken($green, 20%);
-        color: $white;
+        &:last-child {
+          margin-right: auto;
+        }
       }
+    }
 
-      &.deny {
-        background-color: lighten($red, 10%);
-        box-shadow: inset 0 0 5px $red;
-        color: $white;
-        margin-left: auto;
-      }
+    .approve input[type=submit] {
+      background-color: #f4fcfa;
+      border-color: darken($green-notice, 30%);
+      border-radius: 3px;
+      color: darken($green-notice, 40%);
+      margin-right: 15px;
+      margin-left: auto;
+      padding: 7px 25px;
+    }
+
+    .deny input[type=submit] {
+      background-color: #fff5f6;
+      border-color: $red;
+      border-radius: 3px;
+      color: $red;
+      margin-right: auto;
+      margin-left: 15px;
+      padding: 7px 25px;
     }
   }
 }

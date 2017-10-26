@@ -1,49 +1,72 @@
 .dashboards-approvals-time-off-approval {
+  background-color: $white;
+  border: 1px solid lighten($purple, 20%);
+  border-radius: 3px;
   display: block;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  padding-top: 10px;
   width: 100%;
 
   > header {
-    background-color: $blue;
-    color: $white;
-    padding: 5px 15px;
+    display: flex;
+    flex-direction: row;
+
+    > div:first-child {
+      padding: 5px 15px;
+
+      > div {
+        align-items: center;
+        background-color: lighten($purple, 20%);
+        border: 1px solid $purple;
+        border-radius: 50px;
+        display: flex;
+        justify-content: center;
+        min-height: 30px;
+        min-width: 30px;
+      }
+
+      .oi {
+        color: $purple;
+        font-size: 1.3rem;
+      }
+    }
   }
 
   > article {
-    border-bottom: 1px solid $gray-light;
+    align-items: center;
     display: flex;
     flex-direction: row;
     font-size: 12px;
+    justify-content: center;
+    margin: 10px auto 5px auto;
 
     > div {
       display: flex;
 
-      &.message {
-        padding: 5px 0 5px 15px;
-      }
-
-      &.approve button,a, &.deny button,a {
-        background-color: transparent;
-        border: none;
-        color: $white;
+      &.approve input[type=submit], &.deny input[type=submit] {
         cursor: pointer;
         display: block;
-        min-width: 54px;
-        line-height: 54px;
-        padding: 0 15px;
+        padding: 7px 25px;
         text-align: center;
       }
 
-      &.approve {
-        background-color: darken($green, 6%);
-        box-shadow: inset 0 0 5px darken($green, 20%);
-        color: $white;
+      &.approve input[type=submit] {
+        background-color: #f4fcfa;
+        border-color: darken($green-notice, 30%);
+        border-radius: 3px;
+        color: darken($green-notice, 40%);
+        margin-right: 15px;
+        margin-left: auto;
       }
 
-      &.deny {
-        background-color: lighten($red, 10%);
-        box-shadow: inset 0 0 5px $red;
-        color: $white;
-        margin-left: auto;
+      &.deny input[type=submit] {
+        background-color: #fff5f6;
+        border-color: $red;
+        border-radius: 3px;
+        color: $red;
+        margin-right: auto;
+        margin-left: 15px;
       }
     }
   }
