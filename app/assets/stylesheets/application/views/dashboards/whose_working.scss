@@ -1,22 +1,8 @@
 .dashboards-whose-working {
-  .location {
-    header {
-      background-color: $blue; // darken(#ebf0f8, 40%);
-      color: $white;
-      display: flex;
-      padding: 5px 15px;
+  width: 100%;
 
-      > div {
-        &:last-child {
-          margin-left: auto;
-        }
-
-        a {
-          color: $white;
-          font-size: 80%;
-          display: inline;
-        }
-      }
-    }
+  h2 {
+    color: $purple;
+    font-weight: 200;
   }
 }

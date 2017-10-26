@@ -1,41 +1,22 @@
+<% content_for(:view_content_classes, "full-width") %>
 <div class="dashboard-show">
-  <div class="two-columns">
-    <section>
-      <article>
-        <%= render(
-          partial: "whose_working",
-          locals: {
-            presenter: Dashboard::WhoseWorkingPresenter.
-              new(current_user.locations, UserPermissions.for(current_user).manager?)
-          }
-        ) %>
-      </article>
-      <article>
-        <%= render partial: "upcoming_shifts",
-          locals: {
-            presenter: Dashboard::UpcomingShiftsPresenter.new(current_user)
-          } %>
-      </article>
-    </section>
-  </div>
+  <section>
+    <div>
+      <%= render(
+        partial: "whose_working",
+        locals: {
+          presenter: Dashboard::WhoseWorkingPresenter.
+            new(current_user.locations, UserPermissions.for(current_user).manager?)
+        }
+      ) %>
+    </div>
+    <div></div>
+  </section>
 
-  <div class="two-columns">
-    <section>
-      <article>
-        <%= render partial: "available_shifts", locals: {
-          presenter: Dashboard::AvailableShiftsPresenter.new(current_user)
-        } %>
-      </article>
-
-      <article id="dashboard-approvals">
-        <% if UserPermissions.for(current_user).manager? %>
-          <%= render partial: "approvals", locals: {
-            presenter: Dashboard::ApprovalsPresenter.new(current_user)
-          } %>
-        <% end %>
-      </article>
-    </section>
-  </div>
+  <section>
+    <div></div>
+    <div></div>
+  </section>
 </div>
 
 <% content_for(:view_sidebar) do %>

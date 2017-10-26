@@ -1,16 +1,31 @@
 <section class="dashboards-whose-working-location-open">
-  <% presenter.shifts_for(location).each do |shift| %>
-    <div class="shift">
-      <div class="name">
-        <%= shift.user.full_name %>
-      </div>
+  <% if presenter.shifts_for(location).present? %>
+    <% presenter.shifts_for(location).each do |shift| %>
+      <div class="shift">
+        <div class="initials">
+          <div>
+            <%= [shift.user.given_name.first, shift.user.family_name.first].join %>
+          </div>
+        </div>
+        <div class="name">
+          <%= shift.user.full_name %>
+        </div>
 
-      <div class="position">
-        <%= shift.position&.name %>
-      </div>
+        <div class="position">
+          <%= shift.position&.name %>
+        </div>
 
-      <div class="hours">
-        <%= shift.time_range %>
+        <div class="hours">
+          <%= shift.time_range %>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="noone-working">
+      <span class="oi oi-warning"></span>
+
+      <div>
+        Uh oh. It seems you're open and no one is scheduled.
       </div>
     </div>
   <% end %>
