@@ -1,3 +1,6 @@
+machine:
+  services:
+    - redis
 dependencies:
   cache_directories:
     - elasticsearch-2.4.3
