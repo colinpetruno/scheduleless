@@ -63,6 +63,23 @@
         </article>
       </section>
     </div>
+
+    <div class="frame">
+      <header class="light">
+        <div>
+          Location Information
+        </div>
+      </header>
+
+      <section>
+        <article>
+          <%= f.association :locations,
+            as: :select,
+            collection: policy_scope(Location) %>
+        </article>
+      </section>
+    </div>
+
   <% end %>
 
   <%= f.submit %>

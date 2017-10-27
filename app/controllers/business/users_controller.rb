@@ -1,7 +1,10 @@
 module Business
   class UsersController < AuthenticatedController
     def create
-      authorize User
+      # okay this is getting out of hand, but employee inviter wraps up some
+      # logic that should probably be removed
+      fake_user = User.new(user_params)
+      authorize fake_user
 
       employee_inviter = EmployeeInviter.for(user_params)
 
@@ -70,6 +73,7 @@ module Business
                :primary_position_id,
                :wage,
                :salary,
+               location_ids: [],
                position_ids: []).
         merge({ company_id: current_company.id })
     end

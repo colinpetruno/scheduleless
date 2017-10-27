@@ -3,3 +3,9 @@
 <% else %>
   <%= render partial: "no_locations" %>
 <% end %>
+
+<% if UserPermissions.for(current_user).manager? %>
+  <% content_for(:view_sidebar) do %>
+    <%= render partial: "dashboards/quick_links" %>
+  <% end %>
+<% end %>

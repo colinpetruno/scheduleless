@@ -3,7 +3,7 @@
     <div>
       <%= t(".title") %>
 
-      <% if policy(User).create? %>
+      <% if policy(User).new? %>
         <aside>
           <%= link_to t(".add_employee"), new_business_user_path %>
         </aside>

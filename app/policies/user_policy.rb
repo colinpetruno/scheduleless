@@ -10,7 +10,12 @@ class UserPolicy < ApplicationPolicy
   end
 
   def create?
-    UserPermissions.for(user).manage?(current_location)
+    # might not be a location for a user
+    permission = UserPermissions.for(user)
+
+    record.locations.map do |location|
+      permission.manage?(location)
+    end.exclude?(false)
   end
 
   def destroy?
@@ -19,6 +24,10 @@ class UserPolicy < ApplicationPolicy
 
   def edit?
     UserPermissions.for(user).manage?(record) || own_profile?
+  end
+
+  def new?
+    UserPermissions.for(user).manager?
   end
 
   def show?

@@ -146,7 +146,13 @@ class User < ApplicationRecord
 
   def generate_hash_key
     key = SecureRandom.hex(22)
-    update_column(:hash_key, key)
+
+    if self.persisted?
+      update_column(:hash_key, key)
+    else
+      self.hash_key = key
+    end
+
     key
   end
 end

@@ -217,3 +217,8 @@ input[type=submit], button[type=submit] {
     }
   }
 }
+
+// reset a multi select from showing the arrors
+.user_locations .input-wrap::after {
+  content: "" !important;
+}

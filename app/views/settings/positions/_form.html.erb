@@ -1,10 +1,12 @@
 <%= simple_form_for [:settings, position] do |f| %>
   <%= f.input :name %>
 
-  <%= f.association :managees,
-    as: :check_boxes,
-    collection: current_company.positions
-  %>
+  <% if 1 == 2 %>
+    <%= f.association :managees,
+      as: :check_boxes,
+      collection: current_company.positions.reject(:blank?)
+    %>
+  <% end %>
 
   <%= f.submit %> <%= link_to "Back", settings_positions_path %>
 <% end %>

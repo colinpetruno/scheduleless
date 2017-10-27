@@ -41,7 +41,7 @@ en:
     "no": 'No'
     labels:
       confirm_delete:
-        delete_positions: "Remove Position From Users?"
+        delete_positions: "Remove Position From Employees?"
         delete_rules: "Delete the Scheduling Rules?"
         new_position_id: "Choose a New Position"
         new_rule_id: "Choose a New Position"
@@ -181,8 +181,11 @@ en:
           will be sent off to our schedulers and you will have your first
           schedules delivered to you shorty!
       user:
+        locations: >
+          Select the locations an employee belongs to. Note: This employee will
+          not appear to be scheduled until they are added to a location.
         positions: >
-          Select positions the user can fill in as if needed.
+          Select positions the employee can fill in as if needed.
 
     # Examples
 
