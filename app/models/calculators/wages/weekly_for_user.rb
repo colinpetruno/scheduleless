@@ -12,7 +12,7 @@ module Calculators
       end
 
       def calculate
-        if weekly_sum[:regular_hours].to_f > OVERTIME_THRESHOLD
+        if weekly_sum[:regular_hours] > OVERTIME_THRESHOLD
           adjust_weekly_sum
         else
           weekly_sum
@@ -29,18 +29,18 @@ module Calculators
         #
         average_pay = weekly_sum[:regular_hour_pay].to_f / weekly_sum[:regular_hours].to_f
 
-        overtime_hours = weekly_sum[:regular_hours].to_f - OVERTIME_THRESHOLD
-        new_overtime_hours = weekly_sum[:overtime_hours].to_f + overtime_hours
+        overtime_hours = weekly_sum[:regular_hours] - OVERTIME_THRESHOLD
+        new_overtime_hours = weekly_sum[:overtime_hours] + overtime_hours
 
         overtime_subtract = average_pay * overtime_hours
 
         extra_overtime_amount = average_pay * overtime_hours * 1.5
 
-        regular_hours = weekly_sum[:regular_hours].to_f - overtime_hours
-        regular_hour_pay = weekly_sum[:regular_hour_pay].to_f - overtime_subtract
+        regular_hours = weekly_sum[:regular_hours] - overtime_hours
+        regular_hour_pay = weekly_sum[:regular_hour_pay] - overtime_subtract
 
-        overtime_pay = weekly_sum[:overtime_pay].to_f + extra_overtime_amount
-        double_overtime_pay = weekly_sum[:double_overtime_pay].to_f
+        overtime_pay = weekly_sum[:overtime_pay] + extra_overtime_amount
+        double_overtime_pay = weekly_sum[:double_overtime_pay]
         total = regular_hour_pay + overtime_pay + double_overtime_pay
 
         {
