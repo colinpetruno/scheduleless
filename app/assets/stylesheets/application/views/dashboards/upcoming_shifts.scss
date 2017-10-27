@@ -1,5 +1,8 @@
 .dashboards-upcoming-shifts {
+  display: flex;
+  flex-direction: column;
   width: 100%;
+
   h2 {
     color: darken($purple, 10%);
     display: block;
@@ -12,5 +15,25 @@
     border-radius: 3px;
     margin-bottom: 15px;
     width: 100%;
+  }
+
+  .empty-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    flex-direction: column;
+    margin: auto;
+
+    h3 {
+      color: $purple;
+      font-weight: 200;
+      margin-bottom: 10px;
+    }
+
+    .oi {
+      color: darken($body-bg, 10%);
+      font-size: 2.5rem;
+    }
   }
 }
