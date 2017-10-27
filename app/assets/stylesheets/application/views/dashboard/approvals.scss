@@ -1,6 +1,38 @@
 .dashboard-approvals {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  h2 {
+    color: darken($purple, 10%);
+    font-weight: 200;
+  }
+
   > section {
     display: flex;
     flex-direction: column;
+  }
+
+  .empty-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    flex-direction: column;
+    margin: auto;
+
+    > div {
+      text-align: center;
+      padding-bottom: 36px;
+    }
+
+    h3 {
+      color: darken($purple, 10%);
+      font-weight: 200;
+    }
+    .oi {
+      color: darken($body-bg, 10%);
+      font-size: 3.5rem;
+    }
   }
 }

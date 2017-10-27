@@ -1,11 +1,26 @@
 <div class="dashboards-approvals-time-off-approval">
   <header>
-    <%= time_off_request.user.full_name %> is requesting time off.
+    <div>
+      <div><span class="oi oi-sun"></span></div>
+    </div>
+
+    <div>
+      <%= time_off_request.user.full_name %> is requesting off:<br />
+      <%= time_off_request.label %>
+    </div>
   </header>
 
   <article>
-    <div class="message">
-      <%= time_off_request.label %>
+    <div class="approve">
+      <%= simple_form_for(
+        TimeOffRequests::Approval.new,
+        remote: true,
+        url: remote_dashboard_time_off_request_time_off_approvals_path(time_off_request)
+      ) do |f| %>
+        <%= f.input :accept, as: :hidden, input_html: { value: true } %>
+
+        <%= f.submit "Approve" %>
+      <% end %>
     </div>
 
     <div class="deny">
@@ -16,23 +31,7 @@
       ) do |f| %>
         <%= f.input :accept, as: :hidden, input_html: { value: false } %>
 
-        <%= button_tag type: "submit" do %>
-          <span class='oi oi-x'></span>
-        <% end %>
-      <% end %>
-    </div>
-
-    <div class="approve">
-      <%= simple_form_for(
-        TimeOffRequests::Approval.new,
-        remote: true,
-        url: remote_dashboard_time_off_request_time_off_approvals_path(time_off_request)
-      ) do |f| %>
-        <%= f.input :accept, as: :hidden, input_html: { value: true } %>
-
-        <%= button_tag type: "submit" do %>
-          <span class='oi oi-check'></span>
-        <% end %>
+        <%= f.submit "Decline" %>
       <% end %>
     </div>
   </article>

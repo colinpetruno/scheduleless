@@ -24,7 +24,13 @@
         presenter: Dashboard::AvailableShiftsPresenter.new(current_user)
       } %>
     </div>
-    <div></div>
+    <div>
+      <% if UserPermissions.for(current_user).manager? %>
+        <%= render partial: "approvals", locals: {
+          presenter: Dashboard::ApprovalsPresenter.new(current_user)
+        } %>
+      <% end %>
+    </div>
   </section>
 </div>
 

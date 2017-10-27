@@ -85,6 +85,10 @@ class Shift < ApplicationRecord
     check_ins.find_by(check_out_date_time: nil).present?
   end
 
+  def length_in_hours
+    DateAndTime::ShiftDateTime.for(self).length_in_hours
+  end
+
   def length_in_minutes
     # TODO: remove for ShiftDateTime class
     DateAndTime::ShiftDateTime.for(self).length_in_minutes

@@ -12,20 +12,10 @@
       </span>
     </div>
     <div><%= shift.position&.name %></div>
-    <div>8 hours.</div>
+    <div><%= pluralize(shift.length_in_hours, "hour") %></div>
 
     <% if shift.location.name.present? %>
       <div><%= shift.location.name  %></div>
     <% end %>
   </div>
-
-  <% if 1 == 2 %>
-    <div class="location">
-      <% if shift.location.name.present? %>
-        <strong><%= shift.location.name  %></strong><br>
-      <% end %>
-
-      <%= AddressFormatter.for(shift.location).multiline_html %>
-    </div>
-  <% end %>
 </div>
