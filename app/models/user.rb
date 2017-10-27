@@ -3,6 +3,7 @@ class User < ApplicationRecord
   include NotDeletable
 
   belongs_to :company
+  belongs_to :login_user
   belongs_to :primary_position, class_name: "Position"
 
   has_many :firebase_tokens
@@ -43,6 +44,7 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :company, :leads, :preferred_hours
 
+  after_save :update_login_user
   before_create :build_availabilities
   before_save :check_for_blank_email
   before_save :convert_wage_to_cents
@@ -57,6 +59,19 @@ class User < ApplicationRecord
 
   def hash_key
     super || generate_hash_key
+  end
+
+  def login_user
+    if self.email.present?
+      if super.present?
+        super
+      else
+        login_user = self.create_login_user(login_user_params)
+        self.update(login_user_id: login_user.id)
+
+        login_user
+      end
+    end
   end
 
   def notification_preference
@@ -113,6 +128,23 @@ class User < ApplicationRecord
 
   private
 
+  def login_user_params
+    {
+      email: self.email,
+      encrypted_password: self.encrypted_password,
+      reset_password_token: self.reset_password_token,
+      reset_password_sent_at: self.reset_password_sent_at,
+      remember_created_at: self.remember_created_at,
+      sign_in_count: self.sign_in_count,
+      current_sign_in_at: self.current_sign_in_at,
+      last_sign_in_at: self.last_sign_in_at,
+      current_sign_in_ip: self.current_sign_in_ip,
+      last_sign_in_ip: self.last_sign_in_ip,
+      created_at: self.created_at,
+      updated_at: self.updated_at
+    }
+  end
+
   def convert_wage_to_cents
     if wage.blank?
       self.wage_cents = nil
@@ -154,5 +186,11 @@ class User < ApplicationRecord
     end
 
     key
+  end
+
+  def update_login_user
+    if self.email.present?
+      self.login_user.update(login_user_params)
+    end
   end
 end
