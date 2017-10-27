@@ -23,7 +23,7 @@ module Onboarding
     private
 
     def email_unique
-      if User.where(email: email).exists?
+      if email.present? && User.where(email: email).exists?
         errors.add(:email, "is already taken")
       end
     end
