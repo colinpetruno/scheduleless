@@ -22,11 +22,7 @@ module DateAndTime
     end
 
     def length_in_hours
-      length = length_in_minutes.to_f / 60.to_f
-
-      number_with_precision(length,
-                            precision: 2,
-                            strip_insignificant_zeros: true)
+      length_in_minutes.to_f / 60.to_f
     end
 
     def length_in_minutes
