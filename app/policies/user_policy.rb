@@ -10,12 +10,14 @@ class UserPolicy < ApplicationPolicy
   end
 
   def create?
+    # TODO: fix this
     # might not be a location for a user
-    permission = UserPermissions.for(user)
+#    permission = UserPermissions.for(user)=end
 
-    record.locations.map do |location|
-      permission.manage?(location)
-    end.exclude?(false)
+#    #record.locations.map do |location|
+#      #permission.manage?(location)
+#    =beginend.exclude?(false)=end
+    UserPermissions.for(user).manager?
   end
 
   def destroy?
