@@ -1,6 +1,7 @@
 require "resque_web"
 
 Rails.application.routes.draw do
+  devise_for :login_users, path: "employees"
   root to: "marketing/welcome#index"
 
   resources :approvals, only: [:index]

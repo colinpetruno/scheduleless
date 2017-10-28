@@ -7,9 +7,6 @@
                       as: resource_name,
                       url: password_path(resource_name),
                       html: { method: :put, data: { turbolinks: false }}) do |f| %>
-    <div class="alert">
-      <%= f.error_notification %>
-    </div>
 
     <%= f.input :reset_password_token, as: :hidden %>
     <%= f.full_error :reset_password_token %>
@@ -28,6 +25,6 @@
   <% end %>
 
   <div class="center" style="margin-top: 5px;">
-    <%= link_to t(".sign_in"), new_session_path(:user) %>
+    <%= link_to t(".sign_in"), new_session_path(:login_user) %>
   </div>
 </section>

@@ -3,7 +3,7 @@ class AuthenticatedController < ApplicationController
 
   after_action :verify_authorized, except: :index
   after_action :verify_policy_scoped, only: :index
-  before_action :authenticate_user!
+  before_action :authenticate_login_user!
   before_action :needs_onboarding?
   before_action :set_locale
 
@@ -11,6 +11,10 @@ class AuthenticatedController < ApplicationController
 
   def current_company
     current_user.company
+  end
+
+  def current_user
+    @current_user ||= current_login_user.user
   end
 
   def features
