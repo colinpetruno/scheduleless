@@ -27,7 +27,11 @@ class Registration
     StripeCustomer.for(company).create
     StripeSubscription.for(subscription).create
 
-    NewCustomerJob.perform_later(user)
+    begin
+      NewCustomerJob.perform_later(user.user.id)
+    rescue StandardError => error
+      Bugsnag.notify(error)
+    end
 
     if user.persisted?
       begin
@@ -59,19 +63,23 @@ class Registration
   end
 
   def create_user
-    @_user = User.create(
-      company_admin: true,
-      company_id: company.id,
+    # binding.pry
+    @_user = LoginUser.create(
       email: email,
-      family_name: last_name,
-      given_name: first_name,
       password: password,
-      password_confirmation: password
+      password_confirmation: password,
+      user_attributes: {
+        company_admin: true,
+        company_id: company.id,
+        email: email,
+        family_name: last_name,
+        given_name: first_name,
+      }
     )
   end
 
   def email_unique?
-    if User.where(email: email).present?
+    if LoginUser.where(email: email).present?
       errors.add(:email, I18n.t("onboarding.registrations.model.email_taken"))
     end
   end

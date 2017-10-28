@@ -21,11 +21,6 @@ class User < ApplicationRecord
 
   default_scope { where(deleted_at: nil) }
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :invitable, :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
-
   validates :email,
             allow_blank: true,
             email: true,
@@ -35,16 +30,11 @@ class User < ApplicationRecord
   validates :family_name, presence: true, length: { minimum: 1, maximum: 200 }
   validates :given_name, presence: true, length: { minimum: 1, maximum: 200 }
   validates :mobile_phone, allow_blank: true, length: { minimum: 7, maximum: 30 }
-  validates_format_of :password,
-    with: /\A(?=.*[a-zA-Z])(?=.*[0-9]).{8,}\z/,
-    if: :password_required?,
-    message: "must include one number, one letter and be between 8 and 40 characters"
   validates :locale, inclusion: { in: LocaleOptions.valid_locales }
   validates :wage, allow_blank: true, inclusion: { in: (0..9999), message: "must be between 0 and 9999" }
 
   accepts_nested_attributes_for :company, :leads, :preferred_hours
 
-  after_save :update_login_user
   before_create :build_availabilities
   before_save :check_for_blank_email
   before_save :convert_wage_to_cents
@@ -59,19 +49,6 @@ class User < ApplicationRecord
 
   def hash_key
     super || generate_hash_key
-  end
-
-  def login_user
-    if self.email.present?
-      if super.present?
-        super
-      else
-        login_user = self.create_login_user(login_user_params)
-        self.update(login_user_id: login_user.id)
-
-        login_user
-      end
-    end
   end
 
   def notification_preference
@@ -91,8 +68,11 @@ class User < ApplicationRecord
   end
 
   def invitation_state
-    if accepted_or_not_invited?
-      if invitation_accepted_at.present? || sign_in_count > 0
+    # TODO: Fix this in multi company scenario
+    if login_user.blank?
+      return :awaiting_invite
+    elsif login_user.accepted_or_not_invited?
+      if login_user.invitation_accepted_at.present? || sign_in_count > 0
         :active
       else
         :awaiting_invite
@@ -100,7 +80,6 @@ class User < ApplicationRecord
     else
       :invited
     end
-
   end
 
   def manage?(location)
@@ -127,23 +106,6 @@ class User < ApplicationRecord
   end
 
   private
-
-  def login_user_params
-    {
-      email: self.email,
-      encrypted_password: self.encrypted_password,
-      reset_password_token: self.reset_password_token,
-      reset_password_sent_at: self.reset_password_sent_at,
-      remember_created_at: self.remember_created_at,
-      sign_in_count: self.sign_in_count,
-      current_sign_in_at: self.current_sign_in_at,
-      last_sign_in_at: self.last_sign_in_at,
-      current_sign_in_ip: self.current_sign_in_ip,
-      last_sign_in_ip: self.last_sign_in_ip,
-      created_at: self.created_at,
-      updated_at: self.updated_at
-    }
-  end
 
   def convert_wage_to_cents
     if wage.blank?
@@ -186,11 +148,5 @@ class User < ApplicationRecord
     end
 
     key
-  end
-
-  def update_login_user
-    if self.email.present?
-      self.login_user.update(login_user_params)
-    end
   end
 end

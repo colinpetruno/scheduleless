@@ -42,6 +42,7 @@ class UserFinder
   def by_location_without(user)
     location.
       users.
+      includes(:login_user).
       where.
       not(user_locations: { user_id: user.id }).
       order(:given_name, :family_name)
