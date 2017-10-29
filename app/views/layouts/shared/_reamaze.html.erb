@@ -1,7 +1,7 @@
 <%# Order matters here because #javascriptdevs %>
 
 <%= render partial: "reamaze/reamaze",
-  locals: ReamazeOptions.for(current_user) %>
+  locals: ReamazeOptions.for(current_login_user&.user) %>
 
 <script type="text/javascript">
   var _support = _support || { 'ui': {}, 'user': {} };
