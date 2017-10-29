@@ -22,8 +22,8 @@ module Onboarding
     private
 
     def redirect_if_logged_in?
-      if current_user.present?
-        if current_user.leads.present?
+      if current_login_user.present?
+        if current_login_user.user.leads.present?
           redirect_to new_onboarding_position_path and return
         else
           redirect_to new_onboarding_lead_path and return
