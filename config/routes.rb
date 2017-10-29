@@ -232,6 +232,4 @@ Rails.application.routes.draw do
   resource :unsubscribe, only: [:show, :update]
 
   resource :user, only: [:edit, :update]
-
-  devise_for :users, controllers: { invitations: "users/invitations" }
 end

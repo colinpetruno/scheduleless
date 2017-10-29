@@ -5,7 +5,7 @@ class Join
   validates :email, presence: true, length: { minimum: 3, maximum: 200 }
   validates :first_name, presence: true
   validates :last_name, presence: true
-  validates :mobile_phone, presence: true
+  # validates :mobile_phone, presence: true
   validates :password, presence: true
   validates :password_confirmation, presence: true
   validate :passwords_match?
@@ -19,7 +19,7 @@ class Join
   def process
     if valid?
       ActiveRecord::Base.transaction do
-        self.user = User.create(user_params)
+        self.user = LoginUser.create(user_params)
         UserLocation.create(user_location_params)
       end
 
@@ -63,19 +63,22 @@ class Join
   def user_location_params
     {
       location_id: location.id,
-      user_id: self.user.id
+      user_id: self.user.user.id
     }
   end
 
   def user_params
     {
-      company_id: company.id,
       email: email,
-      family_name: last_name,
-      given_name: first_name,
-      mobile_phone: mobile_phone,
       password: password,
-      password_confirmation: password_confirmation
+      password_confirmation: password_confirmation,
+      user_attributes: {
+        company_id: company.id,
+        email: email,
+        family_name: last_name,
+        given_name: first_name,
+        mobile_phone: mobile_phone
+      }
     }
   end
 end
