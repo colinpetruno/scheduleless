@@ -7,16 +7,17 @@ class InvitationSender
 
   def initialize(user:)
     @user = user
+    @login_user = user.login_user
   end
 
   def send
     Chewy.strategy(:atomic) do
-      user.invite!
+      login_user.invite!
     end
 
     # token can only be called after invite! and needs set before generating
     # the url
-    self.token = user.raw_invitation_token
+    self.token = login_user.raw_invitation_token
     send_mobile_invite if user.mobile_phone.present?
 
     true
@@ -27,7 +28,7 @@ class InvitationSender
 
   private
 
-  attr_accessor :token
+  attr_accessor :login_user, :token
 
   def host
     # TODO: look into a better way to get this, if we update where we store
@@ -55,7 +56,7 @@ class InvitationSender
   end
 
   def signup_url(source: "email")
-    routes.accept_user_invitation_url(
+    routes.accept_login_user_invitation_url(
       invitation_token: token,
       host: host,
       source: source

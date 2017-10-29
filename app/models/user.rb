@@ -51,6 +51,10 @@ class User < ApplicationRecord
     super || generate_hash_key
   end
 
+  def login_user
+    super || backfill_login_user
+  end
+
   def notification_preference
     super || create_notification_preference
   end
@@ -112,6 +116,23 @@ class User < ApplicationRecord
       self.wage_cents = nil
     else
       self.wage_cents = wage.to_f*100
+    end
+  end
+
+  def backfill_login_user
+    # need to ensure this can be made without a password so they can get
+    # invited
+    if self.email.present?
+      begin
+        login = LoginUser.new(email: self.email, password: "")
+        login.save(validate: false)
+        self.update(login_user_id: login.id)
+
+        login
+      rescue StandardError => error
+        Bugsnag.notify(error)
+        nil
+      end
     end
   end
 

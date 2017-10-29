@@ -6,9 +6,13 @@
   <%= simple_form_for resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put } do |f| %>
     <%= f.hidden_field :invitation_token %>
 
-    <%= f.input :given_name %>
-    <%= f.input :family_name %>
-    <%= f.input :mobile_phone %>
+    <%= f.simple_fields_for :user_attributes, resource.user do |uf| %>
+      <%= uf.input :id, as: :hidden %>
+      <%= uf.input :given_name %>
+      <%= uf.input :family_name %>
+      <%= uf.input :mobile_phone %>
+    <% end %>
+
     <%= f.input :password %>
     <%= f.input :password_confirmation %>
 

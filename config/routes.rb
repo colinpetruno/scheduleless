@@ -1,7 +1,6 @@
 require "resque_web"
 
 Rails.application.routes.draw do
-  devise_for :login_users, path: "employees"
   root to: "marketing/welcome#index"
 
   resources :approvals, only: [:index]
@@ -25,6 +24,10 @@ Rails.application.routes.draw do
   end
 
   resource :dashboard, only: [:show]
+
+  devise_for :login_users, path: "employees", controllers: {
+    invitations: "login_users/invitations"
+  }
 
   resources :employee_positions, only: [:destroy]
 
