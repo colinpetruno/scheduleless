@@ -21,7 +21,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def destroy?
-    UserPermissions.for(user).manage?(record)
+    !record.company_admin? && UserPermissions.for(user).manage?(record)
   end
 
   def edit?
