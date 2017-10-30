@@ -36,6 +36,7 @@ class Registration
     if user.persisted?
       begin
         if Rails.application.secrets.deliver_support_mailers
+          # login user here
           SupportMailer.new_signup(user).deliver
         end
       rescue StandardError => error

@@ -16,8 +16,9 @@ class SupportMailer < ApplicationMailer
   end
 
   def new_signup(user)
-    @company = user.company
-    @user = user
+    # this will be a LoginUser
+    @company = user.user.company
+    @user = user.user
 
     mail(to: "support@scheduleless.com", subject: "Customer Sign Up: #{@company.name}")
   end
