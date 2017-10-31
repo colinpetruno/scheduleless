@@ -37,7 +37,13 @@ module Business
 
     def index
       policy_scope(User)
-      @users = UserFinder.new(user: current_user).by_company.order(:family_name, :given_name)
+
+      users = UserFinder.
+        new(user: current_user).
+        by_company.
+        order(:family_name, :given_name)
+
+      @presenter =  UserListPresenter.for(users)
     end
 
     def new

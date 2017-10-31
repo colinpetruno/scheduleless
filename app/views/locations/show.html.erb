@@ -25,9 +25,11 @@
   <section>
     <%= render partial: "users/users",
       locals: {
-        users: UserFinder.
-          new(location: @location).
-          by_location_without(current_user)
+        presenter: UserListPresenter.for(
+          UserFinder.
+            new(location: @location).
+            by_location
+        )
       } %>
   </section>
 </div>

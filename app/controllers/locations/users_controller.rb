@@ -39,9 +39,11 @@ module Locations
       skip_policy_scope # TODO: FIX ME
       @location = current_company.locations.find(params[:location_id])
 
-      @users = UserFinder.
+      users = UserFinder.
         new(location: @location).
         by_location
+
+      @presenter =  UserListPresenter.for(users)
     end
 
     def new

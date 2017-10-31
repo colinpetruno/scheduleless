@@ -8,12 +8,12 @@
     </thead>
 
     <tbody>
-      <% users.map do |user| %>
+      <% presenter.users.map do |user| %>
         <tr>
           <td><%= link_to user.full_name, business_user_path(user) %></td>
           <td><%= user.email %></td>
           <td class="centered">
-            <%= render partial: "users/#{user.invitation_state}_badge" %>
+            <%= render partial: "users/#{presenter.invitation_state_for(user)}_badge" %>
           </td>
           <td>
             <% if policy(user).edit? %>

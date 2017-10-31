@@ -13,12 +13,12 @@
 
 
   <section>
-    <% if @users.empty? %>
+    <% if @presenter.users.empty? %>
       <article class="centered">
         <%= t(".no_users") %>
       </article>
     <% else %>
-      <%= render partial: "users/users", locals: { users: @users } %>
+      <%= render partial: "users/users", locals: { presenter: @presenter } %>
     <% end %>
   </section>
 </div>

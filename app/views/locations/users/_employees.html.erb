@@ -8,7 +8,7 @@
     </div>
   </header>
   <section>
-    <% if @users.empty? %>
+    <% if @presenter.users.empty? %>
       <article class="centered">
         <%= t(".no_users") %>
       </article>
@@ -17,7 +17,7 @@
         <div class="locations-edit-users">
           <%= render partial: "users",
             locals: {
-              users: @users
+              presenter: @presenter
             }
           %>
         </div>

@@ -72,18 +72,7 @@ class User < ApplicationRecord
   end
 
   def invitation_state
-    # TODO: Fix this in multi company scenario
-    if login_user.blank?
-      return :awaiting_invite
-    elsif login_user.accepted_or_not_invited?
-      if login_user.invitation_accepted_at.present? || sign_in_count > 0
-        :active
-      else
-        :awaiting_invite
-      end
-    else
-      :invited
-    end
+    Users::InvitationState.new(user: self).state
   end
 
   def manage?(location)

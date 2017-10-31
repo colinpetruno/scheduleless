@@ -1,4 +1,4 @@
-<% if users.present? %>
+<% if presenter.users.present? %>
   <table>
     <thead>
       <tr>
@@ -10,14 +10,16 @@
       </tr>
     </thead>
 
-    <% users.each do |user| %>
+    <% presenter.users.each do |user| %>
       <tr>
-        <td><%= "#{user.given_name} #{user.family_name}" %></td>
+        <td><%= user.full_name %></td>
         <td><%= user.email %></td>
-        <td><%= EmployeePosition.primary_for(user).name %></td>
+        <td><%= presenter.position_name_for(user) %></td>
+
         <td class="centered">
-          <%= render partial: "users/#{user.invitation_state}_badge" %>
+          <%= render partial: "users/#{presenter.invitation_state_for(user)}_badge" %>
         </td>
+
         <td>
           <% if policy(user).edit? %>
             <%= link_to(edit_locations_location_user_path(@location, user),
@@ -36,6 +38,7 @@
             <% end%>
           <% end %>
         </td>
+
       </tr>
     <% end %>
   </table>
