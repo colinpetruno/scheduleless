@@ -163,7 +163,7 @@ RSpec.describe "onboarding happy path", type: :feature do
       to have_content I18n.t("onboarding.schedule_settings.update.line_1")
 
     click_on I18n.t("onboarding.schedule_settings.update.dashboard")
-    expect(page).to have_content "Your Shifts"
-    expect(page).to have_content "Calendar"
+    expect(page).to have_content I18n.t("layouts.shared.top_nav.your_shifts")
+    expect(page).to have_content I18n.t("layouts.shared.top_nav.schedule")
   end
 end
