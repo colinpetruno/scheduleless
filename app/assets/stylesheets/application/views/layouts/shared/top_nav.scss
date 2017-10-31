@@ -40,6 +40,7 @@
       margin: 4px;
       overflow: hidden;
       width: 45px;
+      -webkit-mask-image: -webkit-radial-gradient(circle, white, black);
 
       span {
         color: $blue;

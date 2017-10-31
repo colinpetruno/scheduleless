@@ -16,10 +16,11 @@ en:
       reamaze:
         label_text: "Let us know if you have any questions!"
       top_nav:
-        calendar: "Calendar"
         create_schedule: "Generate Schedule"
+        dashboard: "Dashboard"
         employees: "Employees"
         locations: "Locations"
         logout: "Logout"
         profile: "My Profile"
+        schedule: "Schedule"
         your_shifts: "Your Shifts"
