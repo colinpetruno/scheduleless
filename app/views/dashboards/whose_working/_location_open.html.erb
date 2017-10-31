@@ -26,6 +26,13 @@
 
       <div>
         Uh oh. It seems you're open and no one is scheduled.
+
+        <% if default_calendar_path_for(current_user) != dashboard_path %>
+          <br />
+          <%= link_to "Schedule someone now.", default_calendar_path_for(current_user) %>
+          <br />
+          <%= link_to "Edit Hours", locations_location_scheduling_hours_path(location) %>
+        <% end %>
       </div>
     </div>
   <% end %>

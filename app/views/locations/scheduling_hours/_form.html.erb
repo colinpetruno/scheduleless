@@ -14,20 +14,6 @@
     collection: TimeRange.quarter_hour_options
   %>
 
-  <br /><br />
-  <div><%= t(".optional") %>:</div>
-  <small><%= t(".optional_hint") %></small>
-  <br /><br />
-
-  <%= f.input :minute_schedulable_start,
-    as: :select,
-    collection: TimeRange.quarter_hour_options
-  %>
-  <%= f.input :minute_schedulable_end,
-    as: :select,
-    collection: TimeRange.quarter_hour_options
-  %>
-
   <br>
   <%= f.submit %>
 <% end %>
