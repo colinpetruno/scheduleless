@@ -7,6 +7,15 @@ module Remote
         authorize approval
 
         @status = approval.execute
+        if @status
+          redirect_to(dashboard_path,
+            notice: I18n.t("time_off_requests.approvals.controller.success")
+          )
+        else
+          redirect_to(dashboard_path,
+            notice: I18n.t("time_off_requests.approvals.controller.failure")
+          )
+        end
       end
 
       private

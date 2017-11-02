@@ -1,11 +1,11 @@
 .view-sidebar {
-  background-color: darken(#ebf0f8, 40%);
   min-width: 252px;
   max-width: 252px;
   position: relative;
 
   > div {
     padding: 20px;
+    background-color: darken(#ebf0f8, 40%);
   }
 
   form {

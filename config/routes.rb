@@ -219,12 +219,13 @@ Rails.application.routes.draw do
   end
 
   namespace :time_off_requests do
-    resources :approvals, only: [:index]
+    resources :approvals, only: [:edit, :index]
   end
 
   scope module: :time_off_requests, as: :time_off_requests do
     resources :time_off_requests, only: [] do
       resources :approvals, only: [:create]
+      resource :cancellations, only: [:update]
     end
   end
 
