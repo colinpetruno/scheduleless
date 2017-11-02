@@ -54,6 +54,9 @@ module Calendar
       @_color_positions ||= company.positions.order(:id).inject({}) do |hash, position|
         hash[position.id] = "color-#{counter}"
         counter += 1
+        if counter == 7
+          counter = 0 # reset to cycle position colors
+        end
         hash
       end
     end
