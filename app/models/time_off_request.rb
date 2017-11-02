@@ -10,7 +10,8 @@ class TimeOffRequest < ApplicationRecord
   enum status: {
     pending: 0,
     denied: 1,
-    approved: 2
+    approved: 2,
+    canceled: 3
   }
 
   attr_writer :start_date_string, :end_date_string
@@ -27,6 +28,10 @@ class TimeOffRequest < ApplicationRecord
 
   def approved?
     status == "approved"
+  end
+
+  def eligible_for_cancel?
+    status == "pending" || status == "approved"
   end
 
   def label

@@ -7,5 +7,13 @@
     <div class="<%= time_off_request.badge_type %> badge">
       <%= time_off_request.status.capitalize %>
     </div>
+    <% if time_off_request.eligible_for_cancel? %>
+      <%= link_to(time_off_requests_time_off_request_cancellations_path(time_off_request),
+                  title: "Cancel",
+                  data: { toggle: "tooltip", confirm: 'Are you sure?' },
+                  method: :put) do %>
+        <span class="oi oi-trash"></span>
+      <% end %>
+    <% end %>
   </div>
 </div>
