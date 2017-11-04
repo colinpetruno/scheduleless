@@ -53,7 +53,7 @@ SimpleForm.setup do |config|
     b.use :error, wrap_with: { tag: "span", class: "help-block" }
   end
 
-  config.wrappers :horizontal_form, tag: "div", class: "input", error_class: "has-error" do |b|
+  config.wrappers :horizontal_form, tag: "div", class: "input horizontal", error_class: "has-error" do |b|
     b.use :html5
     b.use :placeholder
     b.optional :maxlength
@@ -61,12 +61,12 @@ SimpleForm.setup do |config|
     b.optional :pattern
     b.optional :min_max
     b.optional :readonly
-    b.use :label, class: "col-sm-3 control-label"
+    b.use :label, class: "control-label"
 
-    b.wrapper tag: "div", class: "col-sm-9" do |ba|
-      ba.use :input
-      ba.use :error, wrap_with: { tag: "span", class: "help-block" }
+    b.wrapper tag: "div", class: "input-wrap" do |ba|
+      ba.use :input, wrap_with: { tag: "div" }
       ba.use :hint,  wrap_with: { tag: "small" }
+      ba.use :error, wrap_with: { tag: "span", class: "help-block" }
     end
   end
 
@@ -95,13 +95,13 @@ SimpleForm.setup do |config|
     b.use :hint,  wrap_with: { tag: "small" }
   end
 
-  config.wrappers :horizontal_radio_and_checkboxes, tag: "div", class: "input", error_class: "has-error" do |b|
+  config.wrappers :horizontal_radio_and_checkboxes, tag: "div", class: "input horizontal", error_class: "has-error" do |b|
     b.use :html5
     b.optional :readonly
 
-    b.use :label, class: "col-sm-3 control-label"
+    b.use :label
 
-    b.wrapper tag: "div", class: "col-sm-9" do |ba|
+    b.wrapper tag: "div" do |ba|
       ba.use :input
       ba.use :error, wrap_with: { tag: "span", class: "help-block" }
       ba.use :hint,  wrap_with: { tag: "small" }

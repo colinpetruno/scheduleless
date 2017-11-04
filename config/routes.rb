@@ -21,6 +21,15 @@ Rails.application.routes.draw do
     resources :users,
       only: [:create, :destroy, :edit, :index, :new, :show, :update],
       path: "employees"
+
+    scope module: :employees, as: :employees do
+      resources :users, path: "employees", only: [] do
+        resource :account, only: [:show]
+        resource :positions, only: [:show]
+        resource :profile, only: [:show]
+        resource :wages, only: [:show]
+      end
+    end
   end
 
   resource :dashboard, only: [:show]
@@ -129,6 +138,14 @@ Rails.application.routes.draw do
   }
 
   namespace :remote, defaults: { format: :js } do
+    scope module: :employees, as: :employees do
+      resources :users, path: "employees", only: [] do
+        resource :positions, only: [:update]
+        resource :profile, only: [:update]
+        resource :wages, only: [:update]
+      end
+    end
+
     resources :in_progress_shifts, only: [] do
       scope module: :in_progress_shifts, as: :in_progress_shifts do
         resource :delete_confirmation, only: [:create, :new], path: "delete"

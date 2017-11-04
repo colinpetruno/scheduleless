@@ -79,3 +79,11 @@ en:
     subscription:
       small: "Up to 15 Employees ($10)"
       medium: "Up to 250 Employees ($50)"
+    user:
+      employment_types:
+        full_time: "Full Time"
+        part_time: "Part Time"
+        temp: "Temporary"
+      exemption_status:
+        exempt: "Exempt - Not eligible for overtime"
+        non_exempt: "Non-Exempt - Eligible for overtime"

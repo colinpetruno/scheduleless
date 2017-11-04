@@ -4,6 +4,8 @@ class User < ApplicationRecord
 
   belongs_to :company
   belongs_to :login_user
+  belongs_to :manager, class_name: "User"
+  belongs_to :primary_location, class_name: "Location"
   belongs_to :primary_position, class_name: "Position"
 
   has_many :firebase_tokens
@@ -14,6 +16,7 @@ class User < ApplicationRecord
   has_many :locations, through: :user_locations
   has_many :positions, through: :employee_positions
   has_many :preferred_hours, dependent: :destroy
+  has_many :reports, class_name: "User", foreign_key: "manager_id"
   has_many :shifts
   has_many :trades
 
@@ -39,12 +42,64 @@ class User < ApplicationRecord
   before_save :check_for_blank_email
   before_save :convert_wage_to_cents
 
-  attr_accessor :wage
+  attr_accessor :salary_amount, :wage
+
+  enum employee_status: {
+    active: 0,
+    terminated: 1
+  }
+
+  enum employment_type: {
+    full_time: 0,
+    part_time: 1,
+    temp: 2
+  }
+
+  enum exemption_status: {
+    non_exempt: 0,
+    exempt: 1
+  }
+
+  enum legal_gender: {
+    male: 0,
+    female: 1
+  }
 
   update_index "site_search#user", :self
 
+  def self.employee_status_options
+    # TODO: I18n
+    employee_statuses.keys.map do |status|
+      [I18n.t("models.user.employment_types.#{status}"), status]
+    end
+  end
+
+  def self.exemption_status_options
+    exemption_statuses.keys.map do |status|
+      [I18n.t("models.user.exemption_status.#{status}"), status]
+    end
+  end
+
+  def self.legal_gender_options
+    # TODO: I18n
+    legal_genders.keys.map { |g| [g.humanize, g] }
+  end
+
+  def self.employment_type_options
+    employment_types.keys.map { |g| [g.humanize, g] }
+  end
+
   def as_json(_options={})
     super(only: [:email, :id, :given_name, :family_name, :preferred_name])
+  end
+
+  def compensation_type
+    # TODO: I18n
+    if salary
+      "Salary"
+    else
+      "Hourly"
+    end
   end
 
   def hash_key
@@ -57,6 +112,14 @@ class User < ApplicationRecord
 
   def notification_preference
     super || create_notification_preference
+  end
+
+  def salary_amount
+    if @salary_amount.present?
+      @salary_amount.to_f
+    else
+      formatted_salary_amount
+    end
   end
 
   def wage
@@ -92,6 +155,13 @@ class User < ApplicationRecord
   def twilio_formatted_phone
   end
 
+  def formatted_salary_amount(wage=nil)
+    # TODO: these should be handled by the currency input
+    if salary_amount_cents.present?
+      (salary_amount_cents/100.00).to_f
+    end
+  end
+
   def formatted_wage(wage=nil)
     if wage_cents.present?
       (wage_cents/100.00).to_f
@@ -105,6 +175,12 @@ class User < ApplicationRecord
       self.wage_cents = nil
     else
       self.wage_cents = wage.to_f*100
+    end
+
+    if salary_amount.blank?
+      self.salary_amount_cents = nil
+    else
+      self.salary_amount_cents = salary_amount.to_f*100
     end
   end
 

@@ -5,6 +5,11 @@ module Users
       @user = user
     end
 
+    def readable_state
+      # TODO: I18n
+      state.to_s.humanize
+    end
+
     def state
       if user.email.blank?
         return :uninvitable
@@ -13,7 +18,7 @@ module Users
       if user.login_user_id.blank?
         :awaiting_invite
       elsif login_user.accepted_or_not_invited?
-        if user.sign_in_count > 0 || login_user.invitation_accepted_at.present?
+        if login_user.sign_in_count > 0 || login_user.invitation_accepted_at.present?
           :active
         else
           :awaiting_invite

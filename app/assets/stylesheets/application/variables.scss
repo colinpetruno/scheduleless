@@ -36,6 +36,14 @@ $headings-font-weight:           200;
 
 $transition-collapse-horizontal: width .35s ease;
 
+// forms
+$border-radius:                  3px;
+$input-color:                    $gray-dark;
+$form-border-color:              rgba($black,.15);
+$form-font-size:                 .85rem;
+$form-input-height:              35px;
+$form-select-icon-color:         #888888;
+
 // Dropdowns
 $dropdown-bg:                    $white;
 $dropdown-border-color:          rgba(#000000,.15);

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171031035307) do
+ActiveRecord::Schema.define(version: 20171107151357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -488,26 +488,9 @@ ActiveRecord::Schema.define(version: 20171031035307) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
-    t.string   "encrypted_password",     default: "",    null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
     t.integer  "company_id",                             null: false
-    t.string   "invitation_token"
-    t.datetime "invitation_created_at"
-    t.datetime "invitation_sent_at"
-    t.datetime "invitation_accepted_at"
-    t.integer  "invitation_limit"
-    t.string   "invited_by_type"
-    t.integer  "invited_by_id"
-    t.integer  "invitations_count",      default: 0
     t.string   "mobile_phone"
     t.string   "given_name"
     t.string   "family_name"
@@ -521,13 +504,21 @@ ActiveRecord::Schema.define(version: 20171031035307) do
     t.integer  "wage_cents"
     t.boolean  "salary",                 default: false, null: false
     t.integer  "login_user_id"
+    t.integer  "date_of_birth"
+    t.integer  "work_phone"
+    t.boolean  "display_phone",          default: true
+    t.integer  "legal_gender"
+    t.integer  "manager_id"
+    t.integer  "primary_location_id"
+    t.integer  "employee_status",        default: 0,     null: false
+    t.integer  "start_date"
+    t.boolean  "performs_exempt_duties", default: false, null: false
+    t.integer  "exemption_status",       default: 0,     null: false
+    t.integer  "salary_amount_cents"
+    t.integer  "employment_type",        default: 0,     null: false
     t.index ["company_id"], name: "index_users_on_company_id", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
-    t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true, using: :btree
-    t.index ["invitations_count"], name: "index_users_on_invitations_count", using: :btree
-    t.index ["invited_by_id"], name: "index_users_on_invited_by_id", using: :btree
     t.index ["login_user_id"], name: "index_users_on_login_user_id", using: :btree
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
   add_foreign_key "oauth_access_grants", "oauth_applications", column: "application_id"

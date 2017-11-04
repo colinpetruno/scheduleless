@@ -240,6 +240,7 @@ GEM
     rails-assets-d3 (4.9.1)
     rails-assets-jquery (3.2.1)
     rails-assets-pikaday (1.6.1)
+    rails-assets-select2 (4.0.5)
     rails-assets-tether (1.4.0)
     rails-assets-typeahead.js (0.11.1)
       rails-assets-jquery (>= 1.7)
@@ -403,6 +404,7 @@ DEPENDENCIES
   rails-assets-chartjs!
   rails-assets-d3!
   rails-assets-pikaday!
+  rails-assets-select2!
   rails-assets-tether!
   rails-assets-typeahead.js!
   rails_12factor

@@ -1,0 +1,8 @@
+console.log("owooo");
+$("#wage-info-form").html("<%= j(
+ render(partial: "business/employees/wages/form",
+        locals: { user: @user, editing: @user.errors.present? })
+) %>");
+
+window.Scheduleless.reinstantiatePickers();
+window.Scheduleless.forms.wages.initialize();

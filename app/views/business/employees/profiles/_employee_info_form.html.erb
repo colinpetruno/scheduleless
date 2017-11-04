@@ -1,0 +1,73 @@
+<%= simple_form_for [:business, user],
+  url: remote_employees_user_profile_path(user, section: "#employee-info"),
+  remote: true,
+  wrapper: :horizontal_form do |f| %>
+  <div id="employee-info" class="frame editable narrow <%= "editing" if local_assigns.fetch(:editing, false) %>">
+    <header class="light">
+      <div>
+        Employee Info
+
+        <aside>
+          <button class="edit-button">
+            <span class="oi oi-pencil"></span>
+          </button>
+        </aside>
+      </div>
+    </header>
+
+    <section>
+      <article>
+
+        <section class="field-display">
+          <div>
+            <aside>First Name</aside>
+            <article><%= user.given_name %></article>
+          </div>
+
+          <div>
+            <aside>Last Name</aside>
+            <article><%= user.family_name %></article>
+          </div>
+
+          <div>
+            <aside>Preferred Name</aside>
+            <article><%= user.preferred_name %></article>
+          </div>
+
+          <div>
+            <aside>Legal Gender</aside>
+            <article><%= user.legal_gender&.humanize %></article>
+          </div>
+
+          <div>
+            <aside>Date of Birth</aside>
+            <article>
+              <%= DateAndTime::Parser.new(date: user.date_of_birth).full_date %>
+            </article>
+          </div>
+        </section>
+
+        <section class="form">
+          <article>
+            <%= f.input :given_name %>
+            <%= f.input :family_name %>
+            <%= f.input :preferred_name %>
+            <%= f.input :legal_gender, collection: User.legal_gender_options %>
+            <%= f.input :date_of_birth,
+              as: :datepicker,
+              readonly: false,
+              placeholder: "mm/dd/yyyy",
+              data: { minDate: "19000101"} %>
+          </article>
+        </section>
+
+
+      </article>
+    </section>
+
+    <div class="actions">
+      <button class="edit-button white">Cancel</button>
+      <%= f.submit %>
+    </div>
+  </div>
+<% end %>

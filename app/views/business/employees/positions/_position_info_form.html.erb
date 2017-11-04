@@ -1,0 +1,118 @@
+<%= simple_form_for user,
+  url: remote_employees_user_positions_path(user, section: "#position-info"),
+  wrapper: :horizontal_form,
+  remote: true do |f| %>
+  <div class="frame narrow editable <%= "editing" if local_assigns.fetch(:editing, false) %>">
+    <header class="light">
+      <div>
+        Position Info
+        <aside>
+          <button class="edit-button">
+            <span class="oi oi-pencil"></span>
+          </button>
+        </aside>
+      </div>
+    </header>
+
+    <section>
+      <article>
+        <section class="field-display">
+          <div>
+            <aside>Primary Position</aside>
+            <article><%= user.primary_position&.name %></article>
+          </div>
+
+          <div>
+            <aside>Alternate Positions</aside>
+            <article>
+              <ul class="tag-list">
+                <% user.positions.each do |position| %>
+                  <li><%= position.name %></li>
+                <% end %>
+              </ul>
+            </article>
+          </div>
+
+          <div>
+            <aside>Primary Location</aside>
+            <article>
+              <%= user.primary_location&.name %>
+            </article>
+          </div>
+
+          <div>
+            <aside>Alternate Locations</aside>
+            <article>
+              <%# TODO: consolidate to a location finder %>
+              <ul class="tag-list">
+                <% user.locations.each do |location| %>
+                  <li><%= location.name %></li>
+                <% end %>
+              </ul>
+            </article>
+          </div>
+
+
+          <div>
+            <aside>Manager</aside>
+            <article>
+              <%= user.manager&.full_name %>
+            </article>
+          </div>
+
+          <div>
+            <aside>Direct Reports</aside>
+            <article>
+              <%# TODO: consolidate to a user finder %>
+              <ul class="tag-list">
+                <% user.reports.each do |report| %>
+                  <li><%= report.full_name %></li>
+                <% end %>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+
+        <section class="form">
+          <%= f.input :primary_position_id,
+            as: :single_tag_select,
+            label: "Primary Position",
+            collection: current_company.positions %>
+
+          <%= f.association :positions,
+            label: "Alternate Positions",
+            as: :multi_tag_select,
+            collection: current_company.positions %>
+
+          <%= f.input :primary_location_id,
+            label: "Primary Location",
+            as: :single_tag_select,
+            collection: current_company.locations %>
+
+          <%= f.association :locations,
+            label: "Alternate Locations",
+            collection: current_company.locations,
+            as: :multi_tag_select %>
+
+          <%= f.input :manager_id,
+            label: "Manager",
+            label_method: :full_name,
+            as: :single_tag_select,
+            collection: current_company.users.order(:given_name, :family_name) %>
+
+          <%= f.association :reports,
+            label: "Direct Reports",
+            label_method: :full_name,
+            as: :multi_tag_select,
+            collection: current_company.users.order(:given_name, :family_name) %>
+        </section>
+      </article>
+
+      <div class="actions">
+        <button class="edit-button white">Cancel</button>
+        <%= f.submit %>
+      </div>
+    </section>
+  </div>
+<% end %>

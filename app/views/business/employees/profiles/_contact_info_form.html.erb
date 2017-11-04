@@ -1,0 +1,77 @@
+<%= simple_form_for [:business, user],
+  url: remote_employees_user_profile_path(user, section: "#contact-info"),
+  remote: true,
+  wrapper: :horizontal_form do |f| %>
+  <div id="contact-info" class="frame editable narrow <%= "editing" if local_assigns.fetch(:editing, false) %>">
+    <header class="light">
+      <div>
+        Contact Info
+
+        <aside>
+          <button class="edit-button">
+            <span class="oi oi-pencil"></span>
+          </button>
+        </aside>
+      </div>
+    </header>
+
+    <section>
+      <article>
+        <section class="field-display">
+          <div>
+            <aside><%= t("simple_form.labels.user.mobile_phone") %></aside>
+            <article><%= user.mobile_phone %></article>
+          </div>
+
+          <div>
+            <aside><%= t("simple_form.labels.user.work_phone") %></aside>
+            <article><%= user.work_phone %></article>
+          </div>
+          <%# todo add nickname, legal gender, dob %>
+
+          <div>
+            <aside>Work Email</aside>
+            <article><%= user.email %></article>
+          </div>
+
+          <div>
+            <aside>Personal Email</aside>
+            <article><%= user.login_user&.email %></article>
+          </div>
+        </section>
+
+        <section class="form">
+          <article>
+            <%= f.input :mobile_phone %>
+            <%= f.input :work_phone, wrapper_html: { style: "margin-bottom: 0" } %>
+            <div class="input horizontal static">
+              <label>&nbsp;</label>
+              <div>
+                <%= f.input :display_phone, as: :boolean, label_html: { style: "font-weight: 400" } %>
+              </div>
+            </div>
+
+            <%= f.input :email, label: "Work Email" %>
+            <div class="input horizontal static">
+              <label>Personal Email</label>
+              <div>
+                <div>
+                  <%= user.login_user&.email %>
+                </div>
+
+                <div class="hint">
+                  This is the employees login email.
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+      </article>
+    </section>
+
+    <div class="actions">
+      <button class="edit-button white">Cancel</button>
+      <%= f.submit %>
+    </div>
+  </div>
+<% end %>

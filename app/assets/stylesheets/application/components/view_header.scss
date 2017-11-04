@@ -1,7 +1,7 @@
 .view-header {
   background-color: $blue;
   display: flex;
-  flex-directon: row;
+  flex-direction: row;
 
   @include gradient-directional(
     $start-color: lighten(#5776bd, 5%),
@@ -37,6 +37,15 @@
       align-items: right;
       justify-content: flex-end;
       text-align: right;
+    }
+  }
+
+  &.vertical {
+    flex-direction: column;
+
+    > div {
+      color: $white;
+      display: flex;
     }
   }
 }

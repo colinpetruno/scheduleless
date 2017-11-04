@@ -1,0 +1,19 @@
+<div class="list-nav">
+  <ul>
+    <%= content_tag(:li, class: active?(business_employees_user_profile_path(@user))) do %>
+      <%= link_to "Profile", business_employees_user_profile_path(@user) %>
+    <% end %>
+
+    <%= content_tag(:li, class: active?(business_employees_user_positions_path(@user))) do %>
+      <%= link_to "Position & Employment", business_employees_user_positions_path(@user) %>
+    <% end %>
+
+    <%= content_tag(:li, class: active?(business_employees_user_wages_path(@user))) do %>
+      <%= link_to "Wages & Pay", business_employees_user_wages_path(@user) %>
+    <% end %>
+
+    <%= content_tag(:li, class: active?(business_employees_user_account_path(@user))) do %>
+      <%= link_to "Account Info", business_employees_user_account_path(@user) %>
+    <% end %>
+  </ul>
+</div>

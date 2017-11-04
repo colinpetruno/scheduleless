@@ -17,7 +17,7 @@
           </td>
           <td>
             <% if policy(user).edit? %>
-              <%= link_to(edit_business_user_path(user),
+              <%= link_to(business_employees_user_profile_path(user),
                           title: "Edit",
                           data: { toggle: "tooltip" }) do %>
                 <span class="oi oi-pencil">

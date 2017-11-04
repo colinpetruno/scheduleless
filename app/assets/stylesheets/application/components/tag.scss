@@ -1,0 +1,17 @@
+.tag-list {
+  margin-bottom: auto;
+  margin-top: auto;
+
+  li {
+    background-color: lighten($purple, 25%);
+    border: 1px solid $purple;
+    border-radius: $border-radius;
+    display: inline-block;
+    margin-right: 4px;
+    min-height: 20px;
+    font-size: .85rem;
+    line-height: .85rem;
+    padding: 3px 5px;
+    vertical-align: middle;
+  }
+}

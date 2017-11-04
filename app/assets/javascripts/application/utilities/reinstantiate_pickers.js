@@ -6,5 +6,8 @@ $(document).on("turbolinks:load", function() {
     scheduleless.instantiateDateRangePickers();
     scheduleless.instantiateTimePickers();
     scheduleless.instantiateTimePickerRange();
+    scheduleless.instantiateMultiSelects();
+    scheduleless.instantiateSingleSelects();
+    Scheduleless.instantiateCurrencyInputs();
   };
 });

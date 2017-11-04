@@ -105,6 +105,7 @@ en:
         start_minutes: "Start Time"
         end_minutes: "End Time"
       user:
+        display_phone: "Visible to other employees?"
         family_name: "Last Name"
         given_name: "First Name"
         locale: "Language"
@@ -114,6 +115,7 @@ en:
         primary_position: "Position"
         primary_position_id: "Position"
         salary: "Exempt Employee?"
+        work_phone: "Work Phone"
         wage: "Hourly Wage"
       user_location:
         home: "Primary Location?"

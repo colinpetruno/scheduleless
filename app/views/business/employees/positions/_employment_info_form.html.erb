@@ -1,0 +1,54 @@
+<%= simple_form_for user,
+  url: remote_employees_user_positions_path(user, section: "#employment-info"),
+  wrapper: :horizontal_form,
+  remote: true do |f| %>
+
+  <div class="frame narrow editable <%= "editing" if local_assigns.fetch(:editing, false) %>">
+    <header class="light">
+      <div>
+        Employment Info
+
+        <aside>
+          <button class="edit-button">
+            <span class="oi oi-pencil"></span>
+          </button>
+        </aside>
+      </div>
+    </header>
+
+    <section>
+      <article>
+        <section class="field-display">
+          <div>
+            <aside>Status</aside>
+            <%# TODO: I18n %>
+            <article><%= user.employee_status.humanize %></article>
+          </div>
+          <div>
+            <aside>Hire Date</aside>
+            <article>
+              <%= DateAndTime::Parser.new(date: user.start_date).full_date %>
+            </article>
+          </div>
+        </section>
+
+        <section class="form">
+          <%= f.input :employee_status,
+            label: "Status",
+            collection: User.employee_status_options %>
+          <%= f.input :start_date,
+            as: :datepicker,
+            label: "Hire Date",
+            readonly: false,
+            placeholder: "mm/dd/yyyy",
+            data: { minDate: "19000101" } %>
+        </section>
+      </article>
+    </section>
+
+    <div class="actions">
+      <button class="edit-button white">Cancel</button>
+      <%= f.submit %>
+    </div>
+  </div>
+<% end %>

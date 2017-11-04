@@ -7,8 +7,10 @@
   .input-group-addon {
     background: lighten($blue, 0%);
     color: $white;
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
+    border-top-left-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
     line-height: 35px;
     text-align: center;
     width: 25px;
@@ -25,6 +27,12 @@
     input {
       max-width: 100%;
     }
+  }
+
+  > input {
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+    border-left: none;
   }
 
   > span:last-child {

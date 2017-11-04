@@ -1,0 +1,30 @@
+<header class="view-header vertical">
+  <div>
+    <h2><%= @user.full_name %></h2>
+  </div>
+
+  <div>
+    <%= @user.primary_position&.name || "Position n/a" %>
+  </div>
+</header>
+
+<br />
+
+
+<div class="rail narrow">
+  <section>
+    <aside>
+      <%= render partial: "business/employees/shared/sidebar" %>
+    </aside>
+
+    <article>
+      <div id="employee-info-container">
+        <%= render partial: "employee_info_form", locals: { user: @user }  %>
+      </div>
+
+      <div id="contact-info-container">
+        <%= render partial: "contact_info_form", locals: { user: @user } %>
+      </div>
+    </article>
+  </section>
+</div>

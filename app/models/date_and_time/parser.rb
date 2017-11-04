@@ -16,6 +16,13 @@ module DateAndTime
       parsed_date.strftime("%-d")
     end
 
+    def full_date
+      # "Nov  4, 2017"
+      parsed_date.to_s(:month_day_year)
+    rescue
+      ""
+    end
+
     def month
       parsed_date.strftime("%B")
     end

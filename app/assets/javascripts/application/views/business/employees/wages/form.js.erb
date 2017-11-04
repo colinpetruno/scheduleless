@@ -1,0 +1,87 @@
+$(document).on("turbolinks:load", function() {
+  if($("#wages-comp-form").length > 0) {
+    window.Scheduleless.forms.wages.initialize();
+  }
+});
+
+window.Scheduleless.forms.wages = {
+  fslaExemptSalaryThreshold: <%= JavascriptConstants::FSLA_EXEMPT_SALARY_THRESHOLD %>,
+
+  initialize: function() {
+    this.updateWageInput();
+    this.bindEventHandlers();
+  },
+
+  bindEventHandlers: function () {
+    $("#user_salary").
+      off("change").
+      on("change", this.updateWageInput.bind(this));
+
+    $("#user_salary_amount").
+      off("change").
+      on("change", this.updateExemptionStatus.bind(this));
+
+    $("input[name='user[performs_exempt_duties]']").
+      on("change", this.updateExemptionStatus.bind(this));
+
+    $("input[name='user[exemption_status]']").
+      on("change", this.validateStatus.bind(this));
+  },
+
+  validateStatus: function () {
+    var exemptChecked = $("input[name='user[exemption_status]'][value=exempt]").prop("checked");
+    if(exemptChecked && !this.validExemptionStatus()) {
+      $("#invalid-exemption-modal").modal("show");
+    }
+  },
+
+  validExemptionStatus: function () {
+    var minSalary = this.fslaExemptSalaryThreshold;
+    var compType = $("#user_salary").val();
+    var salary = $("#user_salary_amount").val();
+    var performsExempt = $("input[name='user[performs_exempt_duties]'][value=true]").prop("checked");
+
+    // if they are salary and meet the threshold and perform exempt duties
+    return (compType == "true" && salary >= minSalary && performsExempt);
+  },
+
+  updateExemptionStatus: function () {
+    var minSalary = this.fslaExemptSalaryThreshold;
+    var compType = $("#user_salary").val();
+    var salary = $("#user_salary_amount").val();
+
+    if(compType == "false") {
+      console.log("comp typs is false");
+      $("input[name='user[exemption_status]'][value=non_exempt]").prop("checked", true);
+      return;
+    }
+
+    // if they perform exempt duties
+    if($("input[name='user[performs_exempt_duties]']:checked").val() == "true") {
+        // if they are salary and less then min salary set exempt to false
+        if(compType == "true" && salary < minSalary) {
+          $("input[name='user[exemption_status]'][value=non_exempt]").prop("checked", true);
+        } else {
+          // set to exempt if greater than the threshold
+          $("input[name='user[exemption_status]'][value=exempt]").prop("checked", true);
+        }
+      } else {
+        $("input[name='user[exemption_status]'][value=non_exempt]").prop("checked", true);
+      }
+  },
+
+  updateWageInput: function () {
+    var compType = $("#user_salary").val();
+
+    if(compType == "true") {
+      $(".hourly-input").hide();
+      $(".salary-input").show();
+    } else {
+      $(".salary-input").hide();
+      $(".hourly-input").show();
+    }
+
+    this.updateExemptionStatus();
+  }
+}
+

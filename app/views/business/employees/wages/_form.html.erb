@@ -1,0 +1,115 @@
+<%= simple_form_for user,
+  url: remote_employees_user_wages_path(user),
+  wrapper: :horizontal_form,
+  remote: true do |f| %>
+  <div class="frame editable narrow <%= "editing" if local_assigns.fetch(:editing, false) %>" id="wages-comp-form">
+    <header class="light">
+      <div>
+        Wages & Compensation
+
+        <aside>
+          <button class="edit-button">
+            <span class="oi oi-pencil"></span>
+          </button>
+        </aside>
+      </div>
+    </header>
+
+    <section>
+      <article>
+        <section class="field-display">
+          <div>
+            <aside>
+              Employment Type
+            </aside>
+            <article>
+              <%= t("models.user.employment_types.#{@user.employment_type}") %>
+            </article>
+          </div>
+
+          <div>
+            <aside>
+              Compensation Type
+            </aside>
+            <article>
+              <%= @user.compensation_type %>
+            </article>
+          </div>
+
+          <% if @user.salary %>
+            <div>
+              <aside>
+                Salary
+              </aside>
+              <article>
+                <%= Currency::FromNumber.for(@user.salary_amount_cents) %>
+              </article>
+            </div>
+          <% else %>
+            <div>
+              <aside>
+                Hourly Rate
+              </aside>
+              <article>
+                <%= Currency::FromNumber.for(@user.wage_cents) %>
+              </article>
+            </div>
+          <% end %>
+
+          <div>
+            <aside>
+             Performs Exempt Job Duties
+            </aside>
+            <article>
+              <%= @user.performs_exempt_duties ? "Yes" : "No" %>
+            </article>
+          </div>
+
+          <div>
+            <aside>
+              FLSA Classification
+            </aside>
+            <article>
+              <%= t("models.user.exemption_status.#{@user.exemption_status}") %>
+            </article>
+          </div>
+        </section>
+
+        <section class="form">
+          <%= f.input :employment_type,
+            label: "Employment Type",
+            collection: User.employment_type_options %>
+
+          <%= f.input :salary,
+            label: "Compensation Type",
+            include_blank: false,
+            collection: [["Hourly", false], ["Salary", true]] %>
+
+          <div class="salary-input">
+            <%= f.input :salary_amount, as: :currency, label: "Salary" %>
+          </div>
+
+          <div class="hourly-input">
+            <%= f.input :wage, as: :currency %>
+          </div>
+
+          <%= f.input :performs_exempt_duties,
+            as: :radio_buttons,
+            label: "Performs Exempt Job Duties",
+            wrapper: :horizontal_radio_and_checkboxes %>
+
+          <%= f.input :exemption_status,
+            as: :radio_buttons,
+            label: "FLSA Classification",
+            wrapper: :horizontal_radio_and_checkboxes,
+            collection: User.exemption_status_options %>
+        </section>
+      </article>
+
+    <div class="actions">
+      <button class="edit-button white">Cancel</button>
+      <%= f.submit %>
+    </div>
+    </section>
+  </div>
+<% end %>

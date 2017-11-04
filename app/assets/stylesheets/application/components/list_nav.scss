@@ -12,10 +12,12 @@
     }
 
     &.active {
-      background-color: $blue;
+      background-color: lighten($purple, 20%);
+      border-radius: 2px;
+      // color: $white;
 
       a {
-        color: $white;
+        // color: $white;
       }
     }
   }

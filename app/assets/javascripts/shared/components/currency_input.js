@@ -1,10 +1,14 @@
 $(document).on("turbolinks:load", function() {
+  window.Scheduleless.instantiateCurrencyInputs();
+})
+
+window.Scheduleless.instantiateCurrencyInputs = function () {
   function padInputCurrency($input) {
     var value = $input.val();
 
     if(value) {
-      value = parseFloat($('input.currency').val())
-      $('input.currency').val(value.toFixed(2))
+      value = parseFloat($input.val())
+      $input.val(value.toFixed(2))
     }
   }
 
@@ -15,4 +19,4 @@ $(document).on("turbolinks:load", function() {
 
     padInputCurrency($(this));
   });
-})
+};

@@ -1,0 +1,13 @@
+<% if params[:section] == "#contact-info" %>
+  $("#contact-info-container").html("<%= j(
+   render(partial: "business/employees/profiles/contact_info_form",
+          locals: { user: @user, editing: @user.errors.present? })
+  ) %>");
+<% elsif params[:section] == "#employee-info" %>
+  $("#employee-info-container").html("<%= j(
+   render(partial: "business/employees/profiles/employee_info_form",
+          locals: { user: @user, editing: @user.errors.present? })
+  ) %>");
+<% end %>
+
+window.Scheduleless.reinstantiatePickers();

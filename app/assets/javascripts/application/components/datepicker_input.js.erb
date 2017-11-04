@@ -7,7 +7,7 @@ $(document).on("turbolinks:load", function() {
     window.Scheduleless.pickers = [];
 
     $("input.datepicker").each(function() {
-      var minDateString = $(this).data('minDate');
+      var minDateString = $(this).data('mindate');
       var $hiddenField = $(this).
         closest("div.input").
         find(".datepicker-value");

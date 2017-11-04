@@ -18,11 +18,21 @@ class DatepickerInput < SimpleForm::Inputs::StringInput
     @builder.text_field_tag(
       "#{attribute_name}_display",
       start_value_date,
-      options.merge(class: "datepicker", readonly: "readonly")
+      field_options
     ) +
     @builder.hidden_field(
       attribute_name,
       class: "datepicker-value"
     )
+  end
+
+
+  private
+
+  def field_options
+    new_options = { class: "datepicker", readonly: "readonly" }.merge(options)
+    new_options.delete(:readonly) if options[:readonly] == false
+
+    new_options
   end
 end

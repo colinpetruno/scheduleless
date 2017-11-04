@@ -48,14 +48,15 @@ form {
 }
 
 .input {
-  margin-bottom: 25px;
+  margin-bottom: 16px;
   &.hidden {
     margin-bottom: 0;
   }
 
   label {
-    font-weight: 400;
-    color: lighten($font-dark, 15%);
+    color: lighten($font-dark, 10%);
+    font-size: .85rem;
+    font-weight: 500;
     margin-bottom: 4px;
   }
 
@@ -66,11 +67,12 @@ form {
     background-clip: padding-box;
     background-image: none;
     background-color: $input-bg;
-    border: $input-btn-border-width solid $input-border-color;
-    border-radius: 3px;
+    border: $input-btn-border-width solid $form-border-color;
+    border-radius: $border-radius;
     color: $input-color;
     display: block;
-    font-size: 14px;
+    font-size: $form-font-size;
+    font-family: $font-family-sans-serif;
     line-height: $input-line-height;
     max-width: 400px;
     min-width: 100px;
@@ -90,10 +92,11 @@ form {
   }
 
   input {
-    border-color: rgba(0, 0, 0, 0.14902);
+    border-color: $form-border-color;
     border-width: 1px;
-    border-radius: 4px;
+    border-radius: $border-radius;
     display: block;
+    font-size: $form-font-size;
     padding: 8px 12px;
     text-shadow: none;
     width: 100%;
@@ -101,6 +104,8 @@ form {
 
 
   &.select .input-wrap,
+  &.multi_tag_select .input-wrap,
+  &.single_tag_select .input-wrap,
   &.country .input-wrap,
   &.time_zone .input-wrap {
     max-width: 400px;
@@ -112,18 +117,19 @@ form {
   &.time_zone .input-wrap::after{
     font-family: 'Icons';
     content: "\e05a";
-    font-size: 12px;
+    content: "\e02d";
+    color: $form-select-icon-color;
+    font-size: 8.5px;
     position: absolute;
-    right: 5px;
-    top: 10px;
+    right: 6px;
+    top: 12px;
     z-index: auto;
   }
 
   select {
     background-position: right 5px top;
-    border-radius: 4px;
-    padding: 4px 8px;
-    padding-right: 15px;
+    border-radius: $border-radius;
+    padding: 4px 15px 4px 12px;
 
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -158,6 +164,7 @@ form {
 
     label {
       color: $red;
+      font-weight: bold;
     }
 
     .help-block {
@@ -171,6 +178,54 @@ form {
       display: inline-block;
       width: 25px;
     }
+  }
+}
+
+.input.horizontal {
+  display: flex;
+  flex-direction: row;
+  vertical-align: middle;
+
+  > label {
+    color: lighten($font-dark, 10%);
+    display: flex;
+    font-size: .85rem;
+    font-weight: 500;
+    line-height: 35px;
+    margin-bottom: 0;
+    min-width: 175px;
+    padding-right: 0 !important;
+    vertical-align: middle;
+  }
+
+  > div {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+
+    > div {
+      width: 100%;
+    }
+  }
+
+  &.static > div {
+    flex-direction: column;
+    padding-top: 5px;
+    font-size: .85rem;
+    color: lighten($font-dark, 20%);
+
+    .hint {
+      display: block;
+      color: $font-light;
+      font-size: .78rem;
+    }
+  }
+
+  &.single_tag_select .input-wrap,
+  &.multi_tag_select .input-wrap,
+  &.select .input-wrap {
+    max-width: 400px;
+    padding-right: 0;
   }
 }
 

@@ -36,6 +36,7 @@ source "https://rails-assets.org" do
   gem "rails-assets-chartjs"
   gem "rails-assets-d3"
   gem "rails-assets-pikaday"
+  gem "rails-assets-select2"
   gem "rails-assets-tether"
   gem "rails-assets-typeahead.js"
 end
