@@ -38,6 +38,7 @@
   }
 
   .select2-results__option {
+    min-height: 31px;
     &[role=group] {
       padding: 0;
     }

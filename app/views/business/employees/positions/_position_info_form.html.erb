@@ -82,6 +82,7 @@
 
           <%= f.association :positions,
             label: "Alternate Positions",
+            include_blank: false,
             as: :multi_tag_select,
             collection: current_company.positions %>
 
@@ -92,6 +93,7 @@
 
           <%= f.association :locations,
             label: "Alternate Locations",
+            include_blank: false,
             collection: current_company.locations,
             as: :multi_tag_select %>
 
