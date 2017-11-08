@@ -80,6 +80,9 @@ en:
       small: "Up to 15 Employees ($10)"
       medium: "Up to 250 Employees ($50)"
     user:
+      employee_statuses:
+        active: "Active"
+        terminated: "Terminated"
       employment_types:
         full_time: "Full Time"
         part_time: "Part Time"

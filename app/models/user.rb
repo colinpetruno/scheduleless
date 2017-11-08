@@ -70,7 +70,7 @@ class User < ApplicationRecord
   def self.employee_status_options
     # TODO: I18n
     employee_statuses.keys.map do |status|
-      [I18n.t("models.user.employment_types.#{status}"), status]
+      [I18n.t("models.user.employee_statuses.#{status}"), status]
     end
   end
 

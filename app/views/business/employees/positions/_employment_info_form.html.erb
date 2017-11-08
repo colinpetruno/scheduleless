@@ -34,6 +34,7 @@
 
         <section class="form">
           <%= f.input :employee_status,
+            include_blank: false,
             label: "Status",
             collection: User.employee_status_options %>
           <%= f.input :start_date,
