@@ -30,7 +30,9 @@
     <div class="app-container">
       <%= render partial: "layouts/shared/top_nav" %>
       <div class="site-content">
-        <%= render partial: "layouts/shared/side_menu" %>
+        <% unless @hide_side_nav %>
+          <%= render partial: "layouts/shared/side_menu" %>
+        <% end %>
 
         <div class="view-content <%= content_for(:view_content_classes) %>">
           <% if notice.present? %>

@@ -41,6 +41,9 @@ Rails.application.routes.draw do
   resources :employee_positions, only: [:destroy]
 
   get "getting_started", to: "marketing/welcome#getting_started", as: :getting_started
+
+  resource :home, only: [:show]
+
   get "how_it_works", to: "marketing/welcome#how_it_works", as: :how_it_works
 
   resources :locations, only: [:create, :edit, :index, :new, :show, :update] do

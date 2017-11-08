@@ -1,0 +1,81 @@
+.homes-show {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+
+  .icon-tiles {
+    @include make-row();
+
+    border-bottom: 1px solid lighten($purple, 15%);
+    margin-bottom: 50px;
+    margin-top: 80px;
+    padding-bottom: 30px;
+
+    > article {
+      @include make-col-ready();
+      @include make-col(3);
+
+      font-size: 1rem;
+      text-align: center;
+
+      .oi {
+        color: lighten($purple, 15%);
+        font-size: 3rem;
+        margin-bottom: 15px;
+      }
+    }
+
+    a {
+      color: $font-dark;
+      display: block;
+      height: 100%;
+      width: 100%;
+
+      &:hover, &:visited, &:focus, &:active {
+        outline: none;
+        text-decoration: none;
+      }
+    }
+  }
+
+  .homes-show-locations {
+    h3 {
+      color: $purple;
+      font-size: 1.5rem;
+      font-weight: 200;
+    }
+
+    > section {
+      @include make-row();
+
+      > article {
+        @include make-col-ready();
+        @include make-col(4);
+
+      }
+    }
+
+    .location {
+      background-color: $white;
+      padding: 20px;
+
+      a {
+        color: $font-dark;
+        display: block;
+        height: 100%;
+        width: 100%;
+
+        &:hover, &:visited, &:focus, &:active {
+          outline: none;
+          text-decoration: none;
+        }
+      }
+
+      h3 {
+        color: $purple;
+        font-size: 1.2rem;
+        font-weight: 200;
+      }
+    }
+  }
+}

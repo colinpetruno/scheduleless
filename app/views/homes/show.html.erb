@@ -1,0 +1,70 @@
+<div class="homes-show">
+  <div class="icon-tiles">
+    <article>
+      <%= link_to locations_path do %>
+        <div>
+          <span class="oi oi-map-marker"></span>
+        </div>
+        <div>
+          Manage Locations
+        </div>
+      <% end %>
+    </article>
+
+    <article>
+      <%= link_to dashboard_path do %>
+        <div>
+          <span class="oi oi-calendar"></span>
+        </div>
+        <div>
+          Scheduling
+        </div>
+      <% end %>
+    </article>
+
+
+    <article>
+      <div>
+        <span class="oi oi-warning"></span>
+      </div>
+      <div>
+        Anti-Harassment
+      </div>
+    </article>
+
+    <article>
+      <%= link_to settings_path do %>
+        <div>
+          <span class="oi oi-cog"></span>
+        </div>
+        <div>
+          Company Settings
+        </div>
+      <% end %>
+    </article>
+  </div>
+
+
+  <div class="homes-show-locations">
+    <h3>Your Locations</h3>
+
+    <section>
+      <% Finders::Locations.for(current_user).all.each do |location| %>
+        <article>
+          <div class="location">
+            <%= link_to location_path(location) do %>
+              <h3><%= location.name %></h3>
+              <%= AddressFormatter.for(location).multiline_html %>
+            <% end %>
+          </div>
+        </article>
+      <% end %>
+    </section>
+  </div>
+</div>
+
+<% content_for(:view_sidebar) do %>
+  # report harrassment if enabled <br /><br />
+  #
+  # give recognition link
+<% end %>
