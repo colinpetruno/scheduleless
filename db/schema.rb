@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171107151357) do
+ActiveRecord::Schema.define(version: 20171109050947) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -141,6 +141,16 @@ ActiveRecord::Schema.define(version: 20171107151357) do
     t.index ["repeating_shift_id"], name: "index_in_progress_shifts_on_repeating_shift_id", using: :btree
     t.index ["scheduling_period_id"], name: "index_in_progress_shifts_on_scheduling_period_id", using: :btree
     t.index ["user_id"], name: "index_in_progress_shifts_on_user_id", using: :btree
+  end
+
+  create_table "incidents", force: :cascade do |t|
+    t.integer  "report_id"
+    t.integer  "rating",     default: 0, null: false
+    t.integer  "likelihood"
+    t.integer  "score",      default: 0, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["report_id"], name: "index_incidents_on_report_id", using: :btree
   end
 
   create_table "leads", force: :cascade do |t|
@@ -364,6 +374,23 @@ ActiveRecord::Schema.define(version: 20171107151357) do
     t.index ["location_id"], name: "index_repeating_shifts_on_location_id", using: :btree
     t.index ["position_id"], name: "index_repeating_shifts_on_position_id", using: :btree
     t.index ["user_id"], name: "index_repeating_shifts_on_user_id", using: :btree
+  end
+
+  create_table "report_details", force: :cascade do |t|
+    t.integer  "report_id"
+    t.text     "summary"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["report_id"], name: "index_report_details_on_report_id", using: :btree
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.integer  "user_id",                    null: false
+    t.datetime "started_at"
+    t.boolean  "completed",  default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["user_id"], name: "index_reports_on_user_id", using: :btree
   end
 
   create_table "schedule_rules", force: :cascade do |t|
