@@ -18,16 +18,6 @@ module Calendar
       classes.join(" ")
     end
 
-    def time_off_alert_message(date, employee)
-      date_integer = DateAndTime::Parser.number(date)
-      time_off_requests = TimeOffRequest.where(user_id: employee.id).
-        where("start_date < ? AND end_date > ?", date_integer, date_integer)
-
-      if time_off_requests.any?
-        "#{employee.first_name} #{employee.last_name} user is scheduled for time off during this date. Are you sure you want to schedule for them?"
-      end
-    end
-
     def date_label(date)
       day = I18n.t("date.abbr_day_names")[date.wday]
       date = date.to_s(:short_month_day)
