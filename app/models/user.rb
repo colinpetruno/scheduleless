@@ -102,6 +102,12 @@ class User < ApplicationRecord
     end
   end
 
+  def coworkability_access
+    # need to see if they are a company admin or someone that gets notified
+    # in case of incidents or can speicially see it via a field?
+    true
+  end
+
   def hash_key
     super || generate_hash_key
   end

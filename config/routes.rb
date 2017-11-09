@@ -32,6 +32,16 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :coworkability do
+    root to: "welcome#index"
+
+    namespace :reports do
+      root to: "welcome#index"
+    end
+
+    resources :reports, only: [:create, :new, :show]
+  end
+
   resource :dashboard, only: [:show]
 
   devise_for :login_users, path: "employees", controllers: {

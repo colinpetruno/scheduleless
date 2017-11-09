@@ -24,12 +24,14 @@
 
 
     <article>
-      <div>
-        <span class="oi oi-warning"></span>
-      </div>
-      <div>
-        Anti-Harassment
-      </div>
+      <%= link_to coworkability_root_path do %>
+        <div>
+          <span class="oi oi-warning"></span>
+        </div>
+        <div>
+          Anti-Harassment
+        </div>
+      <% end %>
     </article>
 
     <article>
@@ -64,6 +66,8 @@
 </div>
 
 <% content_for(:view_sidebar) do %>
+  # TODO: check feature enabled
+  <%= link_to "Report an Incident", coworkability_reports_root_path, style: "color: #ffffff" %>
   # report harrassment if enabled <br /><br />
   #
   # give recognition link

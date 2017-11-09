@@ -1,0 +1,10 @@
+the report form is going to go here, its probably going to be pretty simple at first
+report should use a unique uuid id
+
+<%= simple_form_for [:coworkability, @report] do |f| %>
+  <%= f.simple_fields_for :report_detail, @report.report_detail do |fd| %>
+    <%= fd.input :summary %>
+  <% end %>
+
+  <%= f.submit %>
+<% end %>
