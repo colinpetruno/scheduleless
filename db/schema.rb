@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171109050947) do
+ActiveRecord::Schema.define(version: 20171111002559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -150,7 +150,9 @@ ActiveRecord::Schema.define(version: 20171109050947) do
     t.integer  "score",      default: 0, null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.integer  "user_id",                null: false
     t.index ["report_id"], name: "index_incidents_on_report_id", using: :btree
+    t.index ["user_id"], name: "index_incidents_on_user_id", using: :btree
   end
 
   create_table "leads", force: :cascade do |t|
@@ -385,11 +387,16 @@ ActiveRecord::Schema.define(version: 20171109050947) do
   end
 
   create_table "reports", force: :cascade do |t|
-    t.integer  "user_id",                    null: false
+    t.integer  "user_id",                            null: false
     t.datetime "started_at"
-    t.boolean  "completed",  default: false, null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.boolean  "completed",          default: false, null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.boolean  "finished_review",    default: false, null: false
+    t.datetime "finished_review_at"
+    t.boolean  "started_review",     default: false, null: false
+    t.datetime "started_review_at"
+    t.integer  "reviewed_by"
     t.index ["user_id"], name: "index_reports_on_user_id", using: :btree
   end
 

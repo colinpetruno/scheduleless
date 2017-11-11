@@ -86,6 +86,10 @@ Rails.application.routes.draw do
     resources :features, only: [:create, :edit, :index, :new, :update]
     resources :impersonations, only: [:new, :create]
     resources :plans, only: [:create, :edit, :index, :new, :update]
+
+    resources :reports, only: [:index, :show] do
+      resources :incidents, only: [:new, :create]
+    end
   end
 
   namespace :mobile_api do

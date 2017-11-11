@@ -6,6 +6,16 @@ en:
         product_announcements: "Product Announcements"
         scheduling: "Scheduling"
         tutorials: "Tutorials"
+    incidents:
+      ratings:
+        gray: "Gray"
+        yellow: "Yellow"
+        orange: "Orange"
+        red: "Red"
+      likelihoods:
+        no_evidence: "No Evidence"
+        circumstantial_evidence: "Witnesses or Circumstantial Evidence"
+        solid_evidence: "Solid Evidence"
     locale_options:
       en: "English"
       de: "German"

@@ -1,0 +1,59 @@
+<div class="frame">
+  <header class="light">
+    <div>Your Claimed Reports</div>
+  </header>
+  <section>
+    <article>
+      <% if @my_reports.present? %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Report Id</th>
+              <th>Reporter Name</th>
+              <th>Create Date</th>
+            </tr>
+          </thead>
+          <% @my_reports.each do |report| %>
+            <tr>
+              <td><%= link_to(report.id, admin_report_path(report)) %></td>
+              <td><%= report.user&.full_name %></td>
+              <td><%= report.created_at %></td>
+            </tr>
+          <% end %>
+        </table>
+      <% else %>
+        All caught up!!
+      <% end %>
+    </article>
+  </section>
+</div>
+
+<div class="frame">
+  <header class="light">
+    <div>Unclaimed Reports</div>
+  </header>
+  <section>
+    <article>
+      <% if @reports.present? %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Report Id</th>
+              <th>Reporter Name</th>
+              <th>Create Date</th>
+            </tr>
+          </thead>
+          <% @reports.each do |report| %>
+            <tr>
+              <td><%= link_to(report.id, admin_report_path(report)) %></td>
+              <td><%= report.user&.full_name %></td>
+              <td><%= report.created_at %></td>
+            </tr>
+          <% end %>
+        </table>
+      <% else %>
+        All caught up!!
+      <% end %>
+    </article>
+  </section>
+</div>

@@ -1,0 +1,42 @@
+<div class="frame narrow">
+  <header class="light">
+    <div>Report Details</div>
+  </header>
+
+  <section>
+    <article>
+      <label>Summary</label>
+      <%= @report.report_detail.summary %>
+    </article>
+  </section>
+</div>
+
+<%= link_to "Add an Incident", new_admin_report_incident_path(@report), class: "button" %>
+<br /><br />
+
+<div class="frame narrow">
+  <header class="light">
+    <div>Incidents</div>
+  </header>
+  <section>
+    <article>
+      <table>
+        <thead>
+          <tr>
+            <th>Employeee Name</th>
+            <th>Severity</th>
+            <th>Likelihood</th>
+          </tr>
+        </thead>
+
+        <% @report.incidents.each do |incident| %>
+          <tr>
+            <td><%= incident.user&.full_name %></td>
+            <td><%= incident.rating %></td>
+            <td><%= incident.likelihood %></td>
+          </tr>
+        <% end %>
+      </table>
+    </article>
+  </section>
+</div>

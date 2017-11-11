@@ -1,0 +1,26 @@
+<div class="frame narrow">
+  <header class="light">
+    <div>Create an Incident</div>
+  </header>
+  <section>
+    <article>
+      <%= simple_form_for [:admin, @report, @incident] do |f| %>
+        <%= f.association :user,
+          as: :single_tag_select,
+          collection: @report.user.company.users,
+          label_method: :full_name
+        %>
+
+        <%= f.input :rating,
+          include_blank: false,
+          collection: Incident.rating_options%>
+
+        <%= f.input :likelihood,
+          include_blank: false,
+          collection: Incident.likelihood_options %>
+
+        <%= f.submit %>
+      <% end %>
+    </article>
+  </section>
+</div>
