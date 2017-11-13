@@ -1,0 +1,23 @@
+<%= simple_form_for [:admin, @report, @incident] do |f| %>
+  <%= f.association :user,
+    as: :single_tag_select,
+    collection: @report.user.company.users,
+    label_method: :full_name
+  %>
+
+  <%= f.input :rating,
+    include_blank: false,
+    collection: Incident.rating_options%>
+
+  <%= f.input :likelihood,
+    include_blank: false,
+    collection: Incident.likelihood_options %>
+
+  <%= f.input :category,
+    include_blank: false,
+    collection: Incident.category_options %>
+
+  <%= f.input :summary, as: :text %>
+
+  <%= f.submit %>
+<% end %>

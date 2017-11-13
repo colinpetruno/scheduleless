@@ -1,0 +1,25 @@
+<div class="employees-coworkabilities-incidents-for-month">
+  <header>
+    <div class="indicator <%= presenter.indicator_class_for(month) %>"></div>
+    <%= t("date.month_names")[month.month] %> <%= month.year %>
+  </header>
+
+  <section>
+    <aside>
+      <div></div>
+    </aside>
+    <article>
+      <div>
+        <% if presenter.incidents_for(month).present? %>
+          <% presenter.incidents_for(month).each do |incident| %>
+            <%= render partial: "incident", locals: { incident: incident } %>
+          <% end %>
+        <% else %>
+          No Reported Incidents
+        <% end %>
+      </div>
+    </article>
+  </section>
+</div>
+
+

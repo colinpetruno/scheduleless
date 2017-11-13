@@ -25,6 +25,7 @@ Rails.application.routes.draw do
     scope module: :employees, as: :employees do
       resources :users, path: "employees", only: [] do
         resource :account, only: [:show]
+        resource :coworkability, only: [:show]
         resource :positions, only: [:show]
         resource :profile, only: [:show]
         resource :wages, only: [:show]
@@ -88,7 +89,7 @@ Rails.application.routes.draw do
     resources :plans, only: [:create, :edit, :index, :new, :update]
 
     resources :reports, only: [:index, :show] do
-      resources :incidents, only: [:new, :create]
+      resources :incidents, only: [:new, :create, :edit, :update]
     end
   end
 

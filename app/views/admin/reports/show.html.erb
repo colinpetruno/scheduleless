@@ -26,6 +26,7 @@
             <th>Employeee Name</th>
             <th>Severity</th>
             <th>Likelihood</th>
+            <th></th>
           </tr>
         </thead>
 
@@ -34,6 +35,9 @@
             <td><%= incident.user&.full_name %></td>
             <td><%= incident.rating %></td>
             <td><%= incident.likelihood %></td>
+            <td>
+              <%= link_to "Edit", edit_admin_report_incident_path(@report, incident) %>
+            </td>
           </tr>
         <% end %>
       </table>

@@ -1,0 +1,9 @@
+<div class="business-employees-coworkability-incident">
+  <header>
+    <div class="incident-indicator <%= incident.rating %>"></div>
+    <%= incident.occured_on&.to_s(:month_day) %> - <%= t("models.incidents.categories.#{incident.category}") %>
+  </header>
+  <div>
+    <%= incident.summary %>
+  </div>
+</div>

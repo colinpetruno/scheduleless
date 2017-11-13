@@ -7,6 +7,16 @@ en:
         scheduling: "Scheduling"
         tutorials: "Tutorials"
     incidents:
+      categories:
+        unclassified: "Unclassified"
+        gossip: "Gossiping"
+        assault: "Assault"
+        sexual: "Sexual Discrimination"
+        gender: "Gender Discrimination"
+        racial: "Racial Discrimination"
+        bullying: "Bullying"
+        political: "Political Harassment"
+        name_calling: "Name Calling"
       ratings:
         gray: "Gray"
         yellow: "Yellow"

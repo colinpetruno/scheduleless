@@ -1,0 +1,40 @@
+.business-employees-coworkability-incident {
+  border: 1px solid lighten($gray-light, 10%);
+  border-radius: $border-radius;
+  padding: 5px 15px;
+  margin-top: 10px;
+  width: 100%;
+
+  &:last-child {
+    margin-bottom: 10px;
+  }
+
+  .incident-indicator {
+    border: 2px solid lighten($gray-light, 15%);
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 8px;
+    min-height: 12px;
+    min-width: 12px;
+
+    &.green {
+      background-color: darken($green-notice, 10%);
+      border-color: darken($green-notice, 30%);
+    }
+
+    &.red {
+      background-color: lighten($red, 10%);
+      border-color: darken($red, 10%);
+    }
+
+    &.yellow {
+      background-color: lighten($yellow, 10%);
+      border-color: darken($yellow, 33%);
+    }
+
+    &.orange {
+      background-color: lighten($orange, 10%);
+      border-color: darken($orange, 5%);
+    }
+  }
+}

@@ -1,0 +1,74 @@
+.employees-coworkabilities-incidents-for-month {
+  display: flex;
+  flex-direction: column;
+
+  > header {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 200;
+    line-height: 25px;
+    vertical-align: top;
+  }
+
+  > section {
+    display: flex;
+    flex-direction: row;
+
+    > aside {
+      display: flex;
+      flex-direction: column;
+      margin: 5px 10px;
+      max-width: 4px;
+      min-width: 4px;
+
+      > div {
+        display: flex;
+        flex-grow: 1;
+        min-height: 40px;
+        background-color: lighten($purple, 25%);
+      }
+    }
+
+    > article {
+      align-items: center;
+      color: darken($gray-light, 5%);
+      display: flex;
+      flex-grow: 1;
+      margin-left: 15px;
+
+      > div {
+        width: 100%;
+      }
+    }
+  }
+
+  .indicator {
+    border: 3px solid lighten($gray-light, 15%);
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 15px;
+    min-height: 25px;
+    min-width: 25px;
+
+    &.green {
+      background-color: darken($green-notice, 10%);
+      border-color: darken($green-notice, 30%);
+    }
+
+    &.red {
+      background-color: lighten($red, 10%);
+      border-color: darken($red, 10%);
+    }
+
+    &.yellow {
+      background-color: lighten($yellow, 10%);
+      border-color: darken($yellow, 33%);
+    }
+
+    &.orange {
+      background-color: lighten($orange, 10%);
+      border-color: darken($orange, 5%);
+    }
+  }
+}

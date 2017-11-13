@@ -23,6 +23,19 @@ class Incident < ApplicationRecord
   validates :rating, presence: true
   validates :report_id, presence: true
   validates :user_id, presence: true
+  validates :summary, length: (0..255)
+
+  enum category: {
+    unclassified: 0,
+    gossip: 1,
+    assault: 2,
+    sexual: 3,
+    political: 4,
+    gender: 5,
+    racial: 6,
+    bullying: 7,
+    name_calling: 8
+  }
 
   enum rating: {
     gray: 0,
@@ -37,6 +50,11 @@ class Incident < ApplicationRecord
     solid_evidence: 3
   }
 
+  def self.category_options
+    Incident.categories.keys.map do |key|
+      [I18n.t("models.incidents.categories.#{key}"), key]
+    end
+  end
 
   def self.rating_options
     Incident.ratings.keys.map do |key|
@@ -48,6 +66,10 @@ class Incident < ApplicationRecord
     Incident.likelihoods.keys.map do |key|
       [I18n.t("models.incidents.likelihoods.#{key}"), key]
     end
+  end
+
+  def summary
+    super || "No Summary Available"
   end
 
   private
