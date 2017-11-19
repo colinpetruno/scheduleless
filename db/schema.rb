@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171113004357) do
+ActiveRecord::Schema.define(version: 20171119015324) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -353,6 +353,28 @@ ActiveRecord::Schema.define(version: 20171113004357) do
     t.integer "end",     default: 1440, null: false
     t.index ["user_id", "day"], name: "index_preferred_hours_on_user_id_and_day", unique: true, using: :btree
     t.index ["user_id"], name: "index_preferred_hours_on_user_id", using: :btree
+  end
+
+  create_table "public_companies", force: :cascade do |t|
+    t.string   "name",           null: false
+    t.string   "website"
+    t.string   "company_type"
+    t.string   "headquarters"
+    t.string   "category"
+    t.string   "revenue"
+    t.string   "company_size"
+    t.integer  "founded"
+    t.string   "linkedin_url"
+    t.string   "twitter_url"
+    t.string   "facebook_url"
+    t.string   "instagram_url"
+    t.string   "youtube_url"
+    t.string   "gd_logo_url"
+    t.string   "gd_url"
+    t.integer  "gd_employer_id"
+    t.integer  "gd_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "repeating_shifts", force: :cascade do |t|
