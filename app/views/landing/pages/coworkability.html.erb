@@ -1,0 +1,16 @@
+this is the coworkability landing pages that social media will hit. <br />
+it will have a search for to look up companies that directs into the <br />
+<br />
+There will be two searches for companies, one that results in going to the
+company page, and another that goes to the report form. This will use the
+latter search results
+
+<br /><br /><br />
+
+
+<%= simple_form_for :search, url: public_companies_searches_path, method: :get do |f| %>
+  <%= f.input :query %>
+
+  <%= f.submit %>
+<% end %>
+

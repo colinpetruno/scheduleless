@@ -28,9 +28,13 @@ Rails.application.routes.draw do
         resource :coworkability, only: [:show]
         resource :positions, only: [:show]
         resource :profile, only: [:show]
-        resource :wages, only: [:show]
+       resource :wages, only: [:show]
       end
     end
+  end
+
+  namespace :public_companies, path: "companies" do
+    resources :searches, only: [:index]
   end
 
   namespace :coworkability do
@@ -56,6 +60,10 @@ Rails.application.routes.draw do
   resource :home, only: [:show]
 
   get "how_it_works", to: "marketing/welcome#how_it_works", as: :how_it_works
+
+  namespace :landing do
+    get "coworkability", to: "pages#coworkability"
+  end
 
   resources :locations, only: [:create, :edit, :index, :new, :show, :update] do
     resources :available_employees, only: [:index]

@@ -1,0 +1,19 @@
+hi i am the search index<br /><br />
+
+<%= simple_form_for :search, url: public_companies_searches_path, method: :get do |f| %>
+  <%= f.input :query %>
+
+  <%= f.submit %>
+<% end %>
+
+
+<% if @results.present? %>
+  <h3>Results</h3>
+
+  <% @results.each do |result| %>
+    <%= result.name %><br />
+  <% end %>
+
+  <%= paginate @results %>
+<% end %>
+
