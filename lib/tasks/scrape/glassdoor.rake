@@ -36,16 +36,18 @@ namespace :scrape do
 
       def visit_page
         begin
-          visit @url 
+          visit @url
         rescue Capybara::Webkit::InvalidResponseError => error
           # do nothing because of stuff
+        rescue Capybara::Webkit::InvalidResponseError => error
+          # nothing
         rescue StandardError => error
           # log?
         end
       end
 
       def make_output_hash
-        if status_code == 200
+        if page.status_code == 200
           {
             glassdoor_id: @integer,
             glassdoor_employer_id: glassdoor_employer_id,
@@ -65,10 +67,19 @@ namespace :scrape do
             logo_url: logo_url,
             glassdoor_url: glassdoor_url
           }
-        else 
+        else
           {
             glassdoor_id: @integer,
             response_code: page.status_code
+          }
+        end
+
+      rescue StandardError => error
+        begin
+          make_output_hash
+        rescue
+          {
+            response_code: 900
           }
         end
       end
@@ -105,7 +116,7 @@ namespace :scrape do
 
       def company_type
         begin
-          page.find(:xpath, '//*[@id="EmpBasicInfo"]/div[1]/div/div[5]').text 
+          page.find(:xpath, '//*[@id="EmpBasicInfo"]/div[1]/div/div[5]').text
         rescue
           ""
         end
@@ -129,7 +140,7 @@ namespace :scrape do
 
       def revenue
         begin
-          page.find(:xpath, '//*[@id="EmpBasicInfo"]/div[1]/div/div[6]/span').text  
+          page.find(:xpath, '//*[@id="EmpBasicInfo"]/div[1]/div/div[6]/span').text
         rescue
           ""
         end
@@ -146,7 +157,7 @@ namespace :scrape do
       def social_media_urls
         @social_media_urls ||= (1..6).map do |xpath_index|
           begin
-            page.find(:xpath, "//*[@id='SocialMediaBucket']/a[#{xpath_index}]")[:href]   
+            page.find(:xpath, "//*[@id='SocialMediaBucket']/a[#{xpath_index}]")[:href]
           rescue
             nil
           end
@@ -184,17 +195,16 @@ namespace :scrape do
 
 
     # UPDATE START AND END FOR YOUR RUNS
-    @start_int = 1 
-    @end_int = 499 
+    @start_int = 22001
+    @end_int = 24000
 
     file_name = "glassdoor_#{@start_int}_#{@end_int}"
-
 
     # skip this  because we want to concat our files?
     unless File.exist?("#{Rails.root}/lib/scrapes/#{file_name}.csv")
       CSV.open("#{Rails.root}/lib/scrapes/#{file_name}.csv", "a") do |csv|
         csv << [
-          "GlassdoorId", 
+          "GlassdoorId",
           "GlassdoorEmployerId",
           "ResponseCode",
           "CompanyName",
@@ -209,7 +219,7 @@ namespace :scrape do
           "FacebookUrl",
           "InstagramUrl",
           "YoutubeUrl",
-          "LogoUrl", 
+          "LogoUrl",
           "GlassdoorUrl"
         ]
       end
