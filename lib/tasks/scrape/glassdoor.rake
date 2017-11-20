@@ -1,7 +1,10 @@
 namespace :scrape do
   desc "Ensure Login users Are Created For All users"
-  task :glassdoor => :environment do
-  require "csv"
+  task :glassdoor, [:start_range, :end_range] => :environment do |t, args|
+    require "csv"
+
+    @start_int = args[:start_range].to_i 
+    @end_int = args[:end_range].to_i 
 
     class ScrapePage
       require "capybara"
@@ -194,9 +197,7 @@ namespace :scrape do
     end
 
 
-    # UPDATE START AND END FOR YOUR RUNS
-    @start_int = 22001
-    @end_int = 24000
+
 
     file_name = "glassdoor_#{@start_int}_#{@end_int}"
 
