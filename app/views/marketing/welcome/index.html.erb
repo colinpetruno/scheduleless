@@ -1,14 +1,18 @@
-<%= render partial: "hero_section" %>
+<% if coworkability? %>
+  <%= render partial: "coworkability_placeholder" %>
+<% else %>
+  <%= render partial: "hero_section" %>
 
-<%= render partial: "scheduling_assistant" %>
-<%# render partial: "sell_message" %>
-<%= render partial: "industries" %>
-<%= render partial: "employee_concierge" %>
+  <%= render partial: "scheduling_assistant" %>
+  <%# render partial: "sell_message" %>
+  <%= render partial: "industries" %>
+  <%= render partial: "employee_concierge" %>
 
 
-<%= render partial: "marketing/welcome/shared/divider_bar" %>
-<%= render partial: "marketing/welcome/shared/footer" %>
+  <%= render partial: "marketing/welcome/shared/divider_bar" %>
+  <%= render partial: "marketing/welcome/shared/footer" %>
 
-<% if Rails.env.production? %>
-  <%= render partial: "layouts/shared/reamaze" %>
+  <% if Rails.env.production? %>
+    <%= render partial: "layouts/shared/reamaze" %>
+  <% end %>
 <% end %>

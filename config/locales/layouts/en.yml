@@ -5,13 +5,19 @@ en:
     blank:
       page_title: "Scheduleless"
     marketing:
-      meta_description: >
+      scheduleless_meta_description: >
         Focus on your business while we handle all your employee scheduling 
         needs. We are the only scheduling software that makes your schedules.
         We also have shift trading, time off requests, cancellations and mobile 
         apps.
-      meta_title: "Fully Automated Employee Scheduling."
-      page_title: "Scheduleless"
+      scheduleless_meta_title: "Fully Automated Employee Scheduling."
+      scheduleless_page_title: "Scheduleless"
+      coworkability_meta_description: >
+        Help stop and prevent workplace harassment. View a companies 
+        Coworkability report and let us know your experiences. Check out 
+        our Coworkability Prevention and stop harasssment before it happens.
+      coworkability_meta_title: "Stop Workplace Harassment"
+      coworkability_page_title: "Coworkability | Home of the Coworkability Score"
     shared:
       reamaze:
         label_text: "Let us know if you have any questions!"

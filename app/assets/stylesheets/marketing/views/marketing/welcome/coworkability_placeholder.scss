@@ -1,0 +1,16 @@
+.marketing-welcome-coworkability-placeholder {
+  text-align: center;
+  max-width: 900px;
+  margin: 50px auto;
+
+  > section {
+    @include make-row();
+    margin-bottom: 100px;
+    margin-top: 100px;
+
+    > article {
+      @include make-col-ready();
+      @include make-col(6);
+    }
+  }
+}

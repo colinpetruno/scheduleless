@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
   include Pundit
   protect_from_forgery with: :exception
-  helper_method :after_sign_in_path_for, :default_calendar_path_for,
-    :default_reporting_path_for
+  helper_method :after_sign_in_path_for, :coworkability?, :current_domain,
+    :default_calendar_path_for, :default_reporting_path_for
 
 
   def default_calendar_path_for(user)
@@ -35,5 +35,21 @@ class ApplicationController < ActionController::Base
     end
 
     UserContext.new(location: @location, user: current_user)
+  end
+
+  def current_domain
+    if request.host.include?("coworkability")
+      "coworkability"
+    else
+      "scheduleless"
+    end
+  end
+
+  def coworkability?
+    if request.host.include?("coworkability")
+      true
+    else
+      false
+    end
   end
 end

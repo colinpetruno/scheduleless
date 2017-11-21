@@ -1,13 +1,13 @@
 <html>
   <head>
-    <title><%= t(".page_title") %></title>
+    <title><%= t(".#{current_domain}_page_title") %></title>
 
     <%= csrf_meta_tags %>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <meta name="title" content="<%= t(".meta_title") %>" />
-    <meta name="description" content="<%= t(".meta_description") %>" />
+    <meta name="title" content="<%= t(".#{current_domain}_meta_title") %>" />
+    <meta name="description" content="<%= t(".#{current_domain}_meta_description") %>" />
 
     <%= favicon_link_tag "favicon.ico" %>
 
