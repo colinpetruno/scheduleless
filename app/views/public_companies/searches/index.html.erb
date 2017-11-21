@@ -11,7 +11,7 @@ hi i am the search index<br /><br />
   <h3>Results</h3>
 
   <% @results.each do |result| %>
-    <%= result.name %><br />
+    <%= link_to(result.name, public_company_path(result)) %><br />
   <% end %>
 
   <%= paginate @results %>

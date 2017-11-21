@@ -34,8 +34,10 @@ Rails.application.routes.draw do
   end
 
   namespace :public_companies, path: "companies" do
-    resources :searches, only: [:index]
+    resources :searches, path: "search", only: [:index]
   end
+
+  resources :public_companies, path: "company", only: [:show]
 
   namespace :coworkability do
     root to: "welcome#index"
