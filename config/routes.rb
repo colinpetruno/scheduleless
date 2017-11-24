@@ -28,7 +28,7 @@ Rails.application.routes.draw do
         resource :coworkability, only: [:show]
         resource :positions, only: [:show]
         resource :profile, only: [:show]
-       resource :wages, only: [:show]
+        resource :wages, only: [:show]
       end
     end
   end
@@ -37,7 +37,13 @@ Rails.application.routes.draw do
     resources :searches, path: "search", only: [:index]
   end
 
-  resources :public_companies, path: "company", only: [:show]
+  resources :public_companies, path: "company", only: [:show] do
+    scope module: :public_companies do
+      resources :incidents, only: [:new]
+    end
+
+    resources :company_leads, only: [:new], path: "request_info"
+  end
 
   namespace :coworkability do
     root to: "welcome#index"

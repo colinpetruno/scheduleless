@@ -3,7 +3,10 @@ this is the page the report will be on<br />
 
 <h2><%= @company.name %></h2>
 <br />
+
 A link to make a report
+<%= link_to "Make Report", new_public_company_incident_path(@company) %>
 <br /><br />
 
 A link for employers to learn more
+<%= link_to "Learn More", new_public_company_request_info_path(@company) %>
