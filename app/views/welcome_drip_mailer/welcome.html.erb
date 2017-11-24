@@ -1,6 +1,9 @@
 <div style="padding: 20px">
-  <%= t(".greeting", name: @user.given_name) %>
-  <br /> <br />
+  <%# SPAM PREVENTION %>
+  <% if @user.given_name&.length <= 17 %>
+    <%= t(".greeting", name: @user.given_name) %>
+    <br /> <br />
+  <% end %>
 
   <%= t(".thanks") %>
 
