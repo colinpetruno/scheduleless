@@ -234,6 +234,8 @@ GEM
     pundit (1.1.0)
       activesupport (>= 3.0.0)
     rack (2.0.1)
+    rack-attack (5.0.1)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.1)
@@ -413,6 +415,7 @@ DEPENDENCIES
   pry-stack_explorer
   puma (~> 3.0)
   pundit
+  rack-attack
   rails (~> 5.0.1)
   rails-assets-chartjs!
   rails-assets-d3!
