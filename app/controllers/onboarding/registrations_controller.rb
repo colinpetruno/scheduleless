@@ -9,7 +9,7 @@ module Onboarding
     end
 
     def create
-      @registration = Registration.new(registration_params)
+      @registration = Registration.new(registration_params.merge(request: request))
 
       if @registration.valid? && @registration.register
         sign_in(@registration.user)

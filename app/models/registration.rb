@@ -10,13 +10,15 @@ class Registration
     with: /\A(?=.*[a-zA-Z])(?=.*[0-9]).{8,}\z/,
     message: "must include one number, one letter and be between 8 and 40 characters"
 
-  attr_accessor :email, :first_name, :last_name, :password, :plan_id
+  attr_accessor :email, :first_name, :last_name, :password, :plan_id, :request
 
   def company
     @_company || create_company
   end
 
   def register
+    return false if spammer?
+
     ActiveRecord::Base.transaction do
       create_company
       create_user # makes company again?
@@ -95,6 +97,18 @@ class Registration
         Plan.create(plan_name: "Standard", default: true)
       end
     end
+  end
+
+  def spammer?
+    count = LoginUser.
+      where(last_sign_in_ip: request.ip, created_at: ((DateTime.now - 4.minutes)..DateTime.now)).
+      size
+
+    return count >= 3
+  rescue StandardError => error
+    Bugsnag.notify(error)
+
+    false
   end
 
   def subscription
