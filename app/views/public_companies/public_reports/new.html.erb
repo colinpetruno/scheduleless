@@ -1,0 +1,118 @@
+<h3>Make a report</h3>
+<%= simple_form_for [@company, @public_report] do |f| %>
+  <%= f.input :role,
+    as: :select,
+    label: "What was your role?",
+    collection: PublicReport.role_options,
+    include_blank: false %>
+
+  <br />
+
+  <%= f.input :incident_date,
+    label: "About when did this happen?",
+    as: :datepicker %>
+
+  <br />
+
+  <%= f.input :still_happening,
+    as: :boolean,
+    label: "Is this still happening" %>
+
+  <br />
+
+  <%= f.input :committed_by,
+    label: "Who committed the incident",
+    hint: "If your uncomfortable with specific names let us know their relationt to you. Manager, Coworker etc" %>
+
+  <br />
+  <%= f.input :what_happened, label: "Describe What Happened" %>
+
+
+  <br />
+
+  Did you respond in any way? xx
+    <br />
+    <br />
+  <%= f.input :notified_others,
+    label: "Did you tell or talk to anyone about this incident that wasn't involved",
+    as: :select,
+    collection: [["Yes", true], ["No", false]] %>
+
+  <br />
+
+  <%= f.input :reported_to,
+    as: :select,
+    label: "Did you report this incident to anyone?",
+    collection: PublicReport.reported_to_options %>
+
+  <br />
+
+  <%= f.input :experienced_retaliation,
+    as: :select,
+    label: "If so did you experience any form or retaliation?",
+    collection: [["Yes", true], ["No", false]] %>
+
+    <br /> <br /> <br /> <br />
+
+  <%= f.input :job_affected,
+    as: :select,
+    label: "Was/Is your Job Affected",
+    collection: [["Yes", true], ["No", false]] %>
+
+  <br />
+
+  <%= f.input :job_affected_description,
+    label: "If yes, how so?" %>
+
+  <br />
+
+  <%= f.input :others_present, label: "Was anyone else present?" %>
+
+  <br />
+
+  <%= f.input :others_affected,
+    as: :select,
+    label: "Is/Did this affect other people?",
+    collection: [["Yes", true], ["No", false]] %>
+
+  <br />
+
+  <%= f.input :others_affected,
+    as: :select,
+    label: "Did you seek any medical treatment or counselling as a result of this incident?",
+    collection: [["Yes", true], ["No", false]] %>
+
+  <br />
+  Is there any evidence or documents would you like to upload?
+  <br />
+  <br />
+
+  <%= f.input :handled_description, label: "How was the incident handled?" %>
+
+  Was the incident handled to your satisfaction? xx
+
+  <%= f.input :handled_satisified,
+    as: :boolean,
+    label: "Were you satisified with how the incident was handled?",
+    collection: [["Yes", true], ["No", false]]%>
+
+  <br />
+
+  <%= f.input :preferred_handling,
+    label: "If no, what actions would you like the company to take?" %>
+
+
+  <br />
+  <h3>Who are you?</h3>
+  It's not required to let us know who you are but it helps us prevent false
+  incidents.
+  <br />
+  <br />
+  We will never reveal any of your information to the company.
+  <br />
+  <%= f.input :name, label: "Your Name" %>
+  <br />
+  <%= f.input :email, label: "Your Email" %>
+  <br />
+  <%= f.submit %>
+<% end %>

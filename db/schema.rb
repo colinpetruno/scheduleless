@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171119015324) do
+ActiveRecord::Schema.define(version: 20171124004024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -375,6 +375,34 @@ ActiveRecord::Schema.define(version: 20171119015324) do
     t.integer  "gd_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+  end
+
+  create_table "public_reports", force: :cascade do |t|
+    t.string   "email"
+    t.string   "name"
+    t.integer  "role",                     default: 0,     null: false
+    t.date     "incident_date"
+    t.string   "accused"
+    t.boolean  "still_happening"
+    t.string   "committed_by"
+    t.text     "what_happened",                            null: false
+    t.boolean  "did_you_respond",          default: false, null: false
+    t.boolean  "notified_others",          default: false, null: false
+    t.integer  "reported_to",              default: 0,     null: false
+    t.boolean  "experienced_retaliation",  default: false, null: false
+    t.boolean  "job_affected",             default: false, null: false
+    t.text     "job_affected_description"
+    t.text     "others_present"
+    t.boolean  "others_affected",          default: false, null: false
+    t.boolean  "sought_treatment",         default: false, null: false
+    t.text     "handled_description"
+    t.boolean  "handled_satisified",       default: false, null: false
+    t.text     "preferred_handling"
+    t.text     "summary"
+    t.boolean  "discussed"
+    t.string   "uuid",                                     null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
   end
 
   create_table "repeating_shifts", force: :cascade do |t|

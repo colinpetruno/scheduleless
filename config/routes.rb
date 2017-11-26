@@ -39,7 +39,7 @@ Rails.application.routes.draw do
 
   resources :public_companies, path: "company", only: [:show] do
     scope module: :public_companies do
-      resources :incidents, only: [:new]
+      resources :public_reports, path: "incidents", only: [:create, :new]
     end
 
     resources :company_leads, only: [:new], path: "request_info"

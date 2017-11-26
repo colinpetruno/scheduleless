@@ -26,6 +26,17 @@ en:
         no_evidence: "No Evidence"
         circumstantial_evidence: "Witnesses or Circumstantial Evidence"
         solid_evidence: "Solid Evidence"
+    public_report:
+      reported_to:
+        no_one: "No One"
+        manager: "Manager"
+        hr_dept: "HR Department"
+        other: "Other"
+      roles:
+        unclassified: "I'm Not Sure"
+        harasser: "Harasser"
+        victim: "Victom"
+        witness: "Witness"
     locale_options:
       en: "English"
       de: "German"
