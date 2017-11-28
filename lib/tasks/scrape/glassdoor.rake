@@ -33,6 +33,7 @@ namespace :scrape do
       end
 
       def scrape
+        reset_session!
         visit_page
         make_output_hash
       end
