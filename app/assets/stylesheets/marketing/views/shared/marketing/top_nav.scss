@@ -1,0 +1,11 @@
+.shared-marketing-top-nav {
+  background-color: $white;
+  width: 100%;
+
+  h1,h2,h3 {
+    color: $purple;
+    font-weight: 200;
+    letter-spacing: 2px;
+    padding: 5px 15px;
+  }
+}

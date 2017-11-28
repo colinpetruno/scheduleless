@@ -1,24 +1,28 @@
-<div class="marketing-welcome-coworkability-placeholder">
-  <h3>Help Us Stop Harassment In The Workplace</h3>
+<% if params[:preview].present? %>
+  <%= render partial: "marketing/welcome/coworkability/hero" %>
+<% else %>
+  <div class="marketing-welcome-coworkability-placeholder">
+    <h3>Help Us Stop Harassment In The Workplace</h3>
 
-  <section>
-    <article>
-      <h4>For Employees</h4>
-      View companies Coworkability Score&trade;<br /><br />
+    <section>
+      <article>
+        <h4>For Employees</h4>
+        View companies Coworkability Score&trade;<br /><br />
 
-      Help us by reporting your good and bad experiences!
-    </article>
+        Help us by reporting your good and bad experiences!
+      </article>
 
-    <article>
-      <h4>For Employers</h4>
-      Stop harassment before it happens with Coworkability Prevention&trade;
-      <br /><br />
-      Get a detailed analysis and asssment with the Coworkability Report&trade;
-    </article>
-  </section>
+      <article>
+        <h4>For Employers</h4>
+        Stop harassment before it happens with Coworkability Prevention&trade;
+        <br /><br />
+        Get a detailed analysis and asssment with the Coworkability Report&trade;
+      </article>
+    </section>
 
 
-  <h5 style="font-size: 1.5rem; font-weight: 200">
-    Available January 2018
-  </h5>
-</div>
+    <h5 style="font-size: 1.5rem; font-weight: 200">
+      Available January 2018
+    </h5>
+  </div>
+<% end %>
