@@ -27,6 +27,13 @@ en:
         circumstantial_evidence: "Witnesses or Circumstantial Evidence"
         solid_evidence: "Solid Evidence"
     public_report:
+      categories:
+        not_sure: "I'm not sure"
+        sexual_harassment: "Sexual Harrassment"
+        racial_discrimination: "Racial Discrimination"
+        gender_descrimination: "Gender Discrimination"
+        harassment: "Harassment / Bullying"
+        lgb_discrimination: "LGBT / Orientation Discrimination"
       reported_to:
         no_one: "No One"
         manager: "Manager"

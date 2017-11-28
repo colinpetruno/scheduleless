@@ -53,6 +53,7 @@ Rails.application.routes.draw do
     end
 
     resources :reports, only: [:create, :new, :show]
+    resource :share, only: [:show]
   end
 
   resource :dashboard, only: [:show]

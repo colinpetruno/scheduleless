@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171124004024) do
+ActiveRecord::Schema.define(version: 20171128004505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -396,13 +396,14 @@ ActiveRecord::Schema.define(version: 20171124004024) do
     t.boolean  "others_affected",          default: false, null: false
     t.boolean  "sought_treatment",         default: false, null: false
     t.text     "handled_description"
-    t.boolean  "handled_satisified",       default: false, null: false
+    t.boolean  "handled_satisfied",        default: false, null: false
     t.text     "preferred_handling"
     t.text     "summary"
     t.boolean  "discussed"
     t.string   "uuid",                                     null: false
     t.datetime "created_at",                               null: false
     t.datetime "updated_at",                               null: false
+    t.integer  "category",                 default: 0,     null: false
   end
 
   create_table "repeating_shifts", force: :cascade do |t|
