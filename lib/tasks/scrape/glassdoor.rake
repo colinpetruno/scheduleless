@@ -40,6 +40,8 @@ namespace :scrape do
           @status = @response.code.to_i
         rescue OpenURI::HTTPError => e
           @status = @response.code.to_i
+        rescue Net::OpenTimeout => e
+          @status = -2
         end
       end
 
