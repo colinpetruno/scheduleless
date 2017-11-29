@@ -7,21 +7,8 @@ namespace :scrape do
     @end_int = args[:end_range].to_i 
 
     class ScrapePage
-      require "capybara"
-      require 'capybara/dsl'
-      require "capybara/webkit"
-
-      include Capybara::DSL
-      Capybara.default_driver = :webkit
-
-      Capybara::Webkit.configure do |config|
-        #config.allow_unknown_urls
-        config.debug = false
-        config.skip_image_loading = true
-        config.ignore_ssl_errors = true
-        config.allow_url("glassdoor.com")
-        config.block_url("activityi")
-      end
+      require "nokogiri"
+      require "open-uri"
 
       def initialize(integer:)
         @integer = integer
@@ -33,29 +20,35 @@ namespace :scrape do
       end
 
       def scrape
-        reset_session!
         visit_page
         make_output_hash
       end
 
+      def get_response_with_redirect(uri)
+         r = Net::HTTP.get_response(uri)
+         if r.code == "301"
+           r = Net::HTTP.get_response(URI.parse("https://www.glassdoor.com#{r.header['location']}"))
+         end
+         r
+      end
+
       def visit_page
         begin
-          visit @url
-        rescue Capybara::Webkit::InvalidResponseError => error
-          # do nothing because of stuff
-        rescue Capybara::Webkit::InvalidResponseError => error
-          # nothing
-        rescue StandardError => error
-          # log?
+          uri = URI.parse(@url)
+          @response = get_response_with_redirect(uri)
+          @doc = Nokogiri::HTML(@response.body)
+          @status = @response.code.to_i
+        rescue OpenURI::HTTPError => e
+          @status = @response.code.to_i
         end
       end
 
       def make_output_hash
-        if page.status_code == 200
+        if @status == 200
           {
             glassdoor_id: @integer,
             glassdoor_employer_id: glassdoor_employer_id,
-            response_code: page.status_code,
+            response_code: @status,
             company_name: company_name,
             company_website: company_website,
             company_size: company_size,
@@ -74,37 +67,31 @@ namespace :scrape do
         else
           {
             glassdoor_id: @integer,
-            response_code: page.status_code
+            response_code: @status
           }
         end
 
-      rescue StandardError => error
-        begin
-          make_output_hash
-        rescue
-          {
-            response_code: 900
-          }
-        end
+      # rescue StandardError => error
+       #  { response_code: -1 }
       end
 
       private
 
       def company_name
         begin
-          page.find(:xpath, '//*[@id="EmpHeroAndEmpInfo"]/div[3]/div[2]/h1').text
+          @doc.xpath('//*[@id="EmpHeroAndEmpInfo"]/div[3]/div[2]/h1').first.text
         rescue
           ""
         end
       end
 
       def glassdoor_url
-        page.current_url
+        @response.uri.to_s
       end
 
       def company_website
         begin
-          page.find(:xpath, '//*[@id="EmpBasicInfo"]/div[1]/div/div[1]/span/a')["href"]
+          @doc.xpath('//*[@id="EmpBasicInfo"]/div[1]/div/div[1]/span/a').first.attributes["href"].value
         rescue
           ""
         end
@@ -112,7 +99,7 @@ namespace :scrape do
 
       def company_size
         begin
-          page.find(:xpath, '//*[@id="EmpBasicInfo"]/div[1]/div/div[3]/span').text
+          @doc.xpath('//*[@id="EmpBasicInfo"]/div[1]/div/div[3]/span').first.text
         rescue
           ""
         end
@@ -120,7 +107,7 @@ namespace :scrape do
 
       def company_type
         begin
-          page.find(:xpath, '//*[@id="EmpBasicInfo"]/div[1]/div/div[5]').text
+          @doc.xpath('//*[@id="EmpBasicInfo"]/div[1]/div/div[5]').first.text
         rescue
           ""
         end
@@ -128,7 +115,7 @@ namespace :scrape do
 
       def headquarters
         begin
-          page.find(:xpath, '//*[@id="EmpBasicInfo"]/div[1]/div/div[2]/span').text
+          @doc.xpath('//*[@id="EmpBasicInfo"]/div[1]/div/div[2]/span').first.text
         rescue
           ""
         end
@@ -136,7 +123,7 @@ namespace :scrape do
 
       def founded
         begin
-          page.find(:xpath, '//*[@id="EmpBasicInfo"]/div[1]/div/div[4]/span').text
+          @doc.xpath('//*[@id="EmpBasicInfo"]/div[1]/div/div[4]/span').first.text
         rescue
           ""
         end
@@ -144,7 +131,7 @@ namespace :scrape do
 
       def revenue
         begin
-          page.find(:xpath, '//*[@id="EmpBasicInfo"]/div[1]/div/div[6]/span').text
+          @doc.xpath('//*[@id="EmpBasicInfo"]/div[1]/div/div[6]/span').first.text
         rescue
           ""
         end
@@ -152,7 +139,7 @@ namespace :scrape do
 
       def glassdoor_employer_id
         begin
-        page.find("div#EmpHero")["data-employer-id"]
+          @doc.xpath('//*[@id="EmpHero"]').first.attributes["data-employer-id"].value.to_i
         rescue
           ""
         end
@@ -161,7 +148,7 @@ namespace :scrape do
       def social_media_urls
         @social_media_urls ||= (1..6).map do |xpath_index|
           begin
-            page.find(:xpath, "//*[@id='SocialMediaBucket']/a[#{xpath_index}]")[:href]
+            @doc.xpath("//*[@id='SocialMediaBucket']/a[#{xpath_index}]").first.attributes["href"].value
           rescue
             nil
           end
@@ -190,7 +177,7 @@ namespace :scrape do
 
       def logo_url
         begin
-          page.find("a.sqLogoLink img")[:src]
+          @doc.xpath('//*[@id="EmpHeroAndEmpInfo"]/div[3]/div[1]/a/span/img').first.attributes["src"].value
         rescue
           ""
         end
@@ -230,6 +217,7 @@ namespace :scrape do
     # ensure we shuffle our range to prevent sequential access
     (@start_int..@end_int).to_a.shuffle.each do |integer|
       # slow down so we dont get too much in trouble
+      sleep 1.5
       puts "scrapping id: #{integer}"
       result = ScrapePage.new(integer: integer).scrape
 

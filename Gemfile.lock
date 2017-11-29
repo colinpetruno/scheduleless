@@ -410,6 +410,7 @@ DEPENDENCIES
   jquery-rails
   kaminari
   newrelic_rpm
+  nokogiri
   pg
   pry-rails
   pry-stack_explorer

@@ -8,7 +8,6 @@ gem "bugsnag"
 gem "carrierwave"
 gem "chewy"
 gem "country_select"
-gem "database_cleaner"
 gem "devise"
 gem "devise_invitable"
 gem "doorkeeper"
@@ -51,6 +50,7 @@ end
 group :development, :test do
   gem "byebug", platform: :mri
   gem "i18n-tasks"
+  gem "nokogiri"
   gem "pry-rails"
   gem "pry-stack_explorer"
 end
