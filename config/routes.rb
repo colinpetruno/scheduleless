@@ -173,6 +173,14 @@ Rails.application.routes.draw do
   }
 
   namespace :remote, defaults: { format: :js } do
+    scope module: :companies, as: :companies do
+      resources :companies, only: [] do
+        collection do
+          resources :searches, only: [:index], path: "search"
+        end
+      end
+    end
+
     scope module: :employees, as: :employees do
       resources :users, path: "employees", only: [] do
         resource :positions, only: [:update]

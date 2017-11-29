@@ -4,9 +4,13 @@
   <article>
     <h3>Help put a spotlight on workplace harassment!</h3>
 
-    <section class="search-form">
+    <section class="company-search-form">
       <%= simple_form_for :search, url: public_companies_searches_path, method: :get do |f| %>
-        <%= f.input :query, label: false, placeholder: "Lookup a companies Coworkability Score", wrapper: false %>
+        <%= f.input :query,
+          label: false,
+          input_html: { class: "company-search-input" },
+          placeholder: "Lookup a companies Coworkability Score",
+          wrapper: false %>
 
         <%= f.submit "Search", wrapper: false, class: "orange btn" %>
       <% end %>

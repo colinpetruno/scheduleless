@@ -1,0 +1,33 @@
+$(document).on("turbolinks:load", function() {
+  var companySearch = new Bloodhound({
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('name'),
+    queryTokenizer: Bloodhound.tokenizers.whitespace,
+    remote: {
+      url: "<%= Rails.application.routes.url_helpers.remote_companies_searches_path(query: "SEARCH_QUERY") %>",
+      wildcard: 'SEARCH_QUERY'
+    }
+  });
+
+  $(".company-search-input").typeahead(null, {
+    name: 'company-search',
+    display: 'name',
+    source: companySearch,
+    templates: {
+      suggestion: function(obj) {
+        var company_url = "<%= Rails.application.routes.url_helpers.public_company_path(1) %>";
+        company_url = company_url.slice(0, -1);
+
+        var output = "<div>";
+        output += '<a href="';
+        output += company_url;
+        output += obj.to_param;
+        output += '">';
+        output += obj.name;
+        output += '</a>';
+        output += "</div>";
+
+        return output;
+      }
+    }
+  });
+});

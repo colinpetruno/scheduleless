@@ -2,7 +2,8 @@ class CompanySearchIndex < Chewy::Index
   settings analysis: {
     analyzer: {
       fuzzy_search: {
-        tokenizer: "ngram_tokenizer",
+        # tokenizer: "ngram_tokenizer",
+        tokenizer: "whitespace",
         filter: ["lowercase", "nGram"]
       }
     },

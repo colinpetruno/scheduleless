@@ -1,0 +1,71 @@
+.company-search-form {
+  .twitter-typeahead {
+    display: block;
+    width: 100%;
+  }
+
+  > form {
+    display: flex;
+    flex-direction: row;
+
+    .input-wrap {
+      display: flex;
+      flex-grow: 1;
+      // display: inline-block;
+
+      > input, > .twitter-typeahead > input {
+        border: 0;
+        padding: 10px 25px;
+        height: 50px;
+        border-top-left-radius: 25px;
+        border-bottom-left-radius: 25px;
+        width: 100%;
+
+        &:focus {
+          outline: 0;
+        }
+      }
+    }
+
+    input[type=submit] {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      border-top-right-radius: 25px;
+      border-bottom-right-radius: 25px;
+      display: flex;
+      height: 50px;
+      min-width: 100px;
+    }
+  }
+
+  .tt-menu {
+    background-color: $white;
+    border-radius: 5px;
+    border: 1px solid $purple;
+    display: block;
+    left: 25px !important;
+    margin-top: 5px;
+    position: absolute;
+    top: 100%;
+    right: 0px;
+    z-index: 100;
+  }
+
+  .tt-dataset {
+    .tt-suggestion {
+      a {
+        display: block;
+        color: $dark-text;
+        border-radius: 5px;
+        cursor: pointer;
+        padding: 10px;
+        width: 100%;
+
+        &:hover {
+          background-color: lighten($purple, 10%);
+          color: $white;
+        }
+      }
+    }
+  }
+}

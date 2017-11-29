@@ -7,7 +7,7 @@
   flex-direction: column;
   align-items: center;
   min-height: 400px;
-  overflow: hidden;
+  // overflow: hidden;
   height: 68vh;
   width: 100%;
 
@@ -20,39 +20,5 @@
     display: flex;
     flex-direction: column;
     margin: auto auto;
-  }
-
-  .search-form > form{
-    display: flex;
-    flex-direction: row;
-
-    .input-wrap {
-      display: flex;
-      flex-grow: 1;
-      // display: inline-block;
-
-      > input {
-        border: 0;
-        padding: 10px 25px;
-        height: 50px;
-        border-top-left-radius: 25px;
-        border-bottom-left-radius: 25px;
-        width: 100%;
-
-        &:focus {
-          outline: 0;
-        }
-      }
-    }
-
-    input[type=submit] {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-      border-top-right-radius: 25px;
-      border-bottom-right-radius: 25px;
-      display: flex;
-      height: 50px;
-      min-width: 100px;
-    }
   }
 }

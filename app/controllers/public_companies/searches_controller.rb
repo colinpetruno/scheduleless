@@ -5,8 +5,14 @@ module PublicCompanies
     def index
       # binding.pry
       if search_params.present?
+        @company = PublicCompany.find_by(name: search_params[:query])
+
+        if @company.present?
+          redirect_to public_company_path(@company) and return
+        end
+
         @results = CompanySearch.
-          new(query: search_params[:query]).
+          new(query: SanitizedElasticsearchString.for(search_params[:query])).
           search.
           page(params[:page]).
           load
