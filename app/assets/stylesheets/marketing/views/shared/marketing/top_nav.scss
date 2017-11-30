@@ -1,11 +1,35 @@
 .shared-marketing-top-nav {
   background-color: $white;
+  background-color: darken(#988ae6, 3%);
+  // background-color: #b1a5ee;
+  color: $white;
+  display: flex;
+  flex-direction: row;
   width: 100%;
 
   h1,h2,h3 {
     color: $purple;
+    color: $white;
     font-weight: 200;
     letter-spacing: 2px;
     padding: 5px 15px;
+    margin-bottom: 0;
+  }
+
+  ul {
+    list-style: none;
+    margin-bottom: 0;
+    margin-left: auto;
+
+    li {
+      display: inline-block;
+      margin-right: 15px;
+
+      a {
+        color: $white;
+        font-weight: 200;
+        line-height: 46px;
+      }
+    }
   }
 }

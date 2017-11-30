@@ -1,19 +1,34 @@
-hi i am the search index<br /><br />
+<%= render partial: "shared/marketing/top_nav" %>
 
-<%= simple_form_for :search, url: public_companies_searches_path, method: :get do |f| %>
-  <%= f.input :query %>
+<div class="public-companies-searches-index" style="background-color: #f7f8fb">
 
-  <%= f.submit %>
-<% end %>
+  <div class="search-bar">
+    <%= simple_form_for :search, url: public_companies_searches_path, method: :get do |f| %>
+      <%= f.input :query, wrapper: false, label: false %>
+
+      <%= f.submit "Search", class: "button orange" %>
+    <% end %>
+  </div>
 
 
-<% if @results.present? %>
-  <h3>Results</h3>
+  <% if @results.present? %>
+    <div class="search-results">
+      <section>
+        <% @results.each do |result| %>
+          <%= link_to(public_company_path(result), class: "result") do %>
+            <div>
+              <h4><%= result.name %></h4>
+              <section>
+                <%= result.title_line %>
+              </section>
+            </div>
+          <% end %>
+        <% end %>
 
-  <% @results.each do |result| %>
-    <%= link_to(result.name, public_company_path(result)) %><br />
+        <div class="pagination-container">
+          <%= paginate @results %>
+        </div>
+      </section>
+    </div>
   <% end %>
-
-  <%= paginate @results %>
-<% end %>
-
+</div>

@@ -1,0 +1,35 @@
+.pagination {
+  display: inline-block;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-bottom: 50px;
+
+  > span {
+    background-color: $white;
+    border: 1px solid lighten($purple, 15%);
+    display: inline-block;
+    font-weight: 200;
+    margin-right: 5px;
+    padding: 5px;
+    text-align: center;
+    min-width: 35px;
+    min-height: 30px;
+
+    a {
+      color: $purple;
+      display: block;
+      font-weight: 200;
+      width: 100%;
+      text-align: center;
+    }
+
+    &.current {
+      background-color: $purple;
+      color: $white;
+    }
+  }
+}
+
+.pagination-container {
+  text-align: center;
+}

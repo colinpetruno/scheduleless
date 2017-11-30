@@ -1,6 +1,6 @@
 module PublicCompanies
   class SearchesController < ApplicationController
-    layout "blank"
+    layout "marketing"
 
     def index
       # binding.pry

@@ -19,6 +19,10 @@ class PublicCompany < ApplicationRecord
     }
   end
 
+  def title_line
+    [website, headquarters].compact.join(" / ")
+  end
+
   def to_param
     "#{uuid}-harrassment-at-#{name.parameterize}"
   end

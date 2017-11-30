@@ -1,0 +1,46 @@
+.public-companies-searches-index {
+  .search-bar {
+    background-color: $white;
+    display: flex;
+    margin-bottom: 30px;
+    padding: 20px 0;
+    width: 100%;
+
+    > form {
+      display: flex;
+      flex-direction: row;
+      margin: auto;
+    }
+
+    .input-wrap, input[type=submit] {
+      display: flex;
+      margin-bottom: 0;
+    }
+
+    .input-wrap > input {
+      min-width: 300px;
+    }
+  }
+
+  .search-results {
+    > section {
+      margin: auto;
+      max-width: 800px;
+    }
+
+    .result > div {
+      background-color: $white;
+      padding: 20px;
+      margin-bottom: 15px;
+
+      h4 {
+        margin-bottom: 0;
+      }
+
+      section {
+        color: $gray-light;
+        font-size: 12px;
+      }
+    }
+  }
+}
