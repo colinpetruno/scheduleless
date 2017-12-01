@@ -1,5 +1,5 @@
 class PublicCompaniesController < ApplicationController
-  layout "blank"
+  layout "marketing"
 
   def show
     @company = PublicCompany.find_by!(uuid: params[:id])

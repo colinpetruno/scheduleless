@@ -1,12 +1,505 @@
-hi this is public companies show,<br />
-this is the page the report will be on<br />
+<%= render partial: "shared/marketing/top_nav" %>
 
-<h2><%= @company.name %></h2>
-<br />
+<div class="public-companies-show" style="background-color: #f7f8fb">
+  <div class="page-title">
+    <h3>Coworkability Score</h3>
+  </div>
 
-A link to make a report
-<%= link_to "Make Report", new_public_company_public_report_path(@company) %>
-<br /><br />
+  <div class="company-header">
+    <div>
+      <h3><%= @company.name %></h3>
+      <div>
+        <small>Coworkability Score</small>
+      </div>
+    </div>
 
-A link for employers to learn more
-<%= link_to "Learn More", new_public_company_company_lead_path(@company) %>
+    <br />
+    <div>
+      <div>
+        <a href="#" class="button purple">Submit Feedback</a>
+      </div>
+
+      <div>
+        <a href="#" class="employer-link">
+          Do you represent <%= @company.name %>?
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <% if params[:preview].present? %>
+
+  <article class="coworkability-score">
+    <div class="poor selected">
+      <header>Poor</header>
+      <article>
+        <header>
+          <span class="oi oi-star"></span>
+        </header>
+        <section>
+          Poor
+        </section>
+      </article>
+    </div>
+
+    <div>
+      <article>
+        <header>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+        </header>
+        <section>
+          Below Average
+        </section>
+      </article>
+    </div>
+
+    <div class="average">
+      <article>
+        <header>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+        </header>
+        <section>
+          Average
+        </section>
+      </article>
+    </div>
+
+    <div>
+      <article>
+        <header>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+        </header>
+        <section>
+          Good
+        </section>
+      </article>
+    </div>
+
+    <div>
+      <article>
+        <header>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+        </header>
+        <section>
+          Excellent
+        </section>
+      </article>
+    </div>
+  </article>
+
+
+
+
+
+
+
+
+  <article class="coworkability-score">
+    <div class="poor">
+      <article>
+        <header>
+          <span class="oi oi-star"></span>
+        </header>
+        <section>
+          Poor
+        </section>
+      </article>
+    </div>
+
+    <div class="below-average selected">
+      <header>Below Average</header>
+      <article>
+        <header>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+        </header>
+        <section>
+          Below Average
+        </section>
+      </article>
+    </div>
+
+    <div class="average">
+      <article>
+        <header>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+        </header>
+        <section>
+          Average
+        </section>
+      </article>
+    </div>
+
+    <div>
+      <article>
+        <header>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+        </header>
+        <section>
+          Good
+        </section>
+      </article>
+    </div>
+
+    <div>
+      <article>
+        <header>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+        </header>
+        <section>
+          Excellent
+        </section>
+      </article>
+    </div>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <article class="coworkability-score">
+    <div>
+      <article>
+        <header>
+          <span class="oi oi-star"></span>
+        </header>
+        <section>
+          Poor
+        </section>
+      </article>
+    </div>
+
+    <div>
+      <article>
+        <header>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+        </header>
+        <section>
+          Below Average
+        </section>
+      </article>
+    </div>
+
+    <div class="average selected">
+      <header>Average</header>
+      <article>
+        <header>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+        </header>
+        <section>
+          Average
+        </section>
+      </article>
+    </div>
+
+    <div>
+      <article>
+        <header>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+        </header>
+        <section>
+          Good
+        </section>
+      </article>
+    </div>
+
+    <div>
+      <article>
+        <header>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+        </header>
+        <section>
+          Excellent
+        </section>
+      </article>
+    </div>
+  </article>
+
+
+
+
+
+
+
+
+
+
+
+
+  <article class="coworkability-score">
+    <div>
+      <article>
+        <header>
+          <span class="oi oi-star"></span>
+        </header>
+        <section>
+          Poor
+        </section>
+      </article>
+    </div>
+
+    <div>
+      <article>
+        <header>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+        </header>
+        <section>
+          Below Average
+        </section>
+      </article>
+    </div>
+
+    <div class="average">
+      <article>
+        <header>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+        </header>
+        <section>
+          Average
+        </section>
+      </article>
+    </div>
+
+    <div class="good selected">
+      <header>Good</header>
+      <article>
+        <header>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+        </header>
+        <section>
+          Good
+        </section>
+      </article>
+    </div>
+
+    <div>
+      <article>
+        <header>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+        </header>
+        <section>
+          Excellent
+        </section>
+      </article>
+    </div>
+  </article>
+
+
+
+<% end %>
+
+
+
+
+
+
+
+  <article class="coworkability-score">
+    <div>
+      <article>
+        <header>
+          <span class="oi oi-star"></span>
+        </header>
+        <section>
+          Poor
+        </section>
+      </article>
+    </div>
+
+    <div>
+      <article>
+        <header>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+        </header>
+        <section>
+          Below Average
+        </section>
+      </article>
+    </div>
+
+    <div class="average">
+      <article>
+        <header>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+        </header>
+        <section>
+          Average
+        </section>
+      </article>
+    </div>
+
+    <div>
+      <article>
+        <header>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+        </header>
+        <section>
+          Good
+        </section>
+      </article>
+    </div>
+
+    <div class="excellent selected">
+      <header>Excellent</header>
+      <article>
+        <header>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+          <span class="oi oi-star"></span>
+        </header>
+        <section>
+          Excellent
+        </section>
+      </article>
+    </div>
+  </article>
+
+
+
+
+
+  <br /><br />
+  <div style="text-align: center">
+    <h3>Levels</h3>
+  </div>
+
+
+  <div class="indicators">
+    <div>
+      <div>
+        <header><h4>Sexual Harassment</h4></header>
+        <article>
+          <div class="indicator green">
+            <div></div>
+          </div>
+        </article>
+        <footer>Low</footer>
+      </div>
+    </div>
+    <div>
+      <div>
+        <header><h4>Racial Discrimination</h4></header>
+        <article>
+          <div class="indicator green">
+            <div></div>
+          </div>
+        </article>
+        <footer>Low</footer>
+      </div>
+    </div>
+    <div>
+      <div>
+        <header><h4>Gender Discrimination</h4></header>
+        <article>
+          <div class="indicator green">
+            <div></div>
+          </div>
+        </article>
+        <footer>Low</footer>
+      </div>
+    </div>
+    <div>
+      <div>
+        <header><h4>LGBT Discrimination</h4></header>
+        <article>
+          <div class="indicator orange">
+            <div></div>
+          </div>
+        </article>
+      <footer>Elevated</footer>
+      </div>
+    </div>
+    <div>
+      <div>
+        <header><h4>Gossip</h4></header>
+        <article>
+          <div class="indicator green">
+            <div></div>
+          </div>
+        </article>
+        <footer>Low</footer>
+      </div>
+    </div>
+    <div>
+      <div>
+        <header><h4>Bullying</h4></header>
+        <article>
+          <div class="indicator red">
+            <div></div>
+          </div>
+        </article>
+        <footer>High</footer>
+      </div>
+    </div>
+  </div>
+
+
+  <% if 1 == 2 %>
+    hi this is public companies show,<br />
+    this is the page the report will be on<br />
+
+    <br />
+
+    A link to make a report
+    <%= link_to "Make Report", new_public_company_public_report_path(@company) %>
+    <br /><br />
+
+    A link for employers to learn more
+    <%= link_to "Learn More", new_public_company_company_lead_path(@company) %>
+  <% end %>
+</div>

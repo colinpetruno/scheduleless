@@ -9,7 +9,8 @@ class PublicReport < ApplicationRecord
     racial_discrimination: 3,
     gender_discrimination: 4,
     harassment: 5,
-    lgbt_discrimination: 6
+    lgbt_discrimination: 6,
+    gossip: 7
   }
 
   enum role: {

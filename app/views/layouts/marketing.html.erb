@@ -21,7 +21,7 @@
     <%= render partial: "layouts/shared/mixpanel" %>
   </head>
 
-  <body data-turbolinks="false">
+  <body data-turbolinks="false" class="<%= "coworkability" if coworkability? %>">
     <%= yield %>
 
     <%= javascript_include_tag "marketing" %>

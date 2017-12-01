@@ -1,0 +1,241 @@
+.public-companies-show {
+  max-width: 800px;
+  margin: auto;
+  padding-top: 50px;
+
+  .page-title {
+    margin-bottom: 50px;
+    text-align: center;
+
+    h3 {
+      font-size: 2.2rem;
+    }
+  }
+
+  .company-header {
+    background-color: $white;
+    border: 1px solid lighten($purple, 15%);
+    padding: 20px;
+    margin-bottom: 80px;
+    width: 100%;
+
+    > div {
+      h3 {
+        font-size: 1.75rem;
+        line-height: 30px;
+        margin-bottom: 0;
+      }
+
+      small {
+        color: $purple;
+        font-weight: 200;
+      }
+
+      text-align: center;
+      width: 100%;
+    }
+
+    .employer-link {
+      color: $purple;
+      display: block;
+      font-weight: 200;
+      font-size: 11px;
+      margin-top: 5px;
+    }
+  }
+
+  .coworkability-score {
+    display: flex;
+    flex-direction: row;
+    margin: 50px 0;
+    min-height: 100px;
+    width: 100%;
+
+    > div {
+      display: flex;
+      margin-top: auto;
+      flex-direction: column;
+      width: 20%;
+
+      &:last-child {
+        border-right: 0;
+      }
+
+      > article {
+        background-color: $white;
+        border-top: 1px solid lighten($purple, 15%);
+        border-bottom: 1px solid lighten($purple, 15%);
+        height: 80px;
+
+
+        > header {
+          color: lighten($purple, 18%);
+          height: 24px;
+          margin-top: 15px;
+          text-align: center;
+          width: 100%;
+        }
+
+        > section {
+          color: lighten($gray-light, 5%);
+          font-size: 12px;
+          padding: 0 0 10px 0;
+          text-align: center;
+          width: 100%;
+        }
+      }
+    }
+
+    .selected {
+      > article > header {
+        margin-top: 5px;
+      }
+    }
+
+    .average.selected {
+      > article {
+        border: 10px solid lighten($gray-light, 10%);
+      }
+
+      > header {
+        background-color: lighten($gray-light, 1%);
+        color: $white;
+        text-align: center;
+        width: 100%;
+      }
+    }
+
+    .good.selected {
+      > article {
+        border: 10px solid lighten($dark-blue, 10%);
+      }
+
+      > header {
+        background-color: lighten($dark-blue, 1%);
+        color: $white;
+        text-align: center;
+        width: 100%;
+      }
+    }
+
+    .excellent.selected {
+      > article {
+        border: 10px solid darken($green, 0%);
+        // border: 10px solid darken(#8ff288, 5%);
+      }
+
+      > header {
+        background-color: darken($green, 8%);
+        // background-color: darken(#8ff288, 8%);
+        color: $white;
+        text-align: center;
+        width: 100%;
+      }
+    }
+
+    .below-average.selected {
+      > article {
+        border: 10px solid lighten($orange, 10%);
+        border: 10px solid lighten(#ffa442, 10%);
+      }
+
+      > header {
+        background-color: lighten($orange, 1%);
+        background-color: #ffa442;
+        color: $white;
+        text-align: center;
+        width: 100%;
+      }
+    }
+
+    .poor.selected {
+      > article {
+        border: 10px solid lighten($red, 10%);
+      }
+
+      > header {
+        background-color: lighten($red, 1%);
+        color: $white;
+        text-align: center;
+        width: 100%;
+      }
+    }
+
+  }
+
+  .indicators {
+    @include make-row();
+
+    > div {
+      @include make-col-ready();
+      @include make-col(4);
+      padding: 15px;
+
+      > div {
+        background-color: $white;
+        border: 1px solid lighten($purple, 15%);
+        padding: 15px 0;
+
+        > header {
+          text-align: center;
+          width: 100%;
+
+          h4 {
+            font-size: 1rem;
+          }
+        }
+
+        > footer {
+          color: $purple;
+          font-size: .9rem;
+          font-weight: 200;
+          margin-top: 10px;
+          text-align: center;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .indicator {
+    border-radius: 50%;
+    border-width: 3px;
+    border-style: solid;
+    margin: auto;
+    max-width: 33px;
+    max-height: 33px;
+    min-width: 33px;
+    min-height: 33px;
+
+    > div {
+      border-radius: 50%;
+      min-width: 20px;
+      min-height: 23px;
+      margin: 2px;
+    }
+
+    &.green {
+      border-color: lighten($green, 0%);
+
+      > div {
+        background-color: lighten($green, 0%);
+      }
+    }
+
+    &.orange {
+      border-color: lighten($orange, 0%);
+
+      > div {
+        background-color: lighten($orange, 0%);
+      }
+    }
+
+    &.red {
+      border-color: lighten($red, 0%);
+
+      > div {
+        background-color: lighten($red, 0%);
+      }
+    }
+  }
+}
