@@ -25,7 +25,7 @@ class CompanySearch
   def score
     # seems like 5 is about right... why 5 (¯\_(ツ)_/¯)
     # need to figure out how to take the most relevant items based on scores here
-    index.min_score(5)
+    index.min_score(0.5)
   end
 
   private
