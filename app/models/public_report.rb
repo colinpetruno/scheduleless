@@ -24,6 +24,7 @@ class PublicReport < ApplicationRecord
     no_one: 0,
     manager: 1,
     hr_dept: 2,
+    friends: 4,
     other: 3
   }
 

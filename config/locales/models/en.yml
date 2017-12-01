@@ -30,14 +30,17 @@ en:
       categories:
         not_sure: "I'm not sure"
         sexual_harassment: "Sexual Harrassment"
+        sexual_assault: "Sexual Assault"
         racial_discrimination: "Racial Discrimination"
-        gender_descrimination: "Gender Discrimination"
+        gender_discrimination: "Gender Discrimination"
         harassment: "Harassment / Bullying"
-        lgb_discrimination: "LGBT / Orientation Discrimination"
+        lgbt_discrimination: "LGBT / Orientation Discrimination"
+        gossip: "Gossip"
       reported_to:
-        no_one: "No One"
-        manager: "Manager"
-        hr_dept: "HR Department"
+        no_one: "Not Reported"
+        friends: "Friends"
+        manager: "A Manager"
+        hr_dept: "The HR Department"
         other: "Other"
       roles:
         unclassified: "I'm Not Sure"

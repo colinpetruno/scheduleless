@@ -1,6 +1,6 @@
 <%= render partial: "shared/marketing/top_nav" %>
 
-<div class="public-companies-show" style="background-color: #f7f8fb">
+<div class="public-companies-show">
   <div class="page-title">
     <h3>Coworkability Score</h3>
   </div>
@@ -16,7 +16,9 @@
     <br />
     <div>
       <div>
-        <a href="#" class="button purple">Submit Feedback</a>
+        <%= link_to "Submit Feedback",
+          new_public_company_public_report_path(@company),
+          class: "button purple" %>
       </div>
 
       <div>

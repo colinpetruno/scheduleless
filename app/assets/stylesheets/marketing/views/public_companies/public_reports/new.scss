@@ -1,0 +1,22 @@
+.public-companies-public-reports-new {
+  max-width: 800px;
+  margin: auto;
+  padding-top: 50px;
+
+  .report-form {
+    background-color: $white;
+    border: 1px solid lighten($purple, 15%);
+    border-radius: 3px;
+    padding: 20px;
+    margin-bottom: 50px;
+  }
+
+  header {
+    margin-bottom: 50px;
+  }
+
+  header, footer {
+    text-align: center;
+    width: 100%;
+  }
+}

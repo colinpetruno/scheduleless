@@ -1,9 +1,9 @@
 module PublicCompanies
   class PublicReportsController < ApplicationController
-    layout "blank"
+    layout "marketing"
 
     def create
-      @company = PublicCompany.find(params[:public_company_id])
+      @company = PublicCompany.find_by!(uuid: params[:public_company_id])
 
       @public_report = PublicReport.new(public_report_params)
 
@@ -15,8 +15,7 @@ module PublicCompanies
     end
 
     def new
-      @company = PublicCompany.find(params[:public_company_id])
-
+      @company = PublicCompany.find_by!(uuid: params[:public_company_id])
       @public_report = PublicReport.new
     end
 

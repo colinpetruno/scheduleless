@@ -17,6 +17,14 @@ $header-bg: $brand-primary;
 $footer-bg: #00535c;
 
 $dark-text: $gray-dark;
+$font-dark: $gray-dark; // TODO: standardize on this one
+$font-light: $gray-light;
+
+// FORMS
+$input-color: $gray-dark;
+$form-border-color: lighten($purple, 15%);
+$form-font-size: .9rem;
+$form-select-icon-color: lighten($purple, 10%);
 
 $font-family-serif: "Montserrat", serif;
 $font-family-sans-serif: "Helvetica", Roboto, sans-serif;

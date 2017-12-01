@@ -8,6 +8,8 @@ $(document).on("turbolinks:load", function() {
 
     $("input.datepicker").each(function() {
       var minDateString = $(this).data('mindate');
+      var maxDateString = $(this).data('maxdate');
+
       var $hiddenField = $(this).
         closest("div.input").
         find(".datepicker-value");
@@ -18,9 +20,16 @@ $(document).on("turbolinks:load", function() {
         var minDate = new Date();
       }
 
+      if (maxDateString) {
+        var maxDate = new Date(maxDateString);
+      } else {
+        var maxDate = null;
+      }
+
       var picker = new Pikaday(
         Object.assign({}, window.Scheduleless.picker_options($(this)), {
           minDate: minDate,
+          maxDate: maxDate,
           onSelect: function() {
             var selectedDate = this.getDate();
             var dateInt = window.
