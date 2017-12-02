@@ -1,18 +1,31 @@
 module Scrapes
   module Glassdoor
     class RowAdaptor
+      COMPANY_SIZES = ["", "1 to 50 employees", "51 to 200 employees",
+                       "201 to 500 employees", "501 to 1000 employees",
+                       "1001 to 5000 employees", "5001 to 10000 employees",
+                       "10000+ employees"]
+
+      COMPANY_REVENUES = ["", "Less than $1 million (USD) per year",
+        "$1 to $5 million (USD) per year", "$5 to $10 million (USD) per year",
+        "$10 to $25 million (USD) per year", "$25 to $50 million (USD) per year",
+        "$50 to $100 million (USD) per year", "$100 to $500 million (USD) per year",
+        "$500 million to $1 billion (USD) per year", "$1 to $2 billion (USD) per year",
+        "$2 to $5 billion (USD) per year", "$5 to $10 billion (USD) per year",
+        "$10+ billion (USD) per year"]
+
       def initialize(row:)
         @row = row
       end
 
       def as_json(_options={})
         {
-          company_size: company_size,
+          company_size: company_size || 0,
           name: company_name,
           website: company_website,
           headquarters: headquarters,
           category: company_category,
-          revenue: revenue,
+          revenue: revenue || 0,
           founded: founded,
           linkedin_url: linkedin_url,
           twitter_url: twitter_url,
@@ -28,28 +41,33 @@ module Scrapes
 
       def company_size
         if @row["CompanySize"].include?("employees")
-          @row["CompanySize"]
+          size = @row["CompanySize"].strip
+          if COMPANY_SIZES.index(size)
+            COMPANY_SIZES.index(size)
+          else
+            0
+          end
         end
       rescue
         0
       end
 
       def company_name
-        @row["CompanyName"]
+        @row["CompanyName"].strip
       end
 
       def company_website
-        @row["CompanyWebsite"]
+        @row["CompanyWebsite"].strip
       end
 
       def company_category
-        # not sure why most of these ended up in revenue, my guess is revenue
-        # isn't often filled out and thus the xpath integer resolves here
-        if @row["Revenue"].exclude?("million") && @row["Revenue"].exclude?("billion")
-          @row["Revenue"]
-        end
+        valid_categories = I18n.t("models.public_company.categories")
+
+        wonky_attributes.select do |attr|
+          valid_categories[attr.parameterize(separator: "_").gsub("-", "_").to_sym].present?
+        end.first.parameterize(separator: "_").gsub("-", "_").to_sym
       rescue
-        nil
+        :unclassified
       end
 
       def company_type
@@ -62,16 +80,22 @@ module Scrapes
 
       def headquarters
         if @row["Headquarters"].exclude?("employees")
-          @row["Headquarters"]
+          @row["Headquarters"].strip
         end
       rescue
         nil
       end
 
       def revenue
-        wonky_attributes.select do |attr|
+        revenue = wonky_attributes.select do |attr|
           attr.include?("million") || attr.include?("billion")
-        end.first
+        end.first.strip
+
+        if COMPANY_REVENUES.index(revenue).present?
+          COMPANY_REVENUES.index(revenue)
+        else
+          0
+        end
       rescue
         0
       end
@@ -105,23 +129,33 @@ module Scrapes
       end
 
       def linkedin_url
-        @row["LinkedinUrl"]
+        @row["LinkedinUrl"].strip
+      rescue
+        ""
       end
 
       def twitter_url
-        @row["TwitterUrl"]
+        @row["TwitterUrl"].strip
+      rescue
+        ""
       end
 
       def facebook_url
-        @row["FacebookUrl"]
+        @row["FacebookUrl"].strip
+      rescue
+        ""
       end
 
       def instagram_url
-        @row["InstagramUrl"]
+        @row["InstagramUrl"].strip
+      rescue
+        ""
       end
 
       def youtube_url
-        @row["YoutubeUrl"]
+        @row["YoutubeUrl"].strip
+      rescue
+        ""
       end
 
       def response_code

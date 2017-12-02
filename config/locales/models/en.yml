@@ -26,6 +26,180 @@ en:
         no_evidence: "No Evidence"
         circumstantial_evidence: "Witnesses or Circumstantial Evidence"
         solid_evidence: "Solid Evidence"
+    public_company:
+      categories:
+        accounting: Accounting
+        adult_entertainment: Adult Entertainment
+        advertising_marketing: Advertising & Marketing
+        aerospace_defense: Aerospace & Defense
+        airlines: Airlines
+        animal_production: Animal Production
+        architectural_engineering_services: Architectural & Engineering Services
+        asphalt_products_manufacturing: Asphalt Products Manufacturing
+        auctions_galleries: Auctions & Galleries
+        audiovisual: Audiovisual
+        auto_repair_maintenance: Auto Repair & Maintenance
+        automotive_parts_accessories_stores: Automotive Parts & Accessories Stores
+        banks_credit_unions: Banks & Credit Unions
+        bars_nightclubs: Bars & Nightclubs
+        beauty_personal_accessories_stores: Beauty & Personal Accessories Stores
+        biotech_pharmaceuticals: Biotech & Pharmaceuticals
+        brokerage_services: Brokerage Services
+        building_personnel_services: Building & Personnel Services
+        bus_transportation_services: Bus Transportation Services
+        business_service_centers_copy_shops: Business Service Centers & Copy Shops
+        cable_internet_telephone_providers: Cable, Internet & Telephone Providers
+        car_rental: Car Rental
+        casual_restaurants: Casual Restaurants
+        catering_food_service_contractors: Catering & Food Service Contractors
+        charter_air_travel: Charter Air Travel
+        chemical_manufacturing: Chemical Manufacturing
+        college_university: College / University
+        colleges_universities: Colleges & Universities
+        commercial_equipment_rental: Commercial Equipment Rental
+        commercial_equipment_repair_maintenance: Commercial Equipment Repair & Maintenance
+        commercial_fishing: Commercial Fishing
+        commercial_printing: Commercial Printing
+        computer_hardware_software: Computer Hardware & Software
+        construction: Construction
+        consulting: Consulting
+        consumer_electronics_appliances_stores: Consumer Electronics & Appliances Stores
+        consumer_product_rental: Consumer Product Rental
+        consumer_products_manufacturing: Consumer Products Manufacturing
+        contract: Contract
+        convenience_stores_truck_stops: Convenience Stores & Truck Stops
+        cruise_ships: Cruise Ships
+        department_clothing_shoe_stores: Department, Clothing, & Shoe Stores
+        drug_health_stores: Drug & Health Stores
+        education_training_services: Education Training Services
+        electrical_electronic_manufacturing: Electrical & Electronic Manufacturing
+        energy: Energy
+        enterprise_software_network_solutions: Enterprise Software & Network Solutions
+        express_delivery_services: Express Delivery Services
+        farm_support_services: Farm Support Services
+        fast_food_quick_service_restaurants: Fast-Food & Quick-Service Restaurants
+        federal_agencies: Federal Agencies
+        financial_analytics_research: Financial Analytics & Research
+        financial_transaction_processing: Financial Transaction Processing
+        floral_nurseries: Floral Nurseries
+        food_beverage_manufacturing: Food & Beverage Manufacturing
+        food_beverage_stores: Food & Beverage Stores
+        food_production: Food Production
+        funeral_services: Funeral Services
+        gambling: Gambling
+        gas_stations: Gas Stations
+        general_merchandise_superstores: General Merchandise & Superstores
+        general_repair_maintenance: General Repair & Maintenance
+        gift_novelty_souvenir_stores: Gift, Novelty & Souvenir Stores
+        government: Government
+        grantmaking_foundations: Grantmaking Foundations
+        grocery_stores_supermarkets: Grocery Stores & Supermarkets
+        health_care_products_manufacturing: Health Care Products Manufacturing
+        health_care_services_hospitals: Health Care Services & Hospitals
+        health_fundraising_organizations: Health Fundraising Organizations
+        health_beauty_fitness: Health, Beauty, & Fitness
+        home_centers_hardware_stores: Home Centers & Hardware Stores
+        home_furniture_housewares_stores: Home Furniture & Housewares Stores
+        hospital: Hospital
+        hotels_motels_resorts: Hotels, Motels, & Resorts
+        industrial_manufacturing: Industrial Manufacturing
+        insurance_agencies_brokerages: Insurance Agencies & Brokerages
+        insurance_carriers: Insurance Carriers
+        internet: Internet
+        investment_banking_asset_management: Investment Banking & Asset Management
+        it_services: IT Services
+        k_12_education: K-12 Education
+        laundry_dry_cleaning: Laundry & Dry Cleaning
+        legal: Legal
+        lending: Lending
+        logistics_supply_chain: Logistics & Supply Chain
+        media_entertainment_retail_stores: Media & Entertainment Retail Stores
+        membership_organizations: Membership Organizations
+        metal_mineral_manufacturing: Metal & Mineral Manufacturing
+        metals_brokers: Metals Brokers
+        mining: Mining
+        miscellaneous_manufacturing: Miscellaneous Manufacturing
+        motion_picture_production_distribution: Motion Picture Production & Distribution
+        movie_theaters: Movie Theaters
+        moving_services: Moving Services
+        municipal_governments: Municipal Governments
+        museums_zoos_amusement_parks: Museums, Zoos & Amusement Parks
+        music_production_distribution: Music Production & Distribution
+        news_outlet: News Outlet
+        nonprofit_organization: Nonprofit Organization
+        office_supply_stores: Office Supply Stores
+        oil_gas_exploration_production: Oil & Gas Exploration & Production
+        oil_gas_services: Oil & Gas Services
+        other_organization: Other Organization
+        other_retail_stores: Other Retail Stores
+        parking_lots_garages: Parking Lots & Garages
+        passenger_rail: Passenger Rail
+        performing_arts: Performing Arts
+        pet_pet_supplies_stores: Pet & Pet Supplies Stores
+        photography: Photography
+        preschool_child_care: Preschool & Child Care
+        private_practice_firm: Private Practice / Firm
+        publishing: Publishing
+        radio: Radio
+        rail: Rail
+        real_estate: Real Estate
+        religious_organizations: Religious Organizations
+        research_development: Research & Development
+        security_services: Security Services
+        self_storage_services: Self-Storage Services
+        shipping: Shipping
+        social_assistance: Social Assistance
+        sporting_goods_stores: Sporting Goods Stores
+        sports_recreation: Sports & Recreation
+        staffing_outsourcing: Staffing & Outsourcing
+        state_regional_agencies: State & Regional Agencies
+        stock_exchanges: Stock Exchanges
+        subsidiary_or_business_segment: Subsidiary or Business Segment
+        talent_modeling_agencies: Talent & Modeling Agencies
+        taxi_limousine_services: Taxi & Limousine Services
+        telecommunications_manufacturing: Telecommunications Manufacturing
+        telecommunications_services: Telecommunications Services
+        ticket_sales: Ticket Sales
+        timber_operations: Timber Operations
+        towing_services: Towing Services
+        toy_hobby_stores: Toy & Hobby Stores
+        transportation_equipment_manufacturing: Transportation Equipment Manufacturing
+        transportation_management: Transportation Management
+        travel_agencies: Travel Agencies
+        truck_rental_leasing: Truck Rental & Leasing
+        trucking: Trucking
+        tv_broadcast_cable_networks: TV Broadcast & Cable Networks
+        upscale_restaurants: Upscale Restaurants
+        utilities: Utilities
+        vehicle_dealers: Vehicle Dealers
+        venture_capital_private_equity: Venture Capital & Private Equity
+        veterinary_services: Veterinary Services
+        video_games: Video Games
+        wholesale: Wholesale
+        wood_product_manufacturing: Wood Product Manufacturing
+      company_size:
+        unknown: "N/A"
+        one_to_fifty: "1 to 50 employees"
+        fifty_to_two_hundred: "51 to 200 employees"
+        two_to_five_hundred: "201 to 500 employees"
+        five_hundred_to_one_thousand: "501 to 1000 employees"
+        one_to_five_thousand: "1001 to 5000 employees"
+        five_to_ten_thousand: "5001 to 10000 employees"
+        over_ten_thousand: "10000+ employees"
+      revenue:
+        not_available: "N/A"
+        less_than_one_mil: "Less than $1 million (USD) per year"
+        one_to_five_mil: "$1 to $5 million (USD) per year"
+        five_to_ten_mil: "$5 to $10 million (USD) per year"
+        ten_to_twenty_five_mil: "$10 to $25 million (USD) per year"
+        twenty_five_to_fifty_mil: "$25 to $50 million (USD) per year"
+        fifty_to_one_hundred_mil: "$50 to $100 million (USD) per year"
+        one_hundred_to_five_hundred_mil: "$100 to $500 million (USD) per year"
+        five_hundred_mil_to_one_bil: "$500 million to $1 billion (USD) per year"
+        one_bil_to_two_bil: "$1 to $2 billion (USD) per year"
+        two_bil_to_five_bil: "$2 to $5 billion (USD) per year"
+        five_bil_to_ten_bil: "$5 to $10 billion (USD) per year"
+        over_ten_bil: "$10+ billion (USD) per year"
     public_report:
       categories:
         not_sure: "I'm not sure"

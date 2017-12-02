@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171129225631) do
+ActiveRecord::Schema.define(version: 20171202205248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -356,13 +356,10 @@ ActiveRecord::Schema.define(version: 20171129225631) do
   end
 
   create_table "public_companies", force: :cascade do |t|
-    t.string   "name",           null: false
+    t.string   "name",                       null: false
     t.string   "website"
     t.string   "company_type"
     t.string   "headquarters"
-    t.string   "category"
-    t.string   "revenue"
-    t.string   "company_size"
     t.integer  "founded"
     t.string   "linkedin_url"
     t.string   "twitter_url"
@@ -373,9 +370,12 @@ ActiveRecord::Schema.define(version: 20171129225631) do
     t.string   "gd_url"
     t.integer  "gd_employer_id"
     t.integer  "gd_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.string   "uuid",           null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "uuid",                       null: false
+    t.integer  "category",       default: 0, null: false
+    t.integer  "company_size",   default: 0, null: false
+    t.integer  "revenue",        default: 0, null: false
     t.index ["name"], name: "index_public_companies_on_name", using: :btree
     t.index ["uuid"], name: "index_public_companies_on_uuid", using: :btree
   end
