@@ -219,7 +219,7 @@ namespace :scrape do
     # ensure we shuffle our range to prevent sequential access
     (@start_int..@end_int).to_a.shuffle.each do |integer|
       # slow down so we dont get too much in trouble
-      sleep 1.5
+      sleep rand(0.7..1.3)
       puts "scrapping id: #{integer}"
       result = ScrapePage.new(integer: integer).scrape
 
