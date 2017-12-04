@@ -113,6 +113,10 @@ class PublicCompany < ApplicationRecord
     }
   end
 
+  def name
+    super || ""
+  end
+
   def title_line
     [website, headquarters].compact.join(" / ")
   end

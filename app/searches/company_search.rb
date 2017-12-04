@@ -18,7 +18,8 @@ class CompanySearch
     index.query(query_string: {
       fields: filter_fields,
       query: query,
-      default_operator: "and"
+      default_operator: "and",
+      fuzziness: 0
     })
   end
 

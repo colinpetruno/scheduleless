@@ -11,6 +11,8 @@ module PublicCompanies
           redirect_to public_company_path(@company) and return
         end
 
+        @company_search = PublicCompanySearch.new(search_params)
+
         @results = CompanySearch.
           new(query: SanitizedElasticsearchString.for(search_params[:query])).
           search.
@@ -22,8 +24,8 @@ module PublicCompanies
     private
 
     def search_params
-      if params[:search].present?
-        params[:search].permit(:query)
+      if params[:public_company_search].present?
+        params[:public_company_search].permit(:query)
       else
         nil
       end

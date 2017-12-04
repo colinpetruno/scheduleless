@@ -2,7 +2,7 @@
 <div class="public-companies-searches-index" style="background-color: #f7f8fb">
 
   <div class="search-bar">
-    <%= simple_form_for :search, url: public_companies_searches_path, method: :get do |f| %>
+    <%= simple_form_for (@company_search || PublicCompanySearch.new), url: public_companies_searches_path, method: :get do |f| %>
       <%= f.input :query, wrapper: false, label: false %>
 
       <%= f.submit "Search", class: "button orange" %>
@@ -10,24 +10,30 @@
   </div>
 
 
-  <% if @results.present? %>
-    <div class="search-results">
-      <section>
-        <% @results.each do |result| %>
-          <%= link_to(public_company_path(result), class: "result") do %>
-            <div>
-              <h4><%= result.name %></h4>
-              <section>
-                <%= result.title_line %>
-              </section>
-            </div>
-          <% end %>
-        <% end %>
+  <div class="search-results">
+    <% if @results.any? %>
+        <%= render partial: "cant_find", locals: { company_name: @company_search.query } %>
 
-        <div class="pagination-container">
-          <%= paginate @results %>
-        </div>
-      </section>
-    </div>
-  <% end %>
+        <section>
+          <% @results.each do |result| %>
+            <%= link_to(public_company_path(result), class: "result") do %>
+              <div>
+                <h4><%= result.name %></h4>
+                <section>
+                  <%= result.title_line %>
+                </section>
+              </div>
+            <% end %>
+          <% end %>
+
+          <div class="pagination-container">
+            <%= paginate @results %>
+          </div>
+
+          <%= render partial: "cant_find", locals: { company_name: @company_search.query } %>
+        </section>
+    <% else %>
+      <%= render partial: "no_results", locals: { company_name: @company_search.query } %>
+    <% end %>
+  </div>
 </div>

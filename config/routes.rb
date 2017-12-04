@@ -38,9 +38,7 @@ Rails.application.routes.draw do
   end
 
   resources :public_companies, path: "company", only: [:show] do
-    scope module: :public_companies do
-      resources :public_reports, path: "incidents", only: [:create, :new]
-    end
+    resources :public_reports, path: "incidents", only: [:create, :new]
 
     resources :company_leads, only: [:new], path: "request_info"
   end
@@ -63,6 +61,7 @@ Rails.application.routes.draw do
   }
 
   resources :employee_positions, only: [:destroy]
+  resources :public_reports, path: "feedback", only: [:create, :new]
 
   get "getting_started", to: "marketing/welcome#getting_started", as: :getting_started
 

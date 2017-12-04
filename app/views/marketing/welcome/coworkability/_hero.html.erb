@@ -5,7 +5,7 @@
     <h3>Help put a spotlight on workplace harassment!</h3>
 
     <section class="company-search-form">
-      <%= simple_form_for :search, url: public_companies_searches_path, method: :get do |f| %>
+      <%= simple_form_for (@company_search || PublicCompanySearch.new), url: public_companies_searches_path, method: :get do |f| %>
         <%= f.input :query,
           label: false,
           input_html: { class: "company-search-input" },
