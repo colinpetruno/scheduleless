@@ -1,6 +1,6 @@
 module Coworkability
   class SharesController < ApplicationController
-    layout "blank"
+    layout "marketing"
 
     def show
     end

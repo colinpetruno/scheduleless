@@ -16,7 +16,7 @@ class PublicReportsController < ApplicationController
   def new
     @company = find_public_company
 
-    @public_report = PublicReport.new
+    @public_report = PublicReport.new(public_company_id: @company.id)
   end
 
   private
@@ -49,8 +49,14 @@ class PublicReportsController < ApplicationController
              :handled_description,
              :handled_satisfied,
              :preferred_handling,
+             :public_company_id,
              :name,
-             :email
-            )
+             :email,
+             :gender,
+             :race
+            ).
+    merge(ip_address: request.ip,
+          remote_ip_address: request.remote_ip,
+          user_agent: request.user_agent)
   end
 end

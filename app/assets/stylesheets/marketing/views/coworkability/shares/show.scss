@@ -1,0 +1,45 @@
+.coworkability-shares-new {
+  background-color: $white;
+  border: 1px solid $purple;
+  margin: 50px auto;
+  padding: 50px 0 50px 50px;
+  max-width: 960px;
+
+  article {
+    color: $gray-dark;
+    font-weight: 200;
+    display: flex;
+    flex-direction: row;
+
+    > section {
+      text-align: center;
+      width: 40%;
+
+      h3 {
+        display: block;
+        width: 100%;
+      }
+
+      a.fb-xfbml-parse-ignore {
+        background-color: red;
+        display: block;
+        width: 100%;
+      }
+    }
+
+    > aside {
+      padding-top: 15px;
+      padding-left: 50px;
+      width: 60%;
+
+      > img {
+        max-width: 100%;
+      }
+    }
+
+    > section, > aside {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

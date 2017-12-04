@@ -13,6 +13,25 @@ class PublicReport < ApplicationRecord
     gossip: 7
   }
 
+  enum gender: {
+    not_given: 0,
+    female: 1,
+    male: 2,
+    trans: 3,
+    other_gender: 4
+  }
+
+  enum race: {
+    undisclosed: 0,
+    american_native: 1,
+    asian: 2,
+    black: 3,
+    pacific_islander: 4,
+    white: 5,
+    hispanic: 6,
+    multiracial: 7
+  }
+
   enum role: {
     unclassified: 0,
     victim: 1,

@@ -1,0 +1,25 @@
+.button.share {
+  cursor: pointer;
+  font-family: $font-family-sans-serif;
+  font-weight: 200;
+  line-height: 20px;
+  vertical-align: middle;
+
+  img {
+    display: inline-block;
+    max-height: 15px;
+    max-width: 15px;
+    margin-bottom: 3px;
+    margin-right: 20px;
+  }
+}
+
+.facebook.button.share {
+  background-color: #3b5998;
+  color: $white;
+}
+
+.twitter.button.share {
+  background-color: #00aced;
+  color: $white;
+}

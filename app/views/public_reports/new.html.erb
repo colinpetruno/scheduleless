@@ -9,6 +9,7 @@
 
     <h4>Tell Us Your Story</h4>
     <%= simple_form_for [@company, @public_report] do |f| %>
+      <%= f.input :public_company_id, as: :hidden %>
 
       <%= f.input :incident_date,
         label: "About when did this happen?",

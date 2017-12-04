@@ -23,12 +23,14 @@
     <%= render partial: "layouts/shared/google_analytics",
       locals: { internal: false } %>
     <%= render partial: "layouts/shared/mixpanel" %>
+
+    <%= javascript_include_tag "marketing" %>
+    <%= render partial: "shared/facebook_js_sdk" %>
   </head>
 
   <body data-turbolinks="false" class="<%= "coworkability" if coworkability? %>">
     <%= yield %>
 
-    <%= javascript_include_tag "marketing" %>
     <%= render partial: "layouts/shared/js_i18n" %>
     <div id="tracking-data"
          style="display:none"

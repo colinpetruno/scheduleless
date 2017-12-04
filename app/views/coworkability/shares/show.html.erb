@@ -1,2 +1,44 @@
-this will be the page that people see after creating a report. It will ask
-them to share it to social media channels.
+<%= render partial: "shared/marketing/top_nav" %>
+
+<div class="coworkability-shares-new">
+  <article>
+    <section>
+      <h3>Thank You!</h3><br />
+      We appreciate you taking the time to help us shed light on workplace
+      harassment.<br /><br />
+
+      There is one more quick thing you can do to help. Share us on Facebook or
+      Twitter to help spread the word. We can only stop harassment with more
+      people like you.
+
+
+      <script type="text/javascript">
+        $(function(){
+          $(".facebook.button").click(function(e) {
+            e.preventDefault();
+
+            FB.ui({
+              method: 'share',
+              href: 'https://www.coworkability.io',
+            }, function(response){});
+         })
+        });
+      </script>
+
+      <br /><br />
+
+      <button class="facebook button share" target="_blank">
+        <%= image_tag "icons/facebook.svg" %>Share on Facebook
+      </button>
+
+      <br />
+      <a class="twitter button share" target="_blank" href="https://twitter.com/intent/tweet?text=Help%20Coworkability%20stop%20workplace%20harassment&url=https://www.coworkability.io">
+        <%= image_tag "icons/twitter.png" %>Share on Twitter
+      </a>
+    </section>
+
+    <aside>
+      <%= image_tag "coworkability/shares/share_illustration.jpg" %>
+    </aside>
+  </article>
+</div>
