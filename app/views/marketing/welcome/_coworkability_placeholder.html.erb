@@ -1,4 +1,4 @@
-<% if params[:preview].present? %>
+<% if params[:preview].present? || Rails.env.development? %>
   <%= render partial: "marketing/welcome/coworkability/hero" %>
   <%= render partial: "marketing/welcome/coworkability/description" %>
 
