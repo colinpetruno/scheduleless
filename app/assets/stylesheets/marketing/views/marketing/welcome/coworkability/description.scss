@@ -1,0 +1,80 @@
+.welcome-coworkability-description {
+  font-weight: 200px;
+  margin: auto;
+  max-width: 960px;
+  text-align: center;
+
+  > article {
+    background-color: $white;
+    border: 1px solid lighten($purple, 15%);
+    margin-top: 70px;
+    padding: 25px;
+
+    > header {
+      text-align: center;
+      margin: 0 auto 30px auto;
+
+      h4 {
+        font-size: 1.4rem;
+      }
+    }
+  }
+
+  > section {
+    display: flex;
+    flex-direction: row;
+    margin: 50px auto 100px auto;
+
+    > article {
+      background-color: $white;
+      border: 1px solid lighten($purple, 15%);
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      width: 50%;
+
+      &:first-child {
+        margin-right: 15px;
+      }
+
+      &:last-child {
+        margin-left: 15px;
+      }
+
+      > img {
+        margin: 0 auto;
+      }
+
+      h5 {
+        font-size: 1.2rem;
+        font-weight: 200;
+      }
+
+      header,section,footer {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        width: 100%;
+      }
+
+      > header {
+        margin-top: 25px;
+      }
+
+      > section {
+        display: block;
+        padding: 25px;
+      }
+
+      > footer {
+        margin-top: auto;
+        margin-bottom: 25px;
+
+        a {
+          max-width: 300px;
+          margin: auto;
+        }
+      }
+    }
+  }
+}

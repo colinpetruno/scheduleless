@@ -1,0 +1,23 @@
+.marketing-company-inquiries-products {
+  @include make-container();
+  margin: 50px auto;
+  max-width: 960px;
+
+  > section {
+    @include make-row();
+  }
+
+  > section > article {
+    @include make-col-ready();
+    @include make-col(6);
+  }
+
+  .product {
+    background-color: $white;
+    border: 1px solid $purple;
+    border-radius: 3px;
+    min-height: 350px;
+    padding: 20px;
+    text-align: center;
+  }
+}

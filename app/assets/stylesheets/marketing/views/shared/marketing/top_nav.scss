@@ -16,6 +16,15 @@
     margin-bottom: 0;
   }
 
+  a {
+    color: $white;
+
+   &:hover, &:focus, &:visited {
+    color: $white;
+    text-decoration: none;
+   }
+  }
+
   ul {
     list-style: none;
     margin-bottom: 0;

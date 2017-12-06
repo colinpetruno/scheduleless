@@ -13,12 +13,21 @@
 
   h3 {
     color: $white;
-    margin-bottom: 50px;
+    font-size: 2rem;
+    text-align: center;
   }
 
   article {
     display: flex;
     flex-direction: column;
     margin: auto auto;
+  }
+
+  .subtitle {
+    color: $white;
+    text-align: center;
+    font-weight: 200;
+    margin-bottom: 50px;
+    width: 100%;
   }
 }

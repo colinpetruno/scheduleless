@@ -1,0 +1,42 @@
+<%= render partial: "shared/marketing/top_nav" %>
+
+<div class="marketing-company-inquiries-new">
+  <div>
+    <section class="content">
+      <article>
+        <h1>How can we help?</h3>
+        This is a test, can we do stuff and see this text?
+      </article>
+      <article>
+        <div class="form">
+          <%= simple_form_for [@inquiry] do |f| %>
+            <header>
+              <h3>Tell us about yourself and we'll get right back to you.</h3>
+            </header>
+
+            <section>
+              <div class="inline">
+                <%= f.input :first_name %>
+                <%= f.input :last_name %>
+              </div>
+
+              <div class="inline">
+                <%= f.input :job_title %>
+                <%= f.input :company_name %>
+              </div>
+            </section>
+
+            <footer>
+              <%= f.submit "Connect With Us", class: "button purple" %>
+            </footer>
+          <% end %>
+        </div>
+      </article>
+    </section>
+  </div>
+</div>
+
+<%= render "products" %>
+
+<%= render partial: "marketing/welcome/shared/divider_bar" %>
+<%= render partial: "marketing/welcome/shared/footer" %>

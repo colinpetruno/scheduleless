@@ -1,0 +1,62 @@
+.marketing-company-inquiries-new {
+  background-color: #9889e9;
+  background: asset-url("marketing/welcome/shared/divider_bar.jpg");
+  background-repeat: none;
+  background-size: cover;
+  min-height: 400px;
+
+  > div {
+    color: $white;
+    margin: auto;
+    padding: 50px 0;
+    max-width: 900px;
+  }
+
+  h1 {
+    color: $white;
+    font-weight: 200;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+
+    > article {
+      display: flex;
+      flex-direction: column;
+
+      &:first-child {
+        width: 40%;
+      }
+
+      &:last-child {
+        width: 60%;
+      }
+    }
+  }
+
+  .form {
+    background-color: $white;
+    display: block;
+    min-height: 200px;
+    padding: 20px;
+    width: 100%;
+
+    > form {
+      margin-bottom: 0;
+    }
+
+    h3 {
+      font-size: 1.2rem;
+    }
+
+    header, footer {
+      text-align: center;
+    }
+
+    footer {
+      margin-top: 20px;
+    }
+  }
+}

@@ -8,7 +8,7 @@ module Scrapes
       def load
         counter = 0
         CSV.foreach("#{Rails.root}/lib/scrapes/#{@file_name}", headers: true) do |row|
-          puts "Processing Row #{counter}"
+          # puts "Processing Row #{counter}"
           row = RowAdaptor.new(row: row)
 
           # only add successful scrapes

@@ -1,0 +1,2 @@
+class CompanyInquiry < ApplicationRecord
+end

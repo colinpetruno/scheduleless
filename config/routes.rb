@@ -33,6 +33,11 @@ Rails.application.routes.draw do
     end
   end
 
+  scope module: :marketing do
+    resources :company_inquiries, only: [:create, :new], path: "inquiries"
+    get "why-report-harrassment", to: "static_pages#why", as: :why_report
+  end
+
   namespace :public_companies, path: "companies" do
     resources :searches, path: "search", only: [:index]
   end

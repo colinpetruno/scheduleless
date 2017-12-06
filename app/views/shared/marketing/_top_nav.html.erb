@@ -1,8 +1,14 @@
 <nav class="shared-marketing-top-nav <%= local_assigns.fetch(:version, "light") %>">
-  <h2>Coworkability</h2>
+  <h2><%= link_to "Coworkability", root_path %></h2>
 
   <ul>
-    <li><a href="#">For Employers</a>
-    <li><a href="#">Sign In</a>
+    <li>
+      <%= link_to "Why Report To Us", why_report_path %>
+    <li>
+      <%= link_to "For Employers", new_company_inquiry_path %>
+    </li>
+    <li>
+      <a href="#">Sign In</a>
+    </li>
   </ul>
 </nav>

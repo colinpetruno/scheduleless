@@ -2,7 +2,12 @@
   <%= render partial: "shared/marketing/top_nav" %>
 
   <article>
-    <h3>Help put a spotlight on workplace harassment!</h3>
+    <h3>Help put a spotlight on workplace harassment</h3>
+
+    <div class="subtitle">
+      Our Coworkability Score provides insight into how a companies employees
+      treat each other.
+    </div>
 
     <section class="company-search-form">
       <%= simple_form_for (@company_search || PublicCompanySearch.new), url: public_companies_searches_path, method: :get do |f| %>
