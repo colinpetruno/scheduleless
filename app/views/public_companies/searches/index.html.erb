@@ -1,15 +1,7 @@
 <%= render partial: "shared/marketing/top_nav" %>
+<%= render partial: "shared/marketing/search_bar" %>
+
 <div class="public-companies-searches-index" style="background-color: #f7f8fb">
-
-  <div class="search-bar">
-    <%= simple_form_for (@company_search || PublicCompanySearch.new), url: public_companies_searches_path, method: :get do |f| %>
-      <%= f.input :query, wrapper: false, label: false %>
-
-      <%= f.submit "Search", class: "button orange" %>
-    <% end %>
-  </div>
-
-
   <div class="search-results">
     <% if @results.any? %>
         <%= render partial: "cant_find", locals: { company_name: @company_search.query } %>
@@ -37,3 +29,6 @@
     <% end %>
   </div>
 </div>
+
+<%= render partial: "marketing/welcome/shared/divider_bar" %>
+<%= render partial: "marketing/welcome/shared/footer" %>

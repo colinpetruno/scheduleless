@@ -24,6 +24,7 @@
 
   .made-in {
     font-size: .8rem;
+    margin: 50px 0;
     text-align: center;
   }
 
@@ -31,7 +32,7 @@
     @include make-row();
     border-bottom: 1px solid lighten(#9b80d1, 20%);
     padding-bottom: 50px;
-    margin-bottom: 50px;
+    // margin-bottom: 50px;
 
     > section {
       @include make-col-ready();

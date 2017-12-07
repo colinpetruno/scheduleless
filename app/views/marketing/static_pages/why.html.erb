@@ -1,5 +1,100 @@
 <%= render partial: "shared/marketing/top_nav" %>
+<%= render partial: "shared/marketing/search_bar" %>
 
-<br /><br />
+<div class="marketing-static-pages-why">
+  <header>
+    <h2>Most Harassment Goes Unreported</h3>
+  </header>
+  <div class="stats">
+    <article>
+      <div>
+        <header>
+          <small>less than</small>
+          <h3>5%</h3>
+          of incidents are officially reported.
+        </header>
+      </div>
+    </article>
+    <article>
+      <div>
+        <header>
+          <small>less than</small>
+          <h3>35%</h3>
+        </header>
+        tell a manager or supervisor.
+      </div>
+    </article>
 
-This will be where social media and learn more about us will live.
+    <article>
+      <div>
+        <header>
+          <small>up to</small>
+          <h3>2/3rds</h3>
+        </header>
+        experience retaliation.
+      </div>
+    </article>
+  </div>
+
+  <article>
+    We need your help to shine a light on harassment in the workplace.
+  </article>
+
+  <div class="workings">
+    <header>
+      <h3>How it Works</h3>
+      We make reporting safe and easy.
+    </header>
+
+    <section>
+      <aside>
+        <%= image_tag("marketing/static_pages/why/clipboard.jpg") %>
+      </aside>
+
+      <article>
+        <div>1</div>
+        <div>
+          <header>You report your experiences with harassment</header>
+          Report your positive and negative experiences with harassment. It
+          doesn't matter how serious or minor it is. Just letting us know about
+          it goes a long way to bringing more exposure to harassment and
+          bullying.
+        </div>
+      </article>
+    </section>
+
+    <section>
+      <aside>
+        <%= image_tag("marketing/static_pages/why/calculate.jpg") %>
+      </aside>
+
+      <article>
+        <div>2</div>
+        <div>
+          <header>We crunch the numbers</header>
+          We categorize and review reports. Every report gets its own score
+          based on over a dozen criteria and metrics.
+        </div>
+      </article>
+    </section>
+
+    <section>
+      <aside>
+        <%= image_tag("marketing/static_pages/why/traffic_light.jpg") %>
+      </aside>
+
+      <article>
+        <div>3</div>
+        <div>
+          <header>We rate the company</header>
+          We total up all the incidents and compare it with other companies
+          based on type of company and size of company. We then give it a
+          Coworkability Score.
+        </div>
+      </article>
+    </section>
+  </div>
+</div>
+<%= render partial: "shared/marketing/search_bar" %>
+<%# render partial: "marketing/welcome/shared/divider_bar" %>
+<%= render partial: "marketing/welcome/shared/footer" %>

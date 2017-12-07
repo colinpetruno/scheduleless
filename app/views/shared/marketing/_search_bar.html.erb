@@ -1,0 +1,7 @@
+<div class="shared-marketing-search-bar">
+  <%= simple_form_for (@company_search || PublicCompanySearch.new), url: public_companies_searches_path, method: :get do |f| %>
+    <%= f.input :query, wrapper: false, label: false %>
+
+    <%= f.submit "Search", class: "button orange" %>
+  <% end %>
+</div>

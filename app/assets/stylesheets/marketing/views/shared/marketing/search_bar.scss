@@ -1,0 +1,23 @@
+.shared-marketing-search-bar {
+  background-color: $white;
+  border-bottom: 1px solid lighten($purple, 15%);
+  border-top: 1px solid lighten($purple, 15%);
+  display: flex;
+  padding: 20px 0;
+  width: 100%;
+
+  > form {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+  }
+
+  .input-wrap, input[type=submit] {
+    display: flex;
+    margin-bottom: 0;
+  }
+
+  .input-wrap > input {
+    min-width: 300px;
+  }
+}
