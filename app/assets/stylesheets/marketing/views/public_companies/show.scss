@@ -165,6 +165,7 @@
 
   .indicators {
     @include make-row();
+    padding-bottom: 80px;
 
     > div {
       @include make-col-ready();
