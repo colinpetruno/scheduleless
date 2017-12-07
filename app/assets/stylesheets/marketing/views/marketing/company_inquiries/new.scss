@@ -9,7 +9,7 @@
     color: $white;
     margin: auto;
     padding: 50px 0;
-    max-width: 900px;
+    max-width: 960px;
   }
 
   h1 {
@@ -33,11 +33,22 @@
       &:last-child {
         width: 60%;
       }
+
+      .description {
+        background-color: rgba(0,0,0,.4);
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+        font-weight: 200;
+        margin-top: 30px;
+        padding: 20px;
+      }
     }
   }
 
   .form {
     background-color: $white;
+    border-radius: 3px;
+    border: 1px solid $purple;
     display: block;
     min-height: 200px;
     padding: 20px;

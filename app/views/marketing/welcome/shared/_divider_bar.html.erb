@@ -1,13 +1,28 @@
-<div class="welcome-shared-divider-bar">
-  <article>
-    <section>
-      <h5>No obligations. No contracts.</h5>
-      Save hours on scheduling today.
-    </section>
+<% if coworkability? %>
+  <div class="welcome-shared-divider-bar coworkability">
+    <article>
+      <section>
+        <h5>Most harassment goes unreported.</h5>
+        Let's change that.
+      </section>
 
-    <section>
-      <%= link_to("Get Started. 30 day free trial.",
-        new_onboarding_registration_path ) %>
-    </section>
-  </article>
-</div>
+      <section>
+        <%= link_to("Learn More", why_report_path ) %>
+      </section>
+    </article>
+  </div>
+<% else %>
+  <div class="welcome-shared-divider-bar">
+    <article>
+      <section>
+        <h5>No obligations. No contracts.</h5>
+        Save hours on scheduling today.
+      </section>
+
+      <section>
+        <%= link_to("Get Started. 30 day free trial.",
+          new_onboarding_registration_path ) %>
+      </section>
+    </article>
+  </div>
+<% end %>

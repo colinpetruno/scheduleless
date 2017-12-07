@@ -8,6 +8,11 @@
   display: flex;
   flex-direction: row;
 
+  &.coworkability {
+    background-image: image-url("marketing/welcome/shared/divider_bar_alt.jpg");
+    min-height: 220px;
+  }
+
   > article {
     margin: auto;
     display: flex;

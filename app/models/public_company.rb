@@ -129,6 +129,7 @@ class PublicCompany < ApplicationRecord
 
   def set_uuid
     return if self.uuid.present?
+
     self.uuid = SecureRandom.hex(6)
   end
 end

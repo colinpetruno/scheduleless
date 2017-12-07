@@ -16,8 +16,20 @@
     background-color: $white;
     border: 1px solid $purple;
     border-radius: 3px;
+    color: darken($gray-dark, 20%);
+    font-weight: 200;
     min-height: 350px;
     padding: 20px;
     text-align: center;
+
+    > section.market {
+      text-align: left;
+      margin-top: 30px;
+      width: 100%;
+
+      ul {
+        padding-left: 20px;
+      }
+    }
   }
 }
