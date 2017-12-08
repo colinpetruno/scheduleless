@@ -84,20 +84,26 @@
 @media (max-width: map-get($grid-breakpoints, lg)) {
   .welcome-coworkability-description {
     > article {
+      display: block;
+      margin: 0 10px;
       margin-top: 25px;
     }
 
     > section {
-      flex-direction: column;
-      margin-top: 25px;
-      margin-bottom: 0;
+      display: block;
+      margin: 25px 10px 0 10px;
 
       > article {
-        width: 100%;
+        display:block;
         margin: 0;
         margin-bottom: 25px;
-        margin-left: 0;
         padding: 15px;
+        width: 100%;
+
+        &:first-child {
+          margin: 0;
+          margin-bottom: 25px;
+        }
 
         &:last-child {
           margin-left: 0;

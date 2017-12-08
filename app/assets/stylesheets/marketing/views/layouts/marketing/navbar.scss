@@ -89,13 +89,14 @@
   width: 100%;
 
   &.coworkability {
-    background-color: lighten($purple, 10%);
+    background-color: darken(#988ae6, 3%);
   }
 
   a {
     color: $white;
     display: block;
-    padding: 5px 10px;
+    font-weight: 200;
+    padding: 8px 10px;
     text-align: center;
   }
 }

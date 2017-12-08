@@ -31,3 +31,32 @@
     width: 100%;
   }
 }
+
+@media (max-width: map-get($grid-breakpoints, lg)) {
+.marketing-welcome-coworkability-hero {
+  .company-search-form {
+    padding-left: 10px;
+    padding-right: 10px;
+
+    > form {
+      display: block;
+
+      > .input-wrap {
+        display: block;
+
+        .twitter-typeahead > input {
+          border-radius: 5px;
+          margin-bottom: 10px;
+        }
+      }
+
+      > input[type=submit] {
+        border-radius: 5px;
+        display: block !important;
+        font-size: 1.2rem;
+        width: 100%;
+      }
+    }
+  }
+}
+}
