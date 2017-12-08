@@ -88,6 +88,10 @@
 #mobile-menu {
   width: 100%;
 
+  &.coworkability {
+    background-color: lighten($purple, 10%);
+  }
+
   a {
     color: $white;
     display: block;

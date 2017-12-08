@@ -71,3 +71,23 @@
     }
   }
 }
+
+
+@media (max-width: map-get($grid-breakpoints, lg)) {
+  .marketing-company-inquiries-new {
+    .content {
+      flex-direction: column;
+    }
+
+    .content > article {
+      &:first-child, &:last-child {
+        width: 100%;
+      }
+
+      .description {
+        margin-top: 0;
+        text-align: center;
+      }
+    }
+  }
+}

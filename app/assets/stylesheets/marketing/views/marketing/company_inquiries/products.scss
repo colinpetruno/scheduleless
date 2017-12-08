@@ -33,3 +33,15 @@
     }
   }
 }
+
+@media (max-width: map-get($grid-breakpoints, lg)) {
+  .marketing-company-inquiries-products {
+    > section > article {
+      @include make-col(12);
+
+      &:first-child {
+        margin-bottom: 40px;
+      }
+    }
+  }
+}

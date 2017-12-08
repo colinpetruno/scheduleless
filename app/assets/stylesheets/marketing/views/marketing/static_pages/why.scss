@@ -104,3 +104,25 @@
     }
   }
 }
+
+@media (max-width: map-get($grid-breakpoints, lg)) {
+  .marketing-static-pages-why {
+    .stats > article {
+      @include make-col(12);
+      margin-bottom: 15px;
+    }
+
+    div.workings > section {
+      margin-bottom: 35px;
+
+      > aside, > article {
+        @include make-col(12);
+        text-align: center;
+      }
+
+      > article > div:first-child {
+        display: none;
+      }
+    }
+  }
+}

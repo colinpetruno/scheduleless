@@ -278,3 +278,12 @@ input[type=submit], button[type=submit] {
 .user_locations .input-wrap::after {
   content: "" !important;
 }
+
+@media (max-width: map-get($grid-breakpoints, lg)) {
+  form .inline {
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    vertical-align: top;
+  }
+}

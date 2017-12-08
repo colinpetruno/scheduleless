@@ -33,3 +33,13 @@
 .pagination-container {
   text-align: center;
 }
+
+@media (max-width: map-get($grid-breakpoints, lg)) {
+  .pagination {
+    > span {
+      padding: 3px;
+      min-width: 25px;
+      min-height: 25px;
+    }
+  }
+}

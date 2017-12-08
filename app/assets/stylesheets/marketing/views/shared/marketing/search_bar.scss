@@ -21,3 +21,22 @@
     min-width: 300px;
   }
 }
+
+@media (max-width: map-get($grid-breakpoints, lg)) {
+  .shared-marketing-search-bar {
+    > form {
+      display: block;
+
+      .input-wrap, input[type=submit] {
+        display: block;
+        margin-bottom: 10px;
+        width: 100%;
+      }
+
+      input[type=text] {
+        border: 1px solid $purple;
+        padding: 5px 15px;
+      }
+    }
+  }
+}

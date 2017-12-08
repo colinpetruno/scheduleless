@@ -21,3 +21,11 @@
     }
   }
 }
+
+@media (max-width: map-get($grid-breakpoints, lg)) {
+  .public-companies-searches-index {
+    .search-results {
+      margin: 0 10px;
+    }
+  }
+}

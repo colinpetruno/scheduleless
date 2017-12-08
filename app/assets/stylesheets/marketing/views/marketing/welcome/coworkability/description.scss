@@ -80,3 +80,29 @@
     }
   }
 }
+
+@media (max-width: map-get($grid-breakpoints, lg)) {
+  .welcome-coworkability-description {
+    > article {
+      margin-top: 25px;
+    }
+
+    > section {
+      flex-direction: column;
+      margin-top: 25px;
+      margin-bottom: 0;
+
+      > article {
+        width: 100%;
+        margin: 0;
+        margin-bottom: 25px;
+        margin-left: 0;
+        padding: 15px;
+
+        &:last-child {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
