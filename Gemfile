@@ -28,6 +28,7 @@ gem "resque-pool"
 gem "resque-web", require: "resque_web"
 gem "sass-rails", "~> 5.0"
 gem "simple_form"
+gem 'sitemap_generator'
 gem "stripe"
 gem "trix"
 gem "turbolinks", "~> 5"
