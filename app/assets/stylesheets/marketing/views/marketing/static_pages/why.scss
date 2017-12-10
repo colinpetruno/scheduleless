@@ -6,7 +6,7 @@
 
   > header {
     text-align: center;
-    margin: 50px 0;
+    margin: 50px 0 0 0;
 
     h2 {
       font-size: 2rem;
@@ -18,8 +18,14 @@
     color: $purple;
     font-size: 1.3rem;
     font-weight: 200;
-    margin: 50px 0;
+    margin: 10px 0 50px 0;
     text-align: center;
+
+    > small {
+      color: $gray-dark;
+      display: block;
+      font-size: .95rem;
+    }
   }
 
   .stats {

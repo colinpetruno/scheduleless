@@ -21,6 +21,10 @@
         border-bottom-left-radius: 25px;
         width: 100%;
 
+        &::placeholder {
+          color: lighten($purple, 20%);
+        }
+
         &:focus {
           outline: 0;
         }
@@ -54,16 +58,38 @@
   .tt-dataset {
     .tt-suggestion {
       a {
-        display: block;
-        color: $dark-text;
         border-radius: 5px;
+        color: $dark-text;
+        display: flex;
+        flex-direction: column;
         cursor: pointer;
         padding: 10px;
         width: 100%;
 
+        .listing-details {
+          color: darken($gray-light, 25%);
+          display: flex;
+          flex-direction: row;
+          font-weight: 200;
+        }
+
+        .listing-details > div {
+          display: flex;
+          font-size: 11px;
+          text-overflow: ellipsis;
+
+          &:last-child {
+            margin-left: auto;
+          }
+        }
+
         &:hover {
           background-color: lighten($purple, 10%);
           color: $white;
+
+          .listing-details {
+            color: $white;
+          }
         }
       }
     }

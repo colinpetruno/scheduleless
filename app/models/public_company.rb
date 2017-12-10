@@ -108,8 +108,10 @@ class PublicCompany < ApplicationRecord
   def as_json(_options={})
     {
       uuid: self.uuid,
+      location: self.headquarters,
       name: self.name,
-      to_param: self.to_param
+      to_param: self.to_param,
+      website: self.website
     }
   end
 

@@ -22,7 +22,11 @@ $(document).on("turbolinks:load", function() {
         output += company_url;
         output += obj.to_param;
         output += '">';
-        output += obj.name;
+        output += "<div>" + obj.name + "</div>";
+        output += "<div class='listing-details'>";
+        output += "<div>" + obj.location + "</div>";
+        output += "<div>" + obj.website + "</div>";
+        output += "</div>";
         output += '</a>';
         output += "</div>";
 
