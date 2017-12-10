@@ -4,4 +4,4 @@
 # User-agent: *
 # Disallow: /
 
-Sitemap: http://www.coworkability.io/sitemap.xml.gz
+Sitemap: http://s3.us-east-2.amazonaws.com/coworkability-sitemaps/sitemap.xml.gz
