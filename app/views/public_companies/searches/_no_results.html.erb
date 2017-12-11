@@ -1,1 +1,9 @@
-no results found for <%= company_name %>
+<div class="public-companies-searches-no-results">
+  <h4>We couldn't find any company in our database for that term.</h4>
+  <br />
+
+  But no worries! You can make a report and our staff will work to get the
+  company into our database. Just click the link below.
+  <br /><br />
+  <%= render partial: "cant_find", locals: { company_name: @company_search.query } %>
+</div>
