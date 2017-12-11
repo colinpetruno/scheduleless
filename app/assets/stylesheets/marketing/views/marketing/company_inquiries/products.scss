@@ -10,6 +10,8 @@
   > section > article {
     @include make-col-ready();
     @include make-col(6);
+    display: flex;
+    flex-direction: column;
   }
 
   .product {
@@ -17,10 +19,20 @@
     border: 1px solid $purple;
     border-radius: 3px;
     color: darken($gray-dark, 20%);
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    flex-grow: 1;
     font-weight: 200;
     min-height: 350px;
     padding: 20px;
     text-align: center;
+    width: 100%;
+
+    > img {
+      margin: auto;
+      max-width: 256px;
+    }
 
     > section.market {
       text-align: left;

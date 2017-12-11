@@ -1,0 +1,43 @@
+.marketing-company-inquiries-thanks {
+  @include make-container();
+
+  background-color: $white;
+  border: 1px solid lighten($purple, 15%);
+  border-radius: 3px;
+  margin: 100px auto;
+  max-width: 800px;
+  min-height: 300px;
+
+  > section {
+    @include make-row();
+
+    > article {
+      @include make-col-ready();
+      @include make-col(6);
+      padding: 25px 15px;
+
+      &:first-child {
+        font-weight: 200;
+        padding-left: 30px;
+        text-align: center;
+      }
+
+      &:last-child {
+        img {
+          margin-top: 25px;
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: map-get($grid-breakpoints, lg)) {
+  .marketing-company-inquiries-thanks {
+    margin: 25px 10px;
+    > section > article {
+      @include make-col(12);
+      padding: 20px 15px;
+    }
+  }
+}

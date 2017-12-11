@@ -3,6 +3,10 @@ td > form {
 }
 
 form {
+  .required {
+    color: $purple;
+  }
+
   .inline-flex {
     display: inline-flex;
   }

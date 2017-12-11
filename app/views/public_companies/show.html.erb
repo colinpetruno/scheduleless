@@ -22,9 +22,9 @@
       </div>
 
       <div>
-        <a href="#" class="employer-link">
-          Do you represent <%= @company.name %>?
-        </a>
+        <%= link_to "Do you represent #{@company.name}?",
+          new_company_inquiry_path(company: @company.uuid),
+          class: "employer-link" %>
       </div>
     </div>
   </div>

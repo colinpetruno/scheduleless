@@ -1,12 +1,14 @@
 class EmailCapturesController < ApplicationController
+  layout "marketing"
+
   def create
     email_capture = EmailCapture.new(email_capture_params)
     email_capture.save # don't care if this is invalid
 
-    redirect_to new_onboarding_registration_path(email: email_capture.email)
+    redirect_to thanks_email_captures_path
   rescue StandardError => error
     Bugsnag.notify(error)
-    redirect_to new_onboarding_registration_path
+    redirect_to root_path
   end
 
   private

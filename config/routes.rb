@@ -34,7 +34,12 @@ Rails.application.routes.draw do
   end
 
   scope module: :marketing do
-    resources :company_inquiries, only: [:create, :new], path: "inquiries"
+    resources :company_inquiries, only: [:create, :new], path: "inquiries" do
+      collection do
+        get "thanks"
+      end
+    end
+
     get "why-report-harrassment", to: "static_pages#why", as: :why_report
   end
 
@@ -275,7 +280,11 @@ Rails.application.routes.draw do
     resources :trades, only: [:create, :new]
   end
 
-  resources :email_captures, only: [:create], path: "sign_up"
+  resources :email_captures, only: [:create], path: "newsletters" do
+    collection do
+      get "thanks"
+    end
+  end
 
   resources :streams, only: [:show], defaults: { format: :ics }
 
