@@ -20,7 +20,6 @@ class PublicReportsController < ApplicationController
   private
 
   def find_public_company
-    binding.pry
     if params[:public_company_id].present?
       PublicCompany.find_by!(uuid: params[:public_company_id])
     else
