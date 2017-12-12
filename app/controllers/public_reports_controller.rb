@@ -2,8 +2,6 @@ class PublicReportsController < ApplicationController
   layout "marketing"
 
   def create
-    @company = find_public_company
-
     @public_report = PublicReport.new(public_report_params)
 
     if @public_report.save
@@ -22,6 +20,7 @@ class PublicReportsController < ApplicationController
   private
 
   def find_public_company
+    binding.pry
     if params[:public_company_id].present?
       PublicCompany.find_by!(uuid: params[:public_company_id])
     else
