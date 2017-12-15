@@ -1,5 +1,5 @@
 .blog-shared-categories {
-  border-bottom: 1px solid lighten($blue-dark, 20%);
+  border-bottom: 1px solid lighten($purple, 20%);
 
   ul {
     list-style: none;
@@ -15,14 +15,14 @@
         color: darken($gray-light, 10%);
 
         &:hover {
-          color: $blue-dark;
+          color: $purple;
           text-decoration: none;
         }
       }
 
       &.selected {
         a {
-          color: $blue-dark;
+          color: $purple;
         }
       }
     }

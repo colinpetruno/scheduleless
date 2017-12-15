@@ -2,8 +2,13 @@ class ApplicationController < ActionController::Base
   include Pundit
   protect_from_forgery with: :exception
   helper_method :after_sign_in_path_for, :coworkability?, :current_domain,
-    :default_calendar_path_for, :default_reporting_path_for
+    :current_user, :default_calendar_path_for, :default_reporting_path_for
 
+  def current_user
+    @current_user ||= current_login_user.user
+  rescue
+    nil
+  end
 
   def default_calendar_path_for(user)
     location = Location.default_for(user)

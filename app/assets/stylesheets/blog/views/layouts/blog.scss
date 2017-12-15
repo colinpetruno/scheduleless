@@ -11,3 +11,7 @@
     }
   }
 }
+
+body > footer {
+  background-color: lighten($purple, 32%);
+}

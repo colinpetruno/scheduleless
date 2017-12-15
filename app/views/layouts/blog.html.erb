@@ -1,25 +1,21 @@
 <html>
   <head>
     <%# TODO: Localize Me" %>
-    <title>Scheduleless</title>
+    <title>The Coworkability Blog</title>
 
     <%= csrf_meta_tags %>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <% if 1 == 2 %>
-    <meta name="title" content="<%= t(".meta_title") %>" />
-    <meta name="description" content="<%= t(".meta_description") %>" />
-  <% end %>
+      <meta name="title" content="<%= t(".meta_title") %>" />
+      <meta name="description" content="<%= t(".meta_description") %>" />
+    <% end %>
 
     <%= favicon_link_tag "favicon.ico" %>
 
     <%= stylesheet_link_tag "blog", media: "all", "data-turbolinks-track": "reload" %>
     <%= javascript_include_tag "blog", "data-turbolinks-track": "reload" %>
-
-    <% if Rails.env.production? %>
-      <%= render partial: "layouts/shared/reamaze" %>
-    <% end %>
 
     <%= render partial: "layouts/shared/google_analytics",
       locals: { internal: false } %>
@@ -37,7 +33,9 @@
       </div>
     </div>
 
-    <%=render partial: "marketing/welcome/footer" %>
+    <footer>
+      <%= render partial: "marketing/welcome/shared/footer" %>
+    </footer>
 
     <div id="tracking-data"
          style="display:none"

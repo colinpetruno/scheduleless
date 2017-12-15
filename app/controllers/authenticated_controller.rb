@@ -7,14 +7,10 @@ class AuthenticatedController < ApplicationController
   before_action :needs_onboarding?
   before_action :set_locale
 
-  helper_method :current_company, :current_user, :features, :search_params
+  helper_method :current_company, :features, :search_params
 
   def current_company
     current_user.company
-  end
-
-  def current_user
-    @current_user ||= current_login_user.user
   end
 
   def features
