@@ -4,9 +4,14 @@
   <ul>
     <li>
       <%= link_to "Why Report To Us", why_report_path %>
+    </li>
     <li>
       <%= link_to "For Employers", new_company_inquiry_path %>
     </li>
+    <li>
+      <%= link_to "Blog", blog_root_path %>
+    </li>
+
     <!--
     <li>
       <a href="#">Sign In</a>
@@ -22,4 +27,5 @@
 <div class="collapse navbar-collapse <%= "coworkability" if coworkability? %>" id="mobile-menu">
     <%= link_to "Why Report To Us", why_report_path %>
     <%= link_to "For Employers", new_company_inquiry_path %>
+    <%= link_to "Blog", blog_root_path %>
 </div>
