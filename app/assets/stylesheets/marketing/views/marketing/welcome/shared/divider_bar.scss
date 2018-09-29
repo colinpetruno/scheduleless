@@ -1,15 +1,15 @@
 .welcome-shared-divider-bar {
   min-height: 180px;
-  background-image: image-url("marketing/welcome/shared/divider_bar.jpg");
+  background-image: image-url("marketing/welcome/shared/divider_bar_repeat.jpg");
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: repeat-x;
   background-color: rgba(#9b80d1, .6);
 
   display: flex;
   flex-direction: row;
 
   &.coworkability {
-    background-image: image-url("marketing/welcome/shared/divider_bar_alt.jpg");
+    background-image: image-url("marketing/welcome/shared/divider_bar_alt_repeat.jpg");
     min-height: 220px;
   }
 

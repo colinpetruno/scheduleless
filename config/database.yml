@@ -13,16 +13,12 @@ default: &default
 development:
   <<: *default
   database: "scheduler_development"
-  username: rails
-  password: rails
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
   database: "scheduler_test"
-  username: rails
-  password: rails
 
 production:
   url: <%= ENV.fetch("DATABASE_URL", "") %>
