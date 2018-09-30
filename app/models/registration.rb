@@ -1,6 +1,7 @@
 class Registration
   include ActiveModel::Model
 
+  validates :company_name, presence: true
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, presence: true, length: { minimum: 3, maximum: 200 }
@@ -10,7 +11,8 @@ class Registration
     with: /\A(?=.*[a-zA-Z])(?=.*[0-9]).{8,}\z/,
     message: "must include one number, one letter and be between 8 and 40 characters"
 
-  attr_accessor :email, :first_name, :last_name, :password, :plan_id, :request
+  attr_accessor :company_name, :email, :first_name, :last_name, :password,
+                :plan_id, :request
 
   def company
     @_company || create_company
@@ -57,8 +59,17 @@ class Registration
 
   private
 
+  def default_location
+    @_default_location ||= company.locations.first
+  end
+
   def create_company
-    @_company = Company.create(name: "My Company Name")
+    @_company = Company.create(
+      name: company_name,
+      locations_attributes: [{
+        name: "My Default Location"
+      }]
+    )
   end
 
   def create_subscription
@@ -79,6 +90,15 @@ class Registration
         given_name: first_name,
       }
     )
+
+    company_user = User.find_by!(company_id: company.id,
+                                 login_user_id: @_user.id)
+
+    UserLocation.create(user_id: company_user.id,
+                        location_id: default_location.id,
+                        home: true,
+                        admin: true
+                       )
   end
 
   def email_unique?

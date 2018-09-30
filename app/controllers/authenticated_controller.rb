@@ -4,7 +4,6 @@ class AuthenticatedController < ApplicationController
   after_action :verify_authorized, except: :index
   after_action :verify_policy_scoped, only: :index
   before_action :authenticate_login_user!
-  before_action :needs_onboarding?
   before_action :set_locale
 
   helper_method :current_company, :features, :search_params

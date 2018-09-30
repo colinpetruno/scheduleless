@@ -13,7 +13,7 @@ class Company < ApplicationRecord
 
   validates :name, presence: true, length: { minimum: 3, maximum: 150 }
 
-  accepts_nested_attributes_for :shifts, :users
+  accepts_nested_attributes_for :shifts, :users, :locations
 
   enum pay_by_type: {
     user: 0,

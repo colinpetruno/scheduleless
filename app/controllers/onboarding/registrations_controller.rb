@@ -13,7 +13,6 @@ module Onboarding
 
       if @registration.valid? && @registration.register
         sign_in(@registration.user)
-        redirect_to edit_onboarding_company_path
       else
         render :new
       end
@@ -23,11 +22,7 @@ module Onboarding
 
     def redirect_if_logged_in?
       if current_login_user.present?
-        if current_login_user.user.leads.present?
-          redirect_to new_onboarding_position_path and return
-        else
-          redirect_to new_onboarding_lead_path and return
-        end
+        redirect_to new_onboarding_position_path and return
       end
     end
 
@@ -52,6 +47,7 @@ module Onboarding
       params.
         require(:registration).
         permit(
+          :company_name,
           :email,
           :first_name,
           :last_name,

@@ -1,58 +1,45 @@
-<% content_for(:sidebar) do %>
-  <%= render partial: "onboarding/shared/wizard_steps",
-    locals: { current_step: 1 } %>
-<% end %>
+<div class="onboarding-registrations-create">
+  <article>
+    <header>
+      <%= t(".wizard.title") %>"
+    </header>
 
-<%= simple_form_for [:onboarding, @company], url: onboarding_company_path do |f| %>
-  <section class="onboarding-companies-edit">
-    <div class="instructions">
-      <h3><%= t(".title") %></h3>
-    </div>
+    <span class="oi oi-project"></span>
 
-    <%= f.input :name, label: "Company Name" %>
-    <%# f.input :size,
-      as: :select,
-      collection: Company.size_options,
-      label: "How many employees do you manage?" %>
+    <small>
+      <%= t(".wizard.description") %>
+    </small>
 
-    <div class="onboarding-options">
-      <article>
-        <header>
-          Use the onboarding wizard.
-        </header>
-
-        <span class="oi oi-project"></span>
-
-        <small>Our onboarding wizard will let you enter all the details needed
-          to get started.</small>
-
-        <section>
-          <%= f.submit t(".next") %>
-        </section>
-      </article>
+    <section>
+      <%= link_to(
+        t(".wizard.button"),
+        new_onboarding_position_path,
+        class: "button"
+      ) %>
+    </section>
+  </article>
 
 
-      <article>
-        <header>
-          Go to your dashboard now.
-        </header>
+  <article>
+    <header>
+      <%= t(".dashboard.title") %>
+    </header>
 
-        <span class="oi oi-grid-three-up"></span>
+    <span class="oi oi-grid-three-up"></span>
 
-        <small>Want to take a look around? Go directly to the dashboard. You
-          can always come back later to go through the wizard</small>
+    <small>
+      <%= t(".dashboard.description") %>
+    </small>
 
-        <section>
-          <%= f.submit t(".next") %>
-        </section>
-      </article>
-    </div>
-  </section>
-
-  <footer>
-    <%# f.submit t(".next") %>
-  </footer>
-<% end %>
+    <section>
+      <%= link_to(
+        t(".dashboard.button"),
+        default_calendar_path_for(current_user),
+        class: "button"
+      ) %>
+    </section>
+  </article>
+</div>
 
 <% content_for(:tracking) do %>
   <script type="text/javascript">
