@@ -279,8 +279,6 @@ GEM
     rainbow (2.2.2)
       rake
     rake (12.0.0)
-    reamaze (0.0.2)
-      rails (>= 3.0.0)
     redis (3.3.3)
     redis-namespace (1.5.2)
       redis (~> 3.0, >= 3.0.4)
@@ -429,7 +427,6 @@ DEPENDENCIES
   rails-assets-tether!
   rails-assets-typeahead.js!
   rails_12factor
-  reamaze
   resque
   resque-pool
   resque-web
