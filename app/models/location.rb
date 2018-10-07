@@ -21,7 +21,7 @@ class Location < ApplicationRecord
 
   before_create :build_scheduling_hours
 
-  update_index "site_search#location", :self
+  update_index('site_search#user') { users }
 
   def self.default_for(user)
     locations = user.locations
