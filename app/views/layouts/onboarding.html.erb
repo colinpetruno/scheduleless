@@ -10,11 +10,6 @@
     <%= stylesheet_link_tag    'onboarding', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'onboarding', 'data-turbolinks-track': 'reload' %>
 
-    <%# TODO: Change this to ENV Var %>
-    <% if Rails.env.production? %>
-      <%= render partial: "layouts/shared/reamaze" %>
-    <% end %>
-
     <%= render partial: "layouts/shared/google_analytics",
       locals: { internal: false } %>
     <%= render partial: "layouts/shared/mixpanel" %>

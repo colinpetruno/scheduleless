@@ -11,8 +11,6 @@ de:
       meta_title: "Vollautomatisierte Diesnst- und Schichtplanung."
       page_title: "Scheduleless"
     shared:
-      reamaze:
-        label_text: "Wir freuen uns über Fragen und Anregungen!"
       top_nav:
         calendar: "Kalender"
         create_schedule: "Dienstplan erstellen"

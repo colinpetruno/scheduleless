@@ -19,8 +19,6 @@ en:
       coworkability_meta_title: "Stop Workplace Harassment"
       coworkability_page_title: "Coworkability | Home of the Coworkability Score"
     shared:
-      reamaze:
-        label_text: "Let us know if you have any questions!"
       top_nav:
         create_schedule: "Generate Schedule"
         dashboard: "Dashboard"

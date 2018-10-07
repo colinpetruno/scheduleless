@@ -16,9 +16,6 @@
 
     <%= favicon_link_tag "favicon.ico" %>
 
-    <% if Rails.env.production? %>
-      <%= render partial: "layouts/shared/reamaze" %>
-    <% end %>
     <%= render partial: "layouts/shared/google_analytics",
       locals: { internal: true } %>
     <%= render partial: "layouts/shared/mixpanel" %>
