@@ -71,9 +71,10 @@ GEM
       activemodel (>= 4.0.0)
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
-    chewy (0.9.0)
-      activesupport (>= 3.2)
-      elasticsearch (>= 1.0.0)
+    chewy (5.0.0)
+      activesupport (>= 4.0)
+      elasticsearch (>= 2.0.0)
+      elasticsearch-dsl
     coderay (1.1.1)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -83,7 +84,7 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     commonjs (0.2.7)
-    concurrent-ruby (1.0.4)
+    concurrent-ruby (1.0.5)
     countries (2.0.8)
       i18n_data (~> 0.7.0)
       money (~> 6.7)
@@ -110,12 +111,13 @@ GEM
       json
       thread
       thread_safe
-    elasticsearch (5.0.3)
-      elasticsearch-api (= 5.0.3)
-      elasticsearch-transport (= 5.0.3)
-    elasticsearch-api (5.0.3)
+    elasticsearch (6.1.0)
+      elasticsearch-api (= 6.1.0)
+      elasticsearch-transport (= 6.1.0)
+    elasticsearch-api (6.1.0)
       multi_json
-    elasticsearch-transport (5.0.3)
+    elasticsearch-dsl (0.1.6)
+    elasticsearch-transport (6.1.0)
       faraday
       multi_json
     erubi (1.7.0)
@@ -127,7 +129,7 @@ GEM
     factory_girl_rails (4.8.0)
       factory_girl (~> 4.8.0)
       railties (>= 3.0.0)
-    faraday (0.11.0)
+    faraday (0.15.3)
       multipart-post (>= 1.2, < 3)
     fcm (0.0.2)
       httparty
@@ -156,7 +158,7 @@ GEM
     holidays (5.4.0)
     httparty (0.15.5)
       multi_xml (>= 0.5.2)
-    i18n (0.8.0)
+    i18n (0.8.6)
     i18n-tasks (0.9.18)
       activesupport (>= 4.0.2)
       ast (>= 2.1.0)
@@ -204,12 +206,12 @@ GEM
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
     mini_portile2 (2.1.0)
-    minitest (5.10.1)
+    minitest (5.11.3)
     money (6.8.2)
       i18n (>= 0.6.4, < 0.9)
       sixarm_ruby_unaccent (>= 1.1.1, < 2)
     mono_logger (1.1.0)
-    multi_json (1.12.1)
+    multi_json (1.13.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
     newrelic_rpm (3.18.1.330)
@@ -348,7 +350,7 @@ GEM
       unicode-display_width (~> 1.1, >= 1.1.1)
     thor (0.19.4)
     thread (0.2.2)
-    thread_safe (0.3.5)
+    thread_safe (0.3.6)
     tilt (2.0.6)
     trix (0.10.1)
       rails
@@ -364,7 +366,7 @@ GEM
       execjs (~> 2.7)
       less-rails (~> 2.8, >= 2.8.0)
       railties (~> 5.0, >= 5.0.1)
-    tzinfo (1.2.2)
+    tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uglifier (3.0.4)
       execjs (>= 0.3.0, < 3)
@@ -446,4 +448,4 @@ RUBY VERSION
    ruby 2.3.3p222
 
 BUNDLED WITH
-   1.16.0
+   1.16.5
