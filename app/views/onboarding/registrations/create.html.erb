@@ -1,7 +1,7 @@
 <div class="onboarding-registrations-create">
   <article>
     <header>
-      <%= t(".wizard.title") %>"
+      <%= t(".wizard.title") %>
     </header>
 
     <span class="oi oi-project"></span>
@@ -50,7 +50,7 @@
       mixpanel.people.set({
         "$email": "<%= current_user.email %>",
         "$last_login": new Date(),
-        "Company Id": "<%= current_company.id %>",
+        "Company Id": "<%= current_user.company.id %>",
         "User Id": "<%= current_user.id %>"
       })
     });

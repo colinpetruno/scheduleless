@@ -13,7 +13,7 @@ en:
             can always come back later to go through the wizard
         wizard:
           button: "Get set up"
-          title: "Enter all your information now."
+          title: "Use the setup wizard"
           description: > 
             Our onboarding wizard will let you enter all the details needed
             to get started.
