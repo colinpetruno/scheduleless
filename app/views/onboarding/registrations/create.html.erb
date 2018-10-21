@@ -14,7 +14,13 @@
       <%= link_to(
         t(".wizard.button"),
         new_onboarding_position_path,
-        class: "button"
+        class: "button",
+        data: {
+          "track-click": "enabled",
+          "page": "#{controller_name}##{action_name}",
+          "link-intent": "Start wizard",
+          "link-location": "Main CTA"
+        }
       ) %>
     </section>
   </article>
@@ -35,7 +41,13 @@
       <%= link_to(
         t(".dashboard.button"),
         default_calendar_path_for(current_user),
-        class: "button"
+        class: "button",
+        data: {
+          "track-click": "enabled",
+          "page": "#{controller_name}##{action_name}",
+          "link-intent": "View dashboard",
+          "link-location": "Main CTA"
+        }
       ) %>
     </section>
   </article>
