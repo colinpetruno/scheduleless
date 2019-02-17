@@ -38,7 +38,7 @@ $headings-font-weight:           200;
 $transition-collapse-horizontal: width .35s ease;
 
 // forms
-$border-radius:                  3px;
+$border-radius:                  2px;
 $input-color:                    $gray-dark;
 $form-border-color:              rgba($black,.15);
 $form-font-size:                 .85rem;
@@ -67,10 +67,11 @@ $dropdown-link-hover-color:      $white;
 $dropdown-link-hover-bg:         $blue;
 
 
-
-
-
-
+// upgrading to 4.3
+$btn-primary-color: $blue;
+$btn-primary-bg: $blue;
+$btn-primary-border: $blue;
+$cursor-disabled:                not-allowed !default;
 
 
 

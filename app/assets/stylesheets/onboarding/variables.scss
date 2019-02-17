@@ -31,4 +31,12 @@ $state-danger-text:              #a94442 !default;
 $state-danger-bg:                #f2dede !default;
 $state-danger-border-color:      darken($state-danger-bg, 5%) !default;
 
-$btn-border-radius:              0;
+$border-radius:                  3px;
+$btn-border-radius:              3px;
+
+
+// upgrading to 4.3
+$btn-primary-color: $dark-blue;
+$btn-primary-bg: $dark-blue;
+$btn-primary-border: $dark-blue;
+$cursor-disabled:                not-allowed !default;

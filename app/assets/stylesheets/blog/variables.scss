@@ -21,3 +21,9 @@ $font-dark:                      $gray-dark;
 
 $font-family-serif: "Montserrat", serif;
 $font-family-sans-serif: "Whitney", Helvetica, Roboto, sans-serif;
+
+// upgrading to 4.3
+$btn-primary-color: $blue-dark;
+$btn-primary-bg: $blue-dark;
+$btn-primary-border: $blue-dark;
+$cursor-disabled:                not-allowed !default;

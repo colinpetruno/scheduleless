@@ -3,6 +3,7 @@ section.hero {
   height: 85vh;
   max-width: 100%;
   min-height: 400px;
+  max-height: 550px;
   position: relative;
   overflow-x: hidden;
   overflow-y: hidden;
@@ -72,18 +73,26 @@ section.hero {
 .content-section {
   @include make-container();
   max-width: 1280px;
+  height: 100%;
 
   > div {
     @include make-row();
+    height: 100%;
 
     > section {
       @include make-col-ready();
       @include make-col(12);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
 
       article {
         color: $white;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
         font-size: 1.2em;
-        margin-top: 150px;
+        justify-content: center;
         text-align: center;
 
         h2 {
@@ -95,6 +104,7 @@ section.hero {
           text-transform: uppercase;
           letter-spacing: 4px;
         }
+
         span {
           font-size: 20px;
           font-weight: 200;

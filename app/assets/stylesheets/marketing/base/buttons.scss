@@ -7,8 +7,21 @@ button, input[type=submit], a.button {
   vertical-align: middle;
   user-select: none;
   border: $input-btn-border-width solid transparent;
-  @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
-  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+
+  @include button-size(
+    $btn-padding-y,
+    $btn-padding-x,
+    $font-size-base,
+    $line-height-base,
+    $btn-border-radius
+  );
+
+  @include button-variant(
+    $btn-primary-bg,
+    $btn-primary-color,
+    $btn-primary-border
+  );
+
   @include transition($btn-transition);
 
   // Share hover and focus styles
@@ -44,7 +57,12 @@ button, input[type=submit], a.button {
   }
 
   &.white {
-    @include button-variant($gray-dark, $white, $gray-light);
+    // $background, $border, $hover-background
+    @include button-variant(
+      $white,
+      $gray-dark,
+      lighten($purple, 20%)
+    );
   }
 
   &.link {

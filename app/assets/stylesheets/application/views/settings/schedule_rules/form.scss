@@ -15,7 +15,11 @@
     border: $alert-border-width solid transparent;
     @include border-radius($alert-border-radius);
 
-    @include alert-variant($alert-danger-bg, $alert-danger-border, $alert-danger-text);
+    @include alert-variant(
+      theme-color-level("danger", $alert-bg-level),
+      theme-color-level("danger", $alert-border-level),
+      theme-color-level("danger", $alert-color-level)
+    );
 
     ul {
       margin-bottom: 0;

@@ -8,7 +8,7 @@ button, input[type=submit], a.button {
   user-select: none;
   border: $input-btn-border-width solid transparent;
   border-radius: $border-radius;
-  @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
+  @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $line-height-base, $btn-border-radius);
   @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
   @include transition($btn-transition);
 
