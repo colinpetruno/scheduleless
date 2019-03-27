@@ -47,4 +47,19 @@
       justify-content: center;
     }
   }
+
+  @media (max-width: map-get($grid-breakpoints, lg)) {
+    flex-direction: column;
+
+    > article {
+      &:first-child {
+        margin: 15px 0;
+      }
+
+      &:last-child {
+        margin-bottom: 15px;
+        margin-left: 0;
+      }
+    }
+  }
 }

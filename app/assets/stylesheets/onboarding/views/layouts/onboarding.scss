@@ -28,6 +28,11 @@
 }
 
 .wizard {
+  display: flex;
+  max-width: 1280px;
+  margin: 0 auto;
+  margin-left: auto !important;
+  margin-right: auto !important;
   @include make-row();
 
   > div, > a {
@@ -60,6 +65,9 @@
   }
 
   .wizard {
+    margin: 0;
+    max-width: 100%;
+
     > div, > a {
       @include make-col(12);
       @include make-col-offset(0);
