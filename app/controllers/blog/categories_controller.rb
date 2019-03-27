@@ -1,6 +1,6 @@
 module Blog
   class CategoriesController < BaseController
-    before_filter :ensure_valid_category
+    before_action :ensure_valid_category
 
     def show
       @posts = Blog::Post.send(params[:id].to_sym)
