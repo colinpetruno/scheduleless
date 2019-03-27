@@ -30,3 +30,9 @@ $font-family-serif: "Montserrat", serif;
 $font-family-sans-serif: "Whitney", Helvetica, Roboto, sans-serif;
 
 $headings-font-weight: 200;
+
+// upgrading to 4.3
+$btn-primary-color: $dark-blue;
+$btn-primary-bg: $dark-blue;
+$btn-primary-border: $dark-blue;
+$cursor-disabled:                not-allowed !default;

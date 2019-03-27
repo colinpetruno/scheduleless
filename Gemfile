@@ -1,8 +1,8 @@
 source "https://rubygems.org"
 
-gem "rails", "~> 5.0.1"
+gem 'rails', '~> 6.0.0.beta1'
 gem "bcrypt", "~> 3.1.7"
-gem "bootstrap", "~> 4.0.0.alpha6"
+gem "bootstrap", "~> 4.3.0"
 gem "bourbon"
 gem "bugsnag"
 gem "carrierwave"
@@ -29,7 +29,7 @@ gem "sass-rails", "~> 5.0"
 gem "simple_form"
 gem 'sitemap_generator'
 gem "stripe"
-gem "trix"
+# gem "trix"
 gem "turbolinks", "~> 5"
 gem "twilio-ruby"
 gem "uglifier", ">= 1.3.0"
@@ -38,6 +38,7 @@ source "https://rails-assets.org" do
   gem "rails-assets-chartjs"
   gem "rails-assets-d3"
   gem "rails-assets-pikaday"
+  gem "rails-assets-popper.js"
   gem "rails-assets-select2"
   gem "rails-assets-tether"
   gem "rails-assets-typeahead.js"
@@ -67,4 +68,4 @@ group :test do
   gem "rspec-rails", "~> 3.5"
 end
 
-ruby "2.3.3"
+ruby "2.6.1"

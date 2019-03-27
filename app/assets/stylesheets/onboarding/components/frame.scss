@@ -83,6 +83,7 @@
   .frame {
     margin-left: 0;
     margin-right: 0;
+
     > aside, > div {
       @include make-col(12);
     }

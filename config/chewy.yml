@@ -1,9 +1,10 @@
 # config/chewy.yml
 # separate environment configs
 test:
-  host: "localhost:9201"
-  prefix: "test"
+  host: "localhost:9200"
+  prefix: "scheduleless_test"
 development:
-  host: "localhost:9201"
+  host: "localhost:9200"
+  prefix: "scheduleless_dev"
 production:
   host: <%= ENV["BONSAI_URL"] %> # TODO, Ensure not public accessible

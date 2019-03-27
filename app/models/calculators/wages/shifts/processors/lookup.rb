@@ -25,6 +25,8 @@ module Calculators
           end
 
           def lookup
+            return default_calculator if incomplete_location?
+
             if STATE_MAP[state].present?
               STATE_MAP[state]
             elsif COUNTRY_MAP[country].present?
@@ -38,12 +40,20 @@ module Calculators
 
           attr_reader :location
 
+          def incomplete_location?
+            location.blank? || country.blank? || state.blank?
+          end
+
+          def default_calculator
+            COUNTRY_MAP["US".to_sym]
+          end
+
           def country
-            location.country.to_sym
+            (location.country || "").to_sym
           end
 
           def state
-            location.county_province.to_sym
+            (location.county_province || "").to_sym
           end
         end
       end

@@ -1,0 +1,46 @@
+.marketing-welcome-homepage-features {
+  max-width: 960px;
+  margin: 0 auto;
+
+  h5 {
+    font-size: 1.85rem;
+    font-weight: 200;
+    text-align: center;
+  }
+
+  > section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  > section > article {
+    display: flex;
+    flex-direction: row;
+
+    &:first-child {
+      .feature {
+        border-bottom: 1px solid $purple;
+      }
+    }
+  }
+
+  .feature {
+    border-right: 1px solid $purple;
+    color: lighten($gray-dark, 10%);
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8rem;
+    text-align: center;
+    padding: 15px;
+
+    h6 {
+      color: $gray-dark;
+      font-size: 0.9rem;
+      font-weight: 400;
+    }
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+}

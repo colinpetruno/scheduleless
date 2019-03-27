@@ -6,12 +6,15 @@
  */
 
 // Core variables and mixins
+@import "bootstrap/functions";
 @import "bootstrap/variables";
 @import "bootstrap/mixins";
-@import "bootstrap/custom";
+@import "bootstrap/root";
+// @import "bootstrap/custom";
 
 // Reset and dependencies
-@import "bootstrap/normalize";
+// @import "bootstrap/normalize";
+@import "bootstrap/reboot";
 // @import "bootstrap/print";
 
 // Core CSS

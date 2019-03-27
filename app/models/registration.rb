@@ -23,7 +23,7 @@ class Registration
 
     ActiveRecord::Base.transaction do
       create_company
-      create_user # makes company again?
+      create_user
       create_subscription
     end
 
@@ -67,7 +67,7 @@ class Registration
     @_company = Company.create(
       name: company_name,
       locations_attributes: [{
-        name: "My Default Location"
+        name: "My Default Location" # TODO: I18n
       }]
     )
   end
@@ -77,7 +77,6 @@ class Registration
   end
 
   def create_user
-    # binding.pry
     @_user = LoginUser.create(
       email: email,
       password: password,
@@ -87,18 +86,26 @@ class Registration
         company_id: company.id,
         email: email,
         family_name: last_name,
-        given_name: first_name,
+        given_name: first_name
       }
     )
 
-    company_user = User.find_by!(company_id: company.id,
-                                 login_user_id: @_user.id)
+    position = Position.create(
+      company: company,
+      name: "Company Manager", # TODO: I18n
+      company_admin: true,
+      location_admin: true,
+      base_pay: 0
+    )
 
-    UserLocation.create(user_id: company_user.id,
+    user.user.update(primary_position: position)
+
+    UserLocation.create(user_id: @_user.user.id, # @_user is a LoginUser
                         location_id: default_location.id,
                         home: true,
                         admin: true
                        )
+    @_user
   end
 
   def email_unique?

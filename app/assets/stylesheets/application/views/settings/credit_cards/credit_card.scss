@@ -7,7 +7,7 @@
       display: inline-block;
 
       input[type=submit] {
-        @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-sm, $btn-border-radius);
+        @include button-size($btn-padding-y-sm, $btn-padding-x-sm, $font-size-sm, $line-height-base, $btn-border-radius);
         @include button-variant($btn-secondary-color, $btn-secondary-bg, $btn-secondary-border);
       }
     }

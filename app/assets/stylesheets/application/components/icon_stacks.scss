@@ -1,0 +1,30 @@
+.icon-stack {
+  display: block;
+  height: 2em;
+  line-height: 2em;
+  position: relative;
+  vertical-align: middle;
+  margin-left: -10px;
+  // width: 2.5em;
+
+  > .oi {
+    font-size: 0.9em;
+    // left: 0;
+    position: absolute;
+    // text-align: center;
+    // width: 100%;
+  }
+
+  &.add-person {
+    > .oi-plus {
+      color: $gray-light;
+      font-size: .65em;
+      right: -3px;
+      top: -1px;
+    }
+
+    > .oi-person {
+      top: 4px;
+    }
+  }
+}

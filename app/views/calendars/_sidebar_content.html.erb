@@ -1,6 +1,5 @@
 <div class="calendars-sidebar-content">
   <footer class="centered">
-
     <div class="dropdown location-select-dropdown">
       <button role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <%= presenter.location.name %>
@@ -23,6 +22,18 @@
           <span class="oi oi-link-intact"></span>
         </span>
       </button>
+
+      <%= link_to(
+        presenter.employees_link,
+        class: "button",
+        title: "Add Employee",
+        data: { toggle: "tooltip" }
+      ) do %>
+        <span class="icon-stack add-person">
+          <span class="oi oi-person"></span>
+          <span class="oi oi-plus"></span>
+        </span>
+      <% end %>
 
       <%= link_to(
         presenter.employees_link,
@@ -64,28 +75,25 @@
       <% end %>
     </div>
 
-    <br />
-
-
-    <br />
+    <br /><br />
 
     <% if presenter.display_in_progress? %>
-    <div id="unpublished-shift-hint"
-         class="<%= "hidden" unless presenter.unpublished_shifts? %>">
-      <%= link_to(
-        new_remote_location_posting_path(
-          presenter.location,
-          date_start: presenter.date_integer,
-          date_end: presenter.date_integer,
-          display_date: presenter.date_integer
-        ),
-        class: "warning",
-        remote: true
-      ) do %>
-         <div>There are shifts that aren't published!</div>
-         <div>Click on "<span class="oi oi-share"></span>" to publish.</div>
-       <% end %>
-    </div>
+      <div id="unpublished-shift-hint"
+           class="<%= "hidden" unless presenter.unpublished_shifts? %>">
+        <%= link_to(
+          new_remote_location_posting_path(
+            presenter.location,
+            date_start: presenter.date_integer,
+            date_end: presenter.date_integer,
+            display_date: presenter.date_integer
+          ),
+          class: "warning",
+          remote: true
+        ) do %>
+           <div>There are shifts that aren't published!</div>
+           <div>Click on "<span class="oi oi-share"></span>" to publish.</div>
+         <% end %>
+      </div>
     <% elsif presenter.manage? %>
       <%= link_to(
         location_calendar_path(presenter.location,

@@ -10,8 +10,22 @@ button, input[type=submit], a.button {
   border: $input-btn-border-width solid transparent;
   -webkit-appearance: none;
 
-  @include button-size($btn-padding-y, $btn-padding-x, $font-size-base, $btn-border-radius);
-  @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+  @include button-size(
+    $btn-padding-y,
+    $btn-padding-x,
+    $font-size-base,
+    $line-height-base,
+    $border-radius
+  );
+
+  @include button-variant(
+    $btn-primary-color,
+    $btn-primary-bg,
+    $btn-primary-border
+  );
+
+  border-radius: $border-radius;
+
   @include transition($btn-transition);
 
   // Share hover and focus styles
@@ -47,6 +61,10 @@ button, input[type=submit], a.button {
   }
 
   &.white {
-    @include button-variant($gray-light, $white, $gray-light);
+    @include button-variant(
+      $white,
+      $gray-light,
+      lighten($purple, 20%)
+    );
   }
 }
