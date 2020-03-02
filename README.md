@@ -18,3 +18,8 @@ Guides for getting things done, programming well, and programming in style.
 * [Developing](./documentation/developing)
 * [Tools](./documentation/tools)
 * [Css](./documentation/css)
+
+Free to use
+======
+Scheduleless is now free for you to earn and use. If you want to use it to 
+make money, contact me to set up a license. 
