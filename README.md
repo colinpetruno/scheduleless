@@ -21,8 +21,8 @@ Guides for getting things done, programming well, and programming in style.
 
 Free to use
 ======
-Scheduleless is now free for you to earn and use. If you want to use it to 
-make money, contact me to set up a license. 
+Scheduleless is now free for you to learn and personal use. If you want to use 
+it to  make money, contact me to set up a license. 
 
 Screens
 ======
