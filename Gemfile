@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 gem 'rails', '~> 6.0.0.beta1'
 gem "bcrypt", "~> 3.1.7"
-gem "bootstrap", "~> 4.3.0"
+gem "bootstrap", "~> 4.3.1"
 gem "bourbon"
 gem "bugsnag"
 gem "carrierwave"
