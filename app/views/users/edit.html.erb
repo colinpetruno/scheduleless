@@ -17,7 +17,7 @@
 
     <div class="frame">
       <header>
-        <div>Contact Info</div>
+        <div><%= t(".contact_info") %></div>
       </header>
       <section>
         <article>
@@ -48,7 +48,7 @@
     <br /><br />
     <div class="frame">
       <header>
-        <div>Calendar Feed</div>
+        <div><%= t(".calendar_feed") %></div>
       </header>
       <section>
         <article>
@@ -57,8 +57,7 @@
               <%= "#{stream_url(current_user.hash_key)}.ics" %>
             </span>
           </div>
-          <small>Use this link to add your Scheduleless calendar to
-            applications like iCal or Google Calendar</small>
+          <small><%= t(".use_this_link") %></small>
         </article>
       </section>
     </div>

@@ -7,9 +7,15 @@ en:
       tooltip: "An Invite will be sent as soon as they are scheduled!"
     edit:
       availablity: "Availablity"
+      calendar_feed: "Calendar Feed"
+      contact_info: "Contact Info"
       update_profile_heading: "Update Your Profile"
+      use_this_link: "Use this link to add your Scheduleless calendar to
+        applications like iCal or Google Calendar"
     invited_badge:
       label: "Invited"
+    new:
+      add_an_employee: "Add an employee to this location"
     users:
       delete: "Remove"
       edit: "Edit"
